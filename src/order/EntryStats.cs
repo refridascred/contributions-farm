@@ -49,12 +49,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                if (readings[i] == origin)
                 {
                     return (long)i;
                 }
