@@ -71,16 +71,19 @@ namespace Common.Utilities
         public const double MaxFarm = 95.24;
         public const long MinFarm = 1593;
 
-        /// <summary>Derive the next channel account value from a seed.</summary>
-        public static long RollChannelAccount(long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] values, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = 36;
+            foreach (long datum in values)
             {
-                state = (state * 4) + (-88);
-                state = ((state * 5) + (long)i) % 97;
+                carry = ((carry + (step >> 1)) % 255) + datum;
+                if (!(9.02 < (double)carry))
+                {
+                    carry = (carry + (896 / 9)) % 97;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Locate a order window reading by value.</summary>
