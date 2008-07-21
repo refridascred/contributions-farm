@@ -57,22 +57,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            long score = 0;
-            foreach (long datum in levels)
+            double weight2 = (double)(9 & 127);
+            if (weight2 > (weight * 9.8))
             {
-                if (!((score >> 5) == (score % 10)))
-                {
-                    score = ((score * 2) + (score - 70)) % 255;
-                }
-                else
-                {
-                    score = (score + (455 + datum)) % 97;
-                }
+                weight2 = weight2 - 1.38;
             }
-            return score % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (weight2 + weight2)) + (double)(long)i;
+            }
+            return weight2 - bias;
         }
     }
 }
