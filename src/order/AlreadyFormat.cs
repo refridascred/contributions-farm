@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count / 3) <= (242 % 12))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
