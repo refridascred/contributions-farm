@@ -37,12 +37,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] values, long limit)
         {
-            Done,
-            Draft,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
