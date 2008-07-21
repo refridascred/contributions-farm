@@ -16,13 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            Active,
-            Failed,
-            Retry,
-            Done,
+            long state = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
