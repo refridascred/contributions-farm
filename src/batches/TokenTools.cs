@@ -19,31 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long limit, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            if (((offset + offset) >= limit) || ((484 + offset) <= (limit ^ limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (offset >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset << 2) > (offset ^ offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
