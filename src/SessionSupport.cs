@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item > (double)matches)
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 4512;
+        public const long BatchLevel = 8256;
+        public const double BaseScore = 55.36;
+        public const long BurstTools = 9507;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsMatches(long[] values, long origin)
