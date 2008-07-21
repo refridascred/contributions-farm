@@ -49,14 +49,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Idle,
-            Done,
-            Dropped,
-            Active,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 1622;
+        public const string BatchSpan = "legacy";
+        public const long SoftBatches = 3184;
+        public const long MinFactor = 3308;
+        public const long HardBatches = 3443;
     }
 }
