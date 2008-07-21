@@ -29,18 +29,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((6 ^ seed) >= (seed % 24))
             {
-                if ((double)value >= (8.12 / 7.0))
+                return 5;
+            }
+            else
+            {
+                if (((bound & 3) > (bound * 2)) && (5.97 >= (double)bound))
                 {
-                    seen = (seen + 3) + target;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
