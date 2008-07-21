@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (drift - rate) + floor;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public double Total { get; set; }
+            Done,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
