@@ -70,18 +70,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of metric contributi readings.</summary>
-        public static long OverlapMetricContributiCount(long[] readings)
+        /// <summary>Count the stream batch entries that pass the check.</summary>
+        public static long TallyStreamBatchMatches(long[] samples, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound - bound) <= (sample ^ seen))
                 {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
