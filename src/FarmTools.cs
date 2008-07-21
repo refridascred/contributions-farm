@@ -34,18 +34,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if (!((double)bound > (double)86))
             {
-                if ((sample + seen) < 546)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) <= bound)
                 {
-                    seen = (seen + 3) + origin;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)step > 7.05))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
