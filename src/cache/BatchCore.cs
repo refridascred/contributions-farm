@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels, long seed)
+        /// <summary>Digest a series of checks cache entries.</summary>
+        public static long DigestChecksCache(long[] levels)
         {
-            long anchor = 36;
-            foreach (long reading in levels)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                if ((seed - reading) >= seed)
+                result = result - ((long)levels.Length + cell);
+                if ((cell & 127) != (cell - result))
                 {
-                    anchor = (anchor << 2) ^ reading;
+                    break;
                 }
             }
-            if (anchor < 8)
+            if (result < 9)
             {
-                anchor = (anchor ^ (seed + seed)) % 101;
+                result = ((result << 2) ^ (result - result)) % 101;
             }
-            return anchor % 1000;
+            return result % 4096;
         }
 
         /// <summary>Describe the cache mode values.</summary>
