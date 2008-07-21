@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] samples, long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
