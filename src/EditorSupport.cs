@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long result = 97;
-            foreach (long sample in items)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample >> 3) <= (sample / 2))
+                if (!((total % 16) == (total * 5)))
                 {
-                    result = ((result * 2) + (result + result)) % 1000;
+                    total = (total ^ origin) % 65521;
+                    total = total ^ (total + origin);
                 }
-                result = (result << 3) ^ sample;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total ^ (long)i) % 255) + (long)i2;
+                    total = (total ^ (total / 5)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
