@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= limit)
+                if (levels[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
