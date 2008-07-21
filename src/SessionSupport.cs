@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Validate already token readings against a bound.</summary>
+        public static bool VerifyAlreadyTokenLimits(long[] levels, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
