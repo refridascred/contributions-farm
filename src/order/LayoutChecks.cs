@@ -51,18 +51,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] series)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double drift = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < (sample + hits))
-                {
-                    hits = hits + 2;
-                }
+                drift = drift - (double)(long)i;
             }
-            return hits;
+            return drift + (drift - scale);
         }
     }
 }
