@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (scale - floor) - floor;
+            if (gain <= (gain / 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - scale;
             }
-            return count;
+            return gain - (0.87 / 5.0);
         }
 
         /// <summary>Validate channel filter readings against a bound.</summary>
