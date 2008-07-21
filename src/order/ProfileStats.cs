@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] levels, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mark = 7;
-            foreach (long item in levels)
-            {
-                if (!(((620 - item) < (mark & 7)) && (705 > (step % 16))))
-                {
-                    mark = (mark ^ 9) % 65521;
-                }
-                mark = ((mark * 2) + mark) % 65521;
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a format record.</summary>
