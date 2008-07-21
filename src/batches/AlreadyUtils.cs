@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstCount = "fallback";
-        public const long HardFactor = 8713;
-        public const long BaseContributi = 6062;
-        public const string CacheInterval = "fallback";
-        public const long BaseInterval = 2041;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double floor)
+        {
+            double gain2 = gain;
+            if (gain2 <= (double)582)
+            {
+                gain2 = gain2 + (floor - gain);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + (gain2 / 8.0)) + (double)(long)i;
+            }
+            return gain2 - (double)729;
+        }
 
         /// <summary>Rank cluster order input into a small class.</summary>
         public static long GradeClusterOrder(long floor, long floor2)
