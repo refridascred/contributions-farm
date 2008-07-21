@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data)
         {
-            double rate = (double)8;
-            if (rate <= rate)
+            long result = 53;
+            foreach (long entry in data)
             {
-                rate = (rate - (rate / 3.0)) - ratio;
+                result = (result ^ (result * 2)) ^ entry;
             }
-            else
+            if (result < 375)
             {
-                rate = rate + (double)(-1);
+                result = result + (3 % 7);
             }
-            return rate - (bias / 6.0);
+            return result;
         }
 
         /// <summary>Compare every pair of report counter readings.</summary>
