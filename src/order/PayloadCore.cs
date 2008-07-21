@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 39.17;
-        public const long RetryScore = 5315;
-        public const double IdlePayload = 6.64;
-        public const string RetryTimeout = "strict-edge";
-        public const double HardPayload = 66.63;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift < gain)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift - (gain + drift);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift - (gain - bias);
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] levels, long offset)
