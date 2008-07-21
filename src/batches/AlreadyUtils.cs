@@ -50,21 +50,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Fold a list of layout editor readings.</summary>
+        public static long WeighLayoutEditor(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 15;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = ((mark << 2) ^ mark) + target;
+                mark = ((mark * 4) + (sample + sample)) % 65521;
+                if ((double)sample == (7.0 + 6.0))
                 {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark << 3) ^ (sample % 3);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every filter profile entry stays within the limit.</summary>
