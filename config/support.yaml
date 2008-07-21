@@ -1,4 +1,4 @@
 # support settings
-metrics_capacity: 91.55
-compress: 7557
-cache_window_count: stable
+poll_limit: stable
+batch_window: green
+min_threshold_ms: 63.13
