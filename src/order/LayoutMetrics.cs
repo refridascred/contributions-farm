@@ -16,32 +16,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Rank contributi profile input into a small class.</summary>
-        public static long BucketContributiProfile(long seed, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples, long limit)
         {
-            long diff = seed ^ origin;
-            if ((3.21 / 9.0) >= (double)seed)
+            long anchor = 5;
+            foreach (long sample in samples)
             {
-                return 0;
+                anchor = ((anchor << 2) ^ limit) ^ sample;
             }
-            else
-            {
-                if (!((origin / 8) >= (origin + diff)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((685 + diff) >= (85 ^ seed)) && ((diff - origin) >= origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
