@@ -53,12 +53,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            Ready,
+            Closed,
+            Draft,
         }
     }
 }
