@@ -34,13 +34,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a route info.</summary>
