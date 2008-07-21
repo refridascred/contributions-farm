@@ -67,11 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 66.39;
-        public const string CacheSupport = "primary-v2";
-        public const string BatchSupport = "standard-edge";
-        public const long DefaultSupport = 6987;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (count + (long)items.Length))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] samples, long limit)
