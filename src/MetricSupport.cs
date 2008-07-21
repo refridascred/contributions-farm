@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Look up the position of a command profile sample.</summary>
