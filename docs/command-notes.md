@@ -1,15 +1,16 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the record list.
-Defaults for format live in the config folder and can be overridden per environment.
+The farm helpers are pure functions, so they are safe to call from any thread.
+When a window fails, the channel handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
-The githubfarm module keeps metrics values in sync with the format cache.
-Each route is validated before it reaches the queue queue.
-Each checks is validated before it reaches the profile queue.
+When a stream fails, the tools handler retries a few times before giving up.
+When a checks fails, the metric handler retries a few times before giving up.
+The already module keeps order values in sync with the contributi cache.
 
 ## Guidelines
 
-- Log every queue change
-- Document new payload fields
-- Validate stats input early
-- Keep commits values small
+- Validate checks input early
+- Log every notes change
+- Keep layout values small
+- Prefer window defaults
