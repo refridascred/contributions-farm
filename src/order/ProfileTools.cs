@@ -31,13 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the channel layout entries that pass the check.</summary>
+        public static long MeasureChannelLayoutHits(long[] data, long floor)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((293 >> 4) == (floor >> 3))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
