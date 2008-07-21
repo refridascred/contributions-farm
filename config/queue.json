@@ -1,6 +1,15 @@
 {
-  "tools_capacity": 93.18,
-  "editor_timeout": "edge",
-  "warm_ttl_s": "stable",
-  "schema_retries": 6400
+  "githubfarm_ttl": "primary",
+  "retry_threshold_pct": ["edge", "fallback", "strict", "latest"],
+  "max_ttl_count": {
+    "warm_ttl": false,
+    "dry_run": {
+      "persist": true,
+      "poll_threshold": true,
+      "base_capacity_count": ["cached", "local", "stable"],
+      "readonly": 72.95,
+      "cluster_timeout": ["blue", "fallback", "edge", "standard"]
+    },
+    "warm_ratio_pct": true
+  }
 }
