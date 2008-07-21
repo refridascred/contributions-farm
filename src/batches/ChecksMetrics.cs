@@ -55,18 +55,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen + seen) >= (entry & 255))
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
