@@ -15,12 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
