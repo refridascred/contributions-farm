@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long RetryFactor = 3175;
         public const long BurstSupport = 6841;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Retry,
-            Queued,
-            Failed,
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine counter profile values into a single score.</summary>
