@@ -29,12 +29,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Grade a session metrics value against two limits.</summary>
+        public static long GradeSessionMetrics(long target, long origin)
         {
-            Locked,
-            Failed,
-            Queued,
+            if (origin > (31 ^ target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin << 1) == (origin ^ target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= (38 * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + target) >= (target * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
