@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter entry samples are out of range.</summary>
-        public static long AuditCounterEntryHits(long[] levels, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading % 24) > (reading - tally)) || (((floor ^ tally) <= (82 % 100)) || (tally > (tally << 3))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the counter phase values.</summary>
