@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 77.45;
-        public const long DefaultCommits = 5012;
-        public const long HardBudget = 666;
-        public const long BurstDepth = 8621;
-        public const string IdleCommits = "staging";
+        /// <summary>Count the cache tools entries that pass the check.</summary>
+        public static long TallyCacheToolsHits(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count - limit) >= (limit + cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long RankStats(long bound, long step)
