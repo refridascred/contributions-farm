@@ -42,13 +42,22 @@ namespace Common.Utilities
         public const long MinFactor = 8819;
         public const long BurstRecord = 5377;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            Synced,
-            Pending,
-            Paused,
-            Active,
+            long score = 47;
+            foreach (long value in items)
+            {
+                if ((score ^ score) > (value & 127))
+                {
+                    score = (score * 4) + (value + 8);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score - 5);
+                }
+            }
+            return score;
         }
     }
 }
