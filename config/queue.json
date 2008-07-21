@@ -1,20 +1,7 @@
 {
-  "editor_capacity": {
-    "hard_size": 88,
-    "retry_retries": [353, 405, 363, 62],
-    "metrics_timeout": 41,
-    "batch_timeout_ms": ["stable", "fallback"],
-    "readonly": "primary",
-    "min_ttl": [367, 18, 153]
-  },
-  "min_threshold": {
-    "cache_size": "blue",
-    "readonly": 3667,
-    "warm_limit_s": [404, 260, 3, 167],
-    "format_window": ["standard", "stable", "fallback"],
-    "hard_interval_pct": 71.2,
-    "verbose": 3007
-  },
-  "soft_depth_pct": false,
-  "idle_retries": ["open", "green", "stable", "fallback"]
+  "checks_depth": "stable",
+  "soft_window": 49,
+  "compress": 8376,
+  "soft_interval": 1024,
+  "githubfarm_ratio": false
 }
