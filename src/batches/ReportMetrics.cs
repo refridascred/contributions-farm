@@ -27,18 +27,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (hits <= (sample + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleBudget = 57.56;
+        public const string MaxEditor = "stable-1";
+        public const string BaseSpan = "latest-1";
     }
 }
