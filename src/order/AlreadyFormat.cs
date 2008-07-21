@@ -20,11 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] items)
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            long mark = 0;
+            foreach (long cell in items)
+            {
+                if ((mark ^ cell) < ((long)items.Length >> 5))
+                {
+                    mark = mark - ((-603) - cell);
+                }
+            }
+            if (mark < 319)
+            {
+                mark = (mark << 3) ^ (mark >> 4);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Match up support samples.</summary>
