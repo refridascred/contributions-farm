@@ -1,9 +1,7 @@
-id,ratio,score,token
-1,948,419,edge
-2,fallback,fallback,93.56
-3,4.26,871,43.93
-4,staging,442,796
-5,928,primary,45.53
-6,214,36.8,28.93
-7,950,latest,legacy
-8,fallback,695,legacy
+id,region,active,count
+1,492,cached,58.56
+2,5.32,cached,21.88
+3,21.37,97.74,970
+4,10.95,101,73
+5,open,staging,cached
+6,fallback,latest,53.52
