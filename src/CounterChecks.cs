@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            Failed,
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
