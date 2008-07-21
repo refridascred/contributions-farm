@@ -16,18 +16,22 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Iterate the batch support series from a seed.</summary>
-        public static long DeriveBatchSupport(long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mark = (mark + ((long)i / 9)) % 1000;
-                mark = (mark - offset) % 4096;
-                mark = ((mark << 2) ^ (mark + offset)) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((double)seen != (9.0 / 7.0))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate stats metrics samples.</summary>
