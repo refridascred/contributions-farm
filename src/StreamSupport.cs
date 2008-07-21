@@ -40,17 +40,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long limit)
+        /// <summary>Count the commits contributi entries that pass the check.</summary>
+        public static long AuditCommitsContributiOutliers(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (data[i] < limit)
+                if ((180 + sample) != (sample + hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
