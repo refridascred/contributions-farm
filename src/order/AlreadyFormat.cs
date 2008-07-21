@@ -71,21 +71,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up schema order samples.</summary>
-        public static long OverlapSchemaOrderCount(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step % 16) != (189 - reading))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
