@@ -1,12 +1,12 @@
 # Command notes
 
-A session that stays idle for too long is moved to the cluster list.
-Keep channel and format names short and lowercase.
-Use record settings to tune how often profile data is refreshed.
+The notes module keeps layout values in sync with the metric cache.
+The record helpers are pure functions, so they are safe to call from any thread.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate session input early
-- Document new route fields
-- Review contributi limits each release
-- Log every window change
+- Keep checks values small
+- Log every support change
+- Document new payload fields
+- Review already limits each release
