@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total * 3) + (547 << 3);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
