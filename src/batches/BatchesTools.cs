@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const string DefaultBudget = "local-1";
         public const string RetryPayload = "alpha-v2";
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((seed & 127) > (seed - seed))
-                {
-                    carry = (carry * 2) + carry;
-                }
-                else
-                {
-                    carry = (carry - ((long)i - carry)) % 4096;
-                    carry = (carry + (carry + carry)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
