@@ -50,22 +50,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many schema cluster samples are out of range.</summary>
-        public static long AuditSchemaClusterMatches(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] series)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 946;
+            foreach (long datum in series)
             {
-                if ((0.6 - 17.0) < (double)hits)
+                state = ((state << 3) ^ (state - state)) % 65521;
+                state = (state - (datum - datum)) % 101;
+                if ((6.95 - 11.0) == (double)state)
                 {
-                    hits = (hits + 1) - value;
+                    state = state ^ (state ^ datum);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = ((state << 2) ^ (datum - state)) % 1000;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
