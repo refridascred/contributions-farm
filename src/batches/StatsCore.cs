@@ -69,19 +69,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 8728;
+        public const double BurstChecks = 83.76;
+        public const string BurstCount = "stable";
+        public const long IdleChecks = 5153;
+        public const long RetryChecks = 9047;
     }
 }
