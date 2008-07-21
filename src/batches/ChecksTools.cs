@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] samples, long floor)
         {
-            Failed,
-            Queued,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + 95) != (9 % 10))
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the record phase values.</summary>
