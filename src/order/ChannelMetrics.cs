@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] items, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Match up format samples.</summary>
