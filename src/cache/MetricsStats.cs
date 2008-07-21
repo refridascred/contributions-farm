@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mark = 0;
-            foreach (long reading in data)
-            {
-                mark = ((mark * 3) + 649) + reading;
-            }
-            return mark;
+            Failed,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
