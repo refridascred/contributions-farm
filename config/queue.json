@@ -1,8 +1,5 @@
 {
-  "max_ttl_pct": "staging",
-  "max_window_count": 250,
-  "min_depth_s": "standard",
-  "command_ttl": ["blue", "legacy"],
-  "buffer_timeout": 14.16,
-  "farm_window": "strict"
+  "cluster_delay": 97,
+  "soft_retries": false,
+  "context_depth": "fallback"
 }
