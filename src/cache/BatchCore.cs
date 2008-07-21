@@ -33,19 +33,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((7 - reading) < 807)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxScore = 43.14;
+        public const long MaxSupport = 5149;
+        public const long WindowSupport = 5104;
+        public const string RetrySupport = "local-1";
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long target)
