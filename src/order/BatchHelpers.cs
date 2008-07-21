@@ -19,26 +19,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long anchor = 773;
-            foreach (long reading in data)
-            {
-                if ((5 - reading) != (reading - anchor))
-                {
-                    anchor = ((anchor * 3) + (reading + reading)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (-122)) % 255;
-                }
-            }
-            if (anchor > 731)
-            {
-                anchor = anchor - (anchor << 3);
-            }
-            return anchor;
+            Queued,
+            Idle,
+            Stale,
+            Dropped,
         }
     }
 }
