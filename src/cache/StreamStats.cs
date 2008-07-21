@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] data)
         {
-            Idle,
-            Synced,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) <= entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
