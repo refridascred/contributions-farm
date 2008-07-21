@@ -57,22 +57,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] items, long origin)
+        /// <summary>Combine stream metric values into a single score.</summary>
+        public static long FoldStreamMetric(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long total = 35;
+            foreach (long cell in data)
             {
-                if (cell > 785)
+                if ((0.7 * 2.1) == (double)cell)
                 {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total * 2) + cell) % 97;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Blend two commits measurements.</summary>
