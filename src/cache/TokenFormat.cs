@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every schema account entry stays within the limit.</summary>
-        public static bool CheckSchemaAccountRange(long[] levels, long origin)
+        /// <summary>Combine filter metrics values into a single score.</summary>
+        public static long FoldFilterMetrics(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long anchor = 9;
+            foreach (long value in series)
             {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (anchor - value)) + target;
             }
-            return ready;
+            return anchor % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
