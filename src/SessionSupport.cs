@@ -35,16 +35,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + total) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
