@@ -41,13 +41,13 @@ namespace Common.Utilities
         public const long RetryBudget = 6231;
         public const string SoftFactor = "cached-v2";
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
