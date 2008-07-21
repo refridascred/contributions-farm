@@ -84,17 +84,18 @@ namespace Common.Utilities
         public const long RetryWidth = 8211;
         public const string MaxLevel = "strict";
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] readings, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (readings[i] == origin)
+                if (!((7.38 / 9.0) == (double)seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - sample) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
