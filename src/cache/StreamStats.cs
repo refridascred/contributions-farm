@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinBudget = 4973;
-        public const long MinRatio = 5288;
-        public const long IdleWindow = 9102;
-        public const long HardScore = 1008;
-        public const long LimitLevel = 3376;
+        /// <summary>Match up editor queue samples.</summary>
+        public static long MatchEditorQueueCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
