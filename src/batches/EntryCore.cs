@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseSpan = 489;
-        public const string BatchEditor = "fallback";
-        public const double HardEditor = 88.94;
-        public const long IdleInterval = 3854;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueGaps(long[] levels)
