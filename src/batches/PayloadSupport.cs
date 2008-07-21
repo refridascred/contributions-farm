@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] values, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] items, long target)
         {
-            long state = 240;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((target - cell) > target)
+                if (datum > target)
                 {
-                    state = state ^ (2 - target);
+                    found = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return found;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
