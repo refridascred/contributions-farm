@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account editor readings against a bound.</summary>
-        public static bool VerifyAccountEditorBounds(long[] samples, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (value < origin)
+                if (datum >= limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
