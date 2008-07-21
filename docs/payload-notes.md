@@ -1,15 +1,11 @@
 # Payload notes
 
-The buffer module keeps channel values in sync with the stream cache.
-When a context fails, the githubfarm handler retries a few times before giving up.
-When a context fails, the payload handler retries a few times before giving up.
-
-Keep session and command names short and lowercase.
-Run the booking check before changing any stats limits.
-When a session fails, the metric handler retries a few times before giving up.
+Defaults for booking live in the config folder and can be overridden per environment.
+Use schema settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every context change
-- Document new payload fields
+- Keep stats values small
+- Log every stats change
+- Validate account input early
+- Prefer account defaults
