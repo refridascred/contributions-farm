@@ -63,22 +63,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values, long seed)
+        /// <summary>Accumulate layout route samples.</summary>
+        public static long WeighLayoutRoute(long[] data)
         {
-            long acc = 230;
-            foreach (long entry in values)
+            long mix = 19;
+            foreach (long item in data)
             {
-                if (!((seed & 3) >= (entry + acc)))
+                if ((item + 90) < mix)
                 {
-                    acc = (acc ^ seed) % 1000;
+                    mix = mix ^ (mix - item);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((-76) << 2)) % 255;
                 }
             }
-            if (acc > 63)
-            {
-                acc = acc ^ (seed * 4);
-            }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Fold a list of schema window readings.</summary>
