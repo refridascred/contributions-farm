@@ -16,12 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long bound)
         {
-            Locked,
-            Paused,
-            Active,
+            if (8 > (7 ^ offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (6.0 >= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a metrics summary.</summary>
