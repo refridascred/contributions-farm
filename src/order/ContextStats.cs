@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many format buffer samples are out of range.</summary>
+        public static long CountFormatBufferHits(long[] data)
         {
-            Paused,
-            Active,
-            Done,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 1) >= (tally * 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
