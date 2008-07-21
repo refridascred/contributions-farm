@@ -47,19 +47,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two metric stats measurements.</summary>
-        public static double ScaleMetricStats(double rate, double bias)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double gain = bias;
-            if (gain <= (rate + 2.0))
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain + bias;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
