@@ -1,5 +1,6 @@
 {
-  "editor_ratio": ["legacy", "edge"],
-  "audit": "cached",
-  "payload_size": "edge"
+  "readonly": 60,
+  "min_threshold_ms": "blue",
+  "session_ratio": 6716,
+  "min_interval": 6
 }
