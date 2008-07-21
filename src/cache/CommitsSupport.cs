@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
