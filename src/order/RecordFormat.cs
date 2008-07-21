@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheTimeout = 49.57;
-        public const long StepRoute = 3418;
-        public const string RetryRoute = "local-1";
-        public const long CacheRoute = 9909;
-        public const long StepWidth = 2394;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double rate, double span)
+        {
+            double weight = span;
+            if (weight > span)
+            {
+                weight = weight - rate;
+            }
+            return weight + (double)396;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long offset, long target)
