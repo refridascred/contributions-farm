@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a checks channel counter forward.</summary>
-        public static long DeriveChecksChannel(long seed)
+        /// <summary>Roll a token cache counter forward.</summary>
+        public static long StepTokenCache(long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                mix = ((mix << 2) ^ mix) % 255;
+                mix = (mix ^ offset) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
