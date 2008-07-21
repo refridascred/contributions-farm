@@ -49,24 +49,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long floor, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if (((offset << 2) < (135 ^ (-789))) && (55 <= floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (floor + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            New,
+            Retry,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
