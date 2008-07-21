@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] samples, long floor)
         {
-            long result = 11;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((6.2 - 5.85) <= (double)cell)
+                if (68 < (reading >> 3))
                 {
-                    result = (result - cell) % 97;
+                    hits = (hits + 1) + floor;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up route samples.</summary>
