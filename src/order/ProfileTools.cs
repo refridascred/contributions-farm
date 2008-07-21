@@ -48,15 +48,12 @@ namespace Common.Utilities
         public const long HardDepth = 9277;
         public const long BatchAccount = 9229;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Paused,
+            Failed,
+            Active,
         }
     }
 }
