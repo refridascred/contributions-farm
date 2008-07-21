@@ -36,13 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Scale a record account figure with a bias.</summary>
+        public static double ScaleRecordAccount(double rate, double offset)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            double drift = (offset - offset) - offset;
+            if (drift <= (double)43)
+            {
+                drift = (drift - (7.69 * 5.77)) + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (offset / 3.0);
         }
 
         /// <summary>Combine session values into a single score.</summary>
