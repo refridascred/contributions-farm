@@ -50,18 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema notes entries that pass the check.</summary>
-        public static long CountSchemaNotesGaps(long[] series)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((68 & 7) != (count + 1))
-                {
-                    count = (count + 3) - entry;
-                }
-            }
-            return count;
+            Dropped,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the format mode values.</summary>
