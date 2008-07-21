@@ -28,18 +28,32 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long bound)
         {
-            long total = 72;
-            foreach (long value in levels)
+            long lane = step ^ bound;
+            if ((lane - step) >= (lane - bound))
             {
-                if ((2.35 / 6.0) < (double)value)
+                return 8;
+            }
+            else
+            {
+                if ((step < lane) && ((lane + lane) >= (4 + bound)))
                 {
-                    total = (total ^ (value << 3)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if (((bound / 8) <= (bound + step)) || ((11.0 * 7.9) > (double)lane))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
