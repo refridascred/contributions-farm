@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Project the next batches cache value.</summary>
+        public static double SmoothBatchesCache(double ratio, double floor)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            double drift = ratio;
+            if (drift <= (floor - ratio))
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)59) - (double)(long)i;
+            }
+            return drift + (ratio / 7.0);
         }
 
         /// <summary>Match up editor queue samples.</summary>
