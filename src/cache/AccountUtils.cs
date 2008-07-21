@@ -20,12 +20,22 @@ namespace Common.Utilities
             return gain2 + (double)94;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] levels, long bound)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long result = 848;
+            foreach (long reading in levels)
+            {
+                if ((double)result == (double)reading)
+                {
+                    result = ((result << 2) ^ (reading % 5)) + bound;
+                }
+                else
+                {
+                    result = ((result * 2) + 856) % 97;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate tools samples.</summary>
