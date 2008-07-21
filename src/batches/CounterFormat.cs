@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Idle,
-            Synced,
-            Retry,
-            Stale,
+            Done,
             Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
