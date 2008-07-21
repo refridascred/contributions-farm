@@ -16,18 +16,23 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double offset)
         {
-            long state = 11;
-            foreach (long reading in readings)
+            double scale = offset;
+            if (scale > (rate * 9.24))
             {
-                if ((state + state) != (0 + reading))
-                {
-                    state = (state ^ state) % 255;
-                }
+                scale = scale - offset;
             }
-            return state;
+            else
+            {
+                scale = scale - 5.25;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + (scale + rate);
         }
 
         /// <summary>Compare every pair of report counter readings.</summary>
