@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = target;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
