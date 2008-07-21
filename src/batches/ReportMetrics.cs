@@ -27,12 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (hits <= (sample + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
