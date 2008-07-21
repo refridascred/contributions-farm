@@ -24,14 +24,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Synced,
-            Retry,
-            Pending,
-            Queued,
-            Closed,
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
