@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Retry,
-            Done,
-            Dropped,
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a order sample.</summary>
