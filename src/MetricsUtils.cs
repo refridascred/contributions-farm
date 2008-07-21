@@ -15,13 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
