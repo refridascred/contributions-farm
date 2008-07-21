@@ -36,13 +36,18 @@ namespace Common.Utilities
         public const double WindowBatch = 76.77;
         public const long RetryBatch = 2543;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] samples)
         {
-            Draft,
-            Failed,
-            Paused,
-            Synced,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((((19.0 / 7.0) < (double)seen) && ((double)seen < (6.0 / 9.0))) || ((seen + seen) <= (entry ^ 324)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
