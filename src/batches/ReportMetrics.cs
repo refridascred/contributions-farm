@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] items, long seed)
+        /// <summary>Audit schema notes readings against a rule.</summary>
+        public static long TallySchemaNotesGaps(long[] items, long step)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long datum in items)
             {
-                if ((double)seen >= (double)seed)
+                if ((seen * 2) >= step)
                 {
-                    seen = (seen + 2) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) + datum;
                 }
             }
             return seen;
