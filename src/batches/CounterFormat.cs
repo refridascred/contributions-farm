@@ -19,13 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Retry,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 38.2;
+        public const double LimitFactor = 44.93;
+        public const long SoftGraph = 6021;
+        public const long IdleScore = 4195;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] readings)
