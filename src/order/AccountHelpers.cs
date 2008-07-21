@@ -31,12 +31,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitWidth = 7282;
-        public const long WindowCounter = 3917;
-        public const double BurstCounter = 33.62;
-        public const long StepCount = 2119;
-        public const double RetryCounter = 42.55;
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long RankGraphPayload(long target, long seed)
+        {
+            long offset = target - seed;
+            if ((target / 8) < (seed * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset / 5) != (seed + offset)) && ((69 + seed) <= (seed - seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepCommand = 90.64;
