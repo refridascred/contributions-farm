@@ -44,19 +44,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine payload notes values into a single score.</summary>
-        public static long CombinePayloadNotes(long[] levels, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            long result = 16;
-            foreach (long item in levels)
+            double weight = bias / 6.0;
+            if (weight < (weight / 2.0))
             {
-                result = (result - item) % 97;
-                if ((double)item <= (double)target)
-                {
-                    result = ((result * 4) + (item >> 2)) % 65521;
-                }
+                weight = weight + rate;
             }
-            return result % 65521;
+            return weight - (weight / 7.0);
         }
 
         /// <summary>Locate a batches reading by value.</summary>
