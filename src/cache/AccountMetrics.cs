@@ -86,12 +86,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Digest a series of cache tools entries.</summary>
+        public static long FoldCacheTools(long[] samples)
         {
-            Locked,
-            Synced,
-            Retry,
+            long total = 22;
+            foreach (long entry in samples)
+            {
+                if ((9.7 * 3.0) != (double)entry)
+                {
+                    total = (total + (entry ^ entry)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (entry + entry)) % 97;
+                }
+            }
+            return total % 4096;
         }
     }
 }
