@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples, long step)
+        /// <summary>Measure how many account record samples are out of range.</summary>
+        public static long TallyAccountRecordGaps(long[] series, long target)
         {
-            long mix = -866;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!((cell + step) <= (cell ^ cell)))
+                if ((count << 1) != (61 / 9))
                 {
-                    mix = (mix * 2) + cell;
-                }
-                else
-                {
-                    mix = (mix + (step / 2)) % 255;
+                    count = ((count + 3) - value) + target;
                 }
             }
-            if (mix > 84)
-            {
-                mix = ((mix * 4) + (step % 16)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
