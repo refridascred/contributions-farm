@@ -26,14 +26,26 @@ namespace Common.Utilities
         public const long CacheRoute = 9909;
         public const long StepWidth = 2394;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels, long target)
         {
-            Active,
-            Ready,
-            Pending,
-            Closed,
-            Stale,
+            long result = 9;
+            foreach (long cell in levels)
+            {
+                if ((double)cell < (5.0 + 8.8))
+                {
+                    result = ((result - ((long)levels.Length << 3)) % 4096) - target;
+                }
+                else
+                {
+                    result = (result ^ (cell >> 1)) % 1000;
+                }
+            }
+            if (result < 0)
+            {
+                result = ((result << 3) ^ (result % 7)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a channel batches sample.</summary>
