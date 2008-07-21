@@ -38,19 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long floor)
         {
-            long sum = 3;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                sum = ((sum + value) % 255) + target;
-                if ((double)value > (20.0 / 8.0))
+                if (datum != floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return ok;
         }
     }
 }
