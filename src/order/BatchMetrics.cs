@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Draft,
-            Queued,
-            Done,
-            New,
-            Ready,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
