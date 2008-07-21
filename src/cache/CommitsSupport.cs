@@ -53,12 +53,10 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Pending,
-            Locked,
-            Active,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftRatio = 2530;
+        public const string SoftPayload = "alpha";
+        public const long RetryPayload = 322;
+        public const string MaxBudget = "staging-1";
     }
 }
