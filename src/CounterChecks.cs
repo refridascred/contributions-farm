@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
