@@ -20,38 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long seed, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            if ((floor + seed) > (30 & 127))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ seed) != (seed >> 4))
+                if ((double)(-417) >= (double)seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(((-4) & 63) > (floor - seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed - floor) > floor) && ((floor ^ floor) > seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 2) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a context metrics counter forward.</summary>
