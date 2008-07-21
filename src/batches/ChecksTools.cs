@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultInterval = 44.28;
+        public const long DefaultRatio = 9331;
+        public const long WindowDepth = 1728;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] values)
