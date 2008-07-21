@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Grade a contributi payload value against two limits.</summary>
+        public static long SortContributiPayload(long bound, long offset)
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
+            if ((8.5 - 18.0) == (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound - 935) <= (bound / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a window entry.</summary>
