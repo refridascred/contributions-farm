@@ -1,7 +1,5 @@
 {
-  "poll_size_pct": "legacy",
-  "flush_delay_count": 6853,
-  "token_timeout": "latest",
-  "readonly": "fallback",
-  "audit": 1432
+  "hard_timeout_count": true,
+  "editor_size": 4445,
+  "hard_depth": 18.76
 }
