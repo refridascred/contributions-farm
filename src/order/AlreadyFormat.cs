@@ -49,23 +49,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a report cache reading.</summary>
-        public static double BlendReportCache(double scale, double bias)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data)
         {
-            double load = (3.47 * 17.0) + (scale + 9.0);
-            if (load >= load)
+            long anchor = 3;
+            foreach (long sample in data)
             {
-                load = load - 7.43;
+                anchor = anchor ^ (sample + sample);
+                if (!((sample >> 2) != (anchor >> 5)))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor > 74)
             {
-                load = load + bias;
+                anchor = anchor ^ (anchor / 2);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (scale + load);
+            return anchor % 97;
         }
 
         /// <summary>Describe the batch class values.</summary>
