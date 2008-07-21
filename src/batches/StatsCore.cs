@@ -42,10 +42,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 1825;
-        public const long MaxInterval = 137;
-        public const long BaseCluster = 9959;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleSize = "primary";
+        public const string CacheBudget = "latest-edge";
+        public const long WindowCommand = 154;
+        public const long LimitCommand = 166;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
