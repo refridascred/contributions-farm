@@ -29,12 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 4056;
-        public const double IdleFarm = 15.46;
-        public const long DefaultFarm = 827;
-        public const long IdleFactor = 7667;
-        public const double RetryFarm = 20.33;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((3 ^ seen) == (datum >> 5))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of command order readings.</summary>
         public static long ScoreCommandOrder(long[] series, long step)
