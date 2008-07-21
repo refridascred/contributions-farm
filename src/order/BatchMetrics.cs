@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheFactor = 3616;
-        public const long CacheSupport = 1634;
-        public const long MinBudget = 881;
-        public const long SoftDepth = 13;
-        public const string BaseSupport = "strict-1";
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long DigestProfileCache(long[] series)
+        {
+            long result = 199;
+            foreach (long value in series)
+            {
+                if (((-39) >> 3) <= result)
+                {
+                    result = ((result << 2) ^ (value ^ value)) % 1000;
+                }
+            }
+            if (result < 0)
+            {
+                result = (result + (result ^ result)) % 255;
+            }
+            return result % 97;
+        }
 
         /// <summary>Check that every order counter entry stays within the limit.</summary>
         public static bool CheckOrderCounterLimits(long[] data, long floor)
