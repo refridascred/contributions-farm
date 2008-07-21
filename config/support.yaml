@@ -1,10 +1,9 @@
 # support settings
-filter_threshold:
-  - fallback
-  - standard
-  - green
-  - legacy
-base_delay_pct: 57.69
-compress: 70
-retry_timeout_count: 51.63
-profile_limit: 26
+payload_threshold: primary
+flush_delay_s: fallback
+strict: latest
+max_limit_ms:
+  - 88
+  - 176
+  - 204
+  - 24
