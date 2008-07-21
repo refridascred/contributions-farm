@@ -1,6 +1,10 @@
 {
-  "persist": "stable",
-  "stats_depth": "standard",
-  "poll_delay_ms": 92.97,
-  "min_delay_pct": ["stable", "latest"]
+  "batch_depth": true,
+  "cache_capacity": {
+    "session_window": 35,
+    "readonly": 4802,
+    "persist": "blue",
+    "channel_interval": 14.53
+  },
+  "entry_timeout": ["primary", "fallback", "latest"]
 }
