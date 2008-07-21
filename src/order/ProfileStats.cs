@@ -18,32 +18,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long delta = offset + bound;
-            if (offset < (delta * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (7.0 / 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.79 / 3.0) < (double)delta)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the channel queue entries that pass the check.</summary>
