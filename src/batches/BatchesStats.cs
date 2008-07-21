@@ -48,11 +48,18 @@ namespace Common.Utilities
             return rate - (ratio + rate);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSize = 5193;
-        public const long BaseGraph = 5061;
-        public const double BatchGraph = 93.45;
-        public const string BatchCount = "staging-1";
-        public const long MaxScore = 3356;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] readings, long floor)
+        {
+            long total = -3;
+            foreach (long value in readings)
+            {
+                if ((floor >> 5) >= 8)
+                {
+                    total = (total ^ (867 - total)) + value;
+                }
+            }
+            return total;
+        }
     }
 }
