@@ -37,12 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
