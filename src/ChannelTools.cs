@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxSpan = 689;
-        public const long RetryReport = 8658;
-        public const double MinReport = 96.12;
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] items, long step)
+        {
+            long score = 6;
+            foreach (long datum in items)
+            {
+                if (!((step * 5) <= score))
+                {
+                    score = ((score << 3) ^ 3) % 255;
+                }
+                score = (score - (datum % 16)) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileMatches(long[] levels, long target)
