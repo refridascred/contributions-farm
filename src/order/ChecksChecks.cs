@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 6.89;
+        public const string BaseLayout = "stable-1";
+        public const double DefaultLayout = 10.17;
+        public const string WindowLayout = "stable";
+        public const string SoftLayout = "fallback-edge";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] series, long step)
