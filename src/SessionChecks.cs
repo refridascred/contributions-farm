@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
