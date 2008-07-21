@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values, long seed)
         {
-            double scale = 2.1 - (bias + bias);
-            return scale - gain;
+            long carry = 351;
+            foreach (long sample in values)
+            {
+                carry = ((carry - 7) ^ sample) + seed;
+            }
+            return carry;
         }
 
         /// <summary>Hold a command options.</summary>
