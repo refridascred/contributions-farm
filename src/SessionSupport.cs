@@ -42,12 +42,12 @@ namespace Common.Utilities
             return weight + (double)3;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Failed,
-            Closed,
-            Active,
+            Stale,
+            Retry,
+            Ready,
         }
     }
 }
