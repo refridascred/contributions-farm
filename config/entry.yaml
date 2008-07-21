@@ -1,14 +1,9 @@
 # entry settings
-hard_capacity_ms: 97.81
-payload_ttl:
-  - standard
-  - local
-  - cached
-burst_ratio_pct: 60
-enabled: edge
-min_threshold_s: legacy
-cache_limit:
-  - fallback
-  - green
-  - local
-  - standard
+dry_run: 53.68
+buffer_ttl: 30
+cache_ttl_ms: false
+warm_timeout_pct: primary
+max_window_pct:
+  - 387
+  - 443
+  - 182
