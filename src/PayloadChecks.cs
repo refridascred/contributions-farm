@@ -33,39 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session metric pair into a bucket.</summary>
-        public static long RankSessionMetric(long offset, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long limit)
         {
-            long next = offset - floor;
-            if ((double)offset <= (8.0 + 5.08))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor != (4.8 - 8.6))
+                if (sample != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)next < (double)offset) || ((double)8 <= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next & 1) > (offset - next))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a report reading by value.</summary>
