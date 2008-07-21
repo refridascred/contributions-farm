@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long target)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
