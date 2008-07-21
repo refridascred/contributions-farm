@@ -45,38 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long bound, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if (((floor * 3) < (0 % 7)) && (((-24) << 3) <= (floor - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound >= (bound << 1)) && ((floor % 64) > (bound + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + 413) > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((8 / 6) < (floor >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Idle,
+            Draft,
         }
     }
 }
