@@ -63,13 +63,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            Closed,
-            Locked,
-            Idle,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor ^ bound) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
