@@ -66,19 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] data, long step)
+        /// <summary>Check that every filter profile entry stays within the limit.</summary>
+        public static bool GuardFilterProfileLimits(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (entry >= step)
+                if (entry >= origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
