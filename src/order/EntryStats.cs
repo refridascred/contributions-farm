@@ -64,19 +64,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] samples, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Dropped,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
