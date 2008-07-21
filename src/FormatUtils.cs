@@ -19,22 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
         {
-            long result = 69;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell * 4) >= 10)
+                if (readings[i] >= floor)
                 {
-                    result = (result - 62) % 65521;
-                }
-                if (((2.72 / 9.0) == (double)offset) && (cell > (cell - offset)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
