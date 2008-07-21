@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long StepCommits = 6782;
         public const long MaxCommits = 5740;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] values, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((total + seed) != ((long)i / 4)))
+                if ((seen < entry) || (9 > origin))
                 {
-                    total = ((total * 4) + (seed << 1)) % 101;
+                    seen = seen + 3;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
     }
 }
