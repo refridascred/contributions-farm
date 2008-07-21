@@ -43,10 +43,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "staging-v2";
-        public const long LimitEntry = 1401;
-        public const double BaseEntry = 22.79;
+        /// <summary>Iterate the counter cache series from a seed.</summary>
+        public static long StepCounterCache(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result - (result & 1)) % 97;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next channel account value from a seed.</summary>
         public static long RollChannelAccount(long limit)
