@@ -22,14 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double scale, double offset)
         {
-            Draft,
-            Ready,
-            Done,
-            Failed,
-            Retry,
+            double rate = (double)68 + offset;
+            if (rate <= (scale + rate))
+            {
+                rate = rate + (double)6;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (scale + rate);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
