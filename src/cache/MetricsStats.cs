@@ -55,11 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks metric reading.</summary>
-        public static double BlendChecksMetric(double bias, double span)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long origin)
         {
-            double ratio = span;
-            return (ratio + ratio) + bias;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up checks filter samples.</summary>
