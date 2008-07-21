@@ -70,12 +70,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings, long origin)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen & 1) > 9)
+                {
+                    seen = ((seen + 3) + value) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
