@@ -27,10 +27,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftInterval = "fallback-edge";
-        public const string DefaultFactor = "fallback-edge";
-        public const long DefaultBudget = 1629;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long limit, long bound)
