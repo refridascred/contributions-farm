@@ -29,18 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of report counter readings.</summary>
-        public static long PairReportCounterCount(long[] readings)
+        /// <summary>Measure how many metrics record samples are out of range.</summary>
+        public static long CountMetricsRecordGaps(long[] values, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen >> 3) > value)
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) - origin;
                 }
             }
             return seen;
