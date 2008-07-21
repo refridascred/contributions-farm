@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string RetryTimeout = "strict-edge";
         public const double HardPayload = 66.63;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 64;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((long)levels.Length + entry) != (result - entry)) && ((entry & 255) == (entry / 6)))
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (result + entry)) - offset;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Match up route samples.</summary>
