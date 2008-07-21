@@ -57,18 +57,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((limit + bound) > (limit - limit))
             {
-                if ((((item - (long)items.Length) >= item) || ((double)tally >= (0.09 * 16.0))) || ((double)item != (double)tally))
+                return 4;
+            }
+            else
+            {
+                if ((limit + bound) < (7 + limit))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((194 >> 3) > (bound - 382))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit / 3) != (bound ^ limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
