@@ -1,6 +1,10 @@
-id,level,token,state
-1,open,731,edge
-2,74.62,224,strict
-3,753,500,standard
-4,570,strict,71.67
-5,197,open,staging
+id,rank,ratio,weight
+1,local,318,cached
+2,legacy,895,713
+3,22,236,804
+4,66.4,staging,primary
+5,95.42,green,39.16
+6,47.97,cached,583
+7,blue,14.25,local
+8,178,open,264
+9,stable,184,194
