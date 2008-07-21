@@ -1,10 +1,6 @@
 {
-  "strict": {
-    "audit": [138, 83, 229, 291],
-    "max_size": 88.29,
-    "base_ttl_count": 5227
-  },
-  "sync_size": false,
-  "burst_threshold": false,
-  "idle_size": [153, 310, 290, 99]
+  "min_interval_s": "fallback",
+  "farm_timeout": false,
+  "default_limit_pct": "staging",
+  "report_interval": 100
 }
