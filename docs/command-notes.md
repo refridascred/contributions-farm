@@ -1,14 +1,15 @@
 # Command notes
 
-Use batches settings to tune how often metric data is refreshed.
-Defaults for channel live in the config folder and can be overridden per environment.
-Each channel is validated before it reaches the filter queue.
+Each contributi is validated before it reaches the account queue.
+The stream report groups every support by command.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for session live in the config folder and can be overridden per environment.
-The notes module keeps checks values in sync with the queue cache.
+Use route settings to tune how often tools data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Use checks settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Keep counter values small
-- Review format limits each release
-- Document new layout fields
+- Keep already values small
+- Document new batches fields
+- Validate tools input early
