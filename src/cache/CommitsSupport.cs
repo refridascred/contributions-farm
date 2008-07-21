@@ -27,19 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a cache account figure with a bias.</summary>
-        public static double BlendCacheAccount(double scale, double offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double scale2 = offset;
-            if (scale2 > offset)
-            {
-                scale2 = scale2 + (scale + 1.35);
-            }
-            else
-            {
-                scale2 = scale2 - (offset + scale2);
-            }
-            return scale2 + (offset + 3.31);
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
