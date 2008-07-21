@@ -31,21 +31,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a order snapshot.</summary>
