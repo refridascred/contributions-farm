@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] readings, long seed)
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (1.0 < (double)entry)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
