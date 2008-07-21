@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] data)
         {
-            long mark = -8;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mark = ((mark * 5) + (value >> 1)) % 65521;
+                if ((471 + entry) > (matches % 16))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
