@@ -1,9 +1,6 @@
 # githubfarm settings
-flush_threshold: 7549
-sync_interval_ms: false
-batch_threshold: stable
-window_size:
-  - stable
-  - edge
-  - fallback
-graph_threshold: true
+warm_size: 22.77
+warm_delay_count: green
+batch_timeout_pct: strict
+filter_interval: false
+hard_limit: 22.13
