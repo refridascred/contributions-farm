@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (8.0 >= (5.0 * 15.0))
+                if ((2.4 * 17.0) == (double)count)
                 {
-                    tally = (tally + 1) + item;
+                    count = ((count + 3) + item) - step;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
