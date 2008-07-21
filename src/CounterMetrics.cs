@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            double weight2 = (weight / 4.0) * 0.2;
-            if (weight2 >= (double)67)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = weight2 - (double)232;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + bias) + (double)(long)i;
-            }
-            return weight2 + weight;
+            return seen;
         }
 
         /// <summary>Adjust a route support reading.</summary>
