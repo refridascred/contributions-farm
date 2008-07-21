@@ -28,12 +28,11 @@ namespace Common.Utilities
         public const double SoftSpan = 38.2;
         public const double IdleFactor = 80.39;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double span)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public double Ratio { get; set; }
+            double scale = 8.0;
+            return ((scale + 5.98) + bias) + span;
         }
     }
 }
