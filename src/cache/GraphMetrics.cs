@@ -16,24 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values, long step)
         {
-            if (8 > (7 ^ offset))
+            long sum = 457;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (6.0 >= (double)offset)
+                if ((step % 97) == (item + sum))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    sum = ((sum << 3) ^ sum) % 4096;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Project the next profile value.</summary>
