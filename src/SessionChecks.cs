@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate route token samples.</summary>
+        public static long ScoreRouteToken(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public double Count { get; set; }
+            long state = -8;
+            foreach (long cell in items)
+            {
+                state = ((state - (limit + state)) % 4096) - cell;
+            }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
