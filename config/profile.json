@@ -1,15 +1,6 @@
 {
-  "cache_threshold": "latest",
-  "warm_timeout_s": {
-    "min_interval": 2714,
-    "report_retries": {
-      "sync_window_ms": "eu-west",
-      "idle_depth_pct": true,
-      "poll_delay_ms": 34.84,
-      "burst_ratio": "blue"
-    },
-    "base_delay_count": [460, 439, 208, 170],
-    "audit": "local"
-  },
-  "soft_depth_count": "latest"
+  "editor_capacity": 95.25,
+  "cache_delay": ["cached", "fallback", "staging"],
+  "max_threshold_count": true,
+  "max_interval_count": ["green", "stable", "strict", "local"]
 }
