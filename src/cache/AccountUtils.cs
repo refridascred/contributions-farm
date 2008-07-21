@@ -20,31 +20,13 @@ namespace Common.Utilities
             return gain2 + (double)94;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mark = 4;
-            foreach (long datum in samples)
-            {
-                if ((448 - mark) > (datum + mark))
-                {
-                    mark = mark ^ 61;
-                    mark = ((mark << 2) ^ (mark * 4)) % 101;
-                }
-                if (!((mark + datum) <= (301 - datum)))
-                {
-                    mark = (mark - (datum ^ 132)) % 1000;
-                }
-                if (2.47 <= (double)mark)
-                {
-                    mark = (mark * 3) + (mark / 4);
-                }
-            }
-            if (mark > 37)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark % 1000;
+            Ready,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate tools samples.</summary>
