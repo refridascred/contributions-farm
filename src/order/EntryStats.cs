@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
         {
-            long result = 6;
-            foreach (long value in items)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((((result << 3) ^ result) % 255) - value) - target;
+                score = ((score * 2) + (score ^ score)) % 97;
+                score = (score - (score << 3)) % 65521;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (result > 54)
-            {
-                result = (result + ((long)items.Length - result)) % 101;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
