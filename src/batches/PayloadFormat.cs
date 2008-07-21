@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] values, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 3) != (tally & 255))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
