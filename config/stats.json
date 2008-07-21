@@ -1,7 +1,5 @@
 {
-  "persist": false,
-  "hard_threshold_s": 52,
-  "contributi_ttl": [205, 227, 71],
-  "command_timeout": true,
-  "min_window": 8827
+  "batch_window_pct": 500,
+  "contributi_depth": "primary",
+  "report_ratio": 1888
 }
