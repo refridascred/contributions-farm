@@ -35,13 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] values, long offset)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((5 & 1) >= (count * 4))
+                {
+                    count = ((count + 3) + sample) + offset;
+                }
+            }
+            return count;
         }
     }
 }
