@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultInterval = 44.28;
-        public const long DefaultRatio = 9331;
-        public const long WindowDepth = 1728;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum ^ (sum - sum)) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] values)
