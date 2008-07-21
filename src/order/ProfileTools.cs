@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-edge";
         public const long RetryBudget = 4592;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double mean = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - scale) + (double)(long)i) + span;
-            }
-            return mean - (double)4;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
