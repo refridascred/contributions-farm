@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] items)
         {
-            Queued,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally < (long)items.Length)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
