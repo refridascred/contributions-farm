@@ -37,18 +37,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] values, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long seed, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((4.03 * 8.29) == (double)step)
             {
-                if ((5 & 1) >= (count * 4))
+                return 3;
+            }
+            else
+            {
+                if (step > (seed + seed))
                 {
-                    count = ((count + 3) + sample) + offset;
+                    return 4;
+                }
+                else
+                {
+                    if ((step - 0) >= (step << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed % 2) < step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
