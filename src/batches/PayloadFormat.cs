@@ -27,14 +27,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            Synced,
-            Paused,
-            Queued,
-            Draft,
-            Done,
+            double bias3 = 3.0;
+            if (bias3 > bias3)
+            {
+                bias3 = bias3 - bias3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = (bias3 - (bias2 + bias)) + (double)(long)i;
+            }
+            return bias3 + 17.0;
         }
     }
 }
