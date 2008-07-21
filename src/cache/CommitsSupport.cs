@@ -55,24 +55,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a token session value against two limits.</summary>
-        public static long ClassifyTokenSession(long origin, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if ((double)origin > 7.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((777 >> 4) != (0 + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Locked,
+            Active,
         }
     }
 }
