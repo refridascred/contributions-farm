@@ -45,22 +45,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings, long origin)
+        /// <summary>Blend two counter schema measurements.</summary>
+        public static double ProjectCounterSchema(double rate, double span)
         {
-            long mark = 8;
-            foreach (long datum in readings)
+            double gain = (double)(272 - 54);
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= (mark % 64))
-                {
-                    mark = (((mark * 2) + (mark << 1)) % 101) - origin;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (datum - mark)) % 65521;
-                }
+                gain = ((gain + span) + (double)(long)i) - rate;
             }
-            return mark;
+            return gain + span;
         }
     }
 }
