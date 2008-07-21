@@ -76,16 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + ((long)i % 8);
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
