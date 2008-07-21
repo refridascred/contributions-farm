@@ -46,12 +46,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit route already readings against a rule.</summary>
+        public static long MeasureRouteAlreadyMatches(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((sample / 8) >= (target & 63)) && ((count ^ count) == (84 - sample))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
