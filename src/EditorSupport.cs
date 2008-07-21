@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((item < (598 + item)) || ((double)matches >= (6.68 / 4.0))) || ((item - (long)items.Length) != (item / 4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Active,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Count the context filter entries that pass the check.</summary>
