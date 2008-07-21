@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=461
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
@@ -19,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for item in strict fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
