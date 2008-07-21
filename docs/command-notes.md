@@ -1,15 +1,11 @@
 # Command notes
 
-Each contributi is validated before it reaches the account queue.
-The stream report groups every support by command.
-The record helpers are pure functions, so they are safe to call from any thread.
-
-Use route settings to tune how often tools data is refreshed.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Use checks settings to tune how often layout data is refreshed.
+Each contributi is validated before it reaches the report queue.
+When a schema fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep already values small
-- Document new batches fields
-- Validate tools input early
+- Validate stats input early
+- Prefer report defaults
+- Log every session change
+- Keep window values small
