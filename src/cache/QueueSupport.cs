@@ -14,13 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
             Pending,
-            Idle,
-            Paused,
-            Synced,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
