@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Adjust a route support reading.</summary>
+        public static double ProjectRouteSupport(double scale, double offset)
         {
-            Active,
-            Queued,
-            Dropped,
+            double ratio = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio + 13.0) - (double)(long)i) - offset;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Measure how many format notes samples are out of range.</summary>
