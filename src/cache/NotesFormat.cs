@@ -42,13 +42,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            Stale,
-            Dropped,
-            Locked,
-            Draft,
+            long anchor = 720;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor * 4) + (anchor + sample);
+                if ((double)anchor != (2.13 + 4.06))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
