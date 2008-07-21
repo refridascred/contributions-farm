@@ -1,21 +1,24 @@
 # entry settings
-batch_delay: 37
-burst_depth:
-  support_retries:
-    burst_capacity_pct:
-      - 419
-      - 39
-    dry_run:
-      - strict
-      - strict
-    min_size: 18.91
-    soft_threshold_s: 8.89
-  idle_timeout_ms: edge
-  audit: stable
-  checks_threshold: 4.91
-  enabled: blue
-batch_timeout: 1.61
-queue_window:
-  retry_limit_pct: 250
-  persist: 7412
-  commits_delay: 500
+dry_run:
+  batch_limit: latest
+  poll_retries: true
+  strict:
+    - 409
+    - 455
+  sync_threshold: true
+  default_timeout_count: 66.94
+token_window: latest
+batches_depth:
+  burst_size_ms:
+    - fallback
+    - cached
+  poll_depth_count:
+    - blue
+    - fallback
+  idle_size_count:
+    - primary
+    - stable
+    - latest
+    - legacy
+  retry_limit_count: true
+  min_timeout: 82
