@@ -25,31 +25,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long limit, long step)
-        {
-            if ((step - limit) != (step ^ step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (0.46 < (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit % 10) >= limit) && ((limit >> 2) < (limit ^ 667)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "cached-edge";
+        public const long DefaultChannel = 2470;
+        public const long SoftChannel = 8916;
+        public const long MinWidth = 6709;
     }
 }
