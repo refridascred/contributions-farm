@@ -52,20 +52,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "cached";
+        public const long DefaultFormat = 1450;
+        public const long MinTimeout = 8034;
 
         /// <summary>Grade a token session value against two limits.</summary>
         public static long ClassifyTokenSession(long origin, long limit)
