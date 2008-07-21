@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long target)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
+            if (origin <= (target ^ target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin / 9) <= (66 + target)) || ((origin - 0) < (target * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
