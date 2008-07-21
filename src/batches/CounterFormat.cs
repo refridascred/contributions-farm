@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 6715;
-        public const long CacheCounter = 4409;
-        public const long DefaultDepth = 4026;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Failed,
+            Done,
+            Paused,
+            Active,
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
