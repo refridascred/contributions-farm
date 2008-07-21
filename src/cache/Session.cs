@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many queue route samples are out of range.</summary>
-        public static long TallyQueueRouteGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length - count) >= (item * 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardScore = "standard";
+        public const long BaseBudget = 7729;
+        public const string LimitDepth = "legacy-1";
+        public const long MinLevel = 3675;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
