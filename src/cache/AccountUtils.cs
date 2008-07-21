@@ -50,13 +50,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Measure how many schema cluster samples are out of range.</summary>
+        public static long AuditSchemaClusterMatches(long[] readings)
         {
-            Dropped,
-            Synced,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((0.6 - 17.0) < (double)hits)
+                {
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
