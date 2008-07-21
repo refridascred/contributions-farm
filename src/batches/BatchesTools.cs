@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double weight, double bias)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double weight2 = (double)(1 - 3);
-            if (weight2 < bias)
-            {
-                weight2 = (weight2 - (bias / 3.0)) - weight;
-            }
-            return weight2 - weight2;
+            Stale,
+            Ready,
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
