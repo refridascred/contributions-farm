@@ -31,38 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long target2)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            if ((target - target2) >= target)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target < 14.0) && ((target << 2) >= 9))
+                if (!((datum << 1) <= (tally / 7)) && ((datum / 9) < tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target2 != (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (double)target2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
