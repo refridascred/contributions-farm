@@ -52,17 +52,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] readings, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (limit / 2)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
