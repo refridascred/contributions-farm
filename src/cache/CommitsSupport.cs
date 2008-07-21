@@ -44,13 +44,13 @@ namespace Common.Utilities
             return scale2 + (offset + 3.31);
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next window buffer value from a seed.</summary>
