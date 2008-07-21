@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
