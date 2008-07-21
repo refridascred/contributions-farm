@@ -54,23 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double ratio, double offset)
+        /// <summary>Blend two buffer checks measurements.</summary>
+        public static double ScaleBufferChecks(double weight, double floor)
         {
-            double ratio2 = 9.9;
-            if (ratio2 < offset)
+            double load = weight - (double)9;
+            if (load >= floor)
             {
-                ratio2 = ratio2 - (ratio - ratio);
+                load = load - floor;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                ratio2 = ratio2 + (double)125;
+                load = (load + (load * 20.0)) - (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (ratio + ratio2)) + (double)(long)i;
-            }
-            return ratio2 + (double)50;
+            return load - (floor / 4.0);
         }
 
         /// <summary>Compare every pair of token readings.</summary>
