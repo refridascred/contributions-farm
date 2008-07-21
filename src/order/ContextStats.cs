@@ -14,18 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] readings)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((sample & 1) <= seen) || ((seen << 3) != (seen / 4))) && ((sample * 5) > (seen * 3)))
+                if (levels[i] <= target)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
