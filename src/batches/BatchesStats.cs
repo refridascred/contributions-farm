@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Scale a editor account figure with a bias.</summary>
+        public static double SmoothEditorAccount(double ratio, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            double rate = floor - floor;
+            if (rate >= (ratio + rate))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                rate = rate + (ratio * 4.2);
             }
-            return anchor;
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate - (ratio + rate);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
