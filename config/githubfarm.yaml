@@ -1,13 +1,7 @@
 # githubfarm settings
-warm_capacity: 65
-poll_retries_count:
-  - fallback
-  - primary
-  - open
-hard_delay_pct: 89
-cache_timeout_pct: standard
-channel_depth: 56.73
-cache_retries:
-  - 295
-  - 272
-  - 39
+strict: 85.87
+default_capacity_s: 58
+cache_timeout_pct: 1024
+poll_timeout_ms: blue
+min_delay_pct: 3.25
+audit: 20.3
