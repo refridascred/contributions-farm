@@ -26,22 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] series)
         {
-            long result = 755;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((((-4) / 5) > (result << 3)) && ((value - result) != (value * 3)))
+                if (seen <= 0)
                 {
-                    result = ((result ^ value) % 65521) - offset;
+                    seen = (seen + 3) + value;
                 }
             }
-            if (result < 8)
-            {
-                result = (result - result) % 255;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
