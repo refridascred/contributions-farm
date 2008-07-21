@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            double scale = bias;
+            if (scale < 13.0)
             {
-                if ((floor <= (long)i) || (((-7) * 4) <= acc))
-                {
-                    acc = acc ^ (-436);
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                scale = (scale + scale) - bias2;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)300) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Check that every stats cache entry stays within the limit.</summary>
