@@ -24,18 +24,21 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] samples, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (68 < (reading >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + floor;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
