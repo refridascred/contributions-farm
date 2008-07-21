@@ -44,39 +44,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long next = target ^ seed;
-            if (7.4 > (double)next)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed != (14.0 + 0.7)) && ((seed + next) > next))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((949 % 60) != (next * 5))
+                    if ((items[i] ^ items[j]) == 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next > (next + next)) || ((1.37 + 0.01) != (double)next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
