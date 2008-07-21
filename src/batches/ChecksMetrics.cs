@@ -56,18 +56,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seen + seen) >= (entry & 255))
+                if (acc < (offset - 65))
                 {
-                    seen = seen + 3;
+                    acc = acc ^ (acc & 63);
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
