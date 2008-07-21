@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] readings, long step)
+        /// <summary>Roll a checks channel counter forward.</summary>
+        public static long DeriveChecksChannel(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
