@@ -55,18 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] series, long step)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double scale = bias2;
+            if (scale < scale)
             {
-                if (((double)step > (0.4 / 9.0)) && ((225 - step) < datum))
-                {
-                    seen = seen + 1;
-                }
+                scale = scale - bias2;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (bias / 3.0)) + (double)(long)i;
+            }
+            return scale + (scale * 6.1);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
