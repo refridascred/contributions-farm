@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long bound)
         {
-            long sum = 4;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sum < (value % 10))
+                if (readings[i] == bound)
                 {
-                    sum = (sum - (sum + sum)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
