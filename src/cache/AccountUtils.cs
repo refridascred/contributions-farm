@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (reading != limit)
+                if (entry >= limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
