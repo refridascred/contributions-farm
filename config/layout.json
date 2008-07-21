@@ -1,11 +1,16 @@
 {
-  "warm_size": "fallback",
-  "already_depth": 77,
-  "schema_size": {
-    "warm_retries": [158, 172, 279],
-    "readonly": "staging",
-    "dry_run": "cached",
-    "poll_ratio": "edge"
-  },
-  "hard_capacity_pct": 30
+  "hard_depth_pct": 81,
+  "burst_depth_pct": 687,
+  "verbose": 500,
+  "graph_size": {
+    "compress": 7564,
+    "dry_run": 31,
+    "warm_delay_s": true,
+    "hard_interval_count": {
+      "min_ttl": "eu-west",
+      "hard_ttl": "primary",
+      "idle_retries": true,
+      "notes_delay": 500
+    }
+  }
 }
