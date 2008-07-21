@@ -33,19 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings)
-        {
-            long score = 6;
-            foreach (long value in readings)
-            {
-                if ((44 + score) < (score + value))
-                {
-                    score = ((score << 3) ^ (8 & 255)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryRatio = 49.86;
+        public const string LimitCluster = "stable-v2";
+        public const string StepTimeout = "legacy-edge";
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] levels, long target)
