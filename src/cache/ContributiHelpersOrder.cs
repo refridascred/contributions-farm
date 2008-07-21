@@ -25,19 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate notes buffer readings against a bound.</summary>
-        public static bool VerifyNotesBufferBounds(long[] items, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            New,
+            Locked,
         }
     }
 }
