@@ -30,23 +30,12 @@ namespace Common.Utilities
         public const string SoftWidth = "strict-v2";
         public const double RetryEditor = 54.74;
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double weight2 = weight;
-            if (weight2 > weight2)
-            {
-                weight2 = weight2 + (double)300;
-            }
-            else
-            {
-                weight2 = weight2 + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - (weight2 / 4.0)) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up batch report samples.</summary>
