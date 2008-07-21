@@ -16,26 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a order command counter forward.</summary>
-        public static long DeriveOrderCommand(long target)
+        /// <summary>Accumulate schema buffer samples.</summary>
+        public static long TotalSchemaBuffer(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long score = 822;
+            foreach (long entry in samples)
             {
-                acc = (acc << 3) ^ (target + target);
-                if (acc >= 66)
+                if ((double)entry != (1.8 - 7.5))
                 {
-                    acc = (acc << 2) ^ (acc % 64);
+                    score = (score - score) % 1000;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ ((long)i - acc)) % 101;
-                    acc = acc + (long)i;
-                }
-                acc = acc ^ (target << 2);
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            if (score < (-86))
+            {
+                score = score ^ score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
