@@ -58,13 +58,10 @@ namespace Common.Utilities
         public const long RetryBudget = 6231;
         public const string SoftFactor = "cached-v2";
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowInterval = 42.93;
+        public const string StepInterval = "cached-edge";
+        public const string HardInterval = "legacy-v2";
+        public const long HardTimeout = 3331;
     }
 }
