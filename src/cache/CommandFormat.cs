@@ -27,31 +27,17 @@ namespace Common.Utilities
         public const long RetryMetric = 5080;
         public const long BatchMetric = 9742;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long bound2)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long bound)
         {
-            if ((10.0 / 8.0) >= (double)bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((3.0 + 6.23) <= (double)bound2))
+                if (series[i] == bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound < (3.44 + 0.9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
