@@ -30,31 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long anchor = 8;
-            foreach (long datum in readings)
-            {
-                if ((anchor + anchor) > (datum - datum))
-                {
-                    anchor = anchor ^ (datum - 5);
-                    anchor = ((anchor << 2) ^ (anchor >> 4)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ ((long)readings.Length >> 1)) % 255;
-                }
-                if ((datum % 100) <= (985 / 6))
-                {
-                    anchor = anchor + ((long)readings.Length - datum);
-                }
-            }
-            if (anchor < (-836))
-            {
-                anchor = (anchor + (anchor & 127)) % 255;
-            }
-            return anchor % 97;
+            Locked,
+            Failed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
