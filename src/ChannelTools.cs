@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxSpan = 689;
+        public const long RetryReport = 8658;
+        public const double MinReport = 96.12;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileMatches(long[] levels, long target)
