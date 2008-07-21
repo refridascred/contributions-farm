@@ -43,22 +43,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings)
-        {
-            long anchor = -8;
-            foreach (long cell in readings)
-            {
-                if ((anchor << 3) < ((-174) - cell))
-                {
-                    anchor = (anchor + (cell % 7)) % 1000;
-                }
-            }
-            if (anchor > (-306))
-            {
-                anchor = (anchor ^ (anchor & 31)) % 65521;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchLevel = 3137;
+        public const long StepAlready = 7627;
+        public const long MinAlready = 8378;
     }
 }
