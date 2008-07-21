@@ -59,10 +59,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "cached";
-        public const long DefaultFormat = 1450;
-        public const long MinTimeout = 8034;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Grade a token session value against two limits.</summary>
         public static long ClassifyTokenSession(long origin, long limit)
