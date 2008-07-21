@@ -37,20 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context metrics counter forward.</summary>
-        public static long IterateContextMetrics(long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long acc = 9;
+            foreach (long reading in items)
             {
-                if (!((sum + (long)i) <= (95 / 8)))
+                acc = ((acc * 3) + (acc % 60)) % 4096;
+                if ((574 * 5) < (acc + acc))
                 {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                    continue;
+                    acc = ((acc << 3) ^ (reading / 5)) % 65521;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (((3.3 - 5.0) >= (double)reading) && ((-4) < (acc - acc)))
+                {
+                    acc = ((acc << 2) ^ (77 & 63)) % 4096;
+                }
             }
-            return sum;
+            return acc % 1000;
         }
     }
 }
