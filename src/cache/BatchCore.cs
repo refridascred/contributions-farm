@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels, long seed)
         {
-            long result = -97;
-            foreach (long entry in items)
+            long anchor = 36;
+            foreach (long reading in levels)
             {
-                if ((double)(long)items.Length <= (6.0 + 1.3))
+                if ((seed - reading) >= seed)
                 {
-                    result = ((result + (843 >> 4)) % 1000) ^ entry;
+                    anchor = (anchor << 2) ^ reading;
                 }
             }
-            if (result > 2)
+            if (anchor < 8)
             {
-                result = ((result * 5) + (offset << 1)) % 97;
+                anchor = (anchor ^ (seed + seed)) % 101;
             }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the graph status values.</summary>
