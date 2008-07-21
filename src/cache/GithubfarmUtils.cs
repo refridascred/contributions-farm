@@ -39,14 +39,22 @@ namespace Common.Utilities
         public const long MaxPayload = 801;
         public const long LimitTimeout = 6332;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long CountCommitsFarmGaps(long[] levels)
         {
-            Stale,
-            Pending,
-            Active,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) < tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
