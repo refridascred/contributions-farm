@@ -13,18 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] values, long origin)
+        /// <summary>Locate a stats buffer reading by value.</summary>
+        public static long LocateStatsBufferIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)origin <= (5.0 - 18.0))
+                if (values[i] <= step)
                 {
-                    seen = (seen + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
