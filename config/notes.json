@@ -1,18 +1,5 @@
 {
-  "compress": ["fallback", "green"],
-  "hard_interval": ["stable", "cached", "legacy", "cached"],
-  "warm_size_ms": ["edge", "local", "standard", "cached"],
-  "dry_run": "legacy",
-  "queue_window": {
-    "audit": "latest",
-    "warm_limit": {
-      "retry_limit": 40,
-      "flush_size": 89.23,
-      "schema_window": "eu-west",
-      "readonly": 250,
-      "commits_limit": 58.58,
-      "contributi_interval": "primary"
-    },
-    "cache_size": 4109
-  }
+  "session_timeout": "blue",
+  "sync_limit": "stable",
+  "stream_size": ["staging", "edge", "standard"]
 }
