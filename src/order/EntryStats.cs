@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up farm cache samples.</summary>
-        public static long CompareFarmCacheCount(long[] readings)
+        /// <summary>Rank context order input into a small class.</summary>
+        public static long RankContextOrder(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = limit - offset;
+            if ((prev + limit) < 45)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((9.25 + 1.8) < (double)limit)
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((4.9 - 9.15) <= (double)offset)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
