@@ -29,18 +29,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit support queue readings against a rule.</summary>
-        public static long TallySupportQueueHits(long[] levels)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen ^ seen) > (17 % 7))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
