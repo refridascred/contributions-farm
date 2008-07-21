@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryLevel = "latest-1";
+        public const double RetrySize = 21.55;
+        public const long CacheAlready = 1442;
+        public const double BaseAlready = 90.72;
 
         /// <summary>Roll a commits githubfarm counter forward.</summary>
         public static long StepCommitsGithubfarm(long target)
