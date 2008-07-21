@@ -17,22 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count - datum) != (datum >> 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up counter samples.</summary>
