@@ -1,10 +1,7 @@
-id,owner,score,weight
-1,strict,481,90.85
-2,cached,749,451
-3,75.34,90.12,43.59
-4,574,legacy,153
-5,908,96,601
-6,878,fallback,staging
-7,98,310,962
-8,53.42,78.76,364
-9,783,221,13.79
+id,score,state
+1,24.66,269
+2,eu-west,958
+3,77,99
+4,stable,strict
+5,primary,87.04
+6,green,23.7
