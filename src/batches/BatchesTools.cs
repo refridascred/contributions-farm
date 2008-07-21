@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double weight, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            double weight2 = (double)(1 - 3);
+            if (weight2 < bias)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                weight2 = (weight2 - (bias / 3.0)) - weight;
             }
-            return mark;
+            return weight2 - weight2;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
