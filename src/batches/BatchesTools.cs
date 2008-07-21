@@ -32,17 +32,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long mark = 8;
+            foreach (long datum in readings)
             {
-                total = ((total << 2) ^ (2 + (long)i)) % 4096;
-                total = ((total << 3) ^ ((long)i + total)) % 255;
-                total = ((total * 4) + (long)i) % 4093;
+                if (datum <= (mark % 64))
+                {
+                    mark = (((mark * 2) + (mark << 1)) % 101) - origin;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (datum - mark)) % 65521;
+                }
             }
-            return total;
+            return mark;
         }
     }
 }
