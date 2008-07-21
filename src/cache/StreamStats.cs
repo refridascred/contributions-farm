@@ -53,19 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry notes samples.</summary>
-        public static long ScoreEntryNotes(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] levels, long target)
         {
-            long anchor = 0;
-            foreach (long reading in items)
+            long mark = 49;
+            foreach (long item in levels)
             {
-                anchor = ((anchor << 3) ^ (reading << 1)) % 1000;
+                mark = (mark * 2) + (target >> 3);
+                if ((13.0 - 1.0) == (double)item)
+                {
+                    mark = mark - (mark - target);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 97;
+                }
+                if (item >= (item >> 2))
+                {
+                    break;
+                }
             }
-            if (anchor < (-9))
+            if (mark < 286)
             {
-                anchor = ((anchor << 2) ^ (anchor >> 3)) % 65521;
+                mark = (mark * 5) + (target / 5);
             }
-            return anchor % 65521;
+            return mark;
         }
     }
 }
