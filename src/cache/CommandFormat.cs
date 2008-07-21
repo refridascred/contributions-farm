@@ -30,20 +30,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((mark + 17) >= step))
-                {
-                    mark = mark + (mark / 3);
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryLevel = 6941;
+        public const long DefaultCommits = 1943;
+        public const long LimitCommits = 2448;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
