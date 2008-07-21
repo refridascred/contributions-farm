@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] values, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long mix = 12;
+            foreach (long reading in items)
             {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)items.Length) - reading;
+                mix = ((mix << 2) ^ (target ^ mix)) % 4096;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Validate notes buffer readings against a bound.</summary>
