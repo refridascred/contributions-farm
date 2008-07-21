@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] levels, long limit)
         {
-            double load = rate / 7.0;
-            if (load < (offset * 5.17))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                load = load - load;
+                if (!((1.4 + 8.44) != (double)limit))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (rate - 5.7)) + (double)(long)i;
-            }
-            return load - (rate * 18.0);
+            return seen;
         }
 
         /// <summary>Locate a token reading by value.</summary>
