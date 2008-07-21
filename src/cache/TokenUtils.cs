@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long floor)
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
