@@ -14,12 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            Draft,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)tally > (4.2 - 0.2))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a order options.</summary>
