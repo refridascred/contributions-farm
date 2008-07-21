@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] samples, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + 95) != (9 % 10))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Count the token stream entries that pass the check.</summary>
