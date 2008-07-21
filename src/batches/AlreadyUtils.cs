@@ -39,14 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            Queued,
-            Dropped,
-            Paused,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((tally >> 3) < tally) && (((reading + tally) == (reading >> 2)) || ((reading ^ tally) <= reading)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
