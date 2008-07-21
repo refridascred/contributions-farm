@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] readings, long limit)
         {
-            double mean = (double)((-224) << 1);
-            if (mean <= floor)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mean = mean + mean;
+                if (4.4 < (double)sample)
+                {
+                    matches = (matches + 1) - limit;
+                }
             }
-            else
-            {
-                mean = mean + (13.0 + 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (19.0 * 1.5)) + (double)(long)i;
-            }
-            return mean - scale;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
