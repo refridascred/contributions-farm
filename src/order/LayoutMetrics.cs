@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long bound, long limit)
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long CombineStreamChannel(long[] data)
         {
-            if ((double)limit >= (7.7 + 3.5))
+            long score = 140;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((3 - limit) == (limit & 7)))
+                if ((2.0 - 7.28) > (double)score)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 255) > (limit >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = ((score + (390 - score)) % 1000) + sample;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Blend two channel measurements.</summary>
