@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 7644;
-        public const double RetryGithubfarm = 22.09;
-        public const long BaseLevel = 5485;
-        public const string DefaultCount = "legacy-1";
-        public const long RetryInterval = 5494;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long StepSchema(long floor)
