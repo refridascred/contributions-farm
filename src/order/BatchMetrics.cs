@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((target - 613) <= reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
