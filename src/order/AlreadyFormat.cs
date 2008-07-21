@@ -74,15 +74,15 @@ namespace Common.Utilities
             return load - (scale + load);
         }
 
-        /// <summary>Count token layout pairs that satisfy a relation.</summary>
-        public static long OverlapTokenLayoutCount(long[] levels)
+        /// <summary>Match up account farm samples.</summary>
+        public static long OverlapAccountFarmCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
+                    if ((values[i] - values[j]) < 10)
                     {
                         hits = hits + 1;
                     }
