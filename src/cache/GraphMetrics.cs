@@ -39,18 +39,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((floor & 31) == ((-3) - seen))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                result = (result + (-8)) % 4096;
+                result = ((result * 3) + (result + result)) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
     }
 }
