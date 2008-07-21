@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Draft,
-            Active,
-            Ready,
-            Locked,
-            New,
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
