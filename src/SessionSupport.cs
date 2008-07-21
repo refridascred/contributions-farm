@@ -27,11 +27,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 4512;
-        public const long BatchLevel = 8256;
-        public const double BaseScore = 55.36;
-        public const long BurstTools = 9507;
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double floor)
+        {
+            double weight = scale;
+            if (weight >= scale)
+            {
+                weight = (weight + 4.7) + floor;
+            }
+            else
+            {
+                weight = weight + (2.53 * 8.8);
+            }
+            return weight + (double)3;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
