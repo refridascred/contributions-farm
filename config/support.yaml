@@ -1,15 +1,33 @@
 # support settings
-hard_window_s:
-  - legacy
-  - primary
-retry_size_pct:
-  audit: 8331
-  hard_ttl_pct: stable
-  flush_capacity_pct: true
-  default_delay:
-    - 417
-    - 381
-    - 406
-  poll_ttl: true
-  verbose: 66
-window_ttl: 90
+metrics_timeout: strict
+dry_run: cached
+min_ttl_ms: false
+base_ttl:
+  batch_limit_pct: 4995
+  audit: cached
+  enabled: 7.33
+poll_delay_s:
+  - 242
+  - 222
+  - 436
+  - 268
+sync_threshold_s:
+  audit: stable
+  retry_window:
+    - green
+    - local
+    - legacy
+    - local
+  metric_delay: legacy
+  context_capacity:
+    retry_threshold: 4442
+    entry_delay: 70.12
+    idle_depth_pct: 99
+    persist: 58
+    audit: 5266
+    farm_delay: eu-west
+  stream_limit: 1024
+  sync_window_ms:
+    order_retries: 74.57
+    sync_size_count: 11.08
+    batch_depth_ms: 5495
