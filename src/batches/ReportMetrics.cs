@@ -33,11 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 2741;
+        public const long BaseBudget = 2841;
+        public const string WindowSpan = "fallback-edge";
+        public const string StepLevel = "staging-edge";
     }
 }
