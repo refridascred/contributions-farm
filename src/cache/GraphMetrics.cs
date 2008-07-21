@@ -46,19 +46,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mark = 243;
+            foreach (long cell in data)
             {
-                if (datum >= floor)
+                for (int i = 0; i < 8; i++)
                 {
-                    valid = false;
+                    mark = ((mark * 3) + (cell + mark)) + (long)i;
+                }
+                mark = ((mark * 3) + mark) % 1000;
+                if (!((double)cell >= (3.0 * 2.5)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (mark > 182)
+            {
+                mark = ((mark * 4) + (seed << 3)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Roll a command counter forward.</summary>
