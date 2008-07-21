@@ -48,20 +48,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the session tools series from a seed.</summary>
-        public static long IterateSessionTools(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score ^ (score % 5)) % 65521) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "staging-v2";
+        public const long LimitEntry = 1401;
+        public const double BaseEntry = 22.79;
 
         /// <summary>Derive the next channel account value from a seed.</summary>
         public static long RollChannelAccount(long limit)
