@@ -49,21 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batch batches readings.</summary>
-        public static long MatchBatchBatchesCount(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 877;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc ^ ((-8) - step)) % 101) ^ entry;
             }
-            return hits;
+            return acc;
         }
     }
 }
