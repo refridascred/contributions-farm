@@ -1,6 +1,12 @@
 {
-  "batch_interval_s": 83.21,
-  "burst_timeout_pct": [424, 463, 46, 238],
-  "persist": false,
-  "base_depth_s": 23
+  "editor_limit": ["strict", "stable", "legacy"],
+  "verbose": "fallback",
+  "cache_depth_ms": {
+    "graph_interval": 96.88,
+    "sync_delay_s": "green",
+    "graph_window": "local",
+    "sync_threshold_pct": 54.65,
+    "default_limit_count": "edge"
+  },
+  "idle_retries_ms": ["strict", "open", "stable", "cached"]
 }
