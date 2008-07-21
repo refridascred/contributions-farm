@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] samples)
         {
-            long state = 12;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((cell <= (seed & 3)) || (seed <= (state & 1)))
+                if (reading < tally)
                 {
-                    state = (state << 2) ^ (seed & 127);
+                    tally = tally + 1;
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
