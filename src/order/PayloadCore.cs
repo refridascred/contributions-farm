@@ -26,13 +26,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long origin)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
