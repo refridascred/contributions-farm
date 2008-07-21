@@ -1,6 +1,5 @@
 {
-  "idle_depth_count": 966,
-  "token_ttl": "strict",
-  "sync_limit_s": true,
-  "dry_run": 9577
+  "cache_ttl_pct": 30.44,
+  "flush_delay_pct": false,
+  "min_interval_count": 3509
 }
