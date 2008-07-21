@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ sample) <= (sample & 1))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchWidth = "staging";
+        public const double IdleLevel = 11.12;
+        public const long BatchContext = 6954;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
