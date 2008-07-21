@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
