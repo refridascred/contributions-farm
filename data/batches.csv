@@ -1,8 +1,6 @@
-id,state,rank,level,token
-1,97.21,50.24,staging,56.02
-2,69.65,967,blue,69.93
-3,435,50.53,strict,local
-4,open,11.84,5.9,63.56
-5,434,41.62,91.82,146
-6,44.71,green,local,cached
-7,129,516,476,edge
+id,label,token,score
+1,green,393,97.46
+2,62.19,edge,125
+3,97.97,125,194
+4,465,18.65,753
+5,legacy,16.94,cached
