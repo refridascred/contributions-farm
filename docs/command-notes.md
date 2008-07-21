@@ -1,12 +1,14 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The support module keeps stats values in sync with the entry cache.
-When a report fails, the filter handler retries a few times before giving up.
+Use filter settings to tune how often record data is refreshed.
+The route helpers are pure functions, so they are safe to call from any thread.
+
+The stats module keeps layout values in sync with the notes cache.
+Keep contributi and format names short and lowercase.
+Run the account check before changing any notes limits.
 
 ## Guidelines
 
-- Keep payload values small
-- Document new metrics fields
-- Validate githubfarm input early
-- Prefer support defaults
+- Prefer window defaults
+- Log every notes change
+- Document new report fields
