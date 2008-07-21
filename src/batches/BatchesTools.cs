@@ -28,17 +28,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (items[i] >= seed)
+                if ((431 >> 2) <= (tally - tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
