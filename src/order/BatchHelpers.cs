@@ -33,16 +33,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark + (mark + limit)) % 65521;
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
