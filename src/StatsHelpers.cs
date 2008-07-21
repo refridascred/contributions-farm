@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate format route readings against a bound.</summary>
-        public static bool VerifyFormatRouteLimits(long[] samples, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long result = 5;
+            foreach (long datum in data)
             {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result + (step >> 4)) % 65521) ^ datum;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Count the already layout entries that pass the check.</summary>
