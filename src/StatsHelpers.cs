@@ -16,18 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already layout entries that pass the check.</summary>
-        public static long AuditAlreadyLayoutOutliers(long[] samples)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double rate = (2.53 / 2.0) * 7.5;
+            for (int i = 0; i < 2; i++)
             {
-                if ((seen << 3) >= (seen + 1))
-                {
-                    seen = (seen + 3) - cell;
-                }
+                rate = ((rate + bias) - (double)(long)i) - floor;
             }
-            return seen;
+            return rate + bias;
         }
 
         /// <summary>Digest a series of stats contributi entries.</summary>
