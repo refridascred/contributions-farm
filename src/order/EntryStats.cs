@@ -45,13 +45,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            New,
-            Synced,
-            Retry,
-            Stale,
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
