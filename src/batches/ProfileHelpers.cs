@@ -29,12 +29,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Done,
-            Locked,
-            Idle,
+            Draft,
+            Active,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
