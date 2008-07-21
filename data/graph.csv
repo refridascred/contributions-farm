@@ -1,6 +1,9 @@
-id,weight,state,rank
-1,fallback,latest,10.14
-2,335,716,13.32
-3,standard,589,901
-4,67.84,green,edge
-5,fallback,113,246
+id,rank
+1,2.17
+2,918
+3,45.88
+4,56
+5,62.45
+6,142
+7,fallback
+8,fallback
