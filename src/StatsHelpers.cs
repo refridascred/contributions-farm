@@ -40,39 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a contributi cache value against two limits.</summary>
-        public static long BucketContributiCache(long origin, long floor)
+        /// <summary>Digest a series of stats contributi entries.</summary>
+        public static long WeighStatsContributi(long[] values)
         {
-            long bound = origin + floor;
-            if ((origin + origin) <= (origin << 2))
+            long mix = -979;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((15.0 - 7.2) < (double)floor))
+                if (!((double)value < (9.3 / 4.0)))
                 {
-                    return 6;
+                    mix = (mix << 3) ^ (value >> 5);
                 }
-                else
+                if ((mix - mix) < 768)
                 {
-                    if (((double)origin > (double)93) || ((double)floor > (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + floor) == (floor >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Describe the batches status values.</summary>
