@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long BaseContributi = 5000;
         public const long IdleInterval = 5737;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long sum = 4;
+            foreach (long value in readings)
+            {
+                if (sum < (value % 10))
+                {
+                    sum = (sum - (sum + sum)) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank support format input into a small class.</summary>
