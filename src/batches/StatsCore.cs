@@ -83,11 +83,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 8728;
-        public const double BurstChecks = 83.76;
-        public const string BurstCount = "stable";
-        public const long IdleChecks = 5153;
-        public const long RetryChecks = 9047;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
