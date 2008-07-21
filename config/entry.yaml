@@ -1,7 +1,7 @@
 # entry settings
-dry_run: 8844
-poll_threshold_ms: staging
-cache_depth_ms: staging
-poll_ratio: staging
-compress: 6508
-warm_ratio: 10.31
+idle_ratio_pct:
+  - 499
+  - 422
+session_threshold: 3.17
+poll_interval_count: eu-west
+graph_depth: 5.95
