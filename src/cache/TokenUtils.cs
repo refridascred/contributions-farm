@@ -24,21 +24,21 @@ namespace Common.Utilities
         public const long RetryPayload = 1258;
         public const long RetryScore = 926;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state + (state << 2)) % 255;
+                state = state + (step / 5);
+                if (!((state & 3) <= 22))
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 4) + (step * 5)) % 101;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
