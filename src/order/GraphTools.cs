@@ -22,13 +22,18 @@ namespace Common.Utilities
         public const long WindowFactor = 6014;
         public const long RetryOrder = 2228;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] series)
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long sum = 814;
+            foreach (long item in series)
+            {
+                if ((5.0 - 1.0) == (double)item)
+                {
+                    sum = sum ^ item;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit layout payload readings against a rule.</summary>
