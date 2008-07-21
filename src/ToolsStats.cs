@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleScore = 1882;
-        public const double SoftInterval = 90.64;
-        public const double LimitBudget = 45.3;
-        public const long HardDepth = 5677;
-        public const long WindowBatches = 2537;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long limit)
