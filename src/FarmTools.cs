@@ -27,18 +27,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] items, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((origin * 3) >= (origin + origin)))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            Failed,
+            Draft,
+            Dropped,
+            New,
+            Ready,
         }
     }
 }
