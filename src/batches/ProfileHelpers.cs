@@ -29,14 +29,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Draft,
-            Active,
-            Ready,
-            Closed,
+            New,
             Retry,
+            Dropped,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
