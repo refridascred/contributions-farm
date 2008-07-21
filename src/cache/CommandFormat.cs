@@ -22,11 +22,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 1396;
-        public const double SoftSize = 32.51;
-        public const long WindowContext = 4960;
-        public const long DefaultContext = 3322;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long origin, long step)
+        {
+            long offset = origin - step;
+            if ((double)offset <= 6.3)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin % 2) <= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + 452) > origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long bound)
