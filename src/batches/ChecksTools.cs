@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Dropped,
-            New,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxFactor = 8564;
+        public const long StepDepth = 3508;
+        public const long BatchCommand = 4136;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BaseSpan = "alpha-1";
