@@ -54,11 +54,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitLevel = "stable-v2";
-        public const string CacheFilter = "standard-1";
-        public const long MaxScore = 7870;
-        public const string StepFilter = "stable-1";
-        public const long DefaultFilter = 804;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long target2)
+        {
+            if ((target - target2) >= target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target < 14.0) && ((target << 2) >= 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target2 != (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)target <= (double)target2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
