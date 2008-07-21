@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long RetryEditor = 8192;
         public const long BurstRatio = 9916;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the filter state values.</summary>
