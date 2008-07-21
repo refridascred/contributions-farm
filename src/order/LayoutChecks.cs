@@ -69,11 +69,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetrySize = 67.4;
-        public const long SoftSize = 8852;
-        public const long DefaultTools = 4155;
-        public const string IdleTools = "primary";
-        public const double WindowTools = 76.86;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchSpan = 1945;
+        public const long SoftPayload = 9314;
+        public const long StepPayload = 9019;
+        public const long BasePayload = 6098;
     }
 }
