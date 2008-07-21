@@ -1,14 +1,20 @@
 # support settings
-base_delay_ms: 11.81
-base_retries_count:
-  cache_size: local
-  strict: 250
-  max_depth: staging
-  poll_window_ms: primary
-  payload_interval: 45.94
-  audit:
-    - 200
-    - 81
-    - 78
-    - 203
-cluster_depth: local
+stream_interval: eu-west
+batches_ttl:
+  burst_interval_s: latest
+  poll_size:
+    max_timeout: open
+    cache_timeout: standard
+    metric_ratio: true
+    session_limit:
+      - eu-west
+      - stable
+    compress: 32.18
+  flush_ttl_ms: 60
+  dry_run: 23
+  readonly:
+    - stable
+    - latest
+  batches_delay: 12.66
+audit: true
+hard_retries: 250
