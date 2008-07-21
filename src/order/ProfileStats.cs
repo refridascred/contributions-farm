@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double IdleLevel = 11.12;
         public const long BatchContext = 6954;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long step)
         {
-            Dropped,
-            Idle,
-            Locked,
-            Paused,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
