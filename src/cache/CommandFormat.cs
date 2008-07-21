@@ -22,32 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long offset = origin - step;
-            if ((double)offset <= 6.3)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 2) <= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + 452) > origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
