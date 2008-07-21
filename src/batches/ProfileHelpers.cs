@@ -39,13 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] samples, long bound)
         {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the already kind values.</summary>
