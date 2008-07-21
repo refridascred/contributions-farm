@@ -39,24 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long limit, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values)
         {
-            if ((double)limit != (14.0 * 2.0))
+            long total = 674;
+            foreach (long cell in values)
             {
-                return 1;
+                total = ((total + (total + (-509))) % 4096) ^ cell;
             }
-            else
-            {
-                if ((seed + limit) != (limit - limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
