@@ -34,19 +34,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mark = 7;
-            foreach (long entry in levels)
-            {
-                mark = (mark + (entry + 13)) % 255;
-            }
-            if (mark > (-1))
-            {
-                mark = (mark * 2) + (mark ^ mark);
-            }
-            return mark % 97;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
