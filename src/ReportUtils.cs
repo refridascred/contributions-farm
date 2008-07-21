@@ -37,13 +37,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Validate metrics buffer readings against a bound.</summary>
+        public static bool ValidateMetricsBufferBounds(long[] series, long floor)
         {
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the account state values.</summary>
