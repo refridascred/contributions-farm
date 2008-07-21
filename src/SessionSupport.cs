@@ -27,19 +27,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long bound)
         {
-            double weight = scale;
-            if (weight >= scale)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                weight = (weight + 4.7) + floor;
+                if (!((bound + 33) >= (result ^ (long)i)))
+                {
+                    result = (result + 585) % 255;
+                }
+                long diff = result;
+                if ((diff + bound) <= 9)
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (2.53 * 8.8);
-            }
-            return weight + (double)3;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
