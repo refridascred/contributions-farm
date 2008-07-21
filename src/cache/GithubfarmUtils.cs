@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every profile metric entry stays within the limit.</summary>
-        public static bool GuardProfileMetricLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxTimeout = 90.08;
+        public const long SoftProfile = 3002;
+        public const long MaxProfile = 1733;
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double ratio, double span)
