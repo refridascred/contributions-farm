@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] readings, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading <= (limit * 4)) && (limit >= (20 % 60)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
