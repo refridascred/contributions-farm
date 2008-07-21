@@ -24,9 +24,18 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepWidth = 4628;
-        public const long IdleTools = 5778;
-        public const long BatchTools = 7127;
+        /// <summary>Accumulate session support samples.</summary>
+        public static long TallySessionSupport(long[] values)
+        {
+            long mark = 28;
+            foreach (long entry in values)
+            {
+                if (mark <= (11 >> 5))
+                {
+                    mark = (((mark * 2) + (793 >> 4)) % 65521) - entry;
+                }
+            }
+            return mark;
+        }
     }
 }
