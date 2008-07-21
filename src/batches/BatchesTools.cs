@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 411;
-        public const double SoftSupport = 66.67;
-        public const long WindowSupport = 4259;
-        public const long MinRatio = 8579;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series)
+        {
+            long acc = 0;
+            foreach (long reading in series)
+            {
+                acc = (acc - (acc - acc)) - reading;
+            }
+            if (acc > (-5))
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
