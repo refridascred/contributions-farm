@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 92;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum + result) > (result & 15))
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result << 2) ^ (limit % 16);
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Hold a stats entry.</summary>
