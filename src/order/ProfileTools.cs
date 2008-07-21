@@ -21,21 +21,18 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-edge";
         public const long RetryBudget = 4592;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((matches % 60) == (matches / 3)) || (((long)levels.Length / 4) > 9))
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
