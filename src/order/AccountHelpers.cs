@@ -21,16 +21,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitWidth = 7282;
+        public const long WindowCounter = 3917;
+        public const double BurstCounter = 33.62;
+        public const long StepCount = 2119;
+        public const double RetryCounter = 42.55;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long CompareEditorCount(long[] samples)
