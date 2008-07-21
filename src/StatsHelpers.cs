@@ -33,12 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Synced,
-            Dropped,
-            Locked,
+            Stale,
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a commits entry.</summary>
