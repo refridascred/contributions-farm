@@ -17,17 +17,18 @@ namespace Common.Utilities
         public const string LimitInterval = "strict-v2";
         public const string IdleDepth = "latest-edge";
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                if (4.27 > (double)sample)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
