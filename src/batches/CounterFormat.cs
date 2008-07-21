@@ -19,13 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 3458;
+        public const long BurstRoute = 4424;
+        public const long MaxRatio = 3420;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] readings)
