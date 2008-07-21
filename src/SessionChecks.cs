@@ -41,19 +41,13 @@ namespace Common.Utilities
         public const long RetryBudget = 6231;
         public const string SoftFactor = "cached-v2";
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long origin)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
