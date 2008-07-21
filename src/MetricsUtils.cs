@@ -44,11 +44,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardFactor = 7047;
-        public const string LimitCommand = "latest";
-        public const long BaseCommand = 3032;
-        public const long StepBudget = 6307;
-        public const string DefaultWidth = "legacy-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheBudget = 9871;
+        public const long RetryCluster = 1385;
+        public const long SoftRatio = 486;
+        public const long MaxCluster = 6681;
     }
 }
