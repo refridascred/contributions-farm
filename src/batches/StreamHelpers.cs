@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] items)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!(((double)cell < (6.54 - 13.0)) || ((double)hits > (9.1 / 6.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double drift = (double)(167 / 3);
+            return (drift - rate) + floor;
         }
 
         /// <summary>Hold a cache record.</summary>
