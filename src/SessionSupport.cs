@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double scale, double bias)
         {
-            long state = -8;
-            foreach (long datum in items)
+            double ratio = bias;
+            if (ratio >= bias)
             {
-                if ((double)7 != (double)datum)
-                {
-                    state = (state * 2) + (state & 63);
-                }
-                else
-                {
-                    state = (state - (state + state)) % 4096;
-                }
+                ratio = ratio - 11.0;
             }
-            if (state < 64)
+            else
             {
-                state = (state - state) % 4096;
+                ratio = ratio + bias;
             }
-            return state % 65521;
+            return ratio - scale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
