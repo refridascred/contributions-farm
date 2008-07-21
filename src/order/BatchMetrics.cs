@@ -25,12 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 88.84;
-        public const double IdleRoute = 3.79;
-        public const long StepFactor = 6720;
-        public const long BurstDepth = 7088;
-        public const double BurstSpan = 44.74;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheFactor = 3616;
+        public const long CacheSupport = 1634;
+        public const long MinBudget = 881;
+        public const long SoftDepth = 13;
+        public const string BaseSupport = "strict-1";
 
         /// <summary>Check that every order counter entry stays within the limit.</summary>
         public static bool CheckOrderCounterLimits(long[] data, long floor)
