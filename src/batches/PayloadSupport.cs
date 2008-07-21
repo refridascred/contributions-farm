@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            if (((double)step <= (18.0 + 4.14)) && (0.92 < (double)step))
             {
-                if (((long)i >> 3) < acc)
+                return 1;
+            }
+            else
+            {
+                if (limit > (step + limit))
                 {
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    acc = acc ^ (long)i;
+                    if ((double)step >= (6.6 + 4.68))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc + (limit + acc)) % 255) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
