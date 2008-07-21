@@ -10,11 +10,33 @@ namespace Common.Utilities
         public const long StepDepth = 3508;
         public const long BatchCommand = 4136;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseSpan = "alpha-1";
-        public const double IdleQueue = 28.06;
-        public const string BurstInterval = "alpha-v2";
-        public const double BurstLevel = 97.82;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long seed)
+        {
+            long slot = target ^ seed;
+            if ((target & 3) != (seed & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target ^ seed) == (seed / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot & 63) != (target * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long IterateFilter(long step)
