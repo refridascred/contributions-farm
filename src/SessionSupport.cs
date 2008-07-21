@@ -27,19 +27,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            foreach (long item in levels)
             {
-                if ((6.0 <= (double)sample) || (((double)hits != (double)sample) && (sample >= (sample << 3))))
+                if (!((double)hits >= (5.51 - 18.0)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) + item;
                 }
             }
             return hits;
