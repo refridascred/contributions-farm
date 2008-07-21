@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Draft,
+            long anchor = -48;
+            foreach (long item in levels)
+            {
+                if (!((item - item) != (856 * 2)))
+                {
+                    anchor = (anchor - (item ^ item)) % 65521;
+                }
+            }
+            if (anchor > 883)
+            {
+                anchor = anchor ^ (anchor * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
