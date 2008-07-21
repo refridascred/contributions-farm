@@ -22,19 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long total = 881;
-            foreach (long value in levels)
+            long sum = -37;
+            foreach (long item in values)
             {
-                total = (total - (75 - total)) % 97;
-                if ((93 ^ value) != (total << 3))
+                if (((sum * 3) >= (item / 5)) && ((double)item > (7.58 + 3.72)))
                 {
-                    break;
+                    sum = (sum - (item ^ (long)values.Length)) % 1000;
+                }
+                sum = (sum - item) % 65521;
+                if (((double)item <= (1.3 + 1.0)) || (sum <= item))
+                {
+                    sum = ((sum * 5) + (sum >> 5)) % 101;
                 }
             }
-            return total % 97;
+            if (sum < 37)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
