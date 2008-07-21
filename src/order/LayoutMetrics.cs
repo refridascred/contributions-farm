@@ -17,23 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples, long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            long total = 967;
-            foreach (long value in samples)
+            double rate = (double)8;
+            if (rate <= rate)
             {
-                total = (total + (value ^ total)) % 4096;
-                if ((offset + total) > offset)
-                {
-                    total = (total ^ (total - value)) % 1000;
-                }
+                rate = (rate - (rate / 3.0)) - ratio;
             }
-            if (total < 4)
+            else
             {
-                total = (total - (offset - 449)) % 65521;
+                rate = rate + (double)(-1);
             }
-            return total;
+            return rate - (bias / 6.0);
         }
 
         /// <summary>Compare every pair of report counter readings.</summary>
