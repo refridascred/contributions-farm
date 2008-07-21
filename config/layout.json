@@ -1,16 +1,5 @@
 {
-  "max_capacity_ms": {
-    "checks_size": 60,
-    "max_ttl_ms": 4574,
-    "checks_ratio": false,
-    "already_limit": 6818,
-    "retry_ttl_pct": "eu-west",
-    "idle_timeout_s": false
-  },
-  "min_ttl_count": {
-    "base_ratio_pct": "open",
-    "entry_threshold": true,
-    "idle_window_pct": "green"
-  },
-  "queue_ttl": true
+  "persist": ["stable", "standard", "fallback", "legacy"],
+  "compress": ["staging", "strict", "blue"],
+  "dry_run": 60
 }
