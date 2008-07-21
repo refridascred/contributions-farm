@@ -16,19 +16,21 @@ namespace Common.Utilities
             return gain - (0.87 / 5.0);
         }
 
-        /// <summary>Validate channel filter readings against a bound.</summary>
-        public static bool VerifyChannelFilterBounds(long[] readings, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
