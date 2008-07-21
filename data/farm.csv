@@ -1,7 +1,10 @@
-id,count,owner,ratio
-1,staging,86.76,staging
-2,297,standard,86.4
-3,49,86.41,44.36
-4,26.02,93.63,440
-5,primary,334,edge
-6,254,91.35,eu-west
+id,active,state
+1,staging,local
+2,51.26,87.51
+3,801,latest
+4,87,42.34
+5,700,57.6
+6,staging,40.77
+7,blue,526
+8,54,staging
+9,783,480
