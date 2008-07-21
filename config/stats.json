@@ -1,15 +1,14 @@
 {
-  "dry_run": "green",
-  "retry_ttl_count": 60,
-  "poll_ratio": "strict",
-  "idle_delay": {
-    "poll_ratio": "local",
-    "counter_interval": 1641,
-    "commits_timeout": {
-      "persist": true,
-      "idle_window_ms": "eu-west",
-      "record_timeout": [289, 441, 225]
-    },
-    "queue_threshold": true
-  }
+  "strict": true,
+  "soft_retries_pct": 5309,
+  "verbose": {
+    "retry_capacity_s": 93,
+    "graph_depth": "edge",
+    "persist": 59.95,
+    "soft_limit_pct": "legacy",
+    "enabled": false,
+    "hard_ratio_ms": 250
+  },
+  "persist": "latest",
+  "enabled": true
 }
