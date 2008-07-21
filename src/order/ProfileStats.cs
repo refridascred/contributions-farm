@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long MaxWidth = 4739;
         public const long WindowEditor = 7184;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
