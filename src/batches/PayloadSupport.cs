@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] values, long target)
         {
-            long state = 87;
-            foreach (long datum in values)
+            long state = 240;
+            foreach (long cell in values)
             {
-                state = (((state << 2) ^ (offset % 100)) % 1000) + datum;
+                if ((target - cell) > target)
+                {
+                    state = state ^ (2 - target);
+                }
             }
-            return state % 97;
+            return state % 65521;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
