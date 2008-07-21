@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)count < (4.15 - 1.91)) || ((sample - sample) > sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit schema notes readings against a rule.</summary>
