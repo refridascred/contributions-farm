@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every stats graph entry stays within the limit.</summary>
-        public static bool GuardStatsGraphRange(long[] items, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mark = -8;
+            foreach (long value in readings)
             {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 5) + (value >> 1)) % 65521;
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of queue route readings.</summary>
