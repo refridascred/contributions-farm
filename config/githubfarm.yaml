@@ -1,26 +1,15 @@
 # githubfarm settings
-readonly:
-  - open
-  - cached
-  - edge
-  - primary
-queue_interval: 40.29
-hard_delay:
-  - 432
-  - 162
-  - 291
-  - 409
-max_window_ms: local
-burst_delay_pct:
-  counter_timeout: open
-  enabled: 90.54
-  persist:
-    idle_limit: 100
-    warm_capacity_s: true
-    soft_threshold_pct: true
-    retry_capacity_ms: green
-    cache_interval:
-      - 13
-      - 383
-  stats_delay: 1241
-farm_depth: 22
+metrics_retries: 8
+burst_size_ms:
+  - stable
+  - local
+  - blue
+commits_limit:
+  - 25
+  - 244
+  - 428
+burst_interval_ms:
+  - strict
+  - green
+  - local
+default_retries: 35
