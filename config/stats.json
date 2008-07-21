@@ -1,7 +1,15 @@
 {
-  "already_capacity": ["standard", "open", "primary", "cached"],
-  "batch_threshold": 60,
-  "persist": "eu-west",
-  "burst_capacity": "primary",
-  "cache_capacity": [279, 226]
+  "context_delay": false,
+  "max_window_count": 1024,
+  "channel_size": {
+    "checks_capacity": ["latest", "primary", "fallback"],
+    "flush_ttl": true,
+    "batches_timeout": {
+      "base_ttl": "stable",
+      "burst_threshold_s": 500,
+      "batch_window_ms": 16,
+      "batch_size": 6864
+    },
+    "enabled": [158, 342, 161]
+  }
 }
