@@ -44,39 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a session farm value against two limits.</summary>
-        public static long SortSessionFarm(long floor, long offset)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long edge = floor + offset;
-            if ((edge / 4) < floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)edge < (8.4 * 0.6)) && (edge > floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((999 - offset) <= (offset - edge))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)edge == (10.0 + 7.8)) && ((floor << 1) <= (55 << 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
