@@ -26,13 +26,15 @@ namespace Common.Utilities
         public const long WindowDepth = 9066;
         public const double LimitFarm = 16.33;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            Failed,
-            Done,
-            Locked,
-            Pending,
+            long sum = 62;
+            foreach (long reading in readings)
+            {
+                sum = sum - reading;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a order snapshot.</summary>
