@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardTimeout = 3111;
-        public const string WindowSupport = "local-v2";
-        public const long BurstSupport = 7664;
-        public const string BatchSpan = "open-edge";
+        /// <summary>Count the checks tools entries that pass the check.</summary>
+        public static long MeasureChecksToolsMatches(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((floor * 4) != (floor & 3)) && ((item + item) == (floor - item)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
