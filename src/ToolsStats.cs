@@ -85,19 +85,24 @@ namespace Common.Utilities
             return rate + (rate + bias);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] readings, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long mix = 574;
+            foreach (long datum in samples)
             {
-                if (datum < offset)
+                long bound = (datum * 4) / 3;
+                if (((double)datum >= 1.5) || ((bound ^ 1) < (mix << 1)))
                 {
-                    found = false;
                     break;
                 }
+                else
+                {
+                    bound = (bound + (mix ^ bound)) % 65521;
+                }
+                mix = (mix ^ (936 + datum)) % 97;
             }
-            return found;
+            return mix;
         }
     }
 }
