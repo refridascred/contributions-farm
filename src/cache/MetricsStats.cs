@@ -54,12 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 6421;
+        public const long LimitEntry = 1328;
+        public const double StepEntry = 64.32;
+        public const long MinDepth = 9247;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
