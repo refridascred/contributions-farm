@@ -33,13 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Check that every editor order entry stays within the limit.</summary>
+        public static bool ValidateEditorOrderBounds(long[] data, long seed)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
