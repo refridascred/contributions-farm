@@ -39,18 +39,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 4) + result) % 4096;
-                result = (result + (result - (long)i)) % 97;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 4056;
+        public const double IdleFarm = 15.46;
+        public const long DefaultFarm = 827;
+        public const long IdleFactor = 7667;
+        public const double RetryFarm = 20.33;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] items, long bound)
