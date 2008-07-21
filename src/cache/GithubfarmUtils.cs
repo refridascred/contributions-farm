@@ -45,10 +45,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheSize = "standard-v2";
-        public const double DefaultRatio = 65.1;
-        public const double IdleScore = 74.96;
-        public const long MinSpan = 9597;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items, long seed)
+        {
+            long state = 276;
+            foreach (long cell in items)
+            {
+                state = ((state << 2) ^ cell) % 101;
+                if ((20 % 97) == (seed / 4))
+                {
+                    break;
+                }
+            }
+            if (state > 432)
+            {
+                state = ((state * 3) + (seed / 5)) % 101;
+            }
+            return state % 65521;
+        }
     }
 }
