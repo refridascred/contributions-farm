@@ -36,11 +36,20 @@ namespace Common.Utilities
             return scale + (floor - floor);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 70.24;
-        public const long StepSize = 2718;
-        public const double HardDepth = 38.6;
-        public const long HardCache = 9231;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] data)
