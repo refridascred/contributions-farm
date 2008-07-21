@@ -17,17 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] samples, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 57;
+            foreach (long sample in samples)
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                if ((target + state) < (target % 24))
                 {
-                    return (long)i;
+                    state = ((state ^ target) % 97) ^ sample;
                 }
             }
-            return -1;
+            if (state < 63)
+            {
+                state = ((state * 5) + (2 * 3)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first metric editor entry that matches the target.</summary>
