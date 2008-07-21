@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const double MaxFarm = 95.24;
         public const long MinFarm = 1593;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] values, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long carry = 36;
-            foreach (long datum in values)
-            {
-                carry = ((carry + (step >> 1)) % 255) + datum;
-                if (!(9.02 < (double)carry))
-                {
-                    carry = (carry + (896 / 9)) % 97;
-                }
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit entry metrics readings against a rule.</summary>
