@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long origin)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long FoldFarmMetrics(long[] series, long floor)
         {
-            if (91 < (origin >> 3))
+            long result = 4;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (8.8 * 16.0))
+                result = (result * 2) + (entry ^ result);
+                if ((entry / 9) != (result & 1))
                 {
-                    return 7;
+                    result = ((result * 3) + floor) % 4096;
                 }
                 else
                 {
-                    if ((limit % 5) < (limit - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + 486) <= (-7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = result ^ entry;
                 }
             }
+            return result;
         }
 
         /// <summary>Fold a list of record readings.</summary>
