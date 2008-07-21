@@ -19,23 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order commits counter forward.</summary>
-        public static long DeriveOrderCommits(long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long anchor = 990;
+            foreach (long entry in values)
             {
-                if ((50 > (845 ^ target)) || ((double)result > 1.2))
+                long step = (anchor / 3) % 24;
+                if (!(((-45) - entry) >= (303 & 1)))
                 {
-                    result = ((result << 2) ^ ((long)i >> 4)) % 97;
+                    anchor = (anchor - (entry + step)) % 1000;
+                    break;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((546 < (entry % 2)) || (entry >= ((long)values.Length + anchor)))
                 {
-                    result = ((result * 2) + result) - (long)i2;
+                    anchor = ((anchor << 3) ^ (entry >> 3)) % 4096;
                 }
-                result = ((result * 3) + (long)i) % 4093;
+                else
+                {
+                    anchor = anchor - (entry & 127);
+                }
             }
-            return result;
+            if (anchor > 388)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a editor info.</summary>
