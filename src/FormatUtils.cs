@@ -50,20 +50,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of context contributi readings.</summary>
-        public static long TallyContextContributi(long[] series)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long seed)
         {
-            long result = -919;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result * 4) + (2 + cell);
-                result = ((result * 2) + result) % 65521;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 82)
-            {
-                result = (result ^ (result + result)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
