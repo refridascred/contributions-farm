@@ -1,7 +1,10 @@
 # support settings
-account_limit: latest
-persist: false
-strict: primary
-sync_retries_pct: 250
-batch_retries: local
-hard_delay: legacy
+idle_limit_s:
+  warm_size: eu-west
+  burst_retries:
+    - 57
+    - 281
+    - 305
+  sync_ratio_ms: true
+sync_size_s: 2895
+persist: true
