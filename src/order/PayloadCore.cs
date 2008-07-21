@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Paused,
-            Idle,
-            Synced,
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
