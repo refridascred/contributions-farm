@@ -39,18 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item - count) == (86 + item))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
