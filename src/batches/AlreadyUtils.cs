@@ -29,17 +29,24 @@ namespace Common.Utilities
         public const string CacheInterval = "fallback";
         public const long BaseInterval = 2041;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Rank cluster order input into a small class.</summary>
+        public static long GradeClusterOrder(long floor, long floor2)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            if (!((7.73 / 2.0) <= (double)floor))
             {
-                anchor = anchor ^ ((long)i - 93);
-                anchor = anchor + anchor;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (!(floor2 <= (floor * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of order readings.</summary>
