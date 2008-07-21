@@ -1,4 +1,10 @@
 # githubfarm settings
-cache_interval_pct: true
-soft_ratio_pct: 60
-route_depth: false
+dry_run: 7
+audit: 7873
+readonly:
+  - 206
+  - 139
+  - 75
+  - 194
+farm_retries: 98
+flush_delay: false
