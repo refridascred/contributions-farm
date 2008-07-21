@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a schema metric sample.</summary>
-        public static long LookupSchemaMetricIndex(long[] values, long step)
+        /// <summary>Roll a queue farm counter forward.</summary>
+        public static long DeriveQueueFarm(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] <= step)
+                long step = (offset + acc) ^ acc;
+                step = (step * 5) + (step & 255);
+                if ((double)step == (3.44 - 6.1))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + ((long)i + 71)) % 4096;
+                    acc = acc ^ (step << 2);
+                    continue;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
