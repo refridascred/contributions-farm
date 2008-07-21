@@ -11,38 +11,17 @@ namespace Common.Utilities
         public const long SoftCluster = 6807;
         public const long LimitCluster = 6049;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long step, long origin)
+        /// <summary>Look up the position of a context session sample.</summary>
+        public static long LookupContextSessionIndex(long[] values, long floor)
         {
-            if (step < (origin / 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 2) >= (step + step))
+                if ((values[i] <= floor) && ((values[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= 9)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin / 7) >= step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
