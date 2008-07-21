@@ -26,11 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long state = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state << 2) ^ (floor / 8)) % 101;
+                if ((double)1 <= (5.1 * 6.5))
+                {
+                    state = ((state << 3) ^ ((long)i - state)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
