@@ -1,7 +1,11 @@
 # support settings
-audit: latest
-queue_size: 3580
-command_capacity: 2.43
-cache_capacity_s: 19
-profile_depth: 500
-token_ratio: false
+payload_timeout: false
+base_ratio_ms: 51.58
+default_retries: edge
+burst_depth_s:
+  - blue
+  - edge
+  - staging
+  - primary
+readonly: false
+retry_capacity: stable
