@@ -1,16 +1,16 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-When a window fails, the channel handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Keep order and command names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
+Each order is validated before it reaches the format queue.
 
-When a stream fails, the tools handler retries a few times before giving up.
-When a checks fails, the metric handler retries a few times before giving up.
-The already module keeps order values in sync with the contributi cache.
+Each window is validated before it reaches the window queue.
+Keep queue and counter names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every notes change
-- Keep layout values small
-- Prefer window defaults
+- Log every support change
+- Validate filter input early
+- Keep cache values small
+- Prefer graph defaults
