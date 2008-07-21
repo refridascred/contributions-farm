@@ -1,7 +1,13 @@
 {
-  "hard_capacity_count": ["stable", "staging"],
-  "default_ratio_ms": false,
-  "flush_limit_ms": 100,
-  "retry_capacity": 1264,
-  "persist": "staging"
+  "poll_capacity": {
+    "default_retries_s": 100,
+    "cache_interval_count": "strict",
+    "poll_threshold_s": "blue",
+    "window_ratio": "latest",
+    "payload_ratio": 3285
+  },
+  "filter_timeout": 23,
+  "order_depth": false,
+  "burst_capacity_s": "latest",
+  "profile_capacity": 16
 }
