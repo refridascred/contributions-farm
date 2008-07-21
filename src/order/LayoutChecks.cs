@@ -64,10 +64,9 @@ namespace Common.Utilities
         public const string DefaultScore = "alpha";
         public const long MaxAlready = 9008;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchSpan = 1945;
-        public const long SoftPayload = 9314;
-        public const long StepPayload = 9019;
-        public const long BasePayload = 6098;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 71.77;
+        public const long SoftDepth = 3387;
+        public const double StepNotes = 23.49;
     }
 }
