@@ -31,19 +31,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] data, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long state = 71;
+            foreach (long reading in readings)
             {
-                if (sample >= limit)
+                if ((621 - reading) <= (reading ^ state))
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ reading) % 4096;
+                }
+                else
+                {
+                    state = (state - reading) % 97;
                 }
             }
-            return flag;
+            if (state > (-9))
+            {
+                state = (state ^ ((long)readings.Length / 9)) % 1000;
+            }
+            return state;
         }
     }
 }
