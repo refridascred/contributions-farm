@@ -52,12 +52,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] values, long step)
         {
-            Paused,
-            Failed,
-            Active,
+            long total = 782;
+            foreach (long entry in values)
+            {
+                if ((step / 8) < (entry + 1))
+                {
+                    total = total ^ (step + entry);
+                }
+                else
+                {
+                    total = total + (total + 61);
+                }
+                if (entry <= (entry & 1))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
