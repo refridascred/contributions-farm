@@ -56,11 +56,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 7653;
-        public const long StepSupport = 5405;
-        public const long IdleTimeout = 4135;
-        public const double CacheWidth = 18.66;
-        public const double LimitRatio = 70.76;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
