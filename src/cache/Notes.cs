@@ -42,13 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit githubfarm channel readings against a rule.</summary>
+        public static long MeasureGithubfarmChannelHits(long[] series)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((value - matches) < (matches - value)) && !(value <= (value / 4)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
