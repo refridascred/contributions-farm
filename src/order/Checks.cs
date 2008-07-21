@@ -26,12 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= step)
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
