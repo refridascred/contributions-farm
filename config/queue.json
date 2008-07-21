@@ -1,6 +1,6 @@
 {
-  "flush_limit_count": true,
-  "sync_delay_ms": "blue",
-  "burst_ttl_pct": "edge",
-  "record_interval": ["staging", "cached", "green"]
+  "tools_capacity": 93.18,
+  "editor_timeout": "edge",
+  "warm_ttl_s": "stable",
+  "schema_retries": 6400
 }
