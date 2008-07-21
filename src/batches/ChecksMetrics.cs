@@ -70,18 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((double)hits >= (3.0 + 6.42))
+                if (datum > step)
                 {
-                    hits = (hits + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
