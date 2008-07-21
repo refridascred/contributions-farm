@@ -1,19 +1,8 @@
 {
-  "hard_window": {
-    "layout_threshold": 100,
-    "enabled": 71.23,
-    "contributi_ttl": false,
-    "soft_depth": 3618,
-    "queue_delay": {
-      "flush_capacity": 9.99,
-      "default_size_s": 72.57,
-      "flush_depth": "open",
-      "batch_ratio_count": 48,
-      "record_timeout": false,
-      "layout_capacity": 37.68
-    }
-  },
-  "batch_ttl_ms": "staging",
-  "default_ttl": "standard",
-  "default_size": 5977
+  "dry_run": "primary",
+  "max_threshold": "staging",
+  "compress": 57,
+  "command_size": "eu-west",
+  "soft_capacity_count": 242,
+  "soft_timeout_count": false
 }
