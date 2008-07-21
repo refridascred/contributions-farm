@@ -1,12 +1,11 @@
 # support settings
-idle_ratio_ms: 60
-verbose:
-  - edge
-  - open
-  - latest
-queue_limit: false
-warm_timeout_ms:
-  - cached
+audit: false
+contributi_depth:
+  - 454
+  - 393
+  - 242
+  - 338
+soft_timeout_pct: 8716
+record_timeout:
+  - legacy
   - eu-west
-max_window: true
-sync_retries_count: 500
