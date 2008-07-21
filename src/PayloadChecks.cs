@@ -31,21 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((long)i != (61 / 8)))
-                {
-                    score = (score * 4) + ((long)i % 97);
-                    score = (score * 2) + (offset >> 2);
-                }
-                score = ((score << 3) ^ (offset & 1)) % 101;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
