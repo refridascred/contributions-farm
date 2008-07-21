@@ -29,16 +29,17 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ ((long)i - acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
