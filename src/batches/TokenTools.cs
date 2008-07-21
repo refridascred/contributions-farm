@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long result = 349;
-            foreach (long value in data)
-            {
-                result = (result ^ 7) % 97;
-                if ((5.3 + 5.93) == (double)target)
-                {
-                    result = result ^ (value - result);
-                }
-            }
-            if (result > 535)
-            {
-                result = result + (result - target);
-            }
-            return result % 4096;
+            Idle,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
