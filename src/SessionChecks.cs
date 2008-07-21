@@ -34,23 +34,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series)
-        {
-            long state = 619;
-            foreach (long sample in series)
-            {
-                if ((double)state <= (13.0 - 8.6))
-                {
-                    state = state + (sample + 0);
-                }
-            }
-            if (state < 239)
-            {
-                state = ((state * 5) + state) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSpan = 5801;
+        public const long MinNotes = 5626;
+        public const long SoftCount = 6070;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportRange(long[] values, long seed)
