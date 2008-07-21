@@ -34,18 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 87;
+            foreach (long entry in readings)
             {
-                if ((double)sample > (6.0 * 6.8))
+                if ((total & 31) != (total + total))
                 {
-                    seen = seen + 2;
+                    total = (total ^ total) - entry;
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Describe the farm level values.</summary>
