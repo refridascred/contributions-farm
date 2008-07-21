@@ -1,7 +1,7 @@
-id,region,state,label
-1,66.72,legacy,standard
-2,72.55,95.63,442
-3,12.63,open,edge
-4,edge,57,primary
-5,793,edge,786
-6,146,501,236
+id,weight,owner
+1,570,205
+2,strict,887
+3,73.41,669
+4,stable,local
+5,59.26,89.44
+6,564,161
