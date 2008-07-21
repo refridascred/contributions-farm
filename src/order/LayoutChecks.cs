@@ -24,12 +24,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Active,
-            Retry,
-            Closed,
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
