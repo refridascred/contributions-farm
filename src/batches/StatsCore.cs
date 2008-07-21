@@ -77,31 +77,16 @@ namespace Common.Utilities
         public const long BaseScore = 2483;
         public const double WindowInterval = 65.59;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long origin)
         {
-            if (bound >= (step / 9))
+            long total = 25;
+            foreach (long entry in items)
             {
-                return 7;
+                total = ((total << 2) ^ (33 + total)) - entry;
+                total = ((total * 5) + origin) % 65521;
             }
-            else
-            {
-                if ((6 - step) == (step - bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8 / 2) == (step - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return total % 1000;
         }
     }
 }
