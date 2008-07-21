@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] series)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (!((seen + seen) <= (seen + (-467))))
+                if (sample != origin)
                 {
-                    seen = (seen + 2) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a queue header.</summary>
