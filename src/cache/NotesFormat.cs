@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)count <= (3.3 / 7.0))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
