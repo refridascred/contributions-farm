@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 7484;
-        public const long BaseEditor = 9864;
-        public const double SoftTimeout = 10.16;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double offset)
+        {
+            double weight = 5.84;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (((weight - (weight / 9.0)) + (double)(long)i) - gain) - offset;
+            }
+            return weight + (double)525;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultProfile = 41.77;
