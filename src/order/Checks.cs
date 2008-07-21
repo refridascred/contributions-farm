@@ -36,15 +36,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items)
         {
-            double weight = bias / 6.0;
-            if (weight < (weight / 2.0))
+            long anchor = 3;
+            foreach (long entry in items)
             {
-                weight = weight + rate;
+                anchor = (((anchor * 3) + (anchor >> 3)) % 1000) + entry;
+                if ((double)anchor >= (17.0 / 7.0))
+                {
+                    break;
+                }
             }
-            return weight - (weight / 7.0);
+            return anchor;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
