@@ -67,13 +67,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] items, long target)
         {
-            Ready,
-            Failed,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((3.3 <= (double)entry) || (entry < (target + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
