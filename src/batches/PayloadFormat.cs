@@ -25,13 +25,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Retry,
-            Active,
-            Closed,
-            Idle,
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank filter input into a small class.</summary>
