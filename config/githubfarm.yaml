@@ -1,9 +1,7 @@
 # githubfarm settings
-readonly: true
-batch_retries_s: 12.6
-stats_size:
-  - 465
-  - 353
-  - 342
-  - 368
-cache_limit: true
+burst_capacity_pct: open
+flush_threshold: 15
+flush_ttl: true
+dry_run: 97.27
+hard_depth_pct: legacy
+githubfarm_limit: 100
