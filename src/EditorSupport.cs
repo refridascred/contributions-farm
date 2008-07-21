@@ -101,15 +101,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values)
-        {
-            long acc = 61;
-            foreach (long entry in values)
-            {
-                acc = ((acc ^ (acc & 63)) % 255) + entry;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7918;
+        public const long MinWidth = 1072;
+        public const string BurstCommits = "open-edge";
     }
 }
