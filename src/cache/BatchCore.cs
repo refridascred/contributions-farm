@@ -23,19 +23,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix ^ (mix ^ mix)) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Retry,
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
