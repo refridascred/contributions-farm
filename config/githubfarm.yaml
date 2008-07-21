@@ -1,7 +1,17 @@
 # githubfarm settings
-strict: 85.87
-default_capacity_s: 58
-cache_timeout_pct: 1024
-poll_timeout_ms: blue
-min_delay_pct: 3.25
-audit: 20.3
+enabled: true
+batch_depth:
+  min_depth:
+    - latest
+    - local
+  flush_retries_pct: local
+  max_interval_ms: cached
+  audit: false
+  burst_window_count:
+    cluster_ratio: 34.43
+    audit: 41.03
+    batch_capacity: 45.52
+    poll_interval: 17.08
+    dry_run: 4717
+    flush_ratio_ms: 4267
+max_depth: 250
