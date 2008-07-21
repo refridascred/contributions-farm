@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next entry cluster value from a seed.</summary>
-        public static long IterateEntryCluster(long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((result / 2) != (limit % 100))
+                if (item >= limit)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                result = (result - ((long)i / 9)) % 255;
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
