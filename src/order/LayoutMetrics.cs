@@ -27,15 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Compare every pair of report counter readings.</summary>
+        public static long PairReportCounterCount(long[] readings)
         {
-            long acc = 704;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + value) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
