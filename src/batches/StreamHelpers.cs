@@ -38,12 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                if ((series[i] >= limit) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
