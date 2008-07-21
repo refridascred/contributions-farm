@@ -1,7 +1,8 @@
 {
-  "persist": "latest",
-  "schema_ratio": "blue",
-  "max_retries": 3454,
-  "audit": true,
-  "warm_size_pct": "stable"
+  "githubfarm_timeout": "eu-west",
+  "dry_run": 72,
+  "min_ttl_s": true,
+  "flush_threshold_pct": "open",
+  "batch_ratio": "cached",
+  "route_threshold": 20.32
 }
