@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] levels, long limit)
+        /// <summary>Locate a cluster batches reading by value.</summary>
+        public static long SeekClusterBatchesIndex(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
