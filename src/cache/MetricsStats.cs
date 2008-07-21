@@ -38,18 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long carry = -51;
+            foreach (long sample in data)
             {
-                if (!((entry - seen) > (seen + 6)))
+                if ((long)data.Length != (27 + sample))
                 {
-                    seen = seen + 1;
+                    carry = (carry + (carry % 7)) % 65521;
+                    carry = (carry << 3) ^ 72;
+                }
+                if ((sample ^ sample) > carry)
+                {
+                    carry = ((carry << 3) ^ (long)data.Length) % 97;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
