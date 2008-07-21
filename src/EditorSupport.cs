@@ -30,11 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] series, long origin)
         {
-            double weight = offset;
-            return (weight + 4.9) + gain;
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine session values into a single score.</summary>
