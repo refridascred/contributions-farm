@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long seed, long step)
         {
-            double scale = (double)(43 ^ 81);
-            if (scale > 12.0)
+            if (!((seed - step) >= 3))
             {
-                scale = ((scale - scale) + bias) + offset;
+                return 7;
             }
-            return scale - (scale * 2.25);
+            else
+            {
+                if ((step * 2) >= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed < (6.0 * 7.43)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command status values.</summary>
