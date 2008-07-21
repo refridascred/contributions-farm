@@ -42,13 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            Failed,
-            Active,
-            Synced,
-            Dropped,
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc - origin) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Project the next batches value.</summary>
