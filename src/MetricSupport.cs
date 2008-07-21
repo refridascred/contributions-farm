@@ -29,12 +29,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Dropped,
-            Queued,
-            Failed,
+            New,
+            Pending,
+            Done,
+            Active,
+            Locked,
         }
     }
 }
