@@ -1,8 +1,20 @@
 {
-  "session_retries": "legacy",
-  "commits_window": "cached",
-  "enabled": [145, 361, 337],
-  "persist": "green",
-  "retry_retries_pct": 41.79,
-  "default_limit_pct": [314, 376, 140, 75]
+  "channel_window": "green",
+  "dry_run": {
+    "account_timeout": 7571,
+    "graph_size": true,
+    "profile_size": 1024,
+    "flush_ttl_pct": "eu-west",
+    "poll_ratio_ms": 83.72,
+    "soft_size_count": {
+      "idle_delay_s": 95.23,
+      "strict": "primary",
+      "verbose": 77.75,
+      "persist": "latest",
+      "min_retries_ms": "cached",
+      "filter_ttl": ["open", "eu-west", "green", "local"]
+    }
+  },
+  "order_retries": true,
+  "enabled": false
 }
