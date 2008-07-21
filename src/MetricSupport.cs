@@ -25,28 +25,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long seed, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            if ((seed * 3) == (target - (-30)))
             {
-                if (limit <= (acc >> 5))
+                return 7;
+            }
+            else
+            {
+                if ((5.0 - 8.78) > (double)target)
                 {
-                    acc = ((acc * 3) + (acc & 7)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    acc = acc + limit;
+                    return 2;
                 }
-                if ((limit & 3) < limit)
-                {
-                    acc = ((acc << 2) ^ (limit % 16)) % 65521;
-                    acc = (acc * 4) + (limit << 2);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
         }
     }
 }
