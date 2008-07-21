@@ -29,22 +29,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftRatio = 7903;
+        public const double IdleDepth = 60.3;
+        public const long LimitCount = 5765;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long step, long floor)
