@@ -1,10 +1,11 @@
 {
-  "batch_depth": true,
-  "cache_capacity": {
-    "session_window": 35,
-    "readonly": 4802,
-    "persist": "blue",
-    "channel_interval": 14.53
-  },
-  "entry_timeout": ["primary", "fallback", "latest"]
+  "audit": 84,
+  "flush_limit_pct": "local",
+  "idle_depth": {
+    "burst_capacity_s": 500,
+    "soft_interval": "strict",
+    "graph_ratio": 1990,
+    "dry_run": "eu-west",
+    "poll_timeout": "eu-west"
+  }
 }
