@@ -38,17 +38,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                state = (state * 3) + 1;
-                state = state - ((long)i & 63);
-                state = ((state * 3) + (long)i) % 101;
+                if (!((15.0 * 5.4) != (double)seen))
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
