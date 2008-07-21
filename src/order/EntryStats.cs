@@ -77,12 +77,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftScore = 6696;
-        public const long RetryBudget = 6733;
-        public const long MinSession = 2111;
-        public const long RetryWidth = 8211;
-        public const string MaxLevel = "strict";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] items, long bound)
