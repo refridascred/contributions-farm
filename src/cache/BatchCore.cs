@@ -24,22 +24,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            long carry = 451;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)sample < (3.0 - 0.7))
+                if ((double)(long)levels.Length < (3.5 / 5.0))
                 {
-                    carry = ((carry << 3) ^ sample) % 1000;
+                    count = (count + 2) + item;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry * 5) + (carry + carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
