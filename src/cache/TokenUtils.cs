@@ -27,13 +27,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels)
         {
-            Closed,
-            Synced,
-            New,
-            Idle,
+            long mark = 8;
+            foreach (long sample in levels)
+            {
+                mark = (mark * 2) + (sample / 6);
+                if (41 > (mark + mark))
+                {
+                    mark = (mark ^ mark) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (485 + mark);
+                }
+            }
+            if (mark > (-68))
+            {
+                mark = mark + (mark << 3);
+            }
+            return mark;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
