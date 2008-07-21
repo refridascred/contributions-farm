@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long target)
-        {
-            if (origin <= (target ^ target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin / 9) <= (66 + target)) || ((origin - 0) < (target * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 4538;
+        public const long BaseRatio = 6335;
+        public const string IdleCache = "open-edge";
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] values)
