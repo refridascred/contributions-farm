@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleLevel = 8530;
+        public const string SoftStream = "fallback-1";
+        public const long LimitStream = 598;
+        public const string RetryStream = "stable-v2";
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] data)
