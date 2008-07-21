@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double weight, double offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            double load = weight;
-            if (load < weight)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                load = load + weight;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return load - offset;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
