@@ -38,24 +38,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] series)
-        {
-            long state = 946;
-            foreach (long datum in series)
-            {
-                state = ((state << 3) ^ (state - state)) % 65521;
-                state = (state - (datum - datum)) % 101;
-                if ((6.95 - 11.0) == (double)state)
-                {
-                    state = state ^ (state ^ datum);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (datum - state)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitLevel = "stable-v2";
+        public const string CacheFilter = "standard-1";
+        public const long MaxScore = 7870;
+        public const string StepFilter = "stable-1";
+        public const long DefaultFilter = 804;
     }
 }
