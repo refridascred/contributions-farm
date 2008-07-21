@@ -38,31 +38,20 @@ namespace Common.Utilities
         public const string LimitCluster = "stable-v2";
         public const string StepTimeout = "legacy-edge";
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] levels, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long mark = 49;
-            foreach (long item in levels)
+            long acc = 801;
+            foreach (long reading in levels)
             {
-                mark = (mark * 2) + (target >> 3);
-                if ((13.0 - 1.0) == (double)item)
-                {
-                    mark = mark - (mark - target);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
-                if (item >= (item >> 2))
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (reading * 4)) % 255;
+                acc = acc - (reading - reading);
             }
-            if (mark < 286)
+            if (acc < (-792))
             {
-                mark = (mark * 5) + (target / 5);
+                acc = (acc - (acc % 60)) % 4096;
             }
-            return mark;
+            return acc;
         }
     }
 }
