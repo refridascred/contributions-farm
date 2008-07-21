@@ -53,13 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Ready,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "open-edge";
+        public const string IdleTimeout = "staging-v2";
+        public const double CacheMetrics = 69.85;
+        public const long DefaultMetrics = 873;
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double weight, double bias)
