@@ -36,17 +36,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a channel batches sample.</summary>
-        public static long SeekChannelBatchesIndex(long[] data, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] < offset)
+                if ((sum << 2) <= sum)
                 {
-                    return (long)i;
+                    sum = sum + ((long)i + (long)i);
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the metrics order entries that pass the check.</summary>
