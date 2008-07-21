@@ -53,20 +53,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] series, long origin)
         {
-            long total = 729;
-            foreach (long sample in items)
+            long total = 4;
+            foreach (long value in series)
             {
-                if (7.46 <= (double)total)
-                {
-                    total = ((total * 3) + (sample >> 1)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (total + total);
-                }
+                total = (((total * 4) + (origin & 63)) % 65521) - value;
+                total = (total - (22 >> 2)) % 255;
             }
             return total;
         }
