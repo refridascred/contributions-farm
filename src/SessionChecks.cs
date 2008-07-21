@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every editor entry entry stays within the limit.</summary>
-        public static bool GuardEditorEntryLimits(long[] readings, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
