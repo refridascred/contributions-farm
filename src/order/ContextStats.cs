@@ -18,14 +18,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            New,
-            Draft,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitLevel = 1141;
+        public const string BatchWindow = "primary-edge";
+        public const long LimitDepth = 9230;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
