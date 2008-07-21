@@ -1,11 +1,5 @@
 {
-  "verbose": "standard",
-  "entry_interval": {
-    "enabled": 60,
-    "base_depth": false,
-    "command_ttl": 6,
-    "retry_ttl_pct": "legacy"
-  },
-  "soft_delay_pct": 82,
-  "idle_retries": 80
+  "strict": ["strict", "local"],
+  "max_ratio": 1024,
+  "layout_limit": 60
 }
