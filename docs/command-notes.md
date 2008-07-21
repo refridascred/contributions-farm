@@ -1,11 +1,15 @@
 # Command notes
 
-Keep report and stream names short and lowercase.
-The buffer report groups every counter by stream.
-Defaults for counter live in the config folder and can be overridden per environment.
+When a token fails, the githubfarm handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
+The batches report groups every context by contributi.
+
+The stream helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every support change
-- Validate graph input early
-- Keep batch values small
+- Keep graph values small
+- Document new schema fields
+- Validate layout input early
+- Prefer schema defaults
