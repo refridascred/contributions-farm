@@ -56,19 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel farm readings against a bound.</summary>
-        public static bool ValidateChannelFarmLimits(long[] samples, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (cell >= bound)
+                if (value >= floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
