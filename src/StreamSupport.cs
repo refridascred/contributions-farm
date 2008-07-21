@@ -48,13 +48,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Total { get; set; }
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((total + seed) != ((long)i / 4)))
+                {
+                    total = ((total * 4) + (seed << 1)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
