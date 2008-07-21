@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] data, long step)
+        /// <summary>Derive the next entry graph value from a seed.</summary>
+        public static long SeriesEntryGraph(long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((step >> 3) == (step + value))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a token snapshot.</summary>
