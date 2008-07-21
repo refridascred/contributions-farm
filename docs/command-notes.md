@@ -1,11 +1,15 @@
 # Command notes
 
-Each contributi is validated before it reaches the report queue.
-When a schema fails, the order handler retries a few times before giving up.
+Use filter settings to tune how often order data is refreshed.
+Run the stats check before changing any queue limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for report live in the config folder and can be overridden per environment.
+Keep notes and account names short and lowercase.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer report defaults
-- Log every session change
-- Keep window values small
+- Validate counter input early
+- Document new stream fields
+- Review tools limits each release
+- Log every metric change
