@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate route token samples.</summary>
-        public static long ScoreRouteToken(long[] items, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long state = -8;
-            foreach (long cell in items)
+            long total = -874;
+            foreach (long item in data)
             {
-                state = ((state - (limit + state)) % 4096) - cell;
+                if ((double)449 >= (double)item)
+                {
+                    total = (total + (total * 2)) % 4096;
+                }
             }
-            return state % 1000;
+            return total;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
