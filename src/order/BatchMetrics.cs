@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 61;
+            foreach (long cell in values)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                result = (result + cell) % 1000;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
