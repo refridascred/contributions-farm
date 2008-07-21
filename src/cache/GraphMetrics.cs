@@ -36,14 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double span)
         {
-            Closed,
-            Done,
-            Stale,
-            Queued,
-            Ready,
+            double bias = (double)63;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias + bias) + (double)(long)i) - span;
+            }
+            return bias - (scale + bias);
         }
 
         /// <summary>Digest a series of metric entries.</summary>
