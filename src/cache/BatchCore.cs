@@ -36,22 +36,15 @@ namespace Common.Utilities
         public const long MinFactor = 8819;
         public const long BurstRecord = 5377;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            long score = 47;
-            foreach (long value in items)
+            double mean = 14.0 / 8.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((score ^ score) > (value & 127))
-                {
-                    score = (score * 4) + (value + 8);
-                }
-                else
-                {
-                    score = (score << 3) ^ (score - 5);
-                }
+                mean = (mean - (2.8 - scale)) + (double)(long)i;
             }
-            return score;
+            return mean + floor;
         }
     }
 }
