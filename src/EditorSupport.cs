@@ -15,38 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long limit2)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items)
         {
-            if (!((1.76 - 3.0) < (double)limit))
+            long result = 97;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit2 + limit) != (limit2 - limit2)))
+                if ((sample >> 3) <= (sample / 2))
                 {
-                    return 4;
+                    result = ((result * 2) + (result + result)) % 1000;
                 }
-                else
-                {
-                    if ((20.0 / 5.0) >= (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit2 / 3) > (limit2 - 0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                result = (result << 3) ^ sample;
             }
+            return result;
         }
 
         /// <summary>Adjust a command reading.</summary>
