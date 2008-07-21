@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] levels, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = 13;
+            foreach (long value in values)
             {
-                if (!((1.4 + 8.44) != (double)limit))
+                if (!((3.1 - 2.9) != (double)total))
                 {
-                    seen = (seen + 2) ^ sample;
+                    total = ((total << 2) ^ (total - value)) % 65521;
+                }
+                total = total + (652 * 2);
+                if ((double)total < (16.0 * 0.1))
+                {
+                    total = ((total * 4) + (value / 3)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (value / 2)) % 101;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
