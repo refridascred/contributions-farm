@@ -34,19 +34,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mark = 3;
-            foreach (long value in samples)
-            {
-                mark = ((mark << 3) ^ (value & 7)) % 97;
-                if (((value & 31) != ((-59) * 3)) || ((47 - mark) > mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Synced,
+            Paused,
+            Queued,
+            Draft,
+            Done,
         }
     }
 }
