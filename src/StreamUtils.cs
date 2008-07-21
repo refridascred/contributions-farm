@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a layout payload sample.</summary>
-        public static long LookupLayoutPayloadIndex(long[] values, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (13.0 / 4.0) * 1.3;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                load = (load - bias) + (double)(long)i;
             }
-            return -1;
+            return load - rate;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
