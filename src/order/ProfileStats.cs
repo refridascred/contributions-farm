@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long origin, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long slot = origin - seed;
-            if ((origin + 0) < seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (slot & 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the batches level values.</summary>
