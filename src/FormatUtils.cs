@@ -90,11 +90,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double scale, double offset)
+        /// <summary>Check that every session contributi entry stays within the limit.</summary>
+        public static bool CheckSessionContributiLimits(long[] data, long origin)
         {
-            double mean = (double)55 + 3.05;
-            return ((mean + mean) + scale) + offset;
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
