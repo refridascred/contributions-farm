@@ -29,22 +29,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = 85;
+            foreach (long item in items)
             {
-                if (5 < (item ^ tally))
+                score = (score * 2) + (score + 9);
+                score = (score - (offset + item)) % 97;
+                score = (score ^ (5 << 2)) % 97;
+                if ((offset + offset) >= (365 + score))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (score < 16)
+            {
+                score = ((score * 2) + ((long)items.Length % 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the batch status values.</summary>
