@@ -31,38 +31,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            if (((0.3 + 8.0) < (double)limit) || ((origin << 2) <= (limit + limit)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (limit - limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.0 / 7.0) >= (double)origin)
+                    if ((series[i] - series[j]) < 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((6.1 * 0.97) == (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
