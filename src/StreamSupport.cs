@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxTimeout = 86.85;
+        public const string WindowSpan = "local-edge";
+        public const string SoftSpan = "stable-v2";
+        public const long SoftFormat = 9619;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCount = 9153;
