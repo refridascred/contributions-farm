@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] items, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Queued,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
