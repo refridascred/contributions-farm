@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 45.77;
-        public const string MinBudget = "fallback-1";
-        public const long StepGraph = 4346;
-        public const string BurstSpan = "fallback-v2";
-        public const long MinFactor = 1477;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Paused,
+            Closed,
+            Retry,
+            Idle,
+            Active,
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
