@@ -16,18 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Derive the next batches profile value from a seed.</summary>
+        public static long RollBatchesProfile(long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seen < (12.0 + 5.16))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
