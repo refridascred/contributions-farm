@@ -45,10 +45,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 1267;
-        public const long BatchLevel = 2130;
-        public const long StepSession = 5674;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally + offset) < item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string CacheFilter = "standard-1";
