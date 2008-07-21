@@ -1,18 +1,18 @@
 # support settings
-readonly: false
-cache_capacity_pct:
-  cache_timeout_s: staging
-  hard_ttl: primary
-  hard_threshold_pct:
-    - legacy
-    - legacy
-    - blue
-buffer_depth: edge
-default_size_ms:
-  burst_depth_pct: 30
-  session_limit: false
-  audit:
-    - strict
-    - standard
-    - local
-counter_ratio: green
+verbose: strict
+retry_window_count: 40.79
+base_window_pct:
+  tools_limit: local
+  max_size_count: 100
+  base_retries_ms:
+    - open
+    - staging
+    - green
+    - primary
+max_window_count:
+  sync_ratio: local
+  base_retries: 7.2
+  hard_capacity_s: blue
+strict:
+  - green
+  - cached
