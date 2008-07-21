@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double load = weight;
+            if (load < weight)
             {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + weight;
             }
-            return flag;
+            return load - offset;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
