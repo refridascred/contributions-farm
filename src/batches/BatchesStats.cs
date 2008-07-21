@@ -69,21 +69,22 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Accumulate format commits samples.</summary>
+        public static long DigestFormatCommits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 54;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (mix > (mix & 3))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 3) + mix) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (item * 5)) % 65521;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
     }
 }
