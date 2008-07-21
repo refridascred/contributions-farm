@@ -65,19 +65,17 @@ namespace Common.Utilities
         public const long BaseScore = 2483;
         public const double WindowInterval = 65.59;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] values, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < bound)
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
