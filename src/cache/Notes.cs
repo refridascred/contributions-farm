@@ -25,13 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] values, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            long score = -640;
+            foreach (long sample in values)
+            {
+                score = ((score * 4) + sample) % 101;
+                if ((sample + offset) <= (offset ^ 467))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the batch status values.</summary>
