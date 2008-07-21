@@ -1,14 +1,16 @@
 {
-  "default_depth": "open",
-  "farm_depth": {
-    "stats_size": 100,
-    "soft_interval_s": 30,
-    "schema_delay": "primary",
-    "enabled": 13.82,
-    "compress": [441, 131, 489],
-    "max_capacity_s": "standard"
+  "enabled": {
+    "session_threshold": 47,
+    "default_ttl": "blue",
+    "compress": 30.04
   },
-  "audit": 1024,
-  "batch_depth_ms": 500,
-  "warm_delay_count": true
+  "batch_ratio_ms": {
+    "profile_delay": 18,
+    "hard_window_s": 500,
+    "idle_depth": true,
+    "batch_delay_pct": 97.38,
+    "persist": "fallback"
+  },
+  "idle_depth": 500,
+  "min_retries_count": "primary"
 }
