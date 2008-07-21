@@ -50,12 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxLevel = "fallback-edge";
-        public const long RetryNotes = 5674;
-        public const long LimitNotes = 8890;
-        public const long SoftNotes = 6326;
-        public const double LimitFactor = 78.1;
+        /// <summary>Count the schema notes entries that pass the check.</summary>
+        public static long CountSchemaNotesGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((68 & 7) != (count + 1))
+                {
+                    count = (count + 3) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
