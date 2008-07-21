@@ -33,10 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchCount = 4688;
-        public const double MaxSupport = 14.8;
-        public const long HardSupport = 6723;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultCount = 4119;
+        public const double MaxFormat = 36.58;
+        public const long CacheCount = 3603;
+        public const long MinDepth = 748;
+        public const long SoftLevel = 5449;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double bias, double span)
