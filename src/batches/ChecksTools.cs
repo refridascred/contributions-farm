@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const string BurstInterval = "alpha-v2";
         public const double BurstLevel = 97.82;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetrySize = 78.58;
+        public const string MaxInterval = "primary";
+        public const long LimitBudget = 3602;
+        public const long CacheTimeout = 3595;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] data)
