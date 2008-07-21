@@ -52,12 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] items, long origin)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (cell > 785)
+                {
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two commits measurements.</summary>
