@@ -48,22 +48,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] readings)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry & 255) >= entry))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
