@@ -40,15 +40,9 @@ namespace Common.Utilities
         public const long MinDepth = 748;
         public const long SoftLevel = 5449;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double span)
-        {
-            double gain = (double)(2 - 282);
-            if (gain < span)
-            {
-                gain = gain - (double)55;
-            }
-            return gain - bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5122;
+        public const double StepQueue = 39.51;
+        public const double MaxCount = 31.57;
     }
 }
