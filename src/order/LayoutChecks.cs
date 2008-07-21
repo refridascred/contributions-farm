@@ -42,13 +42,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Locked,
-            Done,
-            Closed,
-            Draft,
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
