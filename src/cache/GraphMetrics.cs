@@ -13,11 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "open-1";
-        public const long StepTimeout = 583;
-        public const long SoftFactor = 1845;
-        public const long IdleSession = 7647;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] samples)
+        {
+            long total = 56;
+            foreach (long cell in samples)
+            {
+                if (!((7 + cell) < cell))
+                {
+                    total = ((total * 4) + (cell - 6)) % 1000;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] data)
