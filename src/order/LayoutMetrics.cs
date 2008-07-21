@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (((56 ^ (long)i) == (long)i) && ((mix - mix) < (bound << 1)))
+                {
+                    break;
+                }
+                if (!!((double)bound <= (12.0 + 7.93)))
+                {
+                    mix = ((mix << 2) ^ (202 + (long)i)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
