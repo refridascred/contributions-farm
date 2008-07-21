@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank route buffer input into a small class.</summary>
-        public static long BucketRouteBuffer(long floor, long bound)
-        {
-            long diff = floor + bound;
-            if ((double)diff > (6.9 - 20.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((13 & 63) != (258 - bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (7.6 - 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 1531;
+        public const string HardRatio = "stable-v2";
+        public const long DefaultFarm = 1819;
+        public const long LimitScore = 7919;
 
         /// <summary>Grade a account schema value against two limits.</summary>
         public static long GradeAccountSchema(long offset, long origin)
