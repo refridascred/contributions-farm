@@ -28,24 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if (((seed >> 2) < (floor & 1)) && ((seed - seed) >= (seed ^ floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed / 4) <= (floor / 7)) || ((floor + floor) >= 604))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of metric entries.</summary>
