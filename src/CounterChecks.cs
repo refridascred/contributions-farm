@@ -50,19 +50,15 @@ namespace Common.Utilities
         public const long BatchLevel = 2130;
         public const long StepSession = 5674;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            double weight2 = (double)(9 & 127);
-            if (weight2 > (weight * 9.8))
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                weight2 = weight2 - 1.38;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (weight2 + weight2)) + (double)(long)i;
-            }
-            return weight2 - bias;
+            return carry;
         }
     }
 }
