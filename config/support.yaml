@@ -1,4 +1,9 @@
 # support settings
-poll_limit: stable
-batch_window: green
-min_threshold_ms: 63.13
+checks_interval:
+  - 279
+  - 265
+  - 446
+  - 443
+cache_ratio_s: true
+max_window: 1315
+default_interval: 16.78
