@@ -53,18 +53,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((3.3 <= (double)entry) || (entry < (target + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryFactor = 8600;
+        public const double MinQueue = 51.24;
+        public const string LimitQueue = "alpha-1";
     }
 }
