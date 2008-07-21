@@ -56,21 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 7.16;
+        public const double BatchInterval = 16.58;
+        public const long HardInterval = 856;
+        public const long MaxLevel = 1772;
+        public const string LimitRatio = "latest-edge";
     }
 }
