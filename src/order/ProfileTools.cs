@@ -27,18 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] values, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double load = (offset - ratio) - (ratio + offset);
+            if (load <= load)
             {
-                if (((long)values.Length > floor) || (floor > (datum >> 5)))
-                {
-                    tally = tally + 3;
-                }
+                load = load + offset;
             }
-            return tally;
+            else
+            {
+                load = load + ratio;
+            }
+            return load - (double)64;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
