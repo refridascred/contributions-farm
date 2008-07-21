@@ -28,18 +28,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a cluster queue reading by value.</summary>
-        public static long FindClusterQueueIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "alpha-edge";
+        public const long RetryLevel = 3247;
+        public const long LimitNotes = 8004;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double BlendProfile(double bias, double bias2)
