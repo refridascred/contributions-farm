@@ -32,15 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi command figure with a bias.</summary>
-        public static double ScaleContributiCommand(double bias, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            double bias2 = (double)(382 - (-507));
-            if (bias2 < (bias + bias))
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = (bias2 + bias) + floor;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return bias2 - bias;
+            return mix;
         }
     }
 }
