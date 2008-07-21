@@ -23,14 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Retry,
-            Queued,
-            Ready,
-            Closed,
-            Dropped,
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
