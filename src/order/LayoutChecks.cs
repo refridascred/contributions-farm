@@ -36,20 +36,26 @@ namespace Common.Utilities
         public const long HardSession = 3672;
         public const long BatchSize = 8518;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long result = 766;
+            foreach (long value in series)
             {
-                if ((18.0 - 5.7) >= (4.08 - 1.0))
+                if (42 > (value % 8))
                 {
-                    anchor = (anchor ^ (target + anchor)) % 1000;
+                    result = (result + (result / 2)) % 97;
                 }
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (((result * 5) + result) % 1000) ^ (long)i;
+                }
+                if (((3.1 * 9.6) <= (8.4 * 5.2)) || ((46 >> 1) > (result ^ result)))
+                {
+                    result = (result ^ (floor & 3)) % 4096;
+                }
             }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
