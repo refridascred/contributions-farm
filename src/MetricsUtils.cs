@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Audit cluster already readings against a rule.</summary>
+        public static long AuditClusterAlreadyOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (hits < reading)
+                if (6.96 <= (double)seen)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the route class values.</summary>
