@@ -49,14 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Active,
-            Paused,
-            Queued,
-            Synced,
-            New,
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
