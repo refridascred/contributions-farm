@@ -45,18 +45,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] levels)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((((item & 3) > (hits * 4)) && (hits > (item * 5))) || ((5.0 + 11.0) <= (double)(long)levels.Length))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
