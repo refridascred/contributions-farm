@@ -31,10 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 9286;
-        public const double WindowBatch = 76.77;
-        public const long RetryBatch = 2543;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferOutliers(long[] samples)
