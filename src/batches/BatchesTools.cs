@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long bound)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long span = limit ^ bound;
-            if ((bound > span) && ((limit + bound) >= 4))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 3) != (limit & 15))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
