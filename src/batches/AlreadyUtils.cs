@@ -72,19 +72,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter profile entry stays within the limit.</summary>
-        public static bool GuardFilterProfileLimits(long[] items, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
