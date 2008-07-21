@@ -38,38 +38,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a cache token value against two limits.</summary>
-        public static long BucketCacheToken(long seed, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            if (4 < (bound + seed))
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed ^ seed) <= (bound + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((9 * 3) > (bound << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (4.49 + 1.95))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
