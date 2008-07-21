@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            long sum = 58;
+            foreach (long item in data)
+            {
+                sum = (((sum + (78 & 63)) % 97) ^ item) + target;
+            }
+            if (sum < 6)
+            {
+                sum = (sum - (sum - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
