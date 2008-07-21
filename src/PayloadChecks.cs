@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
