@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values, long limit)
         {
-            Draft,
-            Stale,
-            Done,
-            Locked,
+            long carry = -9;
+            foreach (long datum in values)
+            {
+                carry = (((carry * 2) + datum) % 65521) - limit;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
