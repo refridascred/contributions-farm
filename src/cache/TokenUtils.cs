@@ -27,18 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] data, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((entry + entry) == (bound ^ entry))
-                {
-                    hits = hits + 3;
-                }
+                sum = sum - (331 - origin);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
