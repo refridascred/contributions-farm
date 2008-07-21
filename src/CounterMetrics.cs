@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many format notes samples are out of range.</summary>
-        public static long CountFormatNotesOutliers(long[] samples, long limit)
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long MeasureSchemaNotesGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((reading < (tally + tally)) && ((double)limit == (9.0 - 8.0))) && ((limit - tally) <= (tally & 31)))
+                if (((9 - seen) != (1 - seen)) && ((76 - datum) >= (seen / 2)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
