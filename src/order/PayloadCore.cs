@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum > (matches * 3)) || (875 > (datum - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 39.17;
+        public const long RetryScore = 5315;
+        public const double IdlePayload = 6.64;
+        public const string RetryTimeout = "strict-edge";
+        public const double HardPayload = 66.63;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
