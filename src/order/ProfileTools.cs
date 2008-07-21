@@ -41,11 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSize = 3564;
-        public const string HardSpan = "open-v2";
-        public const double IdleReport = 43.07;
-        public const long BatchFactor = 7754;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 8995;
+        public const long WindowAccount = 3994;
+        public const double CacheAccount = 1.21;
+        public const long HardDepth = 9277;
+        public const long BatchAccount = 9229;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long RollContributi(long seed)
