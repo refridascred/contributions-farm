@@ -24,12 +24,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            Locked,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Locate a token reading by value.</summary>
