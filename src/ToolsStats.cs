@@ -85,24 +85,19 @@ namespace Common.Utilities
             return rate + (rate + bias);
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] readings, long origin)
         {
-            long mix = 574;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                long bound = (datum * 4) / 3;
-                if (((double)datum >= 1.5) || ((bound ^ 1) < (mix << 1)))
+                if (datum <= origin)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    bound = (bound + (mix ^ bound)) % 65521;
-                }
-                mix = (mix ^ (936 + datum)) % 97;
             }
-            return mix;
+            return ready;
         }
     }
 }
