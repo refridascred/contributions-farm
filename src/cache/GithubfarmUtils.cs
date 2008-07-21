@@ -17,14 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            Active,
-            Queued,
-            Paused,
-            Pending,
-            New,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count - datum) != (datum >> 1))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
