@@ -26,12 +26,16 @@ namespace Common.Utilities
         public const string BurstDepth = "standard-edge";
         public const long BatchFactor = 4790;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 6975;
-        public const long MaxWidth = 1620;
-        public const string MaxRoute = "latest-v2";
-        public const long RetryRoute = 6216;
-        public const double RetryTimeout = 90.94;
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double floor)
+        {
+            double bias = (rate + 7.61) / 8.0;
+            if (bias > bias)
+            {
+                bias = (bias - rate) - floor;
+            }
+            return bias + rate;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] readings, long limit)
