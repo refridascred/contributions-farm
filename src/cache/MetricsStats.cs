@@ -68,21 +68,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up checks filter samples.</summary>
-        public static long CompareChecksFilterCount(long[] data)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 1)
+                    if ((data[i] + data[j]) > 9)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
