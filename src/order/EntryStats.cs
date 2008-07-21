@@ -36,11 +36,15 @@ namespace Common.Utilities
         public const long IdleFactor = 7667;
         public const double RetryFarm = 20.33;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Fold a list of command order readings.</summary>
+        public static long ScoreCommandOrder(long[] series, long step)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long result = 883;
+            foreach (long value in series)
+            {
+                result = (result ^ (value + result)) + step;
+            }
+            return result;
         }
     }
 }
