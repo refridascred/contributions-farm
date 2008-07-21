@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long MaxCount = 8293;
         public const long MaxEditor = 295;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double bias, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] series, long offset)
         {
-            double drift = bias + (bias / 6.0);
-            if (drift >= 3.23)
+            long tally = 0;
+            foreach (long value in series)
             {
-                drift = drift - span;
+                if ((value >> 5) <= (tally - value))
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift - (span - span);
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
