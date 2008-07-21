@@ -26,20 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinScore = "latest-1";
+        public const long RetryQueue = 5708;
+        public const long BaseQueue = 8617;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFactor = 2172;
