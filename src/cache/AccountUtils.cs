@@ -32,15 +32,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit token account readings against a rule.</summary>
-        public static long AuditTokenAccountHits(long[] series)
+        /// <summary>Match up window route samples.</summary>
+        public static long MatchWindowRouteCount(long[] data)
         {
             long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((8.0 + 3.2) == (double)item) && ((item + matches) > (matches ^ matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
