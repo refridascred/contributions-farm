@@ -22,15 +22,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 7)
+                    if ((data[i] - data[j]) != 10)
                     {
                         tally = tally + 1;
                     }
