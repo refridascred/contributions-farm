@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batch checks samples are out of range.</summary>
-        public static long CountBatchChecksOutliers(long[] items, long step)
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long TallyProfileSessionGaps(long[] items, long origin)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long reading in items)
             {
-                if ((2 - sample) < (step << 2))
+                if (!(origin > (origin - count)))
                 {
-                    count = count + 2;
+                    count = (count + 1) + reading;
                 }
             }
             return count;
