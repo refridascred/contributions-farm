@@ -20,21 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count stats channel pairs that satisfy a relation.</summary>
-        public static long OverlapStatsChannelCount(long[] readings)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 3)
+                    if ((readings[i] ^ readings[j]) > 2)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
