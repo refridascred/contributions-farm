@@ -74,13 +74,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double bias)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            double rate = (bias + bias) / 7.0;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (0.1 + weight)) + (double)(long)i;
+            }
+            return rate + (rate + bias);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
