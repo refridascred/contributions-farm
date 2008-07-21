@@ -13,21 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up format notes samples.</summary>
-        public static long OverlapFormatNotesCount(long[] data)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Roll a schema token counter forward.</summary>
