@@ -10,13 +10,32 @@ namespace Common.Utilities
         public const long SoftMetric = 7049;
         public const long WindowInterval = 75;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long target, long seed)
         {
-            New,
-            Ready,
-            Active,
-            Dropped,
+            long bound = target - seed;
+            if (9 > (seed >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >= (target / 8)) || ((1.82 + 8.6) < (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 2) <= 95)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks kind values.</summary>
