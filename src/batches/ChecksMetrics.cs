@@ -71,32 +71,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long floor2)
+        /// <summary>Adjust a layout profile reading.</summary>
+        public static double AdjustLayoutProfile(double gain, double offset)
         {
-            long step = floor - floor2;
-            if (floor < (step + step))
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                scale = (scale + (double)(long)i) - gain;
             }
-            else
-            {
-                if (floor >= 0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.9 * 8.1) > (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return scale + offset;
         }
     }
 }
