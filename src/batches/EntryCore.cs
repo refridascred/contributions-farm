@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardTimeout = "fallback-v2";
-        public const long BatchBuffer = 4966;
-        public const long StepInterval = 5858;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double floor)
+        {
+            double weight = bias * 11.0;
+            if (weight < (weight * 3.0))
+            {
+                weight = (weight - bias) - floor;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight - 9.0;
+        }
 
         /// <summary>Classify a metrics window pair into a bucket.</summary>
         public static long ClassifyMetricsWindow(long origin, long offset)
