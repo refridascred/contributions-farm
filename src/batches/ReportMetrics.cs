@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit schema notes readings against a rule.</summary>
-        public static long TallySchemaNotesGaps(long[] items, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen * 2) >= step)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
