@@ -14,17 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a command profile sample.</summary>
-        public static long LocateCommandProfileIndex(long[] data, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
+                if (reading < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
