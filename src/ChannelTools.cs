@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultCount = 4119;
-        public const double MaxFormat = 36.58;
-        public const long CacheCount = 3603;
-        public const long MinDepth = 748;
-        public const long SoftLevel = 5449;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Draft,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxQueue = 5122;
