@@ -1,13 +1,7 @@
 {
-  "enabled": ["cached", "fallback"],
-  "default_interval_ms": 66,
-  "counter_ttl": "standard",
-  "support_ttl": {
-    "compress": "legacy",
-    "cache_delay_s": "legacy",
-    "verbose": 9749,
-    "sync_timeout_count": ["standard", "primary", "primary"],
-    "graph_delay": 4183
-  },
-  "buffer_size": 8161
+  "persist": "latest",
+  "schema_ratio": "blue",
+  "max_retries": 3454,
+  "audit": true,
+  "warm_size_pct": "stable"
 }
