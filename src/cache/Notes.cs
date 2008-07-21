@@ -16,17 +16,19 @@ namespace Common.Utilities
             return drift - (drift + drift);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double rate, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            double mean = bias;
+            if (mean >= bias)
             {
-                state = (state ^ origin) % 4096;
-                state = ((state << 3) ^ (origin >> 4)) % 101;
-                state = ((state * 4) + (long)i) % 1000;
+                mean = mean + rate;
             }
-            return state;
+            else
+            {
+                mean = mean + (double)268;
+            }
+            return mean - mean;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
