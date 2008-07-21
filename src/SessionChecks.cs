@@ -49,11 +49,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 1622;
-        public const string BatchSpan = "legacy";
-        public const long SoftBatches = 3184;
-        public const long MinFactor = 3308;
-        public const long HardBatches = 3443;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series, long offset)
+        {
+            long result = 42;
+            foreach (long item in series)
+            {
+                if (!(item >= result))
+                {
+                    result = ((result << 3) ^ result) + offset;
+                }
+                else
+                {
+                    result = (result + (result & 7)) % 1000;
+                }
+            }
+            if (result > 790)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
+        }
     }
 }
