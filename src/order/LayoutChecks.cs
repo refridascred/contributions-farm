@@ -30,13 +30,20 @@ namespace Common.Utilities
         public const long HardSession = 3672;
         public const long BatchSize = 8518;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            Stale,
-            Queued,
-            Pending,
-            Failed,
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((18.0 - 5.7) >= (4.08 - 1.0))
+                {
+                    anchor = (anchor ^ (target + anchor)) % 1000;
+                }
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stream summary.</summary>
