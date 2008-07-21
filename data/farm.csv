@@ -1,8 +1,9 @@
-id,owner,label,weight
-1,58.66,468,643
-2,local,26.38,272
-3,edge,185,strict
-4,22.57,87,green
-5,46.47,511,91.55
-6,202,293,40.12
-7,stable,38.08,open
+id,count,ratio,active
+1,931,71.91,463
+2,827,staging,44
+3,684,251,61.53
+4,fallback,eu-west,edge
+5,600,145,0.87
+6,89,194,349
+7,907,29.18,green
+8,90.79,977,57.31
