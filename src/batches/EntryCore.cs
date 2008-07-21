@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardTimeout = "fallback-v2";
+        public const long BatchBuffer = 4966;
+        public const long StepInterval = 5858;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueGaps(long[] levels)
