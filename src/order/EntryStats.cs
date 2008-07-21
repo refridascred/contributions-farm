@@ -44,15 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command order readings.</summary>
-        public static long ScoreCommandOrder(long[] series, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = 883;
-            foreach (long value in series)
-            {
-                result = (result ^ (value + result)) + step;
-            }
-            return result;
+            Dropped,
+            Failed,
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
