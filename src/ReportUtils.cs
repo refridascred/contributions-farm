@@ -13,18 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] samples, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((359 + step) <= (step + 773))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Blend two batches githubfarm measurements.</summary>
