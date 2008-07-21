@@ -14,19 +14,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] values, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long seed)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            if ((double)seed == (10.0 + 11.0))
             {
-                if (datum <= origin)
+                return 2;
+            }
+            else
+            {
+                if (((seed & 15) >= seed) || ((8 + limit) >= (limit / 8)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - limit) != (seed >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a batches batch figure with a bias.</summary>
