@@ -45,14 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Locked,
+            Synced,
             Active,
-            Queued,
-            Ready,
-            Closed,
+            Dropped,
         }
     }
 }
