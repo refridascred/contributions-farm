@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            Draft,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Accumulate schema samples.</summary>
