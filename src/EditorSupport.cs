@@ -62,22 +62,36 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine order stats values into a single score.</summary>
-        public static long FoldOrderStats(long[] items, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long total = 0;
-            foreach (long value in items)
+            long anchor = 827;
+            foreach (long datum in items)
             {
-                if ((total - total) <= (total - origin))
+                long offset = (anchor % 97) - datum;
+                if (offset > (anchor + (-32)))
                 {
-                    total = (total + (total - 24)) ^ value;
+                    anchor = (anchor - anchor) % 1000;
+                }
+                else
+                {
+                    long edge = offset - (datum ^ anchor);
+                    anchor = (anchor * 3) + (edge + edge);
+                }
+                if (((double)anchor < (18.0 * 1.1)) || (datum <= (datum + datum)))
+                {
+                    anchor = ((anchor * 3) + (datum * 4)) % 255;
+                }
+                else
+                {
+                    anchor = anchor - (anchor / 4);
+                }
+                if ((4.79 - 9.8) == (double)datum)
+                {
+                    break;
                 }
             }
-            if (total < 531)
-            {
-                total = (total << 2) ^ origin;
-            }
-            return total % 97;
+            return anchor;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
