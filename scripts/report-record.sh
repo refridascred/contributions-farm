@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=364
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for item in eu-west blue open; do
+    log "checking ${item}"
 done
-log "total ${total}"
