@@ -1,11 +1,11 @@
 # entry settings
-default_capacity_s: true
-poll_capacity_pct: 90.77
-readonly: 5.86
-enabled: blue
-warm_limit_count: true
-min_capacity:
-  - 104
-  - 75
-  - 38
-  - 378
+compress: stable
+warm_timeout:
+  - 486
+  - 406
+hard_threshold_s:
+  - 114
+  - 270
+  - 332
+  - 73
+persist: 6510
