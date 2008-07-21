@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout session readings against a rule.</summary>
-        public static long TallyLayoutSessionOutliers(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 7;
+            foreach (long cell in readings)
             {
-                if ((13.0 / 7.0) > (double)seen)
+                if (((double)cell > (2.0 - 5.2)) && ((9.2 * 0.1) < (double)score))
                 {
-                    seen = (seen + 1) - item;
+                    score = score ^ (score - score);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (cell + cell)) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
