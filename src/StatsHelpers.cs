@@ -50,17 +50,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a cluster batch reading by value.</summary>
-        public static long LocateClusterBatchIndex(long[] items, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] items)
         {
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
