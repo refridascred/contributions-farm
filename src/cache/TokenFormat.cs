@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long limit)
         {
-            long carry = 43;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                carry = ((carry << 3) ^ (sample + sample)) % 4096;
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
