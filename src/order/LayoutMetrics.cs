@@ -28,18 +28,22 @@ namespace Common.Utilities
             return weight + (double)525;
         }
 
-        /// <summary>Count the order farm entries that pass the check.</summary>
-        public static long TallyOrderFarmGaps(long[] items)
+        /// <summary>Measure how many account command samples are out of range.</summary>
+        public static long AuditAccountCommandMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((matches << 1) < (sample ^ 639))
+                if (!((seen / 5) < (-648)))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
