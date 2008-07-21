@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long total = -874;
-            foreach (long item in data)
-            {
-                if ((double)449 >= (double)item)
-                {
-                    total = (total + (total * 2)) % 4096;
-                }
-            }
-            return total;
+            New,
+            Ready,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
