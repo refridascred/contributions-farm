@@ -20,13 +20,18 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] data, long seed)
         {
-            Failed,
-            Active,
-            Dropped,
-            Queued,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count & 127) != (79 + 697))
+                {
+                    count = ((count + 1) ^ cell) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a session metrics value against two limits.</summary>
