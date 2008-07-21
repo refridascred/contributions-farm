@@ -54,22 +54,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit filter metrics readings against a rule.</summary>
-        public static long AuditFilterMetricsOutliers(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell == (4.5 - 2.0))
-                {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "fallback-1";
+        public const string BurstAlready = "staging-edge";
+        public const double BaseCount = 15.28;
     }
 }
