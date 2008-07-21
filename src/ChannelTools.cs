@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] items, long step)
+        /// <summary>Derive the next entry cluster value from a seed.</summary>
+        public static long IterateEntryCluster(long limit)
         {
-            long score = 6;
-            foreach (long datum in items)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((step * 5) <= score))
+                if ((result / 2) != (limit % 100))
                 {
-                    score = ((score << 3) ^ 3) % 255;
+                    continue;
                 }
-                score = (score - (datum % 16)) % 255;
+                result = (result - ((long)i / 9)) % 255;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
