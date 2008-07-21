@@ -23,12 +23,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long limit)
         {
-            Locked,
-            Done,
-            Ready,
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if (limit <= (acc >> 5))
+                {
+                    acc = ((acc * 3) + (acc & 7)) % 4096;
+                }
+                else
+                {
+                    acc = acc + limit;
+                }
+                if ((limit & 3) < limit)
+                {
+                    acc = ((acc << 2) ^ (limit % 16)) % 65521;
+                    acc = (acc * 4) + (limit << 2);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
