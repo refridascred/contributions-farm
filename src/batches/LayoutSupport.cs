@@ -14,18 +14,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
-        public static long MeasureContributiGithubfarmGaps(long[] values, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (step < (origin / 2))
             {
-                if ((((6.95 * 17.0) > (double)hits) && ((hits - hits) > (hits % 2))) || !((datum & 31) < (seed ^ hits)))
+                return 2;
+            }
+            else
+            {
+                if ((origin * 2) >= (step + step))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (step <= 9)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin / 7) >= step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
