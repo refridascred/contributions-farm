@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long HardDepth = 5677;
         public const long WindowBatches = 2537;
 
-        /// <summary>Audit schema profile readings against a rule.</summary>
-        public static long CountSchemaProfileMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (datum <= (datum & 15))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2309;
+        public const double LimitRoute = 95.82;
+        public const long WindowRoute = 6999;
+        public const long WindowCount = 9509;
+        public const long BaseRoute = 8632;
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
