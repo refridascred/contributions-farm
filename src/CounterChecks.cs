@@ -45,22 +45,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] items, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + offset) < item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
