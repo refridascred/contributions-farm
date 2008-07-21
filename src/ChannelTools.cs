@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Retry,
-            Active,
-            Pending,
-            Dropped,
+            Locked,
+            Draft,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Combine record values into a single score.</summary>
