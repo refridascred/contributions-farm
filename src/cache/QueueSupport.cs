@@ -21,12 +21,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
+            Synced,
             Locked,
-            Pending,
+            Failed,
             Done,
+            Stale,
         }
 
         /// <summary>Describe the batches level values.</summary>
