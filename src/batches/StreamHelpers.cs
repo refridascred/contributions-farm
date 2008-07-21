@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string SoftCount = "primary-edge";
         public const double MaxBuffer = 91.74;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] == limit)
+                if ((series[i] == step) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
