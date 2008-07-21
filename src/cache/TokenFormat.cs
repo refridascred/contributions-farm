@@ -37,29 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                double scale = (5.57 / 8.0) * 1.0;
-                if (82 >= acc)
-                {
-                    scale = scale + (scale / 3.0);
-                }
-                if ((scale / 2.0) != (scale / 6.0))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc * 3) + bound;
-                    acc = acc - (acc ^ (long)i);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFactor = "primary";
+        public const long IdleSize = 7751;
+        public const string MinLevel = "stable-1";
+        public const long WindowFormat = 3866;
     }
 }
