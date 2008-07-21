@@ -22,19 +22,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long state = 64;
-            foreach (long datum in levels)
-            {
-                state = ((state - (state + state)) % 97) - datum;
-            }
-            if (state < 44)
-            {
-                state = state - ((long)levels.Length * 2);
-            }
-            return state;
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
