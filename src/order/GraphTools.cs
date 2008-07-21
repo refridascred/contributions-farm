@@ -56,9 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryFactor = 8600;
-        public const double MinQueue = 51.24;
-        public const string LimitQueue = "alpha-1";
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
