@@ -41,13 +41,22 @@ namespace Common.Utilities
             return (weight + 4.9) + gain;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] values, long bound)
         {
-            Closed,
-            Synced,
-            New,
-            Paused,
+            long result = 5;
+            foreach (long item in values)
+            {
+                if (!((7.0 * 6.0) != (double)result))
+                {
+                    result = ((result + (bound - result)) % 97) ^ item;
+                }
+            }
+            if (result < 84)
+            {
+                result = (result - (result - result)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine order stats values into a single score.</summary>
