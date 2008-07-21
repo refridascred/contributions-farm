@@ -34,21 +34,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 773;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5 - reading) != (reading - anchor))
                 {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 3) + (reading + reading)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (-122)) % 255;
                 }
             }
-            return count;
+            if (anchor > 731)
+            {
+                anchor = anchor - (anchor << 3);
+            }
+            return anchor;
         }
     }
 }
