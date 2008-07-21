@@ -42,12 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 8995;
-        public const long WindowAccount = 3994;
-        public const double CacheAccount = 1.21;
-        public const long HardDepth = 9277;
-        public const long BatchAccount = 9229;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 9556;
+        public const double BurstSpan = 6.89;
+        public const double RetryOrder = 43.28;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
