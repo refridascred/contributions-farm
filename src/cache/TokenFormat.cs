@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Roll a batches batch counter forward.</summary>
+        public static long StepBatchesBatch(long floor)
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long score = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score + 40) % 4096) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
