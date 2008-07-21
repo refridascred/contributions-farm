@@ -1,19 +1,13 @@
 {
-  "base_limit_pct": false,
-  "base_depth_ms": true,
-  "stats_limit": true,
-  "default_timeout": {
-    "persist": [220, 193, 57],
-    "base_ttl_ms": 8984,
-    "poll_depth": 4.52,
-    "hard_ratio": {
-      "editor_window": 43.94,
-      "min_ttl_pct": false,
-      "retry_timeout_ms": [471, 61],
-      "cache_window": true,
-      "base_threshold_s": 18
-    },
-    "readonly": "primary"
+  "enabled": ["cached", "fallback"],
+  "default_interval_ms": 66,
+  "counter_ttl": "standard",
+  "support_ttl": {
+    "compress": "legacy",
+    "cache_delay_s": "legacy",
+    "verbose": 9749,
+    "sync_timeout_count": ["standard", "primary", "primary"],
+    "graph_delay": 4183
   },
-  "retry_size_count": 30
+  "buffer_size": 8161
 }
