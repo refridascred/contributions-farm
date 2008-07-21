@@ -53,21 +53,19 @@ namespace Common.Utilities
             return load - (floor / 4.0);
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= bound)
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
