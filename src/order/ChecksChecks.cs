@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 6.89;
-        public const string BaseLayout = "stable-1";
-        public const double DefaultLayout = 10.17;
-        public const string WindowLayout = "stable";
-        public const string SoftLayout = "fallback-edge";
+        /// <summary>Audit notes githubfarm readings against a rule.</summary>
+        public static long MeasureNotesGithubfarmHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((double)reading > (4.0 - 6.1)) && ((reading >> 2) > (reading - reading))) && ((7 >> 4) >= (reading << 2)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long PairChannelCount(long[] levels)
