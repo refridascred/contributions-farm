@@ -23,12 +23,20 @@ namespace Common.Utilities
         public const string BatchWindow = "primary-edge";
         public const long LimitDepth = 9230;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            Stale,
-            Pending,
-            Ready,
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((1.0 + 2.0) > (double)score))
+                {
+                    long step = ((long)i - score) % 12;
+                    score = score + (step >> 4);
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
