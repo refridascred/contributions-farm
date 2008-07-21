@@ -37,11 +37,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "open-edge";
-        public const string IdleTimeout = "staging-v2";
-        public const double CacheMetrics = 69.85;
-        public const long DefaultMetrics = 873;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((hits <= (hits + seed)) && ((seed & 15) != (hits + hits))) || (cell < (cell * 2)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double weight, double bias)
