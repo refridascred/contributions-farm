@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long HardDepth = 5677;
         public const long WindowBatches = 2537;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2309;
-        public const double LimitRoute = 95.82;
-        public const long WindowRoute = 6999;
-        public const long WindowCount = 9509;
-        public const long BaseRoute = 8632;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Ready,
+            Active,
+            Failed,
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
