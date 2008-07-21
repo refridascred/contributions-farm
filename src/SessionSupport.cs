@@ -27,24 +27,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long limit, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long delta = limit + target;
+            if (((double)limit >= 7.0) && ((limit << 2) > (limit * 5)))
             {
-                if (!((bound + 33) >= (result ^ (long)i)))
-                {
-                    result = (result + 585) % 255;
-                }
-                long diff = result;
-                if ((diff + bound) <= 9)
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)delta >= (6.0 + 17.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((14.0 * 7.9) != (double)delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit < (1.24 * 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
