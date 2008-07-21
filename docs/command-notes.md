@@ -1,12 +1,14 @@
 # Command notes
 
-Keep support and batches names short and lowercase.
-Keep notes and queue names short and lowercase.
-The editor module keeps notes values in sync with the order cache.
+When a filter fails, the tools handler retries a few times before giving up.
+The farm module keeps buffer values in sync with the channel cache.
+The batches module keeps payload values in sync with the channel cache.
+
+The cluster report groups every channel by buffer.
+When a route fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep farm values small
-- Validate session input early
-- Document new support fields
+- Validate metric input early
+- Log every githubfarm change
+- Review checks limits each release
