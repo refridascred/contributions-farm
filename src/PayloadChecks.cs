@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Count the context payload entries that pass the check.</summary>
+        public static long MeasureContextPayloadOutliers(long[] data)
         {
-            long score = 7;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((double)cell > (2.0 - 5.2)) && ((9.2 * 0.1) < (double)score))
+                if ((entry % 2) >= (2 & 3))
                 {
-                    score = score ^ (score - score);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (cell + cell)) % 4096;
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
