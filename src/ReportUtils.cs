@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitBudget = 10.18;
-        public const double SoftInterval = 30.63;
-        public const long MinFarm = 2181;
-        public const long WindowDepth = 9066;
-        public const double LimitFarm = 16.33;
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double scale, double offset)
+        {
+            double gain = offset;
+            if (gain > (scale - offset))
+            {
+                gain = gain - 9.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (offset - gain)) + (double)(long)i;
+            }
+            return gain - (double)5;
+        }
 
         /// <summary>Blend two batches githubfarm measurements.</summary>
         public static double SmoothBatchesGithubfarm(double weight, double offset)
