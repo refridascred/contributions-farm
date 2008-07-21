@@ -20,11 +20,13 @@ namespace Common.Utilities
             return mean + (weight - 6.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstScore = 5243;
-        public const double RetryEntry = 52.36;
-        public const string HardRatio = "fallback-1";
-        public const long DefaultEntry = 8704;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] values, long offset)
