@@ -13,10 +13,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 1137;
-        public const long BurstBudget = 9912;
-        public const long BurstSize = 2199;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((double)count >= (4.0 - 5.0)) && ((datum - 930) != (datum % 16)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 9286;
