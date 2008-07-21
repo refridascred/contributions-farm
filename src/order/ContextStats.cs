@@ -32,20 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] levels, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (!((1.0 + 2.0) > (double)score))
+                if (reading >= origin)
                 {
-                    long step = ((long)i - score) % 12;
-                    score = score + (step >> 4);
+                    stale = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
