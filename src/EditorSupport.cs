@@ -15,25 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            long anchor = -3;
+            foreach (long entry in levels)
             {
-                if (!((total % 16) == (total * 5)))
+                if (((long)levels.Length - seed) < (entry + entry))
                 {
-                    total = (total ^ origin) % 65521;
-                    total = total ^ (total + origin);
+                    anchor = ((anchor * 5) + (seed + seed)) % 97;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total ^ (long)i) % 255) + (long)i2;
-                    total = (total ^ (total / 5)) % 255;
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            if (anchor < 13)
+            {
+                anchor = anchor ^ (seed + 8);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
