@@ -18,12 +18,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Pending,
-            Draft,
-            Retry,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
