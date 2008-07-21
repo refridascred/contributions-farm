@@ -37,23 +37,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            long acc = 9;
-            foreach (long reading in items)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc * 3) + (acc % 60)) % 4096;
-                if ((574 * 5) < (acc + acc))
+                double scale = (5.57 / 8.0) * 1.0;
+                if (82 >= acc)
                 {
-                    acc = ((acc << 3) ^ (reading / 5)) % 65521;
+                    scale = scale + (scale / 3.0);
                 }
-                if (((3.3 - 5.0) >= (double)reading) && ((-4) < (acc - acc)))
+                if ((scale / 2.0) != (scale / 6.0))
                 {
-                    acc = ((acc << 2) ^ (77 & 63)) % 4096;
+                    break;
                 }
+                else
+                {
+                    acc = (acc * 3) + bound;
+                    acc = acc - (acc ^ (long)i);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc % 1000;
+            return acc;
         }
     }
 }
