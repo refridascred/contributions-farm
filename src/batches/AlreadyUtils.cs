@@ -34,18 +34,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (seen <= 0)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
