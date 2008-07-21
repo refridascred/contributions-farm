@@ -27,38 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if ((8.12 - 7.37) > (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 60) < (target + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target >= (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) >= (756 / 9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a channel batches sample.</summary>
