@@ -39,18 +39,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Grade a session farm value against two limits.</summary>
+        public static long SortSessionFarm(long floor, long offset)
         {
-            long carry = 864;
-            foreach (long reading in samples)
+            long edge = floor + offset;
+            if ((edge / 4) < floor)
             {
-                if ((reading * 5) >= (reading >> 4))
+                return 2;
+            }
+            else
+            {
+                if (((double)edge < (8.4 * 0.6)) && (edge > floor))
                 {
-                    carry = (carry ^ (carry & 7)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if ((999 - offset) <= (offset - edge))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)edge == (10.0 + 7.8)) && ((floor << 1) <= (55 << 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
