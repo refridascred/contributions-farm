@@ -1,5 +1,6 @@
 # entry settings
-strict: true
-cache_retries_pct: edge
-persist: legacy
-context_size: 53
+verbose: local
+enabled: 1024
+compress: true
+batches_size: 37.39
+soft_retries: stable
