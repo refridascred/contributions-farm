@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] series)
         {
-            Dropped,
-            Done,
-            Synced,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (hits < reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
