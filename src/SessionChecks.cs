@@ -16,21 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score > (score & 3)) || (83 < (reading - 9)))
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score ^ (93 & 1)) + offset;
                 }
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Combine record values into a single score.</summary>
