@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many schema command samples are out of range.</summary>
-        public static long CountSchemaCommandHits(long[] values, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((15 & 255) != (hits - datum))
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate payload samples.</summary>
