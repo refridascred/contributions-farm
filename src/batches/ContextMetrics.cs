@@ -36,15 +36,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a batches batch figure with a bias.</summary>
-        public static double SmoothBatchesBatch(double weight, double span)
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long MeasureCounterMetricHits(long[] data, long floor)
         {
-            double bias = weight;
-            if (bias <= 4.0)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                bias = bias + (weight - span);
+                if ((floor - 8) <= cell)
+                {
+                    matches = matches + 1;
+                }
             }
-            return bias - bias;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
