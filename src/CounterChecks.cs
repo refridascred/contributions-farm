@@ -35,17 +35,11 @@ namespace Common.Utilities
         public const long WindowOrder = 8363;
         public const long StepOrder = 3102;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] values, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
