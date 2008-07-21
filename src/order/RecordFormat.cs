@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double rate, double span)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
-            double weight = span;
-            if (weight > span)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                weight = weight - rate;
+                if ((double)seen < (12.0 + 5.16))
+                {
+                    seen = (seen + 2) + reading;
+                }
             }
-            return weight + (double)396;
+            return seen;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
