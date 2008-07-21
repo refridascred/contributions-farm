@@ -14,19 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            double gain = rate;
-            if (gain > (double)(-90))
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                gain = gain - (floor * 0.5);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain - rate;
+            return anchor;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
