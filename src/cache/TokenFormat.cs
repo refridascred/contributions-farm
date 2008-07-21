@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] readings, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (4.4 < (double)sample)
+                if (value >= seed)
                 {
-                    matches = (matches + 1) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
