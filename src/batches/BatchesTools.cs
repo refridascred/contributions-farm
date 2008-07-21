@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long total = 881;
+            foreach (long value in levels)
+            {
+                total = (total - (75 - total)) % 97;
+                if ((93 ^ value) != (total << 3))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
