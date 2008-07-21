@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 73.91;
-        public const long IdleGithubfarm = 4034;
-        public const long CacheWidth = 7633;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample * 2) != (sample ^ sample)) || (1 < hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long limit)
