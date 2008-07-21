@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] data, long limit)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long MeasureCounterClusterOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (data[i] >= limit)
+                if ((origin * 3) > (entry * 3))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
