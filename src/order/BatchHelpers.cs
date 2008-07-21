@@ -20,18 +20,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] readings, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (1.0 < (double)entry)
+                if ((double)(long)values.Length <= 6.03)
                 {
-                    tally = (tally + 1) + seed;
+                    count = ((count + 1) + item) + target;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
