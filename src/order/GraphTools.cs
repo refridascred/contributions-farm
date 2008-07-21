@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 1531;
-        public const string HardRatio = "stable-v2";
-        public const long DefaultFarm = 1819;
-        public const long LimitScore = 7919;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Dropped,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Grade a account schema value against two limits.</summary>
         public static long GradeAccountSchema(long offset, long origin)
