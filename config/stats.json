@@ -1,6 +1,7 @@
 {
-  "cache_limit_ms": ["staging", "strict"],
-  "soft_threshold_pct": 10.4,
-  "hard_window_ms": 60,
-  "batch_limit": [72, 16]
+  "persist": false,
+  "hard_threshold_s": 52,
+  "contributi_ttl": [205, 227, 71],
+  "command_timeout": true,
+  "min_window": 8827
 }
