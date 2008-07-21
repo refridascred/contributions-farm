@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=51
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=74
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
