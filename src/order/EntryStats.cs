@@ -35,13 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            Locked,
-            Failed,
-            New,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
