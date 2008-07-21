@@ -77,9 +77,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 7826;
-        public const long BaseWidth = 506;
-        public const long CachePayload = 7777;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long step, long bound)
+        {
+            if (bound > (bound + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + step) >= (bound / 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step < (step << 1)) || ((double)bound != (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
