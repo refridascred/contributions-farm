@@ -37,38 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] values, long origin)
         {
-            if (4 <= target)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin <= (5.0 / 7.0)) && (target >= (target + target)))
+                if ((double)origin < (1.0 + 3.46))
                 {
-                    return 4;
+                    matches = (matches + 1) + entry;
                 }
                 else
                 {
-                    if ((target - target) > (target & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target - target) > (origin % 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
