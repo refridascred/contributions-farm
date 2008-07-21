@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of filter queue readings.</summary>
-        public static long CompareFilterQueueCount(long[] data)
+        /// <summary>Look up the position of a layout payload sample.</summary>
+        public static long LookupLayoutPayloadIndex(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] > step)
                 {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
