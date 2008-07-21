@@ -62,11 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 6421;
-        public const long LimitEntry = 1328;
-        public const double StepEntry = 64.32;
-        public const long MinDepth = 9247;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Draft,
+            New,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
