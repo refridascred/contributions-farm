@@ -53,12 +53,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            Closed,
-            Active,
-            Draft,
+            double bias = rate + (double)9;
+            if (bias <= (span / 4.0))
+            {
+                bias = bias + (double)2;
+            }
+            else
+            {
+                bias = bias - 2.9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (0.1 + span)) + (double)(long)i;
+            }
+            return bias - (span * 3.7);
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
