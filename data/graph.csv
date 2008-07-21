@@ -1,10 +1,7 @@
-id,owner,score,active
-1,local,220,828
-2,135,green,828
-3,986,1.4,75.79
-4,224,89.09,699
-5,71.04,164,83.66
-6,85.14,740,standard
-7,4.28,staging,legacy
-8,64.63,5.12,56.99
-9,932,fallback,501
+id,region,rank,weight,owner
+1,standard,56.78,green,10.16
+2,74.88,247,fallback,2.21
+3,199,428,87.73,blue
+4,24.5,strict,64.16,848
+5,792,386,41.82,27.96
+6,769,staging,77.79,98.52
