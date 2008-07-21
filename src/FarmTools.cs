@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((count < ((long)readings.Length / 7)) || (cell < (count - cell))) || ((8 * 5) >= (cell - cell)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 47.08;
+        public const long CacheInterval = 6159;
+        public const long BaseToken = 2823;
+        public const long BurstToken = 9034;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] data)
