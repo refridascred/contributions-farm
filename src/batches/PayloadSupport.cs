@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the already payload entries that pass the check.</summary>
-        public static long AuditAlreadyPayloadMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen << 3) < (27 + sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheTimeout = 3471;
+        public const double LimitBudget = 43.95;
+        public const long DefaultFormat = 2283;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorOutliers(long[] items)
