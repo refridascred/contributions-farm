@@ -23,20 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route cache values into a single score.</summary>
-        public static long WeighRouteCache(long[] readings, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] items, long seed)
         {
-            long acc = -1;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                acc = (((acc << 3) ^ acc) % 255) ^ value;
-                acc = (acc << 2) ^ (acc + origin);
+                if ((double)seen >= (double)seed)
+                {
+                    seen = (seen + 2) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc > 49)
-            {
-                acc = (acc - ((long)readings.Length % 7)) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
