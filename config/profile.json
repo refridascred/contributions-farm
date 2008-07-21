@@ -1,6 +1,6 @@
 {
-  "burst_ttl_pct": "stable",
-  "strict": 60,
-  "checks_capacity": 1024,
-  "max_interval": "fallback"
+  "idle_threshold": 60,
+  "audit": [151, 32, 495],
+  "verbose": true,
+  "channel_size": 6
 }
