@@ -22,17 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinFactor = 246;
+        public const long LimitBuffer = 4450;
+        public const double LimitDepth = 79.65;
+        public const double HardWidth = 83.48;
+        public const long MaxBuffer = 9767;
     }
 }
