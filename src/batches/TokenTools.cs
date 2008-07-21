@@ -28,31 +28,21 @@ namespace Common.Utilities
             return bias2 - 4.81;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long acc = 3;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long gap = (69 - acc) - (acc >> 3);
-                    acc = (acc + gap) ^ (long)i;
-                }
-                if ((reading * 4) > (reading ^ acc))
-                {
-                    acc = (acc + (510 << 1)) % 101;
-                }
-                else
-                {
-                    acc = acc + (reading >> 3);
-                }
-                if ((double)acc < (4.3 / 7.0))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return matches;
         }
     }
 }
