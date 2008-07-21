@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long MeasureEntryBatchesHits(long[] data)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (1.45 >= (double)tally)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
