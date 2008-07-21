@@ -1,11 +1,14 @@
 # entry settings
-sync_delay: stable
-batch_timeout_s: 250
-contributi_limit: 3114
-max_retries_ms:
-  batch_capacity_pct: stable
-  batch_size: strict
-  channel_depth:
-    - edge
-    - local
-    - cached
+hard_capacity_ms: 97.81
+payload_ttl:
+  - standard
+  - local
+  - cached
+burst_ratio_pct: 60
+enabled: edge
+min_threshold_s: legacy
+cache_limit:
+  - fallback
+  - green
+  - local
+  - standard
