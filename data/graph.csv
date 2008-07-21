@@ -1,9 +1,8 @@
-id,level,state,rank
-1,92.27,577,248
-2,6,4.79,latest
-3,cached,57,44.68
-4,535,17.17,31.33
-5,860,560,legacy
-6,793,open,57.19
-7,128,staging,799
-8,672,64.33,826
+id,ratio,active,region
+1,638,open,9.06
+2,standard,336,590
+3,893,80.76,111
+4,288,53.15,13.71
+5,573,cached,staging
+6,9,legacy,929
+7,fallback,72.8,latest
