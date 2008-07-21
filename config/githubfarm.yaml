@@ -1,7 +1,9 @@
 # githubfarm settings
-warm_size_count: true
-max_limit_pct: strict
-min_ttl_pct:
-  - 449
-  - 189
-  - 223
+flush_threshold: 7549
+sync_interval_ms: false
+batch_threshold: stable
+window_size:
+  - stable
+  - edge
+  - fallback
+graph_threshold: true
