@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] readings, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long carry = 0;
-            foreach (long cell in readings)
-            {
-                carry = (((carry << 2) ^ (cell << 2)) % 101) - step;
-            }
-            return carry;
+            Stale,
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
