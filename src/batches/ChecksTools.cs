@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            Failed,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
