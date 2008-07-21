@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] data)
         {
-            Locked,
-            Draft,
-            Idle,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (tally > 4)
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
