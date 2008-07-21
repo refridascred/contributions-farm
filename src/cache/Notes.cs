@@ -29,14 +29,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] levels)
         {
-            Stale,
-            Active,
-            Done,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (5 < (item ^ tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
