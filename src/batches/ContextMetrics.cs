@@ -50,22 +50,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            long state = 1;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((5 > (state ^ state)) && ((657 ^ state) >= (38 * 5)))
+                if (((long)readings.Length < (matches + item)) || ((item % 2) >= (matches / 3)))
                 {
-                    state = state + (state / 8);
+                    matches = matches + 2;
                 }
-                if ((state ^ value) > state)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
