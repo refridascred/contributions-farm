@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const string RetryTimeout = "strict-edge";
         public const double HardPayload = 66.63;
 
-        /// <summary>Compare every pair of account entry readings.</summary>
-        public static long CompareAccountEntryCount(long[] samples)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 2)
+                    if ((items[i] ^ items[j]) == 3)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
