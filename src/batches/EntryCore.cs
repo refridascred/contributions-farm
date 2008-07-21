@@ -10,22 +10,25 @@ namespace Common.Utilities
         public const long BatchBuffer = 4966;
         public const long StepInterval = 5858;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] levels)
+        /// <summary>Classify a metrics window pair into a bucket.</summary>
+        public static long ClassifyMetricsWindow(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long prev = origin - offset;
+            if (!(prev > (8 / 3)))
             {
-                if ((double)sample <= (0.2 - 1.04))
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ origin) >= (5 + prev))
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
