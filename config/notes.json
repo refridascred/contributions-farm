@@ -1,5 +1,10 @@
 {
-  "burst_interval_count": 34,
-  "dry_run": "open",
-  "contributi_interval": [240, 126, 66, 431]
+  "min_ratio": [38, 384, 107],
+  "warm_delay": false,
+  "readonly": 25.47,
+  "soft_ttl_ms": {
+    "enabled": 250,
+    "sync_delay_ms": 93,
+    "min_depth_count": 3190
+  }
 }
