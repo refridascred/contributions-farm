@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long limit, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if ((16.0 - 9.8) >= (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((618 << 3) >= (limit / 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit + limit) >= bound) && (limit > (limit + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((2.6 * 4.6) <= (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
