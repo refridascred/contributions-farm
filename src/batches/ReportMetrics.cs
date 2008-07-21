@@ -37,17 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total + ((long)i ^ origin)) % 4096;
-                total = (total - (total - origin)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
