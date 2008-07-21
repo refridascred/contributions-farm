@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Failed,
-            Dropped,
-            Synced,
-            Locked,
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
