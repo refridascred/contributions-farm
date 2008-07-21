@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable primary legacy edge; do
+for item in staging green cached local; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=51
+CHANNEL_LIMIT=140
 log "limit is ${CHANNEL_LIMIT}"
