@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items, long offset)
+        /// <summary>Iterate the context window series from a seed.</summary>
+        public static long DeriveContextWindow(long offset)
         {
-            long state = 16;
-            foreach (long datum in items)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state - (datum << 1)) + offset;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (state < 80)
-            {
-                state = (state * 3) + (state & 255);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Digest a series of account entries.</summary>
