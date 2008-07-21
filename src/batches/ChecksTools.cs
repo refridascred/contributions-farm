@@ -27,10 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardCount = 6712;
-        public const long WindowMetric = 3442;
-        public const double DefaultMetric = 47.16;
-        public const long MaxMetric = 6454;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
