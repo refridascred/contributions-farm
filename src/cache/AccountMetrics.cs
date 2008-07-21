@@ -55,22 +55,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate layout route samples.</summary>
-        public static long WeighLayoutRoute(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] values, long bound)
         {
-            long mix = 19;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((item + 90) < mix)
+                if (cell < bound)
                 {
-                    mix = mix ^ (mix - item);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ ((-76) << 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the batch phase values.</summary>
