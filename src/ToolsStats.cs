@@ -51,15 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double bias)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double rate = (bias + bias) / 7.0;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (0.1 + weight)) + (double)(long)i;
-            }
-            return rate + (rate + bias);
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
