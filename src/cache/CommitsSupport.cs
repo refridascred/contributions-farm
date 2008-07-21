@@ -35,13 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a session snapshot.</summary>
