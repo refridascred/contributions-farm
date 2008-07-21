@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] series, long origin)
         {
-            long result = 75;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                result = (((result - result) % 4096) - reading) - bound;
+                if (((origin % 24) > (sample ^ sample)) || ((sample + (long)series.Length) <= (count % 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result > (-6))
-            {
-                result = result ^ (946 << 2);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
