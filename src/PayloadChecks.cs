@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context payload entries that pass the check.</summary>
-        public static long MeasureContextPayloadOutliers(long[] data)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double bias2 = gain;
+            if (bias2 <= (14.0 - bias))
             {
-                if ((entry % 2) >= (2 & 3))
-                {
-                    count = count + 3;
-                }
+                bias2 = bias2 + (bias2 * 9.6);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Describe the counter state values.</summary>
