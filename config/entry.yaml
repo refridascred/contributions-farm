@@ -1,10 +1,31 @@
 # entry settings
-strict: 1024
-hard_delay_count:
-  - 113
-  - 461
-  - 84
-flush_capacity_count:
-  - 354
-  - 54
-  - 182
+sync_ratio: 30
+min_depth: 18.66
+warm_ratio_ms: 50.81
+min_size_ms:
+  - open
+  - open
+  - eu-west
+  - strict
+burst_limit_pct:
+  strict: 7265
+  compress:
+    hard_interval: 4635
+    strict: legacy
+    flush_timeout: 53.98
+    soft_timeout_ms:
+      - local
+      - edge
+      - legacy
+  warm_threshold_s: open
+  readonly: 39
+  sync_window_count:
+    account_capacity: 60
+    retry_window_count: fallback
+    flush_delay: false
+    readonly: 46.43
+    stats_size:
+      - 416
+      - 360
+    hard_window_pct: legacy
+warm_limit_pct: 26.84
