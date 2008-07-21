@@ -25,18 +25,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            long total = 85;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (datum >= (total * 3))
+                if (reading > (830 << 3))
                 {
-                    total = ((total << 2) ^ datum) % 255;
+                    seen = seen + 1;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a layout record.</summary>
