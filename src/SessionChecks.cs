@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const long RetryFactor = 3175;
         public const long BurstSupport = 6841;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long mark = 9;
+            foreach (long sample in data)
+            {
+                mark = (mark + (mark << 1)) % 101;
+                if ((sample << 3) < (mark + sample))
+                {
+                    break;
+                }
+            }
+            if (mark < 486)
+            {
+                mark = mark ^ (922 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
