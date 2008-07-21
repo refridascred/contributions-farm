@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long MinBudget = 7779;
         public const long BurstOrder = 5666;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Pending,
-            Stale,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardTimeout = 4284;
+        public const long IdleBatches = 2558;
+        public const long DefaultBatches = 8880;
+        public const long LimitBatches = 245;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
