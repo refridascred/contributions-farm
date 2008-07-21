@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            long carry = 973;
-            foreach (long entry in series)
+            long state = 812;
+            foreach (long sample in levels)
             {
-                if ((double)entry > 8.0)
-                {
-                    carry = (((carry * 4) + (entry - carry)) % 255) - offset;
-                }
+                state = (state << 2) ^ (sample + 949);
             }
-            return carry % 4096;
+            if (state > 8)
+            {
+                state = (state ^ (3 / 7)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
