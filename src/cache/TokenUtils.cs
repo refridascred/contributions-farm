@@ -24,11 +24,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 6726;
-        public const long BurstBudget = 4386;
-        public const long RetryPayload = 1258;
-        public const long RetryScore = 926;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (carry + (carry + 875)) + (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long step)
