@@ -47,13 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count commits contributi pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsContributiCount(long[] data)
         {
-            Failed,
-            Dropped,
-            Retry,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window kind values.</summary>
