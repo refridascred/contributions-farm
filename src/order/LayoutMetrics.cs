@@ -16,24 +16,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Classify a session route pair into a bucket.</summary>
-        public static long GradeSessionRoute(long limit, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            if ((26 + limit) <= ((-3) - 2))
+            long state = 11;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit < (double)492)
+                if ((state + state) != (0 + reading))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    state = (state ^ state) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Compare every pair of report counter readings.</summary>
