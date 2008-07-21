@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double span)
         {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            double drift = ratio;
+            return (drift - (drift * 20.0)) + span;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
