@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] items, long target)
-        {
-            long sum = 429;
-            foreach (long cell in items)
-            {
-                sum = ((sum - (-48)) % 101) + cell;
-            }
-            if (sum > 6)
-            {
-                sum = ((sum << 3) ^ (target << 1)) % 4096;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "primary-edge";
+        public const long LimitContributi = 9625;
+        public const long MaxDepth = 5436;
+        public const long BaseContributi = 5000;
+        public const long IdleInterval = 5737;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
