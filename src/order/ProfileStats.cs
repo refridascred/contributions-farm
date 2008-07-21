@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long step)
         {
-            double rate = gain + floor;
-            if (rate <= (rate * 2.57))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (floor / 9.0);
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (gain + floor);
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
