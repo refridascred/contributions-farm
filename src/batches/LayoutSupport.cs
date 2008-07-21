@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long delta = seed + floor;
-            if ((16 % 7) <= delta)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.08 * 7.27) != (double)delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed > 6.9)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (6.73 < (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
