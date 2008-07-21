@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((1.0 * 2.52) >= (double)limit) || ((offset << 2) <= (offset % 3)))
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((2 >> 3) < (limit + limit)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
