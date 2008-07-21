@@ -1,39 +1,7 @@
 # githubfarm settings
-warm_size_pct:
-  already_retries:
-    retry_interval_ms: 100
-    verbose: 87
-    poll_capacity: 63.67
-    cluster_window: true
-    queue_window: true
-  account_size:
-    - strict
-    - latest
-    - legacy
-    - eu-west
-  default_retries: stable
-  default_ratio_count: 100
-  route_interval: blue
-  batch_ratio: 1024
-metrics_interval:
-  retry_timeout_s: open
-  base_capacity:
-    - open
-    - strict
-  poll_size_ms: local
-  verbose:
-    - 478
-    - 125
-    - 161
-    - 341
-  persist: 72
-queue_capacity: 72.82
-session_window: true
-max_ttl_ms:
-  commits_interval: 1151
-  soft_capacity_s: 1835
-  sync_interval:
-    - green
-    - green
-    - eu-west
-report_ratio: staging
+warm_size_count: true
+max_limit_pct: strict
+min_ttl_pct:
+  - 449
+  - 189
+  - 223
