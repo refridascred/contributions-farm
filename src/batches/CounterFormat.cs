@@ -59,20 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits githubfarm series from a seed.</summary>
-        public static long SeriesCommitsGithubfarm(long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long acc = 243;
+            foreach (long value in readings)
             {
-                score = (score * 2) + offset;
-                if ((double)score >= (13.0 * 1.0))
+                if ((acc + value) > (acc & 63))
                 {
-                    break;
+                    acc = (acc + (value % 5)) % 65521;
                 }
-                score = ((score * 5) + (long)i) % 4093;
+                else
+                {
+                    acc = (acc ^ (acc + 5)) % 101;
+                }
             }
-            return score;
+            return acc % 65521;
         }
     }
 }
