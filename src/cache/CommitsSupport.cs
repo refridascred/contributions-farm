@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double HardLevel = 61.95;
         public const long IdleMetric = 4658;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Check that every stats cache entry stays within the limit.</summary>
+        public static bool VerifyStatsCacheBounds(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < limit)
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Scale a cache account figure with a bias.</summary>
