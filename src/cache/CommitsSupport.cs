@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every stats cache entry stays within the limit.</summary>
-        public static bool VerifyStatsCacheBounds(long[] items, long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of payload checks readings.</summary>
