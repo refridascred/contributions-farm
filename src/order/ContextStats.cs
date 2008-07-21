@@ -26,22 +26,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] readings, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((seen - seen) == (78 + seen)) && ((9 + entry) == (seen * 5)))
+                if ((matches + sample) >= sample)
                 {
-                    seen = (seen + 3) + origin;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
