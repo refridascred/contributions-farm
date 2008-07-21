@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long seed)
+        /// <summary>Iterate the githubfarm record series from a seed.</summary>
+        public static long IterateGithubfarmRecord(long target)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (item != seed)
+                mark = ((mark * 5) + (target + mark)) % 255;
+                if (19 <= (mark - target))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark << 2) ^ (long)i;
+                    mark = (mark + ((long)i << 1)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    mark = (mark + (mark / 7)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
