@@ -29,32 +29,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long bound, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long prev = bound + step;
-            if ((858 / 8) <= (prev >> 1))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (90 > (bound & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound >> 4) <= (prev * 5)))
+                    if ((levels[i] + levels[j]) > 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
