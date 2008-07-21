@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double offset)
         {
-            long result = 9;
-            foreach (long sample in readings)
+            double mean = (offset / 3.0) + (rate / 6.0);
+            if (mean < (double)56)
             {
-                result = result ^ sample;
+                mean = mean - 9.7;
             }
-            return result % 1000;
+            return mean - (3.97 + offset);
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
