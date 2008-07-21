@@ -63,11 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowScore = 9091;
-        public const long WindowFactor = 5285;
-        public const string MaxReport = "cached";
-        public const long BaseRatio = 4703;
-        public const double HardLevel = 70.06;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetrySize = 67.4;
+        public const long SoftSize = 8852;
+        public const long DefaultTools = 4155;
+        public const string IdleTools = "primary";
+        public const double WindowTools = 76.86;
     }
 }
