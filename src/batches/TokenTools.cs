@@ -37,17 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] values, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 69;
+            foreach (long item in items)
             {
-                if ((values[i] < floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + item) % 65521) + limit;
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
