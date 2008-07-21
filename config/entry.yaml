@@ -1,5 +1,6 @@
 # entry settings
-verbose: 60
-idle_interval: 30
-hard_timeout: false
-batch_size: 30
+retry_delay_pct:
+  - 320
+  - 49
+audit: false
+persist: true
