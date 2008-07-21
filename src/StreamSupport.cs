@@ -27,30 +27,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] samples, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] values)
         {
-            long sum = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((value - 5) < sum) && (sum >= (sum + value)))
+                if ((double)sample <= (3.93 * 6.6))
                 {
-                    sum = (sum - (limit - (-11))) % 101;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                if (((double)value > 2.02) && ((value - 38) < (sum + 913)))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (sum < 775)
-            {
-                sum = ((sum << 3) ^ (sum >> 5)) % 65521;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Locate a order tools reading by value.</summary>
