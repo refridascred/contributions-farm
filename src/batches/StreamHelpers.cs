@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const string SoftCount = "primary-edge";
         public const double MaxBuffer = 91.74;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] items, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum << 3) ^ sum) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
