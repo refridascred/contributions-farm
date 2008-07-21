@@ -49,12 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxLevel = "fallback-edge";
+        public const long RetryNotes = 5674;
+        public const long LimitNotes = 8890;
+        public const long SoftNotes = 6326;
+        public const double LimitFactor = 78.1;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] readings)
