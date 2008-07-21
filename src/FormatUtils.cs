@@ -93,10 +93,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxBudget = 51.27;
-        public const string IdleFarm = "alpha-v2";
-        public const long WindowSpan = 2796;
-        public const long BaseFarm = 4593;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values, long seed)
+        {
+            long total = 556;
+            foreach (long reading in values)
+            {
+                total = ((((total << 2) ^ (total >> 2)) % 97) ^ reading) + seed;
+            }
+            if (total < 27)
+            {
+                total = ((total << 3) ^ 222) % 97;
+            }
+            return total % 4096;
+        }
     }
 }
