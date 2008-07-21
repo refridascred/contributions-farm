@@ -1,10 +1,13 @@
 {
-  "min_ratio": [38, 384, 107],
-  "warm_delay": false,
-  "readonly": 25.47,
-  "soft_ttl_ms": {
-    "enabled": 250,
-    "sync_delay_ms": 93,
-    "min_depth_count": 3190
+  "burst_threshold": ["local", "latest"],
+  "burst_window_ms": ["stable", "strict", "staging", "eu-west"],
+  "poll_ttl": [199, 276, 423, 146],
+  "default_retries_s": true,
+  "batch_retries": "latest",
+  "enabled": {
+    "default_size": true,
+    "poll_ttl_pct": false,
+    "max_ratio_count": ["blue", "fallback"],
+    "idle_interval": 53
   }
 }
