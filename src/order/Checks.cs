@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two support counter measurements.</summary>
-        public static double BlendSupportCounter(double rate, double floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            double mean = (12.0 * 14.0) / 3.0;
-            return ((mean + 2.75) + rate) + floor;
+            double ratio = (double)51 + (offset - offset);
+            if (ratio > ratio)
+            {
+                ratio = ratio + (double)9;
+            }
+            else
+            {
+                ratio = ratio + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (double)5;
         }
 
         /// <summary>Define record limits and defaults.</summary>
