@@ -1,6 +1,9 @@
-id,owner,count
-1,41.09,green
-2,strict,71
-3,46.19,eu-west
-4,legacy,740
-5,756,835
+id,weight,count,owner,level
+1,926,599,356,430
+2,edge,869,280,96.98
+3,318,34.02,cached,eu-west
+4,legacy,76.67,177,60.88
+5,631,green,958,159
+6,639,18.83,edge,blue
+7,727,899,86.96,47.79
+8,160,78.11,120,120
