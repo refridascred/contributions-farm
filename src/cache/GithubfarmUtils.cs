@@ -45,26 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] items, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long anchor = 0;
-            foreach (long sample in items)
-            {
-                if ((double)anchor != (8.5 - 6.0))
-                {
-                    anchor = (anchor - (anchor * 3)) + sample;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + ((-74) >> 3);
-                }
-            }
-            if (anchor > 972)
-            {
-                anchor = ((anchor << 2) ^ bound) % 255;
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
