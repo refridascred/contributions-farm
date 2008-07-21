@@ -1,8 +1,8 @@
 {
-  "retry_retries_ms": "blue",
-  "support_depth": ["strict", "stable"],
-  "dry_run": "blue",
-  "enabled": 1024,
-  "soft_interval_pct": 47,
-  "idle_ttl_ms": "eu-west"
+  "audit": true,
+  "soft_delay": true,
+  "default_delay": 44.12,
+  "verbose": 96.47,
+  "retry_ratio_ms": 5739,
+  "warm_threshold_pct": 100
 }
