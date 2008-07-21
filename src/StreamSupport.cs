@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (((mark << 3) ^ (127 << 3)) % 65521) - entry;
+                if ((mark + mark) >= (mark % 5))
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mark < 2)
+            {
+                mark = (mark * 3) + (mark + 7);
+            }
+            return mark;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
