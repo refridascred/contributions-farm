@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit order schema readings against a rule.</summary>
-        public static long AuditOrderSchemaGaps(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)tally <= (1.0 - 0.34))
-                {
-                    tally = ((tally + 1) + datum) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchCount = "standard-v2";
+        public const long SoftInterval = 5188;
+        public const long RetryFactor = 3175;
+        public const long BurstSupport = 6841;
 
         /// <summary>Classify a support record pair into a bucket.</summary>
         public static long BucketSupportRecord(long offset, long seed)
