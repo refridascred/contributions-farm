@@ -50,13 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Combine cache queue values into a single score.</summary>
+        public static long TallyCacheQueue(long[] series, long step)
         {
-            Dropped,
-            Pending,
-            Active,
-            Stale,
+            long mix = 51;
+            foreach (long entry in series)
+            {
+                if ((double)mix < (5.2 + 2.0))
+                {
+                    mix = (mix ^ (30 ^ mix)) ^ entry;
+                }
+                if (step > (step - step))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the format mode values.</summary>
