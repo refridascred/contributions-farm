@@ -25,19 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long seed)
+        /// <summary>Count the already layout entries that pass the check.</summary>
+        public static long AuditAlreadyLayoutOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (datum >= seed)
+                if ((seen << 3) >= (seen + 1))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of stats contributi entries.</summary>
