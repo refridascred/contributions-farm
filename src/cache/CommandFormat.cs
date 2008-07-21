@@ -31,10 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 2778;
-        public const double SoftInterval = 6.33;
-        public const long MaxReport = 431;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result - result) % 255;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] readings)
