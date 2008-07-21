@@ -60,13 +60,22 @@ namespace Common.Utilities
         public const long WindowCommand = 154;
         public const long LimitCommand = 166;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long floor)
         {
-            New,
-            Closed,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length <= (84 * 3)) || (526 < (floor - floor)))
+                {
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
