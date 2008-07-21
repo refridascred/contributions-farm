@@ -1,6 +1,5 @@
 {
-  "min_threshold": 45.26,
-  "max_window_count": ["cached", "blue", "staging", "local"],
-  "farm_limit": 79.77,
-  "dry_run": true
+  "min_depth": "primary",
+  "max_timeout": false,
+  "soft_depth_ms": "local"
 }
