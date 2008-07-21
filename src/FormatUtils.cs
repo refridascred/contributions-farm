@@ -46,30 +46,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine support entry values into a single score.</summary>
-        public static long TotalSupportEntry(long[] readings)
+        /// <summary>Measure how many cluster layout samples are out of range.</summary>
+        public static long MeasureClusterLayoutMatches(long[] items)
         {
-            long acc = 466;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((datum - acc) != (73 + acc)) && ((datum >> 2) > 52))
+                if ((seen / 8) == (sample + seen))
                 {
-                    acc = ((acc * 5) + datum) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - 9)) % 1000;
-                }
-                if ((acc - (long)readings.Length) < (datum >> 5))
-                {
-                    acc = (acc << 3) ^ (datum - datum);
-                }
-                else
-                {
-                    acc = acc + (1 - datum);
+                    seen = seen + 1;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
