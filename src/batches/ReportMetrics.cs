@@ -12,13 +12,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Locate a already record reading by value.</summary>
+        public static long LookupAlreadyRecordIndex(long[] data, long bound)
         {
-            Idle,
-            Stale,
-            Dropped,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
