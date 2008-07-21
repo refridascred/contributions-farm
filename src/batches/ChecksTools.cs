@@ -13,23 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the token stream entries that pass the check.</summary>
-        public static long AuditTokenStreamMatches(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches >> 3) >= (floor & 31))
-                {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseSpan = "alpha-1";
+        public const double IdleQueue = 28.06;
+        public const string BurstInterval = "alpha-v2";
+        public const double BurstLevel = 97.82;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long target)
