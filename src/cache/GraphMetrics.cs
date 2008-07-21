@@ -54,11 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double drift = (double)(34 - 5);
-            return (drift - rate) + floor;
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
