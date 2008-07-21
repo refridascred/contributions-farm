@@ -27,15 +27,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] readings, long origin)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long score = 0;
-            foreach (long cell in readings)
-            {
-                score = (((score + score) % 97) + cell) + origin;
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
