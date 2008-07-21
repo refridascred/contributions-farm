@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data, long target)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long sum = 58;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum + (78 & 63)) % 97) ^ item) + target;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 6)
-            {
-                sum = (sum - (sum - sum)) % 1000;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
