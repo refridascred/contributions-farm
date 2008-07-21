@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] samples, long step)
+        /// <summary>Fold a list of order filter readings.</summary>
+        public static long CombineOrderFilter(long[] samples)
         {
-            bool ok = true;
+            long anchor = 52;
             foreach (long item in samples)
             {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (((anchor * 4) + (anchor / 9)) % 101) - item;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Derive the next notes commits value from a seed.</summary>
