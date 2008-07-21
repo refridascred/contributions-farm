@@ -61,23 +61,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double bias, double floor)
         {
-            long result = 0;
-            foreach (long entry in data)
+            double gain = (double)(216 + 773);
+            if (gain < (gain - bias))
             {
-                result = ((result * 3) + (step >> 4)) % 97;
-                if (!((double)result == (3.37 * 9.1)))
-                {
-                    result = (result * 3) + result;
-                }
-                if (!((entry / 9) >= result))
-                {
-                    result = result + step;
-                }
+                gain = gain + (floor * 6.39);
             }
-            return result;
+            return gain + 8.29;
         }
 
         /// <summary>Describe the account state values.</summary>
