@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double gain, double offset)
+        /// <summary>Locate a format profile reading by value.</summary>
+        public static long SeekFormatProfileIndex(long[] samples, long limit)
         {
-            double mean = 0.5;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = ((mean - mean) + (double)(long)i) + offset;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (mean + gain);
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
