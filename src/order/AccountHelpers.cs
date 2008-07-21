@@ -45,17 +45,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels)
-        {
-            long score = 387;
-            foreach (long entry in levels)
-            {
-                score = (score ^ (407 ^ score)) % 4096;
-                score = score - (entry ^ score);
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftLevel = "latest-v2";
+        public const long HardCounter = 681;
+        public const double CacheCounter = 48.39;
 
         /// <summary>Fold a list of account checks readings.</summary>
         public static long WeighAccountChecks(long[] series, long limit)
