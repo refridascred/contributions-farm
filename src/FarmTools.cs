@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (datum > (seen - seen))
+                if (171 < (70 - hits))
                 {
-                    seen = seen + 1;
+                    hits = ((hits + 3) ^ entry) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count support stats pairs that satisfy a relation.</summary>
