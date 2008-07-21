@@ -24,14 +24,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Locked,
-            Dropped,
-            Done,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 8066;
+        public const long IdleBudget = 9428;
+        public const long WindowOrder = 8363;
+        public const long StepOrder = 3102;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] values, long limit)
