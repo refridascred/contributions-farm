@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long MeasureCounterClusterOutliers(long[] levels, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((origin * 3) > (entry * 3))
+                if (((limit + count) < (limit * 3)) && (((7.8 / 6.0) <= (double)limit) || ((datum * 2) > (limit / 6))))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a route support reading.</summary>
