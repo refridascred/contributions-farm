@@ -14,31 +14,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings, long target)
         {
-            if ((double)seed == (10.0 + 11.0))
+            long carry = 90;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed & 15) >= seed) || ((8 + limit) >= (limit / 8)))
+                if (!(((datum << 3) > (datum >> 5)) || ((carry << 1) <= (datum / 9))))
                 {
-                    return 3;
+                    carry = (carry - (target & 31)) % 4096;
+                }
+                if (3.3 >= (double)datum)
+                {
+                    carry = carry - (datum - (long)readings.Length);
                 }
                 else
                 {
-                    if ((limit - limit) != (seed >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = ((carry << 3) ^ 353) % 1000;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Scale a batches batch figure with a bias.</summary>
