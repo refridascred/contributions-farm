@@ -1,6 +1,17 @@
 {
-  "readonly": 60,
-  "min_threshold_ms": "blue",
-  "session_ratio": 6716,
-  "min_interval": 6
+  "max_capacity_count": "fallback",
+  "idle_capacity_count": false,
+  "idle_depth": ["standard", "staging", "edge"],
+  "min_size_ms": {
+    "dry_run": true,
+    "retry_threshold": 6605,
+    "burst_timeout": [79, 467, 415],
+    "idle_ratio_s": 3576
+  },
+  "readonly": [397, 338, 201],
+  "hard_window": {
+    "account_capacity": true,
+    "poll_threshold_count": "fallback",
+    "schema_interval": 60
+  }
 }
