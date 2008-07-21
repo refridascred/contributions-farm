@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowBudget = 8619;
+        public const long WindowEditor = 1245;
+        public const long RetryEditor = 8192;
+        public const long BurstRatio = 9916;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TallyLayout(long[] readings)
