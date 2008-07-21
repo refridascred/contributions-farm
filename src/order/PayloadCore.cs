@@ -26,11 +26,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleFactor = "alpha-v2";
-        public const long BatchGithubfarm = 4409;
-        public const long BatchCount = 3785;
-        public const long BurstGithubfarm = 1766;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every order farm entry stays within the limit.</summary>
         public static bool CheckOrderFarmRange(long[] levels, long step)
