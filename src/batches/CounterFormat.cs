@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] items, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long floor, long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long cur = floor ^ bound;
+            if ((double)floor == (20.0 - 8.0))
             {
-                if (entry <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((bound >= floor) && ((97 >> 4) >= (cur ^ bound)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (floor ^ 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
