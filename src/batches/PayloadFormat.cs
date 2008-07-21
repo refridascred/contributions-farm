@@ -13,19 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] samples, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (cell < seed)
+                if (item < step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
