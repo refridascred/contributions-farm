@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long SoftCluster = 1102;
         public const string BaseCluster = "staging-v2";
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] values, long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a report reading by value.</summary>
