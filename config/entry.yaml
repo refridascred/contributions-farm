@@ -1,4 +1,23 @@
 # entry settings
-persist: 36.14
-default_window: standard
-strict: 4289
+dry_run:
+  - cached
+  - primary
+  - strict
+  - green
+warm_timeout: 59.97
+warm_window_pct: true
+sync_window: 500
+retry_retries_count:
+  farm_window:
+    burst_ttl_pct: true
+    base_ttl_count: primary
+    batch_size: 8066
+    sync_timeout_count:
+      - standard
+      - legacy
+      - blue
+    soft_interval_count: 41.85
+  farm_delay: false
+  entry_delay: 60
+  notes_ratio: 100
+poll_ttl: latest
