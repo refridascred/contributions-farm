@@ -109,10 +109,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 385;
-        public const long HardSpan = 2761;
-        public const string HardFactor = "standard";
-        public const string HardBudget = "strict-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxBudget = 51.27;
+        public const string IdleFarm = "alpha-v2";
+        public const long WindowSpan = 2796;
+        public const long BaseFarm = 4593;
     }
 }
