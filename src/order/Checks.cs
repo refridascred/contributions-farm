@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (ratio + 6.2)) + (double)(long)i;
-            }
-            return load - ratio;
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
