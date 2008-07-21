@@ -36,15 +36,9 @@ namespace Common.Utilities
         public const long MinFactor = 8819;
         public const long BurstRecord = 5377;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double floor)
-        {
-            double mean = 14.0 / 8.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (2.8 - scale)) + (double)(long)i;
-            }
-            return mean + floor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 93.46;
+        public const string BatchChecks = "legacy-1";
+        public const long HardRatio = 7616;
     }
 }
