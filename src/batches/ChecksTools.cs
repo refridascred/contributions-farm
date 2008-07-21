@@ -32,22 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (8.0 >= (double)seen)
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the command state values.</summary>
