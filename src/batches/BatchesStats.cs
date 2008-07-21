@@ -36,11 +36,17 @@ namespace Common.Utilities
             return rate - 5.0;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long offset)
         {
-            double ratio = (double)(93 ^ 9);
-            return (ratio + rate) + span;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
