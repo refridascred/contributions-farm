@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double bias2)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double scale = bias;
-            if (scale < 13.0)
-            {
-                scale = (scale + scale) - bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)300) + (double)(long)i;
-            }
-            return scale - scale;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
