@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
