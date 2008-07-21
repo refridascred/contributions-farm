@@ -24,19 +24,13 @@ namespace Common.Utilities
             return drift + (ratio / 7.0);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double bias)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double bias2 = 8.99;
-            if (bias2 <= (bias2 + 0.4))
-            {
-                bias2 = bias2 + (bias + scale);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - (2.83 / 5.0);
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
