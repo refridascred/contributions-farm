@@ -1,8 +1,7 @@
 {
-  "support_limit": 1024,
-  "max_limit_count": false,
-  "githubfarm_limit": ["open", "eu-west"],
-  "sync_depth_pct": true,
-  "min_ratio": "eu-west",
-  "payload_capacity": "staging"
+  "dry_run": true,
+  "hard_delay_pct": 46.83,
+  "soft_threshold": false,
+  "compress": "stable",
+  "cache_window": 8.73
 }
