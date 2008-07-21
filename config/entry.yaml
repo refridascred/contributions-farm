@@ -1,10 +1,5 @@
 # entry settings
-enabled: cached
-persist:
-  poll_ttl: standard
-  persist: 500
-  batches_interval: true
-  default_ttl_count: 45.28
-hard_retries_s: true
-command_ttl: true
-compress: 44.11
+warm_retries: false
+account_ratio: 24.72
+poll_delay_pct: local
+base_ttl: true
