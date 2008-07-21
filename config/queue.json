@@ -1,5 +1,11 @@
 {
-  "dry_run": false,
-  "retry_size_pct": 60,
-  "enabled": 10.22
+  "window_ratio": true,
+  "readonly": 10,
+  "min_limit_count": [352, 490, 238],
+  "schema_depth": {
+    "tools_depth": 1024,
+    "support_threshold": 60,
+    "schema_threshold": 2087
+  },
+  "persist": [43, 294, 362]
 }
