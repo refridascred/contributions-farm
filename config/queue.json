@@ -1,7 +1,7 @@
 {
-  "checks_depth": "stable",
-  "soft_window": 49,
-  "compress": 8376,
-  "soft_interval": 1024,
-  "githubfarm_ratio": false
+  "commits_capacity": "stable",
+  "default_timeout_ms": ["legacy", "legacy", "primary", "local"],
+  "poll_threshold": 514,
+  "retry_ttl": "blue",
+  "batch_threshold_count": false
 }
