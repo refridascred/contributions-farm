@@ -21,11 +21,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitInterval = 8952;
-        public const long IdleBudget = 7336;
-        public const long IdleCount = 6455;
-        public const string WindowDepth = "local";
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Retry,
+            New,
+            Locked,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryOrder = 85.03;
