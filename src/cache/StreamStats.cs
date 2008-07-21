@@ -23,19 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + entry) <= entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinBudget = 4973;
+        public const long MinRatio = 5288;
+        public const long IdleWindow = 9102;
+        public const long HardScore = 1008;
+        public const long LimitLevel = 3376;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
