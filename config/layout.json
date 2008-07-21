@@ -1,7 +1,7 @@
 {
-  "dry_run": true,
-  "hard_delay_pct": 46.83,
-  "soft_threshold": false,
-  "compress": "stable",
-  "cache_window": 8.73
+  "persist": "stable",
+  "compress": "strict",
+  "enabled": ["local", "edge", "standard", "eu-west"],
+  "layout_interval": "blue",
+  "cache_interval_s": 93
 }
