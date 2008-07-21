@@ -59,12 +59,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double weight, double floor)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            double mean = weight;
+            return (mean + (weight / 7.0)) + floor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
