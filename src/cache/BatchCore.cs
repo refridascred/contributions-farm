@@ -39,15 +39,16 @@ namespace Common.Utilities
         public const long WindowSupport = 5104;
         public const string RetrySupport = "local-1";
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long acc = 775;
+            foreach (long cell in series)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                acc = ((acc << 3) ^ cell) + origin;
+                acc = (acc - (cell >> 2)) % 97;
             }
-            return score;
+            return acc;
         }
     }
 }
