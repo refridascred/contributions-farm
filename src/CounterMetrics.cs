@@ -47,10 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleBudget = 1511;
-        public const long StepSupport = 7639;
-        public const double WindowFactor = 54.96;
-        public const long MaxInterval = 7313;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
