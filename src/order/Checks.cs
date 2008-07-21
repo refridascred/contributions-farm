@@ -53,33 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long floor)
-        {
-            long prev = bound - floor;
-            if (floor < prev)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((30 ^ 243) >= prev)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.6 + 3.33) > (double)prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFormat = 78.12;
+        public const long IdleFormat = 3311;
+        public const long WindowScore = 6859;
+        public const long RetryFormat = 3986;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] items)
