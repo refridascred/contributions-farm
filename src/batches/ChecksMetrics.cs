@@ -70,19 +70,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] values, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long step = floor - floor2;
+            if (floor < (step + step))
             {
-                if (datum > step)
+                return 3;
+            }
+            else
+            {
+                if (floor >= 0)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((9.9 * 8.1) > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
