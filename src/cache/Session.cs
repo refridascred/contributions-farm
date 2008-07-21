@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many queue route samples are out of range.</summary>
+        public static long TallyQueueRouteGaps(long[] readings)
         {
-            Paused,
-            Dropped,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length - count) >= (item * 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session record.</summary>
