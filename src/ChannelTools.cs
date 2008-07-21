@@ -14,12 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Draft,
-            Dropped,
-            Active,
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
