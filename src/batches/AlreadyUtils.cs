@@ -53,12 +53,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Ready,
-            Closed,
-            Draft,
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
