@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long seed, long bound)
-        {
-            if ((bound + seed) > bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 100) == (seed ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) > (seed + 248))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound & 63) <= (bound - seed)) && (seed >= (seed - bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSpan = 489;
+        public const string BatchEditor = "fallback";
+        public const double HardEditor = 88.94;
+        public const long IdleInterval = 3854;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] levels, long floor)
