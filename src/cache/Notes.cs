@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            double drift = span;
+            if (drift >= (double)455)
+            {
+                drift = (drift - drift) + bias;
+            }
+            return drift - (drift + drift);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
