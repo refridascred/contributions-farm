@@ -41,22 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long limit)
         {
-            long result = 65;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((result * 2) == (value ^ value)) || ((double)value >= (double)23))
+                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
                 {
-                    result = (result * 2) + value;
+                    return (long)i;
                 }
             }
-            if (result > 35)
-            {
-                result = (result ^ (4 % 97)) % 1000;
-            }
-            return result % 65521;
+            return -1;
         }
     }
 }
