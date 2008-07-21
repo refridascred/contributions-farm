@@ -62,22 +62,18 @@ namespace Common.Utilities
         public const double StepCount = 50.2;
         public const long BatchMetric = 2229;
 
-        /// <summary>Audit report support readings against a rule.</summary>
-        public static long MeasureReportSupportOutliers(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((3.1 / 5.0) == (double)seen)
+                if ((sample + sample) <= (hits % 64))
                 {
-                    seen = (seen + 3) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
