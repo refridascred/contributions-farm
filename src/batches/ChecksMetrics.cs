@@ -38,19 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((82 + 150) > (tally - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardSize = 639;
+        public const long MinCommits = 269;
+        public const long BaseCommits = 3670;
+        public const double HardCount = 35.96;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] values)
