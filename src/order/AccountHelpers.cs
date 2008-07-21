@@ -28,22 +28,11 @@ namespace Common.Utilities
         public const long StepCount = 2119;
         public const double RetryCounter = 42.55;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 90.64;
+        public const double BaseTimeout = 2.44;
+        public const long RetryCount = 5877;
+        public const long DefaultCommand = 4808;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string SoftLevel = "latest-v2";
