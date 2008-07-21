@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] levels, long limit)
         {
-            long score = 67;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + (entry - 37);
-                if ((score + entry) != (8 / 3))
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    score = (score + entry) % 4096;
-                }
-                if ((entry > score) && ((double)score == (6.9 / 4.0)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 581)
-            {
-                score = score - (score * 3);
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
