@@ -1,11 +1,6 @@
 # support settings
-audit: false
-contributi_depth:
-  - 454
-  - 393
-  - 242
-  - 338
-soft_timeout_pct: 8716
-record_timeout:
-  - legacy
-  - eu-west
+retry_delay: staging
+order_window: 89
+base_delay_ms: green
+soft_threshold: 30
+default_timeout_pct: 54
