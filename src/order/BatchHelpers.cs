@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every contributi metric entry stays within the limit.</summary>
-        public static bool VerifyContributiMetricBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 1254;
+        public const long SoftSpan = 6350;
+        public const long MinLevel = 9162;
+        public const long MaxGraph = 4005;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
