@@ -28,20 +28,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a support graph counter forward.</summary>
-        public static long StepSupportGraph(long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (bound < ((-316) << 2))
-                {
-                    anchor = ((anchor * 4) + bound) % 255;
-                }
-                anchor = (anchor + (bound & 127)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Active,
+            Draft,
+            Synced,
         }
     }
 }
