@@ -29,9 +29,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleBudget = 57.56;
-        public const string MaxEditor = "stable-1";
-        public const string BaseSpan = "latest-1";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long floor, long seed)
+        {
+            if (!((5.0 - 8.0) != (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed + seed) >= (floor - 66)) && ((double)seed > (4.0 * 3.1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
