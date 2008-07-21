@@ -57,22 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate format commits samples.</summary>
-        public static long DigestFormatCommits(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            long mix = 54;
-            foreach (long item in levels)
+            long carry = 864;
+            foreach (long reading in samples)
             {
-                if (mix > (mix & 3))
+                if ((reading * 5) >= (reading >> 4))
                 {
-                    mix = ((mix * 3) + mix) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (item * 5)) % 65521;
+                    carry = (carry ^ (carry & 7)) % 1000;
                 }
             }
-            return mix % 65521;
+            return carry % 1000;
         }
     }
 }
