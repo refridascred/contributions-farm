@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double scale, double offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long floor)
         {
-            double load = 3.93;
-            return ((load - 5.9) + scale) + offset;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context mode values.</summary>
