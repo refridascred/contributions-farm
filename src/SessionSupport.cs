@@ -40,9 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1116;
-        public const long MaxRoute = 8270;
-        public const long SoftCount = 6662;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+        }
     }
 }
