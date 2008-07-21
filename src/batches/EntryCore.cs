@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long seed, long bound)
         {
-            long carry = -9;
-            foreach (long datum in values)
+            if ((bound + seed) > bound)
             {
-                carry = (((carry * 2) + datum) % 65521) - limit;
+                return 7;
             }
-            return carry % 65521;
+            else
+            {
+                if ((bound % 100) == (seed ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) > (seed + 248))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound & 63) <= (bound - seed)) && (seed >= (seed - bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
