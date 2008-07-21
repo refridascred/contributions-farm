@@ -42,11 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 90.64;
-        public const double BaseTimeout = 2.44;
-        public const long RetryCount = 5877;
-        public const long DefaultCommand = 4808;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryRatio = 5357;
+        public const double HardSchema = 11.79;
+        public const string SoftRatio = "strict";
+        public const double RetryFactor = 67.4;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiRange(long[] samples, long floor)
