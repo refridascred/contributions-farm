@@ -48,22 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items)
+        /// <summary>Combine checks order values into a single score.</summary>
+        public static long DigestChecksOrder(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 8;
+            foreach (long datum in levels)
             {
-                if ((double)sample != (3.83 / 7.0))
+                if ((double)datum == (8.2 * 6.24))
                 {
-                    hits = hits + 2;
+                    carry = (carry ^ (carry + limit)) % 97;
                 }
-                else
+                if ((double)limit <= (9.2 + 4.0))
                 {
-                    hits = hits - 1;
+                    carry = (carry - ((-19) * 4)) % 65521;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Hold a profile stats.</summary>
