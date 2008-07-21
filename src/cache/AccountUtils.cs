@@ -20,22 +20,38 @@ namespace Common.Utilities
             return gain2 + (double)94;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] levels, long bound)
+        /// <summary>Rank cache filter input into a small class.</summary>
+        public static long ClassifyCacheFilter(long seed, long origin)
         {
-            long result = 848;
-            foreach (long reading in levels)
+            if (!((double)seed == (9.8 + 0.54)))
             {
-                if ((double)result == (double)reading)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed < (12.0 + 6.6))
                 {
-                    result = ((result << 2) ^ (reading % 5)) + bound;
+                    return 4;
                 }
                 else
                 {
-                    result = ((result * 2) + 856) % 97;
+                    if (((seed & 7) < (37 % 5)) || ((origin << 2) >= seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 64) <= (origin - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
