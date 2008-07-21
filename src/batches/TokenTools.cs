@@ -31,17 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] > limit)
+                sum = (sum << 2) ^ (origin + origin);
+                if (0 < (sum % 2))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (sum / 2)) % 101;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
