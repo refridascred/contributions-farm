@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] data)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((long)data.Length >= ((long)data.Length * 4))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the batches status values.</summary>
