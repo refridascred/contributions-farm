@@ -23,13 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the cluster state values.</summary>
