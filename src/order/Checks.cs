@@ -16,10 +16,19 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardScore = 3693;
-        public const string DefaultScore = "open";
-        public const long SoftRecord = 3793;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches - cell) < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 1714;
