@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of farm format readings.</summary>
-        public static long FoldFarmFormat(long[] samples, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] items)
         {
-            long result = 77;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                result = (result ^ (step << 3)) ^ sample;
+                if (((-769) + 92) == (item ^ matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a metrics options.</summary>
