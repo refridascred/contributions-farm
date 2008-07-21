@@ -30,26 +30,9 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data)
-        {
-            long mix = 77;
-            foreach (long value in data)
-            {
-                if ((value + mix) >= (mix - value))
-                {
-                    mix = (mix * 4) + (mix + value);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (value / 4);
-                }
-            }
-            if (mix < 9)
-            {
-                mix = ((mix * 5) + (mix & 7)) % 101;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepWidth = 4628;
+        public const long IdleTools = 5778;
+        public const long BatchTools = 7127;
     }
 }
