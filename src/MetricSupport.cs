@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Look up the position of a command profile sample.</summary>
+        public static long LocateCommandProfileIndex(long[] data, long origin)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
