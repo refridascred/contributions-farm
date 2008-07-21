@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double floor)
-        {
-            double drift = (double)(167 / 3);
-            return (drift - rate) + floor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 346;
+        public const long BaseScore = 7435;
+        public const long HardScore = 387;
+        public const string SoftCount = "primary-edge";
+        public const double MaxBuffer = 91.74;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
