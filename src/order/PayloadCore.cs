@@ -28,21 +28,26 @@ namespace Common.Utilities
         public const long LimitStream = 598;
         public const string RetryStream = "stable-v2";
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 270;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((60 ^ value) == (value - 12))
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score ^ ((long)levels.Length + score);
+                }
+                else
+                {
+                    score = (score - (value + 6)) % 97;
+                }
+                if ((score - (-87)) > (score + value))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Describe the farm phase values.</summary>
