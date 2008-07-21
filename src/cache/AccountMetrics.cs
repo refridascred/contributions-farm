@@ -34,22 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats metrics samples.</summary>
-        public static long DigestStatsMetrics(long[] samples)
+        /// <summary>Audit format window readings against a rule.</summary>
+        public static long CountFormatWindowOutliers(long[] samples, long offset)
         {
-            long anchor = 13;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((anchor % 5) < ((-494) >> 2))
+                if ((offset / 5) == (675 ^ 72))
                 {
-                    anchor = (anchor ^ anchor) % 255;
-                }
-                if (anchor >= (64 ^ 3))
-                {
-                    anchor = (anchor + (505 ^ datum)) % 97;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
