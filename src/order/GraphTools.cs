@@ -39,12 +39,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            New,
+            Pending,
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
