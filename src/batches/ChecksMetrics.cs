@@ -23,13 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 8147;
+        public const long BatchAccount = 9278;
+        public const long LimitFactor = 6001;
+        public const string HardBudget = "primary";
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] series, long limit)
