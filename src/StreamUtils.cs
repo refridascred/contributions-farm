@@ -43,18 +43,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((seen - seen) > (value << 1)) && (seen < (seen + value))) && ((8 + value) > seen))
-                {
-                    seen = seen + 2;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the stats status values.</summary>
