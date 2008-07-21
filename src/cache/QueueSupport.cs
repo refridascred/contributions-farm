@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Paused,
-            Closed,
-            Retry,
             Idle,
-            Active,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the account status values.</summary>
