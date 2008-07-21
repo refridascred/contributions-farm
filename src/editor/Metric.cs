@@ -33,12 +33,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Failed,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 6367;
+        public const long HardPayload = 6276;
+        public const long WindowInterval = 8612;
+        public const double IdleInterval = 14.5;
     }
 }
