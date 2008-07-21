@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxScore = 8723;
-        public const string CacheSpan = "alpha-v2";
-        public const string RetryAlready = "cached";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long origin)
+        {
+            long carry = 675;
+            foreach (long cell in readings)
+            {
+                carry = (carry - (origin / 7)) ^ cell;
+            }
+            if (carry > 700)
+            {
+                carry = ((carry * 5) + (origin + carry)) % 4096;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] values)
