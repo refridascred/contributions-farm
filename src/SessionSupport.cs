@@ -16,19 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (sample != step)
+                if (!(((datum + datum) < datum) || ((count + datum) > (count + count))))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Locate a token reading by value.</summary>
