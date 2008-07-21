@@ -1,5 +1,8 @@
 {
-  "audit": 8399,
-  "retry_retries": 87,
-  "min_depth": 1242
+  "session_retries": "legacy",
+  "commits_window": "cached",
+  "enabled": [145, 361, 337],
+  "persist": "green",
+  "retry_retries_pct": 41.79,
+  "default_limit_pct": [314, 376, 140, 75]
 }
