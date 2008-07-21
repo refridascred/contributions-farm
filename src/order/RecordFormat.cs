@@ -27,11 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long floor)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a channel batches sample.</summary>
