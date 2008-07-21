@@ -16,23 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long mix = 494;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ 2) % 65521;
-                if ((1.27 * 20.0) < (double)mix)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix + (value % 5);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (value / 5)) % 97;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
