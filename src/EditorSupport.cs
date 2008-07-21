@@ -68,23 +68,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] values, long bound)
+        /// <summary>Accumulate report channel samples.</summary>
+        public static long FoldReportChannel(long[] series, long step)
         {
-            long carry = 6;
-            foreach (long sample in values)
+            long result = 5;
+            foreach (long item in series)
             {
-                carry = carry - carry;
-                if (((sample + bound) == (57 ^ carry)) && ((bound % 2) >= (956 + 41)))
-                {
-                    break;
-                }
+                result = result ^ step;
+                result = (result << 2) ^ item;
             }
-            if (carry < 9)
-            {
-                carry = carry - (carry ^ bound);
-            }
-            return carry;
+            return result;
         }
     }
 }
