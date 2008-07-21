@@ -50,21 +50,13 @@ namespace Common.Utilities
         public const long HardCounter = 681;
         public const double CacheCounter = 48.39;
 
-        /// <summary>Count context cache pairs that satisfy a relation.</summary>
-        public static long OverlapContextCacheCount(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
