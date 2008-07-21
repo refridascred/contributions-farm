@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
