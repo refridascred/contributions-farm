@@ -18,13 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] series, long bound)
         {
-            Retry,
-            Failed,
-            Draft,
-            New,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
