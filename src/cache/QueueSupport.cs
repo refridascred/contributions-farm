@@ -23,10 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 37.31;
-        public const double SoftSpan = 38.2;
-        public const double IdleFactor = 80.39;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double bias, double span)
