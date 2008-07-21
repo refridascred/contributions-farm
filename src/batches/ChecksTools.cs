@@ -25,21 +25,10 @@ namespace Common.Utilities
         public const long LimitBudget = 3602;
         public const long CacheTimeout = 3595;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardCount = 6712;
+        public const long WindowMetric = 3442;
+        public const double DefaultMetric = 47.16;
+        public const long MaxMetric = 6454;
     }
 }
