@@ -13,11 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 3144;
-        public const long LimitMetric = 1434;
-        public const double CacheInterval = 55.27;
-        public const double MaxSpan = 91.81;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
