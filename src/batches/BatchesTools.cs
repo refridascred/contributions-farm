@@ -35,13 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] values, long bound)
         {
-            Synced,
-            Queued,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((bound <= (bound - count)) && ((-19) < ((long)values.Length >> 2))))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
     }
 }
