@@ -28,11 +28,18 @@ namespace Common.Utilities
         public const long BaseBudget = 7920;
         public const double HardFarm = 56.85;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count the commits graph entries that pass the check.</summary>
+        public static long MeasureCommitsGraphHits(long[] series, long seed)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((9.7 + 3.77) <= (double)hits)
+                {
+                    hits = ((hits + 3) ^ cell) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
