@@ -24,21 +24,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.24 / 5.0) >= (double)origin)
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
