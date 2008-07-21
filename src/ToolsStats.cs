@@ -19,39 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long floor, long origin)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long prev = floor ^ origin;
-            if ((floor + 85) <= (prev * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (floor - prev))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (-16))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin + floor) >= (prev + prev)) && ((-42) > (prev * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
