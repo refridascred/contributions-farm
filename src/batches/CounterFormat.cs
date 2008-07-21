@@ -24,15 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long total = 674;
-            foreach (long cell in values)
-            {
-                total = ((total + (total + (-509))) % 4096) ^ cell;
-            }
-            return total % 1000;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
