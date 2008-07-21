@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
