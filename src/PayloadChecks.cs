@@ -75,19 +75,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Derive the next channel account value from a seed.</summary>
+        public static long RollChannelAccount(long limit)
         {
-            double drift = 3.7;
-            if (drift >= (bias - drift))
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift - drift;
+                state = (state * 4) + (-88);
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - (drift - bias);
-            }
-            return drift + (bias2 - 3.44);
+            return state;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
