@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double scale, double offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double gain = (double)(38 - 1);
-            if (gain <= gain)
-            {
-                gain = gain + offset;
-            }
-            return gain - (scale / 9.0);
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up editor queue samples.</summary>
