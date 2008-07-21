@@ -36,30 +36,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long TallyCounterStats(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = 82;
-            foreach (long entry in values)
-            {
-                if (!(total >= (entry - entry)))
-                {
-                    total = total - (entry & 63);
-                }
-                if (((23 + entry) >= entry) && ((entry % 60) <= (entry - 3)))
-                {
-                    total = (total ^ 94) % 4096;
-                }
-                else
-                {
-                    total = (total + entry) % 255;
-                }
-            }
-            if (total < (-9))
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            Stale,
+            Dropped,
+            Locked,
+            Draft,
         }
     }
 }
