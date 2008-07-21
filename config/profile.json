@@ -1,12 +1,6 @@
 {
-  "min_ratio_s": "local",
-  "persist": "edge",
-  "checks_ratio": "fallback",
-  "base_retries_pct": {
-    "tools_window": 21.4,
-    "cache_interval_ms": "latest",
-    "support_delay": 5923
-  },
-  "batch_retries": ["latest", "blue", "fallback"],
-  "flush_retries": "cached"
+  "hard_limit": ["edge", "green", "open", "stable"],
+  "batches_delay": true,
+  "strict": 70,
+  "audit": 55
 }
