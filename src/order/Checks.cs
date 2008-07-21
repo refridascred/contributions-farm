@@ -13,18 +13,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Locate a githubfarm buffer reading by value.</summary>
-        public static long FindGithubfarmBufferIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardScore = 3693;
+        public const string DefaultScore = "open";
+        public const long SoftRecord = 3793;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LookupPayloadIndex(long[] levels, long bound)
