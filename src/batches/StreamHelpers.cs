@@ -30,17 +30,23 @@ namespace Common.Utilities
         public const string SoftWidth = "strict-v2";
         public const double RetryEditor = 54.74;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] samples, long target)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = weight;
+            if (weight2 > weight2)
             {
-                if ((samples[i] < target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (double)300;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (weight2 / 4.0)) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Match up batch report samples.</summary>
