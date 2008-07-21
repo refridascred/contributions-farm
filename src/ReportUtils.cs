@@ -46,38 +46,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long limit)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if ((limit + bound) > (limit - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + bound) < (7 + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((194 >> 3) > (bound - 382))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit / 3) != (bound ^ limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Done,
+            Closed,
+            Failed,
         }
     }
 }
