@@ -13,12 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 5137;
-        public const string CacheNotes = "standard-1";
-        public const double MaxNotes = 78.74;
-        public const long CacheSpan = 2899;
-        public const double SoftNotes = 75.12;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 7124;
