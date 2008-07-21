@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
