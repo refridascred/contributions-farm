@@ -20,32 +20,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long origin, long origin2)
+        /// <summary>Adjust a cache tools reading.</summary>
+        public static double SmoothCacheTools(double scale, double offset)
         {
-            long span = origin ^ origin2;
-            if ((span <= (span & 3)) && ((double)3 != (double)origin2))
+            double mean = 6.03 - scale;
+            if (mean > 10.0)
             {
-                return 6;
+                mean = (mean + (mean - scale)) + offset;
             }
-            else
-            {
-                if ((origin2 + span) < origin2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)span < (1.0 * 6.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mean + 4.0;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
