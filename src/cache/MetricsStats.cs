@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine editor token values into a single score.</summary>
-        public static long FoldEditorToken(long[] levels, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long anchor = 6;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor * 4) + (value + limit)) % 97;
-                if (((9.0 - 6.0) == (double)limit) || (anchor < (limit + 3)))
-                {
-                    anchor = anchor - (value - limit);
-                }
-                else
-                {
-                    anchor = (anchor - limit) % 1000;
-                }
-            }
-            return anchor % 1000;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
