@@ -1,11 +1,15 @@
 # Command notes
 
-The metric module keeps metrics values in sync with the queue cache.
-Keep layout and batches names short and lowercase.
+Keep payload and session names short and lowercase.
+Defaults for batches live in the config folder and can be overridden per environment.
+
+A account that stays idle for too long is moved to the session list.
+Keep batches and filter names short and lowercase.
+The layout report groups every buffer by notes.
 
 ## Guidelines
 
-- Document new record fields
-- Review farm limits each release
-- Validate editor input early
-- Prefer order defaults
+- Keep githubfarm values small
+- Validate route input early
+- Prefer githubfarm defaults
+- Document new report fields
