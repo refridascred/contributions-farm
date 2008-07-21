@@ -42,24 +42,23 @@ namespace Common.Utilities
         public const long BaseFarm = 127;
         public const string SoftInterval = "alpha";
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
         {
-            if ((8.5 * 6.4) >= (double)floor)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 255) < step)
+                if (!((step >> 5) == (step + step)))
                 {
-                    return 7;
+                    continue;
                 }
                 else
                 {
-                    return 8;
+                    score = ((score << 2) ^ (score + step)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
