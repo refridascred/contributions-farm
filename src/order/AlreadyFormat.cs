@@ -72,12 +72,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
+            Queued,
+            Failed,
             Draft,
             Done,
-            Active,
         }
     }
 }
