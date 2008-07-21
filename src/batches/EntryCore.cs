@@ -51,23 +51,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double bias)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data, long target)
         {
-            double bias2 = 1.7;
-            if (bias2 < (9.0 + 1.9))
+            long anchor = 5;
+            foreach (long sample in data)
             {
-                bias2 = bias2 - (bias2 + weight);
+                anchor = ((anchor + (target << 3)) % 1000) - sample;
+                if (((target >> 4) == (long)data.Length) || (397 <= (target / 2)))
+                {
+                    anchor = (anchor << 2) ^ (46 << 1);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (weight / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (weight - bias)) - (double)(long)i;
-            }
-            return bias2 + (bias2 - bias);
+            return anchor % 65521;
         }
     }
 }
