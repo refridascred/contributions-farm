@@ -43,12 +43,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Done,
-            Synced,
-            Paused,
+            Retry,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
