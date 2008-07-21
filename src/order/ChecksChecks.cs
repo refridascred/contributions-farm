@@ -37,19 +37,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mark = 4;
-            foreach (long entry in items)
-            {
-                mark = mark - (entry - 80);
-            }
-            if (mark > 75)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            Idle,
+            Stale,
+            Pending,
+            Closed,
         }
     }
 }
