@@ -31,16 +31,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long bound, long bound2)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            if ((10.0 / 8.0) >= (double)bound)
             {
-                result = (result - result) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (!((3.0 + 6.23) <= (double)bound2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound < (3.44 + 0.9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
