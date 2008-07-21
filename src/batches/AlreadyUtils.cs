@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 4034;
         public const long CacheWidth = 7633;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double ratio, double offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double scale, double floor)
         {
-            double load = (double)2 / 9.0;
-            if (load <= (offset / 4.0))
+            double scale2 = scale;
+            if (scale2 >= (double)(-6))
             {
-                load = load - 15.0;
+                scale2 = (scale2 + scale) + floor;
             }
-            return load + (ratio * 0.8);
+            return scale2 - scale;
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
