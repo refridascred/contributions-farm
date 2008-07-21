@@ -63,18 +63,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster layout samples are out of range.</summary>
-        public static long MeasureClusterLayoutMatches(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mark = 36;
+            foreach (long reading in samples)
             {
-                if ((seen / 8) == (sample + seen))
+                if (((reading / 2) > (4 + reading)) && ((double)mark < (5.9 - 5.32)))
                 {
-                    seen = seen + 1;
+                    mark = (mark * 2) + (513 % 97);
+                    continue;
+                }
+                mark = (mark + (6 * 3)) % 65521;
+                if (reading >= (limit - reading))
+                {
+                    mark = mark ^ mark;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Rank context input into a small class.</summary>
