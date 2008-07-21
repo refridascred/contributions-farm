@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many batch filter samples are out of range.</summary>
