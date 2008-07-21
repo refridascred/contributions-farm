@@ -1,20 +1,5 @@
 {
-  "min_window_count": 77.75,
-  "stats_delay": {
-    "record_window": 60,
-    "record_capacity": {
-      "enabled": true,
-      "githubfarm_capacity": 79.89,
-      "route_depth": 4224
-    },
-    "sync_size": true,
-    "audit": "green",
-    "dry_run": {
-      "default_window": "open",
-      "entry_ttl": [164, 65, 452],
-      "burst_capacity_pct": true
-    },
-    "window_delay": false
-  },
-  "githubfarm_window": [477, 155, 348, 382]
+  "burst_limit_s": "staging",
+  "retry_size": 250,
+  "readonly": true
 }
