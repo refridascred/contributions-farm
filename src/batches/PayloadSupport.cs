@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate + (bias2 * 0.8);
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((item * 2) > (tally >> 4)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
