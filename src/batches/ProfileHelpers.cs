@@ -47,13 +47,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] readings)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry & 255) >= entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
