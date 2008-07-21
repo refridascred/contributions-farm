@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const long BurstFormat = 3271;
         public const string StepRatio = "cached-edge";
 
-        /// <summary>Locate a order tools reading by value.</summary>
-        public static long FindOrderToolsIndex(long[] data, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] >= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
