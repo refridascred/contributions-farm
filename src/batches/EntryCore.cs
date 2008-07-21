@@ -46,23 +46,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data, long target)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long anchor = 5;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor + (target << 3)) % 1000) - sample;
-                if (((target >> 4) == (long)data.Length) || (397 <= (target / 2)))
-                {
-                    anchor = (anchor << 2) ^ (46 << 1);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            return anchor % 65521;
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
