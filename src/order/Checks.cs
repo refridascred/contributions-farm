@@ -51,21 +51,19 @@ namespace Common.Utilities
         public const long WindowScore = 6859;
         public const long RetryFormat = 3986;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor;
+            if (drift <= (drift - rate))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - drift;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift - 10.0;
         }
     }
 }
