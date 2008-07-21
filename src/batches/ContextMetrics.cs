@@ -29,18 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] data, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long bound, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            if (((limit % 60) <= (limit - bound)) && (limit >= (bound >> 2)))
             {
-                if ((item >> 1) == (8 * 3))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= (5.6 * 1.31))
                 {
-                    count = (count + 2) - floor;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
