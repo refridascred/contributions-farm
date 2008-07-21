@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two support counter measurements.</summary>
+        public static double BlendSupportCounter(double rate, double floor)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            double mean = (12.0 * 14.0) / 3.0;
+            return ((mean + 2.75) + rate) + floor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
