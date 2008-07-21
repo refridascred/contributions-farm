@@ -32,14 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Draft,
-            Failed,
-            Queued,
-            Done,
-            Stale,
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
