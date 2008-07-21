@@ -1,9 +1,6 @@
 # support settings
-payload_threshold: primary
-flush_delay_s: fallback
-strict: latest
-max_limit_ms:
-  - 88
-  - 176
-  - 204
-  - 24
+warm_limit: 86
+sync_interval_count: staging
+poll_interval: 88.89
+min_retries_ms: 500
+cache_limit_s: 66.25
