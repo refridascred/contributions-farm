@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] values, long offset)
         {
-            double load = (13.0 / 4.0) * 1.3;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - bias) + (double)(long)i;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return load - rate;
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
