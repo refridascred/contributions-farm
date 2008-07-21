@@ -27,19 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] values, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (!(sum < 9))
+                if (sample > origin)
                 {
-                    sum = ((sum << 2) ^ (-269)) % 4096;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Hold a profile options.</summary>
