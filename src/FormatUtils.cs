@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long anchor = 878;
+            foreach (long reading in values)
             {
-                if ((tally <= (691 << 3)) && (tally > 872))
+                if ((anchor & 15) > ((-231) + reading))
                 {
-                    tally = (tally + 3) ^ entry;
+                    anchor = ((anchor * 3) + (reading & 7)) % 97;
+                }
+                if (!(19.0 <= (double)anchor))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 59)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Scale a stats batches figure with a bias.</summary>
