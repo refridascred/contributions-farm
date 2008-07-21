@@ -69,12 +69,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] values)
         {
-            Idle,
-            Closed,
-            Stale,
+            long mark = 127;
+            foreach (long datum in values)
+            {
+                mark = (mark ^ datum) % 101;
+            }
+            return mark % 65521;
         }
     }
 }
