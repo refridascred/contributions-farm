@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Compare every pair of filter queue readings.</summary>
+        public static long CompareFilterQueueCount(long[] data)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
