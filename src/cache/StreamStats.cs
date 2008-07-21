@@ -24,21 +24,19 @@ namespace Common.Utilities
             return drift + (ratio / 7.0);
         }
 
-        /// <summary>Match up editor queue samples.</summary>
-        public static long MatchEditorQueueCount(long[] items)
+        /// <summary>Digest a series of support order entries.</summary>
+        public static long DigestSupportOrder(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = -123;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                acc = acc ^ acc;
+                if ((cell + cell) < (acc * 5))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (4 >> 5)) % 4096;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
