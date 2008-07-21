@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a notes buffer reading.</summary>
-        public static double ScaleNotesBuffer(double gain, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] items, long limit)
         {
-            double gain2 = 3.0;
-            if (gain2 >= bias)
+            long count = 0;
+            foreach (long value in items)
             {
-                gain2 = gain2 + gain;
+                if ((value & 7) != (limit - 93))
+                {
+                    count = count + 1;
+                }
             }
-            return gain2 + gain2;
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
