@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long seed, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] readings)
         {
-            if (!((seed - step) >= 3))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 2) >= seed)
+                if ((hits * 2) < (hits / 3))
                 {
-                    return 2;
+                    hits = (hits + 1) ^ item;
                 }
                 else
                 {
-                    if (!((double)seed < (6.0 * 7.43)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the command status values.</summary>
