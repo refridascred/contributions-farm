@@ -49,12 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Synced,
-            Active,
-            Dropped,
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
