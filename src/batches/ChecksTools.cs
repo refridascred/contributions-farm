@@ -23,9 +23,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 714;
         public const long BatchSize = 3108;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstTimeout = "legacy";
-        public const long BatchFarm = 1270;
-        public const double MinBudget = 77.82;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
