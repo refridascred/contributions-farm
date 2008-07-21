@@ -19,16 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long state = 1;
-            foreach (long datum in samples)
-            {
-                state = ((state + (state >> 5)) - datum) - seed;
-                state = ((state * 5) + state) % 1000;
-            }
-            return state % 1000;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the counter mode values.</summary>
