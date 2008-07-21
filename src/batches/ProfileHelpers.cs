@@ -80,31 +80,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long offset, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] items)
         {
-            if ((offset >> 2) > (target ^ target))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((71 % 2) < (target * 4))
+                if (((double)datum <= 7.0) || (((7.7 + 15.0) == (double)matches) && ((double)datum <= 8.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((1.0 / 9.0) <= (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
