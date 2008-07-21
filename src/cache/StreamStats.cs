@@ -45,31 +45,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long step, long origin)
+        /// <summary>Grade a cache token value against two limits.</summary>
+        public static long BucketCacheToken(long seed, long bound)
         {
-            long slot = step ^ origin;
-            if ((origin >> 5) > slot)
+            if (4 < (bound + seed))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((step * 3) >= (271 - slot))
+                if ((seed ^ seed) <= (bound + bound))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (14.0 < (double)slot)
+                    if ((9 * 3) > (bound << 1))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if ((slot > (slot >> 2)) && ((origin % 10) < (step % 10)))
+                        if ((double)seed >= (4.49 + 1.95))
                         {
-                            return 4;
+                            return 2;
                         }
                         else
                         {
