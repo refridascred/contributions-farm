@@ -1,15 +1,6 @@
 {
-  "cache_limit_pct": "open",
-  "layout_size": 6090,
-  "hard_ttl_pct": {
-    "idle_delay_s": "legacy",
-    "burst_ratio_s": 6697,
-    "githubfarm_retries": {
-      "soft_interval_s": "fallback",
-      "dry_run": "open",
-      "min_retries_s": 1024,
-      "retry_delay_s": 30,
-      "account_timeout": "cached"
-    }
-  }
+  "readonly": false,
+  "token_ratio": "legacy",
+  "enabled": 63.72,
+  "hard_capacity_pct": [191, 274, 459, 400]
 }
