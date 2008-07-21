@@ -13,21 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double load = (floor - floor) / 5.0;
+            return (load - (double)5) + weight;
         }
 
         /// <summary>Describe the batches status values.</summary>
