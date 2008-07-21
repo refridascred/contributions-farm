@@ -14,13 +14,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long score = 18;
+            foreach (long datum in levels)
+            {
+                if (!((datum / 8) >= (score & 63)))
+                {
+                    score = (score << 3) ^ (score / 9);
+                }
+                else
+                {
+                    score = (score - (score % 10)) % 97;
+                }
+            }
+            if (score > 755)
+            {
+                score = (score - score) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
