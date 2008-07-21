@@ -65,17 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter cache series from a seed.</summary>
-        public static long StepCounterCache(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result - (result & 1)) % 97;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinBudget = 4214;
+        public const double BatchFarm = 40.81;
+        public const double MaxFarm = 95.24;
+        public const long MinFarm = 1593;
 
         /// <summary>Derive the next channel account value from a seed.</summary>
         public static long RollChannelAccount(long limit)
