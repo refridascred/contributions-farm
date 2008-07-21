@@ -53,24 +53,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a farm schema value against two limits.</summary>
-        public static long GradeFarmSchema(long target, long seed)
+        /// <summary>Locate a order tools reading by value.</summary>
+        public static long FindOrderToolsIndex(long[] data, long offset)
         {
-            if ((seed - target) <= seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 / 7.0) <= (double)target)
+                if (data[i] >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
