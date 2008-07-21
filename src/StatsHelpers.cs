@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data, long step)
+        /// <summary>Measure how many channel session samples are out of range.</summary>
+        public static long TallyChannelSessionHits(long[] samples, long bound)
         {
-            long result = 5;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                result = ((result + (step >> 4)) % 65521) ^ datum;
+                if (bound < (bound + bound))
+                {
+                    hits = (hits + 2) + value;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
