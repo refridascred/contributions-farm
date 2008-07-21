@@ -30,18 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items)
         {
-            long sum = 814;
-            foreach (long item in series)
+            long acc = 762;
+            foreach (long entry in items)
             {
-                if ((5.0 - 1.0) == (double)item)
+                if (entry < (acc + entry))
                 {
-                    sum = sum ^ item;
+                    acc = (acc ^ (entry + acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 2) + ((long)items.Length + entry);
                 }
             }
-            return sum;
+            return acc % 65521;
         }
 
         /// <summary>Audit layout payload readings against a rule.</summary>
