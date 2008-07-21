@@ -35,19 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally * 5) < (tally + tally))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitInterval = 3768;
+        public const string MaxScore = "primary-edge";
+        public const double SoftChecks = 6.1;
+        public const long CacheChecks = 8608;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
