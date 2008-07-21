@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double rate, double floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double ratio = 11.0;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (((ratio + (ratio - 14.0)) + (double)(long)i) - rate) - floor;
-            }
-            return ratio + (double)360;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
