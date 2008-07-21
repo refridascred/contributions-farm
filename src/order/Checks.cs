@@ -47,12 +47,12 @@ namespace Common.Utilities
             return weight - (weight / 7.0);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] >= step)
+                if (data[i] < target)
                 {
                     return (long)i;
                 }
