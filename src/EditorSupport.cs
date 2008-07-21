@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of editor filter entries.</summary>
-        public static long WeighEditorFilter(long[] data)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long sum = 31;
-            foreach (long item in data)
-            {
-                sum = (sum ^ (sum >> 2)) % 101;
-                if (((sum << 1) >= item) || ((item & 127) > 252))
-                {
-                    sum = sum + (582 << 2);
-                }
-            }
-            if (sum < 877)
-            {
-                sum = sum - (sum ^ 4);
-            }
-            return sum;
+            Ready,
+            Draft,
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
