@@ -20,18 +20,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] levels, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!((889 >= (seen + seen)) || ((14.0 + 2.45) < (double)item)))
+                if (0.06 <= (double)sample)
                 {
-                    seen = (seen + 2) + target;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
