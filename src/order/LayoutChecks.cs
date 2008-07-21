@@ -48,15 +48,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double scale, double offset)
-        {
-            double drift = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (drift - scale);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowScore = 9091;
+        public const long WindowFactor = 5285;
+        public const string MaxReport = "cached";
+        public const long BaseRatio = 4703;
+        public const double HardLevel = 70.06;
     }
 }
