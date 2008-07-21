@@ -26,23 +26,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches + sample) >= sample)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftInterval = "fallback-edge";
+        public const string DefaultFactor = "fallback-edge";
+        public const long DefaultBudget = 1629;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] values)
