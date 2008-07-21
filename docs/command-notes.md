@@ -1,16 +1,14 @@
 # Command notes
 
-Keep order and command names short and lowercase.
-The order helpers are pure functions, so they are safe to call from any thread.
-Each order is validated before it reaches the format queue.
+Run the metrics check before changing any schema limits.
+When a window fails, the counter handler retries a few times before giving up.
 
-Each window is validated before it reaches the window queue.
-Keep queue and counter names short and lowercase.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The githubfarm report groups every route by stream.
+Each stream is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Log every support change
-- Validate filter input early
-- Keep cache values small
-- Prefer graph defaults
+- Review account limits each release
+- Prefer notes defaults
+- Validate session input early
+- Keep checks values small
