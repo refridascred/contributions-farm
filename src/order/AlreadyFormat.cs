@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] samples, long bound)
         {
-            long mark = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((mark ^ cell) < ((long)items.Length >> 5))
+                if (sample > bound)
                 {
-                    mark = mark - ((-603) - cell);
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 319)
-            {
-                mark = (mark << 3) ^ (mark >> 4);
-            }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Match up support samples.</summary>
