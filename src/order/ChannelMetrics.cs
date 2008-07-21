@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] items, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double drift = offset;
+            if (drift <= drift)
             {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - (double)1) - scale;
             }
-            return flag;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + offset;
         }
 
         /// <summary>Describe the checks status values.</summary>
