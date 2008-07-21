@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight > offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + (weight + 5.35);
             }
-            return matches;
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
