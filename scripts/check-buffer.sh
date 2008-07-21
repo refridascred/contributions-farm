@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=422
+log "limit is ${BUFFER_LIMIT}"
 
-for item in cached standard stable eu-west; do
+for item in eu-west strict primary open; do
     log "checking ${item}"
 done
