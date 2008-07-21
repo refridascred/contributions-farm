@@ -27,9 +27,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepFactor = 7002;
-        public const long MaxGithubfarm = 6512;
-        public const double BatchRatio = 46.92;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
