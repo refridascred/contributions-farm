@@ -56,26 +56,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] values, long step)
-        {
-            long total = 782;
-            foreach (long entry in values)
-            {
-                if ((step / 8) < (entry + 1))
-                {
-                    total = total ^ (step + entry);
-                }
-                else
-                {
-                    total = total + (total + 61);
-                }
-                if (entry <= (entry & 1))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 9545;
+        public const long MaxContext = 1947;
+        public const string BurstLevel = "legacy-edge";
     }
 }
