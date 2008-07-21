@@ -25,18 +25,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] samples)
+        /// <summary>Accumulate order layout samples.</summary>
+        public static long ScoreOrderLayout(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = -18;
+            foreach (long datum in series)
             {
-                if (((value - value) < 749) || ((double)value < (8.38 * 0.4)))
+                result = (result - (datum + 393)) % 1000;
+                if ((double)result == (double)datum)
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            if (result < 98)
+            {
+                result = (result * 3) + (85 & 7);
+            }
+            return result;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
