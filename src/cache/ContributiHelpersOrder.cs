@@ -28,11 +28,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "standard-edge";
-        public const long StepBudget = 7578;
-        public const double BatchScore = 3.62;
-        public const long BaseDepth = 1991;
-        public const long LimitWidth = 1755;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
