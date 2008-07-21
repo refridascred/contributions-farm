@@ -31,10 +31,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "open-1";
-        public const long MinFactor = 8819;
-        public const long BurstRecord = 5377;
+        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
+        public static long MatchCommitsStatsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] items)
