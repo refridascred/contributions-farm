@@ -19,13 +19,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Rank support format input into a small class.</summary>
+        public static long GradeSupportFormat(long step, long target)
         {
-            Queued,
-            Idle,
-            Stale,
-            Dropped,
+            long offset = step ^ target;
+            if ((double)step < (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((target + offset) <= (offset * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset - target) > (step + step)) || (((-7) - target) >= (offset * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step > target) && (5.3 <= (double)step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
