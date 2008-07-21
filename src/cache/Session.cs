@@ -13,25 +13,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long step, long bound)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long slot = step + bound;
-            if ((bound << 2) <= (slot ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + slot) == (slot % 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Dropped,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define already limits and defaults.</summary>
