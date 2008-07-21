@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the context window series from a seed.</summary>
-        public static long DeriveContextWindow(long offset)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            double scale = (double)(43 ^ 81);
+            if (scale > 12.0)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                scale = ((scale - scale) + bias) + offset;
             }
-            return total;
+            return scale - (scale * 2.25);
         }
 
         /// <summary>Accumulate schema buffer samples.</summary>
