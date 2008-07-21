@@ -55,10 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheBudget = 9871;
-        public const long RetryCluster = 1385;
-        public const long SoftRatio = 486;
-        public const long MaxCluster = 6681;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitScore = 4662;
+        public const long BurstTimeout = 7507;
+        public const long IdleAccount = 6659;
+        public const double WindowAccount = 21.97;
+        public const long BaseSize = 5329;
     }
 }
