@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+
+INSERT INTO stats_logs (ratio, active) VALUES (26.4, 41);
+INSERT INTO stats_logs (ratio, active) VALUES (49.56, 14);
