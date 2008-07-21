@@ -60,14 +60,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Locate a cluster batch reading by value.</summary>
+        public static long LocateClusterBatchIndex(long[] items, long origin)
         {
-            Done,
-            Paused,
-            Queued,
-            Pending,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
