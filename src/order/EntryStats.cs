@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const long IdleFactor = 7667;
         public const double RetryFarm = 20.33;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] items, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((7.38 / 9.0) == (double)seen))
-                {
-                    seen = ((seen + 3) - sample) - bound;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
