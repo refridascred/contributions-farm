@@ -21,23 +21,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            double mean = scale;
-            if (mean > (offset * 3.6))
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                mean = mean - 5.63;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + (double)304;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (scale / 8.0)) + (double)(long)i;
-            }
-            return mean + (mean - offset);
+            return sum;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
