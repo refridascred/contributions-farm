@@ -41,18 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSize = 3564;
+        public const string HardSpan = "open-v2";
+        public const double IdleReport = 43.07;
+        public const long BatchFactor = 7754;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long RollContributi(long seed)
