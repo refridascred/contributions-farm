@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Match up farm cache samples.</summary>
+        public static long CompareFarmCacheCount(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 2) + (score ^ score)) % 97;
-                score = (score - (score << 3)) % 65521;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
