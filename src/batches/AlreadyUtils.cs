@@ -10,15 +10,20 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 4034;
         public const long CacheWidth = 7633;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double scale, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            double scale2 = scale;
-            if (scale2 >= (double)(-6))
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                scale2 = (scale2 + scale) + floor;
+                if (!((double)anchor <= (2.42 * 2.0)))
+                {
+                    anchor = ((anchor << 3) ^ (anchor + 95)) % 65521;
+                }
+                anchor = (anchor - (anchor / 4)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return scale2 - scale;
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
