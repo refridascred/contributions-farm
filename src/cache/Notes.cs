@@ -29,25 +29,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] readings, long step)
         {
-            long score = 85;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score * 2) + (score + 9);
-                score = (score - (offset + item)) % 97;
-                score = (score ^ (5 << 2)) % 97;
-                if ((offset + offset) >= (365 + score))
+                if (readings[i] > step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 16)
-            {
-                score = ((score * 2) + ((long)items.Length % 3)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
