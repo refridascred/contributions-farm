@@ -1,5 +1,6 @@
 {
-  "sync_depth": 57,
-  "base_interval_pct": 30,
-  "min_depth": true
+  "dry_run": false,
+  "hard_limit_ms": "latest",
+  "flush_limit_s": [457, 314],
+  "schema_threshold": 34.97
 }
