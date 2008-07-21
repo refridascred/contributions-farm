@@ -56,32 +56,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a commits account pair into a bucket.</summary>
-        public static long RankCommitsAccount(long bound, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items)
         {
-            long diff = bound + origin;
-            if (501 < (origin + diff))
+            long state = 1;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin >> 4) <= bound) || ((diff - origin) >= (bound * 5)))
+                if ((5 > (state ^ state)) && ((657 ^ state) >= (38 * 5)))
                 {
-                    return 7;
+                    state = state + (state / 8);
                 }
-                else
+                if ((state ^ value) > state)
                 {
-                    if (diff >= (bound - diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return state;
         }
     }
 }
