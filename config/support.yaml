@@ -1,30 +1,4 @@
 # support settings
-soft_size: 9387
-sync_delay: 41.98
-compress:
-  cache_size_s:
-    - local
-    - latest
-    - fallback
-  buffer_size: 37.65
-  record_depth:
-    cache_threshold:
-      - 328
-      - 145
-    hard_delay_s:
-      - 380
-      - 205
-    compress:
-      - strict
-      - local
-      - legacy
-      - staging
-  compress: open
-  default_ratio_count:
-    strict: 76.07
-    support_delay:
-      - 122
-      - 458
-    hard_limit: green
-    default_limit: blue
-  default_ttl_count: 9202
+default_capacity: true
+burst_ratio_ms: cached
+report_ttl: 9992
