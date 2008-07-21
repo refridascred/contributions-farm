@@ -1,5 +1,8 @@
 {
-  "cache_ttl_pct": 30.44,
-  "flush_delay_pct": false,
-  "min_interval_count": 3509
+  "cache_retries_count": [129, 446, 337, 239],
+  "warm_size": 99,
+  "hard_ttl": "fallback",
+  "enabled": ["latest", "legacy"],
+  "metric_limit": 1212,
+  "default_interval": "primary"
 }
