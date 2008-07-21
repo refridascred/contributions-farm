@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
