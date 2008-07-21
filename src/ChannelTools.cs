@@ -20,19 +20,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (0.06 <= (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchCount = 4688;
+        public const double MaxSupport = 14.8;
+        public const long HardSupport = 6723;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] samples)
