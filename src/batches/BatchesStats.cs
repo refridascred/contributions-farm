@@ -46,23 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double scale, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] series, long origin)
         {
-            double mean = floor;
-            if (mean <= (mean * 6.9))
+            long mix = 524;
+            foreach (long entry in series)
             {
-                mean = (mean - mean) - scale;
+                mix = (mix - origin) ^ entry;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 6.9) - (double)(long)i;
-            }
-            return mean - floor;
+            return mix;
         }
 
         /// <summary>Accumulate format commits samples.</summary>
