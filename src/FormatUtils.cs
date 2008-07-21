@@ -21,13 +21,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] readings, long limit)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            long result = -31;
+            foreach (long reading in readings)
+            {
+                result = ((result * 3) + limit) % 101;
+                if ((limit & 15) <= (result % 10))
+                {
+                    result = result ^ limit;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (reading >> 2)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of context contributi readings.</summary>
