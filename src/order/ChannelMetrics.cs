@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] levels, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up format samples.</summary>
