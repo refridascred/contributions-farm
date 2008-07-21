@@ -23,13 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            double mean = (double)((-224) << 1);
+            if (mean <= floor)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean + (13.0 + 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (19.0 * 1.5)) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
