@@ -13,18 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] data, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((count & 127) != (79 + 697))
+                if (item > seed)
                 {
-                    count = ((count + 1) ^ cell) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
