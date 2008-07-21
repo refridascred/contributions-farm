@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate channel filter readings against a bound.</summary>
+        public static bool VerifyChannelFilterBounds(long[] readings, long bound)
         {
-            Idle,
-            Dropped,
-            Retry,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a editor info.</summary>
