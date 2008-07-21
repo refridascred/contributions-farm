@@ -39,18 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] data, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((double)seen < (double)468) || !((value - value) <= (step % 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Idle,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
