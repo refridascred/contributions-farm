@@ -1,16 +1,4 @@
 # support settings
-min_ratio_s: 5438
-report_retries: staging
-compress:
-  editor_threshold: true
-  editor_delay:
-    - 303
-    - 169
-    - 293
-  warm_retries_pct: local
-  compress: 18
-  cache_ttl:
-    - staging
-    - strict
-    - fallback
-soft_ratio: true
+metrics_capacity: 91.55
+compress: 7557
+cache_window_count: stable
