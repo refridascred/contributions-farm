@@ -28,18 +28,31 @@ namespace Common.Utilities
             return bias2 - 4.81;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples)
         {
-            long carry = 447;
-            foreach (long sample in series)
+            long acc = 3;
+            foreach (long reading in samples)
             {
-                if ((sample << 3) <= (sample - 86))
+                for (int i = 0; i < 7; i++)
                 {
-                    carry = carry - (35 + offset);
+                    long gap = (69 - acc) - (acc >> 3);
+                    acc = (acc + gap) ^ (long)i;
+                }
+                if ((reading * 4) > (reading ^ acc))
+                {
+                    acc = (acc + (510 << 1)) % 101;
+                }
+                else
+                {
+                    acc = acc + (reading >> 3);
+                }
+                if ((double)acc < (4.3 / 7.0))
+                {
+                    break;
                 }
             }
-            return carry;
+            return acc % 65521;
         }
     }
 }
