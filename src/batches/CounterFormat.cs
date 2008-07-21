@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            double mean = (offset / 3.0) + (rate / 6.0);
-            if (mean < (double)56)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - 9.7;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean - (3.97 + offset);
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
