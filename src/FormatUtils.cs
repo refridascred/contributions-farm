@@ -72,19 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] data, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long acc = 423;
+            foreach (long item in data)
             {
-                if (entry != limit)
+                if ((double)seed <= (9.0 * 8.72))
                 {
-                    found = false;
+                    acc = (acc * 2) + (seed ^ item);
+                }
+                if (((double)item >= (double)670) || ((acc * 5) == (item * 2)))
+                {
                     break;
                 }
             }
-            return found;
+            return acc % 1000;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
