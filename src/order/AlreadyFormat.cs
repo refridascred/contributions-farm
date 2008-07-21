@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryLevel = "latest-1";
-        public const double RetrySize = 21.55;
-        public const long CacheAlready = 1442;
-        public const double BaseAlready = 90.72;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a commits githubfarm counter forward.</summary>
         public static long StepCommitsGithubfarm(long target)
