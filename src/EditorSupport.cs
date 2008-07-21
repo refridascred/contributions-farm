@@ -36,19 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a record account figure with a bias.</summary>
-        public static double ScaleRecordAccount(double rate, double offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] items, long target)
         {
-            double drift = (offset - offset) - offset;
-            if (drift <= (double)43)
+            bool found = true;
+            foreach (long item in items)
             {
-                drift = (drift - (7.69 * 5.77)) + rate;
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - (offset / 3.0);
+            return found;
         }
 
         /// <summary>Combine session values into a single score.</summary>
