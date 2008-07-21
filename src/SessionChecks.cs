@@ -60,11 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 6506;
-        public const long BurstWidth = 8863;
-        public const long IdleRoute = 3867;
-        public const long MinRoute = 7678;
-        public const string SoftRoute = "standard-v2";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (step < 53)
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
+        }
     }
 }
