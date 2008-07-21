@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] samples, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (sample > bound)
+                if ((hits - 65) >= reading)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Match up support samples.</summary>
