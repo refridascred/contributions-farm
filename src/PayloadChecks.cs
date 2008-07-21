@@ -33,15 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Retry,
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
