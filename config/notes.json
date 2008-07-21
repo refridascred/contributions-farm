@@ -1,11 +1,5 @@
 {
-  "base_window": "strict",
-  "warm_limit_count": "fallback",
-  "base_ratio": true,
-  "flush_depth_count": {
-    "persist": ["primary", "open"],
-    "sync_capacity_ms": 3651,
-    "context_capacity": ["primary", "primary", "fallback", "open"],
-    "payload_ttl": 30
-  }
+  "command_depth": true,
+  "buffer_window": "green",
+  "stats_threshold": "legacy"
 }
