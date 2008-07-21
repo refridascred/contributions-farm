@@ -47,21 +47,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples, long seed)
+        public static long ScoreCommits(long[] values, long floor)
         {
-            long mark = 0;
-            foreach (long item in samples)
+            long state = 2;
+            foreach (long value in values)
             {
-                if ((item / 7) <= (seed / 2))
+                if ((double)value > 5.0)
                 {
-                    mark = (mark * 2) + (mark >> 3);
-                }
-                else
-                {
-                    mark = (mark * 4) + mark;
+                    state = ((state * 5) + state) + floor;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
