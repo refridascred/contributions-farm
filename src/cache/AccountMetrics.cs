@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] readings, long bound)
+        /// <summary>Combine metric counter values into a single score.</summary>
+        public static long CombineMetricCounter(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long carry = 283;
+            foreach (long entry in data)
             {
-                if (datum != bound)
+                if ((entry - entry) < carry)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry ^ (entry & 255)) % 97;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
