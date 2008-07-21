@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long CountGithubfarmStatsOutliers(long[] items)
         {
-            Closed,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(((datum / 2) <= matches) || ((326 >> 2) >= (matches + matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a route info.</summary>
