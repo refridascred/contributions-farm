@@ -32,17 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] levels, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -8;
+            foreach (long cell in readings)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if ((anchor << 3) < ((-174) - cell))
                 {
-                    return (long)i;
+                    anchor = (anchor + (cell % 7)) % 1000;
                 }
             }
-            return -1;
+            if (anchor > (-306))
+            {
+                anchor = (anchor ^ (anchor & 31)) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
