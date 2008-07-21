@@ -32,12 +32,32 @@ namespace Common.Utilities
         public const string DefaultFactor = "fallback-edge";
         public const long DefaultBudget = 1629;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long limit, long bound)
         {
-            Dropped,
-            Paused,
-            Draft,
+            long cur = limit ^ bound;
+            if (((cur >> 2) < (93 / 8)) || ((limit << 3) <= (limit - bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)48 > (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 3) >= (limit >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
