@@ -15,23 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels, long seed)
-        {
-            long anchor = -3;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length - seed) < (entry + entry))
-                {
-                    anchor = ((anchor * 5) + (seed + seed)) % 97;
-                }
-            }
-            if (anchor < 13)
-            {
-                anchor = anchor ^ (seed + 8);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 5.85;
+        public const string StepInterval = "cached";
+        public const long DefaultNotes = 4421;
+        public const long BaseLevel = 1728;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileLimits(long[] items, long target)
