@@ -17,22 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] levels, long target)
         {
-            long state = 57;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((target + state) < (target % 24))
+                if (!((889 >= (seen + seen)) || ((14.0 + 2.45) < (double)item)))
                 {
-                    state = ((state ^ target) % 97) ^ sample;
+                    seen = (seen + 2) + target;
                 }
             }
-            if (state < 63)
-            {
-                state = ((state * 5) + (2 * 3)) % 4096;
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Find the first metric editor entry that matches the target.</summary>
