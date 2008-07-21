@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=12
-log "limit is ${SUPPORT_LIMIT}"
+for item in edge eu-west legacy; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in latest green blue; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
