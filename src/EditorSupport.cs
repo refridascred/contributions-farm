@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long TallyRecordSessionMatches(long[] readings)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (858 <= (hits ^ hits))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
