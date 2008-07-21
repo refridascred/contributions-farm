@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every metric already entry stays within the limit.</summary>
-        public static bool GuardMetricAlreadyRange(long[] levels, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long limit, long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long lane = limit + origin;
+            if (origin >= (0 % 10))
             {
-                if (cell <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((7.97 + 6.6) == (double)lane)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
