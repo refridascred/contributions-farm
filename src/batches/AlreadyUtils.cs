@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Done,
-            Retry,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 73.91;
+        public const long IdleGithubfarm = 4034;
+        public const long CacheWidth = 7633;
 
         /// <summary>Accumulate payload context samples.</summary>
         public static long FoldPayloadContext(long[] levels)
