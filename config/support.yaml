@@ -1,18 +1,10 @@
 # support settings
-verbose: true
-idle_depth_pct: 96.38
-base_size_count:
-  - 324
-  - 375
-  - 302
-  - 143
-default_window: 8567
-order_delay:
-  batch_limit_ms: primary
-  base_threshold_ms: 250
-  poll_window: staging
-  max_limit: 4850
-  min_ttl_pct:
-    warm_retries_s: 66.56
-    hard_threshold_count: standard
-    editor_ttl: latest
+retry_size_s: 9648
+default_interval_s: stable
+min_limit:
+  - strict
+  - fallback
+  - eu-west
+support_interval: 4662
+stream_timeout: 8849
+already_timeout: blue
