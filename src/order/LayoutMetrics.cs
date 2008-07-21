@@ -44,23 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] items, long step)
         {
-            long mark = 3;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + mark) % 1000;
-                if ((58 < (mark >> 4)) || ((mark + (-922)) < (reading & 255)))
+                if (items[i] == step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 5)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark % 65521;
+            return -1;
         }
     }
 }
