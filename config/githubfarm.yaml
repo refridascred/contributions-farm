@@ -1,15 +1,8 @@
 # githubfarm settings
-metrics_retries: 8
-burst_size_ms:
-  - stable
-  - local
-  - blue
-commits_limit:
-  - 25
-  - 244
-  - 428
-burst_interval_ms:
-  - strict
-  - green
-  - local
-default_retries: 35
+audit: 98
+retry_threshold_s:
+  - eu-west
+  - fallback
+session_threshold: 3297
+sync_threshold: local
+cache_ratio_s: false
