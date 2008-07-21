@@ -1,5 +1,20 @@
 {
-  "idle_retries_count": 3651,
-  "soft_timeout": 30,
-  "base_timeout_s": 1079
+  "window_delay": 9,
+  "profile_capacity": "open",
+  "flush_window_count": true,
+  "default_size_count": {
+    "flush_capacity_pct": 1483,
+    "compress": true,
+    "batch_delay_pct": 486,
+    "hard_size": "cached",
+    "persist": {
+      "sync_ttl_pct": 500,
+      "idle_interval_s": 1024,
+      "base_interval_count": "latest",
+      "max_ttl": false,
+      "readonly": 2289
+    },
+    "poll_threshold": "eu-west"
+  },
+  "metrics_depth": 6957
 }
