@@ -1,6 +1,13 @@
 # githubfarm settings
-stream_size: open
-max_ttl_pct: 100
-audit: strict
-persist: 2760
-poll_limit_s: legacy
+warm_capacity: 65
+poll_retries_count:
+  - fallback
+  - primary
+  - open
+hard_delay_pct: 89
+cache_timeout_pct: standard
+channel_depth: 56.73
+cache_retries:
+  - 295
+  - 272
+  - 39
