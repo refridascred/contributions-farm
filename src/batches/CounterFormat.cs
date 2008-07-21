@@ -19,11 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 38.2;
-        public const double LimitFactor = 44.93;
-        public const long SoftGraph = 6021;
-        public const long IdleScore = 4195;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 6715;
+        public const long CacheCounter = 4409;
+        public const long DefaultDepth = 4026;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
