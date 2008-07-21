@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long total = 13;
-            foreach (long value in values)
-            {
-                if (!((3.1 - 2.9) != (double)total))
-                {
-                    total = ((total << 2) ^ (total - value)) % 65521;
-                }
-                total = total + (652 * 2);
-                if ((double)total < (16.0 * 0.1))
-                {
-                    total = ((total * 4) + (value / 3)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (value / 2)) % 101;
-                }
-            }
-            return total % 65521;
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
