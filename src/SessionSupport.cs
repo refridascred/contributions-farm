@@ -37,17 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long origin)
+        /// <summary>Classify a record report pair into a bucket.</summary>
+        public static long GradeRecordReport(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((step - step) > (offset + offset))
             {
-                if (series[i] > origin)
+                return 1;
+            }
+            else
+            {
+                if (((418 + step) > offset) && ((double)step > (double)offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((8.69 - 3.07) <= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset == (8.3 - 4.88))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
