@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double bias, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] series, long limit)
         {
-            double weight = bias;
-            if (weight > offset)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                weight = weight + (weight + 5.35);
+                if ((limit / 5) < limit)
+                {
+                    seen = (seen + 1) - reading;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - weight;
+            return seen;
         }
 
         /// <summary>Match up commits samples.</summary>
