@@ -56,12 +56,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a commits account pair into a bucket.</summary>
+        public static long RankCommitsAccount(long bound, long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            long diff = bound + origin;
+            if (501 < (origin + diff))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin >> 4) <= bound) || ((diff - origin) >= (bound * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (diff >= (bound - diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
