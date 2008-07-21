@@ -20,23 +20,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long acc = 96;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (acc ^ ((long)i / 9)) % 101;
-                    acc = ((acc * 4) + 940) % 101;
-                }
-                if ((6.0 / 5.0) < (double)item)
-                {
-                    acc = ((acc << 3) ^ ((long)items.Length + acc)) % 101;
-                }
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
