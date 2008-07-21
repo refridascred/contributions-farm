@@ -34,14 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] values)
         {
-            Paused,
-            Closed,
-            Draft,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((5.54 - 8.46) == (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
