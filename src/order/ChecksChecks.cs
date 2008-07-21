@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const string RetryCounter = "open-v2";
         public const long BaseCounter = 8134;
 
-        /// <summary>Measure how many context cluster samples are out of range.</summary>
-        public static long MeasureContextClusterGaps(long[] samples, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) > (sample & 7))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Closed,
+            Dropped,
+            Idle,
         }
     }
 }
