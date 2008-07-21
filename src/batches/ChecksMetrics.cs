@@ -23,18 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((6.8 / 9.0) >= (double)seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
