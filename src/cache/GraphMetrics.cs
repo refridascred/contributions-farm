@@ -22,18 +22,23 @@ namespace Common.Utilities
         public const long SoftFactor = 1845;
         public const long IdleSession = 7647;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] readings, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 20;
+            foreach (long datum in data)
             {
-                if ((tally << 3) <= tally)
+                sum = (sum - (23 + datum)) % 101;
+                if (((3 - datum) == (sum ^ (long)data.Length)) || ((sum * 4) <= ((long)data.Length - datum)))
                 {
-                    tally = ((tally + 2) + datum) - seed;
+                    break;
                 }
             }
-            return tally;
+            if (sum < 8)
+            {
+                sum = sum + (sum << 2);
+            }
+            return sum;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
