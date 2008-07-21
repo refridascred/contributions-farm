@@ -1,12 +1,8 @@
 {
-  "cluster_threshold": {
-    "retry_limit": "open",
-    "idle_ttl_count": "primary",
-    "dry_run": "fallback",
-    "already_capacity": 14.35
-  },
-  "checks_threshold": 8696,
-  "retry_capacity": 56,
-  "base_threshold": ["strict", "staging", "legacy"],
-  "profile_threshold": ["edge", "primary", "latest"]
+  "warm_interval": "staging",
+  "enabled": "standard",
+  "max_interval": "latest",
+  "idle_interval_s": "local",
+  "sync_interval": "green",
+  "max_interval_s": true
 }
