@@ -49,10 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 2900;
-        public const string MaxTimeout = "open-1";
-        public const long MaxBudget = 4268;
-        public const double MaxPayload = 20.21;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Closed,
+            Queued,
+            Idle,
+        }
     }
 }
