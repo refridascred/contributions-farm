@@ -1,8 +1,4 @@
 # githubfarm settings
-audit: 98
-retry_threshold_s:
-  - eu-west
-  - fallback
-session_threshold: 3297
-sync_threshold: local
-cache_ratio_s: false
+warm_interval: false
+min_depth_s: 84.02
+compress: 1934
