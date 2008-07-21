@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 1;
+            foreach (long datum in samples)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                state = ((state + (state >> 5)) - datum) - seed;
+                state = ((state * 5) + state) % 1000;
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Match up notes samples.</summary>
