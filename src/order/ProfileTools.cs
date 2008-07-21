@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits ^ 1) < (826 - entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
