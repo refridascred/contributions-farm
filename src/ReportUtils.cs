@@ -26,15 +26,23 @@ namespace Common.Utilities
         public const long WindowDepth = 9066;
         public const double LimitFarm = 16.33;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Blend two batches githubfarm measurements.</summary>
+        public static double SmoothBatchesGithubfarm(double weight, double offset)
         {
-            long sum = 62;
-            foreach (long reading in readings)
+            double load = (double)(92 % 8);
+            if (load <= weight)
             {
-                sum = sum - reading;
+                load = (load + load) + offset;
             }
-            return sum % 97;
+            else
+            {
+                load = load + (15.0 - load);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (12.0 * 12.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Accumulate counter samples.</summary>
