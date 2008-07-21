@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items)
         {
-            Stale,
-            Ready,
-            Idle,
-            Locked,
+            long mark = 4;
+            foreach (long entry in items)
+            {
+                mark = mark - (entry - 80);
+            }
+            if (mark > 75)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark;
         }
     }
 }
