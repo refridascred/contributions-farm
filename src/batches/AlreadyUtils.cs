@@ -40,12 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the farm cache series from a seed.</summary>
