@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long SoftEditor = 3388;
         public const string StepTimeout = "legacy-edge";
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
