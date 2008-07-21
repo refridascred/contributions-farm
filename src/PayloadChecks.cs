@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Digest a series of already editor entries.</summary>
+        public static long FoldAlreadyEditor(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long result = 74;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (!(item >= (result - item)))
+                {
+                    result = result - result;
+                }
             }
-            return anchor;
+            if (result > 602)
+            {
+                result = result ^ (result << 3);
+            }
+            return result;
         }
 
         /// <summary>Classify a session metric pair into a bucket.</summary>
