@@ -47,15 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order filter readings.</summary>
-        public static long CombineOrderFilter(long[] samples)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long anchor = 52;
-            foreach (long item in samples)
-            {
-                anchor = (((anchor * 4) + (anchor / 9)) % 101) - item;
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the batches level values.</summary>
