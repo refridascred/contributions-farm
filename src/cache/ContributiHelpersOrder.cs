@@ -25,19 +25,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long floor)
+        /// <summary>Roll a schema token counter forward.</summary>
+        public static long SeriesSchemaToken(long origin)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor - (origin % 10)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return ready;
+            return anchor;
         }
     }
 }
