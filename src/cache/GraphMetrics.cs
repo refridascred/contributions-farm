@@ -16,18 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long sum = 457;
-            foreach (long item in values)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((step % 97) == (item + sum))
-                {
-                    sum = ((sum << 3) ^ sum) % 4096;
-                }
+                acc = (acc - (acc & 15)) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
