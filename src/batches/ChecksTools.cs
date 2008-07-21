@@ -14,22 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long AuditBatchesFarmGaps(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen < 8.6)
-                {
-                    seen = (seen + 1) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Stale,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the payload status values.</summary>
