@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) >= value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheInterval = "local-1";
+        public const double LimitLevel = 0.13;
+        public const double HardSpan = 55.54;
+        public const double DefaultSupport = 75.84;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 6132;
