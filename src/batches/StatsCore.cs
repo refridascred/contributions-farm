@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double bias, double floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long step, long limit)
         {
-            double weight = (double)(0 - 5);
-            if (weight < (bias - bias))
+            if (limit > (step & 63))
             {
-                weight = weight + 9.53;
+                return 3;
             }
             else
             {
-                weight = weight - 11.0;
+                if ((limit % 60) > (limit >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (3.03 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return weight - (weight + floor);
         }
 
         /// <summary>Count the record editor entries that pass the check.</summary>
