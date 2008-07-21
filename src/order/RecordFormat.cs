@@ -64,22 +64,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metrics order entries that pass the check.</summary>
-        public static long MeasureMetricsOrderHits(long[] items)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((double)sample <= (6.08 - 4.0)) && ((sample >> 5) >= (916 ^ sample)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
