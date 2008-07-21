@@ -31,24 +31,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long step)
-        {
-            if (!((7.28 / 8.0) <= (double)step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) <= (2 + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 2172;
+        public const string BatchInterval = "latest-edge";
+        public const long RetryScore = 6923;
     }
 }
