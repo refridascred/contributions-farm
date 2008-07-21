@@ -1,7 +1,16 @@
 # entry settings
-batch_retries_ms: 54.57
-verbose:
-  - strict
-  - strict
-warm_ratio_s: cached
-persist: false
+base_capacity_pct: 8908
+cache_retries_s: fallback
+persist:
+  enabled:
+    - green
+    - open
+  soft_window: 81
+  stats_limit: 81
+  metrics_retries: false
+  window_ttl: cached
+batches_timeout:
+  - 369
+  - 80
+profile_interval: true
+poll_depth: 70.36
