@@ -28,11 +28,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double bias, double span)
-        {
-            double scale = 8.0;
-            return ((scale + 5.98) + bias) + span;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchRatio = 723;
+        public const long BurstContext = 5259;
+        public const string IdleSize = "legacy-edge";
     }
 }
