@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already editor entries.</summary>
-        public static long FoldAlreadyEditor(long[] values)
+        /// <summary>Audit layout session readings against a rule.</summary>
+        public static long TallyLayoutSessionOutliers(long[] data)
         {
-            long result = 74;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!(item >= (result - item)))
+                if ((13.0 / 7.0) > (double)seen)
                 {
-                    result = result - result;
+                    seen = (seen + 1) - item;
                 }
             }
-            if (result > 602)
-            {
-                result = result ^ (result << 3);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Classify a session metric pair into a bucket.</summary>
