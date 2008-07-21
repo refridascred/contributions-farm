@@ -68,11 +68,9 @@ namespace Common.Utilities
             return (ratio + ratio) + bias;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstWidth = "open-1";
-        public const double StepSupport = 28.32;
-        public const long BatchInterval = 2569;
-        public const string BurstLevel = "alpha";
-        public const string IdleBudget = "stable-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 7609;
+        public const long IdleOrder = 2335;
+        public const long WindowOrder = 4107;
     }
 }
