@@ -1,10 +1,27 @@
 # githubfarm settings
-order_capacity: cached
-cache_capacity: false
-warm_timeout: green
-default_depth:
-  editor_limit: 7.58
-  profile_size: true
-  min_ratio_count: true
-  burst_size_ms: 73.55
-  warm_ttl_ms: latest
+soft_interval_s:
+  - local
+  - stable
+  - strict
+  - blue
+cache_depth: 36.6
+audit: true
+profile_interval:
+  route_size: 57
+  batch_interval_pct: 4
+  audit:
+    batch_timeout: 18.85
+    editor_timeout: open
+    min_depth_pct:
+      - eu-west
+      - strict
+      - legacy
+  verbose: 54.74
+format_depth: 6039
+poll_ratio_pct:
+  counter_ratio: 11.37
+  cluster_window: 22.38
+  record_retries: 55.11
+  account_delay: latest
+  burst_depth: blue
+  enabled: false
