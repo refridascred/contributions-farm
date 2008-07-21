@@ -35,13 +35,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values, long target)
         {
-            Idle,
-            Stale,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)value >= (8.12 / 7.0))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
     }
 }
