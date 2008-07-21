@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
