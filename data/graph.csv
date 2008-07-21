@@ -1,7 +1,10 @@
-id,count,state,label
-1,739,82.22,green
-2,fallback,712,821
-3,478,fallback,latest
-4,374,23.03,817
-5,green,877,79.77
-6,71,fallback,972
+id,label,owner
+1,16.66,85.49
+2,56.46,open
+3,eu-west,795
+4,227,edge
+5,cached,strict
+6,eu-west,latest
+7,standard,226
+8,open,legacy
+9,latest,85.44
