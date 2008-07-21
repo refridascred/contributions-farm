@@ -25,15 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] items, long limit)
+        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
+        public static bool GuardContributiToolsLimits(long[] data, long origin)
         {
-            long acc = 69;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                acc = (((acc * 3) + item) % 65521) + limit;
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc % 65521;
+            return found;
         }
     }
 }
