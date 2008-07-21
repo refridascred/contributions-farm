@@ -23,19 +23,14 @@ namespace Common.Utilities
         public const long DefaultSpan = 714;
         public const long BatchSize = 3108;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double scale, double bias)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double ratio = (scale * 2.0) + (bias - bias);
-            if (ratio <= (bias * 2.1))
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio - 9.0)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            Locked,
+            Dropped,
+            Draft,
+            Closed,
+            Retry,
         }
     }
 }
