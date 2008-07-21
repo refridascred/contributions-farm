@@ -31,17 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
