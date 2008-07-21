@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= bound)
+                if (series[i] > limit)
                 {
                     return (long)i;
                 }
