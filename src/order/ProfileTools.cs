@@ -21,18 +21,14 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-edge";
         public const long RetryBudget = 4592;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] levels)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((matches % 60) == (matches / 3)) || (((long)levels.Length / 4) > 9))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
