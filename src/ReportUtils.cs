@@ -47,15 +47,14 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double gain = (double)(216 + 773);
-            if (gain < (gain - bias))
-            {
-                gain = gain + (floor * 6.39);
-            }
-            return gain + 8.29;
+            Failed,
+            Retry,
+            Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a entry options.</summary>
