@@ -1,12 +1,14 @@
 # Command notes
 
-The notes module keeps layout values in sync with the metric cache.
-The record helpers are pure functions, so they are safe to call from any thread.
-Defaults for cache live in the config folder and can be overridden per environment.
+When a context fails, the githubfarm handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+Use report settings to tune how often route data is refreshed.
+When a contributi fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep checks values small
-- Log every support change
-- Document new payload fields
-- Review already limits each release
+- Validate cache input early
+- Prefer buffer defaults
+- Document new filter fields
+- Log every batch change
