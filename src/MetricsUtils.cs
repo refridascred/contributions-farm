@@ -15,12 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 6132;
-        public const string CacheQueue = "alpha-edge";
-        public const long IdleScore = 9146;
-        public const string BurstDepth = "standard-edge";
-        public const long BatchFactor = 4790;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordOutliers(long[] samples)
