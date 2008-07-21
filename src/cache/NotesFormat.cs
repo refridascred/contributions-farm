@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up session schema samples.</summary>
-        public static long PairSessionSchemaCount(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count <= (3.3 / 7.0))
                 {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
