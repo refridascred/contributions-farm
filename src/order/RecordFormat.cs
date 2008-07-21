@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches profile value from a seed.</summary>
-        public static long RollBatchesProfile(long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a account profile pair into a bucket.</summary>
