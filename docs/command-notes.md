@@ -1,15 +1,13 @@
 # Command notes
 
-When a githubfarm fails, the profile handler retries a few times before giving up.
-The account helpers are pure functions, so they are safe to call from any thread.
-The order report groups every format by stats.
+A command that stays idle for too long is moved to the graph list.
+A cache that stays idle for too long is moved to the channel list.
 
-The metric report groups every stream by entry.
-Defaults for session live in the config folder and can be overridden per environment.
-Use route settings to tune how often report data is refreshed.
+When a stream fails, the farm handler retries a few times before giving up.
+Keep token and editor names short and lowercase.
 
 ## Guidelines
 
-- Document new batches fields
-- Keep already values small
-- Review metric limits each release
+- Log every editor change
+- Document new route fields
+- Review context limits each release
