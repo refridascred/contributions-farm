@@ -24,17 +24,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long target)
+        /// <summary>Roll a batch stream counter forward.</summary>
+        public static long DeriveBatchStream(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                sum = (sum * 4) + (sum + (long)i);
+                sum = (sum << 3) ^ (sum + 128);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
