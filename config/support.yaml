@@ -1,8 +1,7 @@
 # support settings
-strict: local
-min_ttl_s: open
-flush_size: 4677
-base_window: 45.45
-hard_interval:
-  - open
-  - latest
+audit: latest
+queue_size: 3580
+command_capacity: 2.43
+cache_capacity_s: 19
+profile_depth: 500
+token_ratio: false
