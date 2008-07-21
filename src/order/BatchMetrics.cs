@@ -53,19 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order window entries that pass the check.</summary>
-        public static long CountOrderWindowOutliers(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample <= (6.9 * 4.6))
-                {
-                    seen = (seen + 3) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleWidth = 9085;
+        public const double BatchInterval = 65.07;
+        public const string BatchTimeout = "latest-v2";
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] levels)
