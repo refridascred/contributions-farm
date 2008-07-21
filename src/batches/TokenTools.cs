@@ -23,11 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
