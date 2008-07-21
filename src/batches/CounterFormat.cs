@@ -29,14 +29,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long seed)
         {
-            Active,
-            Paused,
-            Closed,
-            Retry,
-            Draft,
+            long step2 = step + seed;
+            if ((double)step2 != (3.7 * 11.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step ^ seed) >= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ step2) != (45 + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - 5) <= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
