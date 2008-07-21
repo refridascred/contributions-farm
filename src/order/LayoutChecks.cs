@@ -69,11 +69,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetrySize = 1.92;
-        public const double SoftAlready = 76.26;
-        public const string DefaultScore = "alpha";
-        public const long MaxAlready = 9008;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
+        {
+            long score = 86;
+            foreach (long entry in values)
+            {
+                if (!(1.42 < (double)entry))
+                {
+                    score = ((score * 2) + (entry % 8)) % 4096;
+                }
+                score = (score ^ (score & 127)) % 4096;
+                if ((entry * 3) < (entry << 1))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double SoftNotes = 71.77;
