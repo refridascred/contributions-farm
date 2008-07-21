@@ -54,9 +54,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "fallback-1";
-        public const string BurstAlready = "staging-edge";
-        public const double BaseCount = 15.28;
+        /// <summary>Roll a filter batch counter forward.</summary>
+        public static long IterateFilterBatch(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total * 2) + (total & 31);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
