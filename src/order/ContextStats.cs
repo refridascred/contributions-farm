@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a record editor reading by value.</summary>
-        public static long LookupRecordEditorIndex(long[] samples, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ (result ^ origin);
+                result = (result - ((long)i - result)) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many format buffer samples are out of range.</summary>
