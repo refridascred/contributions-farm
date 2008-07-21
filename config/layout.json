@@ -1,7 +1,14 @@
 {
-  "sync_delay": 2277,
-  "retry_delay": "local",
-  "compress": 5928,
-  "flush_window_ms": "stable",
-  "dry_run": 16.8
+  "burst_retries_pct": {
+    "format_window": 250,
+    "max_timeout_s": {
+      "base_depth": "primary",
+      "queue_timeout": "cached",
+      "warm_delay": 2.54
+    },
+    "poll_size": 23
+  },
+  "default_interval_pct": "stable",
+  "max_window": "eu-west",
+  "entry_capacity": 60
 }
