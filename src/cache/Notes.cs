@@ -25,13 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
             public bool Level { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
