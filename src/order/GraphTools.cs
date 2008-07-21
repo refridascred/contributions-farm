@@ -39,18 +39,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Audit layout payload readings against a rule.</summary>
+        public static long CountLayoutPayloadHits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((tally / 9) >= tally)
+                if ((seen - item) > (seen + bound))
                 {
-                    tally = (tally + 1) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
