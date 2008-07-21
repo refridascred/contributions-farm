@@ -31,18 +31,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] values, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((double)(long)values.Length <= (double)hits) && ((value + hits) < (1 << 1)))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
