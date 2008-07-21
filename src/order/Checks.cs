@@ -30,19 +30,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long floor)
         {
-            long anchor = 3;
-            foreach (long entry in items)
+            long prev = bound - floor;
+            if (floor < prev)
             {
-                anchor = (((anchor * 3) + (anchor >> 3)) % 1000) + entry;
-                if ((double)anchor >= (17.0 / 7.0))
+                return 4;
+            }
+            else
+            {
+                if ((30 ^ 243) >= prev)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((1.6 + 3.33) > (double)prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
