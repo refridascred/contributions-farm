@@ -1,7 +1,10 @@
-id,score,state
-1,24.66,269
-2,eu-west,958
-3,77,99
-4,stable,strict
-5,primary,87.04
-6,green,23.7
+id,rank,token,score
+1,68,12.73,edge
+2,57.31,55.46,703
+3,4.91,strict,legacy
+4,18.94,730,801
+5,439,25.79,16.76
+6,26.99,71.3,174
+7,stable,cached,323
+8,green,1.87,21.41
+9,cached,727,44.72
