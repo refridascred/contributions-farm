@@ -29,18 +29,16 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] values, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seen < entry) || (9 > origin))
-                {
-                    seen = seen + 3;
-                }
+                acc = (acc ^ ((long)i - acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
     }
 }
