@@ -108,19 +108,14 @@ namespace Common.Utilities
             return rate + (rate + bias);
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] readings, long origin)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Idle,
+            Draft,
+            Queued,
+            Done,
         }
     }
 }
