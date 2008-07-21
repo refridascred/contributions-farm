@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "staging-1";
-        public const long BurstWidth = 5233;
-        public const long WindowStats = 5365;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 8889;
