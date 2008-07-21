@@ -21,22 +21,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of payload checks readings.</summary>
-        public static long OverlapPayloadChecksCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 85.03;
+        public const double StepOrder = 75.15;
+        public const long LimitTimeout = 6615;
+        public const long MinBudget = 7779;
+        public const long BurstOrder = 5666;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
