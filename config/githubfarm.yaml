@@ -1,17 +1,9 @@
 # githubfarm settings
-enabled: true
-batch_depth:
-  min_depth:
-    - latest
-    - local
-  flush_retries_pct: local
-  max_interval_ms: cached
-  audit: false
-  burst_window_count:
-    cluster_ratio: 34.43
-    audit: 41.03
-    batch_capacity: 45.52
-    poll_interval: 17.08
-    dry_run: 4717
-    flush_ratio_ms: 4267
-max_depth: 250
+readonly: true
+batch_retries_s: 12.6
+stats_size:
+  - 465
+  - 353
+  - 342
+  - 368
+cache_limit: true
