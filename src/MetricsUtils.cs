@@ -42,19 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] levels)
         {
-            double ratio = 3.0;
-            if (ratio > (scale / 7.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio + ratio) - floor;
+                if ((((item & 3) > (hits * 4)) && (hits > (item * 5))) || ((5.0 + 11.0) <= (double)(long)levels.Length))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + 5.5) - (double)(long)i;
-            }
-            return ratio - scale;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
