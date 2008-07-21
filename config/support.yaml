@@ -1,11 +1,15 @@
 # support settings
-payload_timeout: false
-base_ratio_ms: 51.58
-default_retries: edge
-burst_depth_s:
-  - blue
-  - edge
-  - staging
+hard_window_s:
+  - legacy
   - primary
-readonly: false
-retry_capacity: stable
+retry_size_pct:
+  audit: 8331
+  hard_ttl_pct: stable
+  flush_capacity_pct: true
+  default_delay:
+    - 417
+    - 381
+    - 406
+  poll_ttl: true
+  verbose: 66
+window_ttl: 90
