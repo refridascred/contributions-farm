@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank entry batch input into a small class.</summary>
-        public static long ClassifyEntryBatch(long seed, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long next = seed - bound;
-            if ((4.85 / 3.0) <= (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.2 - 7.0) <= (double)next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.4 / 5.0) > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            New,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
