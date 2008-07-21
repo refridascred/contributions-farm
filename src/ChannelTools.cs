@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long offset)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long delta = limit ^ offset;
+            if ((limit - offset) < delta)
             {
-                if (item >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((delta <= (delta / 6)) && ((double)limit > (15.0 - 5.8)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((delta % 12) >= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
