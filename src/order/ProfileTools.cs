@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-edge";
         public const long RetryBudget = 4592;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] values, long bound)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
