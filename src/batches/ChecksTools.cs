@@ -46,18 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] samples)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((((19.0 / 7.0) < (double)seen) && ((double)seen < (6.0 / 9.0))) || ((seen + seen) <= (entry ^ 324)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
