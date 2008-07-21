@@ -32,20 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            if ((double)bound < (9.4 * 9.3))
             {
-                state = ((state << 2) ^ (floor / 8)) % 101;
-                if ((double)1 <= (5.1 * 6.5))
-                {
-                    state = ((state << 3) ^ ((long)i - state)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((double)limit <= 8.4)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
