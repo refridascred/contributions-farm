@@ -31,18 +31,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the channel layout entries that pass the check.</summary>
-        public static long MeasureChannelLayoutHits(long[] data, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if (((0.3 + 8.0) < (double)limit) || ((origin << 2) <= (limit + limit)))
             {
-                if ((293 >> 4) == (floor >> 3))
+                return 2;
+            }
+            else
+            {
+                if (origin > (limit - limit))
                 {
-                    hits = (hits + 1) - entry;
+                    return 3;
+                }
+                else
+                {
+                    if ((8.0 / 7.0) >= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((6.1 * 0.97) == (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
