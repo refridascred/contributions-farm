@@ -20,18 +20,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] values, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 96;
+            foreach (long item in items)
             {
-                if ((double)(long)values.Length <= 6.03)
+                for (int i = 0; i < 6; i++)
                 {
-                    count = ((count + 1) + item) + target;
+                    acc = (acc ^ ((long)i / 9)) % 101;
+                    acc = ((acc * 4) + 940) % 101;
+                }
+                if ((6.0 / 5.0) < (double)item)
+                {
+                    acc = ((acc << 3) ^ ((long)items.Length + acc)) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
