@@ -28,18 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] series, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((tally ^ target) < (target + 3))
+                if (!((((long)readings.Length << 3) >= (hits + hits)) || ((11.0 * 9.5) < (double)sample)))
                 {
-                    tally = (tally + 2) + datum;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
