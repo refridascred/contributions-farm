@@ -53,23 +53,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long origin)
         {
-            double bias = rate + (double)9;
-            if (bias <= (span / 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (double)2;
+                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - 2.9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (0.1 + span)) + (double)(long)i;
-            }
-            return bias - (span * 3.7);
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
