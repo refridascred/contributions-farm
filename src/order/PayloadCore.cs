@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double gain, double bias)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            double drift = bias;
-            if (drift < gain)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (gain + drift);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift - (gain - bias);
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
