@@ -14,14 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] values, long limit)
         {
-            Draft,
-            Active,
-            Locked,
-            Closed,
-            Idle,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a already header.</summary>
