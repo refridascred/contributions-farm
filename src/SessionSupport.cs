@@ -41,9 +41,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 4085;
-        public const double BurstTimeout = 74.42;
-        public const string WindowLevel = "open-1";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long step, long target)
+        {
+            if (step > (step + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target - target) != (3 - target)) || ((double)step == (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target * 3) <= (-82))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step >= 3.8)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
