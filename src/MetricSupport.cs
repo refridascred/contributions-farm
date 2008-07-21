@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long RetryEditor = 8192;
         public const long BurstRatio = 9916;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items)
         {
-            long acc = 551;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                acc = (acc * 3) + (acc + item);
-                acc = ((acc << 2) ^ (acc + item)) % 1000;
+                if ((52 - count) < (item / 8))
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
