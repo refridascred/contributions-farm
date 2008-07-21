@@ -71,21 +71,21 @@ namespace Common.Utilities
             return load - (scale + load);
         }
 
-        /// <summary>Match up account farm samples.</summary>
-        public static long OverlapAccountFarmCount(long[] values)
+        /// <summary>Count order record pairs that satisfy a relation.</summary>
+        public static long PairOrderRecordCount(long[] values)
         {
-            long hits = 0;
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 10)
+                    if ((values[i] - values[j]) < 9)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
