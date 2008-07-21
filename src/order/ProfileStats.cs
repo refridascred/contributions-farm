@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long slot = origin - seed;
+            if ((origin + 0) < seed)
             {
-                if ((81 - (-45)) != (reading << 3))
+                return 8;
+            }
+            else
+            {
+                if (seed < (slot & 3))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
