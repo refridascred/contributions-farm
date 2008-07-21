@@ -1,19 +1,5 @@
 # entry settings
-soft_threshold: fallback
-verbose:
-  - 219
-  - 72
-poll_ratio:
-  - edge
-  - standard
-burst_interval_s:
-  editor_size:
-    - primary
-    - standard
-    - primary
-  strict:
-    - 475
-    - 225
-    - 9
-    - 393
-  channel_limit: false
+strict: true
+cache_retries_pct: edge
+persist: legacy
+context_size: 53
