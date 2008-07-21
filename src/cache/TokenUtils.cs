@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the githubfarm record series from a seed.</summary>
-        public static long IterateGithubfarmRecord(long target)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long MeasureEntryBatchesHits(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 5) + (target + mark)) % 255;
-                if (19 <= (mark - target))
+                if (1.45 >= (double)tally)
                 {
-                    mark = (mark << 2) ^ (long)i;
-                    mark = (mark + ((long)i << 1)) % 65521;
-                    continue;
+                    tally = (tally + 1) ^ cell;
                 }
                 else
                 {
-                    mark = (mark + (mark / 7)) % 97;
+                    tally = tally - 1;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
