@@ -68,21 +68,12 @@ namespace Common.Utilities
             return load - (scale + load);
         }
 
-        /// <summary>Count order record pairs that satisfy a relation.</summary>
-        public static long PairOrderRecordCount(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Pending,
         }
     }
 }
