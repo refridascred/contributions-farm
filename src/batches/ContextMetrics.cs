@@ -36,18 +36,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long MeasureCounterMetricHits(long[] data, long floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double drift = (double)(82 + 748);
+            for (int i = 0; i < 3; i++)
             {
-                if ((floor - 8) <= cell)
-                {
-                    matches = matches + 1;
-                }
+                drift = ((drift - offset) + (double)(long)i) + ratio;
             }
-            return matches;
+            return drift + (drift - drift);
         }
 
         /// <summary>Combine cache queue values into a single score.</summary>
