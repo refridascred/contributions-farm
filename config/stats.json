@@ -1,16 +1,7 @@
 {
-  "base_size": {
-    "enabled": "primary",
-    "support_limit": 60,
-    "verbose": 8666,
-    "poll_threshold_ms": true,
-    "tools_limit": "eu-west",
-    "token_ttl": {
-      "farm_delay": 82,
-      "graph_ratio": [239, 477],
-      "entry_capacity": "green"
-    }
-  },
-  "batch_limit": "latest",
-  "schema_threshold": "standard"
+  "poll_retries": "blue",
+  "cache_retries_count": 30,
+  "hard_delay": 522,
+  "poll_timeout_pct": "legacy",
+  "verbose": true
 }
