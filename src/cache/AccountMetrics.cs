@@ -70,22 +70,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of schema window readings.</summary>
-        public static long FoldSchemaWindow(long[] series, long floor)
-        {
-            long mix = 0;
-            foreach (long item in series)
-            {
-                if ((double)floor <= 0.9)
-                {
-                    mix = (mix ^ (item + item)) % 1000;
-                }
-                else
-                {
-                    mix = mix + mix;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowScore = 9032;
+        public const double MinContext = 49.88;
+        public const long BurstRatio = 8248;
+        public const long DefaultContext = 1116;
     }
 }
