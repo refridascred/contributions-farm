@@ -49,12 +49,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
