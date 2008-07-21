@@ -55,11 +55,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitScore = 4662;
-        public const long BurstTimeout = 7507;
-        public const long IdleAccount = 6659;
-        public const double WindowAccount = 21.97;
-        public const long BaseSize = 5329;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
