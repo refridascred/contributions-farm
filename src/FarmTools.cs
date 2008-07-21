@@ -31,22 +31,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (!(((tally % 60) > (item ^ item)) && ((double)69 == (double)tally)))
+                if (sample >= limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
