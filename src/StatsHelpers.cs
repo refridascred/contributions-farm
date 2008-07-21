@@ -47,25 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long step)
-        {
-            if ((4.0 * 1.25) >= (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step << 3) == (8 - target)) && ((7.38 - 7.5) <= (double)step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 51.48;
+        public const double RetryCluster = 92.24;
+        public const double BurstCount = 49.47;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
