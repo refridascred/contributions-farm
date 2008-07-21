@@ -104,19 +104,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] readings, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            double weight = (bias - span) + (double)0;
+            if (weight >= bias)
             {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (weight - bias);
             }
-            return ok;
+            else
+            {
+                weight = weight + span;
+            }
+            return weight + (0.07 * 10.0);
         }
     }
 }
