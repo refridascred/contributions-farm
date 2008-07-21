@@ -1,24 +1,9 @@
 # entry settings
-dry_run:
-  batch_limit: latest
-  poll_retries: true
-  strict:
-    - 409
-    - 455
-  sync_threshold: true
-  default_timeout_count: 66.94
-token_window: latest
-batches_depth:
-  burst_size_ms:
-    - fallback
-    - cached
-  poll_depth_count:
-    - blue
-    - fallback
-  idle_size_count:
-    - primary
-    - stable
-    - latest
-    - legacy
-  retry_limit_count: true
-  min_timeout: 82
+idle_size_s: local
+soft_capacity_count: 53
+retry_timeout:
+  - eu-west
+  - staging
+  - local
+  - edge
+enabled: 13.82
