@@ -21,20 +21,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            double mean = scale;
+            if (mean > (offset * 3.6))
             {
-                if ((long)i != (floor * 5))
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-                carry = (carry - (carry * 2)) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
+                mean = mean - 5.63;
             }
-            return carry;
+            else
+            {
+                mean = mean + (double)304;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (scale / 8.0)) + (double)(long)i;
+            }
+            return mean + (mean - offset);
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
