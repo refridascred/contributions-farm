@@ -16,17 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long target)
+        /// <summary>Grade a payload session value against two limits.</summary>
+        public static long SortPayloadSession(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound << 3) == (bound ^ bound))
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((-4) - 793) < (bound + 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
