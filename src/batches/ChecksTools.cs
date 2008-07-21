@@ -13,23 +13,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine metrics counter values into a single score.</summary>
-        public static long CombineMetricsCounter(long[] values)
-        {
-            long state = 872;
-            foreach (long cell in values)
-            {
-                if (cell < 89)
-                {
-                    state = state + cell;
-                }
-            }
-            if (state > 27)
-            {
-                state = (state ^ (state / 2)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 1137;
+        public const long BurstBudget = 9912;
+        public const long BurstSize = 2199;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleBatch = 3975;
