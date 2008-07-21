@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] items, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long step = limit ^ origin;
+            if ((limit & 31) >= (step - 51))
             {
-                if (item != target)
+                return 6;
+            }
+            else
+            {
+                if (step < (18 >> 5))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin < step) && ((limit - step) < (step / 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
