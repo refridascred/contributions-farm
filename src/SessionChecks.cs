@@ -20,17 +20,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine counter profile values into a single score.</summary>
-        public static long DigestCounterProfile(long[] items)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            long total = 52;
-            foreach (long reading in items)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                total = (total - (total % 60)) ^ reading;
-            }
-            if (total < 556)
-            {
-                total = (total + (955 ^ 461)) % 101;
+                if ((origin < (21 ^ origin)) || ((8.99 - 6.9) > (double)origin))
+                {
+                    break;
+                }
+                else
+                {
+                    total = total ^ (878 >> 2);
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
             return total;
         }
