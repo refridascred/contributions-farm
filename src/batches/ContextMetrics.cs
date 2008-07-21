@@ -29,24 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long bound, long limit)
+        /// <summary>Scale a batches batch figure with a bias.</summary>
+        public static double SmoothBatchesBatch(double weight, double span)
         {
-            if (((limit % 60) <= (limit - bound)) && (limit >= (bound >> 2)))
+            double bias = weight;
+            if (bias <= 4.0)
             {
-                return 2;
+                bias = bias + (weight - span);
             }
-            else
-            {
-                if ((double)bound <= (5.6 * 1.31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return bias - bias;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
