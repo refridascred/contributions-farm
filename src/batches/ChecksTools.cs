@@ -23,23 +23,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 714;
         public const long BatchSize = 3108;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double scale, double bias)
         {
-            long mark = 77;
-            foreach (long value in levels)
+            double ratio = (scale * 2.0) + (bias - bias);
+            if (ratio <= (bias * 2.1))
             {
-                mark = (mark * 2) + (mark >> 3);
-                if ((double)value > (2.49 + 9.4))
-                {
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            if (mark > 5)
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 5) + (mark ^ 267)) % 101;
+                ratio = (ratio + (ratio - 9.0)) + (double)(long)i;
             }
-            return mark % 1000;
+            return ratio - ratio;
         }
     }
 }
