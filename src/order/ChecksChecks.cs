@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const string WindowLayout = "stable";
         public const string SoftLayout = "fallback-edge";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series, long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long acc = 83;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((acc & 15) != (step << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc ^ acc) % 255) + entry;
-                }
-                else
-                {
-                    acc = ((acc * 2) + ((long)series.Length - acc)) % 65521;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 57)
-            {
-                acc = ((acc << 2) ^ ((-143) & 3)) % 255;
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
