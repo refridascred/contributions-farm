@@ -46,12 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            Pending,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
