@@ -47,12 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Blend two metric stats measurements.</summary>
+        public static double ScaleMetricStats(double rate, double bias)
         {
-            Closed,
-            Queued,
-            Idle,
+            double gain = bias;
+            if (gain <= (rate + 2.0))
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain - rate;
+            }
+            return gain + bias;
         }
     }
 }
