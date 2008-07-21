@@ -51,23 +51,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster session samples.</summary>
-        public static long CombineClusterSession(long[] readings)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] items, long target)
         {
-            long state = 56;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + (state << 3)) % 97;
-                if (datum <= (600 << 1))
+                if (items[i] > target)
                 {
-                    state = ((state * 3) + datum) % 1000;
-                }
-                if (datum >= (0 - datum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
