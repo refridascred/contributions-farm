@@ -62,19 +62,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long origin)
+        /// <summary>Rank route cache input into a small class.</summary>
+        public static long RankRouteCache(long limit, long target)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            if (7.28 > (double)limit)
             {
-                if (cell >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((limit / 9) > (59 ^ limit))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((target & 255) >= (target << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
