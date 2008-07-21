@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the checks tools entries that pass the check.</summary>
-        public static long MeasureChecksToolsMatches(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((floor * 4) != (floor & 3)) && ((item + item) == (floor - item)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 45.77;
+        public const string MinBudget = "fallback-1";
+        public const long StepGraph = 4346;
+        public const string BurstSpan = "fallback-v2";
+        public const long MinFactor = 1477;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
