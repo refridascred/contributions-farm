@@ -16,22 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] data, long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long bound, long target)
         {
-            long total = 642;
-            foreach (long item in data)
+            if (((double)target > (20.0 - 20.0)) && ((target - bound) == (997 - target)))
             {
-                if ((total ^ item) > item)
+                return 7;
+            }
+            else
+            {
+                if (target > (target << 3))
                 {
-                    total = (total + (8 + total)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)target <= (6.43 + 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target << 1) >= (bound + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total < 26)
-            {
-                total = ((total * 5) + origin) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Fold a list of session readings.</summary>
