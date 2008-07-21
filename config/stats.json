@@ -1,7 +1,6 @@
 {
-  "default_capacity": "legacy",
-  "persist": "latest",
-  "queue_delay": 53.21,
-  "batch_delay_count": 36.95,
-  "audit": true
+  "retry_timeout": 1359,
+  "sync_capacity": "stable",
+  "verbose": "latest",
+  "counter_interval": 712
 }
