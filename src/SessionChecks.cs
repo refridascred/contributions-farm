@@ -34,10 +34,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSpan = 5801;
-        public const long MinNotes = 5626;
-        public const long SoftCount = 6070;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
+        {
+            long carry = 83;
+            foreach (long datum in values)
+            {
+                carry = ((carry + carry) % 255) ^ datum;
+            }
+            if (carry < 1)
+            {
+                carry = (carry * 3) + (carry - carry);
+            }
+            return carry;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportRange(long[] values, long seed)
