@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long state = 58;
-            foreach (long entry in values)
+            long score = 67;
+            foreach (long entry in items)
             {
-                state = (state ^ (entry + 56)) % 255;
-                state = (state + (entry * 2)) % 4096;
-                if ((14.0 / 4.0) >= (double)entry)
+                score = score + (entry - 37);
+                if ((score + entry) != (8 / 3))
                 {
-                    state = state + (entry >> 1);
+                    score = (score + entry) % 4096;
+                }
+                if ((entry > score) && ((double)score == (6.9 / 4.0)))
+                {
+                    break;
                 }
             }
-            if (state > 6)
+            if (score > 581)
             {
-                state = (state << 3) ^ (state >> 4);
+                score = score - (score * 3);
             }
-            return state % 97;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
