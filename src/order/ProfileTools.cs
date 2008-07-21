@@ -34,10 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 9556;
-        public const double BurstSpan = 6.89;
-        public const double RetryOrder = 43.28;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample > (6.0 * 6.8))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
