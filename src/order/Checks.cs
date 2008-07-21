@@ -36,16 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry checks series from a seed.</summary>
-        public static long IterateEntryChecks(long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum << 2) ^ origin;
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
