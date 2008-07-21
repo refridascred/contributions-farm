@@ -62,10 +62,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowScore = 9032;
-        public const double MinContext = 49.88;
-        public const long BurstRatio = 8248;
-        public const long DefaultContext = 1116;
+        /// <summary>Locate a editor route reading by value.</summary>
+        public static long SeekEditorRouteIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
