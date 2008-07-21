@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] items, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum > target)
+                if (((long)i >> 3) < acc)
                 {
-                    found = false;
                     break;
                 }
+                else
+                {
+                    acc = acc ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc + (limit + acc)) % 255) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
