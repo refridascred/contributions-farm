@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 72;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score * 5) + 495) % 1000) ^ (long)i;
+                    score = score + (501 & 63);
+                }
+                if ((item - score) == ((-53) & 3))
+                {
+                    score = (score - (757 - item)) % 97;
+                }
+                if (score > (score >> 5))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score < 855)
+            {
+                score = (score - (85 / 9)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
