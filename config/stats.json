@@ -1,5 +1,7 @@
 {
-  "batch_window_pct": 500,
-  "contributi_depth": "primary",
-  "report_ratio": 1888
+  "channel_timeout": 1024,
+  "enabled": false,
+  "soft_capacity_ms": "open",
+  "burst_threshold_count": "fallback",
+  "hard_limit": "staging"
 }
