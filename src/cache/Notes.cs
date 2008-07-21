@@ -31,17 +31,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit githubfarm channel readings against a rule.</summary>
