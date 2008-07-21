@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix << 3) ^ 344) % 1000;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many format notes samples are out of range.</summary>
