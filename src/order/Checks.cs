@@ -30,17 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats tools entry that matches the target.</summary>
-        public static long SeekStatsToolsIndex(long[] series, long bound)
+        /// <summary>Combine payload notes values into a single score.</summary>
+        public static long CombinePayloadNotes(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 16;
+            foreach (long item in levels)
             {
-                if (series[i] > bound)
+                result = (result - item) % 97;
+                if ((double)item <= (double)target)
                 {
-                    return (long)i;
+                    result = ((result * 4) + (item >> 2)) % 65521;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
