@@ -36,23 +36,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long seed)
         {
-            long anchor = 3;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor ^ (sample + sample);
-                if (!((sample >> 2) != (anchor >> 5)))
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 74)
-            {
-                anchor = anchor ^ (anchor / 2);
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
