@@ -46,33 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long mark = 0;
+            foreach (long item in samples)
             {
-                if ((double)anchor > 8.0)
+                if ((item / 7) <= (seed / 2))
                 {
-                    anchor = (anchor * 4) + bound;
-                }
-                if (19.0 < (double)(long)i)
-                {
-                    anchor = (anchor + ((long)i >> 2)) % 4096;
-                    anchor = anchor - 4;
+                    mark = (mark * 2) + (mark >> 3);
                 }
                 else
                 {
-                    anchor = (anchor ^ (bound * 4)) % 255;
-                    anchor = (anchor + (bound + anchor)) % 4096;
+                    mark = (mark * 4) + mark;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (anchor * 5) + (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
