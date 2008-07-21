@@ -20,11 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long seed, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            if ((floor + seed) > (30 & 127))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed ^ seed) != (seed >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-4) & 63) > (floor - seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed - floor) > floor) && ((floor ^ floor) > seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report mode values.</summary>
