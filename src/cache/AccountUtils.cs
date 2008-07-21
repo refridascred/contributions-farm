@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Fold a list of farm format readings.</summary>
+        public static long FoldFarmFormat(long[] samples, long step)
         {
-            long score = 42;
-            foreach (long datum in levels)
+            long result = 77;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score + datum) % 97) ^ (long)i;
-                }
-                if ((score >> 3) < score)
-                {
-                    score = (score - 8) % 65521;
-                }
+                result = (result ^ (step << 3)) ^ sample;
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Hold a metrics options.</summary>
