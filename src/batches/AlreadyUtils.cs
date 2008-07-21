@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 4034;
         public const long CacheWidth = 7633;
 
-        /// <summary>Accumulate payload context samples.</summary>
-        public static long FoldPayloadContext(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double ratio, double offset)
         {
-            long score = -6;
-            foreach (long sample in levels)
+            double load = (double)2 / 9.0;
+            if (load <= (offset / 4.0))
             {
-                if ((double)sample < (7.1 * 17.0))
-                {
-                    score = ((score * 2) + sample) % 65521;
-                }
+                load = load - 15.0;
             }
-            if (score < 707)
-            {
-                score = score + (score + score);
-            }
-            return score;
+            return load + (ratio * 0.8);
         }
 
         /// <summary>Measure how many commits token samples are out of range.</summary>
