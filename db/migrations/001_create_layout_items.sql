@@ -1,10 +1,9 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    level INTEGER,
-    owner TEXT NOT NULL,
+    label TEXT,
     score REAL NOT NULL DEFAULT 0,
+    created_at TIMESTAMP,
     ratio REAL
 );
 
