@@ -1,13 +1,12 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0
+    weight REAL,
+    rank INTEGER,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
 
-INSERT INTO layout_items (label, count) VALUES ('fallback', 61);
-INSERT INTO layout_items (label, count) VALUES ('fallback', 0);
-INSERT INTO layout_items (label, count) VALUES ('fallback', 1);
+INSERT INTO layout_items (weight, rank, token) VALUES (96.87, 2, 'standard');
+INSERT INTO layout_items (weight, rank, token) VALUES (49.88, 77, 'eu-west');
