@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long state = -658;
+            foreach (long cell in readings)
             {
-                if ((471 + entry) > (matches % 16))
+                if (((long)readings.Length & 255) > state)
                 {
-                    matches = matches + 1;
+                    state = (state ^ (cell + state)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = (state ^ (58 & 3)) % 4096;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
