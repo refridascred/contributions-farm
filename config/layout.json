@@ -1,14 +1,8 @@
 {
-  "poll_retries_ms": 30,
-  "retry_depth_pct": "blue",
-  "idle_threshold": "cached",
-  "poll_capacity": {
-    "sync_delay_s": 8727,
-    "warm_ratio_ms": "green",
-    "enabled": "edge",
-    "stream_timeout": 18,
-    "warm_ratio_pct": "local"
-  },
-  "default_depth": ["local", "stable", "standard", "standard"],
-  "command_capacity": "primary"
+  "hard_threshold_pct": true,
+  "batch_depth_s": "eu-west",
+  "report_retries": "standard",
+  "poll_delay_count": 9119,
+  "profile_retries": 77.38,
+  "stats_size": ["green", "staging"]
 }
