@@ -29,34 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long result = 5;
-            foreach (long value in items)
-            {
-                if (!((3.9 / 8.0) < (double)result))
-                {
-                    result = result - (479 - 9);
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (result + value) + (long)i;
-                }
-                if (((9.73 * 18.0) == (double)result) && ((result + value) == (value % 24)))
-                {
-                    result = (result ^ (value / 4)) % 4096;
-                }
-                else
-                {
-                    result = (result * 3) + 60;
-                }
-            }
-            if (result < (-42))
-            {
-                result = ((result * 5) + (result - 908)) % 101;
-            }
-            return result;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
