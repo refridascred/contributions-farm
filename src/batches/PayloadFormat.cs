@@ -40,14 +40,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            Done,
-            Paused,
-            Active,
-            Synced,
-            New,
+            long mark = 3;
+            foreach (long value in samples)
+            {
+                mark = ((mark << 3) ^ (value & 7)) % 97;
+                if (((value & 31) != ((-59) * 3)) || ((47 - mark) > mark))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
