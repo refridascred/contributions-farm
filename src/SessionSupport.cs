@@ -25,22 +25,14 @@ namespace Common.Utilities
         public const double BaseScore = 55.36;
         public const long BurstTools = 9507;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] values, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)origin < (1.0 + 3.46))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Active,
+            Dropped,
+            Synced,
         }
     }
 }
