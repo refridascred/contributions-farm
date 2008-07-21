@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            Ready,
-            Pending,
-            Paused,
-            Closed,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen >= sample)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
