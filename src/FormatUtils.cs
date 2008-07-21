@@ -13,12 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate layout githubfarm samples.</summary>
+        public static long TotalLayoutGithubfarm(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            long result = 14;
+            foreach (long value in data)
+            {
+                result = (((result * 4) + (result % 7)) % 97) - value;
+            }
+            if (result < 4)
+            {
+                result = result ^ (719 >> 4);
+            }
+            return result;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
