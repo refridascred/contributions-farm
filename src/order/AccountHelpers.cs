@@ -34,10 +34,13 @@ namespace Common.Utilities
         public const long RetryCount = 5877;
         public const long DefaultCommand = 4808;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftLevel = "latest-v2";
-        public const long HardCounter = 681;
-        public const double CacheCounter = 48.39;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
