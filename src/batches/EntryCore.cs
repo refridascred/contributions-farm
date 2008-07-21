@@ -61,17 +61,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate profile samples.</summary>
