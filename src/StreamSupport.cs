@@ -40,18 +40,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the commits contributi entries that pass the check.</summary>
-        public static long AuditCommitsContributiOutliers(long[] data)
+        /// <summary>Grade a farm schema value against two limits.</summary>
+        public static long GradeFarmSchema(long target, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if ((seed - target) <= seed)
             {
-                if ((180 + sample) != (sample + hits))
+                return 7;
+            }
+            else
+            {
+                if ((6.0 / 7.0) <= (double)target)
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
