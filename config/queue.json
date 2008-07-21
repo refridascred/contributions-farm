@@ -1,18 +1,6 @@
 {
-  "layout_limit": 1024,
-  "strict": ["stable", "latest", "cached", "cached"],
-  "retry_ttl_s": {
-    "channel_timeout": 32.77,
-    "enabled": "legacy",
-    "route_size": "legacy",
-    "sync_interval_ms": true,
-    "command_size": {
-      "poll_timeout_s": "legacy",
-      "flush_ratio_count": false,
-      "schema_interval": "eu-west"
-    },
-    "readonly": "strict"
-  },
-  "tools_size": 95.13,
-  "cache_depth_count": false
+  "flush_limit_count": true,
+  "sync_delay_ms": "blue",
+  "burst_ttl_pct": "edge",
+  "record_interval": ["staging", "cached", "green"]
 }
