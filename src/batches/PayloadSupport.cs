@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheTimeout = 3471;
-        public const double LimitBudget = 43.95;
-        public const long DefaultFormat = 2283;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items, long offset)
+        {
+            long state = 16;
+            foreach (long datum in items)
+            {
+                state = (state - (datum << 1)) + offset;
+            }
+            if (state < 80)
+            {
+                state = (state * 3) + (state & 255);
+            }
+            return state;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorOutliers(long[] items)
