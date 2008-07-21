@@ -27,18 +27,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long CountGithubfarmStatsOutliers(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = 20;
+            foreach (long datum in readings)
             {
-                if (!(((datum / 2) <= matches) || ((326 >> 2) >= (matches + matches))))
+                if ((anchor / 9) > datum)
                 {
-                    matches = matches + 2;
+                    anchor = (anchor ^ (datum / 4)) % 4096;
+                }
+                if (!((anchor & 255) >= datum))
+                {
+                    anchor = ((anchor << 3) ^ (71 ^ datum)) % 101;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a route info.</summary>
