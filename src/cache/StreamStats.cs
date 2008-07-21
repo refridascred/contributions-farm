@@ -38,15 +38,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Accumulate entry notes samples.</summary>
+        public static long ScoreEntryNotes(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            long anchor = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                anchor = ((anchor << 3) ^ (reading << 1)) % 1000;
             }
-            return state;
+            if (anchor < (-9))
+            {
+                anchor = ((anchor << 2) ^ (anchor >> 3)) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
