@@ -37,12 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Pending,
-            Synced,
-            Retry,
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
