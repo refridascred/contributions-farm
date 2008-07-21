@@ -72,22 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long acc = 423;
-            foreach (long item in data)
-            {
-                if ((double)seed <= (9.0 * 8.72))
-                {
-                    acc = (acc * 2) + (seed ^ item);
-                }
-                if (((double)item >= (double)670) || ((acc * 5) == (item * 2)))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            Done,
+            Locked,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
