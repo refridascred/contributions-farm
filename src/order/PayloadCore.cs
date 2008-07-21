@@ -48,11 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchWidth = 8131;
-        public const string HardSchema = "local-v2";
-        public const long BaseSchema = 3769;
-        public const long StepSchema = 1777;
-        public const double WindowSchema = 90.18;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
     }
 }
