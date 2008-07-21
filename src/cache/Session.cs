@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
