@@ -42,13 +42,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            Failed,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Adjust a tools reading.</summary>
