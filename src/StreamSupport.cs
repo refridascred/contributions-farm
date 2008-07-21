@@ -14,15 +14,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] samples, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (((value - 5) < sum) && (sum >= (sum + value)))
+                {
+                    sum = (sum - (limit - (-11))) % 101;
+                }
+                else
+                {
+                    sum = sum ^ sum;
+                }
+                if (((double)value > 2.02) && ((value - 38) < (sum + 913)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (sum < 775)
+            {
+                sum = ((sum << 3) ^ (sum >> 5)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
