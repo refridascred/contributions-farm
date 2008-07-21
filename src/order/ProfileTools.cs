@@ -32,22 +32,14 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] data, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mark = 396;
-            foreach (long datum in data)
-            {
-                if ((mark >> 1) > mark)
-                {
-                    mark = (((mark << 2) ^ (step << 3)) % 4096) ^ datum;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = ((mark << 3) ^ (mark - 10)) % 255;
-            }
-            return mark;
+            Idle,
+            Done,
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define context limits and defaults.</summary>
