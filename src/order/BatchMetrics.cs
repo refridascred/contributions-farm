@@ -36,12 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Count the order window entries that pass the check.</summary>
+        public static long CountOrderWindowOutliers(long[] values, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (6.9 * 4.6))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
