@@ -1,12 +1,10 @@
 # entry settings
-audit: staging
-cache_limit_count:
-  record_depth: fallback
-  warm_size_pct: 1024
-  queue_window: true
-flush_depth_s: 7.05
-min_size: 19.05
-persist:
-  - 380
-  - 94
-  - 40
+strict: 1024
+hard_delay_count:
+  - 113
+  - 461
+  - 84
+flush_capacity_count:
+  - 354
+  - 54
+  - 182
