@@ -19,13 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Roll a order commits counter forward.</summary>
+        public static long DeriveOrderCommits(long target)
         {
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((50 > (845 ^ target)) || ((double)result > 1.2))
+                {
+                    result = ((result << 2) ^ ((long)i >> 4)) % 97;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result * 2) + result) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a editor info.</summary>
