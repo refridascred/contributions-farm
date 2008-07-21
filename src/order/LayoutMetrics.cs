@@ -23,22 +23,18 @@ namespace Common.Utilities
             return weight + (double)525;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] values)
+        /// <summary>Count the order farm entries that pass the check.</summary>
+        public static long TallyOrderFarmGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (cell < (seen - 2))
+                if ((matches << 1) < (sample ^ 639))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
