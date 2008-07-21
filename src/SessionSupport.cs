@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long bound)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
