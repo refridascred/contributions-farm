@@ -1,12 +1,19 @@
 {
-  "persist": 21,
-  "buffer_interval": {
-    "audit": "cached",
-    "cache_size_ms": "latest",
-    "retry_size": "strict"
+  "audit": 500,
+  "poll_size": "legacy",
+  "min_ttl_pct": {
+    "idle_window": "blue",
+    "burst_ttl_ms": "open",
+    "idle_threshold_count": {
+      "editor_ttl": 5026,
+      "cache_threshold": [218, 10, 301],
+      "base_size_pct": 30,
+      "default_retries": "primary",
+      "hard_limit": ["stable", "local", "primary", "strict"]
+    },
+    "strict": 2.54
   },
-  "dry_run": 61.68,
-  "cache_interval": "eu-west",
-  "batch_ttl": [150, 427, 338],
-  "soft_interval_s": "edge"
+  "compress": 54,
+  "default_capacity_pct": 219,
+  "route_timeout": 31.82
 }
