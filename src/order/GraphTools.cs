@@ -39,14 +39,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            New,
-            Pending,
-            Locked,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally / 9) >= tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
