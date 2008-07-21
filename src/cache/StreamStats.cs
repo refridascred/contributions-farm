@@ -44,18 +44,9 @@ namespace Common.Utilities
         public const string LimitCluster = "stable-v2";
         public const string StepTimeout = "legacy-edge";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 2) >= (reading & 7))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 5397;
+        public const long MaxWidth = 9323;
+        public const string MaxLevel = "alpha";
     }
 }
