@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const double WindowBatch = 76.77;
         public const long RetryBatch = 2543;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] levels)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((reading >> 2) > 838) || ((reading % 7) == (6 / 2))) && ((hits / 3) > reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Paused,
+            Synced,
         }
     }
 }
