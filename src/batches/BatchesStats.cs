@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate batch report readings against a bound.</summary>
+        public static bool ValidateBatchReportBounds(long[] readings, long target)
         {
-            Done,
-            New,
-            Queued,
-            Paused,
-            Stale,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
