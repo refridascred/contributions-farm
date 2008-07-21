@@ -1,6 +1,19 @@
 {
-  "readonly": false,
-  "token_ratio": "legacy",
-  "enabled": 63.72,
-  "hard_capacity_pct": [191, 274, 459, 400]
+  "base_limit_pct": false,
+  "base_depth_ms": true,
+  "stats_limit": true,
+  "default_timeout": {
+    "persist": [220, 193, 57],
+    "base_ttl_ms": 8984,
+    "poll_depth": 4.52,
+    "hard_ratio": {
+      "editor_window": 43.94,
+      "min_ttl_pct": false,
+      "retry_timeout_ms": [471, 61],
+      "cache_window": true,
+      "base_threshold_s": 18
+    },
+    "readonly": "primary"
+  },
+  "retry_size_count": 30
 }
