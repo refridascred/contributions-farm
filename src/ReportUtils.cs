@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long limit)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = rate / 7.0;
+            if (load < (offset * 5.17))
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - load;
             }
-            return -1;
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (rate - 5.7)) + (double)(long)i;
+            }
+            return load - (rate * 18.0);
         }
 
         /// <summary>Locate a token reading by value.</summary>
