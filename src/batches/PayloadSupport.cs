@@ -24,12 +24,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Retry,
-            Queued,
-            Done,
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
