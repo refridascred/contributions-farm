@@ -19,11 +19,16 @@ namespace Common.Utilities
         public const string BurstInterval = "alpha-v2";
         public const double BurstLevel = 97.82;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetrySize = 78.58;
-        public const string MaxInterval = "primary";
-        public const long LimitBudget = 3602;
-        public const long CacheTimeout = 3595;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardCount = 6712;
