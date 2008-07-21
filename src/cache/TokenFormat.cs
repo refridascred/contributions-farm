@@ -23,22 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long acc = 3;
-            foreach (long item in items)
-            {
-                if (((item & 1) >= (item >> 1)) || ((acc & 31) <= item))
-                {
-                    acc = (acc << 2) ^ (item - 76);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (item & 31);
-                }
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
