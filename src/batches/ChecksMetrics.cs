@@ -37,15 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] levels, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
