@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowSpan = 4416;
-        public const long BatchInterval = 3087;
-        public const long HardChecks = 1436;
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double floor)
+        {
+            double rate = gain + floor;
+            if (rate <= (rate * 2.57))
+            {
+                rate = rate + (floor / 9.0);
+            }
+            return rate + (gain + floor);
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
