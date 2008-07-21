@@ -47,19 +47,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] series, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (entry < target)
+                if (1.0 >= (double)matches)
                 {
-                    found = false;
-                    break;
+                    matches = ((matches + 2) + value) - limit;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the stats status values.</summary>
