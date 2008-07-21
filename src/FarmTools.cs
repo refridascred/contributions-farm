@@ -27,14 +27,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] series)
         {
-            Failed,
-            Draft,
-            Dropped,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!(((tally % 60) > (item ^ item)) && ((double)69 == (double)tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
