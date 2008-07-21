@@ -24,12 +24,15 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Blend two githubfarm notes measurements.</summary>
+        public static double ProjectGithubfarmNotes(double bias, double floor)
         {
-            Dropped,
-            Active,
-            Retry,
+            double gain = (double)92 / 4.0;
+            if (gain < (floor + bias))
+            {
+                gain = gain + gain;
+            }
+            return gain + floor;
         }
 
         /// <summary>Match up counter samples.</summary>
