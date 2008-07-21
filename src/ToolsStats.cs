@@ -28,38 +28,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels, long origin)
         {
-            if ((19.0 * 8.0) != (double)offset)
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset - step) < offset) && ((double)offset >= 3.95))
+                if ((item - count) == (86 + item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((785 - step) == (1 * 4)) || ((offset - offset) < (0 + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - offset) >= offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 2) + origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support kind values.</summary>
