@@ -50,14 +50,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double gain, double bias)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Locked,
-            Draft,
+            double mean = (double)((-22) + 4);
+            if (mean > gain)
+            {
+                mean = mean - 6.9;
+            }
+            return mean + bias;
         }
     }
 }
