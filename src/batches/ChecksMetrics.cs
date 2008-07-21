@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of queue route readings.</summary>
-        public static long TotalQueueRoute(long[] series)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] series, long bound)
         {
-            long score = 876;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (1 < (score - datum))
+                if (series[i] <= bound)
                 {
-                    score = ((score << 2) ^ score) % 101;
-                }
-                if (((datum & 127) != (score + score)) || ((score * 3) != (score * 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
