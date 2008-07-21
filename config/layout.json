@@ -1,5 +1,6 @@
 {
-  "already_limit": 50,
-  "warm_threshold_count": ["local", "strict", "standard"],
-  "readonly": false
+  "persist": "stable",
+  "stats_depth": "standard",
+  "poll_delay_ms": 92.97,
+  "min_delay_pct": ["stable", "latest"]
 }
