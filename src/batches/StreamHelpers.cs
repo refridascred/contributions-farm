@@ -43,19 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items, long step)
+        /// <summary>Match up batch report samples.</summary>
+        public static long CompareBatchReportCount(long[] samples)
         {
-            long score = -4;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (step - score)) % 255) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score < 6)
-            {
-                score = (score + score) % 65521;
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
