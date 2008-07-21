@@ -1,6 +1,11 @@
 # entry settings
-verbose: local
-enabled: 1024
-compress: true
-batches_size: 37.39
-soft_retries: stable
+cluster_ttl:
+  - local
+  - green
+  - eu-west
+  - primary
+idle_depth_count: standard
+poll_interval: 100
+warm_timeout: 22
+warm_depth_count: 0.21
+hard_depth: 22
