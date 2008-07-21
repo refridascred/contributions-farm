@@ -21,17 +21,32 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = offset + limit;
+            if ((edge + offset) == (limit - offset))
             {
-                if (values[i] < bound)
+                return 1;
+            }
+            else
+            {
+                if (((offset + offset) > (limit + edge)) && ((offset / 3) > (2 + edge)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit <= offset) || ((offset + (-5)) != (86 - 95)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
