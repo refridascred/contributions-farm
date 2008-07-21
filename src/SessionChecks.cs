@@ -40,22 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((31 ^ datum) >= datum)
+                if (datum > seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
