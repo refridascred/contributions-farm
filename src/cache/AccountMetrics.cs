@@ -62,17 +62,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a editor route reading by value.</summary>
-        public static long SeekEditorRouteIndex(long[] levels, long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Ready,
+            Failed,
         }
     }
 }
