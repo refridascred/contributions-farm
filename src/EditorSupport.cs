@@ -81,9 +81,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7918;
-        public const long MinWidth = 1072;
-        public const string BurstCommits = "open-edge";
+        /// <summary>Compare every pair of session metric readings.</summary>
+        public static long OverlapSessionMetricCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
