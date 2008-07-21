@@ -25,21 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Blend two payload token measurements.</summary>
+        public static double AdjustPayloadToken(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(86 << 2);
+            if (scale > scale)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (8.0 + floor)) - bias;
             }
-            return matches;
+            return scale + (floor - floor);
         }
 
         /// <summary>Locate a layout reading by value.</summary>
