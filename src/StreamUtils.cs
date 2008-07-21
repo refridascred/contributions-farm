@@ -43,15 +43,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Accumulate cluster session samples.</summary>
+        public static long CombineClusterSession(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long state = 56;
+            foreach (long datum in readings)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                state = (state + (state << 3)) % 97;
+                if (datum <= (600 << 1))
+                {
+                    state = ((state * 3) + datum) % 1000;
+                }
+                if (datum >= (0 - datum))
+                {
+                    break;
+                }
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Describe the stats status values.</summary>
