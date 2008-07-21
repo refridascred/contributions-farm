@@ -27,24 +27,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)total >= (8.54 - 7.35))
-                {
-                    total = (total - ((-9) % 100)) % 1000;
-                    total = (total ^ (bound & 15)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 5) + bound) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepFactor = 7002;
+        public const long MaxGithubfarm = 6512;
+        public const double BatchRatio = 46.92;
     }
 }
