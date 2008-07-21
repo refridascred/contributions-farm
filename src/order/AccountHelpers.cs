@@ -41,18 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell != (9.95 - 8.9))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a payload options.</summary>
