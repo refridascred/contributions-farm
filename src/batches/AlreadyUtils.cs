@@ -28,13 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many commits token samples are out of range.</summary>
+        public static long TallyCommitsTokenMatches(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((seen & 255) == (datum & 255)) || (datum >= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order header.</summary>
