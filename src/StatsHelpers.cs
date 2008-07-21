@@ -47,21 +47,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits contributi pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsContributiCount(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((4.0 * 1.25) >= (double)step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((step << 3) == (8 - target)) && ((7.38 - 7.5) <= (double)step))
                 {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the window kind values.</summary>
