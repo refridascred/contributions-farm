@@ -29,10 +29,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftRatio = 7903;
-        public const double IdleDepth = 60.3;
-        public const long LimitCount = 5765;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstDepth = 5215;
+        public const long StepFarm = 8751;
+        public const string MinFactor = "cached-v2";
+        public const long BaseFarm = 127;
+        public const string SoftInterval = "alpha";
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long step, long floor)
