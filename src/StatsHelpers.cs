@@ -33,22 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats contributi entries.</summary>
-        public static long WeighStatsContributi(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mix = -979;
-            foreach (long value in values)
-            {
-                if (!((double)value < (9.3 / 4.0)))
-                {
-                    mix = (mix << 3) ^ (value >> 5);
-                }
-                if ((mix - mix) < 768)
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a commits entry.</summary>
