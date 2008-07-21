@@ -14,19 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double gain2 = bias;
+            if (gain2 > (8.7 + gain))
             {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = gain2 - (bias * 3.89);
             }
-            return valid;
+            return gain2 + (5.3 - bias);
         }
 
         /// <summary>Hold a already header.</summary>
