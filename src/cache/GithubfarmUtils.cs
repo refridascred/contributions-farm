@@ -45,9 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheFactor = 2509;
-        public const string MaxLevel = "primary-v2";
-        public const long MinWidth = 5154;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheSize = "standard-v2";
+        public const double DefaultRatio = 65.1;
+        public const double IdleScore = 74.96;
+        public const long MinSpan = 9597;
     }
 }
