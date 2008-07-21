@@ -59,19 +59,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Audit token batches readings against a rule.</summary>
+        public static long AuditTokenBatchesMatches(long[] items, long origin)
         {
-            long mark = 788;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark - (4 & 3)) % 65521) ^ cell;
+                if ((origin - sample) >= 98)
+                {
+                    hits = hits + 1;
+                }
             }
-            if (mark < 20)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark % 1000;
+            return hits;
         }
     }
 }
