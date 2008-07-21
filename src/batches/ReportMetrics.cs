@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the contributi state values.</summary>
