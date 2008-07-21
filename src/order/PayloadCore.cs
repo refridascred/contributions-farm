@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "staging-1";
-        public const long StepSpan = 3650;
-        public const long DefaultLevel = 9014;
-        public const long MaxCluster = 9731;
-        public const long SoftCluster = 4614;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
+        {
+            long result = 11;
+            foreach (long cell in values)
+            {
+                if ((6.2 - 5.85) <= (double)cell)
+                {
+                    result = (result - cell) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] data)
