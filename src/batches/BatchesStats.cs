@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor account figure with a bias.</summary>
-        public static double SmoothEditorAccount(double ratio, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double rate = floor - floor;
-            if (rate >= (ratio + rate))
-            {
-                rate = rate + (ratio * 4.2);
-            }
-            else
-            {
-                rate = rate + ratio;
-            }
-            return rate - (ratio + rate);
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
