@@ -33,19 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor order entry stays within the limit.</summary>
-        public static bool ValidateEditorOrderBounds(long[] data, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Queued,
+            Done,
         }
     }
 }
