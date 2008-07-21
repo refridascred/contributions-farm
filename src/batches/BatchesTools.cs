@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheRatio = 4.21;
-        public const double LimitPayload = 40.35;
-        public const string DefaultPayload = "staging-v2";
-        public const string DefaultBudget = "local-1";
-        public const string RetryPayload = "alpha-v2";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((step >> 3) == (step + value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
