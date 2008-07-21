@@ -45,12 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            Ready,
+            Draft,
+            New,
+            Dropped,
+            Locked,
         }
     }
 }
