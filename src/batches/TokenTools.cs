@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the channel state values.</summary>
