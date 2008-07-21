@@ -25,14 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long seed)
         {
-            Done,
-            New,
-            Closed,
-            Pending,
-            Idle,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a contributi cache value against two limits.</summary>
