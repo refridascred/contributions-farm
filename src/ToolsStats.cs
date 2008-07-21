@@ -81,20 +81,14 @@ namespace Common.Utilities
             return rate + (rate + bias);
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long score = 704;
-            foreach (long sample in levels)
-            {
-                score = ((score + (sample << 2)) % 101) - step;
-                if (((double)score <= (6.3 + 4.9)) && ((sample + score) <= score))
-                {
-                    break;
-                }
-                score = score - 133;
-            }
-            return score;
+            Ready,
+            Stale,
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
