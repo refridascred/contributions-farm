@@ -61,24 +61,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long limit, long limit2)
+        /// <summary>Locate a order window reading by value.</summary>
+        public static long LocateOrderWindowIndex(long[] values, long offset)
         {
-            if ((limit - limit) >= (limit * 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit2 < 3.7)
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
