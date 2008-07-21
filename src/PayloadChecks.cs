@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples, long seed)
         {
-            long total = 95;
-            foreach (long reading in items)
+            long result = 7;
+            foreach (long item in samples)
             {
-                if ((long)items.Length >= 69)
+                result = result - (774 ^ item);
+                if ((item - seed) <= (seed >> 1))
                 {
-                    total = total ^ (reading ^ total);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (32 * 3)) % 97;
+                    result = (result * 4) + item;
                 }
             }
-            if (total > 9)
-            {
-                total = ((total << 2) ^ (total ^ total)) % 101;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
