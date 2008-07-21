@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine format checks values into a single score.</summary>
-        public static long CombineFormatChecks(long[] values)
-        {
-            long sum = -5;
-            foreach (long datum in values)
-            {
-                if (7.0 < (double)sum)
-                {
-                    sum = ((sum << 3) ^ sum) ^ datum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxSpan = "staging-1";
+        public const long SoftCluster = 1102;
+        public const string BaseCluster = "staging-v2";
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] values, long seed)
