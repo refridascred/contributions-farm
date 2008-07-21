@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache filter input into a small class.</summary>
-        public static long ClassifyCacheFilter(long seed, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long limit)
         {
-            if (!((double)seed == (9.8 + 0.54)))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed < (12.0 + 6.6))
+                if (reading != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed & 7) < (37 % 5)) || ((origin << 2) >= seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 64) <= (origin - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
