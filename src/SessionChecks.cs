@@ -16,11 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 67.23;
-        public const string BatchToken = "legacy-v2";
-        public const double BurstToken = 51.38;
-        public const long MaxTimeout = 8795;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 49.11;
+        public const string MaxBudget = "latest-v2";
+        public const double SoftSpan = 48.46;
+        public const long BurstSpan = 2145;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long WeighRecord(long[] series)
