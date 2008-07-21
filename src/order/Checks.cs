@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many order entry samples are out of range.</summary>
-        public static long MeasureOrderEntryHits(long[] readings, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((734 & 127) == (tally + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many command already samples are out of range.</summary>
