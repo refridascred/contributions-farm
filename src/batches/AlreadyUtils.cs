@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstCount = "fallback";
+        public const long HardFactor = 8713;
+        public const long BaseContributi = 6062;
+        public const string CacheInterval = "fallback";
+        public const long BaseInterval = 2041;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long limit)
