@@ -44,13 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSize = 5193;
+        public const long BaseGraph = 5061;
+        public const double BatchGraph = 93.45;
+        public const string BatchCount = "staging-1";
+        public const long MaxScore = 3356;
     }
 }
