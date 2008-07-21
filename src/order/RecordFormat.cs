@@ -21,16 +21,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Classify a account profile pair into a bucket.</summary>
+        public static long BucketAccountProfile(long target, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            if ((target ^ seed) == (seed - 8))
             {
-                score = ((score << 3) ^ (bound / 2)) % 255;
-                score = ((score * 4) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((386 % 12) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed + seed) > (seed - 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
