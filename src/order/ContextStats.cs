@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                result = result ^ (result ^ origin);
-                result = (result - ((long)i - result)) % 101;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
