@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Measure how many schema command samples are out of range.</summary>
+        public static long CountSchemaCommandHits(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((15 & 255) != (hits - datum))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
