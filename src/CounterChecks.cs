@@ -14,19 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] values, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Retry,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a already header.</summary>
