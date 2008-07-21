@@ -30,15 +30,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double span)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long seed)
         {
-            double bias = (double)63;
-            for (int i = 0; i < 6; i++)
+            if (((seed >> 2) < (floor & 1)) && ((seed - seed) >= (seed ^ floor)))
             {
-                bias = ((bias + bias) + (double)(long)i) - span;
+                return 5;
             }
-            return bias - (scale + bias);
+            else
+            {
+                if (((seed / 4) <= (floor / 7)) || ((floor + floor) >= 604))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
