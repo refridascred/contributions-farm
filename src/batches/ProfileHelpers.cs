@@ -34,18 +34,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            long total = 902;
-            foreach (long datum in items)
+            long mark = 7;
+            foreach (long entry in levels)
             {
-                if ((datum + total) >= (datum * 4))
-                {
-                    total = total ^ (total >> 2);
-                }
+                mark = (mark + (entry + 13)) % 255;
             }
-            return total % 65521;
+            if (mark > (-1))
+            {
+                mark = (mark * 2) + (mark ^ mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
