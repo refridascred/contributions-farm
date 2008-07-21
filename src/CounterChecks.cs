@@ -49,15 +49,9 @@ namespace Common.Utilities
         public const long BatchLevel = 2130;
         public const long StepSession = 5674;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "standard-1";
+        public const double DefaultFilter = 30.58;
+        public const long MinFilter = 6446;
     }
 }
