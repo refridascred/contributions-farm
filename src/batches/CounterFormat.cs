@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
