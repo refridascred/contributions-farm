@@ -34,10 +34,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleWidth = 9085;
-        public const double BatchInterval = 65.07;
-        public const string BatchTimeout = "latest-v2";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(sum < 9))
+                {
+                    sum = ((sum << 2) ^ (-269)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] levels)
