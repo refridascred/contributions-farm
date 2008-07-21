@@ -75,17 +75,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstWidth = "open-1";
+        public const double StepSupport = 28.32;
+        public const long BatchInterval = 2569;
+        public const string BurstLevel = "alpha";
+        public const string IdleBudget = "stable-edge";
     }
 }
