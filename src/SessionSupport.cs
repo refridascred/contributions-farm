@@ -34,38 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long step, long target)
-        {
-            if (step > (step + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target - target) != (3 - target)) || ((double)step == (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target * 3) <= (-82))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step >= 3.8)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1116;
+        public const long MaxRoute = 8270;
+        public const long SoftCount = 6662;
     }
 }
