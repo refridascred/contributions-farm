@@ -36,14 +36,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] series, long origin)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count - value) != (count * 5))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
