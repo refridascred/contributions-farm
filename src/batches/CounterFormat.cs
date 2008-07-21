@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of context editor readings.</summary>
-        public static long ScoreContextEditor(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mark = -64;
-            foreach (long value in samples)
-            {
-                if ((double)value != (0.19 * 7.5))
-                {
-                    mark = (mark + (2 + mark)) % 255;
-                }
-            }
-            return mark;
+            Active,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
