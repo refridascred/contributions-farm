@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many order entry samples are out of range.</summary>
+        public static long MeasureOrderEntryHits(long[] readings, long offset)
         {
-            Draft,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((734 & 127) == (tally + offset))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many command already samples are out of range.</summary>
