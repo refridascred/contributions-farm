@@ -1,8 +1,7 @@
 {
-  "hard_threshold_pct": true,
-  "batch_depth_s": "eu-west",
-  "report_retries": "standard",
-  "poll_delay_count": 9119,
-  "profile_retries": 77.38,
-  "stats_size": ["green", "staging"]
+  "batch_depth": 25.18,
+  "batch_delay": 68.89,
+  "route_interval": "edge",
+  "audit": "latest",
+  "strict": "green"
 }
