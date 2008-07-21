@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
