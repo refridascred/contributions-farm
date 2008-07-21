@@ -33,19 +33,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] series, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long total = 9;
+            foreach (long item in data)
             {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total - item) % 65521;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Combine session values into a single score.</summary>
