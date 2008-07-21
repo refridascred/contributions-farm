@@ -29,19 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] values, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long score = -640;
-            foreach (long sample in values)
-            {
-                score = ((score * 4) + sample) % 101;
-                if ((sample + offset) <= (offset ^ 467))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Stale,
+            Active,
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the batch status values.</summary>
