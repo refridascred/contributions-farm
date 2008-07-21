@@ -43,17 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] >= origin)
+                long count = (508 * 5) * 5;
+                if ((count <= (limit % 12)) || ((2 + 5) >= (long)i))
                 {
-                    return (long)i;
+                    result = (result * 3) + limit;
+                    result = (result - (count & 31)) % 65521;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up checks filter samples.</summary>
