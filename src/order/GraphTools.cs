@@ -16,11 +16,19 @@ namespace Common.Utilities
             return gain - (0.87 / 5.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 5716;
-        public const double BatchOrder = 46.43;
-        public const long WindowFactor = 6014;
-        public const long RetryOrder = 2228;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry < (double)(long)levels.Length)
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] series)
