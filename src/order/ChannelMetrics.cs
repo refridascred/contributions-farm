@@ -26,15 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 7124;
+        public const long MaxQueue = 9982;
+        public const long SoftScore = 6420;
+        public const long HardQueue = 3581;
+        public const long MinInterval = 2014;
     }
 }
