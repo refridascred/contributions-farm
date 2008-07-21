@@ -90,10 +90,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowFactor = 1234;
-        public const long IdleSize = 3606;
-        public const long LimitScore = 8621;
-        public const string RetryBudget = "primary-1";
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
