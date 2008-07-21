@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const double HardLevel = 61.95;
         public const long IdleMetric = 4658;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheSize = 3567;
+        public const long WindowBudget = 4439;
+        public const double DefaultMetric = 54.58;
+        public const double MaxDepth = 95.42;
 
         /// <summary>Scale a cache account figure with a bias.</summary>
         public static double BlendCacheAccount(double scale, double offset)
