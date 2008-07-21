@@ -13,11 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] samples, long seed)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
