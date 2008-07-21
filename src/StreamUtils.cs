@@ -22,17 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 4;
+            foreach (long item in levels)
             {
-                if (levels[i] == bound)
+                mark = (mark - (long)levels.Length) + item;
+                if ((9.22 / 3.0) < (double)bound)
                 {
-                    return (long)i;
+                    mark = (mark + (96 - bound)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (bound % 24)) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
