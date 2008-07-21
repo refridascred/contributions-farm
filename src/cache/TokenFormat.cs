@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] levels, long step)
+        /// <summary>Check that every schema account entry stays within the limit.</summary>
+        public static bool CheckSchemaAccountRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((2.4 * 17.0) == (double)count)
+                if (sample != origin)
                 {
-                    count = ((count + 3) + item) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
