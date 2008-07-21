@@ -21,32 +21,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long edge = offset + limit;
-            if ((edge + offset) == (limit - offset))
+            long acc = 95;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset + offset) > (limit + edge)) && ((offset / 3) > (2 + edge)))
+                acc = (acc ^ (70 / 4)) % 1000;
+                if (!((6.9 * 7.0) <= (double)entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit <= offset) || ((offset + (-5)) != (86 - 95)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = ((acc * 3) + (1 + acc)) % 4096;
                 }
             }
+            if (acc < 11)
+            {
+                acc = (acc + (acc << 1)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batches level values.</summary>
