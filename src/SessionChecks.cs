@@ -45,26 +45,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series, long offset)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long limit)
         {
-            long result = 42;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(item >= result))
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
                 {
-                    result = ((result << 3) ^ result) + offset;
-                }
-                else
-                {
-                    result = (result + (result & 7)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > 790)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return -1;
         }
     }
 }
