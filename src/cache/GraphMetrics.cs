@@ -28,15 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] readings, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if ((tally << 3) <= tally)
+                {
+                    tally = ((tally + 2) + datum) - seed;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
