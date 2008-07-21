@@ -12,39 +12,12 @@ namespace Common.Utilities
         public const long WindowSession = 1567;
         public const double BurstSize = 27.78;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long gap = limit + seed;
-            if ((34 - limit) >= (limit * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((4.0 - 19.0) == (double)gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit != (9.21 - 17.0)) && ((seed - 47) > (seed + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)gap == (0.08 - 8.26)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
