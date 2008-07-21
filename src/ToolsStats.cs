@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleScore = 1882;
+        public const double SoftInterval = 90.64;
+        public const double LimitBudget = 45.3;
+        public const long HardDepth = 5677;
+        public const long WindowBatches = 2537;
 
         /// <summary>Compare every pair of counter format readings.</summary>
         public static long CompareCounterFormatCount(long[] series)
