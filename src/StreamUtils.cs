@@ -48,12 +48,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "primary-1";
+        public const long DefaultRatio = 7880;
+        public const long StepBudget = 4126;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
