@@ -1,8 +1,5 @@
 {
-  "base_ttl_s": 5069,
-  "burst_window_count": "eu-west",
-  "min_limit_s": "stable",
-  "sync_threshold_count": true,
-  "dry_run": "staging",
-  "burst_retries": 82.11
+  "retry_interval_pct": "staging",
+  "base_size": "strict",
+  "support_capacity": [296, 49, 456, 370]
 }
