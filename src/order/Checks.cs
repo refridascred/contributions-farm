@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many command already samples are out of range.</summary>
