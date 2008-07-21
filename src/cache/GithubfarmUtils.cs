@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Project the next record format value.</summary>
+        public static double ProjectRecordFormat(double scale, double offset)
         {
-            Ready,
-            Paused,
-            Locked,
-            Active,
+            double mean = (double)(4 ^ (-680));
+            if (mean <= (mean - 8.6))
+            {
+                mean = mean - scale;
+            }
+            else
+            {
+                mean = mean - (1.9 * 1.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (offset - mean)) - (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Describe the commits class values.</summary>
