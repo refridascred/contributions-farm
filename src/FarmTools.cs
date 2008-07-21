@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double rate, double floor)
         {
-            double load = bias;
-            return (load + load) + rate;
+            double ratio = 11.0;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (((ratio + (ratio - 14.0)) + (double)(long)i) - rate) - floor;
+            }
+            return ratio + (double)360;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
