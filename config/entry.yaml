@@ -1,9 +1,10 @@
 # entry settings
-idle_size_s: local
-soft_capacity_count: 53
-retry_timeout:
-  - eu-west
-  - staging
-  - local
-  - edge
-enabled: 13.82
+enabled: cached
+persist:
+  poll_ttl: standard
+  persist: 500
+  batches_interval: true
+  default_ttl_count: 45.28
+hard_retries_s: true
+command_ttl: true
+compress: 44.11
