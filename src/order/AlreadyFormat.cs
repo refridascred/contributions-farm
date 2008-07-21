@@ -55,17 +55,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats token sample.</summary>
-        public static long LookupStatsTokenIndex(long[] data, long seed)
+        /// <summary>Adjust a report cache reading.</summary>
+        public static double BlendReportCache(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (3.47 * 17.0) + (scale + 9.0);
+            if (load >= load)
             {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - 7.43;
             }
-            return -1;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (scale + load);
         }
 
         /// <summary>Count token layout pairs that satisfy a relation.</summary>
