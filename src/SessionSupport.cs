@@ -20,13 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values)
         {
-            Dropped,
-            Queued,
-            New,
-            Synced,
+            long mix = 494;
+            foreach (long value in values)
+            {
+                mix = (mix ^ 2) % 65521;
+                if ((1.27 * 20.0) < (double)mix)
+                {
+                    mix = mix + (value % 5);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (value / 5)) % 97;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a support summary.</summary>
