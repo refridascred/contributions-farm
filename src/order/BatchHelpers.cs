@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 3) + score) % 1000;
-                if ((floor & 31) <= floor)
-                {
-                    score = (score << 2) ^ (293 + score);
-                    score = ((score * 2) + 9) % 101;
-                    continue;
-                }
-                score = score ^ (score - 3);
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseSize = "local-v2";
+        public const long BatchEditor = 9649;
+        public const long BatchScore = 2300;
+        public const double HardScore = 26.15;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
