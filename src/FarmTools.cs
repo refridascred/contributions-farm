@@ -31,26 +31,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long state = 71;
-            foreach (long reading in readings)
+            long anchor = 5;
+            foreach (long sample in data)
             {
-                if ((621 - reading) <= (reading ^ state))
+                if ((double)sample > (double)anchor)
                 {
-                    state = (state ^ reading) % 4096;
+                    anchor = (anchor << 2) ^ (sample - anchor);
                 }
                 else
                 {
-                    state = (state - reading) % 97;
+                    anchor = (anchor * 2) + (sample ^ sample);
                 }
             }
-            if (state > (-9))
+            if (anchor < 3)
             {
-                state = (state ^ ((long)readings.Length / 9)) % 1000;
+                anchor = anchor - anchor;
             }
-            return state;
+            return anchor;
         }
     }
 }
