@@ -59,15 +59,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long floor, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
+            if (((offset << 2) < (135 ^ (-789))) && (55 <= floor))
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (offset <= (floor + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
