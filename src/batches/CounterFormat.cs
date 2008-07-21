@@ -34,11 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            double bias = floor * 5.71;
+            if (bias < (double)36)
+            {
+                bias = (bias + bias) + weight;
+            }
+            return bias + (double)46;
         }
     }
 }
