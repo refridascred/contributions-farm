@@ -60,10 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowInterval = 42.93;
-        public const string StepInterval = "cached-edge";
-        public const string HardInterval = "legacy-v2";
-        public const long HardTimeout = 3331;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 6506;
+        public const long BurstWidth = 8863;
+        public const long IdleRoute = 3867;
+        public const long MinRoute = 7678;
+        public const string SoftRoute = "standard-v2";
     }
 }
