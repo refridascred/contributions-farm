@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinInterval = 3437;
+        public const string BaseFarm = "cached-1";
+        public const long BaseBudget = 7920;
+        public const double HardFarm = 56.85;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
