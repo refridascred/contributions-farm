@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
