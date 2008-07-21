@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const double HardEditor = 88.94;
         public const long IdleInterval = 3854;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultCount = 7523;
-        public const string CacheBudget = "fallback-edge";
-        public const long LimitLayout = 9696;
-        public const long MinSpan = 9407;
-        public const long BaseLayout = 209;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (0.2 - 1.04))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
