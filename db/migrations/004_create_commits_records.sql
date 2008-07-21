@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    weight REAL,
-    owner TEXT NOT NULL,
     label TEXT,
-    created_at TIMESTAMP
+    owner TEXT NOT NULL,
+    count INTEGER NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
 
-INSERT INTO commits_records (region, weight, owner, label) VALUES ('latest', 63.11, 'cached', 'cached');
+INSERT INTO commits_records (region, label, owner, count, ratio) VALUES ('local', 'local', 'legacy', 85, 40.93);
