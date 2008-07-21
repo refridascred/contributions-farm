@@ -48,22 +48,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] values, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long limit, long step)
         {
-            long result = 5;
-            foreach (long item in values)
+            if ((limit ^ 3) == (step * 5))
             {
-                if (!((7.0 * 6.0) != (double)result))
+                return 6;
+            }
+            else
+            {
+                if (step > (limit - 25))
                 {
-                    result = ((result + (bound - result)) % 97) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if (1.7 < (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result < 84)
-            {
-                result = (result - (result - result)) % 65521;
-            }
-            return result % 1000;
         }
 
         /// <summary>Accumulate editor samples.</summary>
