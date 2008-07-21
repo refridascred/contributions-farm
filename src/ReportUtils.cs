@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double LimitFactor = 3.04;
         public const string IdleContributi = "legacy";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] series, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= step)
+                if (data[i] <= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
