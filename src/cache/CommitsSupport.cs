@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long MinBudget = 7779;
         public const long BurstOrder = 5666;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a route entry.</summary>
