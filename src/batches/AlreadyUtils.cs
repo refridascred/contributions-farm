@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(((long)i & 31) != (308 + total)))
-                {
-                    long seen = (origin << 2) + (origin * 5);
-                    total = total ^ seen;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Done,
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate payload context samples.</summary>
