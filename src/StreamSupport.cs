@@ -20,33 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values)
-        {
-            long anchor = 990;
-            foreach (long entry in values)
-            {
-                long step = (anchor / 3) % 24;
-                if (!(((-45) - entry) >= (303 & 1)))
-                {
-                    anchor = (anchor - (entry + step)) % 1000;
-                    break;
-                }
-                if ((546 < (entry % 2)) || (entry >= ((long)values.Length + anchor)))
-                {
-                    anchor = ((anchor << 3) ^ (entry >> 3)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (entry & 127);
-                }
-            }
-            if (anchor > 388)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCount = 9153;
+        public const long StepCommits = 6782;
+        public const long MaxCommits = 5740;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long seed)
