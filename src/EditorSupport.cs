@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context order entries.</summary>
-        public static long TotalContextOrder(long[] values)
+        /// <summary>Count the context filter entries that pass the check.</summary>
+        public static long TallyContextFilterOutliers(long[] samples)
         {
-            long anchor = -478;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                anchor = (anchor << 3) ^ entry;
-                if (((double)entry < (2.3 / 9.0)) || (((-61) ^ anchor) >= anchor))
+                if ((double)sample <= (8.0 + 2.18))
                 {
-                    anchor = (anchor - (entry >> 2)) % 255;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Adjust a command reading.</summary>
