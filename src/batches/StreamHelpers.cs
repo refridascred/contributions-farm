@@ -36,18 +36,12 @@ namespace Common.Utilities
             return scale + (floor - floor);
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 2643;
+        public const double IdleTimeout = 51.11;
+        public const double SoftInterval = 93.76;
+        public const long MinChecks = 6111;
+        public const double DefaultWidth = 38.7;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] data)
