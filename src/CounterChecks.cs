@@ -63,14 +63,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Queued,
-            Stale,
-            Failed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseWidth = 1112;
+        public const string CacheGraph = "standard-v2";
+        public const string BatchLevel = "staging-1";
+        public const string BatchGraph = "local";
     }
 }
