@@ -1,10 +1,7 @@
 # entry settings
-audit: 500
-tools_size:
-  - 142
-  - 66
-  - 215
-  - 344
-dry_run: staging
-idle_capacity: local
-flush_capacity: blue
+dry_run: 8844
+poll_threshold_ms: staging
+cache_depth_ms: staging
+poll_ratio: staging
+compress: 6508
+warm_ratio: 10.31
