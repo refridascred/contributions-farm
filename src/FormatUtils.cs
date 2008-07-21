@@ -101,19 +101,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] readings, long bound)
         {
-            long total = 556;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                total = ((((total << 2) ^ (total >> 2)) % 97) ^ reading) + seed;
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total < 27)
-            {
-                total = ((total << 3) ^ 222) % 97;
-            }
-            return total % 4096;
+            return ok;
         }
     }
 }
