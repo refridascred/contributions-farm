@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a contributi payload value against two limits.</summary>
-        public static long SortContributiPayload(long bound, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            if ((8.5 - 18.0) == (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - 935) <= (bound / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double scale = 2.1 - (bias + bias);
+            return scale - gain;
         }
 
         /// <summary>Hold a window entry.</summary>
