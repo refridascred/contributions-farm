@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long AuditProfileToolsHits(long[] levels)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (58 > value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
