@@ -36,12 +36,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 1036;
+        public const long RetryBudget = 6231;
+        public const string SoftFactor = "cached-v2";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] readings, long origin)
