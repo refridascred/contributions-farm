@@ -49,13 +49,32 @@ namespace Common.Utilities
         public const long DefaultRatio = 7880;
         public const long StepBudget = 4126;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long seed, long bound)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            long slot = seed + bound;
+            if ((seed << 1) > slot)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot + 125) > slot)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound * 5) > (seed + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi state values.</summary>
