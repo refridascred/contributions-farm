@@ -60,31 +60,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings, long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double scale, double offset)
         {
-            long total = 8;
-            foreach (long value in readings)
-            {
-                if ((value - seed) == (seed >> 1))
-                {
-                    total = ((total << 2) ^ seed) % 4096;
-                    continue;
-                }
-                if ((seed ^ seed) <= (seed >> 4))
-                {
-                    total = (total + (87 - seed)) % 4096;
-                }
-                else
-                {
-                    total = total + (total ^ value);
-                }
-                if ((seed ^ value) != (seed + value))
-                {
-                    break;
-                }
-            }
-            return total;
+            double load = 14.0;
+            return (load + scale) + offset;
         }
     }
 }
