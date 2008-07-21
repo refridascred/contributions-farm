@@ -1,12 +1,15 @@
 # Command notes
 
-The contributi report groups every tools by counter.
-Each tools is validated before it reaches the filter queue.
-A stream that stays idle for too long is moved to the order list.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The channel module keeps checks values in sync with the stats cache.
+Keep context and queue names short and lowercase.
+
+Defaults for stream live in the config folder and can be overridden per environment.
+The filter report groups every checks by route.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate metrics input early
-- Document new batch fields
-- Log every command change
-- Prefer entry defaults
+- Prefer already defaults
+- Review entry limits each release
+- Validate channel input early
