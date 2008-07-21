@@ -69,36 +69,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Compare every pair of metric contributi readings.</summary>
+        public static long OverlapMetricContributiCount(long[] readings)
         {
-            long anchor = 827;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long offset = (anchor % 97) - datum;
-                if (offset > (anchor + (-32)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                else
-                {
-                    long edge = offset - (datum ^ anchor);
-                    anchor = (anchor * 3) + (edge + edge);
-                }
-                if (((double)anchor < (18.0 * 1.1)) || (datum <= (datum + datum)))
-                {
-                    anchor = ((anchor * 3) + (datum * 4)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (anchor / 4);
-                }
-                if ((4.79 - 9.8) == (double)datum)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
