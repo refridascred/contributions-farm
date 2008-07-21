@@ -15,12 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] == bound)
+                if (samples[i] <= limit)
                 {
                     return (long)i;
                 }
