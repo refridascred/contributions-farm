@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const string WindowLayout = "stable";
         public const string SoftLayout = "fallback-edge";
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 2)
+                    if ((levels[i] ^ levels[j]) < 15)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
