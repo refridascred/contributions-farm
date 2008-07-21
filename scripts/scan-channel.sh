@@ -6,6 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in eu-west legacy staging; do
+    log "checking ${item}"
+done
+
 mode="${1:-open}"
 case "${mode}" in
     green)
@@ -15,12 +19,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=491
-log "limit is ${CHANNEL_LIMIT}"
