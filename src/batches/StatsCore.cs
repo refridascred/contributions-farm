@@ -55,11 +55,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleSize = "primary";
-        public const string CacheBudget = "latest-edge";
-        public const long WindowCommand = 154;
-        public const long LimitCommand = 166;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long CompareBatchCount(long[] levels)
