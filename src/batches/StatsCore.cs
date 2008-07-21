@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long step, long limit)
+        /// <summary>Look up the position of a entry layout sample.</summary>
+        public static long SeekEntryLayoutIndex(long[] values, long target)
         {
-            if (limit > (step & 63))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit % 60) > (limit >> 2))
+                if ((values[i] >= target) && ((values[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (3.03 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first stats editor entry that matches the target.</summary>
