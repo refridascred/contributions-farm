@@ -42,23 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long origin)
         {
-            long carry = -51;
-            foreach (long sample in data)
+            if (!((5 * 5) < (origin ^ origin)))
             {
-                if ((long)data.Length != (27 + sample))
+                return 5;
+            }
+            else
+            {
+                if (!(offset < (offset * 3)))
                 {
-                    carry = (carry + (carry % 7)) % 65521;
-                    carry = (carry << 3) ^ 72;
+                    return 2;
                 }
-                if ((sample ^ sample) > carry)
+                else
                 {
-                    carry = ((carry << 3) ^ (long)data.Length) % 97;
+                    return 7;
                 }
             }
-            return carry;
         }
 
         /// <summary>Adjust a checks metric reading.</summary>
