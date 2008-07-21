@@ -36,12 +36,20 @@ namespace Common.Utilities
             return scale + (floor - floor);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 2643;
-        public const double IdleTimeout = 51.11;
-        public const double SoftInterval = 93.76;
-        public const long MinChecks = 6111;
-        public const double DefaultWidth = 38.7;
+        /// <summary>Roll a format already counter forward.</summary>
+        public static long IterateFormatAlready(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((9.0 - 6.4) == (double)(long)i) || ((seed + state) < (state % 16)))
+                {
+                    state = state ^ seed;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] data)
