@@ -1,18 +1,8 @@
 # support settings
-verbose: strict
-retry_window_count: 40.79
-base_window_pct:
-  tools_limit: local
-  max_size_count: 100
-  base_retries_ms:
-    - open
-    - staging
-    - green
-    - primary
-max_window_count:
-  sync_ratio: local
-  base_retries: 7.2
-  hard_capacity_s: blue
-strict:
-  - green
-  - cached
+default_retries_ms: false
+already_limit:
+  - 28
+  - 388
+  - 348
+  - 79
+flush_ratio: standard
