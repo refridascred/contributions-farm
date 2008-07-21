@@ -1,5 +1,7 @@
 {
-  "retry_interval_pct": "staging",
-  "base_size": "strict",
-  "support_capacity": [296, 49, 456, 370]
+  "already_capacity": ["standard", "open", "primary", "cached"],
+  "batch_threshold": 60,
+  "persist": "eu-west",
+  "burst_capacity": "primary",
+  "cache_capacity": [279, 226]
 }
