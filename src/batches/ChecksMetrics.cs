@@ -36,13 +36,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Failed,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "alpha-edge";
+        public const long BaseBudget = 1322;
+        public const long SoftInterval = 5852;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] values)
