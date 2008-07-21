@@ -20,11 +20,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] series, long target)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally ^ target) < (target + 3))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
