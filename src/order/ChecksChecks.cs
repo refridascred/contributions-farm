@@ -23,40 +23,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long seed)
-        {
-            long cur = step ^ seed;
-            if (seed >= cur)
-            {
-                return 3;
-            }
-            else
-            {
-                if (cur <= (step % 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 3) < step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((cur & 63) < seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetrySize = 3654;
+        public const double CacheCounter = 36.46;
+        public const double StepCounter = 54.83;
+        public const string RetryCounter = "open-v2";
+        public const long BaseCounter = 8134;
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
         public static long MeasureContextClusterGaps(long[] samples, long bound)
