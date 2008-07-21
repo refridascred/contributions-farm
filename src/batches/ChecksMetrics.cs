@@ -23,13 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Dropped,
-            Active,
-            Queued,
-            Pending,
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the cluster state values.</summary>
