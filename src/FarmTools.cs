@@ -34,11 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double rate, double floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long origin)
         {
-            double scale = rate;
-            return (scale - (scale + scale)) + floor;
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + seen) < 546)
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
