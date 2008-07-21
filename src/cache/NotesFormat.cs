@@ -36,18 +36,30 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the commits graph entries that pass the check.</summary>
-        public static long MeasureCommitsGraphHits(long[] series, long seed)
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long TallyCounterStats(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 82;
+            foreach (long entry in values)
             {
-                if ((9.7 + 3.77) <= (double)hits)
+                if (!(total >= (entry - entry)))
                 {
-                    hits = ((hits + 3) ^ cell) - seed;
+                    total = total - (entry & 63);
+                }
+                if (((23 + entry) >= entry) && ((entry % 60) <= (entry - 3)))
+                {
+                    total = (total ^ 94) % 4096;
+                }
+                else
+                {
+                    total = (total + entry) % 255;
                 }
             }
-            return hits;
+            if (total < (-9))
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
     }
 }
