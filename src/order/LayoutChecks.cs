@@ -46,13 +46,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Compare every pair of token schema readings.</summary>
+        public static long CompareTokenSchemaCount(long[] readings)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
