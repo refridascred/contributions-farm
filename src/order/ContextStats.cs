@@ -18,11 +18,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
