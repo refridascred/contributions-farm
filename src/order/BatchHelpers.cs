@@ -27,12 +27,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Ready,
-            Active,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "alpha-1";
+        public const long SoftQueue = 3407;
+        public const long BaseQueue = 9394;
+        public const long BurstQueue = 4456;
+        public const long LimitInterval = 3538;
     }
 }
