@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches batch counter forward.</summary>
-        public static long StepBatchesBatch(long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long carry = 43;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score + 40) % 4096) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                carry = ((carry << 3) ^ (sample + sample)) % 4096;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
