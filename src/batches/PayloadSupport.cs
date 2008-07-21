@@ -24,13 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
