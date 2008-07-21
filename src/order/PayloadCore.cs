@@ -24,19 +24,12 @@ namespace Common.Utilities
             return drift - (gain - bias);
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long offset)
-        {
-            long result = 64;
-            foreach (long entry in levels)
-            {
-                if ((((long)levels.Length + entry) != (result - entry)) && ((entry & 255) == (entry / 6)))
-                {
-                    result = (result + (result + entry)) - offset;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "staging-1";
+        public const long StepSpan = 3650;
+        public const long DefaultLevel = 9014;
+        public const long MaxCluster = 9731;
+        public const long SoftCluster = 4614;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] data)
