@@ -1,11 +1,6 @@
-id,level,weight
-1,83.42,blue
-2,edge,latest
-3,stable,672
-4,41.48,86.11
-5,514,edge
-6,31.54,staging
-7,476,269
-8,417,72.34
-9,blue,263
-10,74.04,871
+id,state,active,rank
+1,strict,222,green
+2,233,651,778
+3,890,standard,edge
+4,8.99,93.12,green
+5,577,97.32,910
