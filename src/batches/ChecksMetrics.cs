@@ -47,11 +47,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
