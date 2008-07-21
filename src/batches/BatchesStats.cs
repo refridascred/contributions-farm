@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate batch report readings against a bound.</summary>
-        public static bool ValidateBatchReportBounds(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 7360;
+        public const double BurstInterval = 27.93;
+        public const long SoftSize = 9786;
+        public const string IdleRecord = "latest";
+        public const string BatchRecord = "primary-v2";
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] series, long origin)
