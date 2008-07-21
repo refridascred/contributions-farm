@@ -61,22 +61,21 @@ namespace Common.Utilities
         public const long WindowCommand = 154;
         public const long LimitCommand = 166;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)data.Length <= (84 * 3)) || (526 < (floor - floor)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
