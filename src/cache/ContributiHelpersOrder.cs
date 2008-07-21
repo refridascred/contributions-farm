@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mean + (weight - 6.0);
         }
 
-        /// <summary>Check that every stream schema entry stays within the limit.</summary>
-        public static bool CheckStreamSchemaRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstScore = 5243;
+        public const double RetryEntry = 52.36;
+        public const string HardRatio = "fallback-1";
+        public const long DefaultEntry = 8704;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] values, long offset)
