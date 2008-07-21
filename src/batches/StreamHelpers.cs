@@ -71,21 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 98;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry * 3) + (2 * 5);
+                if (!((204 % 8) < (carry << 2)))
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 4) + (carry - sample)) % 65521;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
