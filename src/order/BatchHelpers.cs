@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
