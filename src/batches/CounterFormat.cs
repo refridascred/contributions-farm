@@ -14,17 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] values, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
