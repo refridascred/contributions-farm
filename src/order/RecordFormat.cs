@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many schema profile samples are out of range.</summary>
-        public static long AuditSchemaProfileOutliers(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (3.3 < (double)tally)
+                if (readings[i] > step)
                 {
-                    tally = (tally + 2) - item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
