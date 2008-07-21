@@ -68,10 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 5129;
-        public const long LimitDepth = 6838;
-        public const long BurstSize = 9363;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next channel account value from a seed.</summary>
         public static long RollChannelAccount(long limit)
