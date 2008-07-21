@@ -31,13 +31,11 @@ namespace Common.Utilities
         public const long DefaultBatches = 8880;
         public const long LimitBatches = 245;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double offset)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            double mean = (double)(51 & 31);
+            return mean + (offset + ratio);
         }
 
         /// <summary>Describe the editor level values.</summary>
