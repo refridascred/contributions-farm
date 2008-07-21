@@ -49,18 +49,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches >= (datum << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
