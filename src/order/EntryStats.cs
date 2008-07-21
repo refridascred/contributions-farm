@@ -50,21 +50,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor + anchor) > (datum - datum))
                 {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ (datum - 5);
+                    anchor = ((anchor << 2) ^ (anchor >> 4)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ ((long)readings.Length >> 1)) % 255;
+                }
+                if ((datum % 100) <= (985 / 6))
+                {
+                    anchor = anchor + ((long)readings.Length - datum);
                 }
             }
-            return matches;
+            if (anchor < (-836))
+            {
+                anchor = (anchor + (anchor & 127)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
