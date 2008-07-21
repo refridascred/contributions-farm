@@ -53,13 +53,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long origin)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long result = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result ^ (origin / 9);
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
