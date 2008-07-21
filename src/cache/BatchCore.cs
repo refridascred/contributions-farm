@@ -36,9 +36,22 @@ namespace Common.Utilities
         public const long MinFactor = 8819;
         public const long BurstRecord = 5377;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 93.46;
-        public const string BatchChecks = "legacy-1";
-        public const long HardRatio = 7616;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
+        {
+            long mix = 81;
+            foreach (long item in items)
+            {
+                if (((443 - 837) == (791 - item)) || ((item / 4) != ((-334) >> 5)))
+                {
+                    mix = mix ^ (item + 4);
+                }
+            }
+            if (mix > 2)
+            {
+                mix = (mix << 2) ^ (mix ^ mix);
+            }
+            return mix % 4096;
+        }
     }
 }
