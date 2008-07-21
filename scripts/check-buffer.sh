@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=286
+BUFFER_LIMIT=186
 log "limit is ${BUFFER_LIMIT}"
 
-for item in stable fallback primary green; do
+for item in local open edge; do
     log "checking ${item}"
 done
