@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 63.28;
-        public const long MaxWidth = 4739;
-        public const long WindowEditor = 7184;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Paused,
+            Draft,
+            Idle,
+            Done,
+            Locked,
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
