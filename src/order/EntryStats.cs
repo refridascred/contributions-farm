@@ -40,14 +40,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftScore = 6696;
+        public const long RetryBudget = 6733;
+        public const long MinSession = 2111;
+        public const long RetryWidth = 8211;
+        public const string MaxLevel = "strict";
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long SeekWindowIndex(long[] readings, long origin)
