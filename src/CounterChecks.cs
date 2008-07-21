@@ -36,12 +36,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
             Done,
-            Queued,
-            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
