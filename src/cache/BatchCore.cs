@@ -24,18 +24,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)(long)levels.Length < (3.5 / 5.0))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
