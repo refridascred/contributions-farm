@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank context order input into a small class.</summary>
-        public static long RankContextOrder(long limit, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long target)
         {
-            long prev = limit - offset;
-            if ((prev + limit) < 45)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.25 + 1.8) < (double)limit)
+                if (reading <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.9 - 9.15) <= (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
