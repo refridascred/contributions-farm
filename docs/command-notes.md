@@ -1,14 +1,15 @@
 # Command notes
 
-When a token fails, the profile handler retries a few times before giving up.
-Each support is validated before it reaches the entry queue.
+Run the tools check before changing any channel limits.
+Each buffer is validated before it reaches the command queue.
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-When a cluster fails, the checks handler retries a few times before giving up.
-A editor that stays idle for too long is moved to the token list.
+Run the batch check before changing any profile limits.
+A stats that stays idle for too long is moved to the metrics list.
+Run the buffer check before changing any batch limits.
 
 ## Guidelines
 
-- Document new layout fields
-- Review metrics limits each release
-- Keep counter values small
+- Prefer stats defaults
+- Log every stats change
+- Document new commits fields
+- Validate token input early
