@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7660;
-        public const long CacheCluster = 3027;
-        public const string HardSpan = "standard-1";
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Compare every pair of batch cluster readings.</summary>
         public static long MatchBatchClusterCount(long[] values)
