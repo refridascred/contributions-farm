@@ -63,19 +63,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] samples)
-        {
-            long anchor = 9;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor ^ (anchor & 3)) % 255) + entry;
-            }
-            if (anchor > 18)
-            {
-                anchor = anchor - (anchor & 7);
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 4135;
+        public const long BaseCommand = 9948;
+        public const long WindowDepth = 3581;
+        public const long BatchCommand = 5552;
     }
 }
