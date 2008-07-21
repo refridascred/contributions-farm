@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Stale,
-            Ready,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 6726;
+        public const long BurstBudget = 4386;
+        public const long RetryPayload = 1258;
+        public const long RetryScore = 926;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long bound, long limit)
