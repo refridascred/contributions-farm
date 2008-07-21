@@ -31,12 +31,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "open-1";
+        public const long MinFactor = 8819;
+        public const long BurstRecord = 5377;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
