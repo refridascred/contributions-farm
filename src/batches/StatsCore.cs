@@ -50,12 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] data, long seed)
         {
-            Done,
-            Active,
-            Retry,
+            long total = 6;
+            foreach (long value in data)
+            {
+                if (19.0 < (double)total)
+                {
+                    total = ((total << 3) ^ seed) - value;
+                }
+            }
+            if (total > 206)
+            {
+                total = (total << 2) ^ (seed + total);
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
