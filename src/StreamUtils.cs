@@ -58,12 +58,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Pending,
-            Idle,
+            Done,
+            Paused,
             Active,
+            Pending,
+            Queued,
         }
     }
 }
