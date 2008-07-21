@@ -28,18 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Locate a cluster queue reading by value.</summary>
+        public static long FindClusterQueueIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((((long)readings.Length << 3) >= (hits + hits)) || ((11.0 * 9.5) < (double)sample)))
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
