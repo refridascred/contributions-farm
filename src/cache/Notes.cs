@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Compare every pair of support context readings.</summary>
+        public static long OverlapSupportContextCount(long[] items)
         {
-            double drift = span;
-            if (drift >= (double)455)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - drift) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - (drift + drift);
+            return hits;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
