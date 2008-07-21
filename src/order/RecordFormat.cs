@@ -52,22 +52,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((matches + matches) != (matches / 9))
+                if ((554 * 4) == ((long)values.Length << 1))
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 1) - datum) - step;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
