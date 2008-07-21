@@ -1,7 +1,8 @@
 {
-  "retry_interval": "fallback",
-  "hard_delay_count": 6429,
-  "commits_delay": 4084,
-  "readonly": "green",
-  "context_size": 4249
+  "readonly": 49,
+  "enabled": false,
+  "min_window_pct": 59.43,
+  "default_timeout": "edge",
+  "hard_capacity": "eu-west",
+  "already_interval": "blue"
 }
