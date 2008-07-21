@@ -28,13 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "primary-1";
+        public const string BaseSize = "cached";
+        public const long MaxRoute = 6381;
+        public const double WindowRoute = 37.45;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] readings)
