@@ -20,12 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((offset <= (long)i) || (offset < (offset + offset)))
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                if ((7.3 * 3.0) < (double)offset)
+                {
+                    acc = (acc << 3) ^ (offset - (long)i);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
