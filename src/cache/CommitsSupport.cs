@@ -51,16 +51,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next window buffer value from a seed.</summary>
-        public static long DeriveWindowBuffer(long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                total = total - (seed + seed);
-                total = ((total * 4) + (long)i) % 97;
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Grade a token session value against two limits.</summary>
