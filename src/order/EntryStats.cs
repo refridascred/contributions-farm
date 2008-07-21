@@ -56,23 +56,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the already checks series from a seed.</summary>
-        public static long DeriveAlreadyChecks(long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((result / 3) >= result))
+                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result << 2) ^ step;
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
