@@ -1,11 +1,4 @@
 # entry settings
-token_threshold: green
-enabled: 88.25
-default_window_ms:
-  default_limit_ms: false
-  compress: legacy
-  persist: true
-  retry_window: 100
-  metric_ratio: true
-default_retries_pct: primary
-report_size: 69
+persist: 36.14
+default_window: standard
+strict: 4289
