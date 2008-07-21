@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)seen != (9.0 / 7.0))
+                if ((long)i != (step - step))
                 {
-                    seen = (seen + 2) + item;
+                    score = (score << 3) ^ (long)i;
+                    score = ((score * 3) + score) % 101;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Audit format window readings against a rule.</summary>
