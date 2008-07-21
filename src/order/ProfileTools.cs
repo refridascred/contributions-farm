@@ -47,17 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks commits entry that matches the target.</summary>
-        public static long FindChecksCommitsIndex(long[] samples, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
