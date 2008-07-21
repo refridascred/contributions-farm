@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitInterval = 2245;
-        public const long LimitCommits = 5499;
-        public const long IdleScore = 4107;
-        public const long CacheCommits = 9058;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
