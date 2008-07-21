@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardSpan = 7309;
-        public const string SoftBatch = "cached-v2";
-        public const double MaxBatch = 39.65;
-        public const long LimitWidth = 7648;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total + (-78);
+                total = total - (seed / 5);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
