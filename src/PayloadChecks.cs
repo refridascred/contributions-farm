@@ -19,19 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            double bias2 = gain;
-            if (bias2 <= (14.0 - bias))
+            long total = 95;
+            foreach (long reading in items)
             {
-                bias2 = bias2 + (bias2 * 9.6);
+                if ((long)items.Length >= 69)
+                {
+                    total = total ^ (reading ^ total);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (32 * 3)) % 97;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (total > 9)
             {
-                bias2 = bias2 - (double)(long)i;
+                total = ((total << 2) ^ (total ^ total)) % 101;
             }
-            return bias2 + bias;
+            return total;
         }
 
         /// <summary>Describe the counter state values.</summary>
