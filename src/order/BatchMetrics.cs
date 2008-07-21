@@ -18,22 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] levels, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            if ((0 / 9) >= bound)
             {
-                if (cell >= (cell / 7))
+                return 5;
+            }
+            else
+            {
+                if ((9.9 / 3.0) >= (double)seed)
                 {
-                    count = (count + 2) + limit;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound + seed) < (bound / 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) == (bound & 63))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the order window entries that pass the check.</summary>
