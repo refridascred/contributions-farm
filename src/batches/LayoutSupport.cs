@@ -11,17 +11,31 @@ namespace Common.Utilities
         public const long SoftCluster = 6807;
         public const long LimitCluster = 6049;
 
-        /// <summary>Look up the position of a context session sample.</summary>
-        public static long LookupContextSessionIndex(long[] values, long floor)
+        /// <summary>Fold a list of githubfarm window readings.</summary>
+        public static long FoldGithubfarmWindow(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 62;
+            foreach (long reading in series)
             {
-                if ((values[i] <= floor) && ((values[i] % 2) != 0))
+                if ((double)reading <= (19.0 / 2.0))
                 {
-                    return (long)i;
+                    acc = acc ^ (reading ^ reading);
+                }
+                acc = (acc + (9 ^ reading)) % 101;
+                if (acc > (acc << 1))
+                {
+                    acc = ((acc << 2) ^ (reading ^ acc)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (acc ^ acc)) % 255;
                 }
             }
-            return -1;
+            if (acc < 78)
+            {
+                acc = (acc ^ (acc * 5)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
