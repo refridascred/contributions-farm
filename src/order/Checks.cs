@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((5.43 / 3.0) <= (double)hits))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
