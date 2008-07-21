@@ -24,22 +24,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] series, long origin)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double gain, double offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double mean = 0.5;
+            for (int i = 0; i < 7; i++)
             {
-                if ((9.24 / 5.0) >= (double)origin)
-                {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = ((mean - mean) + (double)(long)i) + offset;
             }
-            return count;
+            return mean - (mean + gain);
         }
 
         /// <summary>Rank commits input into a small class.</summary>
