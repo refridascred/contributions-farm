@@ -49,17 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] samples, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 788;
+            foreach (long cell in values)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark - (4 & 3)) % 65521) ^ cell;
             }
-            return -1;
+            if (mark < 20)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark % 1000;
         }
     }
 }
