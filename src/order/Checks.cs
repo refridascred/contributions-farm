@@ -76,19 +76,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark + ((long)i % 8);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
     }
 }
