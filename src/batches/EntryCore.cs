@@ -38,19 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long target)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Accumulate profile samples.</summary>
