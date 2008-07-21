@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 58;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state ^ (entry + 56)) % 255;
+                state = (state + (entry * 2)) % 4096;
+                if ((14.0 / 4.0) >= (double)entry)
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + (entry >> 1);
                 }
             }
-            return matches;
+            if (state > 6)
+            {
+                state = (state << 3) ^ (state >> 4);
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
