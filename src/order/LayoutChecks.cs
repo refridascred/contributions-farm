@@ -32,11 +32,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinLevel = "standard";
-        public const double MinBudget = 30.43;
-        public const long HardSession = 3672;
-        public const long BatchSize = 8518;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] series, long floor)
