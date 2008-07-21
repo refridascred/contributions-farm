@@ -1,6 +1,16 @@
 # githubfarm settings
-warm_size: 22.77
-warm_delay_count: green
-batch_timeout_pct: strict
-filter_interval: false
-hard_limit: 22.13
+graph_depth: standard
+hard_capacity_pct: 94.36
+sync_capacity_ms: fallback
+support_limit:
+  account_depth:
+    - 107
+    - 25
+  audit:
+    - 434
+    - 379
+    - 174
+    - 178
+  retry_delay: 49.09
+  compress: true
+base_retries: true
