@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long score = -69;
-            foreach (long entry in items)
-            {
-                if (((entry - score) == (score >> 3)) && ((double)entry >= 0.05))
-                {
-                    score = (score ^ (score << 3)) % 101;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score * 5) + (score - score);
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
