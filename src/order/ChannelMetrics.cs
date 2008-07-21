@@ -31,22 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long CountBatchFilterOutliers(long[] values, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((0 / 4) > (674 - target))
-                {
-                    matches = (matches + 2) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Queued,
         }
     }
 }
