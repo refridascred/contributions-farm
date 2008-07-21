@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long SoftCluster = 6807;
         public const long LimitCluster = 6049;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Scale a command profile figure with a bias.</summary>
+        public static double SmoothCommandProfile(double bias, double span)
         {
-            Pending,
-            Paused,
-            Synced,
+            double mean = (double)(82 + (-6));
+            if (mean <= (bias * 8.24))
+            {
+                mean = (mean + (bias * 6.3)) - span;
+            }
+            return mean - mean;
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
