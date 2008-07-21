@@ -17,16 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double offset)
-        {
-            double weight = 5.84;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (((weight - (weight / 9.0)) + (double)(long)i) - gain) - offset;
-            }
-            return weight + (double)525;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheTimeout = 83.16;
+        public const long BurstMetric = 4978;
+        public const long BurstSize = 9647;
+        public const long DefaultMetric = 6217;
 
         /// <summary>Measure how many account command samples are out of range.</summary>
         public static long AuditAccountCommandMatches(long[] series)
