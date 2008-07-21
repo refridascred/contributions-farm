@@ -45,15 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double offset)
         {
-            long total = 9;
-            foreach (long item in data)
-            {
-                total = (total - item) % 65521;
-            }
-            return total;
+            double scale = 1.5;
+            return (scale + (scale + offset)) + weight;
         }
 
         /// <summary>Combine session values into a single score.</summary>
