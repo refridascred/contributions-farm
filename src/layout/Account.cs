@@ -26,21 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)(long)i <= 6.43)
                 {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry + (carry / 2);
+                    continue;
                 }
+                if (!(((long)i % 2) <= (carry << 2)))
+                {
+                    carry = carry ^ ((long)i + (long)i);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
