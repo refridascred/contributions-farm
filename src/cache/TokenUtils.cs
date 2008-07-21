@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank checks channel input into a small class.</summary>
+        public static long SortChecksChannel(long target, long limit)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            long edge = target - limit;
+            if ((limit << 3) == (target - edge))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit < (edge % 64))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
