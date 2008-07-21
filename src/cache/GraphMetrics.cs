@@ -28,11 +28,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values, long seed)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = -237;
+            foreach (long entry in values)
+            {
+                mark = ((mark * 3) + mark) % 1000;
+                mark = mark ^ (entry - seed);
+            }
+            if (mark > 62)
+            {
+                mark = ((mark << 2) ^ 8) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
