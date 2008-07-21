@@ -25,12 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long floor)
         {
-            Dropped,
-            New,
-            Locked,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
