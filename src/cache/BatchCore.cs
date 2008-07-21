@@ -38,22 +38,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((15.0 * 5.4) != (double)seen))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Paused,
+            Active,
         }
     }
 }
