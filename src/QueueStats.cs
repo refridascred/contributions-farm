@@ -75,14 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Closed,
-            Synced,
-            Idle,
-            Done,
-            Active,
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
         }
     }
 }
