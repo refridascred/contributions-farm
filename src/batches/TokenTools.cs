@@ -25,10 +25,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "cached-edge";
-        public const long DefaultChannel = 2470;
-        public const long SoftChannel = 8916;
-        public const long MinWidth = 6709;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series, long offset)
+        {
+            long carry = 447;
+            foreach (long sample in series)
+            {
+                if ((sample << 3) <= (sample - 86))
+                {
+                    carry = carry - (35 + offset);
+                }
+            }
+            return carry;
+        }
     }
 }
