@@ -55,17 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] items, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] > target)
+                if (matches >= (datum << 3))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stats status values.</summary>
