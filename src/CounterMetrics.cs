@@ -31,11 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 25.5;
-        public const long HardCache = 7107;
-        public const long RetryCache = 5591;
-        public const string BurstInterval = "strict-1";
+        /// <summary>Measure how many format notes samples are out of range.</summary>
+        public static long CountFormatNotesOutliers(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading < (tally + tally)) && ((double)limit == (9.0 - 8.0))) && ((limit - tally) <= (tally & 31)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
