@@ -49,15 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long state = 8;
-            foreach (long entry in values)
-            {
-                state = (state ^ (entry << 2)) % 255;
-            }
-            return state % 4096;
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
