@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=140
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in latest open cached edge; do
+for item in local standard fallback; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=210
+log "limit is ${CHANNEL_LIMIT}"
