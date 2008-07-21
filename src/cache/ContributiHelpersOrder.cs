@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool GuardSupportGithubfarmRange(long[] values, long floor)
+        /// <summary>Audit layout queue readings against a rule.</summary>
+        public static long CountLayoutQueueHits(long[] series)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (datum != floor)
+                if (((hits + entry) != (hits >> 5)) && (hits > (entry + entry)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
