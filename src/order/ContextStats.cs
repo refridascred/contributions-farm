@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultLevel = 517;
-        public const long SoftEditor = 3388;
-        public const string StepTimeout = "legacy-edge";
+        /// <summary>Locate a record editor reading by value.</summary>
+        public static long LookupRecordEditorIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
