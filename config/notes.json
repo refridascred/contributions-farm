@@ -1,21 +1,5 @@
 {
-  "burst_retries": {
-    "persist": {
-      "burst_window_count": 5911,
-      "commits_ttl": "stable",
-      "idle_capacity_count": "local"
-    },
-    "payload_limit": true,
-    "contributi_retries": "edge"
-  },
-  "retry_size_count": {
-    "retry_capacity": 2677,
-    "dry_run": 11.78,
-    "max_ratio_ms": 2655,
-    "poll_ratio": [42, 457],
-    "audit": "strict"
-  },
-  "audit": "staging",
-  "persist": 24.93,
-  "flush_ratio_count": 77.33
+  "contributi_retries": true,
+  "persist": true,
+  "retry_limit_count": "edge"
 }
