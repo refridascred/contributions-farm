@@ -34,38 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long seed, long step)
+        /// <summary>Validate notes buffer readings against a bound.</summary>
+        public static bool VerifyNotesBufferBounds(long[] items, long limit)
         {
-            if ((4.03 * 8.29) == (double)step)
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > (seed + seed))
+                if (cell >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - 0) >= (step << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed % 2) < step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
