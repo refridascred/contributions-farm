@@ -45,12 +45,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 1267;
+        public const long BatchLevel = 2130;
+        public const long StepSession = 5674;
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double weight, double bias)
