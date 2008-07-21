@@ -19,21 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = step ^ seed;
+            if (seed >= cur)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (cur <= (step % 2))
                 {
-                    if ((levels[i] ^ levels[j]) < 15)
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 3) < step)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((cur & 63) < seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
