@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long acc = 140;
+            foreach (long datum in readings)
             {
-                if ((431 >> 2) <= (tally - tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                acc = (((acc << 3) ^ (long)readings.Length) + datum) + limit;
             }
-            return tally;
+            return acc;
         }
     }
 }
