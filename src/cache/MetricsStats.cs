@@ -71,11 +71,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double scale, double offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long limit)
         {
-            double load = 14.0;
-            return (load + scale) + offset;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
