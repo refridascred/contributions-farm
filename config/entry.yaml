@@ -1,9 +1,24 @@
 # entry settings
-dry_run: 53.68
-buffer_ttl: 30
-cache_ttl_ms: false
-warm_timeout_pct: primary
-max_window_pct:
-  - 387
-  - 443
-  - 182
+batches_depth:
+  audit:
+    - stable
+    - eu-west
+    - standard
+    - strict
+  warm_depth_s: standard
+  enabled: 36.29
+  retry_interval_ms:
+    queue_ratio: open
+    commits_window: true
+    batch_ttl_s:
+      - 401
+      - 365
+      - 136
+      - 313
+    dry_run: false
+    notes_retries: legacy
+cache_delay:
+  batch_window_s: 1700
+  cache_limit: true
+  sync_depth_s: stable
+retry_size: 62.55
