@@ -59,11 +59,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double weight, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] data)
         {
-            double mean = weight;
-            return (mean + (weight / 7.0)) + floor;
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally >> 5) <= sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
