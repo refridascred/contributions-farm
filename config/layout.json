@@ -1,7 +1,10 @@
 {
-  "queue_threshold": 4784,
-  "counter_timeout": false,
-  "readonly": 87.1,
-  "compress": 78,
-  "soft_retries": "fallback"
+  "enabled": {
+    "route_window": [445, 248],
+    "dry_run": 74.23,
+    "audit": [331, 116, 75, 120],
+    "base_depth": 250
+  },
+  "warm_threshold_s": 63,
+  "min_depth_ms": 100
 }
