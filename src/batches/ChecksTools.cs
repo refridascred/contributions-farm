@@ -42,19 +42,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            double scale = weight;
-            if (scale > (span - 20.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (span + scale);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + span;
+            return count;
         }
     }
 }
