@@ -16,11 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 49.11;
-        public const string MaxBudget = "latest-v2";
-        public const double SoftSpan = 48.46;
-        public const long BurstSpan = 2145;
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long WeighRecord(long[] series)
