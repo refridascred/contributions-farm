@@ -35,11 +35,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchWidth = 8131;
+        public const string HardSchema = "local-v2";
+        public const long BaseSchema = 3769;
+        public const long StepSchema = 1777;
+        public const double WindowSchema = 90.18;
     }
 }
