@@ -29,18 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] readings, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3 ^ seen) == (datum >> 5))
+                if (values[i] <= floor)
                 {
-                    seen = (seen + 1) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of command order readings.</summary>
