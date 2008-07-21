@@ -33,27 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long sum = 2;
-            foreach (long entry in levels)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (sum << 3) ^ (entry << 2);
-                if (((sum - entry) == (entry - entry)) && ((entry & 31) <= (entry - 997)))
-                {
-                    sum = ((sum * 4) + entry) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (entry + entry);
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (sum > (-311))
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
