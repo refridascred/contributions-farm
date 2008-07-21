@@ -13,17 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] series, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (series[i] > offset)
+                if ((entry + entry) == (bound ^ entry))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
