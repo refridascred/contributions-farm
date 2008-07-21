@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order counter entry stays within the limit.</summary>
-        public static bool CheckOrderCounterLimits(long[] data, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
