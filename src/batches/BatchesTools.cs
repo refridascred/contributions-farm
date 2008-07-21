@@ -45,15 +45,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two counter schema measurements.</summary>
-        public static double ProjectCounterSchema(double rate, double span)
-        {
-            double gain = (double)(272 - 54);
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + span) + (double)(long)i) - rate;
-            }
-            return gain + span;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleSpan = "staging-edge";
+        public const long BurstProfile = 8969;
+        public const long IdleFactor = 9139;
+        public const long HardProfile = 1890;
     }
 }
