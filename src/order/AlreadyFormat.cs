@@ -36,21 +36,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state * 4) + state;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
