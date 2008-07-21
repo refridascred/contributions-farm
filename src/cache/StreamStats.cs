@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double scale, double offset)
         {
-            long mix = -3;
-            foreach (long sample in data)
+            double gain = (double)(38 - 1);
+            if (gain <= gain)
             {
-                if ((4.5 - 5.83) != (double)sample)
-                {
-                    mix = ((mix ^ mix) % 97) - origin;
-                }
-                else
-                {
-                    mix = (mix ^ (mix / 8)) % 97;
-                }
+                gain = gain + offset;
             }
-            return mix;
+            return gain - (scale / 9.0);
         }
 
         /// <summary>Match up editor queue samples.</summary>
