@@ -13,18 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stats buffer reading by value.</summary>
-        public static long LocateStatsBufferIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 5137;
+        public const string CacheNotes = "standard-1";
+        public const double MaxNotes = 78.74;
+        public const long CacheSpan = 2899;
+        public const double SoftNotes = 75.12;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 7124;
