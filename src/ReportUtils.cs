@@ -57,12 +57,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] items)
         {
-            Retry,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((((item - (long)items.Length) >= item) || ((double)tally >= (0.09 * 16.0))) || ((double)item != (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
