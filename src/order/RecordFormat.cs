@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "local-1";
-        public const long CacheScore = 5678;
-        public const string CacheLevel = "alpha";
+        /// <summary>Locate a window session reading by value.</summary>
+        public static long FindWindowSessionIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
         public static long RollBatchesProfile(long origin)
