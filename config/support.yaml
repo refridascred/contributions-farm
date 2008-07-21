@@ -1,8 +1,17 @@
 # support settings
-default_retries_ms: false
-already_limit:
-  - 28
-  - 388
-  - 348
-  - 79
-flush_ratio: standard
+min_limit_count: 4191
+enabled: 80.45
+format_retries:
+  soft_delay_pct: staging
+  entry_depth: open
+  verbose: true
+  strict:
+    commits_ratio: 1024
+    dry_run: 93
+    max_depth_ms: 60
+    command_window: 47
+    max_ratio_s: eu-west
+    hard_size:
+      - staging
+      - legacy
+      - blue
