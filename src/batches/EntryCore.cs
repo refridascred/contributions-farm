@@ -49,21 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = 1.7;
+            if (bias2 < (9.0 + 1.9))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 - (bias2 + weight);
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (weight / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (weight - bias)) - (double)(long)i;
+            }
+            return bias2 + (bias2 - bias);
         }
     }
 }
