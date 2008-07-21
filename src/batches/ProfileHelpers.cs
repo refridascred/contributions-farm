@@ -47,16 +47,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                result = result ^ (origin / 9);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
