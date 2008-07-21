@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of support context readings.</summary>
-        public static long OverlapSupportContextCount(long[] items)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 7.08;
+            if (drift > drift)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift + drift) - gain) - span;
             }
-            return hits;
+            return drift + drift;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
