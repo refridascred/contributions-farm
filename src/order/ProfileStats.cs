@@ -43,9 +43,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchLevel = 3137;
-        public const long StepAlready = 7627;
-        public const long MinAlready = 8378;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series, long floor)
+        {
+            long score = 959;
+            foreach (long entry in series)
+            {
+                score = (score + (floor * 4)) ^ entry;
+                score = (score * 3) + 518;
+                if ((floor & 15) >= score)
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
     }
 }
