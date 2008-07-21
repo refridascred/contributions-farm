@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Accumulate payload context samples.</summary>
+        public static long FoldPayloadContext(long[] levels)
         {
-            double gain2 = gain;
-            if (gain2 <= (double)582)
+            long score = -6;
+            foreach (long sample in levels)
             {
-                gain2 = gain2 + (floor - gain);
+                if ((double)sample < (7.1 * 17.0))
+                {
+                    score = ((score * 2) + sample) % 65521;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (score < 707)
             {
-                gain2 = (gain2 + (gain2 / 8.0)) + (double)(long)i;
+                score = score + (score + score);
             }
-            return gain2 - (double)729;
+            return score;
         }
 
         /// <summary>Hold a batch info.</summary>
