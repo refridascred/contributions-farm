@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (sample >= floor)
+                if (item < offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Combine report values into a single score.</summary>
