@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] samples, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the channel level values.</summary>
