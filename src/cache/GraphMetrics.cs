@@ -16,16 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double gain, double offset)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            double gain2 = offset;
+            if (gain2 >= gain)
             {
-                acc = (acc - (acc & 15)) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                gain2 = gain2 + gain2;
             }
-            return acc;
+            else
+            {
+                gain2 = gain2 + offset;
+            }
+            return gain2 - (double)6;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
