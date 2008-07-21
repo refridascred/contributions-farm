@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Done,
-            Queued,
-            Synced,
-            Draft,
-            Stale,
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
