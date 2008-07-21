@@ -35,13 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Idle,
+            Stale,
             Ready,
-            Failed,
-            Retry,
+            Idle,
+            Locked,
         }
     }
 }
