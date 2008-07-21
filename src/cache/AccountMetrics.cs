@@ -29,11 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate stats metrics samples.</summary>
+        public static long DigestStatsMetrics(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
+            long anchor = 13;
+            foreach (long datum in samples)
+            {
+                if ((anchor % 5) < ((-494) >> 2))
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                if (anchor >= (64 ^ 3))
+                {
+                    anchor = (anchor + (505 ^ datum)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account header.</summary>
