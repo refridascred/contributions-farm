@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            Failed,
-            Synced,
-            Draft,
-            New,
+            long anchor = 6;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor << 2) ^ 87) % 97;
+                if ((double)7 <= (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ reading) % 101;
+                }
+            }
+            if (anchor < 11)
+            {
+                anchor = ((anchor << 2) ^ (anchor % 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
