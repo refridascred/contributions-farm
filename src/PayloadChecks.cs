@@ -75,19 +75,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            if ((limit - limit) >= (limit * 2))
             {
-                if (datum <= step)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit2 < 3.7)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
