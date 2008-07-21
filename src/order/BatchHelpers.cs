@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long MinLevel = 9162;
         public const long MaxGraph = 4005;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values)
         {
-            Idle,
-            Stale,
-            Draft,
+            long score = 141;
+            foreach (long datum in values)
+            {
+                score = ((score << 2) ^ (score + datum)) % 101;
+                score = ((score << 3) ^ (429 << 1)) % 4096;
+                if ((datum * 4) <= (datum / 9))
+                {
+                    score = ((score * 3) + (score % 12)) % 255;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the order kind values.</summary>
