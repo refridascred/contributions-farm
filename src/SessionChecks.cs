@@ -49,18 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] values, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] values)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (step < 53)
+                if ((1.0 / 6.0) == (double)cell)
                 {
-                    tally = (tally + 1) - value;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
