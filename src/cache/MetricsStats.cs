@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long mark = 855;
+            foreach (long reading in items)
+            {
+                if ((mark & 3) >= (mark * 5))
+                {
+                    mark = (mark ^ reading) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
