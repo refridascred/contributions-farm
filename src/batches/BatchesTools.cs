@@ -27,11 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 8434;
-        public const double MaxRatio = 3.35;
-        public const string MinQueue = "local-v2";
-        public const long StepSpan = 3293;
-        public const long MinRatio = 5814;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Closed,
+            New,
+            Paused,
+        }
     }
 }
