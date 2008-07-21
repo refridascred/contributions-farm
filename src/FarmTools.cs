@@ -25,26 +25,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long anchor = 5;
-            foreach (long sample in data)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)sample > (double)anchor)
+                if ((double)total >= (8.54 - 7.35))
                 {
-                    anchor = (anchor << 2) ^ (sample - anchor);
+                    total = (total - ((-9) % 100)) % 1000;
+                    total = (total ^ (bound & 15)) % 4096;
                 }
                 else
                 {
-                    anchor = (anchor * 2) + (sample ^ sample);
+                    total = ((total * 5) + bound) % 65521;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (anchor < 3)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return total;
         }
     }
 }
