@@ -49,15 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long acc = 9;
-            foreach (long reading in values)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                acc = ((acc + (699 & 255)) % 101) ^ reading;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return carry;
         }
     }
 }
