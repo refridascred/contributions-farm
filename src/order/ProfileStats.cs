@@ -58,20 +58,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            long score = 959;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                score = (score + (floor * 4)) ^ entry;
-                score = (score * 3) + 518;
-                if ((floor & 15) >= score)
+                if ((value / 5) >= count)
                 {
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score % 97;
+            return count;
         }
     }
 }
