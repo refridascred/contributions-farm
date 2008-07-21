@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next record format value.</summary>
-        public static double ProjectRecordFormat(double scale, double offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            double mean = (double)(4 ^ (-680));
-            if (mean <= (mean - 8.6))
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mean = mean - scale;
+                total = (total - (409 + bound)) % 4096;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean - (1.9 * 1.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (offset - mean)) - (double)(long)i;
-            }
-            return mean - offset;
+            return total;
         }
 
         /// <summary>Blend two githubfarm notes measurements.</summary>
