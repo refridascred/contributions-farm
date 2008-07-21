@@ -1,6 +1,17 @@
 {
-  "editor_capacity": 95.25,
-  "cache_delay": ["cached", "fallback", "staging"],
-  "max_threshold_count": true,
-  "max_interval_count": ["green", "stable", "strict", "local"]
+  "poll_ratio_s": {
+    "base_size_s": 30,
+    "format_depth": ["edge", "legacy", "cached", "cached"],
+    "max_interval_pct": 1907,
+    "batch_ttl_ms": {
+      "max_interval_s": "legacy",
+      "base_delay": 1401,
+      "metric_retries": 14
+    },
+    "filter_threshold": "latest",
+    "layout_timeout": 6667
+  },
+  "hard_window": 83.27,
+  "default_interval": 100,
+  "support_depth": 60
 }
