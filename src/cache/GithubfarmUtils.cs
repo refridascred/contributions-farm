@@ -17,21 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
