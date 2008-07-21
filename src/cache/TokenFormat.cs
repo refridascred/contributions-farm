@@ -23,18 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long acc = 3;
+            foreach (long item in items)
             {
-                if ((count << 2) != (sample ^ count))
+                if (((item & 1) >= (item >> 1)) || ((acc & 31) <= item))
                 {
-                    count = count + 2;
+                    acc = (acc << 2) ^ (item - 76);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (item & 31);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
