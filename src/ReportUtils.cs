@@ -37,19 +37,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate metrics buffer readings against a bound.</summary>
-        public static bool ValidateMetricsBufferBounds(long[] series, long floor)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= floor)
+                if (readings[i] > bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
