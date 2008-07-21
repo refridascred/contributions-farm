@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Locked,
-            Paused,
-            Failed,
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine metrics counter values into a single score.</summary>
