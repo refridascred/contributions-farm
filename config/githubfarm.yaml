@@ -1,4 +1,5 @@
 # githubfarm settings
-warm_interval: false
-min_depth_s: 84.02
-compress: 1934
+account_capacity: 1024
+retry_ttl_pct: legacy
+burst_window_count: fallback
+base_window: eu-west
