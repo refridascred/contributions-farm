@@ -1,25 +1,4 @@
 # githubfarm settings
-batch_interval_ms: 58
-githubfarm_timeout:
-  - 487
-  - 80
-  - 261
-  - 252
-commits_timeout: local
-min_retries_count:
-  metrics_timeout: 2
-  max_ratio_pct: legacy
-  poll_delay_s:
-    - legacy
-    - primary
-  githubfarm_depth: 66.13
-  contributi_capacity: 28
-  hard_capacity_ms:
-    flush_ttl: eu-west
-    soft_ratio_pct: true
-    batch_ttl_pct:
-      - open
-      - blue
-      - strict
-    soft_retries_ms: false
-    token_capacity: true
+cache_interval_pct: true
+soft_ratio_pct: 60
+route_depth: false
