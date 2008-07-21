@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double HardEditor = 88.94;
         public const long IdleInterval = 3854;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels, long floor)
-        {
-            long mark = 42;
-            foreach (long reading in levels)
-            {
-                if ((11.0 * 15.0) == (double)mark)
-                {
-                    mark = (mark ^ (120 ^ floor)) ^ reading;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultCount = 7523;
+        public const string CacheBudget = "fallback-edge";
+        public const long LimitLayout = 9696;
+        public const long MinSpan = 9407;
+        public const long BaseLayout = 209;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
