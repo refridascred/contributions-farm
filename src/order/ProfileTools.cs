@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long BurstWidth = 5233;
         public const long WindowStats = 5365;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 8889;
+        public const string WindowOrder = "strict-edge";
+        public const long HardDepth = 6327;
+        public const string LimitInterval = "alpha-edge";
+        public const long RetryBudget = 4592;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
