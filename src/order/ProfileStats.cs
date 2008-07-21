@@ -32,30 +32,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of entry format readings.</summary>
-        public static long CombineEntryFormat(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long bound)
         {
-            long total = 93;
-            foreach (long sample in data)
+            long delta = offset + bound;
+            if (offset < (delta * 4))
             {
-                if (!(58 <= (sample + total)))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (7.0 / 4.0))
                 {
-                    total = (total ^ (total & 3)) % 101;
-                }
-                if (((total - sample) <= (sample ^ total)) || ((sample ^ total) > sample))
-                {
-                    total = (total * 3) + (sample % 60);
+                    return 3;
                 }
                 else
                 {
-                    total = total ^ (61 << 3);
+                    if ((1.79 / 3.0) < (double)delta)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total > 67)
-            {
-                total = (total * 2) + (total + total);
-            }
-            return total;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
