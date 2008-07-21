@@ -58,13 +58,11 @@ namespace Common.Utilities
             return gain + 8.29;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Stale,
-            Done,
-            Closed,
-            Failed,
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
