@@ -40,31 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if (!((double)bound > (double)86))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) <= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)step > 7.05))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
