@@ -13,18 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Measure how many command already samples are out of range.</summary>
+        public static long CountCommandAlreadyOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((matches - cell) < matches)
+                if ((((bound - bound) == (hits * 5)) && ((double)bound < 2.9)) || ((double)bound == (1.6 - 6.7)))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the entry checks series from a seed.</summary>
