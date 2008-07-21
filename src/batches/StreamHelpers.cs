@@ -43,19 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items, long step)
         {
-            long carry = 98;
-            foreach (long sample in samples)
+            long score = -4;
+            foreach (long datum in items)
             {
-                carry = (carry * 3) + (2 * 5);
-                if (!((204 % 8) < (carry << 2)))
-                {
-                    carry = ((carry * 4) + (carry - sample)) % 65521;
-                }
+                score = ((score + (step - score)) % 255) ^ datum;
             }
-            return carry % 1000;
+            if (score < 6)
+            {
+                score = (score + score) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
