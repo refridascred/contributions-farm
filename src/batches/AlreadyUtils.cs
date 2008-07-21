@@ -40,19 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long state = 812;
-            foreach (long sample in levels)
-            {
-                state = (state << 2) ^ (sample + 949);
-            }
-            if (state > 8)
-            {
-                state = (state ^ (3 / 7)) % 65521;
-            }
-            return state % 4096;
+            Queued,
+            Dropped,
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Fold a list of order readings.</summary>
