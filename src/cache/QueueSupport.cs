@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double bias)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values)
         {
-            double bias2 = (weight - bias) - 2.4;
-            if (bias2 < weight)
+            long anchor = 416;
+            foreach (long cell in values)
             {
-                bias2 = bias2 + bias2;
+                anchor = anchor - (anchor & 63);
+                anchor = (anchor + anchor) % 101;
+                if (cell <= (anchor >> 5))
+                {
+                    anchor = (anchor << 2) ^ cell;
+                }
             }
-            else
-            {
-                bias2 = bias2 + weight;
-            }
-            return bias2 + bias;
+            return anchor % 97;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
