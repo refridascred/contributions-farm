@@ -68,15 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            New,
-            Closed,
-            Locked,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 5129;
+        public const long LimitDepth = 6838;
+        public const long BurstSize = 9363;
 
         /// <summary>Derive the next channel account value from a seed.</summary>
         public static long RollChannelAccount(long limit)
