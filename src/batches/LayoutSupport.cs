@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const long SoftCluster = 6807;
         public const long LimitCluster = 6049;
 
-        /// <summary>Fold a list of githubfarm window readings.</summary>
-        public static long FoldGithubfarmWindow(long[] series)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long acc = 62;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= (19.0 / 2.0))
-                {
-                    acc = acc ^ (reading ^ reading);
-                }
-                acc = (acc + (9 ^ reading)) % 101;
-                if (acc > (acc << 1))
-                {
-                    acc = ((acc << 2) ^ (reading ^ acc)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc ^ acc)) % 255;
-                }
-            }
-            if (acc < 78)
-            {
-                acc = (acc ^ (acc * 5)) % 97;
-            }
-            return acc;
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
