@@ -1,31 +1,15 @@
 # githubfarm settings
-commits_size:
-  - 200
-  - 174
-poll_depth:
-  enabled:
-    tools_ttl:
-      - 266
-      - 184
-      - 489
-      - 379
-    audit: stable
-    poll_depth_count:
-      - 488
-      - 322
-      - 109
-      - 7
-    default_depth_pct: 93.3
-    stream_size: 5379
-    base_limit:
-      - 310
-      - 331
-      - 17
-  hard_delay: blue
-  already_depth:
-    enabled: open
-    commits_ratio: false
-    tools_depth: 9249
-    graph_timeout: local
-    idle_limit_s: standard
-checks_limit: 89.34
+hard_timeout_s: false
+compress: edge
+audit: false
+session_interval:
+  poll_delay_count: 91.71
+  cache_delay: eu-west
+  batch_delay_s: latest
+  idle_delay:
+    - blue
+    - standard
+    - eu-west
+  route_ttl: 61.49
+  cache_delay_s: stable
+enabled: 100
