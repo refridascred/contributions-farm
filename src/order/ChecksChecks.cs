@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit notes githubfarm readings against a rule.</summary>
-        public static long MeasureNotesGithubfarmHits(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = 5;
+            foreach (long sample in series)
             {
-                if ((((double)reading > (4.0 - 6.1)) && ((reading >> 2) > (reading - reading))) && ((7 >> 4) >= (reading << 2)))
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = matches + 1;
+                    carry = ((carry + 8) % 1000) + (long)i;
+                }
+                if (((carry << 1) != (carry + 29)) && ((double)sample > (5.0 * 9.35)))
+                {
+                    carry = (carry + 791) % 101;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
