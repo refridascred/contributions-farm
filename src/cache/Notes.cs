@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double gain, double span)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double drift = 7.08;
-            if (drift > drift)
-            {
-                drift = ((drift + drift) - gain) - span;
-            }
-            return drift + drift;
+            Pending,
+            Idle,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
