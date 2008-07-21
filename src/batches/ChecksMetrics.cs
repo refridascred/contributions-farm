@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine profile buffer values into a single score.</summary>
-        public static long TallyProfileBuffer(long[] values)
+        /// <summary>Check that every stats graph entry stays within the limit.</summary>
+        public static bool GuardStatsGraphRange(long[] items, long offset)
         {
-            long carry = 45;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (((carry ^ (-65)) >= carry) && (((long)values.Length & 255) <= (8 / 3)))
+                if (cell <= offset)
                 {
-                    carry = (carry + carry) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Fold a list of queue route readings.</summary>
