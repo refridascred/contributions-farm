@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxSpan = "staging-1";
-        public const long SoftCluster = 1102;
-        public const string BaseCluster = "staging-v2";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels)
+        {
+            long carry = 7;
+            foreach (long reading in levels)
+            {
+                carry = (((carry * 2) + (carry << 1)) % 255) + reading;
+            }
+            if (carry > 26)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long MatchChecksCount(long[] readings)
