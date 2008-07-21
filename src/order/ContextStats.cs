@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long SoftEditor = 3388;
         public const string StepTimeout = "legacy-edge";
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Pending,
-            New,
-            Idle,
-            Stale,
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine tools schema values into a single score.</summary>
