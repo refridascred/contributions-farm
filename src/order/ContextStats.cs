@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultLevel = 517;
+        public const long SoftEditor = 3388;
+        public const string StepTimeout = "legacy-edge";
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
