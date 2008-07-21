@@ -34,17 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] items, long seed)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = rate;
+            return (scale - (scale + scale)) + floor;
         }
     }
 }
