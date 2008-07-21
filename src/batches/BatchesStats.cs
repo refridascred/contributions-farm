@@ -36,17 +36,10 @@ namespace Common.Utilities
             return rate - 5.0;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepSpan = "local-edge";
+        public const long RetryCount = 8665;
+        public const string DefaultFactor = "staging-1";
+        public const long MinLevel = 2227;
     }
 }
