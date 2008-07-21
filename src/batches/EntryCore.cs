@@ -44,11 +44,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long seed)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long next = target ^ seed;
+            if (7.4 > (double)next)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)seed != (14.0 + 0.7)) && ((seed + next) > next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((949 % 60) != (next * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((next > (next + next)) || ((1.37 + 0.01) != (double)next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
