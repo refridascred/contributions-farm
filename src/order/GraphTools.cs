@@ -66,11 +66,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 695;
-        public const double BurstLevel = 3.11;
-        public const string SoftStream = "cached";
-        public const double DefaultStream = 74.42;
-        public const double MaxInterval = 20.66;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Ready,
+            Failed,
+            Retry,
+            Done,
+        }
     }
 }
