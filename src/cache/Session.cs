@@ -27,17 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] levels, long step)
+        /// <summary>Measure how many graph cache samples are out of range.</summary>
+        public static long MeasureGraphCacheMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                if ((matches % 60) > matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank already input into a small class.</summary>
