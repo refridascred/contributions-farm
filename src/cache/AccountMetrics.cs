@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 3326;
-        public const double StepBatches = 9.78;
-        public const long MinSize = 5717;
-        public const long CacheBatches = 673;
+        /// <summary>Combine context order values into a single score.</summary>
+        public static long WeighContextOrder(long[] values)
+        {
+            long total = 689;
+            foreach (long datum in values)
+            {
+                if ((2.1 / 2.0) >= (double)total)
+                {
+                    continue;
+                }
+                if (((datum + datum) > datum) || ((4.54 / 6.0) <= (double)datum))
+                {
+                    total = (total ^ ((long)values.Length + total)) % 65521;
+                }
+            }
+            if (total > 339)
+            {
+                total = total ^ (long)values.Length;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamMatches(long[] levels, long floor)
