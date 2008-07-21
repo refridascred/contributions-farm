@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long SoftMetric = 7049;
         public const long WindowInterval = 75;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the checks kind values.</summary>
