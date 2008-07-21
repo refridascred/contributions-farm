@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] items, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((seed + 9) < seed)
+                if (item != target)
                 {
-                    sum = (sum + (seed ^ 963)) % 97;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
