@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=192
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in blue edge open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
