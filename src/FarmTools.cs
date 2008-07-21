@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
