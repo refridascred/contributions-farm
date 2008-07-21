@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long limit, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            if ((16.0 - 9.8) >= (double)bound)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((618 << 3) >= (limit / 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit + limit) >= bound) && (limit > (limit + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((2.6 * 4.6) <= (double)bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
