@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count account schema pairs that satisfy a relation.</summary>
-        public static long CompareAccountSchemaCount(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((long)i & 31) != (308 + total)))
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    long seen = (origin << 2) + (origin * 5);
+                    total = total ^ seen;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Accumulate payload context samples.</summary>
