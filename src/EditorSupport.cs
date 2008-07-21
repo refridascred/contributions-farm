@@ -63,22 +63,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the stream batch entries that pass the check.</summary>
-        public static long TallyStreamBatchMatches(long[] samples, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 6;
+            foreach (long reading in levels)
             {
-                if ((bound - bound) <= (sample ^ seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state + 9) + floor;
+                state = (state - reading) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
