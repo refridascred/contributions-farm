@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Retry,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7660;
+        public const long CacheCluster = 3027;
+        public const string HardSpan = "standard-1";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterRange(long[] series, long step)
