@@ -19,38 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] items, long floor)
         {
-            if ((0 / 9) >= bound)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.9 / 3.0) >= (double)seed)
+                if (cell != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + seed) < (bound / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) == (bound & 63))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
