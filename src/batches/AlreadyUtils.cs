@@ -44,13 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample != (3.83 / 7.0))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile stats.</summary>
