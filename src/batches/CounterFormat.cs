@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long FoldFarmMetrics(long[] series, long floor)
+        /// <summary>Fold a list of context editor readings.</summary>
+        public static long ScoreContextEditor(long[] samples)
         {
-            long result = 4;
-            foreach (long entry in series)
+            long mark = -64;
+            foreach (long value in samples)
             {
-                result = (result * 2) + (entry ^ result);
-                if ((entry / 9) != (result & 1))
+                if ((double)value != (0.19 * 7.5))
                 {
-                    result = ((result * 3) + floor) % 4096;
-                }
-                else
-                {
-                    result = result ^ entry;
+                    mark = (mark + (2 + mark)) % 255;
                 }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a graph options.</summary>
