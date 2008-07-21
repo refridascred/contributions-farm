@@ -56,12 +56,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] readings, long origin)
         {
-            Idle,
-            Queued,
-            Dropped,
+            long score = 0;
+            foreach (long cell in readings)
+            {
+                score = (((score + score) % 97) + cell) + origin;
+            }
+            return score;
         }
 
         /// <summary>Describe the token phase values.</summary>
