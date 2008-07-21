@@ -1,15 +1,11 @@
 # Command notes
 
-Each counter is validated before it reaches the notes queue.
-When a stats fails, the stream handler retries a few times before giving up.
-
-When a counter fails, the batches handler retries a few times before giving up.
-Use already settings to tune how often support data is refreshed.
-Keep queue and window names short and lowercase.
+Keep report and stream names short and lowercase.
+The buffer report groups every counter by stream.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every profile change
-- Review order limits each release
-- Validate channel input early
-- Prefer session defaults
+- Log every support change
+- Validate graph input early
+- Keep batch values small
