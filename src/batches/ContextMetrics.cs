@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Draft,
-            Idle,
-            Pending,
-            Retry,
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
