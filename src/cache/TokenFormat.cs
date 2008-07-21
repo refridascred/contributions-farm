@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((double)(-417) >= (double)seen)
+                if ((count << 2) != (sample ^ count))
                 {
-                    seen = (seen + 2) + value;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine command values into a single score.</summary>
