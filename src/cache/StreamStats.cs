@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache tools entries that pass the check.</summary>
-        public static long TallyCacheToolsHits(long[] levels, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((count - limit) >= (limit + cell))
+                if ((490 + cell) > (seen + cell))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
