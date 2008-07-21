@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] readings, long floor)
+        /// <summary>Scale a stats batches figure with a bias.</summary>
+        public static double ScaleStatsBatches(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 15.0;
+            if (drift >= offset)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (1.0 * 7.3)) - ratio;
             }
-            return -1;
+            return drift - (double)(-18);
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
