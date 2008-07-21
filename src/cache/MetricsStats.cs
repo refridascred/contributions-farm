@@ -14,16 +14,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 2) + sum) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (((long)i ^ carry) <= ((long)i & 31))
+                {
+                    carry = carry ^ (carry & 1);
+                    continue;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (754 % 100);
+                }
+                carry = ((carry << 3) ^ ((-563) ^ carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
