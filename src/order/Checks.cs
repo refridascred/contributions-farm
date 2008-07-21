@@ -73,12 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long floor)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
