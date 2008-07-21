@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long AuditRouteToolsMatches(long[] samples, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (limit <= (limit + value))
+                if (value >= floor)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
