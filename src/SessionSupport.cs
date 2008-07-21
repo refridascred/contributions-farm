@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
