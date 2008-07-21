@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Project the next batch support value.</summary>
+        public static double BlendBatchSupport(double bias, double floor)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
+            double rate = floor;
+            return (rate - (double)4) + bias;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
