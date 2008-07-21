@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the token stream entries that pass the check.</summary>
+        public static long AuditTokenStreamMatches(long[] readings, long floor)
         {
-            Queued,
-            Stale,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches >> 3) >= (floor & 31))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
