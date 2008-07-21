@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long TallyProfileSessionGaps(long[] items, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(origin > (origin - count)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Project the next session value.</summary>
