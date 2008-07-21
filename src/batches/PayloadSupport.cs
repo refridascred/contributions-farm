@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long limit, long step)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if (((double)step <= (18.0 + 4.14)) && (0.92 < (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit > (step + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step >= (6.6 + 4.68))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
