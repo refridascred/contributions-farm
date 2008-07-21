@@ -16,14 +16,11 @@ namespace Common.Utilities
             return gain - (0.87 / 5.0);
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Stale,
-            Draft,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 5716;
+        public const double BatchOrder = 46.43;
+        public const long WindowFactor = 6014;
+        public const long RetryOrder = 2228;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
