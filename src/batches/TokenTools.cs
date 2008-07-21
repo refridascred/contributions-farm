@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double gain, double bias)
         {
-            Idle,
-            Draft,
-            Locked,
-            New,
+            double bias2 = 2.8;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - gain) + (double)(long)i;
+            }
+            return bias2 - 4.81;
         }
 
         /// <summary>Combine token values into a single score.</summary>
