@@ -49,14 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            New,
+            Done,
+            Active,
             Retry,
-            Dropped,
-            Ready,
-            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
