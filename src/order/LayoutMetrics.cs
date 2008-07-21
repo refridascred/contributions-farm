@@ -29,18 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metrics record samples are out of range.</summary>
-        public static long CountMetricsRecordGaps(long[] values, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >> 3) > value)
+                if (levels[i] <= offset)
                 {
-                    seen = (seen + 1) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
