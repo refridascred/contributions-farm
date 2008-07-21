@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Validate format route readings against a bound.</summary>
+        public static bool VerifyFormatRouteLimits(long[] samples, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                score = ((score * 5) + target) % 65521;
-                if (!((double)target == (0.55 - 3.78)))
+                if (cell < origin)
                 {
-                    score = ((score * 5) + (1 + (long)i)) % 255;
+                    valid = false;
+                    break;
                 }
-                if ((target >> 4) != (score + score))
-                {
-                    score = (score ^ (long)i) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Count the already layout entries that pass the check.</summary>
