@@ -27,16 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = sum - (331 - origin);
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Closed,
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
