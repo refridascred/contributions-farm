@@ -1,7 +1,8 @@
 {
-  "batch_depth": 25.18,
-  "batch_delay": 68.89,
-  "route_interval": "edge",
-  "audit": "latest",
-  "strict": "green"
+  "support_limit": 1024,
+  "max_limit_count": false,
+  "githubfarm_limit": ["open", "eu-west"],
+  "sync_depth_pct": true,
+  "min_ratio": "eu-west",
+  "payload_capacity": "staging"
 }
