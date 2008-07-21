@@ -41,19 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics already samples are out of range.</summary>
-        public static long MeasureMetricsAlreadyOutliers(long[] values, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples, long step)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long sample in samples)
             {
-                if ((double)origin <= 7.0)
+                if ((double)(long)samples.Length < (4.8 / 9.0))
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 2) + sample) + step;
                 }
             }
             return seen;
