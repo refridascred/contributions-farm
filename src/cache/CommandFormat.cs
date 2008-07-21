@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long bound)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
