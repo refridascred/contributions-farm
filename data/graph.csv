@@ -1,8 +1,6 @@
-id,ratio,count
-1,edge,8.02
-2,latest,588
-3,93.58,staging
-4,40.79,78.7
-5,302,970
-6,standard,416
-7,68.32,eu-west
+id,weight,state,rank
+1,fallback,latest,10.14
+2,335,716,13.32
+3,standard,589,901
+4,67.84,green,edge
+5,fallback,113,246
