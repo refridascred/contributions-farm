@@ -62,14 +62,19 @@ namespace Common.Utilities
             return rate + (rate + bias);
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] series, long seed)
         {
-            Ready,
-            Stale,
-            Draft,
-            Retry,
-            Pending,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
