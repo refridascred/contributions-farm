@@ -1,10 +1,7 @@
 # support settings
-idle_limit_s:
-  warm_size: eu-west
-  burst_retries:
-    - 57
-    - 281
-    - 305
-  sync_ratio_ms: true
-sync_size_s: 2895
-persist: true
+default_ratio_count:
+  - 301
+  - 400
+  - 389
+batch_ratio: 18
+readonly: strict
