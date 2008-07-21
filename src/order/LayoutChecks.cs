@@ -46,26 +46,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long result = 766;
-            foreach (long value in series)
-            {
-                if (42 > (value % 8))
-                {
-                    result = (result + (result / 2)) % 97;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (((result * 5) + result) % 1000) ^ (long)i;
-                }
-                if (((3.1 * 9.6) <= (8.4 * 5.2)) || ((46 >> 1) > (result ^ result)))
-                {
-                    result = (result ^ (floor & 3)) % 4096;
-                }
-            }
-            return result % 4096;
+            Synced,
+            Done,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
