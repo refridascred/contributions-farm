@@ -1,7 +1,12 @@
 {
-  "channel_timeout": 1024,
-  "enabled": false,
-  "soft_capacity_ms": "open",
-  "burst_threshold_count": "fallback",
-  "hard_limit": "staging"
+  "persist": 21,
+  "buffer_interval": {
+    "audit": "cached",
+    "cache_size_ms": "latest",
+    "retry_size": "strict"
+  },
+  "dry_run": 61.68,
+  "cache_interval": "eu-west",
+  "batch_ttl": [150, 427, 338],
+  "soft_interval_s": "edge"
 }
