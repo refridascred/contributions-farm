@@ -21,14 +21,15 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-edge";
         public const long RetryBudget = 4592;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            Dropped,
-            Pending,
-            Paused,
-            Retry,
-            Queued,
+            double mean = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean - scale) + (double)(long)i) + span;
+            }
+            return mean - (double)4;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
