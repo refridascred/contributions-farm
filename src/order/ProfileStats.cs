@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ sample) <= (sample & 1))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches level values.</summary>
