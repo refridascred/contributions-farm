@@ -21,23 +21,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long acc = 95;
-            foreach (long entry in readings)
-            {
-                acc = (acc ^ (70 / 4)) % 1000;
-                if (!((6.9 * 7.0) <= (double)entry))
-                {
-                    acc = ((acc * 3) + (1 + acc)) % 4096;
-                }
-            }
-            if (acc < 11)
-            {
-                acc = (acc + (acc << 1)) % 4096;
-            }
-            return acc;
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the batches level values.</summary>
