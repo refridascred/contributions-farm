@@ -12,40 +12,10 @@ namespace Common.Utilities
         public const string RetryTimeout = "strict-edge";
         public const double HardPayload = 66.63;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long step)
-        {
-            long step2 = target + step;
-            if (1.0 >= (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step + step2) >= (9 - target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step2 * 5) < (step % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step ^ 870) > (step - step2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheFactor = 5516;
+        public const string LimitInterval = "strict-v2";
+        public const string IdleDepth = "latest-edge";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] samples, long origin)
