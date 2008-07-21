@@ -28,18 +28,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] samples, long step)
         {
-            long score = 20;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (8.2 < (double)score)
+                if ((359 + step) <= (step + 773))
                 {
-                    score = (score + (value + (long)items.Length)) % 65521;
+                    count = (count + 1) + datum;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Blend two batches githubfarm measurements.</summary>
