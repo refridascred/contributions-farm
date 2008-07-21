@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            double gain = (scale - floor) - floor;
-            if (gain <= (gain / 4.0))
+            long state = -2;
+            foreach (long entry in readings)
             {
-                gain = gain - scale;
+                state = ((state ^ 45) % 101) + entry;
             }
-            return gain - (0.87 / 5.0);
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
