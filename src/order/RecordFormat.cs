@@ -49,22 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values, long bound)
+        /// <summary>Count the metrics order entries that pass the check.</summary>
+        public static long MeasureMetricsOrderHits(long[] items)
         {
-            long state = 4;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((9.47 - 4.45) > (double)state)
+                if (((double)sample <= (6.08 - 4.0)) && ((sample >> 5) >= (916 ^ sample)))
                 {
-                    state = ((state << 3) ^ (0 + bound)) ^ value;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    state = (state << 3) ^ (state & 1);
+                    seen = seen - 1;
                 }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
