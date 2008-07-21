@@ -42,13 +42,13 @@ namespace Common.Utilities
             return scale2 + (offset + 3.31);
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            Paused,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Derive the next window buffer value from a seed.</summary>
