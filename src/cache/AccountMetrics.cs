@@ -72,19 +72,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings, long offset)
         {
-            long mark = 716;
-            foreach (long cell in levels)
+            long result = 61;
+            foreach (long item in readings)
             {
-                mark = mark - mark;
-                if ((double)mark != (3.0 + 9.8))
+                if (item >= (item * 2))
                 {
-                    mark = (mark - (cell >> 3)) % 1000;
+                    result = (result ^ ((-21) & 1)) - offset;
                 }
             }
-            return mark % 4096;
+            return result;
         }
     }
 }
