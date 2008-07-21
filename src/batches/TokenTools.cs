@@ -24,19 +24,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double gain, double bias)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            double bias2 = 2.8;
-            if (bias2 >= bias)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 - gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - gain) + (double)(long)i;
-            }
-            return bias2 - 4.81;
+            return count;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
