@@ -1,6 +1,18 @@
 {
-  "hard_timeout_ms": ["strict", "cached", "latest", "eu-west"],
-  "base_limit": 100,
-  "compress": [120, 127, 168],
-  "hard_capacity_ms": "fallback"
+  "poll_depth": false,
+  "tools_size": 60,
+  "hard_window_ms": "green",
+  "poll_capacity_s": {
+    "soft_depth": {
+      "hard_threshold_pct": [485, 476, 367, 77],
+      "idle_window": 29,
+      "idle_window_pct": "cached",
+      "soft_delay": ["blue", "fallback", "fallback", "strict"],
+      "window_ratio": ["strict", "legacy", "edge"],
+      "cache_limit": "open"
+    },
+    "poll_delay": 39,
+    "enabled": 100,
+    "default_depth": true
+  }
 }
