@@ -62,9 +62,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "standard-1";
-        public const double DefaultFilter = 30.58;
-        public const long MinFilter = 6446;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Queued,
+            Stale,
+            Failed,
+            Idle,
+            Ready,
+        }
     }
 }
