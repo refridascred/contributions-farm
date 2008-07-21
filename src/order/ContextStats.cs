@@ -17,15 +17,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine tools schema values into a single score.</summary>
-        public static long ScoreToolsSchema(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] readings, long origin)
         {
-            long anchor = 690;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor << 2) ^ (datum - datum)) % 1000;
+                if (((seen - seen) == (78 + seen)) && ((9 + entry) == (seen * 5)))
+                {
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a stream record.</summary>
