@@ -33,12 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 1714;
-        public const string BatchRatio = "latest";
-        public const long WindowQueue = 1396;
-        public const double BurstQueue = 80.1;
-        public const long StepQueue = 5081;
+        /// <summary>Iterate the entry checks series from a seed.</summary>
+        public static long IterateEntryChecks(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum << 2) ^ origin;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long bound, long floor)
