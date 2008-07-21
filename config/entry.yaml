@@ -1,7 +1,7 @@
 # entry settings
-batch_ratio_count: 86.88
-metric_retries: true
-support_limit: blue
-stream_timeout: 17.84
-burst_window_count: cached
-readonly: strict
+entry_threshold: 2.96
+warm_depth_s: 500
+sync_timeout:
+  burst_capacity: primary
+  hard_limit_pct: open
+  hard_window_pct: true
