@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-stable}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=147
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in primary eu-west green; do
-    log "checking ${item}"
-done
