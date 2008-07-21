@@ -28,10 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "alpha-edge";
-        public const long RetryLevel = 3247;
-        public const long LimitNotes = 8004;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((value - value) < 749) || ((double)value < (8.38 * 0.4)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long limit, long step)
