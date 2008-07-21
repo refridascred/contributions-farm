@@ -1,6 +1,13 @@
 {
-  "min_interval_s": "fallback",
-  "farm_timeout": false,
-  "default_limit_pct": "staging",
-  "report_interval": 100
+  "poll_delay_pct": "open",
+  "flush_interval_s": 500,
+  "record_timeout": "staging",
+  "warm_ratio": {
+    "poll_size": 36.28,
+    "cache_delay": 23.18,
+    "readonly": "edge",
+    "hard_ttl": 153,
+    "filter_size": false,
+    "format_threshold": true
+  }
 }
