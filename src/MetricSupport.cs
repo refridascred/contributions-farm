@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long sum = 571;
+            foreach (long sample in samples)
             {
-                if (item <= seed)
+                if ((((long)samples.Length + sum) != (sum % 8)) || (sample > (sum >> 4)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum ^ sum) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sample << 3)) % 4096;
                 }
             }
-            return valid;
+            if (sum > 7)
+            {
+                sum = (sum - (sum << 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
