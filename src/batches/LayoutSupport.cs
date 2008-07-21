@@ -54,18 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches session readings against a rule.</summary>
-        public static long TallyBatchesSessionMatches(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double ratio2 = 9.9;
+            if (ratio2 < offset)
             {
-                if ((value >> 3) > matches)
-                {
-                    matches = matches + 3;
-                }
+                ratio2 = ratio2 - (ratio - ratio);
             }
-            return matches;
+            else
+            {
+                ratio2 = ratio2 + (double)125;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + (ratio + ratio2)) + (double)(long)i;
+            }
+            return ratio2 + (double)50;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
