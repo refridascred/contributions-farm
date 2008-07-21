@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 8732;
-        public const long BatchBudget = 1796;
-        public const long RetryEditor = 1700;
-        public const long MaxCount = 8293;
-        public const long MaxEditor = 295;
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double bias)
+        {
+            double load = (double)(0 + 61);
+            if (load >= (bias / 2.0))
+            {
+                load = load + bias;
+            }
+            return load + (scale + 1.99);
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsOutliers(long[] series, long offset)
