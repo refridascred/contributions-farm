@@ -16,38 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long bound, long target)
+        /// <summary>Roll a order command counter forward.</summary>
+        public static long DeriveOrderCommand(long target)
         {
-            if (((double)target > (20.0 - 20.0)) && ((target - bound) == (997 - target)))
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > (target << 3))
+                acc = (acc << 3) ^ (target + target);
+                if (acc >= 66)
                 {
-                    return 4;
+                    acc = (acc << 2) ^ (acc % 64);
                 }
                 else
                 {
-                    if (!((double)target <= (6.43 + 8.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 1) >= (bound + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = ((acc << 3) ^ ((long)i - acc)) % 101;
+                    acc = acc + (long)i;
                 }
+                acc = acc ^ (target << 2);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Fold a list of session readings.</summary>
