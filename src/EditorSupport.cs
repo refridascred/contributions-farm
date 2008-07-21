@@ -15,18 +15,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the context filter entries that pass the check.</summary>
-        public static long TallyContextFilterOutliers(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (!((1.76 - 3.0) < (double)limit))
             {
-                if ((double)sample <= (8.0 + 2.18))
+                return 6;
+            }
+            else
+            {
+                if (!((limit2 + limit) != (limit2 - limit2)))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((20.0 / 5.0) >= (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit2 / 3) > (limit2 - 0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a command reading.</summary>
