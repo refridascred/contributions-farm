@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            Retry,
-            Ready,
-            New,
+            long carry = target;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
