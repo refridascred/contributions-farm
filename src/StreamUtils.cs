@@ -47,18 +47,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] data, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (1.0 >= (double)matches)
+                if ((((seen - seen) > (value << 1)) && (seen < (seen + value))) && ((8 + value) > seen))
                 {
-                    matches = ((matches + 2) + value) - limit;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the stats status values.</summary>
