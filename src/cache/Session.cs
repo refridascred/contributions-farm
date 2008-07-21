@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((0.8 / 4.0) > (double)tally)
-                {
-                    tally = ((tally + 3) - reading) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxScore = 8723;
+        public const string CacheSpan = "alpha-v2";
+        public const string RetryAlready = "cached";
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] values)
