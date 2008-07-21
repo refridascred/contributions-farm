@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Ready,
-            Pending,
-            Draft,
+            Locked,
             Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
