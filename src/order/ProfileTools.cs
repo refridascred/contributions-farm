@@ -27,12 +27,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxSize = 55.3;
-        public const string MaxRatio = "fallback-v2";
-        public const long CacheInterval = 5732;
-        public const long StepGithubfarm = 574;
-        public const string CacheLevel = "latest-v2";
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double span)
+        {
+            double bias = rate;
+            if (bias >= (rate + 9.46))
+            {
+                bias = bias + (span - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + (9.0 + bias);
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] data, long origin)
