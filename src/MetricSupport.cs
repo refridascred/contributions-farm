@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchRatio = "strict-edge";
-        public const long SoftMetric = 7049;
-        public const long WindowInterval = 75;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long target, long seed)
