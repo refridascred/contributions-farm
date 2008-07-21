@@ -1,4 +1,16 @@
 # support settings
-idle_timeout: true
-flush_delay: false
-poll_delay: true
+poll_threshold: 13
+poll_window_count:
+  - edge
+  - edge
+  - open
+cache_size:
+  idle_depth: false
+  max_window: 70.64
+  enabled: 25.13
+  dry_run:
+    - 413
+    - 331
+    - 497
+    - 261
+  layout_window: 39.94
