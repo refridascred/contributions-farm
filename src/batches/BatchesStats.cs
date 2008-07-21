@@ -46,10 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWidth = 70.52;
-        public const long CacheCount = 3218;
-        public const long BatchWindow = 4073;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate format commits samples.</summary>
         public static long DigestFormatCommits(long[] levels)
