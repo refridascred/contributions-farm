@@ -13,13 +13,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long target, long step)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            long slot = target + step;
+            if (((17.0 + 6.2) != (double)target) && ((slot + step) <= slot))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target <= (680 + slot)) && ((slot - target) == (target - step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a session record.</summary>
