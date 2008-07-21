@@ -1,15 +1,14 @@
 # Command notes
 
-Use filter settings to tune how often order data is refreshed.
-Run the stats check before changing any queue limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
+When a token fails, the profile handler retries a few times before giving up.
+Each support is validated before it reaches the entry queue.
 
-Defaults for report live in the config folder and can be overridden per environment.
-Keep notes and account names short and lowercase.
+The batch helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the checks handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Validate counter input early
-- Document new stream fields
-- Review tools limits each release
-- Log every metric change
+- Document new layout fields
+- Review metrics limits each release
+- Keep counter values small
