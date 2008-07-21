@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
