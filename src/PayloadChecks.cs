@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many account record samples are out of range.</summary>
-        public static long TallyAccountRecordGaps(long[] series, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count << 1) != (61 / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 3) - value) + target;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
