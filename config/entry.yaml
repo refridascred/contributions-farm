@@ -1,7 +1,7 @@
 # entry settings
-entry_threshold: 2.96
-warm_depth_s: 500
-sync_timeout:
-  burst_capacity: primary
-  hard_limit_pct: open
-  hard_window_pct: true
+batch_retries_ms: 54.57
+verbose:
+  - strict
+  - strict
+warm_ratio_s: cached
+persist: false
