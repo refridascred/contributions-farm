@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine metric counter values into a single score.</summary>
-        public static long CombineMetricCounter(long[] data)
-        {
-            long carry = 283;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) < carry)
-                {
-                    carry = (carry ^ (entry & 255)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 3326;
+        public const double StepBatches = 9.78;
+        public const long MinSize = 5717;
+        public const long CacheBatches = 673;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamMatches(long[] levels, long floor)
