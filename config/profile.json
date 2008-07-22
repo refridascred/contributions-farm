@@ -1,21 +1,8 @@
 {
-  "strict": ["local", "fallback", "green", "open"],
-  "max_ttl_ms": ["blue", "stable"],
-  "min_ttl": "edge",
-  "stream_retries": {
-    "cache_capacity_ms": "eu-west",
-    "farm_size": 6229,
-    "idle_limit": 294
-  },
-  "payload_size": true,
-  "poll_ratio": {
-    "flush_ttl_s": ["standard", "latest"],
-    "max_interval_s": "stable",
-    "default_ratio": ["standard", "standard", "edge"],
-    "poll_retries": {
-      "enabled": "blue",
-      "already_depth": [491, 417, 421, 324],
-      "farm_window": false
-    }
-  }
+  "soft_ratio_pct": true,
+  "warm_ttl": true,
+  "route_depth": 88,
+  "strict": 77.9,
+  "route_size": [269, 163, 164, 140],
+  "cache_window": 54
 }
