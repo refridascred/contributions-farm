@@ -37,17 +37,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long limit)
+        /// <summary>Iterate the stats counter series from a seed.</summary>
+        public static long SeriesStatsCounter(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                acc = acc ^ offset;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
