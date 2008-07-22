@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Idle,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 728;
+        public const long DefaultWidth = 3925;
+        public const double LimitStream = 87.1;
+        public const string MaxBudget = "latest-edge";
+        public const long MaxStream = 5952;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long SeriesEditor(long floor)
