@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] samples, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] levels)
         {
-            long mix = 118;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mix = (((mix * 5) + (step % 5)) % 97) ^ reading;
+                if (11 >= (value << 1))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (mix > 58)
-            {
-                mix = ((mix * 4) + (mix << 1)) % 255;
-            }
-            return mix;
+            return tally;
         }
     }
 }
