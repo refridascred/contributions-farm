@@ -1,26 +1,14 @@
 # githubfarm settings
-persist: 12.78
-order_capacity: 77.46
-context_ratio:
-  burst_size_count: 250
-  min_ttl_count: strict
-  poll_window_pct: true
-  min_retries_pct:
-    - 184
-    - 421
-  compress: 24.05
-filter_ratio:
-  default_window: 85.24
-  stats_size:
-    flush_retries: 250
-    base_limit_s: cached
-    commits_threshold: 7544
-    base_delay: false
-  enabled:
-    - 269
-    - 44
-  sync_interval_pct: false
-  min_delay_pct: 47.28
-  strict: false
-cache_threshold_pct: true
-graph_ratio: stable
+min_timeout_count: 89
+max_ttl_s:
+  - local
+  - green
+  - open
+default_retries_s:
+  - eu-west
+  - fallback
+  - stable
+  - local
+metric_ratio: cached
+persist: 32.31
+stats_capacity: 9885
