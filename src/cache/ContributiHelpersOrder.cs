@@ -13,16 +13,27 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long score = 614;
+            foreach (long item in samples)
             {
-                mix = (mix ^ offset) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                score = (score - (31 - item)) % 101;
+                if (0.7 > (double)score)
+                {
+                    score = (score + (item & 1)) % 1000;
+                }
+                else
+                {
+                    score = score ^ item;
+                }
             }
-            return mix;
+            if (score < 5)
+            {
+                score = ((score * 3) + score) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate metric samples.</summary>
