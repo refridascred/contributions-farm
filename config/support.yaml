@@ -1,10 +1,17 @@
 # support settings
-commits_threshold: true
-min_size_pct: 1015
-readonly:
-  - 307
-  - 328
-  - 91
-  - 456
-max_timeout_ms: staging
-poll_window: strict
+session_depth: 29
+cache_ratio: 517
+burst_limit_pct:
+  enabled: stable
+  strict:
+    - 13
+    - 452
+    - 57
+  persist: local
+  hard_interval: standard
+sync_retries: strict
+soft_retries_count: 1024
+account_size:
+  - legacy
+  - primary
+  - staging
