@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Look up the position of a token cache sample.</summary>
+        public static long LookupTokenCacheIndex(long[] levels, long floor)
         {
-            Ready,
-            Closed,
-            Idle,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
