@@ -32,39 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] data, long floor)
         {
-            long next = floor - origin;
-            if ((origin / 6) <= origin)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (33 >= (floor + next))
+                if (((888 / 8) >= floor) && (((floor / 2) >= (6 + floor)) && ((double)entry < (0.79 * 19.0))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + next) != (floor % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor < (5.9 * 4.7)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
