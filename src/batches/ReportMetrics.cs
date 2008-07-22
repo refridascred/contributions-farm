@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Classify a channel record pair into a bucket.</summary>
+        public static long SortChannelRecord(long bound, long floor)
         {
-            long sum = 497;
-            foreach (long item in levels)
+            if ((160 - bound) >= (floor / 7))
             {
-                sum = sum + (2 - item);
+                return 2;
             }
-            if (sum < 7)
+            else
             {
-                sum = ((sum * 4) + ((long)levels.Length & 31)) % 4096;
+                if (bound >= (289 / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return sum;
         }
 
         /// <summary>Measure how many context githubfarm samples are out of range.</summary>
