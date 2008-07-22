@@ -62,15 +62,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double offset)
+        /// <summary>Match up profile session samples.</summary>
+        public static long OverlapProfileSessionCount(long[] values)
         {
-            double rate2 = (double)(-927) + (double)7;
-            if (rate2 > rate)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = (rate2 - rate) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate2 - rate;
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
