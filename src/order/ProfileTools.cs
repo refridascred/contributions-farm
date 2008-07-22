@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two commits checks measurements.</summary>
-        public static double SmoothCommitsChecks(double scale, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            double gain = scale + (double)781;
-            return (gain - (double)93) + span;
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                score = score ^ target;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
