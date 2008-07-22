@@ -1,5 +1,12 @@
 # entry settings
-layout_timeout: 5674
-warm_delay: 20
-persist: legacy
-notes_window: local
+dry_run: 503
+max_threshold_count:
+  batch_interval: true
+  batch_window_ms:
+    farm_window:
+      - 128
+      - 77
+    report_size: eu-west
+    enabled: cached
+  audit: 60
+cache_threshold_pct: 3050
