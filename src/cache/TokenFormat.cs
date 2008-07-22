@@ -31,9 +31,9 @@ namespace Common.Utilities
         public const long RetryQueue = 5708;
         public const long BaseQueue = 8617;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFactor = 2172;
-        public const string BatchInterval = "latest-edge";
-        public const long RetryScore = 6923;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 4.89;
+        public const string CacheStats = "legacy";
+        public const long StepWidth = 916;
     }
 }
