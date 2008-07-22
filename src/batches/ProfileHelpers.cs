@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long floor, long origin)
+        /// <summary>Find the first profile metrics entry that matches the target.</summary>
+        public static long LookupProfileMetricsIndex(long[] items, long offset)
         {
-            long gap = floor + origin;
-            if ((0.5 + 8.6) != (double)floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor + floor) <= (2 - floor)) && ((floor % 24) <= origin))
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor & 63) > origin) && (1 >= (5 + gap)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
