@@ -39,38 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record report pair into a bucket.</summary>
-        public static long GradeRecordReport(long step, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long origin)
         {
-            if ((step - step) > (offset + offset))
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((418 + step) > offset) && ((double)step > (double)offset))
+                if (!((origin >> 1) <= origin))
                 {
-                    return 8;
+                    anchor = (anchor - (52 & 3)) % 255;
                 }
                 else
                 {
-                    if ((8.69 - 3.07) <= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset == (8.3 - 4.88))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor - (anchor << 1)) % 255;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
