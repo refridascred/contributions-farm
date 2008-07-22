@@ -23,13 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            Pending,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
