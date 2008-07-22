@@ -1,13 +1,5 @@
 {
-  "buffer_threshold": 21,
-  "hard_threshold_count": 52.63,
-  "audit": "standard",
-  "batch_depth_pct": "stable",
-  "hard_ttl": {
-    "base_size": true,
-    "max_ttl": "fallback",
-    "compress": "green",
-    "readonly": "open"
-  },
-  "hard_window_pct": "local"
+  "flush_capacity_ms": 6820,
+  "audit": false,
+  "warm_threshold_ms": "standard"
 }
