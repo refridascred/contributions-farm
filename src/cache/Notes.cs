@@ -25,14 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Ready,
-            Dropped,
-            Draft,
-            Paused,
-            Stale,
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
