@@ -16,19 +16,26 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Validate graph batch readings against a bound.</summary>
-        public static bool VerifyGraphBatchLimits(long[] levels, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long result = 93;
+            foreach (long cell in items)
             {
-                if (sample > seed)
+                if ((cell >> 1) <= ((long)items.Length ^ cell))
                 {
-                    found = false;
+                    result = ((result << 3) ^ (378 * 3)) % 255;
+                }
+                if (result > (cell >> 4))
+                {
                     break;
                 }
             }
-            return found;
+            if (result > 877)
+            {
+                result = result ^ (origin / 9);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
