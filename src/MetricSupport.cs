@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the cluster commits entries that pass the check.</summary>
-        public static long CountClusterCommitsMatches(long[] levels, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry % 7) > (53 + bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
