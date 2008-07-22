@@ -18,10 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 53.68;
-        public const long DefaultDepth = 5545;
-        public const long SoftLevel = 2423;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long seed2)
+        {
+            if (((seed2 << 1) >= 61) && ((double)seed < 5.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((3.8 * 2.26) <= (double)seed2) || ((583 - seed) != (94 + seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed2 <= (6.92 - 12.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed > (seed2 * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long DeriveBatches(long offset)
