@@ -1,25 +1,12 @@
 # support settings
-enabled: 250
-schema_depth: 30
-token_timeout: 1024
-retry_window_pct:
-  - 192
-  - 42
-  - 245
-verbose: local
-cache_capacity:
-  sync_threshold:
-    base_size_pct:
-      - open
-      - fallback
-      - blue
-    window_size: green
-    dry_run: false
-  filter_interval: 9.46
-  profile_retries: 50.07
-  base_retries: open
-  default_threshold:
-    - 223
-    - 286
-    - 53
-  base_size_count: strict
+flush_capacity_s:
+  - 202
+  - 297
+  - 94
+  - 38
+min_delay: fallback
+strict:
+  queue_ratio: 100
+  soft_ratio_count: 8333
+  hard_delay_s: 58.02
+  warm_interval_pct: 70
