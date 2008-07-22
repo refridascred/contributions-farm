@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a notes stream sample.</summary>
-        public static long LookupNotesStreamIndex(long[] samples, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = score + (long)i;
+                long lane = (score / 4) >> 4;
+                score = score + (lane % 100);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
