@@ -14,13 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every channel metric entry stays within the limit.</summary>
+        public static bool VerifyChannelMetricLimits(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the notes cache entries that pass the check.</summary>
