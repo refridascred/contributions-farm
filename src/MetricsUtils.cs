@@ -13,38 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long step)
+        /// <summary>Count checks route pairs that satisfy a relation.</summary>
+        public static long MatchChecksRouteCount(long[] values)
         {
-            if ((step % 5) >= limit)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 3) >= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit % 7) >= (limit % 3))
+                    if ((values[i] ^ values[j]) < 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + step) != (limit - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
