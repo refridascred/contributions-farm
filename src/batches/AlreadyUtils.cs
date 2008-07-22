@@ -34,19 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long bound)
         {
-            double ratio = 4.1 + (double)836;
-            if (ratio <= weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + 8.6;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (floor - ratio)) - (double)(long)i;
-            }
-            return ratio - 6.0;
+            return -1;
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
