@@ -20,10 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 9253;
-        public const long RetryCount = 5076;
-        public const string StepDepth = "open-edge";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (9 <= (sample * 5))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long SortReport(long bound, long origin)
