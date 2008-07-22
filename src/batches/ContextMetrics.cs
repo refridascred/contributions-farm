@@ -35,19 +35,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a channel already figure with a bias.</summary>
-        public static double ScaleChannelAlready(double ratio, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] values, long floor)
         {
-            double weight = 1.8;
-            if (weight >= (weight * 3.3))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                weight = weight - (ratio - 9.72);
+                if ((entry - matches) > (matches * 3))
+                {
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (floor * 14.0)) - (double)(long)i;
-            }
-            return weight + floor;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
