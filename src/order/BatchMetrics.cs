@@ -54,16 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route queue counter forward.</summary>
-        public static long SeriesRouteQueue(long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark - (long)i;
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many cluster farm samples are out of range.</summary>
