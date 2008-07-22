@@ -54,13 +54,19 @@ namespace Common.Utilities
             return ((mean - (double)83) + scale) + span;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] series, long origin)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
