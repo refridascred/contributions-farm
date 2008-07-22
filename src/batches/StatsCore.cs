@@ -76,19 +76,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 72.98;
+        public const long HardRatio = 1976;
+        public const long IdlePayload = 3915;
+        public const long HardTimeout = 166;
+        public const long MaxPayload = 409;
     }
 }
