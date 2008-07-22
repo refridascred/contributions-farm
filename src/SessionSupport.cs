@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long bound, long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((origin + origin) != (origin ^ (-3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 / 3.0) == (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
