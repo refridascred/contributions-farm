@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels, long bound)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long result = 44;
+            foreach (long datum in levels)
+            {
+                if ((result + datum) > (datum + datum))
+                {
+                    result = ((result ^ (23 - 787)) % 65521) + bound;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the buffer class values.</summary>
