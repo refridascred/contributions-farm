@@ -14,31 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long floor)
-        {
-            long mix = -98;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = ((mix ^ (317 << 1)) % 97) ^ (long)i;
-                }
-                if (entry >= (mix * 2))
-                {
-                    mix = (mix + (323 + floor)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (5 << 2)) % 97;
-                }
-                if ((mix + entry) <= (-8))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "latest-edge";
+        public const long CacheTimeout = 5552;
+        public const string SoftSpan = "cached-edge";
+        public const long SoftSupport = 2334;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
