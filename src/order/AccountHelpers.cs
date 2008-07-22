@@ -19,16 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter already value from a seed.</summary>
-        public static long RollFilterAlready(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultBudget = 4234;
+        public const string BaseBudget = "stable-1";
+        public const long BurstSize = 292;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] samples, long floor)
