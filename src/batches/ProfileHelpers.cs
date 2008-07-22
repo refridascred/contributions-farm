@@ -82,28 +82,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long result = 1;
-            foreach (long cell in series)
-            {
-                if ((double)result >= (double)782)
-                {
-                    result = ((result << 3) ^ result) % 101;
-                    continue;
-                }
-                if ((result ^ cell) != (4 << 3))
-                {
-                    result = (result - cell) % 4096;
-                }
-                result = ((result << 3) ^ (54 / 2)) % 65521;
-            }
-            if (result < 483)
-            {
-                result = (result + (result ^ result)) % 97;
-            }
-            return result % 1000;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
