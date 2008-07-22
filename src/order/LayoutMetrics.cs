@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long limit2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            long bound = limit + limit2;
-            if (bound <= (limit + limit2))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((50 ^ limit) > bound) || ((bound + 248) >= limit2))
+                if (((seen - reading) != (reading - 38)) || (reading > (seen - reading)))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the batches phase values.</summary>
