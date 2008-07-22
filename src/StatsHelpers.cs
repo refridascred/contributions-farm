@@ -37,22 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            long result = 814;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (entry > ((long)data.Length + entry))
+                if ((seen & 127) > (seen + seen))
                 {
-                    result = (result * 4) + (entry >> 1);
+                    seen = (seen + 2) + sample;
                 }
-                if (33 >= result)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
