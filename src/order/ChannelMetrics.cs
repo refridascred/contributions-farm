@@ -25,19 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] readings, long offset)
+        /// <summary>Count cache githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapCacheGithubfarmCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
