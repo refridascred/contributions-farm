@@ -1,8 +1,7 @@
 {
-  "cache_size_count": ["standard", "open"],
-  "soft_delay_s": ["green", "stable"],
-  "audit": [135, 305, 411],
-  "account_size": 31.53,
-  "max_threshold_pct": "staging",
-  "default_delay_ms": 30
+  "min_window_ms": 69,
+  "poll_limit_ms": "open",
+  "readonly": [194, 115],
+  "strict": "stable",
+  "hard_threshold": "fallback"
 }
