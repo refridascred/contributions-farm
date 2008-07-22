@@ -45,12 +45,14 @@ namespace Common.Utilities
         public const long RetryBudget = 2881;
         public const long RetryMetric = 5639;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            Queued,
+            Stale,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
