@@ -1,19 +1,14 @@
 # support settings
-idle_capacity_pct: fallback
-sync_timeout:
+max_ratio: 37.46
+persist: 81.11
+batch_timeout_pct: open
+soft_threshold:
   readonly:
-    - cached
-    - fallback
-    - cached
-  graph_threshold:
-    - 118
-    - 444
-  idle_window_s: false
-  burst_ratio:
-    - blue
-    - strict
-soft_interval:
-  - 72
-  - 138
-  - 379
-idle_threshold_count: 4434
+    min_ttl_pct: 27.18
+    hard_capacity_s: strict
+    strict: 916
+    min_ttl: false
+  batch_ratio_pct: false
+  report_capacity: false
+  burst_interval_s: true
+  githubfarm_delay: 1024
