@@ -10,13 +10,30 @@ namespace Common.Utilities
         public const long MinBatches = 1986;
         public const long BurstBatches = 3078;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long floor)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            long mix = -98;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = ((mix ^ (317 << 1)) % 97) ^ (long)i;
+                }
+                if (entry >= (mix * 2))
+                {
+                    mix = (mix + (323 + floor)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (5 << 2)) % 97;
+                }
+                if ((mix + entry) <= (-8))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
