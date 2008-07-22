@@ -1,5 +1,8 @@
 {
-  "flush_capacity_ms": 6820,
-  "audit": false,
-  "warm_threshold_ms": "standard"
+  "soft_depth": "strict",
+  "sync_depth_ms": "cached",
+  "warm_timeout_pct": "latest",
+  "record_size": "fallback",
+  "retry_ttl": [376, 261, 417],
+  "context_ratio": "cached"
 }
