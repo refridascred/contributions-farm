@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a report channel value against two limits.</summary>
-        public static long ClassifyReportChannel(long offset, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            if ((bound <= (offset + 8)) && ((offset / 5) < bound))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 4) > 22)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
