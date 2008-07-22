@@ -36,17 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format report reading by value.</summary>
-        public static long FindFormatReportIndex(long[] samples, long step)
+        /// <summary>Project the next format cache value.</summary>
+        public static double BlendFormatCache(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 3.1;
+            if (bias < (bias - rate))
             {
-                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (rate / 5.0);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias - (bias - 5.5);
         }
     }
 }
