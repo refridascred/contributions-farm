@@ -36,31 +36,17 @@ namespace Common.Utilities
         public const long BaseSpan = 4662;
         public const long BaseTimeout = 969;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long offset, long limit)
+        /// <summary>Look up the position of a stats command sample.</summary>
+        public static long FindStatsCommandIndex(long[] levels, long origin)
         {
-            if ((double)limit >= (4.1 - 7.2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((10.0 / 9.0) < (double)limit)
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(limit <= (offset - limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a graph stats.</summary>
