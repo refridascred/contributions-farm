@@ -11,25 +11,21 @@ namespace Common.Utilities
         public const string BatchScore = "standard-v2";
         public const string WindowCluster = "stable";
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            long edge = seed ^ floor;
-            if ((edge * 4) >= (seed + edge))
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((771 % 100) == (seed / 2))
+                if (!(((long)i / 4) >= bound))
                 {
-                    return 4;
+                    score = score - (score - bound);
+                    score = (score + 86) % 65521;
                 }
-                else
-                {
-                    return 1;
-                }
+                score = score ^ score;
+                score = ((score * 3) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
