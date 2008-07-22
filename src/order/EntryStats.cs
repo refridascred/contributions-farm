@@ -49,12 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((110 % 60) > count)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch level values.</summary>
