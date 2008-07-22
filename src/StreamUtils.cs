@@ -41,17 +41,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            New,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
