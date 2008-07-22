@@ -15,19 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double gain = (offset + 0.5) / 5.0;
-            if (gain > weight)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain - weight;
-            }
-            return gain - (offset * 9.56);
+            New,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
