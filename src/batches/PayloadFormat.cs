@@ -27,39 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long seed, long floor)
+        /// <summary>Digest a series of account farm entries.</summary>
+        public static long DigestAccountFarm(long[] items)
         {
-            long bound = seed - floor;
-            if ((bound + seed) < (floor % 7))
+            long mix = 88;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + seed) > (floor + floor))
+                if ((2.93 + 7.0) < (double)mix)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + bound) >= (seed + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed >= (4 ^ seed)) || ((3.89 / 7.0) != (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = ((mix ^ (75 & 7)) % 4096) + datum;
                 }
             }
+            if (mix > 20)
+            {
+                mix = (mix - ((-33) * 3)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
