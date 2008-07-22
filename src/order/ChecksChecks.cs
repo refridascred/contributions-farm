@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 1015;
-        public const long MinCluster = 1986;
-        public const long StepRatio = 5453;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((4.0 / 6.0) <= (double)datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long offset, long seed)
