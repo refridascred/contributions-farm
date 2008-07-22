@@ -20,22 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count notes cache pairs that satisfy a relation.</summary>
-        public static long CompareNotesCacheCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 9253;
+        public const long RetryCount = 5076;
+        public const string StepDepth = "open-edge";
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long floor)
