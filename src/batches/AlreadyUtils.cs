@@ -34,12 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double weight, double floor)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            double ratio = 4.1 + (double)836;
+            if (ratio <= weight)
+            {
+                ratio = ratio + 8.6;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (floor - ratio)) - (double)(long)i;
+            }
+            return ratio - 6.0;
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
