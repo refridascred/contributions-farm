@@ -47,12 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchFactor = 76.84;
-        public const string BaseEditor = "open-1";
-        public const string HardEditor = "alpha";
-        public const double LimitSpan = 94.55;
-        public const long BatchEditor = 9081;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
