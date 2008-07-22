@@ -13,11 +13,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCount = 45.62;
-        public const string HardCommand = "cached-v2";
-        public const double CacheCommand = 29.93;
-        public const string BurstDepth = "latest-v2";
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long step)
+        {
+            if ((step % 5) >= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit * 3) >= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit % 7) >= (limit % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + step) != (limit - limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
