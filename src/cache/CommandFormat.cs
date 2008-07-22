@@ -55,39 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster metrics pair into a bucket.</summary>
-        public static long GradeClusterMetrics(long target, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] items)
         {
-            long diff = target - offset;
-            if ((diff << 1) <= (offset * 4))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)diff != (12.0 / 8.0))
+                if ((datum + hits) == (60 + 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target / 7) >= offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset <= (double)44) && ((23 & 1) < (target % 100)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
