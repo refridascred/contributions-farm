@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long seed, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long limit)
         {
-            long step = seed - bound;
-            if (((step - seed) != (bound - bound)) && ((seed - seed) >= (step % 97)))
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ seed) <= seed)
+                if (reading >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - seed) <= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two queue metric measurements.</summary>
