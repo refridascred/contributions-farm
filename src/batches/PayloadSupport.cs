@@ -29,13 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
+            Done,
+            Failed,
             Draft,
-            Queued,
             Paused,
-            New,
         }
     }
 }
