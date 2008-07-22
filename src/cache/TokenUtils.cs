@@ -33,16 +33,18 @@ namespace Common.Utilities
             return scale - (scale - ratio);
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings, long bound)
+        /// <summary>Measure how many channel buffer samples are out of range.</summary>
+        public static long CountChannelBufferOutliers(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor - (anchor + bound)) % 97) + entry;
-                anchor = (anchor + (anchor << 3)) % 4096;
+                if ((hits + hits) >= (datum ^ datum))
+                {
+                    hits = (hits + 2) - step;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
