@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long state = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (state >= ((long)i ^ (long)i))
+                {
+                    state = ((state * 2) + (state + bound)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up queue samples.</summary>
