@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] data, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((716 < (offset + tally)) || (sample < (tally / 8))) && ((tally * 3) >= sample))
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two queue metric measurements.</summary>
