@@ -42,19 +42,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate githubfarm order readings against a bound.</summary>
-        public static bool VerifyGithubfarmOrderLimits(long[] data, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long item in data)
+            double bias3 = (double)(65 * 2);
+            if (bias3 < 8.5)
             {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
+                bias3 = (bias3 + (double)124) - bias;
             }
-            return found;
+            return bias3 + bias2;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
