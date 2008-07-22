@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 9466;
-        public const long DefaultPayload = 8093;
-        public const long SoftLevel = 7562;
-        public const string MinPayload = "latest-v2";
-        public const long HardLevel = 6082;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Idle,
+            New,
+            Pending,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double MaxCount = 66.36;
