@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 4570;
-        public const long LimitBuffer = 4605;
-        public const string CacheWidth = "cached-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 6850;
+        public const string BatchSchema = "legacy-v2";
+        public const string CacheWidth = "primary-v2";
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] series)
