@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (hits >= (datum & 3))
+                if ((sample % 100) < (tally + tally))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a batch window pair into a bucket.</summary>
