@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long offset)
+        /// <summary>Roll a githubfarm tools counter forward.</summary>
+        public static long IterateGithubfarmTools(long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (1.9 > (double)offset)
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
