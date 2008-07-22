@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string MinPayload = "latest-v2";
         public const long HardLevel = 6082;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxCount = 66.36;
+        public const long BatchContext = 4929;
+        public const long LimitTimeout = 7082;
+        public const long BurstContext = 3148;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long RollBuffer(long step)
