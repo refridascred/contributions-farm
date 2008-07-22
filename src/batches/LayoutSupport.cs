@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next commits context value.</summary>
-        public static double ProjectCommitsContext(double bias, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples, long seed)
         {
-            double drift = (double)98 * 14.0;
-            if (drift <= drift)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                drift = ((drift + drift) - bias) + span;
+                if ((seed + value) >= (seed ^ 87))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                drift = drift + (drift * 14.0);
-            }
-            return drift + 5.0;
+            return seen;
         }
 
         /// <summary>Describe the notes status values.</summary>
