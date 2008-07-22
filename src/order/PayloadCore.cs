@@ -54,14 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            Idle,
-            Queued,
-            Pending,
-            Retry,
-            Done,
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((floor + carry) < floor))
+                {
+                    carry = ((carry * 5) + (floor & 63)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
