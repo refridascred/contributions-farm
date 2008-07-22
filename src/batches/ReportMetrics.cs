@@ -26,11 +26,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7159;
-        public const long BatchEntry = 5343;
-        public const long CacheWidth = 5037;
-        public const long BurstEntry = 9086;
-        public const string SoftEntry = "open-edge";
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
