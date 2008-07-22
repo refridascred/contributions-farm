@@ -47,15 +47,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Project the next githubfarm commits value.</summary>
+        public static double BlendGithubfarmCommits(double ratio, double offset)
         {
-            double drift = (double)991 / 8.0;
-            if (drift >= 6.8)
+            double bias = 5.14;
+            if (bias <= (1.0 * 9.15))
             {
-                drift = drift - (2.0 - bias);
+                bias = (bias - (bias * 8.7)) + offset;
             }
-            return drift + bias2;
+            else
+            {
+                bias = bias + (9.97 * 15.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias - (bias - 4.13);
         }
     }
 }
