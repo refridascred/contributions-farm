@@ -22,19 +22,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] samples, long origin)
+        /// <summary>Look up the position of a graph format sample.</summary>
+        public static long LocateGraphFormatIndex(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                if (values[i] == target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
