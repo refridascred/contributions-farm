@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series, long step)
         {
-            Failed,
-            Locked,
-            Closed,
+            long state = 973;
+            foreach (long entry in series)
+            {
+                if ((step % 5) >= (step + entry))
+                {
+                    state = (state * 4) + 7;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
