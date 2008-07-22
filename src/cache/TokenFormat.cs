@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up schema editor samples.</summary>
-        public static long MatchSchemaEditorCount(long[] levels)
+        /// <summary>Count the stats notes entries that pass the check.</summary>
+        public static long AuditStatsNotesHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry / 3) <= (412 << 2))
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
