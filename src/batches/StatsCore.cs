@@ -23,17 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stats editor entry that matches the target.</summary>
-        public static long SeekStatsEditorIndex(long[] levels, long seed)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
