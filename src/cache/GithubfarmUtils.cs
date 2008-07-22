@@ -25,14 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Derive the next stats schema value from a seed.</summary>
+        public static long RollStatsSchema(long offset)
         {
             long carry = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry << 2) ^ ((long)i ^ 64)) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (((double)carry != (3.1 * 2.38)) || ((double)(long)i < (double)carry))
+                {
+                    long bound = offset;
+                    carry = (carry + (bound ^ 25)) % 101;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry + (offset / 8)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
             return carry;
         }
