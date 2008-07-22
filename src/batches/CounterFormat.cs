@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            double mean = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + 4.0) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean - rate;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
