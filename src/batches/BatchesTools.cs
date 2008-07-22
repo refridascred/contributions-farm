@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxDepth = 4198;
-        public const string BatchCluster = "cached";
-        public const long WindowScore = 1284;
-        public const long WindowCluster = 7272;
+        /// <summary>Measure how many counter account samples are out of range.</summary>
+        public static long TallyCounterAccountOutliers(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((-27) >= (target - target))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionRange(long[] values, long target)
