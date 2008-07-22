@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            double weight = bias + bias;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (2.8 - bias)) + (double)(long)i;
+            }
+            return weight - (ratio / 2.0);
         }
 
         /// <summary>Describe the buffer class values.</summary>
