@@ -13,18 +13,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long MeasureBatchFilterGaps(long[] series, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long step = limit ^ limit2;
+            if ((limit ^ limit) != (limit2 & 31))
             {
-                if ((reading >> 2) < (seed ^ 84))
+                return 2;
+            }
+            else
+            {
+                if (((6.13 + 5.0) == (double)limit2) || (limit2 < (559 ^ limit2)))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit >= (13.0 * 7.5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step < 0.7)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
