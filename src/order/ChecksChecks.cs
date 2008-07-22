@@ -40,21 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load - (0.96 / 4.0)) + (double)(long)i) + gain;
             }
-            return tally;
+            return load + 4.6;
         }
     }
 }
