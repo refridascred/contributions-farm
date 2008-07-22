@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            long result = 9;
+            foreach (long item in items)
+            {
+                if (!((result + item) == (item * 2)))
+                {
+                    result = (result * 5) + (item - item);
+                }
+                else
+                {
+                    result = (result - result) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate schema samples.</summary>
