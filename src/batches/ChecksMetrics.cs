@@ -66,15 +66,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a layout profile reading.</summary>
-        public static double AdjustLayoutProfile(double gain, double offset)
+        /// <summary>Measure how many tools order samples are out of range.</summary>
+        public static long CountToolsOrderMatches(long[] series)
         {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                scale = (scale + (double)(long)i) - gain;
+                if ((hits + value) >= (hits / 5))
+                {
+                    hits = hits + 1;
+                }
             }
-            return scale + offset;
+            return hits;
         }
     }
 }
