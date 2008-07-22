@@ -23,12 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 728;
-        public const long DefaultWidth = 3925;
-        public const double LimitStream = 87.1;
-        public const string MaxBudget = "latest-edge";
-        public const long MaxStream = 5952;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] samples, long origin)
