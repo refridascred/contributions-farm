@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] samples, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (!!(count > (floor / 9)))
+                if (item != floor)
                 {
-                    count = (count + 1) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
