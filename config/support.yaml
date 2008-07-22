@@ -1,4 +1,19 @@
 # support settings
-max_ttl_s: 61.95
-max_window: edge
-session_size: 75
+idle_capacity_pct: fallback
+sync_timeout:
+  readonly:
+    - cached
+    - fallback
+    - cached
+  graph_threshold:
+    - 118
+    - 444
+  idle_window_s: false
+  burst_ratio:
+    - blue
+    - strict
+soft_interval:
+  - 72
+  - 138
+  - 379
+idle_threshold_count: 4434
