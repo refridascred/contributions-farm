@@ -5,30 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] values, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels, long target)
         {
-            long total = 12;
-            foreach (long reading in values)
+            long mark = 41;
+            foreach (long reading in levels)
             {
-                if (((long)values.Length - 2) < reading)
+                if (!((double)reading == (double)target))
                 {
-                    total = (total * 2) + (total - 65);
+                    mark = (mark + (0 - target)) % 1000;
                 }
                 else
                 {
-                    total = (total + ((-1) << 3)) % 65521;
+                    mark = (mark ^ (reading ^ mark)) % 101;
                 }
-                if ((double)bound < (double)reading)
+                if (!(0.3 < (double)mark))
                 {
-                    break;
+                    mark = (mark << 2) ^ (452 - 1);
                 }
             }
-            if (total > 52)
+            if (mark > 99)
             {
-                total = (total ^ (975 + bound)) % 255;
+                mark = (mark << 2) ^ mark;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the account kind values.</summary>
