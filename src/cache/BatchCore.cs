@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels, long origin)
         {
-            long carry = 77;
-            foreach (long sample in readings)
+            long sum = -30;
+            foreach (long value in levels)
             {
-                if (!((sample >> 4) != (carry << 3)))
+                if ((origin / 4) != (value + 3))
                 {
-                    carry = (carry * 3) + (sample + carry);
-                }
-                if ((7.0 > (double)carry) || ((582 ^ carry) <= carry))
-                {
+                    sum = sum + value;
                     break;
                 }
+                sum = ((sum << 3) ^ (value + origin)) % 4096;
+                sum = ((sum * 2) + (long)levels.Length) % 1000;
             }
-            return carry;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate batch samples.</summary>
