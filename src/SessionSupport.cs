@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long bound, long origin)
         {
-            double rate = 7.9;
-            for (int i = 0; i < 5; i++)
+            if ((origin + origin) != (origin ^ (-3)))
             {
-                rate = (rate - ratio) + (double)(long)i;
+                return 5;
             }
-            return rate - bias;
+            else
+            {
+                if ((6.0 / 3.0) == (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound <= (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
