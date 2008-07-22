@@ -27,27 +27,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long offset)
         {
-            long mix = 389;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + (reading & 1)) % 65521;
-                if (((mix & 31) != (reading + reading)) || ((mix / 7) < reading))
+                if ((items[i] == offset) && ((items[i] % 2) != 0))
                 {
-                    mix = mix - (mix >> 4);
-                }
-                else
-                {
-                    mix = (mix - reading) % 101;
+                    return (long)i;
                 }
             }
-            if (mix < 46)
-            {
-                mix = mix - (mix / 4);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
