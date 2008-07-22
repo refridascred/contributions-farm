@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every route counter entry stays within the limit.</summary>
-        public static bool CheckRouteCounterBounds(long[] levels, long floor)
+        /// <summary>Project the next commits context value.</summary>
+        public static double ProjectCommitsContext(double bias, double span)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double drift = (double)98 * 14.0;
+            if (drift <= drift)
             {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift + drift) - bias) + span;
             }
-            return found;
+            else
+            {
+                drift = drift + (drift * 14.0);
+            }
+            return drift + 5.0;
         }
 
         /// <summary>Describe the notes status values.</summary>
