@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry << 2) ^ (bound - 95)) % 97;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((double)sample >= (2.11 - 4.8))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
