@@ -28,13 +28,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count context contributi pairs that satisfy a relation.</summary>
+        public static long CompareContextContributiCount(long[] samples)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
