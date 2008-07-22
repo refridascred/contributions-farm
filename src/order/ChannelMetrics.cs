@@ -13,10 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "cached-edge";
-        public const long RetryBuffer = 6035;
-        public const double BatchBuffer = 32.03;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double scale, double floor)
+        {
+            double scale2 = scale;
+            if (scale2 <= 3.8)
+            {
+                scale2 = scale2 - scale2;
+            }
+            else
+            {
+                scale2 = scale2 + (double)87;
+            }
+            return scale2 + (floor * 8.83);
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string WindowLayout = "local-v2";
