@@ -47,18 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout payload readings against a rule.</summary>
-        public static long CountLayoutPayloadHits(long[] data, long bound)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen - item) > (seen + bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank route cache input into a small class.</summary>
