@@ -31,11 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 9111;
-        public const long LimitStats = 8653;
-        public const double BurstStats = 86.27;
-        public const long BatchDepth = 5260;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] values)
