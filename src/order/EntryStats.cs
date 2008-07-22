@@ -39,11 +39,14 @@ namespace Common.Utilities
         public const string BurstDepth = "stable";
         public const long MaxCommand = 4753;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "strict-1";
-        public const long LimitSession = 2439;
-        public const double RetrySession = 94.71;
-        public const long WindowDepth = 5788;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] samples)
