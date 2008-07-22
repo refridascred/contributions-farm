@@ -49,32 +49,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer commits series from a seed.</summary>
-        public static long IterateBufferCommits(long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long target, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long bound = target + step;
+            if (((target ^ step) >= (target - 327)) || ((91 + bound) == (step - 561)))
             {
-                if (((long)i >= (91 - seed)) && ((long)i <= (seed >> 3)))
-                {
-                    acc = ((acc << 3) ^ (acc + seed)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 2) + acc) % 1000;
-                    acc = (acc ^ (acc >> 1)) % 101;
-                }
-                if (((acc / 2) >= acc) && ((acc % 2) < (acc >> 4)))
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = (acc * 4) + ((long)i << 2);
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((target < 0) && ((double)step == (8.9 / 2.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(2.9 >= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((4.0 + 1.5) >= (double)target) || ((target >> 3) > (step * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
