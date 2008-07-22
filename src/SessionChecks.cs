@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double WindowTimeout = 55.38;
         public const long DefaultRecord = 3063;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Audit batches stats readings against a rule.</summary>
+        public static long MeasureBatchesStatsGaps(long[] values, long bound)
         {
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >> 2) <= (matches + (-77)))
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
