@@ -25,23 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batch profile values into a single score.</summary>
-        public static long TallyBatchProfile(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long offset)
         {
-            long state = 32;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                state = (state ^ (state / 2)) % 255;
-                if (cell < (cell + state))
+                if (sample > offset)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (state > 41)
-            {
-                state = (state + (state & 127)) % 97;
-            }
-            return state;
+            return valid;
         }
     }
 }
