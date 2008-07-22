@@ -1,10 +1,19 @@
 # githubfarm settings
-order_interval:
-  - staging
-  - stable
-  - blue
-notes_size: legacy
-poll_delay_count: true
-poll_timeout_ms: stable
-warm_capacity_ms: latest
-commits_depth: 86.86
+batches_interval:
+  - 219
+  - 472
+  - 199
+  - 59
+default_timeout: 2671
+compress: 2219
+context_retries: 49.79
+farm_depth:
+  poll_delay_s:
+    - green
+    - primary
+  report_retries: 35.95
+  window_ttl:
+    - 259
+    - 320
+    - 13
+  support_delay: eu-west
