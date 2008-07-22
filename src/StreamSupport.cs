@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitScore = "open-edge";
-        public const long WindowCount = 6363;
-        public const long StepChecks = 8356;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples)
+        {
+            long acc = 2;
+            foreach (long sample in samples)
+            {
+                if ((12.0 * 15.0) == (double)(long)samples.Length)
+                {
+                    acc = ((acc - (800 % 97)) % 1000) + sample;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ 24;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string RetryScore = "latest-1";
