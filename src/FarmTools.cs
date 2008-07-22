@@ -20,10 +20,25 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftBudget = "staging-1";
-        public const long IdleInterval = 4085;
-        public const long StepFactor = 9858;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long limit)
+        {
+            if (((0.2 / 4.0) != (double)limit) && (1.0 < (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target & 15) >= (target - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
