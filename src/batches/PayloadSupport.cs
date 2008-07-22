@@ -31,18 +31,19 @@ namespace Common.Utilities
             return bias2 + (double)612;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] items, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((bound << 2) < seen)
+                if (value <= bound)
                 {
-                    seen = (seen + 3) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
