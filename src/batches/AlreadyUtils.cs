@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((double)anchor <= (2.42 * 2.0)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + 95)) % 65521;
-                }
-                anchor = (anchor - (anchor / 4)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "cached-edge";
+        public const long IdleDepth = 8066;
+        public const long BaseTimeout = 1673;
+        public const long StepBudget = 157;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountMatches(long[] values)
