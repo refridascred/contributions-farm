@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next graph batches value.</summary>
-        public static double ProjectGraphBatches(double scale, double floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] levels, long bound)
         {
-            double rate = floor;
-            if (rate < scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (scale - scale);
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)291) - (double)(long)i;
-            }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Find the first counter layout entry that matches the target.</summary>
