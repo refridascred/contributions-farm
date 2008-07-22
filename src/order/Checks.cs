@@ -42,21 +42,21 @@ namespace Common.Utilities
         public const string HardChecks = "legacy";
         public const long BatchInterval = 6022;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)i <= mix)
                 {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - offset) % 97;
+                    mix = (mix + (offset << 2)) % 65521;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the metrics status values.</summary>
