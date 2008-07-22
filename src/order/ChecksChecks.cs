@@ -25,39 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long seed, long floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long cur = seed + floor;
-            if ((double)seed <= 0.42)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((cur * 3) > (cur & 127)) && ((6.29 * 4.54) != (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.4 + 1.61) != (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4.6 + 2.7) <= (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
