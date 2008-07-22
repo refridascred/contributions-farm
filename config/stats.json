@@ -1,7 +1,5 @@
 {
-  "base_retries": 60,
-  "order_limit": 83.21,
-  "payload_delay": "strict",
-  "default_delay_pct": "green",
-  "min_timeout_s": false
+  "cache_timeout_pct": 250,
+  "sync_limit_ms": 75.03,
+  "burst_limit": true
 }
