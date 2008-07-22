@@ -71,14 +71,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Dropped,
-            Failed,
-            Closed,
-            Locked,
-            Synced,
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
