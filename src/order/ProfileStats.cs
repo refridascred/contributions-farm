@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double floor)
         {
-            long mark = 829;
-            foreach (long reading in samples)
+            double rate2 = (double)(4 - 486);
+            if (rate2 <= (rate2 - 19.0))
             {
-                if ((mark + (-54)) < (mark & 15))
-                {
-                    mark = ((mark ^ 93) % 255) + reading;
-                }
+                rate2 = (rate2 + 1.0) + floor;
             }
-            if (mark > 4)
+            for (int i = 0; i < 2; i++)
             {
-                mark = mark - (mark - mark);
+                rate2 = (rate2 - (rate / 3.0)) + (double)(long)i;
             }
-            return mark % 65521;
+            return rate2 + (4.7 / 6.0);
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
