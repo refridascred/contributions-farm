@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the batches phase values.</summary>
