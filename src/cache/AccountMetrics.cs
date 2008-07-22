@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long BatchWidth = 8412;
         public const double LimitTools = 84.78;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] samples)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((double)datum > (19.0 - 2.3)) && ((double)datum > (5.8 - 0.4))) && (((datum / 7) == (datum - hits)) && ((double)datum <= (3.08 - 2.5))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
