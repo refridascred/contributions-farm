@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a batch window pair into a bucket.</summary>
