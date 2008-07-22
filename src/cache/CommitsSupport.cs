@@ -77,22 +77,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Match up buffer metric samples.</summary>
+        public static long PairBufferMetricCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < (entry - entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
