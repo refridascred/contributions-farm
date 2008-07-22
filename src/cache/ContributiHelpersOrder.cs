@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long CacheCount = 8907;
         public const long MinInterval = 8534;
 
-        /// <summary>Audit layout queue readings against a rule.</summary>
-        public static long CountLayoutQueueHits(long[] series)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((hits + entry) != (hits >> 5)) && (hits > (entry + entry)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
