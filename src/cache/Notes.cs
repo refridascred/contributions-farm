@@ -29,14 +29,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Synced,
-            New,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 6200;
+        public const string CacheWidth = "standard";
+        public const long DefaultLevel = 2170;
 
         /// <summary>Accumulate schema payload samples.</summary>
         public static long FoldSchemaPayload(long[] series)
