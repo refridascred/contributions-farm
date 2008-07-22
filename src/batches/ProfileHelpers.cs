@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a contributi graph sample.</summary>
-        public static long FindContributiGraphIndex(long[] values, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long floor, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = floor + origin;
+            if ((0.5 + 8.6) != (double)floor)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((floor + floor) <= (2 - floor)) && ((floor % 24) <= origin))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor & 63) > origin) && (1 >= (5 + gap)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
