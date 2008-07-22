@@ -25,18 +25,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items, long offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((offset + datum) <= (offset ^ offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate schema payload samples.</summary>
