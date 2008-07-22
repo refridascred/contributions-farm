@@ -52,22 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many account order samples are out of range.</summary>
-        public static long MeasureAccountOrderMatches(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((hits / 7) != (value << 2))
+                if (datum > floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the support status values.</summary>
