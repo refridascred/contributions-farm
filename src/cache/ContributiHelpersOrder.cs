@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate command buffer samples.</summary>
-        public static long WeighCommandBuffer(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long seed, long seed2)
         {
-            long acc = 65;
-            foreach (long reading in items)
+            long lane = seed ^ seed2;
+            if (seed >= (lane * 2))
             {
-                if (reading <= (reading + acc))
+                return 5;
+            }
+            else
+            {
+                if ((7 ^ seed2) < (seed / 3))
                 {
-                    acc = acc + (reading - reading);
+                    return 6;
+                }
+                else
+                {
+                    if (((seed2 + lane) < lane) || (seed2 >= seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)seed2 <= 8.25))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (acc < 22)
-            {
-                acc = (acc ^ (acc << 1)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
