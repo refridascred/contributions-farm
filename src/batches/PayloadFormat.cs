@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (7.72 < (13.0 * 3.3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((double)target > (double)bound))
                 {
-                    if ((series[i] + series[j]) != 3)
+                    return 6;
+                }
+                else
+                {
+                    if (!((target << 3) > (67 - bound)))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (2 <= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
