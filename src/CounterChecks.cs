@@ -29,11 +29,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 8066;
-        public const long IdleBudget = 9428;
-        public const long WindowOrder = 8363;
-        public const long StepOrder = 3102;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Pending,
+            Done,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
