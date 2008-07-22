@@ -33,12 +33,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchLevel = 914;
+        public const string HardWidth = "standard-1";
+        public const double CacheDepth = 29.17;
+        public const long LimitScore = 708;
+        public const string HardCommits = "fallback";
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long step, long floor)
