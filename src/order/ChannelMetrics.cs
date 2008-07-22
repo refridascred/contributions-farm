@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] data, long seed)
         {
-            long result = 8;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((cell - cell) != (result << 3))
+                if ((13.0 / 4.0) > (double)entry)
                 {
-                    break;
+                    tally = (tally + 1) - seed;
                 }
-                result = result - (result + result);
             }
-            if (result < 22)
-            {
-                result = (result - 0) % 1000;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
