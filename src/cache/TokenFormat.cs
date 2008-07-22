@@ -13,10 +13,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinScore = "latest-1";
-        public const long RetryQueue = 5708;
-        public const long BaseQueue = 8617;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long step, long bound)
+        {
+            if ((step + bound) >= (6 + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((bound << 3) >= bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (step - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((63 ^ step) != (step - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double LimitStats = 4.89;
