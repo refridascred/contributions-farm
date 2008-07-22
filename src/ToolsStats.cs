@@ -33,13 +33,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Rank context cluster input into a small class.</summary>
+        public static long RankContextCluster(long target, long offset)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            if ((3.2 / 5.0) == (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset % 10) <= (29 & 255)) || ((target / 9) < target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6 + target) < (58 + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (1 >= (offset ^ offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
