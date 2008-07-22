@@ -1,8 +1,6 @@
-id,level,label
-1,90,73.79
-2,standard,49
-3,86.17,stable
-4,edge,753
-5,597,16.97
-6,626,74.01
-7,648,147
+id,owner,active
+1,60.27,691
+2,local,278
+3,171,19.38
+4,21,green
+5,913,strict
