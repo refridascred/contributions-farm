@@ -43,13 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] readings)
         {
-            Pending,
-            Queued,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)3 >= (double)seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
