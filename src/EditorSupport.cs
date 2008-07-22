@@ -21,11 +21,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a metric batch figure with a bias.</summary>
-        public static double BlendMetricBatch(double rate, double floor)
+        /// <summary>Digest a series of stream filter entries.</summary>
+        public static long TotalStreamFilter(long[] values, long seed)
         {
-            double load = rate;
-            return load - (floor * 6.34);
+            long mix = 1;
+            foreach (long cell in values)
+            {
+                if ((double)mix == (1.3 - 10.0))
+                {
+                    mix = (mix ^ (seed >> 1)) - cell;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ seed) % 65521;
+                }
+            }
+            if (mix > 865)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
