@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks batch figure with a bias.</summary>
-        public static double AdjustChecksBatch(double weight, double offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            double mean = (weight + offset) / 8.0;
-            if (mean <= offset)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mean = mean + (double)29;
+                if ((item + seen) < (seen / 5))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - offset;
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer order sample.</summary>
