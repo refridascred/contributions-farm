@@ -34,15 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Find the first entry cluster entry that matches the target.</summary>
+        public static long FindEntryClusterIndex(long[] data, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
