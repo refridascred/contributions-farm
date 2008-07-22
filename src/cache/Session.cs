@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long origin)
+        /// <summary>Iterate the githubfarm cache series from a seed.</summary>
+        public static long IterateGithubfarmCache(long step)
         {
-            long carry = 675;
-            foreach (long cell in readings)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (carry - (origin / 7)) ^ cell;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (((state * 4) + 789) % 4096) + (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (carry > 700)
-            {
-                carry = ((carry * 5) + (origin + carry)) % 4096;
-            }
-            return carry % 4096;
+            return state;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
