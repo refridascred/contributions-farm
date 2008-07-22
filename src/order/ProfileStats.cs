@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double rate, double floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] levels, long seed)
         {
-            double rate2 = (double)(4 - 486);
-            if (rate2 <= (rate2 - 19.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = (rate2 + 1.0) + floor;
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (rate / 3.0)) + (double)(long)i;
-            }
-            return rate2 + (4.7 / 6.0);
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
