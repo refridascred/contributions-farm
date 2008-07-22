@@ -38,12 +38,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the window channel series from a seed.</summary>
+        public static long StepWindowChannel(long target)
         {
-            Closed,
-            Paused,
-            Synced,
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
