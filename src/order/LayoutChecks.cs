@@ -47,11 +47,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseDepth = 5957;
-        public const long BurstCache = 5428;
-        public const long CacheInterval = 3062;
-        public const string BaseFactor = "standard-v2";
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] values)
