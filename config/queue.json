@@ -1,8 +1,8 @@
 {
-  "already_size": "eu-west",
-  "default_interval": "strict",
-  "compress": [494, 142],
-  "notes_interval": 1024,
-  "flush_ttl": ["eu-west", "standard", "edge", "strict"],
-  "max_interval_pct": 1579
+  "idle_size_pct": 12.25,
+  "dry_run": [482, 40],
+  "sync_timeout": "stable",
+  "flush_size_s": ["fallback", "edge", "staging"],
+  "burst_threshold_pct": 59.49,
+  "base_delay_count": 100
 }
