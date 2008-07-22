@@ -42,21 +42,17 @@ namespace Common.Utilities
         public const string HardChecks = "legacy";
         public const long BatchInterval = 6022;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Look up the position of a batch githubfarm sample.</summary>
+        public static long LocateBatchGithubfarmIndex(long[] readings, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)i <= mix)
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
                 {
-                    mix = (mix - offset) % 97;
-                    mix = (mix + (offset << 2)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
