@@ -44,12 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 37.77;
-        public const long StepFilter = 1864;
-        public const long BatchBudget = 8181;
-        public const string MaxFilter = "latest-edge";
-        public const long StepLevel = 8300;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally * 3) > (sample * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
