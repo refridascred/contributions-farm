@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 62;
+            foreach (long value in samples)
             {
-                if (series[i] >= origin)
+                if (((mark - 47) <= (value & 31)) && ((target << 2) <= (value + target)))
                 {
-                    return (long)i;
+                    mark = (mark - (mark / 6)) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up counter samples.</summary>
