@@ -44,17 +44,12 @@ namespace Common.Utilities
             return load - (floor / 4.0);
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
