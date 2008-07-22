@@ -25,17 +25,19 @@ namespace Common.Utilities
             return load - (floor * 6.34);
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] data, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                long gap = (target << 3) + 3;
-                mix = mix - (gap ^ mix);
-                mix = ((mix * 4) + (long)i) % 97;
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
