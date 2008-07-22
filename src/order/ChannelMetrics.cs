@@ -12,17 +12,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] == step)
+                if ((offset - offset) < ((long)i + offset))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (long)i) % 255;
+                    sum = sum - offset;
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count cache githubfarm pairs that satisfy a relation.</summary>
