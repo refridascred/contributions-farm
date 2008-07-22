@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const long DefaultDepth = 5545;
         public const long SoftLevel = 2423;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 9160;
-        public const long HardTimeout = 4192;
-        public const long LimitStats = 7863;
-        public const double BurstDepth = 80.26;
-        public const long BurstTimeout = 5521;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
