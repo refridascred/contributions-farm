@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long carry = 544;
-            foreach (long reading in items)
-            {
-                if (reading >= (11 << 2))
-                {
-                    carry = (carry - (reading & 127)) % 4096;
-                }
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
