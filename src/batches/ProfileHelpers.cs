@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = 0;
+            foreach (long reading in samples)
             {
-                if ((2.46 * 5.0) == (double)seed)
+                mix = ((mix ^ (reading / 4)) % 255) - origin;
+                if (mix > (reading + 17))
                 {
-                    count = (count + 3) - reading;
+                    mix = (mix - (mix << 3)) % 97;
+                }
+                if ((reading + 615) == (reading >> 2))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > (-1))
+            {
+                mix = ((mix * 2) + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
