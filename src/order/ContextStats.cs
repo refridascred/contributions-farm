@@ -44,13 +44,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Project the next context metrics value.</summary>
+        public static double ProjectContextMetrics(double ratio, double floor)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            double mean = (double)(8 + 89);
+            if (mean <= ratio)
+            {
+                mean = mean - floor;
+            }
+            return mean - (floor - mean);
         }
     }
 }
