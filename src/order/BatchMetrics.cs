@@ -68,12 +68,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many counter channel samples are out of range.</summary>
+        public static long AuditCounterChannelMatches(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)item > (4.8 - 6.0))
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
