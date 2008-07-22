@@ -36,18 +36,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] data, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (1.36 >= (double)hits)
-                {
-                    hits = ((hits + 2) ^ entry) - step;
-                }
-            }
-            return hits;
+            Queued,
+            Stale,
+            Paused,
+            Idle,
+            Pending,
         }
     }
 }
