@@ -1,13 +1,14 @@
 # Command notes
 
-A window that stays idle for too long is moved to the githubfarm list.
-The editor module keeps contributi values in sync with the report cache.
+Run the support check before changing any command limits.
+The filter module keeps graph values in sync with the format cache.
+A notes that stays idle for too long is moved to the batch list.
 
-The already report groups every schema by format.
-The graph module keeps cache values in sync with the token cache.
+Defaults for route live in the config folder and can be overridden per environment.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Document new record fields
-- Review metrics limits each release
+- Log every farm change
+- Review report limits each release
+- Validate checks input early
