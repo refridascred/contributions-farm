@@ -20,39 +20,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
-        public static long GradeBufferContributi(long step, long offset)
+        /// <summary>Iterate the token session series from a seed.</summary>
+        public static long RollTokenSession(long limit)
         {
-            long slot = step ^ offset;
-            if ((1.5 - 2.52) <= (double)offset)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)slot >= (8.0 / 2.0)) || (0.2 >= (double)step))
+                if (limit <= (sum - sum))
                 {
-                    return 8;
+                    sum = (sum + (sum + limit)) % 255;
+                    sum = ((sum * 5) + limit) % 255;
                 }
-                else
-                {
-                    if (((8.0 + 12.0) != (double)step) || (step >= ((-27) * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)slot <= 5.96)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = sum - (limit / 8);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
+            return sum;
         }
     }
 }
