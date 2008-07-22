@@ -1,4 +1,15 @@
 # githubfarm settings
-poll_limit_count: green
-persist: 32.46
-cache_threshold_ms: 95.44
+report_threshold:
+  hard_threshold_ms:
+    - latest
+    - eu-west
+  poll_timeout_pct: primary
+  audit:
+    - 209
+    - 396
+    - 464
+    - 145
+max_interval_ms: 43.09
+warm_depth_s: 100
+enabled: false
+soft_capacity: 45.5
