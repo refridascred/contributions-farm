@@ -32,20 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] items, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)i == (step + step)) && ((9 - total) >= (step % 7))))
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    total = (total << 3) ^ total;
+                    return (long)i;
                 }
-                total = (total - (step + total)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
