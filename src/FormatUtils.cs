@@ -30,13 +30,21 @@ namespace Common.Utilities
             return mean - (double)12;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count format filter pairs that satisfy a relation.</summary>
+        public static long OverlapFormatFilterCount(long[] data)
         {
-            Retry,
-            Closed,
-            Active,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
