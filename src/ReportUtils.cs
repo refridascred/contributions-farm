@@ -29,11 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 71.93;
-        public const long MaxTimeout = 8924;
-        public const long HardDepth = 6403;
-        public const string LimitRoute = "fallback-edge";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches <= entry) || ((entry & 3) >= (matches + entry)))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] readings, long offset)
