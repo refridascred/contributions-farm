@@ -19,19 +19,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of checks already entries.</summary>
-        public static long FoldChecksAlready(long[] data, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long seed)
         {
-            long mark = 56;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 2) ^ (seed / 9)) % 1000;
-                if ((seed * 2) < cell)
+                if (series[i] > seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the metrics command entries that pass the check.</summary>
