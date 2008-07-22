@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    standard)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,11 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=218
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for item in staging primary open; do
+    log "checking ${item}"
 done
-log "total ${total}"
