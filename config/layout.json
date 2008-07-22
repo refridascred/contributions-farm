@@ -1,5 +1,5 @@
 {
-  "hard_timeout_count": false,
-  "profile_ttl": 30,
-  "persist": [396, 309, 93]
+  "readonly": 100,
+  "hard_timeout_count": 54,
+  "min_limit_count": 51
 }
