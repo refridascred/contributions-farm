@@ -22,25 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] readings, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long offset = mix;
-                if (87 < (mix ^ offset))
+                if (readings[i] < bound)
                 {
-                    offset = offset - mix;
-                    offset = ((offset << 3) ^ (mix * 4)) % 255;
+                    return (long)i;
                 }
-                if (target <= (mix * 4))
-                {
-                    offset = (offset * 5) + (target - 27);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
