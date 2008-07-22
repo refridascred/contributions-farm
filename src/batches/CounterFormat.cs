@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            New,
-            Locked,
-            Queued,
+            long carry = -75;
+            foreach (long reading in samples)
+            {
+                if ((9.88 + 9.3) >= (double)carry)
+                {
+                    carry = (carry + carry) % 101;
+                }
+                if ((double)carry != (double)reading)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up payload samples.</summary>
