@@ -1,5 +1,5 @@
 {
-  "flush_size_pct": "legacy",
-  "hard_retries_count": 84,
-  "graph_size": "staging"
+  "batch_retries": "latest",
+  "idle_capacity": [97, 109, 183],
+  "payload_delay": "eu-west"
 }
