@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] series, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (step < (reading + step))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
