@@ -45,19 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double mean = 5.73;
-            if (mean <= span)
-            {
-                mean = mean + (span / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (gain * 2.66)) - (double)(long)i;
-            }
-            return mean - (span + 6.1);
+            Dropped,
+            Queued,
+            Ready,
         }
     }
 }
