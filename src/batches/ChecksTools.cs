@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long limit)
         {
-            Active,
-            Done,
-            Queued,
-            Dropped,
-            Failed,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank report input into a small class.</summary>
