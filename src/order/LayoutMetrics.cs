@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a record batches counter forward.</summary>
-        public static long StepRecordBatches(long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((score + 12) != (score & 63))
-                {
-                    score = (score - ((long)i % 5)) % 101;
-                }
-                if ((bound / 4) <= 386)
-                {
-                    score = score - (bound - score);
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a token cache sample.</summary>
