@@ -53,15 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command editor value from a seed.</summary>
-        public static long IterateCommandEditor(long origin)
+        /// <summary>Compare every pair of filter commits readings.</summary>
+        public static long MatchFilterCommitsCount(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
