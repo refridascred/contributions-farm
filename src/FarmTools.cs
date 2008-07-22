@@ -13,18 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 53.68;
+        public const long DefaultDepth = 5545;
+        public const long SoftLevel = 2423;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstStats = 9160;
