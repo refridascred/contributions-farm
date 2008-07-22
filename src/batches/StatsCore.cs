@@ -22,12 +22,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 4079;
+        public const long RetryInterval = 7161;
+        public const long DefaultFormat = 7679;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] data, long seed)
