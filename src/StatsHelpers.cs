@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] data, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = 58;
+            foreach (long cell in values)
             {
-                if ((((seen ^ seen) >= (12 * 3)) && ((seen - bound) <= bound)) && ((seen + 980) <= seen))
+                for (int i = 0; i < 2; i++)
                 {
-                    seen = (seen + 3) + item;
+                    acc = (acc << 2) ^ (offset % 10);
+                    acc = (acc ^ (long)i) % 97;
                 }
+                acc = acc ^ (acc ^ cell);
             }
-            return seen;
+            if (acc < 948)
+            {
+                acc = (acc + (acc + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Match up queue samples.</summary>
