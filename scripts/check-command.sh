@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=129
+COMMAND_LIMIT=149
 log "limit is ${COMMAND_LIMIT}"
