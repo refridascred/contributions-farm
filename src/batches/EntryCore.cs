@@ -20,19 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] items, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long origin2)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if ((origin2 % 24) >= (origin2 & 255))
             {
-                if (value <= offset)
+                return 5;
+            }
+            else
+            {
+                if (!((double)origin > 2.2))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (974 < origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((27 / 8) == (19 + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
