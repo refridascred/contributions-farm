@@ -50,39 +50,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long floor, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            long step = floor ^ limit;
-            if (floor > 4)
+            long mark = 85;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 4) > (limit + limit))
+                if (2.0 <= (double)mark)
                 {
-                    return 8;
+                    mark = (mark ^ (mark + (-64))) % 101;
                 }
-                else
+                if ((mark + entry) != (mark + mark))
                 {
-                    if (!(floor <= (64 >> 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (54 <= (limit & 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = mark + (entry & 15);
                 }
             }
+            return mark % 97;
         }
     }
 }
