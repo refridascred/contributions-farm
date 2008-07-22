@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 7082;
         public const long BurstContext = 3148;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long acc = 1;
-            foreach (long entry in data)
-            {
-                if (((long)data.Length & 127) != (acc << 3))
-                {
-                    acc = (acc + (acc + entry)) % 101;
-                }
-            }
-            return acc;
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
