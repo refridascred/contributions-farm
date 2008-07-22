@@ -24,12 +24,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == seed)
+                if (samples[i] > origin)
                 {
                     return (long)i;
                 }
