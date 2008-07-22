@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long target)
+        /// <summary>Accumulate account stats samples.</summary>
+        public static long WeighAccountStats(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 9;
+            foreach (long item in samples)
             {
-                if (items[i] > target)
+                score = ((score * 2) + 980) % 1000;
+                if ((score << 2) == (score >> 5))
                 {
-                    return (long)i;
+                    score = (score ^ (item + item)) % 4096;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Blend two account measurements.</summary>
