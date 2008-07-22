@@ -39,31 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels, long origin)
+        /// <summary>Combine buffer metric values into a single score.</summary>
+        public static long TallyBufferMetric(long[] levels, long origin)
         {
-            long anchor = 391;
-            foreach (long value in levels)
+            long sum = 331;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (anchor - (value ^ anchor)) ^ (long)i;
-                    anchor = ((anchor << 3) ^ (value - anchor)) % 255;
-                }
-                if ((double)anchor > (16.0 + 7.0))
-                {
-                    anchor = ((anchor * 3) + (anchor ^ origin)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
+                sum = ((((sum * 5) + (sum + sum)) % 255) ^ sample) + origin;
             }
-            if (anchor > 639)
-            {
-                anchor = (anchor + (anchor - anchor)) % 97;
-            }
-            return anchor;
+            return sum;
         }
     }
 }
