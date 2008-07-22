@@ -49,11 +49,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCount = 415;
-        public const long IdleCommand = 9070;
-        public const long SoftTimeout = 4473;
-        public const long CacheCommand = 9095;
-        public const long BaseSpan = 208;
+        /// <summary>Iterate the buffer commits series from a seed.</summary>
+        public static long IterateBufferCommits(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i >= (91 - seed)) && ((long)i <= (seed >> 3)))
+                {
+                    acc = ((acc << 3) ^ (acc + seed)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 2) + acc) % 1000;
+                    acc = (acc ^ (acc >> 1)) % 101;
+                }
+                if (((acc / 2) >= acc) && ((acc % 2) < (acc >> 4)))
+                {
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = (acc * 4) + ((long)i << 2);
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
