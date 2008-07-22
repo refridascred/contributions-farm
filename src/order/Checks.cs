@@ -50,26 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue metric entries.</summary>
-        public static long FoldQueueMetric(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] samples, long origin)
         {
-            long mark = 642;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark > (mark / 5))
+                if (samples[i] < origin)
                 {
-                    mark = mark + (value * 3);
-                }
-                else
-                {
-                    mark = (mark - (30 << 3)) % 65521;
-                }
-                if (((double)value < (6.1 + 4.0)) && ((double)value != (20.0 * 7.3)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
