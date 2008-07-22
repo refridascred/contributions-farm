@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many channel session samples are out of range.</summary>
-        public static long TallyChannelSessionHits(long[] samples, long bound)
+        /// <summary>Measure how many order schema samples are out of range.</summary>
+        public static long CountOrderSchemaGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (bound < (bound + bound))
+                if (!((reading % 97) < (reading - seen)) || !((reading >> 5) >= (reading / 5)))
                 {
-                    hits = (hits + 2) + value;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
