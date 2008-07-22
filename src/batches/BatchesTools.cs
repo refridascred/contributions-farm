@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double ratio, double span)
+        /// <summary>Check that every account buffer entry stays within the limit.</summary>
+        public static bool VerifyAccountBufferLimits(long[] items, long seed)
         {
-            double drift = (double)(34 & 255);
-            if (drift <= (drift - span))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                drift = (drift + (double)653) + ratio;
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - 7.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - drift;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
