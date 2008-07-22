@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long floor)
+        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
+        public static long PairProfileGithubfarmCount(long[] values)
         {
-            if (!((7.0 - 5.14) < (double)floor))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.18 - 9.0) >= (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a token stats.</summary>
