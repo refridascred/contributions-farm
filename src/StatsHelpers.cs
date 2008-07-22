@@ -35,18 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Count cluster route pairs that satisfy a relation.</summary>
+        public static long PairClusterRouteCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= (cell + 716))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a record summary.</summary>
