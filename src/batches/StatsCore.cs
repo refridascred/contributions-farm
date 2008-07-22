@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Pending,
-            New,
-            Draft,
-            Retry,
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
