@@ -31,19 +31,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] values, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long seed)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long step = offset - seed;
+            if ((offset - seed) > seed)
             {
-                if (sample > origin)
+                return 4;
+            }
+            else
+            {
+                if (!(step <= (seed + seed)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) > (step + 972))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.0 + 16.0) < (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a format info.</summary>
