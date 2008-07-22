@@ -1,15 +1,5 @@
 {
-  "base_retries_ms": 70.23,
-  "batches_retries": {
-    "hard_retries_ms": true,
-    "retry_threshold_pct": 2.11,
-    "batch_ttl_ms": 42.18
-  },
-  "audit": {
-    "max_capacity": 68,
-    "stream_retries": true,
-    "soft_ttl_count": 3424,
-    "soft_ratio_pct": "blue"
-  },
-  "token_interval": "cached"
+  "max_threshold": 0.48,
+  "soft_threshold": false,
+  "verbose": "fallback"
 }
