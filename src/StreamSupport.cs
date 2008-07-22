@@ -24,16 +24,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long bound, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            if ((bound + bound) <= origin)
             {
-                result = ((result * 5) + 420) % 1000;
-                result = ((result * 5) + (long)i) % 65521;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (bound < (bound / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (786 <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next support cache value from a seed.</summary>
