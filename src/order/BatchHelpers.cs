@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            long mark = 986;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (384 >= (item / 7))
+                if (!(reading > (count + 31)))
                 {
-                    mark = mark - 3;
-                }
-                else
-                {
-                    mark = mark + item;
+                    count = count + 1;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
