@@ -19,19 +19,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] levels, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long step)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long prev = limit - step;
+            if ((1.44 - 3.15) != (double)step)
             {
-                if (reading >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit < (7.58 - 16.0))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (prev < (prev & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Project the next context metrics value.</summary>
