@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            long state = 540;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((5.74 / 4.0) < (double)origin)
+                if (cell <= (cell + (long)levels.Length))
                 {
-                    state = (state ^ (item - state)) % 65521;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state < 33)
-            {
-                state = ((state * 2) + (state + origin)) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
