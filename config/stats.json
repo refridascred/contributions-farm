@@ -1,11 +1,6 @@
 {
-  "base_depth": 35.1,
-  "base_ratio": 8212,
-  "hard_depth": ["cached", "latest"],
-  "poll_depth_ms": {
-    "warm_limit": 77,
-    "metric_delay": ["legacy", "latest", "strict"],
-    "poll_ttl_s": "legacy",
-    "dry_run": "green"
-  }
+  "idle_capacity_count": "fallback",
+  "retry_timeout_count": 100,
+  "min_threshold_count": 40.93,
+  "entry_window": ["primary", "strict"]
 }
