@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
+            Active,
+            Draft,
+            Pending,
             Closed,
-            Ready,
-            Stale,
-            Paused,
-            Locked,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
