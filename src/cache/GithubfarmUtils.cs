@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a window editor value against two limits.</summary>
-        public static long BucketWindowEditor(long floor, long floor2)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long slot = floor - floor2;
-            if (slot < (floor2 - floor))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor2 << 3) != (slot + slot)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
