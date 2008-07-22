@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] levels, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = 36;
+            foreach (long item in data)
             {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state << 2) ^ item;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Project the next contributi value.</summary>
