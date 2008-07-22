@@ -20,14 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftSpan = 3.88;
+        public const string IdleTimeout = "standard-1";
+        public const long BaseMetrics = 8307;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
