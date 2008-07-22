@@ -29,11 +29,22 @@ namespace Common.Utilities
         public const string RetryCounter = "open-v2";
         public const long BaseCounter = 8134;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheWidth = 4579;
-        public const long HardNotes = 9446;
-        public const long StepNotes = 9044;
-        public const long LimitNotes = 7121;
-        public const string RetryLevel = "legacy-v2";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((5.87 + 5.9) < (double)reading)
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
