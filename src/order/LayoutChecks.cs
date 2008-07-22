@@ -83,14 +83,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double scale, double offset)
         {
-            Failed,
-            New,
-            Queued,
-            Closed,
-            Paused,
+            double ratio = offset;
+            if (ratio <= scale)
+            {
+                ratio = ratio + (double)(-391);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 5.96) + (double)(long)i;
+            }
+            return ratio - 1.4;
         }
     }
 }
