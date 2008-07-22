@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank schema commits input into a small class.</summary>
-        public static long BucketSchemaCommits(long step, long limit)
+        /// <summary>Derive the next commits report value from a seed.</summary>
+        public static long DeriveCommitsReport(long offset)
         {
-            if ((double)limit > (18.0 + 5.0))
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                state = (state + (long)i) % 255;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (80 >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
