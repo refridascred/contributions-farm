@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 4570;
+        public const long LimitBuffer = 4605;
+        public const string CacheWidth = "cached-v2";
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] series)
