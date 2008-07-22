@@ -48,15 +48,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Synced,
-            Retry,
-            Pending,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "cached-1";
+        public const string LimitSize = "open";
+        public const long DefaultTimeout = 2796;
+        public const long DefaultAlready = 1155;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long floor)
