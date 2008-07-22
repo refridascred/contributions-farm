@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in eu-west fallback legacy local; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
