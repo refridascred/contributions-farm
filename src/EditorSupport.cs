@@ -36,26 +36,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score << 2) ^ (score << 1);
-                if (!(floor >= ((long)i ^ 8)))
-                {
-                    score = (score * 3) + (203 << 1);
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 3) ^ floor) % 255;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 52.16;
+        public const long RetryScore = 1582;
+        public const long BurstPayload = 8385;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] levels, long floor)
