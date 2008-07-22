@@ -1,12 +1,5 @@
 {
-  "graph_limit": 72,
-  "soft_window": "green",
-  "token_limit": {
-    "burst_threshold_count": "edge",
-    "burst_window_count": 5028,
-    "compress": true
-  },
-  "audit": "fallback",
-  "base_ttl_ms": 29.87,
-  "graph_ttl": "standard"
+  "hard_timeout_count": false,
+  "profile_ttl": 30,
+  "persist": [396, 309, 93]
 }
