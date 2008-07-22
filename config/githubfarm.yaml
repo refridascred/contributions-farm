@@ -1,9 +1,9 @@
 # githubfarm settings
-min_ratio_count: 63.87
-sync_retries_s: standard
-strict:
-  account_ttl: standard
-  flush_threshold_s: 29.21
-  strict: legacy
-  poll_timeout_s: 4566
-burst_threshold: primary
+flush_ratio_pct: false
+retry_limit_ms: 0.31
+burst_delay: eu-west
+max_depth:
+  cluster_threshold: 3797
+  max_capacity: standard
+  batch_delay: 500
+  payload_retries: 24.61
