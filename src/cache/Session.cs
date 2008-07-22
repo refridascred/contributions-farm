@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the githubfarm cache series from a seed.</summary>
-        public static long IterateGithubfarmCache(long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double bias, double bias2)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            double scale = bias2;
+            if (scale <= (bias / 3.0))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state * 4) + 789) % 4096) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                scale = scale - scale;
             }
-            return state;
+            else
+            {
+                scale = scale + (bias + scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale + scale)) + (double)(long)i;
+            }
+            return scale + bias2;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
