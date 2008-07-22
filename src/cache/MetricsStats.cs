@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + hits) < (hits + datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
