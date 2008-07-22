@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of token metric readings.</summary>
-        public static long CombineTokenMetric(long[] items)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long result = 9;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result * 2) + (result ^ result)) % 1000) - item;
-                    result = (result + (long)i) % 65521;
-                }
-                result = ((result * 5) + result) % 1000;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of support readings.</summary>
