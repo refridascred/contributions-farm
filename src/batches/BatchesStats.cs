@@ -27,19 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel graph entry stays within the limit.</summary>
-        public static bool CheckChannelGraphRange(long[] series, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
