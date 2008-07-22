@@ -49,19 +49,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] data, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] items, long origin)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long cell in items)
             {
-                if (!((count + offset) >= count))
+                if ((8.0 + 8.0) > (double)origin)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 1) + cell;
                 }
             }
             return count;
