@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double span)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double rate, double offset)
         {
-            double rate = 0.5;
-            return ((rate + 5.2) + weight) + span;
+            double mean = 1.43;
+            if (mean >= rate)
+            {
+                mean = (mean - (13.0 - 6.3)) - offset;
+            }
+            return mean + (double)(-2);
         }
 
         /// <summary>Classify a contributi batches pair into a bucket.</summary>
