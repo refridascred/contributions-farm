@@ -29,22 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] data, long origin)
         {
-            long mark = 51;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((origin & 255) != ((long)data.Length ^ reading))
+                if ((-39) >= origin)
                 {
-                    mark = (mark - origin) % 65521;
+                    seen = (seen + 3) + datum;
                 }
             }
-            if (mark > 1)
-            {
-                mark = ((mark << 2) ^ (origin << 2)) % 4096;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
