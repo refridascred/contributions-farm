@@ -40,25 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long step, long floor)
-        {
-            if (((double)floor != (double)2) || ((70 << 2) <= (step ^ floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - step) < (floor % 60))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFactor = "staging-edge";
+        public const double IdleCount = 14.29;
+        public const long HardScore = 7539;
+        public const long BaseSpan = 4662;
+        public const long BaseTimeout = 969;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] values, long limit)
