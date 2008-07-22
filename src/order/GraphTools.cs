@@ -53,31 +53,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route cache input into a small class.</summary>
-        public static long RankRouteCache(long limit, long target)
-        {
-            if (7.28 > (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 9) > (59 ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 255) >= (target << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 4097;
+        public const long BatchFactor = 5517;
+        public const long StepEditor = 4845;
     }
 }
