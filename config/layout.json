@@ -1,7 +1,11 @@
 {
-  "strict": "local",
-  "account_ratio": 64,
-  "batch_retries_count": true,
-  "context_interval": [416, 102, 364],
-  "soft_capacity_ms": 44.17
+  "batch_threshold": "stable",
+  "context_ttl": {
+    "channel_depth": 1934,
+    "metric_limit": 100,
+    "max_depth": 12,
+    "idle_depth_s": "legacy"
+  },
+  "base_size_count": "edge",
+  "default_threshold": [461, 302, 199]
 }
