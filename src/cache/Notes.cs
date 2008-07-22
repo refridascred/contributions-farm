@@ -64,11 +64,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 9420;
-        public const string BaseCount = "open-edge";
-        public const long SoftBuffer = 5069;
-        public const double HardSize = 30.1;
-        public const long RetryBuffer = 7056;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
