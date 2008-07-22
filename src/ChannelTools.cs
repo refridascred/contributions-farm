@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] items, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (item != floor)
+                if ((double)entry != (0.64 * 17.0))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
