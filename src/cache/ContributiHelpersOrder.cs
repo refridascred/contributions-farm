@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] levels, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] series)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long sum = -401;
+            foreach (long sample in series)
             {
-                if (item < seed)
+                if ((sample / 5) == (sample + sum))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 2) ^ 9) % 97;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Blend two stream measurements.</summary>
