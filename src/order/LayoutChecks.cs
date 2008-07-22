@@ -60,16 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 7;
+            foreach (long item in values)
             {
-                sum = (sum - (44 + 3)) % 4096;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((item & 1) > (item & 63))
+                {
+                    anchor = (anchor << 3) ^ (limit + anchor);
+                }
+                anchor = anchor ^ (anchor + item);
+                if ((item + limit) >= (limit * 5))
+                {
+                    anchor = (anchor - (limit - 3)) % 4096;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a graph stats.</summary>
