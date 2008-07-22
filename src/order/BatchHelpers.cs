@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 1254;
-        public const long SoftSpan = 6350;
-        public const long MinLevel = 9162;
-        public const long MaxGraph = 4005;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples, long target)
+        {
+            long carry = 898;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry ^ (392 + (long)i)) + item) - target;
+                }
+                carry = carry ^ 9;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] values)
