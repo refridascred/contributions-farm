@@ -1,5 +1,5 @@
 {
-  "burst_depth_s": false,
-  "hard_depth_pct": 20,
-  "flush_capacity": "edge"
+  "warm_limit_pct": 64.28,
+  "retry_ttl_count": 91.03,
+  "batch_depth": 60
 }
