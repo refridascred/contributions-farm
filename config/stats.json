@@ -1,8 +1,6 @@
 {
-  "enabled": false,
-  "graph_size": "eu-west",
-  "verbose": "local",
-  "flush_delay": "latest",
-  "burst_timeout_ms": 9504,
-  "command_delay": [480, 477, 230]
+  "warm_depth_ms": 58,
+  "soft_ttl": 36.65,
+  "compress": "open",
+  "sync_size_s": "primary"
 }
