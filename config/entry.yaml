@@ -1,4 +1,12 @@
 # entry settings
-retry_ratio_count: false
-idle_delay_count: 55
-filter_threshold: 587
+burst_capacity_ms: legacy
+soft_delay_pct: 2
+window_limit:
+  default_timeout_count: edge
+  flush_window_count: cached
+  sync_delay_ms:
+    - 81
+    - 16
+  burst_ratio: eu-west
+  base_window_count: 18
+  dry_run: 9431
