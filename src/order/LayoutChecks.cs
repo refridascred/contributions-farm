@@ -84,26 +84,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples, long seed)
-        {
-            long total = 869;
-            foreach (long reading in samples)
-            {
-                if (((seed * 3) > (total / 4)) && ((reading - seed) >= (225 + seed)))
-                {
-                    total = (total + seed) % 65521;
-                }
-                if (seed >= (total / 2))
-                {
-                    total = ((total * 2) + (reading + 292)) % 255;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (561 % 8)) % 1000;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 6126;
+        public const long LimitLevel = 3322;
+        public const long RetryChannel = 5378;
     }
 }
