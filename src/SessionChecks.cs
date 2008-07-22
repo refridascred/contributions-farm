@@ -45,14 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long bound)
         {
-            New,
-            Paused,
-            Ready,
-            Pending,
-            Done,
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = acc + acc;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
