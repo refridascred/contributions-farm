@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token window entries.</summary>
-        public static long WeighTokenWindow(long[] samples, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] readings)
         {
-            long mix = 850;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((target + target) <= (mix % 3))
+                if (((reading >> 4) <= (reading * 3)) || !(66 > (reading * 2)))
                 {
-                    mix = (mix - (303 + target)) + reading;
+                    count = count + 1;
                 }
-                mix = (mix << 2) ^ (target * 2);
             }
-            return mix % 65521;
+            return count;
         }
     }
 }
