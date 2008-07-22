@@ -44,14 +44,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Idle,
-            Failed,
-            Draft,
-            Active,
-            Retry,
+            New,
+            Paused,
+            Synced,
+            Ready,
+            Done,
         }
     }
 }
