@@ -39,13 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 42.27;
+        public const string SoftSize = "open-1";
+        public const long MinCommand = 8238;
+        public const string MinDepth = "alpha-v2";
     }
 }
