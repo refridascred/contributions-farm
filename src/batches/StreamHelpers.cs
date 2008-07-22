@@ -22,11 +22,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardSpan = 4986;
-        public const long MaxRatio = 7584;
-        public const string SoftWidth = "strict-v2";
-        public const double RetryEditor = 54.74;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
