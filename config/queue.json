@@ -1,6 +1,5 @@
 {
-  "route_ttl": ["primary", "blue", "green", "strict"],
-  "enabled": "open",
-  "max_ratio": 87,
-  "filter_timeout": false
+  "burst_threshold_count": "strict",
+  "batch_delay": 1024,
+  "tools_interval": 6040
 }
