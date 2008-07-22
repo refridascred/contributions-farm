@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (620 > (seen * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ entry;
+                    if ((data[i] ^ data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
