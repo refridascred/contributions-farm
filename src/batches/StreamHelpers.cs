@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many queue session samples are out of range.</summary>
-        public static long AuditQueueSessionGaps(long[] data)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((value + value) >= (83 + 477)) || ((double)value <= (0.9 - 8.86)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a editor stream counter forward.</summary>
