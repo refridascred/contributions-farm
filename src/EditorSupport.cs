@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinTimeout = 5174;
-        public const long BurstLayout = 8857;
-        public const long WindowLayout = 2701;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
