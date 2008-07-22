@@ -23,15 +23,14 @@ namespace Common.Utilities
         public const long WindowCache = 6383;
         public const long IdleCache = 8863;
 
-        /// <summary>Adjust a report filter reading.</summary>
-        public static double BlendReportFilter(double weight, double offset)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double rate = (double)1 * 6.0;
-            if (rate > (offset / 9.0))
-            {
-                rate = rate - (weight + offset);
-            }
-            return rate + (offset + 7.0);
+            Idle,
+            Stale,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
