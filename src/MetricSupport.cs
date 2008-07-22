@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Count the cluster commits entries that pass the check.</summary>
+        public static long CountClusterCommitsMatches(long[] levels, long bound)
         {
-            long sum = 571;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((((long)samples.Length + sum) != (sum % 8)) || (sample > (sum >> 4)))
+                if ((entry % 7) > (53 + bound))
                 {
-                    sum = (sum ^ sum) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sample << 3)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            if (sum > 7)
-            {
-                sum = (sum - (sum << 2)) % 1000;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
