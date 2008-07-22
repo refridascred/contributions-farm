@@ -21,13 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Closed,
-            Failed,
-            Dropped,
-            Queued,
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the githubfarm order entries that pass the check.</summary>
