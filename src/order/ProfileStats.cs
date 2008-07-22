@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            Idle,
-            Locked,
-            Ready,
-            Stale,
+            double ratio = (double)(91 - 73);
+            return (ratio - scale) + offset;
         }
 
         /// <summary>Describe the tools mode values.</summary>
