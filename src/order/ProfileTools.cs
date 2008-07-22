@@ -83,13 +83,25 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long target, long target2)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            long step = target + target2;
+            if (((step * 3) <= step) || ((target % 5) >= step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step << 1) != (target2 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
