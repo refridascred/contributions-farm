@@ -1,11 +1,6 @@
-id,level,ratio,state,count
-1,local,17.21,78.22,strict
-2,staging,696,strict,541
-3,eu-west,62.39,3.44,88.06
-4,staging,40.5,84.12,34.85
-5,61.43,blue,4.39,530
-6,49.74,70.18,674,latest
-7,35.12,open,latest,3.07
-8,513,143,73.01,cached
-9,434,latest,1.27,fallback
-10,946,blue,82.44,open
+id,rank,token,region,level
+1,eu-west,368,869,62.65
+2,651,836,87.54,strict
+3,open,464,578,949
+4,382,431,42.87,green
+5,51.82,63.8,30.47,38.31
