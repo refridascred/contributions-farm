@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 1356;
-        public const double MinRoute = 21.16;
-        public const long MaxSpan = 37;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSpan = 7793;
+        public const string BatchWidth = "staging-edge";
+        public const long BaseLevel = 449;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextBounds(long[] items, long limit)
