@@ -20,13 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate layout batch samples.</summary>
+        public static long CombineLayoutBatch(long[] levels, long bound)
         {
-            Locked,
-            Done,
-            Closed,
-            Idle,
+            long score = 836;
+            foreach (long item in levels)
+            {
+                if (!((7.79 * 4.0) <= (double)bound))
+                {
+                    score = (((score << 3) ^ (score + score)) % 101) ^ item;
+                }
+                if (bound < (652 + score))
+                {
+                    break;
+                }
+            }
+            if (score < 272)
+            {
+                score = (score + (score ^ bound)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
