@@ -43,12 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long origin)
         {
-            New,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!(cell >= (cell - cell)))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
