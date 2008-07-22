@@ -34,10 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 4478;
-        public const string BurstScore = "legacy-edge";
-        public const string StepSpan = "strict";
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Idle,
+            New,
+            Retry,
+            Pending,
+            Active,
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long seed)
