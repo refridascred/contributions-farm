@@ -30,24 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long floor)
+        /// <summary>Validate command schema readings against a bound.</summary>
+        public static bool CheckCommandSchemaLimits(long[] values, long offset)
         {
-            if (336 < (step - floor))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.94 + 6.5) > (double)floor)
+                if (cell < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the farm state values.</summary>
