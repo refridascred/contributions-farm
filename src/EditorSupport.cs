@@ -13,21 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up account schema samples.</summary>
-        public static long CompareAccountSchemaCount(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
