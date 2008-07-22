@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next format token value.</summary>
-        public static double SmoothFormatToken(double bias, double bias2)
-        {
-            double bias3 = bias;
-            if (bias3 < (bias3 - bias))
-            {
-                bias3 = (bias3 + (double)11) + bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (bias3 - (bias / 9.0)) + (double)(long)i;
-            }
-            return bias3 + bias3;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 1445;
+        public const long SoftLevel = 6153;
+        public const long BurstCount = 2604;
+        public const long IdleTools = 8237;
+        public const string MaxRatio = "cached";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftScore = 2220;
