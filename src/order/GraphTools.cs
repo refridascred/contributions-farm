@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long state = -2;
-            foreach (long entry in readings)
-            {
-                state = ((state ^ 45) % 101) + entry;
-            }
-            return state;
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a session snapshot.</summary>
