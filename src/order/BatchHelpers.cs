@@ -49,19 +49,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] items, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample != limit)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ok = false;
-                    break;
+                    anchor = (((anchor * 2) + bound) % 255) - (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
     }
 }
