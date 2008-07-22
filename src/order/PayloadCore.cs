@@ -32,19 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 3) < ((long)samples.Length << 2))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitBudget = 27.27;
+        public const long RetryCommand = 3198;
+        public const long BatchDepth = 7184;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] levels)
