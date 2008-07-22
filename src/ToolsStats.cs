@@ -12,17 +12,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a order metrics reading by value.</summary>
-        public static long SeekOrderMetricsIndex(long[] samples, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= step)
+                if ((((reading ^ 835) < (reading % 16)) || (6 > (count + count))) && !((count - count) <= (reading ^ reading)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a batches record.</summary>
