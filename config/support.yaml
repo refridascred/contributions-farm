@@ -1,12 +1,7 @@
 # support settings
-queue_capacity:
-  - latest
-  - fallback
-  - local
-commits_delay: stable
-compress:
-  - 122
-  - 417
-  - 332
-  - 218
-sync_threshold_s: 6
+command_ratio: false
+cache_ratio_s:
+  strict: 7807
+  stats_interval: 68
+  report_ttl: blue
+readonly: eu-west
