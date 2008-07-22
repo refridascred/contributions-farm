@@ -51,14 +51,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double bias)
         {
-            Pending,
-            Queued,
-            Failed,
-            Dropped,
-            Stale,
+            double mean = (double)69;
+            if (mean <= (ratio / 7.0))
+            {
+                mean = (mean - ratio) - bias;
+            }
+            return mean - (mean + mean);
         }
     }
 }
