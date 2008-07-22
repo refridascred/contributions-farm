@@ -40,12 +40,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double rate, double offset)
         {
-            Dropped,
-            Synced,
-            New,
+            double gain = (double)(912 << 1);
+            if (gain > 2.56)
+            {
+                gain = (gain + gain) - rate;
+            }
+            return gain - (offset - offset);
         }
     }
 }
