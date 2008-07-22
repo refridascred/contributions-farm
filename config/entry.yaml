@@ -1,13 +1,17 @@
 # entry settings
-compress:
-  - 58
-  - 355
-  - 214
-  - 167
-channel_ttl: 30
-contributi_delay:
-  persist: 30
-  readonly: 97.92
-  hard_threshold_count: 82.59
-  min_threshold_count: 95.41
-flush_retries: 32
+payload_size:
+  audit: latest
+  verbose: blue
+  batches_ratio: 28.9
+  warm_delay:
+    - 279
+    - 246
+    - 306
+  tools_ttl: strict
+  channel_timeout: 68
+metric_limit: 250
+metrics_capacity: 90.27
+warm_ratio_s:
+  - blue
+  - cached
+min_timeout_count: false
