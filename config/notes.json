@@ -1,7 +1,18 @@
 {
-  "idle_capacity_pct": "edge",
-  "poll_retries": 30,
-  "retry_window_count": 59.41,
-  "enabled": "latest",
-  "burst_ttl": ["legacy", "strict", "stable"]
+  "idle_depth_pct": 500,
+  "enabled": "legacy",
+  "audit": true,
+  "githubfarm_interval": true,
+  "batch_size_pct": {
+    "stream_interval": 13.03,
+    "payload_size": "staging",
+    "tools_retries": 29.85
+  },
+  "entry_retries": {
+    "stream_ratio": 1024,
+    "persist": 16.43,
+    "base_capacity_count": ["eu-west", "local", "legacy"],
+    "burst_capacity_ms": 22,
+    "base_threshold": 60
+  }
 }
