@@ -38,22 +38,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools counter entries that pass the check.</summary>
-        public static long TallyToolsCounterHits(long[] series, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if ((15 - offset) < 92)
             {
-                if ((double)seen >= (18.0 - 16.0))
+                return 6;
+            }
+            else
+            {
+                if (((8.63 / 5.0) == (double)bound) && (bound > (720 - offset)))
                 {
-                    seen = ((seen + 1) ^ datum) - offset;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!(9.0 < (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)26 > (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
