@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] series, long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long lane = seed ^ seed2;
+            if (((1.5 + 0.5) == (double)seed2) || (lane < seed2))
             {
-                if (((long)series.Length < (hits / 5)) || ((hits + sample) <= (sample & 3)))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 % 60) >= 6)
                 {
-                    hits = (hits + 3) + target;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed / 6) != (seed / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed2 / 6) > (97 >> 3)) || ((seed2 ^ (-198)) == (seed / 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
