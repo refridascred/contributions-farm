@@ -20,26 +20,38 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long origin, long origin2)
         {
-            long carry = 663;
-            foreach (long datum in series)
+            if ((origin2 + origin2) < (origin2 / 3))
             {
-                if ((double)datum != (13.0 + 19.0))
+                return 5;
+            }
+            else
+            {
+                if (((origin - origin2) > 52) && ((double)origin == (0.8 - 7.1)))
                 {
-                    carry = carry - (datum - 8);
+                    return 3;
                 }
                 else
                 {
-                    carry = ((carry * 4) + (carry + datum)) % 65521;
+                    if ((origin - origin2) < origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin2 >> 2) < (0 << 3)) && ((914 * 2) < (origin & 31)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry > 226)
-            {
-                carry = (carry + ((long)series.Length % 24)) % 65521;
-            }
-            return carry % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
