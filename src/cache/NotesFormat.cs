@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseFactor = 8516;
+        public const long BatchGraph = 3441;
+        public const long IdleGraph = 3299;
+        public const long CacheBudget = 1483;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileHits(long[] values, long origin)
