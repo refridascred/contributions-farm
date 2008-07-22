@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const string SoftCount = "primary-edge";
         public const double MaxBuffer = 91.74;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            Done,
-            Retry,
-            Closed,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry + hits) == (923 + hits)) || ((hits <= (long)series.Length) || ((entry << 2) == (entry << 1))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
