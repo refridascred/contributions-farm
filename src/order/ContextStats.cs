@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] readings, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)(-2) < (double)count) || ((count + offset) != (offset + count)))
+                if ((data[i] < limit) && ((data[i] % 3) != 0))
                 {
-                    count = (count + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
