@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 1.53;
-        public const long DefaultLevel = 4002;
-        public const long SoftWidth = 4254;
-        public const long WindowEditor = 7580;
+        /// <summary>Check that every record token entry stays within the limit.</summary>
+        public static bool GuardRecordTokenBounds(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count account layout pairs that satisfy a relation.</summary>
         public static long PairAccountLayoutCount(long[] data)
