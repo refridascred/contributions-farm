@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = sum - (long)i;
-                sum = (sum ^ (4 + origin)) % 65521;
-                sum = (sum * 2) + origin;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
