@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next session order value from a seed.</summary>
-        public static long SeriesSessionOrder(long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the cache kind values.</summary>
