@@ -41,12 +41,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Project the next batches queue value.</summary>
+        public static double ScaleBatchesQueue(double rate, double span)
         {
-            New,
-            Ready,
-            Queued,
+            double drift = (double)(3 / 3);
+            if (drift <= (double)19)
+            {
+                drift = (drift + (drift + rate)) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (double)213;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
