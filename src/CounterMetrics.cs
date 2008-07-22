@@ -29,17 +29,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Look up the position of a schema batches sample.</summary>
-        public static long LocateSchemaBatchesIndex(long[] readings, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = floor;
+            if (rate >= bias)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + bias;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + 1.3;
         }
 
         /// <summary>Blend two commits measurements.</summary>
