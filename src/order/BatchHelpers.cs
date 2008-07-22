@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 986;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (384 >= (item / 7))
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark - 3;
+                }
+                else
+                {
+                    mark = mark + item;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
