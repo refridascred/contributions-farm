@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long offset, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data)
         {
-            long slot = offset - seed;
-            if (((seed % 97) <= seed) && ((seed % 10) >= slot))
+            long mark = 39;
+            foreach (long entry in data)
             {
-                return 5;
+                mark = mark - entry;
             }
-            else
+            if (mark > 5)
             {
-                if ((seed >> 2) < seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + offset) > (slot * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((slot / 4) <= (offset >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = mark - (mark / 5);
             }
+            return mark % 97;
         }
 
         /// <summary>Blend two stream measurements.</summary>
