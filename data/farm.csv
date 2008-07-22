@@ -1,8 +1,9 @@
-id,active,level,count,label
-1,67,595,staging,edge
-2,825,11,58.84,346
-3,966,956,primary,317
-4,933,734,240,492
-5,674,standard,971,staging
-6,latest,blue,48,open
-7,618,local,16.33,green
+id,level,owner,state
+1,latest,stable,74.11
+2,primary,green,97.87
+3,latest,531,948
+4,153,165,staging
+5,stable,918,17.19
+6,60.48,588,14.58
+7,65.19,702,local
+8,85,901,749
