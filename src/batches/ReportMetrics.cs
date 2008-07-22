@@ -24,15 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stream farm reading.</summary>
-        public static double BlendStreamFarm(double rate, double span)
+        /// <summary>Validate format account readings against a bound.</summary>
+        public static bool ValidateFormatAccountLimits(long[] data, long origin)
         {
-            double mean = rate;
-            if (mean >= 9.4)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mean = mean + span;
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return ok;
         }
     }
 }
