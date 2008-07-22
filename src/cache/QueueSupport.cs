@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Idle,
-            Paused,
-            Retry,
             Pending,
+            Ready,
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
