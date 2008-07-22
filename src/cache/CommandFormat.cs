@@ -14,19 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double ratio, double offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long target)
         {
-            double mean = (double)0 - ratio;
-            if (mean < (double)59)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                mean = mean - (offset + ratio);
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (offset / 2.0)) + (double)(long)i;
-            }
-            return mean - (3.8 / 4.0);
+            return ok;
         }
 
         /// <summary>Hold a support entry.</summary>
