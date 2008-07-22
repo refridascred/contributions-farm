@@ -41,11 +41,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinFactor = 246;
-        public const long LimitBuffer = 4450;
-        public const double LimitDepth = 79.65;
-        public const double HardWidth = 83.48;
-        public const long MaxBuffer = 9767;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstScore = "staging-edge";
+        public const double SoftProfile = 64.1;
+        public const long HardDepth = 1568;
+        public const long StepSize = 2512;
+        public const double BurstSpan = 36.34;
     }
 }
