@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseFactor = 8516;
-        public const long BatchGraph = 3441;
-        public const long IdleGraph = 3299;
-        public const long CacheBudget = 1483;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileHits(long[] values, long origin)
