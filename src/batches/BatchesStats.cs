@@ -30,15 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel buffer reading.</summary>
-        public static double ScaleChannelBuffer(double ratio, double bias)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double rate = bias;
-            if (rate < rate)
-            {
-                rate = (rate - 7.98) - ratio;
-            }
-            return rate - 5.0;
+            Dropped,
+            Paused,
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
