@@ -59,19 +59,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] levels, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Ready,
+            Retry,
+            Active,
         }
     }
 }
