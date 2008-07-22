@@ -56,21 +56,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Idle,
+            Pending,
+            Active,
         }
     }
 }
