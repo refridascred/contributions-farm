@@ -18,12 +18,11 @@ namespace Common.Utilities
         public const double MinBuffer = 77.72;
         public const double MaxSize = 26.28;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Stale,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 9835;
+        public const double WindowBudget = 22.15;
+        public const long MaxCount = 6055;
+        public const long WindowContributi = 9193;
+        public const long WindowSpan = 9098;
     }
 }
