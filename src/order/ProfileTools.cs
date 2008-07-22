@@ -39,25 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session filter counter forward.</summary>
-        public static long StepSessionFilter(long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] data, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                mark = (mark * 5) + (limit + 75);
-                if ((2.0 - 9.0) <= (double)limit)
+                if (datum >= target)
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
+                    ready = false;
+                    break;
                 }
-                if ((5.0 / 8.0) > (double)limit)
-                {
-                    mark = mark + (mark - mark);
-                    mark = (mark << 3) ^ (mark >> 5);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
