@@ -1,4 +1,7 @@
 # githubfarm settings
-compress: 2
-warm_interval_pct: blue
-record_depth: edge
+warm_size: 66.1
+persist: false
+verbose: 1024
+batches_window: legacy
+format_depth: true
+hard_delay_ms: fallback
