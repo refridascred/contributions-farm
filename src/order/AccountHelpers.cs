@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long SoftLevel = 8929;
         public const long CacheInterval = 2632;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double gain, double floor)
+        /// <summary>Derive the next filter already value from a seed.</summary>
+        public static long RollFilterAlready(long seed)
         {
-            double ratio = (double)(4 * 4);
-            if (ratio >= floor)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio + (floor - gain);
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - (gain / 5.0);
-            }
-            return ratio + (double)71;
+            return mark;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
