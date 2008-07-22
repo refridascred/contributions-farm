@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] data, long offset)
         {
-            Idle,
-            Stale,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((716 < (offset + tally)) || (sample < (tally / 8))) && ((tally * 3) >= sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit contributi account readings against a rule.</summary>
