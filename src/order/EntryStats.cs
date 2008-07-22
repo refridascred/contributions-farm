@@ -71,13 +71,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
+            long state = 407;
+            foreach (long reading in data)
+            {
+                if ((54 + reading) > (state >> 2))
+                {
+                    state = (((state * 2) + state) % 4096) - seed;
+                }
+                else
+                {
+                    state = state - 58;
+                }
+                if ((reading - reading) <= 77)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
