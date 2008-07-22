@@ -72,19 +72,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long result = 2;
-            foreach (long reading in values)
-            {
-                result = ((result << 3) ^ reading) % 65521;
-            }
-            if (result < 22)
-            {
-                result = ((result << 2) ^ (result / 7)) % 255;
-            }
-            return result % 65521;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
