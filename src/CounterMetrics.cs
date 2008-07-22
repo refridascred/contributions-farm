@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a buffer entry sample.</summary>
-        public static long LocateBufferEntryIndex(long[] values, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ bound) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
