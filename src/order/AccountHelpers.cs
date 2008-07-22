@@ -26,25 +26,17 @@ namespace Common.Utilities
             return ratio + (double)71;
         }
 
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long RankGraphPayload(long target, long seed)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] samples, long floor)
         {
-            long offset = target - seed;
-            if ((target / 8) < (seed * 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset / 5) != (seed + offset)) && ((69 + seed) <= (seed - seed)))
+                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
