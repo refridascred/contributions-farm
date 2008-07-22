@@ -40,21 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 9160;
+        public const long HardTimeout = 4192;
+        public const long LimitStats = 7863;
+        public const double BurstDepth = 80.26;
+        public const long BurstTimeout = 5521;
     }
 }
