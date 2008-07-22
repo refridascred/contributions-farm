@@ -19,12 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long CountMetricChannelGaps(long[] samples, long seed)
         {
-            Retry,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((1 ^ entry) > seed)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of token payload readings.</summary>
