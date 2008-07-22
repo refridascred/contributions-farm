@@ -103,18 +103,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] samples)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches >= 63)
+                if (samples[i] > offset)
                 {
-                    matches = (matches + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
