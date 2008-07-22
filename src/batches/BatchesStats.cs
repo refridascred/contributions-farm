@@ -27,11 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
