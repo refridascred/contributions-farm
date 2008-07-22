@@ -1,23 +1,8 @@
 {
-  "metrics_window": 250,
-  "max_window_ms": "standard",
-  "warm_capacity_count": {
-    "compress": 1.79,
-    "payload_limit": 10.86,
-    "sync_timeout_ms": {
-      "warm_ttl": 500,
-      "default_timeout_s": 500,
-      "dry_run": "fallback",
-      "batch_size_count": "legacy",
-      "already_threshold": true,
-      "sync_timeout_s": 30
-    },
-    "base_window_ms": {
-      "warm_limit_count": "latest",
-      "warm_retries_count": 7555,
-      "default_depth": false,
-      "burst_timeout": true
-    }
-  },
-  "readonly": "standard"
+  "notes_window": 60,
+  "support_delay": 41.42,
+  "counter_window": [434, 151, 154],
+  "counter_retries": "legacy",
+  "entry_interval": 53,
+  "support_capacity": 51.63
 }
