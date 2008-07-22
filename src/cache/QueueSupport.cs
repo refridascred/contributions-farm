@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a buffer cache figure with a bias.</summary>
-        public static double SmoothBufferCache(double bias, double span)
-        {
-            double scale = bias / 7.0;
-            if (scale >= scale)
-            {
-                scale = scale + (span / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (bias / 6.0)) + (double)(long)i;
-            }
-            return scale - 8.0;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardFactor = 2393;
+        public const double RetryCount = 72.46;
+        public const long BatchTimeout = 2031;
+        public const long DefaultScore = 2124;
+        public const long HardTimeout = 1329;
 
         /// <summary>Match up buffer notes samples.</summary>
         public static long PairBufferNotesCount(long[] levels)
