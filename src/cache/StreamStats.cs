@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "fallback-1";
-        public const string DefaultFarm = "fallback-edge";
-        public const double BurstFarm = 43.22;
-        public const long CacheBudget = 7538;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (floor > (long)levels.Length)
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
