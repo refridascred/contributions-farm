@@ -40,14 +40,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Closed,
-            Draft,
-            Done,
-            Pending,
-            Dropped,
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
