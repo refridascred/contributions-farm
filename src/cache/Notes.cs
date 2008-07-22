@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of stats support readings.</summary>
