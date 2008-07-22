@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] levels, long origin)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Stale,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the route status values.</summary>
