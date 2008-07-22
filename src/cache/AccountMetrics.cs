@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] readings, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((long)i != (step - step))
+                if (entry >= origin)
                 {
-                    score = (score << 3) ^ (long)i;
-                    score = ((score * 3) + score) % 101;
+                    found = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
