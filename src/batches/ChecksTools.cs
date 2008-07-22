@@ -30,11 +30,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((double)floor < (1.0 / 4.0)) && ((floor + floor) <= acc))
+                {
+                    acc = acc - (68 - acc);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (long)i) % 1000;
+                }
+                acc = ((acc << 2) ^ (floor % 8)) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a stats reading.</summary>
