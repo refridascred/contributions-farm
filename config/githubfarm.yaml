@@ -1,9 +1,38 @@
 # githubfarm settings
-cache_threshold: 10.57
-account_capacity: open
-poll_ttl_pct:
-  - strict
-  - primary
-format_retries: true
-strict: 5276
-retry_limit_count: false
+already_delay:
+  session_depth: open
+  base_interval_s: 10.55
+  flush_retries_ms: false
+idle_timeout_count:
+  batch_retries: 75
+  idle_ttl_s:
+    - fallback
+    - standard
+    - local
+    - eu-west
+  min_depth: true
+  editor_interval:
+    - staging
+    - green
+    - fallback
+  checks_threshold: 42.57
+burst_threshold_ms:
+  farm_limit: fallback
+  base_ttl_s:
+    - 259
+    - 296
+    - 61
+  sync_window_ms:
+    compress:
+      - blue
+      - edge
+      - latest
+      - edge
+    max_interval_count: 500
+    notes_ttl: stable
+    burst_interval_pct: 60
+  hard_threshold_count:
+    idle_depth_count: false
+    stream_ttl: 1281
+    compress: 1157
+  flush_size_s: false
