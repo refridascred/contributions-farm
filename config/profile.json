@@ -1,5 +1,6 @@
 {
-  "min_interval_count": false,
-  "strict": [342, 81, 199, 50],
-  "batch_delay_ms": "stable"
+  "warm_depth_pct": "fallback",
+  "poll_retries_s": 23.68,
+  "poll_limit_pct": "standard",
+  "poll_interval_pct": "open"
 }
