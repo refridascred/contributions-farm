@@ -53,18 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] values)
+        /// <summary>Project the next profile account value.</summary>
+        public static double BlendProfileAccount(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((34 + 38) == (5 - seen))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            double bias = (double)(0 / 9);
+            return ((bias + (double)2) + rate) + span;
         }
 
         /// <summary>Describe the entry phase values.</summary>
