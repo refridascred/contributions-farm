@@ -63,18 +63,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor context entries.</summary>
-        public static long ScoreEditorContext(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long score = 7;
-            foreach (long value in levels)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((value >> 4) != (37 * 4)))
+                if (((total * 4) >= (7 * 2)) || ((total + limit) > (long)i))
                 {
-                    score = score ^ (score - value);
+                    total = (total * 3) + limit;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
     }
 }
