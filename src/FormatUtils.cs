@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] levels, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)floor <= 2.91)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) - item;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two layout measurements.</summary>
