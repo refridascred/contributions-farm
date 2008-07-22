@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric stream entry stays within the limit.</summary>
-        public static bool ValidateMetricStreamBounds(long[] data, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= step)
+                if (values[i] <= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
