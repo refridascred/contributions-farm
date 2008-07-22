@@ -77,13 +77,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
