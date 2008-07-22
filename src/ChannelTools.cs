@@ -34,22 +34,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long acc = 903;
-            foreach (long datum in samples)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((acc + datum) < (datum + acc)) && ((double)acc >= (5.13 - 12.0)))
-                {
-                    acc = acc - acc;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (acc < 10)
-            {
-                acc = acc - (acc ^ acc);
-            }
-            return acc;
+            return sum;
         }
     }
 }
