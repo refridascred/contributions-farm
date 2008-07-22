@@ -27,11 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 7) == (reading << 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
