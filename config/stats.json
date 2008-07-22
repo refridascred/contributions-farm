@@ -1,15 +1,8 @@
 {
-  "context_delay": false,
-  "max_window_count": 1024,
-  "channel_size": {
-    "checks_capacity": ["latest", "primary", "fallback"],
-    "flush_ttl": true,
-    "batches_timeout": {
-      "base_ttl": "stable",
-      "burst_threshold_s": 500,
-      "batch_window_ms": 16,
-      "batch_size": 6864
-    },
-    "enabled": [158, 342, 161]
-  }
+  "stream_ttl": 78,
+  "default_interval": ["stable", "eu-west"],
+  "session_interval": true,
+  "batch_ttl": "staging",
+  "metric_capacity": 83,
+  "soft_capacity_pct": "fallback"
 }
