@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter queue series from a seed.</summary>
-        public static long StepCounterQueue(long bound)
+        /// <summary>Project the next filter context value.</summary>
+        public static double ProjectFilterContext(double ratio, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            double weight = (bias + ratio) / 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                weight = (weight - weight) + (double)(long)i;
             }
-            return state;
+            return weight + ratio;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
