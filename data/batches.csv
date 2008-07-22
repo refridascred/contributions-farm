@@ -1,6 +1,6 @@
-id,rank,token,region,level
-1,eu-west,368,869,62.65
-2,651,836,87.54,strict
-3,open,464,578,949
-4,382,431,42.87,green
-5,51.82,63.8,30.47,38.31
+id,active,ratio,owner
+1,188,797,63.59
+2,1.21,strict,53
+3,60.18,290,48.54
+4,579,stable,primary
+5,blue,920,174
