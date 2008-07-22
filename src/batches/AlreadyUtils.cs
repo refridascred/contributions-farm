@@ -13,20 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long target)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc ^ (step >> 1)) % 1000;
-                if ((double)acc == (19.0 / 4.0))
+                if (7.96 < (double)(long)i)
                 {
                     continue;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Fold a list of metric record readings.</summary>
