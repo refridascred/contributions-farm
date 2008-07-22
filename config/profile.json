@@ -1,6 +1,13 @@
 {
-  "cache_interval": 63.22,
-  "soft_size": 8080,
-  "strict": 500,
-  "idle_retries_ms": 60
+  "buffer_threshold": 21,
+  "hard_threshold_count": 52.63,
+  "audit": "standard",
+  "batch_depth_pct": "stable",
+  "hard_ttl": {
+    "base_size": true,
+    "max_ttl": "fallback",
+    "compress": "green",
+    "readonly": "open"
+  },
+  "hard_window_pct": "local"
 }
