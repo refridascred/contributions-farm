@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 8564;
-        public const long StepDepth = 3508;
-        public const long BatchCommand = 4136;
+        /// <summary>Compare every pair of context already readings.</summary>
+        public static long OverlapContextAlreadyCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long origin)
