@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Project the next batch entry value.</summary>
+        public static double ProjectBatchEntry(double weight, double offset)
         {
-            Active,
-            Pending,
-            Idle,
-            Ready,
-            Paused,
+            double scale = (double)5 - (offset - weight);
+            if (scale > (offset * 3.78))
+            {
+                scale = scale + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + offset) - (double)(long)i;
+            }
+            return scale + (double)9;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
