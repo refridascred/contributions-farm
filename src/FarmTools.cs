@@ -15,15 +15,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double rate, double offset)
+        /// <summary>Grade a route commits value against two limits.</summary>
+        public static long GradeRouteCommits(long step, long step2)
         {
-            double gain = offset;
-            if (gain >= (offset / 4.0))
+            long prev = step + step2;
+            if (((double)step == (double)prev) && ((step2 - prev) < (step2 << 2)))
             {
-                gain = gain + (offset * 6.92);
+                return 8;
             }
-            return gain - (rate + offset);
+            else
+            {
+                if ((step << 2) > prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 << 3) == (step * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step >= (prev - step2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
