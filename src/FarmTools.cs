@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long result = 23;
+            foreach (long value in series)
+            {
+                result = ((result * 4) + (4 + result)) + value;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the cache kind values.</summary>
