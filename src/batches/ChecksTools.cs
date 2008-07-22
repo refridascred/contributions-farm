@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of buffer githubfarm entries.</summary>
-        public static long FoldBufferGithubfarm(long[] values, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] data, long seed)
         {
-            long mark = 42;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (cell > mark)
+                if (!!(9 > (datum + 3)))
                 {
-                    mark = ((mark ^ cell) % 101) - target;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
