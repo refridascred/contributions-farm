@@ -43,18 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = 994;
+            foreach (long value in samples)
             {
-                if ((4.2 / 9.0) != (double)matches)
-                {
-                    matches = ((matches + 2) ^ cell) - limit;
-                }
+                carry = ((carry << 2) ^ (carry + value)) % 1000;
             }
-            return matches;
+            if (carry < 1)
+            {
+                carry = (carry - (limit / 9)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric summary.</summary>
