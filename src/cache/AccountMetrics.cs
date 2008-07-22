@@ -99,14 +99,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items, long offset)
         {
-            Done,
-            Active,
-            Synced,
-            Pending,
-            New,
+            long mark = 978;
+            foreach (long value in items)
+            {
+                if (!((value ^ mark) == (value & 63)))
+                {
+                    mark = (mark ^ (value << 3)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - 222) % 1000;
+                }
+            }
+            if (mark < 715)
+            {
+                mark = (mark << 3) ^ (offset + offset);
+            }
+            return mark;
         }
     }
 }
