@@ -26,19 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] values, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (item > target)
+                if (!!(origin < ((long)i & 3)))
                 {
-                    ready = false;
-                    break;
+                    total = ((total * 2) + total) % 97;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
     }
 }
