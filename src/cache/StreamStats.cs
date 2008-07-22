@@ -36,21 +36,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Accumulate order samples.</summary>
