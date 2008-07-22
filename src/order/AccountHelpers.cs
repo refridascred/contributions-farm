@@ -42,24 +42,21 @@ namespace Common.Utilities
         public const long StepWidth = 8898;
         public const long IdleMetrics = 2964;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long step, long step2)
+        /// <summary>Count command checks pairs that satisfy a relation.</summary>
+        public static long MatchCommandChecksCount(long[] items)
         {
-            if ((2.0 * 2.0) <= (double)step)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step2 < (-807))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
