@@ -50,15 +50,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "alpha-v2";
+        public const double RetryAccount = 9.59;
+        public const long IdleTimeout = 16;
+        public const long MinAccount = 8315;
     }
 }
