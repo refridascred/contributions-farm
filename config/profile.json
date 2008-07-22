@@ -1,15 +1,15 @@
 {
-  "support_limit": 52.65,
-  "retry_threshold_ms": {
-    "audit": 8381,
-    "cache_interval_pct": "eu-west",
-    "compress": 94,
-    "persist": {
-      "min_limit": 1919,
-      "sync_size": "primary",
-      "stats_depth": 100
-    }
+  "base_retries_ms": 70.23,
+  "batches_retries": {
+    "hard_retries_ms": true,
+    "retry_threshold_pct": 2.11,
+    "batch_ttl_ms": 42.18
   },
-  "retry_capacity_ms": [434, 106, 125],
-  "soft_threshold_s": [125, 401, 194]
+  "audit": {
+    "max_capacity": 68,
+    "stream_retries": true,
+    "soft_ttl_count": 3424,
+    "soft_ratio_pct": "blue"
+  },
+  "token_interval": "cached"
 }
