@@ -20,12 +20,16 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Roll a format stream counter forward.</summary>
+        public static long IterateFormatStream(long step)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
