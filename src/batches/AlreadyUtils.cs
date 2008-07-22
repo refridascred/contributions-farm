@@ -54,19 +54,18 @@ namespace Common.Utilities
             return ((mean - (double)83) + scale) + span;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] series, long origin)
+        /// <summary>Digest a series of editor context entries.</summary>
+        public static long ScoreEditorContext(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long score = 7;
+            foreach (long value in levels)
             {
-                if (reading <= origin)
+                if (!((value >> 4) != (37 * 4)))
                 {
-                    valid = false;
-                    break;
+                    score = score ^ (score - value);
                 }
             }
-            return valid;
+            return score;
         }
     }
 }
