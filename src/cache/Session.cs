@@ -44,15 +44,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Pending,
+            Ready,
+            Retry,
+            Draft,
         }
     }
 }
