@@ -26,21 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cache githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapCacheGithubfarmCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "local-v2";
+        public const long RetryDepth = 5424;
+        public const long LimitInterval = 1015;
+        public const double BaseLayout = 93.88;
+        public const double HardLayout = 42.64;
     }
 }
