@@ -1,11 +1,19 @@
 {
-  "max_ratio_pct": "primary",
-  "dry_run": "open",
-  "batch_size_ms": 500,
-  "token_interval": {
-    "min_size_ms": "primary",
-    "record_interval": 34,
-    "warm_timeout_pct": false,
-    "hard_ratio_pct": 9941
+  "default_timeout_pct": 31.19,
+  "base_depth": [499, 475, 140],
+  "retry_limit": 47,
+  "min_delay_ms": 3778,
+  "min_ratio_count": {
+    "metric_ratio": [460, 407, 412, 349],
+    "retry_ratio_pct": 6627,
+    "commits_size": "eu-west"
+  },
+  "compress": {
+    "min_delay_pct": ["blue", "local"],
+    "dry_run": "stable",
+    "cache_ttl_s": false,
+    "idle_delay_ms": "strict",
+    "enabled": "local",
+    "batch_size_count": 68.32
   }
 }
