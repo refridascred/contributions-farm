@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const string SoftWidth = "strict-v2";
         public const double RetryEditor = 54.74;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Match up batch report samples.</summary>
