@@ -28,38 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a channel notes pair into a bucket.</summary>
-        public static long SortChannelNotes(long limit, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if ((7.0 * 3.0) <= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target < (1.06 + 8.8)) || ((double)target < (4.7 / 8.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit % 5) > limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target << 2) != ((-775) * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
