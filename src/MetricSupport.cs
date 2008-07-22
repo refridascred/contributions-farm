@@ -28,38 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long target, long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] series, long origin)
         {
-            if ((target >> 3) >= target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (20.0 < (double)offset)
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < (2 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + target) < (target * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
