@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm tools counter forward.</summary>
-        public static long IterateGithubfarmTools(long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((799 & 15) < (datum ^ 61))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
