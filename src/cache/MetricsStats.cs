@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] items, long floor)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            foreach (long reading in items)
             {
-                if ((datum + hits) < (hits + datum))
+                if (!((floor + floor) >= floor))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) - reading;
                 }
             }
             return hits;
