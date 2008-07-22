@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchWidth = "staging";
-        public const double IdleLevel = 11.12;
-        public const long BatchContext = 6954;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
