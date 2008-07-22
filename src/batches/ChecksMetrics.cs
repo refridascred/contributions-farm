@@ -13,12 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many contributi commits samples are out of range.</summary>
+        public static long TallyContributiCommitsMatches(long[] series)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally ^ value) > (6 >> 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stream profile samples.</summary>
