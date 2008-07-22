@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values, long offset)
         {
-            double scale = rate;
-            for (int i = 0; i < 8; i++)
+            long sum = 62;
+            foreach (long entry in values)
             {
-                scale = ((scale - scale) + (double)(long)i) - floor;
+                sum = (sum ^ offset) % 101;
+                if ((entry - sum) >= offset)
+                {
+                    sum = ((sum << 2) ^ offset) % 101;
+                }
             }
-            return scale + scale;
+            return sum;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
