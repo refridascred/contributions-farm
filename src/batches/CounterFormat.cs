@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstSize = "cached";
-        public const double DefaultQueue = 34.71;
-        public const long LimitQueue = 3774;
-        public const double IdleQueue = 58.5;
+        /// <summary>Find the first payload context entry that matches the target.</summary>
+        public static long SeekPayloadContextIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueLimits(long[] items, long seed)
