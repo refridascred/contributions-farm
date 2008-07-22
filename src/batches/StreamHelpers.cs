@@ -39,21 +39,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up batch report samples.</summary>
-        public static long CompareBatchReportCount(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark * 5) + sample) % 1000;
+                if ((double)mark > (4.7 - 5.6))
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (mark > 17)
+            {
+                mark = (mark << 3) ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a support record.</summary>
