@@ -78,24 +78,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] data)
         {
-            long result = 790;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                result = ((result - (4 - sample)) % 65521) - floor;
-                result = (result ^ result) % 97;
-                if (7 > (result >> 5))
+                if (!((4.3 + 1.0) > (double)hits) || ((1.15 * 4.0) > (double)hits))
                 {
-                    result = (result * 5) + (847 << 1);
+                    hits = (hits + 3) - value;
                 }
             }
-            if (result < 536)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            return hits;
         }
     }
 }
