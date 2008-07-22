@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] items, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if ((631 - offset) >= (offset / 3))
             {
-                if (value != seed)
+                return 2;
+            }
+            else
+            {
+                if (!(((-3) ^ 965) <= (offset - offset)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Roll a report counter forward.</summary>
