@@ -15,23 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            double load = (double)(20 - 484);
-            if (load > (offset + 4.57))
-            {
-                load = load + (double)5;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (offset * 6.0)) + (double)(long)i;
-            }
-            return load - bias;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
