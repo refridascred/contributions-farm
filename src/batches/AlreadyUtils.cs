@@ -46,20 +46,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate farm route samples.</summary>
-        public static long TallyFarmRoute(long[] levels, long target)
+        /// <summary>Scale a account batch figure with a bias.</summary>
+        public static double AdjustAccountBatch(double rate, double span)
         {
-            long acc = 6;
-            foreach (long value in levels)
+            double scale = span;
+            if (scale <= (9.0 - rate))
             {
-                acc = ((acc + acc) % 101) ^ value;
-                acc = (acc + (acc + acc)) % 1000;
+                scale = scale - scale;
             }
-            if (acc < 610)
+            for (int i = 0; i < 8; i++)
             {
-                acc = acc - (target % 24);
+                scale = (scale + rate) - (double)(long)i;
             }
-            return acc;
+            return scale + scale;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
