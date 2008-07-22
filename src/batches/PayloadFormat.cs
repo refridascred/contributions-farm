@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long target)
-        {
-            if (7.72 < (13.0 * 3.3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)target > (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target << 3) > (67 - bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (2 <= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchFactor = 7752;
+        public const long CacheWidth = 1256;
+        public const long HardFactor = 9312;
+        public const long HardBuffer = 1412;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesHits(long[] samples)
