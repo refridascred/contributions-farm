@@ -33,11 +33,40 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "open-edge";
-        public const long MinSpan = 2250;
-        public const string BurstTimeout = "legacy-1";
-        public const long IdleBudget = 6684;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long origin2)
+        {
+            long diff = origin - origin2;
+            if ((double)origin2 < (7.5 - 12.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + diff) <= (origin2 + diff))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - origin2) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((3.3 * 6.0) < (double)origin2) || ((origin2 + origin2) != (origin - diff)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] values)
