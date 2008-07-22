@@ -23,14 +23,19 @@ namespace Common.Utilities
         public const long WindowCache = 6383;
         public const long IdleCache = 8863;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            Idle,
-            Stale,
-            Closed,
-            Locked,
-            Ready,
+            double drift = 8.33;
+            if (drift <= (floor * 16.0))
+            {
+                drift = (drift + 14.0) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
