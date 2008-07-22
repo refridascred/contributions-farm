@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Combine metric graph values into a single score.</summary>
+        public static long DigestMetricGraph(long[] values, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long mark = 91;
+            foreach (long reading in values)
+            {
+                if (!((41 & 31) == (bound / 4)))
+                {
+                    mark = (mark + (reading - 78)) % 1000;
+                }
+                else
+                {
+                    long hits = bound / 6;
+                    mark = ((mark * 3) + (hits - bound)) % 1000;
+                }
+                mark = (mark + (reading - 8)) % 255;
+                if (((reading << 2) <= mark) && ((double)mark == (19.0 + 6.98)))
+                {
+                    mark = (mark ^ (mark ^ bound)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a token header.</summary>
