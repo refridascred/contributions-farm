@@ -72,23 +72,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long acc = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 3) + (acc - 527)) % 65521;
-                if (((acc - datum) < (42 / 4)) && (datum <= (9 >> 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc ^ datum;
-                }
-                if ((14.0 * 3.7) > (double)datum)
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
