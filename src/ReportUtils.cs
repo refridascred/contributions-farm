@@ -22,23 +22,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long floor)
+        /// <summary>Classify a batch window pair into a bucket.</summary>
+        public static long BucketBatchWindow(long step, long bound)
         {
-            long span = seed + floor;
-            if (seed >= (5 >> 4))
+            if ((bound - bound) != (bound & 3))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((seed / 5) < span) || (span < (span << 3)))
+                if ((step + step) < step)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    if ((20.0 + 3.2) <= (1.5 - 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step == (2.4 * 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
