@@ -52,18 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data, long bound)
         {
-            long state = 7;
-            foreach (long cell in readings)
+            long anchor = 2;
+            foreach (long cell in data)
             {
-                if ((state << 3) >= state)
+                if ((anchor >= (147 << 1)) && ((anchor + 6) < (cell >> 1)))
                 {
-                    state = (((state << 3) ^ (offset ^ 4)) % 1000) ^ cell;
+                    anchor = ((anchor ^ cell) % 4096) + bound;
                 }
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Hold a route record.</summary>
