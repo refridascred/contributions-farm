@@ -20,21 +20,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the token session series from a seed.</summary>
-        public static long RollTokenSession(long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (limit <= (sum - sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (sum + limit)) % 255;
-                    sum = ((sum * 5) + limit) % 255;
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = sum - (limit / 8);
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
     }
 }
