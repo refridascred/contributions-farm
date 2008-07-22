@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Look up the position of a contributi graph sample.</summary>
+        public static long FindContributiGraphIndex(long[] values, long step)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
