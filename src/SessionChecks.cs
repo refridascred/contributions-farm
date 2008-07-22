@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long entry in samples)
             {
-                if (data[i] <= floor)
+                if ((entry & 7) <= (entry >> 5))
                 {
-                    return (long)i;
+                    carry = carry + (entry - carry);
+                }
+                else
+                {
+                    carry = carry + (entry % 24);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a tools stats.</summary>
