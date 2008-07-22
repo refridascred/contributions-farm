@@ -44,18 +44,17 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Measure how many metrics tools samples are out of range.</summary>
-        public static long AuditMetricsToolsOutliers(long[] samples, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((cell * 2) <= (cell + hits)))
+                if (levels[i] <= offset)
                 {
-                    hits = (hits + 2) + bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
