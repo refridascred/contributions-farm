@@ -39,38 +39,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] readings, long target)
         {
-            if (((-441) / 5) == (target & 63))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (0 >= step)
+                if (((14.0 + 2.53) > (double)count) || ((double)value <= 6.17))
                 {
-                    return 1;
+                    count = (count + 1) - target;
                 }
                 else
                 {
-                    if ((target <= 321) && ((target - target) != (26 >> 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target > (target - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
