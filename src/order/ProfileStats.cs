@@ -34,14 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            Idle,
-            New,
-            Retry,
-            Pending,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
