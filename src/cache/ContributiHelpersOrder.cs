@@ -13,17 +13,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ offset) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate metric samples.</summary>
