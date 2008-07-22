@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double SoftBudget = 68.64;
         public const long IdleTimeout = 7098;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series, long bound)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long acc = -514;
-            foreach (long sample in series)
-            {
-                if ((acc & 7) > ((-20) ^ acc))
-                {
-                    acc = ((acc ^ (bound / 5)) % 97) ^ sample;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (49 << 2)) % 97;
-                }
-            }
-            return acc % 1000;
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
