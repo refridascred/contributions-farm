@@ -34,11 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
