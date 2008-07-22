@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] samples)
         {
-            long mark = 56;
-            foreach (long sample in samples)
+            long mark = 829;
+            foreach (long reading in samples)
             {
-                mark = (((mark * 5) + (93 % 5)) % 97) - sample;
+                if ((mark + (-54)) < (mark & 15))
+                {
+                    mark = ((mark ^ 93) % 255) + reading;
+                }
             }
-            return mark;
+            if (mark > 4)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the tools mode values.</summary>
