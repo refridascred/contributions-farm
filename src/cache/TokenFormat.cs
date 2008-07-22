@@ -27,14 +27,17 @@ namespace Common.Utilities
         public const long MaxBudget = 1525;
         public const long BurstCache = 696;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] series, long limit)
         {
-            Dropped,
-            Idle,
-            Done,
-            Paused,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
