@@ -24,10 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseTimeout = 9453;
-        public const long RetryFactor = 2032;
-        public const string SoftSize = "fallback";
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            New,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] items)
