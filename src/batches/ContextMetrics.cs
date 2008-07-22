@@ -44,13 +44,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Ready,
-            Dropped,
-            Paused,
-            Pending,
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
