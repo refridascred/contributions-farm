@@ -1,12 +1,13 @@
 # Command notes
 
-Run the cache check before changing any payload limits.
-The graph helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the layout handler retries a few times before giving up.
+Use command settings to tune how often batches data is refreshed.
+Use buffer settings to tune how often graph data is refreshed.
+
+Run the notes check before changing any context limits.
+Each batch is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep filter values small
-- Log every checks change
-- Review account limits each release
+- Review payload limits each release
+- Document new window fields
+- Keep schema values small
