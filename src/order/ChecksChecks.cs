@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((matches ^ matches) >= matches) && (matches > (matches * 5)))
                 {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
