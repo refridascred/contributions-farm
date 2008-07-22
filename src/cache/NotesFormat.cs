@@ -33,19 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample < offset)
+                if (((datum + 558) < (offset + hits)) || (8.32 > (3.4 - 4.91)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
