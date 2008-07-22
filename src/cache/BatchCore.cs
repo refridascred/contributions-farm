@@ -58,11 +58,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Find the first githubfarm profile entry that matches the target.</summary>
+        public static long LocateGithubfarmProfileIndex(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
