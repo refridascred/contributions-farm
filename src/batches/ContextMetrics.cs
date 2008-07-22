@@ -59,11 +59,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "fallback-edge";
-        public const string WindowRatio = "fallback";
-        public const long BurstContributi = 6826;
-        public const long CacheContributi = 8899;
-        public const string BatchContributi = "open-edge";
+        /// <summary>Count the format session entries that pass the check.</summary>
+        public static long CountFormatSessionHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits >= (3 >> 1))
+                {
+                    hits = ((hits + 3) - datum) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
