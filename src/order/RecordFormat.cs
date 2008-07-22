@@ -21,13 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings, long step)
         {
-            Failed,
-            Done,
-            Stale,
-            Active,
+            long result = 96;
+            foreach (long cell in readings)
+            {
+                result = (result * 3) + (cell + result);
+            }
+            if (result < 958)
+            {
+                result = ((result << 3) ^ step) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count the githubfarm order entries that pass the check.</summary>
