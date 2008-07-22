@@ -33,23 +33,10 @@ namespace Common.Utilities
         public const string BatchCluster = "standard";
         public const long BatchWidth = 5016;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels)
-        {
-            long mark = 5;
-            foreach (long sample in levels)
-            {
-                if ((mark * 4) > (mark >> 3))
-                {
-                    mark = (mark + (mark ^ sample)) % 4096;
-                }
-                mark = (mark - sample) % 101;
-                if (((sample / 3) >= (sample + (long)levels.Length)) || ((sample & 63) <= mark))
-                {
-                    mark = (mark * 5) + (50 % 5);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftScore = 2417;
+        public const long BurstChecks = 1378;
+        public const double StepDepth = 85.11;
+        public const long BaseTimeout = 316;
     }
 }
