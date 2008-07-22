@@ -1,15 +1,12 @@
 # Editor notes
 
-Use command settings to tune how often metric data is refreshed.
-The window helpers are pure functions, so they are safe to call from any thread.
-Run the counter check before changing any context limits.
-
-Run the counter check before changing any queue limits.
-Defaults for format live in the config folder and can be overridden per environment.
-The contributi module keeps already values in sync with the session cache.
+When a tools fails, the format handler retries a few times before giving up.
+The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep cache values small
-- Log every window change
+- Prefer contributi defaults
+- Validate batches input early
+- Keep session values small
+- Document new channel fields
