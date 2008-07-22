@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const long WindowCache = 6383;
         public const long IdleCache = 8863;
 
-        /// <summary>Validate order farm readings against a bound.</summary>
-        public static bool CheckOrderFarmBounds(long[] items, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
