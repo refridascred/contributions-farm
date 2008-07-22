@@ -25,22 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "cached-edge";
+        public const long RetryBuffer = 6035;
+        public const double BatchBuffer = 32.03;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string WindowLayout = "local-v2";
