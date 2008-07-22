@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] data)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long result = 8;
+            foreach (long cell in data)
             {
-                if (value >= limit)
+                if ((cell - cell) != (result << 3))
                 {
-                    ready = false;
                     break;
                 }
+                result = result - (result + result);
             }
-            return ready;
+            if (result < 22)
+            {
+                result = (result - 0) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
