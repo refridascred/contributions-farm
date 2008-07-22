@@ -22,15 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account notes value.</summary>
-        public static double BlendAccountNotes(double scale, double offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long seed, long floor)
         {
-            double weight = scale;
-            if (weight > (double)12)
+            long cur = seed + floor;
+            if ((double)seed <= 0.42)
             {
-                weight = weight + offset;
+                return 4;
             }
-            return weight - (scale / 8.0);
+            else
+            {
+                if (((cur * 3) > (cur & 127)) && ((6.29 * 4.54) != (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.4 + 1.61) != (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4.6 + 2.7) <= (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
