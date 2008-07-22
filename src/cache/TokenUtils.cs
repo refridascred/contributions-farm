@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double ratio, double bias)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double scale, double floor)
         {
-            double rate = bias;
+            double gain = (floor * 8.79) * 7.5;
+            if (gain > scale)
+            {
+                gain = gain + (double)243;
+            }
             for (int i = 0; i < 2; i++)
             {
-                rate = (rate + (double)(long)i) + ratio;
+                gain = (gain - (scale * 0.6)) + (double)(long)i;
             }
-            return rate + (rate / 3.0);
+            return gain - (double)35;
         }
 
         /// <summary>Describe the entry phase values.</summary>
