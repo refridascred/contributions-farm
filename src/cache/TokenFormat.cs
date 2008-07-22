@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 4869;
-        public const double StepCache = 55.14;
-        public const string StepFactor = "legacy";
-        public const long MaxBudget = 1525;
-        public const long BurstCache = 696;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits - (long)data.Length) < ((long)data.Length >> 5))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] series, long limit)
