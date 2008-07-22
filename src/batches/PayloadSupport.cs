@@ -24,11 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Check that every schema payload entry stays within the limit.</summary>
+        public static bool VerifySchemaPayloadBounds(long[] values, long floor)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
