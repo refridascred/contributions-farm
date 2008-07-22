@@ -53,22 +53,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long total = 26;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry / 9) > total) || ((total % 3) <= total))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total ^ entry) % 65521;
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 307)
-            {
-                total = total + (596 & 31);
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Rank token queue input into a small class.</summary>
