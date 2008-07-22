@@ -50,18 +50,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "local";
+        public const double CacheRoute = 0.06;
+        public const double MaxRoute = 66.24;
+        public const long MaxRatio = 4002;
+        public const string SoftBudget = "cached";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 8916;
