@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count + floor) < reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
