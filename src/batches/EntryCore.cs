@@ -35,12 +35,10 @@ namespace Common.Utilities
             return gain - (offset * 9.56);
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 4494;
+        public const long WindowCache = 6383;
+        public const long IdleCache = 8863;
 
         /// <summary>Validate order farm readings against a bound.</summary>
         public static bool CheckOrderFarmBounds(long[] items, long limit)
