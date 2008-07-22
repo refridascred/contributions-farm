@@ -29,10 +29,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 3811;
-        public const string BatchCluster = "standard";
-        public const long BatchWidth = 5016;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftScore = 2417;
