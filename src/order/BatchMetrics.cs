@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Measure how many stream graph samples are out of range.</summary>
+        public static long MeasureStreamGraphGaps(long[] levels, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits - (long)levels.Length) < item)
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
