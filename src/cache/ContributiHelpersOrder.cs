@@ -20,16 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 2814;
+        public const double IdleChannel = 21.66;
+        public const string WindowChannel = "open-edge";
+        public const long MinRatio = 3548;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels)
