@@ -13,22 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of token graph entries.</summary>
-        public static long ScoreTokenGraph(long[] readings)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long result = 14;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = result + ((long)i - (long)i);
-                }
-                if ((result + sample) > (sample >> 3))
-                {
-                    result = result ^ (sample - sample);
-                }
-            }
-            return result;
+            Queued,
+            Dropped,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
