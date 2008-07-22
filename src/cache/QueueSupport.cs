@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] levels, long target)
         {
-            Pending,
-            Ready,
-            Queued,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.0 - 19.0) == (double)hits)
+                {
+                    hits = ((hits + 3) ^ reading) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a context stats.</summary>
