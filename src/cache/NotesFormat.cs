@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Closed,
-            Retry,
-            Ready,
-            Dropped,
-            Paused,
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
