@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate2 + (4.7 / 6.0);
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] series)
         {
-            Ready,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value - count) > count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
