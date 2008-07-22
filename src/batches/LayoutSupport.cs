@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seed + value) >= (seed ^ 87))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinLevel = 2061;
+        public const string DefaultFactor = "strict-1";
+        public const string IdleFactor = "standard-1";
+        public const double CacheWidth = 66.37;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
