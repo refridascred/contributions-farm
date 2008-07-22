@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((item + seen) < (seen / 5))
+                if ((count <= step) && ((count - count) != (count >> 1)))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) ^ item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
