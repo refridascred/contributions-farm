@@ -31,12 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long origin)
         {
-            Queued,
-            Dropped,
-            Retry,
+            long result = 454;
+            foreach (long reading in samples)
+            {
+                if ((origin + origin) < (origin & 7))
+                {
+                    result = result ^ (origin + 706);
+                }
+                if ((reading + reading) < (result % 8))
+                {
+                    result = (result * 2) + (origin << 1);
+                }
+            }
+            if (result < 11)
+            {
+                result = (result * 4) + (205 & 1);
+            }
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
