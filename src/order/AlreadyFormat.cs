@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxCount = 66.36;
-        public const long BatchContext = 4929;
-        public const long LimitTimeout = 7082;
-        public const long BurstContext = 3148;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
