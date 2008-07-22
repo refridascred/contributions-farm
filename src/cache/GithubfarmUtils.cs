@@ -29,12 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxLevel = 7593;
-        public const long MinBudget = 340;
-        public const double WindowTimeout = 63.62;
-        public const long StepInterval = 3888;
-        public const string BurstBuffer = "staging";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Locked,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] values, long floor)
