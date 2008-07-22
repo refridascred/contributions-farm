@@ -39,11 +39,18 @@ namespace Common.Utilities
             return ((ratio + 7.0) + rate) + bias;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((double)datum > (7.44 * 9.85)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
