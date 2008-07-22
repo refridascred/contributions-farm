@@ -57,17 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a record graph sample.</summary>
-        public static long SeekRecordGraphIndex(long[] levels, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
