@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
