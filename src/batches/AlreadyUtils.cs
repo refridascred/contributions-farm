@@ -29,22 +29,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples, long origin)
+        /// <summary>Fold a list of metric record readings.</summary>
+        public static long DigestMetricRecord(long[] items, long step)
         {
-            long result = 9;
-            foreach (long item in samples)
+            long carry = 90;
+            foreach (long datum in items)
             {
-                if ((double)item < (6.37 * 7.7))
+                if ((step + 408) > (313 % 7))
                 {
-                    continue;
-                }
-                if ((double)(long)samples.Length < (1.1 + 13.0))
-                {
-                    result = ((result * 4) + result) + origin;
+                    carry = ((carry - (carry * 3)) % 4096) + datum;
                 }
             }
-            return result;
+            if (carry < 218)
+            {
+                carry = (carry - (step >> 3)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Adjust a commits reading.</summary>
