@@ -35,16 +35,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowInterval = 5200;
+        public const string HardRoute = "local";
+        public const string SoftRoute = "legacy-1";
 
         /// <summary>Project the next order value.</summary>
         public static double BlendOrder(double bias, double span)
