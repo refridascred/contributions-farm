@@ -28,17 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a tools batches sample.</summary>
-        public static long FindToolsBatchesIndex(long[] series, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
