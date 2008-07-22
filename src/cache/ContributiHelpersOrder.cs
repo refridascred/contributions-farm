@@ -26,22 +26,24 @@ namespace Common.Utilities
             return ((rate + 5.2) + weight) + span;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Classify a contributi batches pair into a bucket.</summary>
+        public static long GradeContributiBatches(long offset, long offset2)
         {
-            long sum = 91;
-            foreach (long reading in levels)
+            if (offset >= offset2)
             {
-                if (sum < (reading - sum))
+                return 7;
+            }
+            else
+            {
+                if ((offset2 * 3) > (offset - offset))
                 {
-                    sum = ((sum << 2) ^ (reading % 60)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (sum < 476)
-            {
-                sum = sum - sum;
-            }
-            return sum % 4096;
         }
     }
 }
