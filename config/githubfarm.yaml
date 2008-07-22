@@ -1,16 +1,16 @@
 # githubfarm settings
-graph_depth: standard
-hard_capacity_pct: 94.36
-sync_capacity_ms: fallback
-support_limit:
-  account_depth:
-    - 107
-    - 25
-  audit:
-    - 434
-    - 379
-    - 174
-    - 178
-  retry_delay: 49.09
-  compress: true
-base_retries: true
+min_threshold_ms: 12.78
+persist: 35.38
+audit: cached
+enabled:
+  persist: true
+  sync_interval_pct: 50.97
+  default_limit_s:
+    default_threshold_s: false
+    editor_depth: 33
+    burst_threshold_pct: open
+    flush_interval: latest
+  hard_capacity: standard
+  record_ratio: 4750
+  dry_run: 45.53
+entry_depth: 9256
