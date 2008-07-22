@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Idle,
-            New,
-            Pending,
-            Paused,
-            Locked,
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
