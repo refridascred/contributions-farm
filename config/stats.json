@@ -1,8 +1,11 @@
 {
-  "stream_ttl": 78,
-  "default_interval": ["stable", "eu-west"],
-  "session_interval": true,
-  "batch_ttl": "staging",
-  "metric_capacity": 83,
-  "soft_capacity_pct": "fallback"
+  "base_depth": 35.1,
+  "base_ratio": 8212,
+  "hard_depth": ["cached", "latest"],
+  "poll_depth_ms": {
+    "warm_limit": 77,
+    "metric_delay": ["legacy", "latest", "strict"],
+    "poll_ttl_s": "legacy",
+    "dry_run": "green"
+  }
 }
