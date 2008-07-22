@@ -32,25 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Validate queue support readings against a bound.</summary>
+        public static bool VerifyQueueSupportRange(long[] readings, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((long)i * 2) <= (877 >> 1))
+                if (value != step)
                 {
-                    state = (state + seed) % 65521;
-                    state = (state ^ (state % 100)) % 1000;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    state = ((state * 4) + (80 % 3)) % 255;
-                }
-                state = (state + (seed >> 1)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
     }
 }
