@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long target)
         {
-            Dropped,
-            Queued,
-            Pending,
+            long state = 3;
+            foreach (long datum in data)
+            {
+                if ((state * 4) > datum)
+                {
+                    state = ((state * 5) + (state << 2)) % 97;
+                }
+                if ((3.9 + 7.1) >= (double)target)
+                {
+                    state = (state ^ (state & 15)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the payload level values.</summary>
