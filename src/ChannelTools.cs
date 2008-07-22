@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry >= (double)hits)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = hits + 2;
+                    acc = (((acc << 2) ^ (floor * 2)) % 101) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate support samples.</summary>
