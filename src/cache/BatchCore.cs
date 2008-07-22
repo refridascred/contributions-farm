@@ -22,10 +22,23 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstWidth = 3791;
-        public const long LimitCount = 3747;
-        public const string StepDepth = "cached";
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long floor)
+        {
+            long sum = -74;
+            foreach (long reading in readings)
+            {
+                if (!((sum ^ reading) >= (floor ^ reading)))
+                {
+                    sum = sum ^ (sum ^ floor);
+                }
+            }
+            if (sum > (-193))
+            {
+                sum = (sum ^ floor) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next contributi account value from a seed.</summary>
         public static long SeriesContributiAccount(long seed)
