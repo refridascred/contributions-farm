@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 22.6;
-        public const long BurstInterval = 9353;
-        public const long CacheCount = 8907;
-        public const long MinInterval = 8534;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels)
