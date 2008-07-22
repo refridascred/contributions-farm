@@ -1,7 +1,5 @@
 {
-  "dry_run": false,
-  "retry_threshold_ms": ["strict", "green", "open", "staging"],
-  "retry_retries": "blue",
-  "audit": ["edge", "primary"],
-  "verbose": 27.48
+  "burst_depth_s": false,
+  "hard_depth_pct": 20,
+  "flush_capacity": "edge"
 }
