@@ -41,16 +41,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the stats counter series from a seed.</summary>
-        public static long SeriesStatsCounter(long offset)
+        /// <summary>Compare every pair of batches support readings.</summary>
+        public static long MatchBatchesSupportCount(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc ^ offset;
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
