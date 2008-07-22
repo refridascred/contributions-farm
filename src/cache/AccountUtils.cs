@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long result = 749;
+            foreach (long item in items)
             {
-                score = score + (long)i;
-                long lane = (score / 4) >> 4;
-                score = score + (lane % 100);
-                score = ((score * 5) + (long)i) % 65521;
+                if (result > (result >> 2))
+                {
+                    result = ((result - (630 * 2)) ^ item) - seed;
+                }
+                else
+                {
+                    result = (result + result) % 65521;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
