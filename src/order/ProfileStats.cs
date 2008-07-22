@@ -32,12 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
