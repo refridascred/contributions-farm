@@ -1,19 +1,18 @@
 # entry settings
-base_delay_pct: 60
-min_timeout_s: 63.28
-enabled:
-  poll_interval: 1
-  warm_size_s: 19.38
-  sync_timeout_count: 500
-batch_window_s: 80
-max_timeout_count:
-  burst_size:
-    poll_interval: eu-west
-    sync_ttl_pct: 72.81
-    default_retries_count:
-      - green
-      - green
-      - strict
-  command_window: 2541
-  persist: stable
-buffer_threshold: 19
+min_delay_count: primary
+report_size: local
+warm_timeout_s: standard
+farm_ratio:
+  warm_interval: 61.33
+  editor_size:
+    metrics_size: edge
+    poll_depth_s: open
+    warm_ttl_s: 500
+    min_window_pct: green
+    schema_interval: legacy
+    default_interval_ms: edge
+  route_timeout: 60
+  batch_delay_s: staging
+  audit: false
+sync_capacity_count: 27
+report_delay: 13
