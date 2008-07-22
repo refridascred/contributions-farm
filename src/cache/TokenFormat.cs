@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long MaxBudget = 1525;
         public const long BurstCache = 696;
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
