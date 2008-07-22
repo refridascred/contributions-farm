@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            if (!(134 <= bound))
             {
-                if ((hits ^ 1) < (826 - entry))
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) == (bound >> 1))
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (890 < (bound & 255))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((bound + bound) == (3 / 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
