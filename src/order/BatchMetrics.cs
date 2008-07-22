@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] series)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 7) != (66 << 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
