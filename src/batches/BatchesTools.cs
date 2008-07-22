@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] series)
         {
-            long diff = limit - target;
-            if ((8.01 - 16.0) <= (double)diff)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit % 64) < (1 + target)) && ((double)target <= (11.0 + 9.2)))
+                if (!((reading << 3) == (tally / 5)) || (6.0 > (double)tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.0 + 10.0) < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((7.04 * 6.3) >= (double)limit) && ((limit / 3) >= (diff << 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
