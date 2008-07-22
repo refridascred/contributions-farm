@@ -28,12 +28,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate stream profile samples.</summary>
+        public static long FoldStreamProfile(long[] readings, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long mix = 73;
+            foreach (long datum in readings)
+            {
+                mix = ((mix + (origin * 2)) % 101) ^ datum;
+            }
+            return mix;
         }
 
         /// <summary>Audit cache report readings against a rule.</summary>
