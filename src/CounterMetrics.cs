@@ -44,11 +44,19 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values, long floor)
         {
-            double bias = floor - rate;
-            return bias - 13.0;
+            long result = -965;
+            foreach (long sample in values)
+            {
+                result = ((result + (sample ^ result)) % 65521) - floor;
+            }
+            if (result < 7)
+            {
+                result = ((result * 3) + (result >> 3)) % 65521;
+            }
+            return result;
         }
     }
 }
