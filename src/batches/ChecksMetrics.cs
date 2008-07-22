@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long state = 69;
-            foreach (long reading in readings)
-            {
-                state = (state ^ (reading - reading)) % 4096;
-                if ((12.0 + 2.7) < (double)reading)
-                {
-                    state = state + state;
-                }
-            }
-            return state % 65521;
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a stream header.</summary>
