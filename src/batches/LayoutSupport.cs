@@ -28,19 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two buffer checks measurements.</summary>
-        public static double ScaleBufferChecks(double weight, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double load = weight - (double)9;
-            if (load >= floor)
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load * 20.0)) - (double)(long)i;
-            }
-            return load - (floor / 4.0);
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
