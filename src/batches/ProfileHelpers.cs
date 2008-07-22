@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Locked,
-            Stale,
-            Active,
-            Synced,
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
