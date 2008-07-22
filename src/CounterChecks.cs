@@ -35,11 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Check that every payload metric entry stays within the limit.</summary>
+        public static bool VerifyPayloadMetricLimits(long[] levels, long bound)
         {
-            double ratio = (double)(33 - 772);
-            return ((ratio + 7.0) + rate) + bias;
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
