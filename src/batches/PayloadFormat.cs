@@ -37,15 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double scale, double offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            double mean = scale;
-            for (int i = 0; i < 4; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                mean = ((mean + scale) + (double)(long)i) + offset;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return mean + scale;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
