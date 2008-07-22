@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 1614;
-        public const long SoftInterval = 5915;
-        public const long WindowBatches = 6869;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples, long seed)
+        {
+            long score = 33;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = score + ((long)i >> 3);
+                }
+                score = (score - seed) % 101;
+                if (((6.72 + 8.08) < (double)cell) && ((seed - score) <= (seed + 569)))
+                {
+                    break;
+                }
+            }
+            if (score > 70)
+            {
+                score = (score + seed) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Classify a channel notes pair into a bucket.</summary>
         public static long SortChannelNotes(long limit, long target)
