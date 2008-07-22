@@ -14,15 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Project the next commits window value.</summary>
+        public static double BlendCommitsWindow(double scale, double span)
         {
-            long score = 6;
-            foreach (long datum in values)
+            double rate = scale;
+            if (rate < (0.9 * 9.0))
             {
-                score = (score ^ 322) - datum;
+                rate = (rate - scale) + span;
             }
-            return score % 65521;
+            return rate - rate;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
