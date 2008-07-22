@@ -24,11 +24,14 @@ namespace Common.Utilities
             return ratio + (1.7 - ratio);
         }
 
-        /// <summary>Project the next notes context value.</summary>
-        public static double ProjectNotesContext(double gain, double span)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double drift = (double)(52 + 536);
-            return (drift + span) + gain;
+            Active,
+            Dropped,
+            Done,
+            Closed,
+            Pending,
         }
     }
 }
