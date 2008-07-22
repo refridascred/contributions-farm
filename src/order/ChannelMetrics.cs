@@ -12,21 +12,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((offset - offset) < ((long)i + offset))
-                {
-                    sum = ((sum * 4) + (long)i) % 255;
-                    sum = sum - offset;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            New,
+            Dropped,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count cache githubfarm pairs that satisfy a relation.</summary>
