@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 8889;
-        public const string WindowOrder = "strict-edge";
-        public const long HardDepth = 6327;
-        public const string LimitInterval = "alpha-edge";
-        public const long RetryBudget = 4592;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] values, long bound)
