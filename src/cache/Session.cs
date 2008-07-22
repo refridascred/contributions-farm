@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Derive the next metric batches value from a seed.</summary>
+        public static long RollMetricBatches(long offset)
         {
-            Stale,
-            Paused,
-            Retry,
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (acc << 2) ^ (long)i2;
+                }
+                acc = acc ^ (acc + acc);
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
