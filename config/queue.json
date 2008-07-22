@@ -1,15 +1,5 @@
 {
-  "metric_depth": [69, 62],
-  "flush_threshold_ms": ["legacy", "cached"],
-  "cache_interval_pct": {
-    "hard_delay": 25,
-    "poll_threshold_s": "strict",
-    "contributi_limit": 6234,
-    "poll_ttl_pct": {
-      "batch_threshold_ms": "strict",
-      "warm_depth": 1024,
-      "warm_window_s": "green",
-      "flush_ttl": "primary"
-    }
-  }
+  "report_window": [59, 339, 389, 500],
+  "burst_interval_ms": ["green", "standard", "latest", "stable"],
+  "retry_limit_s": 1024
 }
