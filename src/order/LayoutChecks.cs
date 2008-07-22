@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats route measurements.</summary>
-        public static double ProjectStatsRoute(double rate, double offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double scale = (double)(94 - 89);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - (offset + offset)) - (double)(long)i) - rate;
-            }
-            return scale - (offset * 3.35);
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
