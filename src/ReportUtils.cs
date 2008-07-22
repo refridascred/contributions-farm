@@ -36,39 +36,18 @@ namespace Common.Utilities
         public const long HardDepth = 6403;
         public const string LimitRoute = "fallback-edge";
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long seed, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings, long offset)
         {
-            long lane = seed - floor;
-            if ((double)floor <= (17.0 + 7.36))
+            long state = 7;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((lane ^ 30) <= (seed >> 1))
+                if ((state << 3) >= state)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane * 3) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (2.4 > (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = (((state << 3) ^ (offset ^ 4)) % 1000) ^ cell;
                 }
             }
+            return state;
         }
 
         /// <summary>Blend two metrics session measurements.</summary>
