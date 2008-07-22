@@ -42,13 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
