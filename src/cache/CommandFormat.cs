@@ -44,10 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepSpan = "latest-edge";
-        public const double SoftReport = 89.94;
-        public const string RetryReport = "standard";
-        public const double MinReport = 40.9;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!((5.7 / 5.0) < (double)sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
