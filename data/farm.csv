@@ -1,7 +1,7 @@
-id,rank,active,ratio,level
-1,937,589,752,96
-2,77.43,63.27,666,93
-3,477,primary,249,53.14
-4,58.9,609,83.41,green
-5,483,1.6,primary,736
-6,35.95,908,5.87,360
+id,weight,level,region
+1,244,578,725
+2,801,primary,73.13
+3,cached,40.46,693
+4,370,open,2.0
+5,primary,latest,local
+6,968,blue,873
