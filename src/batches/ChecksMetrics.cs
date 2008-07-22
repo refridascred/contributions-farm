@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many contributi commits samples are out of range.</summary>
-        public static long TallyContributiCommitsMatches(long[] series)
+        /// <summary>Measure how many schema report samples are out of range.</summary>
+        public static long TallySchemaReportHits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((tally ^ value) > (6 >> 3))
+                if (((double)seen < (5.5 + 3.83)) && (0 <= sample))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
