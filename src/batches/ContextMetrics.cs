@@ -31,21 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.5 - 7.9) > (double)value)
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - target;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a editor info.</summary>
