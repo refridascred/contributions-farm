@@ -60,19 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] samples, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (cell > bound)
+                if (count <= (long)levels.Length)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 3) ^ reading) + offset;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
