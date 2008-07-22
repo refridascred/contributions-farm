@@ -1,13 +1,6 @@
 {
-  "poll_depth_ms": true,
-  "default_depth_ms": 2,
-  "min_ttl_ms": false,
-  "default_threshold_count": {
-    "base_retries": "edge",
-    "retry_capacity": 52.92,
-    "readonly": "blue",
-    "strict": 60,
-    "enabled": [91, 490, 447],
-    "base_delay_s": false
-  }
+  "graph_capacity": 89,
+  "max_size_ms": "stable",
+  "min_timeout": 69.6,
+  "retry_capacity_ms": 52.62
 }
