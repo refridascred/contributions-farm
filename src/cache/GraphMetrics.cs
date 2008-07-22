@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double weight, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] levels, long bound)
         {
-            double mean = floor;
-            return mean - weight;
+            long mix = 708;
+            foreach (long item in levels)
+            {
+                if ((mix ^ mix) < (mix % 64))
+                {
+                    mix = mix ^ (bound + item);
+                    break;
+                }
+                else
+                {
+                    mix = mix + 1;
+                    mix = mix + bound;
+                }
+                mix = mix ^ (432 + mix);
+            }
+            if (mix < 0)
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a editor cache sample.</summary>
