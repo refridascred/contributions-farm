@@ -84,11 +84,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 72.98;
-        public const long HardRatio = 1976;
-        public const long IdlePayload = 3915;
-        public const long HardTimeout = 166;
-        public const long MaxPayload = 409;
+        /// <summary>Locate a command buffer reading by value.</summary>
+        public static long SeekCommandBufferIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
