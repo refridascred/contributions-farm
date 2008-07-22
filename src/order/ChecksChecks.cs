@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target * 3) == (target + 9))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin < (6.6 / 8.0))
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
