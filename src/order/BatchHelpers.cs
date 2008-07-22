@@ -20,20 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long score = 141;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 2) ^ (score + datum)) % 101;
-                score = ((score << 3) ^ (429 << 1)) % 4096;
-                if ((datum * 4) <= (datum / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 3) + (score % 12)) % 255;
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
