@@ -30,22 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Match up cluster counter samples.</summary>
+        public static long MatchClusterCounterCount(long[] values)
         {
-            long acc = 762;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < (acc + entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ (entry + acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 2) + ((long)items.Length + entry);
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Audit layout payload readings against a rule.</summary>
