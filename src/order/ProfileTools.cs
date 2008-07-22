@@ -80,21 +80,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 828;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = (((result * 4) + result) % 65521) - (long)i;
+                }
+                if ((double)bound != (double)cell)
+                {
+                    result = (result ^ 28) % 97;
                 }
             }
-            return count;
+            if (result < 0)
+            {
+                result = ((result << 3) ^ (bound * 2)) % 101;
+            }
+            return result % 4096;
         }
     }
 }
