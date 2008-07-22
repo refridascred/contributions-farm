@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a contributi checks sample.</summary>
-        public static long SeekContributiChecksIndex(long[] data, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
