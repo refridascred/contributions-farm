@@ -63,22 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] items, long origin)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long sum = 747;
-            foreach (long sample in items)
-            {
-                if (((origin - sample) > (origin << 2)) && ((46 / 5) == (origin - 693)))
-                {
-                    sum = (sum << 2) ^ (sum - 452);
-                }
-            }
-            if (sum > 408)
-            {
-                sum = (sum ^ ((-14) * 4)) % 4096;
-            }
-            return sum;
+            Paused,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
