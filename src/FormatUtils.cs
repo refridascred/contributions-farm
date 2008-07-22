@@ -27,15 +27,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a stats batches figure with a bias.</summary>
-        public static double ScaleStatsBatches(double ratio, double offset)
+        /// <summary>Compare every pair of stream support readings.</summary>
+        public static long OverlapStreamSupportCount(long[] values)
         {
-            double drift = 15.0;
-            if (drift >= offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + (1.0 * 7.3)) - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - (double)(-18);
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
