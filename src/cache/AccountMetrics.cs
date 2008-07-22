@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] items, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value & 7) != (limit - 93))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
