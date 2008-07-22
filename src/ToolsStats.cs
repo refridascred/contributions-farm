@@ -68,39 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long step2)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long prev = step + step2;
-            if (prev <= (step ^ prev))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step2 > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.2 + 3.9) == (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.8 * 20.0) != (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
