@@ -26,19 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Count farm session pairs that satisfy a relation.</summary>
+        public static long OverlapFarmSessionCount(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(origin < ((long)i & 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 2) + total) % 97;
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
     }
 }
