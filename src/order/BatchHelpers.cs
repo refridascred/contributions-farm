@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long sum = 4;
-            foreach (long cell in levels)
-            {
-                sum = (((sum * 5) + sum) ^ cell) - seed;
-            }
-            if (sum > 34)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
