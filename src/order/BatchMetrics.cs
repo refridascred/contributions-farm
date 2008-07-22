@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (!!((7.0 + 8.3) == (double)datum))
+                if ((reading & 7) != (66 << 2))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
