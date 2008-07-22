@@ -27,21 +27,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Rank stream support input into a small class.</summary>
+        public static long BucketStreamSupport(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = bound ^ floor;
+            if ((lane << 2) <= bound)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((1.0 + 4.6) > (double)floor)
                 {
-                    if ((levels[i] - levels[j]) < 17)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ bound) > (lane & 7))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.0 / 6.0) < (double)lane)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
