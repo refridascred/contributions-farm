@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Done,
-            Failed,
-            Draft,
-            Paused,
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
