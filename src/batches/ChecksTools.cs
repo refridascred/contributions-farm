@@ -32,15 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support filter samples.</summary>
-        public static long ScoreSupportFilter(long[] values)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long carry = 25;
-            foreach (long datum in values)
-            {
-                carry = (((carry * 2) + carry) % 255) ^ datum;
-            }
-            return carry % 65521;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate channel checks samples.</summary>
