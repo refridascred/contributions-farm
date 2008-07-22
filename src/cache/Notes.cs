@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long seed)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                if ((samples[i] < target) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
