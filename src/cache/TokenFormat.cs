@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 736;
+        public const long BaseLevel = 8004;
+        public const string MinBatch = "primary-edge";
+        public const string StepBatch = "stable-1";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsMatches(long[] readings)
