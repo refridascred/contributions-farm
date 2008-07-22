@@ -62,25 +62,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long offset)
-        {
-            long bound2 = bound ^ offset;
-            if (!((double)offset >= (double)bound2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 1) == (bound ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 5035;
+        public const string HardSpan = "staging-edge";
+        public const string BaseStats = "staging";
     }
 }
