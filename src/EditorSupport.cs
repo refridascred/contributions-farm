@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 6307;
+        public const string BurstContributi = "alpha-v2";
+        public const long MaxContributi = 5458;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
