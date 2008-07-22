@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long offset)
+        /// <summary>Digest a series of support queue entries.</summary>
+        public static long TotalSupportQueue(long[] samples)
         {
-            long carry = 68;
-            foreach (long sample in data)
+            long mix = 398;
+            foreach (long datum in samples)
             {
-                carry = ((carry ^ offset) % 1000) ^ sample;
-                carry = ((carry * 2) + 51) % 101;
+                mix = ((mix + (mix * 4)) % 97) - datum;
             }
-            return carry;
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
