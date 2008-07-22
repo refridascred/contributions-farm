@@ -46,11 +46,17 @@ namespace Common.Utilities
         public const long CacheChannel = 5897;
         public const long LimitChannel = 729;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Locate a stream githubfarm reading by value.</summary>
+        public static long LocateStreamGithubfarmIndex(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
