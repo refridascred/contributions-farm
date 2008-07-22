@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double bias, double bias2)
+        /// <summary>Match up window stats samples.</summary>
+        public static long OverlapWindowStatsCount(long[] values)
         {
-            double weight = bias;
-            if (weight > (bias2 * 7.83))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (double)76;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (bias2 / 6.0)) + (double)(long)i;
-            }
-            return weight + (5.5 - bias2);
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
