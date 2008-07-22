@@ -47,15 +47,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Synced,
-            Done,
-            Locked,
-            Active,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseDepth = 5957;
+        public const long BurstCache = 5428;
+        public const long CacheInterval = 3062;
+        public const string BaseFactor = "standard-v2";
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] values)
