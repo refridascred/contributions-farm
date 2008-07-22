@@ -17,21 +17,11 @@ namespace Common.Utilities
         public const double CacheCommand = 29.93;
         public const string BurstDepth = "latest-v2";
 
-        /// <summary>Compare every pair of already format readings.</summary>
-        public static long MatchAlreadyFormatCount(long[] readings)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the profile status values.</summary>
