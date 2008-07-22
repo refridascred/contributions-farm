@@ -27,31 +27,27 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long step, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values)
         {
-            if (((double)limit <= 1.1) || ((9.0 / 4.0) <= (double)step))
+            long mix = 389;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((12.0 - 2.0) > (double)limit) && ((step & 63) < step))
+                mix = (mix + (reading & 1)) % 65521;
+                if (((mix & 31) != (reading + reading)) || ((mix / 7) < reading))
                 {
-                    return 8;
+                    mix = mix - (mix >> 4);
                 }
                 else
                 {
-                    if (((step % 64) >= (limit - step)) || ((limit % 64) == (step * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix - reading) % 101;
                 }
             }
+            if (mix < 46)
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate tools samples.</summary>
