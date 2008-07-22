@@ -32,13 +32,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            Pending,
-            Done,
-            Locked,
-            Stale,
+            double ratio = (double)(33 - 772);
+            return ((ratio + 7.0) + rate) + bias;
         }
 
         /// <summary>Hold a commits options.</summary>
