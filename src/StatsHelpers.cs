@@ -52,12 +52,19 @@ namespace Common.Utilities
         public const double RetryCluster = 92.24;
         public const double BurstCount = 49.47;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] data, long floor)
         {
-            Retry,
-            Stale,
-            Pending,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
