@@ -36,19 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] values, long bound)
+        /// <summary>Locate a format report reading by value.</summary>
+        public static long FindFormatReportIndex(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > bound)
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
