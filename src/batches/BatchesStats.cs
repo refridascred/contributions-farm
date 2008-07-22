@@ -38,11 +38,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 3597;
-        public const long IdleRecord = 6499;
-        public const long SoftLevel = 8677;
-        public const double WindowRecord = 13.1;
-        public const long HardRecord = 411;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Dropped,
+            Synced,
+            New,
+        }
     }
 }
