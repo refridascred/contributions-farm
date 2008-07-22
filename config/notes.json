@@ -1,5 +1,19 @@
 {
-  "strict": "eu-west",
-  "idle_limit_s": "standard",
-  "idle_ratio": "legacy"
+  "command_ttl": 23.53,
+  "soft_size": "blue",
+  "min_threshold_count": {
+    "entry_capacity": {
+      "hard_capacity": 30,
+      "dry_run": 6838,
+      "cache_capacity_count": "eu-west",
+      "default_size": true,
+      "verbose": false,
+      "poll_ratio": false
+    },
+    "warm_depth_count": 30,
+    "min_delay_pct": false,
+    "enabled": "legacy",
+    "readonly": ["fallback", "green"]
+  },
+  "persist": 71.99
 }
