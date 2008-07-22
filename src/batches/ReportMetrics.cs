@@ -23,11 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)step == (8.31 * 2.2))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats stats.</summary>
