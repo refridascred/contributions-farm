@@ -39,10 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 42.27;
-        public const string SoftSize = "open-1";
-        public const long MinCommand = 8238;
-        public const string MinDepth = "alpha-v2";
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
