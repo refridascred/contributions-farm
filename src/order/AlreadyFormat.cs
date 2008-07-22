@@ -21,12 +21,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] levels)
         {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen == (3.1 / 3.0))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit session contributi readings against a rule.</summary>
