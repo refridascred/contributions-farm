@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] data, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (item > offset)
+                if (!((value / 5) <= (value + hits)) && ((6 / 9) <= (hits & 255)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
