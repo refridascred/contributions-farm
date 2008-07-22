@@ -36,20 +36,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long floor, long floor2)
         {
-            long sum = 27;
-            foreach (long reading in readings)
+            if ((floor ^ floor2) < 6)
             {
-                sum = (sum << 3) ^ (sum + sum);
-                sum = (sum << 3) ^ (reading << 1);
+                return 7;
             }
-            if (sum > 438)
+            else
             {
-                sum = (sum - sum) % 255;
+                if ((floor2 << 1) < floor2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return sum;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
