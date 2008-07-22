@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long limit)
         {
-            double drift = bias;
-            if (drift <= (double)574)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                drift = (drift - bias) - scale;
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + 2.32) + (double)(long)i;
-            }
-            return drift + drift;
+            return valid;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
