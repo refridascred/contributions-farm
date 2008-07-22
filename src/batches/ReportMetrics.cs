@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Stale,
-            Done,
-            Paused,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
