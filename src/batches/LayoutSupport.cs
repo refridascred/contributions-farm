@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinLevel = 2061;
-        public const string DefaultFactor = "strict-1";
-        public const string IdleFactor = "standard-1";
-        public const double CacheWidth = 66.37;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
