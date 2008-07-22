@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] values, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long sum = 497;
+            foreach (long item in levels)
             {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum + (2 - item);
             }
-            return ready;
+            if (sum < 7)
+            {
+                sum = ((sum * 4) + ((long)levels.Length & 31)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
