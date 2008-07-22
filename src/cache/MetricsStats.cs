@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double scale, double span)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double scale2 = (scale - scale) - (double)96;
-            if (scale2 < scale)
-            {
-                scale2 = scale2 - (span * 3.4);
-            }
-            return scale2 + span;
+            Active,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Combine format values into a single score.</summary>
