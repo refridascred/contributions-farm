@@ -32,12 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((result - floor) < (result * 2))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
