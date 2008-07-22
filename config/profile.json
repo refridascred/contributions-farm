@@ -1,8 +1,8 @@
 {
-  "schema_delay": true,
-  "compress": [459, 193, 58],
-  "filter_capacity": 9596,
-  "layout_timeout": true,
-  "hard_ratio_ms": true,
-  "hard_interval_pct": 86.81
+  "soft_timeout_s": ["primary", "strict", "legacy", "fallback"],
+  "poll_capacity": 31,
+  "default_limit_s": 6,
+  "soft_depth_ms": "eu-west",
+  "queue_size": ["open", "eu-west", "eu-west"],
+  "dry_run": 43
 }
