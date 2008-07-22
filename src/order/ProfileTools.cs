@@ -28,19 +28,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] series, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
