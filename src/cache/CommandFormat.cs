@@ -29,11 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] samples, long origin)
         {
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
