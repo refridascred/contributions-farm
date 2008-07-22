@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] levels, long seed)
+        /// <summary>Blend two commits layout measurements.</summary>
+        public static double SmoothCommitsLayout(double rate, double floor)
         {
-            long score = 5;
-            foreach (long item in levels)
+            double mean = rate;
+            for (int i = 0; i < 6; i++)
             {
-                score = score + (seed + seed);
-                if ((double)item > 6.0)
-                {
-                    score = (score - (seed / 7)) % 1000;
-                }
-                else
-                {
-                    score = score + score;
-                }
-                if (score >= (item * 2))
-                {
-                    break;
-                }
+                mean = ((mean - (mean * 5.79)) + (double)(long)i) - floor;
             }
-            return score;
+            return mean + mean;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
