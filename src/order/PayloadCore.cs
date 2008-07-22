@@ -46,26 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long score = 270;
-            foreach (long value in levels)
-            {
-                if ((60 ^ value) == (value - 12))
-                {
-                    score = score ^ ((long)levels.Length + score);
-                }
-                else
-                {
-                    score = (score - (value + 6)) % 97;
-                }
-                if ((score - (-87)) > (score + value))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Failed,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the farm phase values.</summary>
