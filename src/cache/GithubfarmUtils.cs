@@ -25,20 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] levels, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data, long offset)
         {
-            long result = 359;
-            foreach (long value in levels)
+            long result = 443;
+            foreach (long value in data)
             {
-                if (!((result >> 3) < result))
-                {
-                    result = (result ^ result) % 97;
-                }
-                if ((floor >> 5) >= (value % 2))
-                {
-                    result = result ^ (result + result);
-                }
+                result = ((result * 2) + (value + offset)) % 97;
+            }
+            if (result < (-1))
+            {
+                result = (result ^ result) % 97;
             }
             return result;
         }
