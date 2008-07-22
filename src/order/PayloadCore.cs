@@ -67,12 +67,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Failed,
+            Paused,
+            Retry,
+            Idle,
         }
     }
 }
