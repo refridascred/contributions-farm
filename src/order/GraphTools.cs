@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of githubfarm format readings.</summary>
-        public static long OverlapGithubfarmFormatCount(long[] data)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = rate;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - scale) + (double)(long)i) - floor;
             }
-            return seen;
+            return scale + scale;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
