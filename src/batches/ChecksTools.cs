@@ -20,16 +20,21 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Roll a format stream counter forward.</summary>
-        public static long IterateFormatStream(long step)
+        /// <summary>Count notes cache pairs that satisfy a relation.</summary>
+        public static long CompareNotesCacheCount(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
