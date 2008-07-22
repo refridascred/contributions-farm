@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Retry,
+            long carry = 544;
+            foreach (long reading in items)
+            {
+                if (reading >= (11 << 2))
+                {
+                    carry = (carry - (reading & 127)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
