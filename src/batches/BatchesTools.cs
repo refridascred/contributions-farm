@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const double IdleRatio = 4.31;
         public const double CacheLevel = 5.88;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] data, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (!((888 % 12) < seen))
+                if (hits < (step - hits))
                 {
-                    seen = ((seen + 3) + datum) - origin;
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
