@@ -10,25 +10,20 @@ namespace Common.Utilities
         public const long HardContributi = 1891;
         public const long LimitFactor = 111;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long next = seed + limit;
-            if ((68 >= (limit + 76)) || (next >= (limit % 60)))
+            long sum = 35;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((next >> 4) != (seed >> 2)) && ((double)next == (5.67 - 5.0)))
+                sum = ((sum << 3) ^ (value - sum)) % 255;
+                sum = (sum - sum) % 4096;
+                if ((value & 15) != (sum / 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    sum = (sum << 3) ^ (sum << 3);
                 }
             }
+            return sum;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
