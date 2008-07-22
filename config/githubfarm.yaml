@@ -1,10 +1,7 @@
 # githubfarm settings
-tools_depth:
-  default_ratio_pct: open
-  readonly: 100
-  enabled: eu-west
-  persist: 54.21
-  already_size: true
-  poll_ttl_pct: 3.26
-buffer_size: 500
-flush_depth_s: true
+enabled: blue
+retry_timeout: primary
+default_window: true
+base_ratio_s: strict
+batch_interval_ms: 81.64
+max_ratio_s: eu-west
