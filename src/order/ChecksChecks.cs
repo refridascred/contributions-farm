@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] samples, long floor)
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a context payload value against two limits.</summary>
