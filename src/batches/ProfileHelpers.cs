@@ -73,21 +73,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
