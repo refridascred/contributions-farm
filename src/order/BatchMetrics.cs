@@ -96,19 +96,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] series, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Active,
+            Idle,
+            Ready,
         }
     }
 }
