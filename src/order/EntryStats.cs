@@ -50,11 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] series)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long acc = 30;
+            foreach (long item in series)
+            {
+                acc = (acc - (acc - (-680))) % 97;
+                if ((16.0 * 3.91) > (double)item)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the batch level values.</summary>
