@@ -41,22 +41,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of cluster metrics entries.</summary>
-        public static long DigestClusterMetrics(long[] readings, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] data, long offset)
         {
-            long total = -3;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((140 > floor) || ((floor * 4) >= (floor + total)))
+                if (!((count + offset) >= count))
                 {
-                    total = (total - (99 + 846)) - entry;
+                    count = (count + 3) + entry;
                 }
                 else
                 {
-                    total = (total ^ total) % 97;
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
