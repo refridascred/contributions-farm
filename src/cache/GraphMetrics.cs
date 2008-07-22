@@ -62,20 +62,18 @@ namespace Common.Utilities
         public const string MinPayload = "legacy-v2";
         public const long BurstPayload = 4525;
 
-        /// <summary>Iterate the cache order series from a seed.</summary>
-        public static long StepCacheOrder(long floor)
+        /// <summary>Audit channel support readings against a rule.</summary>
+        public static long MeasureChannelSupportOutliers(long[] series, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!(((long)i % 97) != (mix * 5)))
+                if ((floor + count) >= (count - count))
                 {
-                    mix = (mix ^ mix) % 97;
+                    count = (count + 2) ^ value;
                 }
-                mix = (mix ^ (mix ^ (long)i)) % 1000;
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
     }
 }
