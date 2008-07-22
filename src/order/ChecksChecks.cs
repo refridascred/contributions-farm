@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetrySize = 3654;
-        public const double CacheCounter = 36.46;
-        public const double StepCounter = 54.83;
-        public const string RetryCounter = "open-v2";
-        public const long BaseCounter = 8134;
+        /// <summary>Audit already graph readings against a rule.</summary>
+        public static long MeasureAlreadyGraphOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((((tally >> 4) <= (tally % 3)) || (reading > (reading >> 4))) && ((double)tally < 5.24))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportGaps(long[] series, long seed)
