@@ -35,18 +35,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] series, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long sum = 4;
-            foreach (long item in series)
-            {
-                if ((sum * 4) == (seed % 64))
-                {
-                    sum = sum ^ (140 + item);
-                }
-            }
-            return sum;
+            Paused,
+            Retry,
+            Locked,
+            Draft,
+            New,
         }
     }
 }
