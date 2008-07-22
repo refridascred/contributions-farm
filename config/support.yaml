@@ -1,23 +1,7 @@
 # support settings
-base_limit:
-  persist: latest
-  cache_interval_count:
-    - primary
-    - primary
-    - open
-    - latest
-  already_interval: 36.68
-  hard_window_pct: green
-  poll_interval_ms: 4123
-order_size:
-  poll_interval_s: false
-  flush_size: 1250
-  flush_threshold: 1024
-  cache_capacity_s: local
-idle_ttl: 8990
-warm_threshold:
-  - 237
-  - 396
-  - 353
-  - 167
-audit: false
+hard_ratio: 6014
+soft_window_pct: eu-west
+batch_ratio: false
+stats_window: 70
+burst_ttl_ms: eu-west
+verbose: 1218
