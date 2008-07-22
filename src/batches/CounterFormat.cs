@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCount = 7516;
+        public const long HardCommand = 1718;
+        public const double CacheCommand = 65.66;
+        public const string StepDepth = "legacy-1";
+        public const long SoftCommand = 7828;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] series)
