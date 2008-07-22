@@ -78,11 +78,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5167;
-        public const double LimitChannel = 94.24;
-        public const double HardChannel = 21.72;
-        public const long IdleDepth = 9221;
-        public const string BurstChannel = "latest";
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] levels)
+        {
+            long total = 8;
+            foreach (long value in levels)
+            {
+                total = total ^ (value ^ 951);
+                total = ((total << 3) ^ value) % 4096;
+                total = (total + (569 + total)) % 101;
+            }
+            if (total > 302)
+            {
+                total = (total - total) % 1000;
+            }
+            return total;
+        }
     }
 }
