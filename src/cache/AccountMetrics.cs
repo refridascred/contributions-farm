@@ -42,21 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
