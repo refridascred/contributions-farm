@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Closed,
-            Pending,
-            Draft,
-            Paused,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
