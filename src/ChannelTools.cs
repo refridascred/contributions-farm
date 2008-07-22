@@ -29,18 +29,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples, long origin)
-        {
-            long anchor = 3;
-            foreach (long item in samples)
-            {
-                if (item >= (696 / 7))
-                {
-                    anchor = ((anchor << 2) ^ (anchor % 2)) - origin;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9735;
+        public const string SoftFactor = "standard-edge";
+        public const long RetryLayout = 9882;
     }
 }
