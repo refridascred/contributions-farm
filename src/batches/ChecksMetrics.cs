@@ -37,13 +37,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 95;
+            foreach (long entry in values)
+            {
+                result = (result + (entry * 2)) % 4096;
+                result = (result + (0 % 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
