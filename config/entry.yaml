@@ -1,19 +1,4 @@
 # entry settings
-editor_retries:
-  max_ratio_pct:
-    verbose: local
-    poll_retries: 25.22
-    soft_ttl: 3301
-    sync_threshold_s: 56.61
-    strict: staging
-    route_depth: 100
-  max_threshold_ms: false
-  layout_limit: false
-  hard_timeout: cached
-order_interval: 64.09
-min_limit_ms: 87.74
-persist: 76
-metric_limit:
-  - legacy
-  - eu-west
-  - legacy
+idle_threshold_s: 61
+stream_delay: false
+flush_limit_pct: false
