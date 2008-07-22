@@ -22,21 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark + 971) < mark)
                 {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark - (51 + (long)i);
                 }
+                mark = mark ^ (target + mark);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
