@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = score + 7;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
