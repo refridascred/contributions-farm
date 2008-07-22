@@ -1,17 +1,8 @@
 {
-  "strict": "blue",
-  "cache_ratio_pct": {
-    "max_capacity_s": 60,
-    "commits_interval": true,
-    "enabled": {
-      "min_ratio": 75,
-      "dry_run": 500,
-      "idle_ttl_s": [342, 295],
-      "persist": 85.41,
-      "window_interval": "blue",
-      "hard_depth": 1356
-    }
-  },
-  "support_ratio": 23.81,
-  "max_timeout_ms": [400, 354, 151]
+  "cache_depth_ms": 63.89,
+  "max_delay_pct": false,
+  "retry_limit_s": 100,
+  "retry_threshold_s": "green",
+  "compress": 60,
+  "hard_capacity_ms": 87.18
 }
