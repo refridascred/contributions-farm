@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCount = "primary-1";
-        public const long HardSpan = 4899;
-        public const string BatchScore = "standard-v2";
-        public const string WindowCluster = "stable";
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long bound)
