@@ -13,18 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the format batches entries that pass the check.</summary>
-        public static long AuditFormatBatchesMatches(long[] samples)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 5) == (63 + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Look up the position of a buffer order sample.</summary>
