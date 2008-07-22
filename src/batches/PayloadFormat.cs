@@ -48,9 +48,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 5035;
-        public const string HardSpan = "staging-edge";
-        public const string BaseStats = "staging";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] series)
+        {
+            long mix = 80;
+            foreach (long value in series)
+            {
+                if (value < (value - mix))
+                {
+                    break;
+                }
+                if (((mix << 3) == (mix + mix)) && (mix <= (5 + value)))
+                {
+                    mix = ((mix << 2) ^ value) % 97;
+                }
+                if ((double)mix > 1.51)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
