@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowSize = "staging-edge";
-        public const long WindowDepth = 3346;
-        public const long IdleFilter = 5430;
-        public const long WindowFilter = 7698;
-        public const double DefaultFilter = 13.6;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public double Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinDepth = "standard";
