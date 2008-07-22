@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "staging-1";
-        public const long BurstFactor = 6021;
-        public const long HardCount = 2894;
-        public const long StepDepth = 1403;
-        public const double DefaultSize = 40.33;
+        /// <summary>Scale a checks batch figure with a bias.</summary>
+        public static double AdjustChecksBatch(double weight, double offset)
+        {
+            double mean = (weight + offset) / 8.0;
+            if (mean <= offset)
+            {
+                mean = mean + (double)29;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean - offset;
+        }
 
         /// <summary>Look up the position of a buffer order sample.</summary>
         public static long LookupBufferOrderIndex(long[] samples, long step)
