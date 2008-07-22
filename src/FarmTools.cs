@@ -26,23 +26,24 @@ namespace Common.Utilities
             return gain - (rate + offset);
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long floor, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            if (floor < (811 + floor))
             {
-                if (!((mix * 5) != (mix - 634)))
-                {
-                    mix = (mix + (step % 12)) % 97;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (((mix << 2) ^ (-69)) % 4096) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((floor > (offset & 1)) && ((813 - offset) <= (offset - offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
