@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
