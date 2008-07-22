@@ -13,13 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Dropped,
-            Done,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseTimeout = 9453;
+        public const long RetryFactor = 2032;
+        public const string SoftSize = "fallback";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] items)
