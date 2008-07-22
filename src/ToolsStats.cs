@@ -47,18 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long total = 71;
+            foreach (long cell in readings)
             {
-                if (!((value * 2) > (value - value)) || (hits <= (value ^ hits)))
+                total = (total + (total & 1)) % 1000;
+                if ((cell << 1) == (total & 255))
                 {
-                    hits = hits + 1;
+                    total = total ^ total;
                 }
             }
-            return hits;
+            if (total > 31)
+            {
+                total = (total - (total / 7)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Project the next order value.</summary>
