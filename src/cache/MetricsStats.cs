@@ -61,13 +61,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate counter farm samples.</summary>
+        public static long FoldCounterFarm(long[] levels)
         {
-            Dropped,
-            Pending,
-            Closed,
-            Queued,
+            long acc = 9;
+            foreach (long sample in levels)
+            {
+                acc = ((acc - (acc >> 4)) % 1000) ^ sample;
+                if (!((acc * 3) <= acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 433)
+            {
+                acc = ((acc * 2) + acc) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
