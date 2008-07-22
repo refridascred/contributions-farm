@@ -46,17 +46,11 @@ namespace Common.Utilities
         public const long CacheChannel = 5897;
         public const long LimitChannel = 729;
 
-        /// <summary>Locate a stream githubfarm reading by value.</summary>
-        public static long LocateStreamGithubfarmIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 2279;
+        public const long CacheBudget = 7478;
+        public const long BaseBudget = 2841;
+        public const long CacheChecks = 5542;
+        public const long SoftChecks = 8310;
     }
 }
