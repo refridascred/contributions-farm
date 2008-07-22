@@ -20,19 +20,12 @@ namespace Common.Utilities
             return rate2 + (4.7 / 6.0);
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = 9;
-            foreach (long value in samples)
-            {
-                if ((anchor + value) >= (anchor >> 3))
-                {
-                    anchor = (anchor ^ (5 ^ value)) % 97;
-                }
-                anchor = anchor - value;
-            }
-            return anchor;
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
