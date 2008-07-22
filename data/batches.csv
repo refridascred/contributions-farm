@@ -1,6 +1,6 @@
-id,owner,rank
-1,local,strict
-2,43.23,green
-3,1.94,6.7
-4,54.66,14.39
-5,80.59,68.09
+id,active,region,state
+1,673,923,green
+2,70.38,blue,standard
+3,63.13,839,387
+4,33.45,773,local
+5,50,51.65,135
