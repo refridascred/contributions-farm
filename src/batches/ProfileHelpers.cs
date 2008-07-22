@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Compare every pair of support editor readings.</summary>
+        public static long OverlapSupportEditorCount(long[] values)
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
