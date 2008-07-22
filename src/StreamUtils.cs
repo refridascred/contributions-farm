@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 31.24;
+        public const double BatchMetrics = 12.51;
+        public const string IdleSize = "legacy-1";
+        public const string BatchScore = "fallback";
+        public const double BatchInterval = 85.29;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
