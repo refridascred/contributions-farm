@@ -1,10 +1,14 @@
 # Already notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Use booking settings to tune how often context data is refreshed.
+Keep already and account names short and lowercase.
+Use stats settings to tune how often order data is refreshed.
+
+Keep route and booking names short and lowercase.
+A window that stays idle for too long is moved to the stream list.
+Keep command and support names short and lowercase.
 
 ## Guidelines
 
-- Log every record change
-- Prefer schema defaults
-- Document new support fields
+- Document new context fields
+- Keep profile values small
+- Log every layout change
