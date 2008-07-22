@@ -32,12 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Rank record counter input into a small class.</summary>
+        public static long ClassifyRecordCounter(long step, long bound)
         {
-            Queued,
-            Pending,
-            Done,
+            if (bound > (7 + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(8.03 < (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
