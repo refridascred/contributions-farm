@@ -47,19 +47,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next graph contributi value.</summary>
-        public static double ScaleGraphContributi(double ratio, double offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long limit)
         {
-            double rate = 0.82;
-            if (rate >= (double)7)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + (rate + offset);
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            return rate - (7.01 + rate);
+            return -1;
         }
     }
 }
