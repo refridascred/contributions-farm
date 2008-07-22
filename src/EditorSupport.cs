@@ -75,21 +75,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of session metric readings.</summary>
-        public static long OverlapSessionMetricCount(long[] data)
+        /// <summary>Grade a window schema value against two limits.</summary>
+        public static long RankWindowSchema(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = bound + bound2;
+            if (!(bound <= (bound2 & 63)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((bound & 63) < (bound2 & 1)) && ((offset % 100) <= (0 ^ bound)))
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
