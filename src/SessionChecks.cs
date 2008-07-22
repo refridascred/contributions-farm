@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseLevel = 6712;
-        public const long LimitRecord = 1981;
-        public const double RetryRecord = 96.62;
-        public const double WindowTimeout = 55.38;
-        public const long DefaultRecord = 3063;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank graph notes input into a small class.</summary>
         public static long RankGraphNotes(long limit, long seed)
