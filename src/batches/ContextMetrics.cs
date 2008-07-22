@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Retry,
-            Draft,
-            Idle,
-            Active,
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
