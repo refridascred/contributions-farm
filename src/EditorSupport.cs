@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 6307;
-        public const string BurstContributi = "alpha-v2";
-        public const long MaxContributi = 5458;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinTimeout = 5174;
+        public const long BurstLayout = 8857;
+        public const long WindowLayout = 2701;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
