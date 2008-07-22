@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Validate format counter readings against a bound.</summary>
+        public static bool VerifyFormatCounterLimits(long[] readings, long seed)
         {
-            long carry = 7;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                carry = (carry + (reading ^ reading)) % 97;
-                if ((double)217 < (double)(long)series.Length)
+                if (cell >= seed)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
