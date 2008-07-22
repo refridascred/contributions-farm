@@ -88,18 +88,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] data, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = 246;
+            foreach (long entry in values)
             {
-                if ((bound - datum) != (hits ^ hits))
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = hits + 3;
+                    state = ((state + state) % 1000) + (long)i;
                 }
+                state = state + entry;
+                state = state - (state << 2);
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
