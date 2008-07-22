@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 31.24;
-        public const double BatchMetrics = 12.51;
-        public const string IdleSize = "legacy-1";
-        public const string BatchScore = "fallback";
-        public const double BatchInterval = 85.29;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 2634;
+        public const double BaseRatio = 14.59;
+        public const double BatchTimeout = 87.73;
+        public const long IdleOrder = 3216;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
