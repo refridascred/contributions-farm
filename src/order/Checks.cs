@@ -69,13 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double weight, double bias)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
+            double drift = 5.46;
+            return ((drift - 8.0) + weight) + bias;
         }
     }
 }
