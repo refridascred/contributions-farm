@@ -31,22 +31,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels, long seed)
+        /// <summary>Roll a batch batches counter forward.</summary>
+        public static long RollBatchBatches(long floor)
         {
-            long acc = 7;
-            foreach (long value in levels)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6.17 * 15.0) == (double)value)
-                {
-                    acc = acc ^ (value + acc);
-                }
+                sum = (sum + (sum ^ sum)) % 4096;
+                sum = (sum + (floor + sum)) % 1000;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            if (acc > 1)
-            {
-                acc = acc + ((-5) + seed);
-            }
-            return acc % 97;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
