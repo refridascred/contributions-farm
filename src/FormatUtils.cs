@@ -73,12 +73,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 1235;
-        public const string MaxInterval = "staging-v2";
-        public const string MaxCommand = "stable-1";
-        public const long StepLevel = 3376;
-        public const long IdleCommand = 6694;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long floor)
+        {
+            long lane = seed - floor;
+            if ((double)lane == (double)82)
+            {
+                return 7;
+            }
+            else
+            {
+                if (lane >= 445)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((771 * 3) >= (8 ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(seed >= (floor % 12)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstDepth = 9883;
