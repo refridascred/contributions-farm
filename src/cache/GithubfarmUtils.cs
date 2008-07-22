@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Locked,
-            Ready,
-            Dropped,
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
