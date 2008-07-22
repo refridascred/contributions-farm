@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Pending,
-            Draft,
-            Paused,
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
