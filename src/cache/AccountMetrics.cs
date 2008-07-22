@@ -60,26 +60,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long mark = 978;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!((value ^ mark) == (value & 63)))
+                if ((2.0 - 18.0) > (double)(long)data.Length)
                 {
-                    mark = (mark ^ (value << 3)) % 4096;
+                    hits = (hits + 3) + value;
                 }
                 else
                 {
-                    mark = (mark - 222) % 1000;
+                    hits = hits - 1;
                 }
             }
-            if (mark < 715)
-            {
-                mark = (mark << 3) ^ (offset + offset);
-            }
-            return mark;
+            return hits;
         }
     }
 }
