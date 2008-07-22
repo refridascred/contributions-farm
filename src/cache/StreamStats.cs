@@ -46,9 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 5397;
-        public const long MaxWidth = 9323;
-        public const string MaxLevel = "alpha";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
