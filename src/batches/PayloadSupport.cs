@@ -31,13 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Queued,
+            Paused,
             Dropped,
-            Done,
-            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a command record.</summary>
