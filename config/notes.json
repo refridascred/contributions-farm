@@ -1,5 +1,16 @@
 {
-  "window_window": 3696,
-  "layout_window": ["staging", "fallback"],
-  "payload_depth": "green"
+  "retry_depth": true,
+  "min_size": 11.41,
+  "base_capacity_count": 79.49,
+  "default_retries": 1946,
+  "flush_ratio_ms": {
+    "readonly": 81,
+    "window_limit": ["cached", "legacy"],
+    "poll_timeout_pct": 99,
+    "max_delay_ms": {
+      "warm_limit_pct": "eu-west",
+      "base_ttl_ms": 56.94,
+      "default_threshold_ms": 52.58
+    }
+  }
 }
