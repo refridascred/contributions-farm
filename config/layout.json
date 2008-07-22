@@ -1,5 +1,19 @@
 {
-  "base_ttl_count": 42,
-  "max_ttl_count": 65.33,
-  "poll_limit": 23.49
+  "strict": "standard",
+  "min_capacity_ms": {
+    "persist": "primary",
+    "commits_ratio": 51.78,
+    "verbose": {
+      "batch_threshold_ms": "staging",
+      "route_depth": 5040,
+      "max_ttl": 61.17,
+      "default_limit_pct": false,
+      "batch_depth": "strict"
+    },
+    "payload_delay": [464, 385, 62, 85],
+    "report_size": "edge",
+    "soft_ratio": 98
+  },
+  "graph_size": "edge",
+  "max_limit_pct": ["fallback", "strict", "stable", "cached"]
 }
