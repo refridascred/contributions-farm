@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] series)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((8.58 > (double)value) || ((double)value < (0.18 - 1.67)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
