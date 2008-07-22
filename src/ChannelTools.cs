@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] data, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] < bound) && ((data[i] % 2) == 0))
+                if (!(((double)hits != (8.23 * 9.66)) && ((5.6 / 4.0) > (double)hits)))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ sample) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a metric tools reading.</summary>
