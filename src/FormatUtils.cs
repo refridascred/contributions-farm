@@ -100,9 +100,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstDepth = 9883;
-        public const double IdleBatches = 73.5;
-        public const long BurstTimeout = 9997;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
