@@ -1,24 +1,16 @@
 # support settings
+idle_limit_ms: 8
+flush_depth_s: 97.12
+verbose: open
+base_capacity: 35.19
+batch_timeout: true
 strict:
-  - staging
-  - primary
-  - stable
-  - open
-burst_interval_pct: 100
-warm_size_s: eu-west
-retry_size_ms:
-  audit:
-    - 189
-    - 185
-    - 31
-    - 401
-  retry_depth: legacy
-  farm_capacity:
-    metrics_delay: 78.65
-    min_capacity_count: local
-    batch_capacity_count:
-      - 263
-      - 206
-    readonly: primary
-    min_ttl_s: 50
-default_ratio_pct: true
+  sync_limit: 100
+  poll_ttl:
+    warm_capacity: false
+    idle_ratio_pct: primary
+    sync_window_pct: 5037
+    strict: standard
+    min_interval_pct: 1212
+    enabled: 88.55
+  max_threshold_pct: 55
