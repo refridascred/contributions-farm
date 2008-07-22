@@ -26,17 +26,19 @@ namespace Common.Utilities
             return (gain - (double)93) + span;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] values, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (values[i] < bound)
+                if (cell <= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
