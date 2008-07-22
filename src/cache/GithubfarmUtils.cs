@@ -16,13 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 6556;
+        public const long WindowProfile = 8747;
+        public const long BurstProfile = 6624;
+        public const long WindowWidth = 1891;
+        public const string BurstSize = "strict";
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
