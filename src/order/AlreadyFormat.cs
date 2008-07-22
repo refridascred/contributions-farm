@@ -25,13 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long step)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((state * 5) == ((long)i ^ state))
+                {
+                    state = ((state << 2) ^ ((long)i + (long)i)) % 101;
+                    state = state + (step + step);
+                }
+                if ((state % 97) == (step / 8))
+                {
+                    state = (state ^ (550 >> 1)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
