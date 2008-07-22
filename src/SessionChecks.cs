@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (samples[i] == floor)
+                if (value != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a tools stats.</summary>
