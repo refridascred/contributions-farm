@@ -66,18 +66,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools order samples are out of range.</summary>
-        public static long CountToolsOrderMatches(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((hits + value) >= (hits / 5))
+                if ((step & 15) < count)
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
