@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long DefaultNotes = 4421;
         public const long BaseLevel = 1728;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (readings[i] < step)
+                if (sample != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Rank command input into a small class.</summary>
