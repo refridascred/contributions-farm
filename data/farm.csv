@@ -1,6 +1,10 @@
-id,weight,region,ratio,level
-1,559,37.71,36.25,311
-2,663,0.82,staging,fallback
-3,18.83,77.68,59.93,275
-4,805,staging,90.93,340
-5,91.08,53.49,48.11,290
+id,level,count,label,token
+1,latest,64.28,645,7.26
+2,321,89,stable,eu-west
+3,local,84.8,stable,298
+4,623,60.79,492,green
+5,574,68.37,264,762
+6,strict,10.17,89,43.55
+7,13.85,blue,964,open
+8,97,273,blue,cached
+9,eu-west,latest,35.49,blue
