@@ -49,25 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long target, long target2)
-        {
-            long step = target + target2;
-            if (((step * 3) <= step) || ((target % 5) >= step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step << 1) != (target2 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftSize = 9127;
+        public const long DefaultFactor = 5092;
+        public const long DefaultAlready = 3781;
     }
 }
