@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const string IdleFactor = "standard-1";
         public const double CacheWidth = 66.37;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Pending,
-            Idle,
-            Draft,
-            New,
+            Closed,
+            Ready,
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the buffer level values.</summary>
