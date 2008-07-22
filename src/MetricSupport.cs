@@ -19,16 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] series)
-        {
-            long anchor = 399;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor - ((long)series.Length / 4)) % 1000) + sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 658;
+        public const double StepCommand = 10.25;
+        public const long HardDepth = 4480;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] levels, long origin)
