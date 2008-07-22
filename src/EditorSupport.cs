@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long DefaultNotes = 4421;
         public const long BaseLevel = 1728;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] items, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= target)
+                if (readings[i] < step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
