@@ -74,19 +74,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] series, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            long state = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                state = (state ^ cell) % 97;
-                if ((seed - 209) >= (state * 2))
+                if (entry < (entry - entry))
                 {
-                    state = (state + (state + cell)) % 65521;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state % 1000;
+            return count;
         }
     }
 }
