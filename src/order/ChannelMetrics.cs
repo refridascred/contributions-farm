@@ -24,12 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            New,
-            Closed,
-            Retry,
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry << 3) ^ 9) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
