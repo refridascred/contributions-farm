@@ -35,32 +35,13 @@ namespace Common.Utilities
             return ratio + 11.0;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long lane = step ^ bound;
-            if ((lane - step) >= (lane - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step < lane) && ((lane + lane) >= (4 + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound / 8) <= (bound + step)) || ((11.0 * 7.9) > (double)lane))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
