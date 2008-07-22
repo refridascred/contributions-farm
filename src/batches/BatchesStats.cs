@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long WindowContributi = 9671;
         public const long WindowSize = 6640;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((origin % 5) <= seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every channel graph entry stays within the limit.</summary>
