@@ -1,7 +1,6 @@
 # entry settings
-sync_delay_count: 55.41
-cluster_timeout:
-  - primary
-  - cached
-warm_delay_count: cached
-cache_limit: local
+batch_ratio: false
+entry_threshold: latest
+filter_limit: 30
+default_timeout_count: 1024
+burst_capacity_ms: false
