@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long AuditSupportQueueMatches(long[] values, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((5.0 * 8.48) != (double)tally) && (9.5 >= (double)seed)))
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) ^ item;
                 }
             }
             return tally;
