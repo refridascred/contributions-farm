@@ -37,15 +37,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double mean = (double)69;
-            if (mean <= (ratio / 7.0))
-            {
-                mean = (mean - ratio) - bias;
-            }
-            return mean - (mean + mean);
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
