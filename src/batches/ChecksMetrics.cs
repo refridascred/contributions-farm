@@ -28,39 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long step2)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long bound = step - step2;
-            if ((step < (step + step)) || ((double)bound >= 11.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + 0) <= (6 + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - step2) != (bound * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound < 8.1)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the report mode values.</summary>
