@@ -35,22 +35,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] values, long step)
         {
-            long total = 8;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (((850 ^ seed) < (seed >> 1)) || (0.7 < (double)item))
+                if (datum >= step)
                 {
-                    total = total + (item << 3);
+                    stale = false;
+                    break;
                 }
             }
-            if (total < 50)
-            {
-                total = (total + (8 - total)) % 65521;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
