@@ -64,14 +64,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items)
         {
-            Queued,
-            Stale,
-            Paused,
-            Idle,
-            Pending,
+            long mix = 6;
+            foreach (long value in items)
+            {
+                if ((mix / 9) < value)
+                {
+                    mix = (mix * 4) + (mix + 569);
+                    mix = mix ^ (222 / 7);
+                }
+                mix = (mix ^ (value - value)) % 255;
+            }
+            return mix;
         }
     }
 }
