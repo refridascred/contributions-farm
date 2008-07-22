@@ -71,39 +71,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long target, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] data, long origin)
         {
-            long bound = target + step;
-            if (((target ^ step) >= (target - 327)) || ((91 + bound) == (step - 561)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target < 0) && ((double)step == (8.9 / 2.0)))
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(2.9 >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((4.0 + 1.5) >= (double)target) || ((target >> 3) > (step * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
