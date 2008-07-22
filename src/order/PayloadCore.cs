@@ -65,14 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
+            Active,
+            Dropped,
+            Queued,
             Closed,
-            Failed,
-            Paused,
-            Retry,
-            Idle,
         }
     }
 }
