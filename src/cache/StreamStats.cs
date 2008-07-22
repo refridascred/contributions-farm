@@ -14,11 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "latest-edge";
-        public const long CacheTimeout = 5552;
-        public const string SoftSpan = "cached-edge";
-        public const long SoftSupport = 2334;
+        /// <summary>Validate command route readings against a bound.</summary>
+        public static bool ValidateCommandRouteLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TallyGraph(long[] data, long target)
