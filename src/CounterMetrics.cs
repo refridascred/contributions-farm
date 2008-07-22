@@ -44,17 +44,11 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
