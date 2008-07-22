@@ -66,13 +66,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Stale,
-            Draft,
-            Retry,
-            Dropped,
+            Locked,
+            Closed,
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the profile kind values.</summary>
