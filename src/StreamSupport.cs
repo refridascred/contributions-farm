@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] values, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(tally < (sample - 998)))
+                if ((origin + origin) >= origin)
                 {
-                    tally = (tally + 2) - floor;
+                    result = ((result << 3) ^ result) % 1000;
                 }
+                else
+                {
+                    result = (result + origin) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Fold a list of token readings.</summary>
