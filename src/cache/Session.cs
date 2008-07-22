@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next metric batches value from a seed.</summary>
-        public static long RollMetricBatches(long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc << 2) ^ (long)i2;
-                }
-                acc = acc ^ (acc + acc);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
