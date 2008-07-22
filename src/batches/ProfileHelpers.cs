@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first profile metrics entry that matches the target.</summary>
-        public static long LookupProfileMetricsIndex(long[] items, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
