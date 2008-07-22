@@ -51,13 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] values, long floor)
         {
-            Queued,
-            Failed,
-            Draft,
-            Done,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
