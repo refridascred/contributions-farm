@@ -31,22 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftLevel = 3078;
+        public const long CacheInterval = 529;
+        public const string LimitInterval = "strict-edge";
+        public const double BurstLevel = 65.36;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterMatches(long[] readings)
