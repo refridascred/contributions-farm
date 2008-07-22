@@ -68,11 +68,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long step2)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long prev = step + step2;
+            if (prev <= (step ^ prev))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step2 > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.2 + 3.9) == (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.8 * 20.0) != (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
