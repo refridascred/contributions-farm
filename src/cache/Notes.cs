@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] readings, long limit)
         {
-            if ((seed + 249) != (bound ^ bound))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) > (seed * 4))
+                if ((seen ^ limit) != (cell + cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
