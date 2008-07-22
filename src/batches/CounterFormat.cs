@@ -27,27 +27,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long carry = 91;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry - sample) % 4096;
-                if ((limit & 1) == (limit ^ sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = (carry * 5) + (916 & 63);
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 0)
-            {
-                carry = carry + (carry / 8);
-            }
-            return carry;
+            return tally;
         }
     }
 }
