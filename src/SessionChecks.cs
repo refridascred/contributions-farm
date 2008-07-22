@@ -57,20 +57,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long step)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                long slot = 66 / 2;
-                if (!((bound + score) >= (bound - slot)))
+                if (step < (total + total))
                 {
-                    score = (score - ((long)i + bound)) % 4096;
+                    total = ((total * 5) + (9 + (-4))) % 4096;
+                    total = total - (step % 3);
                 }
-                score = ((score * 3) + (long)i) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
