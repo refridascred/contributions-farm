@@ -28,19 +28,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long target, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
+            if ((target >> 3) >= target)
             {
-                if (!((total & 63) > total))
-                {
-                    total = (total ^ ((long)i % 24)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (20.0 < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset < (2 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + target) < (target * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
