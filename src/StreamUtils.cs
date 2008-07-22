@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long target)
+        /// <summary>Validate graph format readings against a bound.</summary>
+        public static bool VerifyGraphFormatBounds(long[] values, long limit)
         {
-            if ((origin - 6) > (target * 5))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target << 1) > origin)
+                if (entry < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
