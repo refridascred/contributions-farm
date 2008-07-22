@@ -47,23 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools order entries.</summary>
-        public static long CombineToolsOrder(long[] readings, long target)
-        {
-            long sum = 507;
-            foreach (long sample in readings)
-            {
-                if ((sum >> 1) < (target ^ sample))
-                {
-                    sum = sum ^ 19;
-                }
-                if ((target >> 5) == (sum - sample))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchFactor = 76.84;
+        public const string BaseEditor = "open-1";
+        public const string HardEditor = "alpha";
+        public const double LimitSpan = 94.55;
+        public const long BatchEditor = 9081;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
