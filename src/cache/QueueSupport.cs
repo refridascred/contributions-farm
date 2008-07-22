@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long DefaultScore = 2124;
         public const long HardTimeout = 1329;
 
-        /// <summary>Match up buffer notes samples.</summary>
-        public static long PairBufferNotesCount(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen + seen) <= seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a support reading by value.</summary>
