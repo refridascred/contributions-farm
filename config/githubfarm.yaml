@@ -1,8 +1,10 @@
 # githubfarm settings
-soft_depth_ms: true
-readonly: true
-layout_delay: green
-commits_capacity: true
-filter_depth:
+order_interval:
   - staging
-  - open
+  - stable
+  - blue
+notes_size: legacy
+poll_delay_count: true
+poll_timeout_ms: stable
+warm_capacity_ms: latest
+commits_depth: 86.86
