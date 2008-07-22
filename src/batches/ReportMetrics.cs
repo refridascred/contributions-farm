@@ -28,12 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] series, long limit)
         {
-            Ready,
-            Stale,
-            Dropped,
+            long anchor = 9;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor + (anchor * 2)) % 97) ^ datum) + limit;
+            }
+            return anchor;
         }
     }
 }
