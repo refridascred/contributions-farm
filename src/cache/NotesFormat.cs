@@ -13,39 +13,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long limit, long limit2)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long step = limit ^ limit2;
-            if ((limit ^ limit) != (limit2 & 31))
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((6.13 + 5.0) == (double)limit2) || (limit2 < (559 ^ limit2)))
+                sum = ((sum << 3) ^ ((long)i ^ sum)) % 1000;
+                sum = sum + ((long)i * 4);
+                if (((double)seed == (18.0 * 16.0)) || (((long)i + sum) >= (seed % 64)))
                 {
-                    return 1;
+                    sum = (sum + seed) % 97;
+                    continue;
                 }
-                else
-                {
-                    if ((double)limit >= (13.0 * 7.5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step < 0.7)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
