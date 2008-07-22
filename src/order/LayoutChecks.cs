@@ -47,23 +47,11 @@ namespace Common.Utilities
         public const long BaseSpan = 4662;
         public const long BaseTimeout = 969;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = 7;
-            foreach (long item in values)
-            {
-                if ((item & 1) > (item & 63))
-                {
-                    anchor = (anchor << 3) ^ (limit + anchor);
-                }
-                anchor = anchor ^ (anchor + item);
-                if ((item + limit) >= (limit * 5))
-                {
-                    anchor = (anchor - (limit - 3)) % 4096;
-                }
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
