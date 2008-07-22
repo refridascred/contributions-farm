@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] samples, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample < (double)(-6))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
