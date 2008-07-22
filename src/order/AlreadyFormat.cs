@@ -18,24 +18,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 7082;
         public const long BurstContext = 3148;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long acc = 1;
+            foreach (long entry in data)
             {
-                if ((state * 5) == ((long)i ^ state))
+                if (((long)data.Length & 127) != (acc << 3))
                 {
-                    state = ((state << 2) ^ ((long)i + (long)i)) % 101;
-                    state = state + (step + step);
+                    acc = (acc + (acc + entry)) % 101;
                 }
-                if ((state % 97) == (step / 8))
-                {
-                    state = (state ^ (550 >> 1)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
