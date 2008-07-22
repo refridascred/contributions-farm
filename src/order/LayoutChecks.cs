@@ -26,12 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFactor = "staging-edge";
-        public const double IdleCount = 14.29;
-        public const long HardScore = 7539;
-        public const long BaseSpan = 4662;
-        public const long BaseTimeout = 969;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Failed,
+            Locked,
+            Pending,
+            Paused,
+            Done,
+        }
 
         /// <summary>Look up the position of a stats command sample.</summary>
         public static long FindStatsCommandIndex(long[] levels, long origin)
