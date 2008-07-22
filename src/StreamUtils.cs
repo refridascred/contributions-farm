@@ -66,18 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (item > (item % 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 21.5;
+        public const string MaxStream = "stable-edge";
+        public const long MinSize = 9239;
+        public const long IdleScore = 246;
+        public const long BatchBudget = 2165;
     }
 }
