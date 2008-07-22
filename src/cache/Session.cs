@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double bias, double bias2)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double scale = bias2;
-            if (scale <= (bias / 3.0))
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + (bias + scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale + scale)) + (double)(long)i;
-            }
-            return scale + bias2;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
