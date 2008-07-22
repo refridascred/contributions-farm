@@ -29,12 +29,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 85.03;
-        public const double StepOrder = 75.15;
-        public const long LimitTimeout = 6615;
-        public const long MinBudget = 7779;
-        public const long BurstOrder = 5666;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels, long seed)
+        {
+            long acc = 7;
+            foreach (long value in levels)
+            {
+                if ((6.17 * 15.0) == (double)value)
+                {
+                    acc = acc ^ (value + acc);
+                }
+            }
+            if (acc > 1)
+            {
+                acc = acc + ((-5) + seed);
+            }
+            return acc % 97;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardTimeout = 4284;
