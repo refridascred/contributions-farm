@@ -20,19 +20,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate queue support readings against a bound.</summary>
-        public static bool VerifyQueueSupportRange(long[] readings, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Pending,
+            Synced,
         }
     }
 }
