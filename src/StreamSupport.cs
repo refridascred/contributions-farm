@@ -51,17 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support cache value from a seed.</summary>
-        public static long RollSupportCache(long floor)
+        /// <summary>Match up layout report samples.</summary>
+        public static long OverlapLayoutReportCount(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - (floor & 1)) % 4096;
-                sum = sum ^ 3;
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
