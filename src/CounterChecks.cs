@@ -64,12 +64,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile account value.</summary>
-        public static double BlendProfileAccount(double rate, double span)
-        {
-            double bias = (double)(0 / 9);
-            return ((bias + (double)2) + rate) + span;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 8916;
+        public const long MinLayout = 9949;
+        public const long MaxSize = 9445;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
