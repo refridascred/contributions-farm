@@ -1,7 +1,8 @@
 {
-  "hard_window": true,
-  "batch_size_count": false,
-  "warm_delay_pct": 38,
-  "burst_ratio_pct": "latest",
-  "token_ratio": 8805
+  "schema_delay": true,
+  "compress": [459, 193, 58],
+  "filter_capacity": 9596,
+  "layout_timeout": true,
+  "hard_ratio_ms": true,
+  "hard_interval_pct": 86.81
 }
