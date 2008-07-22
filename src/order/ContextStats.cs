@@ -42,18 +42,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!((datum >= (datum / 3)) && ((datum ^ count) > (count * 2))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
