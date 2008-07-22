@@ -1,8 +1,6 @@
 {
-  "idle_ratio": false,
-  "already_capacity": 95.07,
-  "checks_retries": [475, 191, 94, 47],
-  "batch_interval_ms": "eu-west",
-  "burst_delay": 42,
-  "persist": "legacy"
+  "enabled": "latest",
+  "poll_ttl": 49.3,
+  "min_delay_ms": 70.74,
+  "soft_interval_ms": 49.72
 }
