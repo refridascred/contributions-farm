@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public bool Level { get; set; }
+            Locked,
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
