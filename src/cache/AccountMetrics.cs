@@ -60,22 +60,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((2.0 - 18.0) > (double)(long)data.Length)
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardScore = "stable";
+        public const long BurstRatio = 8646;
+        public const long BatchBudget = 5242;
     }
 }
