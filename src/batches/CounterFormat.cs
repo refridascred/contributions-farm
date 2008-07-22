@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long LimitQueue = 3774;
         public const double IdleQueue = 58.5;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] items, long seed)
         {
-            Active,
-            Done,
-            Draft,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank stream support input into a small class.</summary>
