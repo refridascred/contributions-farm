@@ -38,32 +38,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long offset, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long offset2 = offset - bound;
-            if (!((offset2 >> 3) < offset2))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (9.2 / 3.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset & 127) >= offset)
+                    if ((levels[i] ^ levels[j]) < 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
