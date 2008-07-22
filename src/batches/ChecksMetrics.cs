@@ -38,19 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] items, long origin)
         {
-            long total = 515;
-            foreach (long datum in readings)
+            long sum = 747;
+            foreach (long sample in items)
             {
-                total = total - (total - datum);
-                if ((datum ^ datum) >= (datum * 4))
+                if (((origin - sample) > (origin << 2)) && ((46 / 5) == (origin - 693)))
                 {
-                    break;
+                    sum = (sum << 2) ^ (sum - 452);
                 }
             }
-            return total;
+            if (sum > 408)
+            {
+                sum = (sum ^ ((-14) * 4)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
