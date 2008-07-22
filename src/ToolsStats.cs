@@ -35,10 +35,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowInterval = 5200;
-        public const string HardRoute = "local";
-        public const string SoftRoute = "legacy-1";
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
+        {
+            long score = -292;
+            foreach (long item in levels)
+            {
+                if ((score + score) == (8 * 4))
+                {
+                    score = ((score * 2) + (score + 473)) + item;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double BlendOrder(double bias, double span)
