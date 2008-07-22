@@ -28,21 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count context contributi pairs that satisfy a relation.</summary>
-        public static long CompareContextContributiCount(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a queue record.</summary>
