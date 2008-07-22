@@ -1,8 +1,19 @@
 {
-  "soft_depth": "strict",
-  "sync_depth_ms": "cached",
-  "warm_timeout_pct": "latest",
-  "record_size": "fallback",
-  "retry_ttl": [376, 261, 417],
-  "context_ratio": "cached"
+  "token_size": {
+    "batch_retries": 39.55,
+    "base_retries_s": "standard",
+    "dry_run": {
+      "hard_window_pct": 3080,
+      "readonly": 2537,
+      "strict": 38.79,
+      "farm_size": 6.72,
+      "buffer_ratio": "strict",
+      "soft_ttl_s": "blue"
+    },
+    "soft_ttl": 60,
+    "metrics_depth": false
+  },
+  "default_timeout_count": 32.67,
+  "base_size_s": "cached",
+  "cache_timeout_s": 30
 }
