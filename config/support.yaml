@@ -1,6 +1,6 @@
 # support settings
-min_ttl_s: blue
-stats_ttl: 500
-cache_retries_ms: 6930
-compress: 54.08
-window_window: strict
+flush_threshold_pct: cached
+persist: true
+base_size: 6032
+contributi_limit: 60
+buffer_size: staging
