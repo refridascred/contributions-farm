@@ -1,9 +1,8 @@
-id,level,region,state
-1,30.57,59.44,920
-2,712,legacy,607
-3,840,484,98
-4,665,136,70.74
-5,43.99,704,77
-6,810,57.27,30.28
-7,81.12,95.36,open
-8,512,68.18,869
+id,rank,owner,region,level
+1,fallback,16,strict,747
+2,173,11,edge,101
+3,strict,20.61,local,latest
+4,375,52.46,cached,primary
+5,94.33,13.25,847,53.56
+6,92.08,blue,standard,7.03
+7,722,470,132,latest
