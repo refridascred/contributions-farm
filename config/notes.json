@@ -1,21 +1,6 @@
 {
-  "readonly": {
-    "base_interval_ms": 83,
-    "burst_capacity_ms": [228, 221, 200],
-    "enabled": 35.01,
-    "order_ttl": 100
-  },
-  "persist": 53.34,
-  "flush_limit": {
-    "sync_depth": {
-      "compress": "staging",
-      "flush_threshold_pct": 250,
-      "filter_interval": "fallback",
-      "base_size_ms": 167,
-      "cluster_size": false,
-      "hard_ratio": false
-    },
-    "metrics_depth": "edge",
-    "report_ttl": "eu-west"
-  }
+  "metrics_timeout": "local",
+  "batch_interval_ms": 36,
+  "retry_capacity_s": "cached",
+  "counter_depth": "local"
 }
