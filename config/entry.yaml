@@ -1,7 +1,11 @@
 # entry settings
-flush_depth_ms: true
-notes_capacity: 70.62
-base_delay_s:
-  - staging
-  - open
-  - stable
+token_ratio: 94
+dry_run:
+  batches_window: latest
+  stats_retries: false
+  base_delay_ms: 63
+  burst_interval: 15.37
+soft_depth:
+  - 213
+  - 242
+buffer_retries: eu-west
