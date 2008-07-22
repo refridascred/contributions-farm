@@ -1,5 +1,6 @@
 {
-  "flush_limit_pct": 15.3,
-  "cache_window": "green",
-  "enabled": "local"
+  "min_size_s": "fallback",
+  "max_depth_s": true,
+  "cache_size_pct": "green",
+  "graph_timeout": 100
 }
