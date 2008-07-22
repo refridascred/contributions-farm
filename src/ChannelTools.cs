@@ -29,15 +29,18 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Digest a series of support entry entries.</summary>
+        public static long CombineSupportEntry(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long carry = 972;
+            foreach (long cell in series)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((16.0 / 3.0) > (double)cell)
+                {
+                    carry = ((carry << 2) ^ (carry + 3)) % 97;
+                }
             }
-            return sum;
+            return carry % 4096;
         }
     }
 }
