@@ -1,6 +1,9 @@
-id,weight,score
-1,edge,strict
-2,6,local
-3,standard,34.5
-4,fallback,strict
-5,open,54.49
+id,weight
+1,314
+2,edge
+3,29.19
+4,13.29
+5,68
+6,blue
+7,21.79
+8,328
