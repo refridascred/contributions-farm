@@ -56,12 +56,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheSize = 2262;
-        public const long LimitDepth = 8231;
-        public const double WindowChannel = 67.49;
-        public const long CacheChannel = 5897;
-        public const long LimitChannel = 729;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum - ((long)i * 3)) % 101;
+                sum = (sum ^ 594) % 97;
+                sum = ((sum << 3) ^ (94 ^ (long)i)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] values)
