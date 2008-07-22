@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
