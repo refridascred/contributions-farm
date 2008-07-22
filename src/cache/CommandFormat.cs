@@ -14,19 +14,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long gap = origin ^ offset;
+            if (!((5.44 / 2.0) <= (double)origin))
             {
-                if (item < target)
+                return 1;
+            }
+            else
+            {
+                if ((967 & 15) < offset)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin >= (8.73 + 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((8.4 - 0.7) > (9.0 - 9.0)) && ((878 >> 2) <= (gap ^ offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Locate a command reading by value.</summary>
