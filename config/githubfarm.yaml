@@ -1,13 +1,17 @@
 # githubfarm settings
-hard_retries_ms: 97.88
-hard_limit:
-  - eu-west
-  - standard
-default_threshold: blue
-base_interval_ms: 16.03
-stream_limit:
-  - 170
-  - 359
-  - 109
-  - 163
-commits_delay: stable
+base_window: 32
+soft_timeout: strict
+enabled:
+  default_limit_count: 4643
+  burst_capacity_ms:
+    - open
+    - eu-west
+  burst_threshold_count: 8883
+  account_window: 10.55
+batch_size_ms:
+  payload_interval: false
+  burst_ratio_s: 83.48
+  base_capacity_s:
+    - 253
+    - 23
+  poll_interval_s: legacy
