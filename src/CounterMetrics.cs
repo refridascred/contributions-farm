@@ -24,18 +24,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 5.42;
+        public const double CacheDepth = 48.93;
+        public const long DefaultPayload = 4790;
+        public const double StepPayload = 60.89;
+        public const string BurstFactor = "local";
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long step)
