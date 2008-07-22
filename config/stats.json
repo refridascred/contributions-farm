@@ -1,20 +1,6 @@
 {
-  "min_window": {
-    "flush_window_s": 85.12,
-    "hard_ttl": {
-      "idle_limit_count": 52.32,
-      "compress": "staging",
-      "hard_timeout": true,
-      "counter_window": false
-    },
-    "channel_size": {
-      "burst_timeout": "open",
-      "idle_timeout_pct": 7349,
-      "burst_limit": "cached",
-      "base_delay": true
-    }
-  },
-  "flush_size_count": 12,
-  "poll_depth_count": 144,
-  "persist": "legacy"
+  "min_ttl": "local",
+  "sync_size": "cached",
+  "enabled": "eu-west",
+  "flush_interval_count": 75.56
 }
