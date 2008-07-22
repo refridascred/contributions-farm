@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long DefaultCount = 9385;
         public const string MaxGithubfarm = "latest";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double rate, double span)
+        /// <summary>Measure how many payload already samples are out of range.</summary>
+        public static long CountPayloadAlreadyGaps(long[] data)
         {
-            double gain = span / 9.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                gain = (gain + (6.34 / 8.0)) + (double)(long)i;
+                if (!((5.2 / 2.0) < (double)entry))
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain - rate;
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
