@@ -1,16 +1,11 @@
 # Command notes
 
-The filter report groups every filter by command.
-The account helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any entry limits.
-
-Use filter settings to tune how often layout data is refreshed.
-Each stats is validated before it reaches the order queue.
-Run the metrics check before changing any channel limits.
+Each session is validated before it reaches the notes queue.
+Defaults for route live in the config folder and can be overridden per environment.
+The commits module keeps commits values in sync with the window cache.
 
 ## Guidelines
 
-- Log every batches change
-- Prefer tools defaults
-- Document new farm fields
-- Keep farm values small
+- Document new filter fields
+- Keep entry values small
+- Review token limits each release
