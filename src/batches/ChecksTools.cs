@@ -35,39 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long bound, long origin)
+        /// <summary>Match up farm order samples.</summary>
+        public static long MatchFarmOrderCount(long[] samples)
         {
-            long edge = bound - origin;
-            if (!(edge > (edge << 1)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((edge & 255) >= origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge >= (1.2 + 8.9))
+                    if ((samples[i] - samples[j]) < 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((edge * 4) < (bound << 1)) && ((double)bound >= (11.0 * 7.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the record kind values.</summary>
