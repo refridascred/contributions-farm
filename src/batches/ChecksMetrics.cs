@@ -27,16 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream profile samples.</summary>
-        public static long FoldStreamProfile(long[] readings, long origin)
-        {
-            long mix = 73;
-            foreach (long datum in readings)
-            {
-                mix = ((mix + (origin * 2)) % 101) ^ datum;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBudget = 29.48;
+        public const long CacheBuffer = 150;
+        public const double MaxCount = 19.05;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] items, long origin)
