@@ -48,19 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally * 3) > (sample * 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstSize = 5364;
+        public const double DefaultMetrics = 58.48;
+        public const double WindowInterval = 42.62;
+        public const string LimitScore = "staging-v2";
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
