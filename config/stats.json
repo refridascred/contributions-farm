@@ -1,6 +1,8 @@
 {
-  "graph_capacity": 89,
-  "max_size_ms": "stable",
-  "min_timeout": 69.6,
-  "retry_capacity_ms": 52.62
+  "verbose": "primary",
+  "warm_timeout_ms": false,
+  "session_depth": 50.7,
+  "metrics_capacity": 60,
+  "batches_capacity": 9515,
+  "token_capacity": 1024
 }
