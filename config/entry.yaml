@@ -1,4 +1,13 @@
 # entry settings
-idle_threshold_s: 61
-stream_delay: false
-flush_limit_pct: false
+min_ttl_s:
+  audit: 5118
+  retry_delay_ms: latest
+  sync_ttl_count: edge
+  poll_size_ms: 89
+  soft_limit_count: 59.79
+cache_capacity: standard
+persist: primary
+batch_depth_s: 1.65
+batch_window_pct:
+  - 399
+  - 380
