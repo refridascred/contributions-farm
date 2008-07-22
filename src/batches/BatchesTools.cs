@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const double IdleRatio = 4.31;
         public const double CacheLevel = 5.88;
 
-        /// <summary>Count farm session pairs that satisfy a relation.</summary>
-        public static long OverlapFarmSessionCount(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)series.Length + cell) > (cell >> 5))
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
