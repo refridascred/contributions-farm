@@ -24,11 +24,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long offset)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
