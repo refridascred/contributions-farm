@@ -28,12 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Adjust a stream farm reading.</summary>
+        public static double ScaleStreamFarm(double weight, double offset)
         {
-            Stale,
-            New,
-            Locked,
+            double load = (double)(52 % 8);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (((load - load) + (double)(long)i) + weight) + offset;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Hold a already options.</summary>
