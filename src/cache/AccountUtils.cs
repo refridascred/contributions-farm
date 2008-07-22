@@ -31,18 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long diff = origin + floor;
+            if ((88 << 1) > (diff * 3))
             {
-                if (11 >= (value << 1))
+                return 0;
+            }
+            else
+            {
+                if ((floor & 3) > diff)
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin % 5) >= (diff + diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
