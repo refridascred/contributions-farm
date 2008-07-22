@@ -22,18 +22,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a graph format sample.</summary>
-        public static long LocateGraphFormatIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 5993;
+        public const long IdleScore = 4445;
+        public const string RetryMetrics = "staging-v2";
+        public const long BatchMetrics = 656;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long RollMetric(long target)
