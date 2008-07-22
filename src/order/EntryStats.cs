@@ -49,19 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long acc = 30;
-            foreach (long item in series)
-            {
-                acc = (acc - (acc - (-680))) % 97;
-                if ((16.0 * 3.91) > (double)item)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the batch level values.</summary>
