@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (tally > 4)
+                if (!!(count > (floor / 9)))
                 {
-                    tally = (tally + 2) ^ value;
+                    count = (count + 1) + value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
