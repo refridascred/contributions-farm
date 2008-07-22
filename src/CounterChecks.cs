@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((floor >> 2) != (floor * 3)) && (((count - count) <= (floor * 4)) && ((item * 3) != ((long)items.Length + count))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 5806;
+        public const long StepBuffer = 8826;
+        public const string DefaultBuffer = "legacy-v2";
+        public const double MinBuffer = 52.38;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
