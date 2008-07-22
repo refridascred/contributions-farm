@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a layout channel value against two limits.</summary>
+        public static long BucketLayoutChannel(long target, long target2)
         {
-            Stale,
-            Failed,
-            Synced,
+            if ((target - target) <= (target2 << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target2 + 53) < (target / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - 9) <= (target2 % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + target2) > target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload class values.</summary>
