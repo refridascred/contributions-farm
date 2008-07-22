@@ -19,26 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double bias, double offset)
         {
-            long score = 18;
-            foreach (long datum in levels)
+            double rate = (double)(24 - (-714));
+            if (rate <= offset)
             {
-                if (!((datum / 8) >= (score & 63)))
-                {
-                    score = (score << 3) ^ (score / 9);
-                }
-                else
-                {
-                    score = (score - (score % 10)) % 97;
-                }
+                rate = rate - offset;
             }
-            if (score > 755)
+            for (int i = 0; i < 3; i++)
             {
-                score = (score - score) % 65521;
+                rate = (rate + (bias * 7.3)) + (double)(long)i;
             }
-            return score % 65521;
+            return rate + 4.46;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
