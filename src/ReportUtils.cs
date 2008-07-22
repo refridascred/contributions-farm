@@ -66,19 +66,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two metrics session measurements.</summary>
-        public static double SmoothMetricsSession(double rate, double span)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double scale = (double)(652 ^ (-8));
-            if (scale >= rate)
-            {
-                scale = (scale + (rate * 7.8)) - span;
-            }
-            else
-            {
-                scale = scale + (scale - scale);
-            }
-            return scale + scale;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
