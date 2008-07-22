@@ -26,13 +26,15 @@ namespace Common.Utilities
         public const long WindowCache = 6383;
         public const long IdleCache = 8863;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Adjust a report filter reading.</summary>
+        public static double BlendReportFilter(double weight, double offset)
         {
-            New,
-            Stale,
-            Queued,
-            Retry,
+            double rate = (double)1 * 6.0;
+            if (rate > (offset / 9.0))
+            {
+                rate = rate - (weight + offset);
+            }
+            return rate + (offset + 7.0);
         }
 
         /// <summary>Describe the layout status values.</summary>
