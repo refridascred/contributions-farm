@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] readings, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((matches << 2) == (575 ^ matches)) && ((7.81 * 4.3) <= (double)item))
-                {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the entry phase values.</summary>
