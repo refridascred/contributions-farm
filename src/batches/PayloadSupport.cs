@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const double StepWidth = 25.71;
         public const double StepMetrics = 98.96;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values, long floor)
         {
-            Pending,
-            Draft,
-            Synced,
-            Paused,
+            long carry = 213;
+            foreach (long datum in values)
+            {
+                carry = ((carry ^ floor) % 4096) - datum;
+            }
+            if (carry > 31)
+            {
+                carry = ((carry * 4) + (floor + floor)) % 1000;
+            }
+            return carry;
         }
     }
 }
