@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] values, long target)
         {
-            double weight = bias + bias;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                weight = (weight - (2.8 - bias)) + (double)(long)i;
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - (ratio / 2.0);
+            return ok;
         }
 
         /// <summary>Describe the buffer class values.</summary>
