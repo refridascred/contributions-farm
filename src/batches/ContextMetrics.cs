@@ -53,18 +53,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the format session entries that pass the check.</summary>
-        public static long CountFormatSessionHits(long[] series, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (hits >= (3 >> 1))
-                {
-                    hits = ((hits + 3) - datum) + floor;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Failed,
+            Dropped,
+            Stale,
         }
     }
 }
