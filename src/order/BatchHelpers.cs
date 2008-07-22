@@ -20,21 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 2;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (((anchor << 2) ^ value) % 4096) - seed;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
