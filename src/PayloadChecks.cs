@@ -56,18 +56,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit entry metrics readings against a rule.</summary>
-        public static long CountEntryMetricsOutliers(long[] levels, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if ((4.1 + 12.0) == (double)limit)
             {
-                if (((value + 97) < (tally + offset)) || ((offset / 4) >= (tally >> 3)))
+                return 7;
+            }
+            else
+            {
+                if ((3.1 > (double)target) && (limit <= (target % 7)))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit + target) <= (44 - 786)) || (limit < (97 + limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit % 7) < (9 + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
