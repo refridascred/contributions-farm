@@ -75,17 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                if (entry >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
