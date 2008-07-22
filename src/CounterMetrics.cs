@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long total = 969;
+            foreach (long value in values)
             {
-                state = ((state << 3) ^ bound) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
+                total = (total ^ 55) % 65521;
+                total = ((total << 2) ^ (value + 283)) % 101;
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
