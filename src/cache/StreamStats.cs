@@ -19,39 +19,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long origin2)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long diff = origin - origin2;
-            if ((double)origin2 < (7.5 - 12.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + diff) <= (origin2 + diff))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin2) <= origin)
+                    if ((data[i] ^ data[j]) == 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3.3 * 6.0) < (double)origin2) || ((origin2 + origin2) != (origin - diff)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
