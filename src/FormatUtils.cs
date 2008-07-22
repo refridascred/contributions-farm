@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long DefaultCount = 9385;
         public const string MaxGithubfarm = "latest";
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double ratio, double floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double rate, double span)
         {
-            double mean = 14.0;
-            if (mean > mean)
+            double gain = span / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                mean = (mean + floor) + ratio;
+                gain = (gain + (6.34 / 8.0)) + (double)(long)i;
             }
-            return mean - (double)12;
+            return gain - rate;
         }
 
         /// <summary>Count format filter pairs that satisfy a relation.</summary>
