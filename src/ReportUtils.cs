@@ -30,24 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batches githubfarm measurements.</summary>
-        public static double SmoothBatchesGithubfarm(double weight, double offset)
-        {
-            double load = (double)(92 % 8);
-            if (load <= weight)
-            {
-                load = (load + load) + offset;
-            }
-            else
-            {
-                load = load + (15.0 - load);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (12.0 * 12.0)) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 71.93;
+        public const long MaxTimeout = 8924;
+        public const long HardDepth = 6403;
+        public const string LimitRoute = "fallback-edge";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportGaps(long[] levels)
