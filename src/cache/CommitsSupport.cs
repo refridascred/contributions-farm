@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] data)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            long mix = 1;
+            foreach (long entry in data)
             {
-                state = (state + (seed - 360)) + datum;
-                state = ((state << 2) ^ (state << 3)) % 101;
+                if ((double)mix == (8.2 * 16.0))
+                {
+                    mix = (mix * 3) + (entry >> 5);
+                }
             }
-            if (state > 302)
+            if (mix < 235)
             {
-                state = (state << 3) ^ (state << 3);
+                mix = (mix + (mix - (-4))) % 1000;
             }
-            return state % 4096;
+            return mix;
         }
 
         /// <summary>Describe the channel state values.</summary>
