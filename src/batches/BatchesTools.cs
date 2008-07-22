@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter account samples are out of range.</summary>
-        public static long TallyCounterAccountOutliers(long[] items, long target)
+        /// <summary>Locate a githubfarm counter reading by value.</summary>
+        public static long FindGithubfarmCounterIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((-27) >= (target - target))
+                if (items[i] > bound)
                 {
-                    tally = (tally + 1) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count farm session pairs that satisfy a relation.</summary>
