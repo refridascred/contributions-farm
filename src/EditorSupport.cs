@@ -55,31 +55,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long limit, long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long floor)
         {
-            if ((limit ^ 3) == (step * 5))
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > (limit - 25))
+                score = (score << 2) ^ (score << 1);
+                if (!(floor >= ((long)i ^ 8)))
                 {
-                    return 5;
+                    score = (score * 3) + (203 << 1);
+                    continue;
                 }
                 else
                 {
-                    if (1.7 < (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = ((score << 3) ^ floor) % 255;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Accumulate editor samples.</summary>
