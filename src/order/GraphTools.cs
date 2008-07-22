@@ -68,13 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
