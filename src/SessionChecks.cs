@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstCount = "standard-edge";
+        public const long WindowQueue = 9370;
+        public const string HardSpan = "standard-1";
+        public const double WindowLevel = 33.16;
+        public const double BaseQueue = 50.63;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long StepAlready(long bound)
