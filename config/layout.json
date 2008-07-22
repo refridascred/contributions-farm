@@ -1,13 +1,5 @@
 {
-  "audit": 100,
-  "dry_run": 5881,
-  "format_limit": [14, 65, 14, 86],
-  "retry_timeout": 8197,
-  "hard_timeout_ms": {
-    "soft_size_count": 97.89,
-    "already_ratio": "staging",
-    "cache_timeout_ms": 97.26,
-    "soft_retries": false,
-    "verbose": "eu-west"
-  }
+  "flush_limit_pct": 15.3,
+  "cache_window": "green",
+  "enabled": "local"
 }
