@@ -36,22 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] series, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long target, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((8.8 / 8.0) != (double)seed)
             {
-                if ((5.87 + 5.9) < (double)reading)
+                return 6;
+            }
+            else
+            {
+                if ((target > (target * 5)) || ((seed >> 4) >= (target % 64)))
                 {
-                    seen = (seen + 1) + seed;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
