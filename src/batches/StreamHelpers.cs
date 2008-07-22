@@ -64,18 +64,18 @@ namespace Common.Utilities
         public const long MinLayout = 4469;
         public const long LimitLayout = 1520;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] values, long floor)
         {
-            long score = 6;
+            long tally = 0;
             foreach (long cell in values)
             {
-                if (((cell - cell) < score) && ((double)96 < (double)score))
+                if ((((tally << 3) <= cell) && ((cell >> 3) != (75 ^ (-66)))) || !((floor << 2) == (3 ^ floor)))
                 {
-                    score = ((score << 2) ^ score) % 101;
+                    tally = tally + 1;
                 }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
