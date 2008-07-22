@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardInterval = 4333;
+        public const long LimitWidth = 6085;
+        public const long DefaultDepth = 3301;
+        public const double LimitAlready = 21.14;
+        public const long CacheBudget = 47;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] samples, long floor)
