@@ -54,19 +54,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((floor + carry) < floor))
-                {
-                    carry = ((carry * 5) + (floor & 63)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "fallback";
+        public const long BatchSpan = 7273;
+        public const string BatchTimeout = "stable-edge";
+        public const long SoftCache = 3470;
+        public const long HardLevel = 3178;
     }
 }
