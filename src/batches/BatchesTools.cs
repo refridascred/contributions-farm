@@ -45,10 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleSpan = "staging-edge";
-        public const long BurstProfile = 8969;
-        public const long IdleFactor = 9139;
-        public const long HardProfile = 1890;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((double)matches >= (8.0 / 4.0)) || !(((long)levels.Length % 5) <= datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
