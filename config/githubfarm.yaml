@@ -1,7 +1,10 @@
 # githubfarm settings
-warm_size: 66.1
-persist: false
-verbose: 1024
-batches_window: legacy
-format_depth: true
-hard_delay_ms: fallback
+tools_depth:
+  default_ratio_pct: open
+  readonly: 100
+  enabled: eu-west
+  persist: 54.21
+  already_size: true
+  poll_ttl_pct: 3.26
+buffer_size: 500
+flush_depth_s: true
