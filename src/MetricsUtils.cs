@@ -48,17 +48,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] == bound)
+                if (1.36 >= (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ entry) - step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
