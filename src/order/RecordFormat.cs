@@ -64,18 +64,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)tally < 7.32) && (value <= (value + value)))
+                if (samples[i] <= seed)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
