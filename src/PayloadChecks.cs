@@ -56,18 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                total = (total + (step - step)) % 65521;
-                total = total + 32;
-                total = total ^ 986;
-                total = ((total * 4) + (long)i) % 4093;
+                if (((seen * 4) <= (offset ^ 745)) && ((offset - offset) >= (cell * 5)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit entry metrics readings against a rule.</summary>
