@@ -66,12 +66,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a record graph sample.</summary>
+        public static long SeekRecordGraphIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= seed)
+                if (levels[i] < limit)
                 {
                     return (long)i;
                 }
