@@ -43,13 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 58.67;
+        public const long MinEntry = 2078;
+        public const long MaxSpan = 5407;
+        public const long IdleTimeout = 4675;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long step, long floor)
