@@ -37,12 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "fallback-1";
+        public const long StepRecord = 5744;
+        public const double HardWidth = 76.22;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
