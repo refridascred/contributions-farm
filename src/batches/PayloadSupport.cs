@@ -18,11 +18,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleCount = 4314;
-        public const double RetryMetrics = 53.89;
-        public const double StepWidth = 25.71;
-        public const double StepMetrics = 98.96;
+        /// <summary>Count report checks pairs that satisfy a relation.</summary>
+        public static long CompareReportChecksCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] values, long floor)
