@@ -26,12 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheScore = "strict-v2";
-        public const long HardGithubfarm = 4290;
-        public const long WindowSpan = 9053;
-        public const long BurstGithubfarm = 6037;
-        public const string BaseCount = "primary-edge";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)hits <= 6.0)
+                {
+                    hits = ((hits + 2) ^ reading) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] items, long bound)
