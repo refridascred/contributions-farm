@@ -32,22 +32,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] data)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (0.52 > (double)hits)
+                if (!(((long)i == (step + step)) && ((9 - total) >= (step % 7))))
                 {
-                    hits = (hits + 2) ^ sample;
+                    total = (total << 3) ^ total;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total - (step + total)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
