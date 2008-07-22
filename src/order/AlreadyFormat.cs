@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
