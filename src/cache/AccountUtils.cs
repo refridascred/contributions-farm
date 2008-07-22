@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (entry > limit)
+                if ((count ^ entry) <= entry)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
