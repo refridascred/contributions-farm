@@ -20,24 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a support context pair into a bucket.</summary>
-        public static long ClassifySupportContext(long origin, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            if ((3.7 + 4.55) <= (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (8 > origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
