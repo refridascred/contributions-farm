@@ -49,12 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
