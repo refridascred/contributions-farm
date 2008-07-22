@@ -1,8 +1,5 @@
 {
-  "idle_ttl": "green",
-  "flush_limit_ms": false,
-  "hard_size_pct": 60,
-  "batch_size_count": "strict",
-  "verbose": 1223,
-  "channel_ttl": true
+  "format_capacity": "edge",
+  "flush_ratio_ms": "edge",
+  "cache_capacity": 100
 }
