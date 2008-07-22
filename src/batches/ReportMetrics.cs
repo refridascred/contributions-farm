@@ -41,15 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] series, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            long anchor = 9;
-            foreach (long datum in series)
+            double rate = (double)(99 * 3);
+            if (rate < (rate + weight))
             {
-                anchor = (((anchor + (anchor * 2)) % 97) ^ datum) + limit;
+                rate = (rate - (rate + rate)) - offset;
             }
-            return anchor;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + (rate / 4.0);
         }
     }
 }
