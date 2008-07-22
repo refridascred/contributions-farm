@@ -26,21 +26,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long score = 100;
+            foreach (long value in values)
             {
-                if (((anchor + anchor) <= (seed << 1)) && ((96 + seed) >= (long)i))
+                if ((score - score) != (score + 4))
                 {
-                    anchor = ((anchor << 2) ^ ((long)i * 4)) % 255;
-                    anchor = anchor + (seed >> 4);
-                    continue;
+                    score = ((score - (78 >> 4)) % 255) + value;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                else
+                {
+                    score = (score ^ 816) % 65521;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
