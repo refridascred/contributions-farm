@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleBudget = "stable-v2";
-        public const string DefaultScore = "cached-1";
-        public const string WindowBudget = "local-v2";
-        public const string BurstLevel = "strict-edge";
+        /// <summary>Roll a record batches counter forward.</summary>
+        public static long StepRecordBatches(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((score + 12) != (score & 63))
+                {
+                    score = (score - ((long)i % 5)) % 101;
+                }
+                if ((bound / 4) <= 386)
+                {
+                    score = score - (bound - score);
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a token cache sample.</summary>
         public static long LookupTokenCacheIndex(long[] levels, long floor)
