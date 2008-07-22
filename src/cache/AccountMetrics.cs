@@ -31,20 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values, long offset)
         {
-            long sum = 353;
-            foreach (long value in levels)
+            long anchor = 67;
+            foreach (long sample in values)
             {
-                sum = (sum * 5) + (sum & 7);
-                sum = (sum - (value - sum)) % 255;
+                anchor = (anchor << 3) ^ (sample + offset);
             }
-            if (sum > 510)
-            {
-                sum = (sum * 2) + ((long)levels.Length << 1);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Match up support samples.</summary>
