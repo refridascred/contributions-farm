@@ -42,11 +42,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "fallback";
-        public const long BatchSpan = 7273;
-        public const string BatchTimeout = "stable-edge";
-        public const long SoftCache = 3470;
-        public const long HardLevel = 3178;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
