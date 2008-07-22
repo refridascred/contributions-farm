@@ -72,32 +72,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long step, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            long diff = step - limit;
-            if (limit <= (9 + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step % 10) <= (303 + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (diff > (limit * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double load = 0.4;
+            return ((load + load) + gain) + offset;
         }
     }
 }
