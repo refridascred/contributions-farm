@@ -62,19 +62,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((110 % 60) > count)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "cached";
+        public const long RetryMetric = 6226;
+        public const double SoftMetric = 98.0;
+        public const long DefaultMetric = 9558;
+        public const long StepTimeout = 8353;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
