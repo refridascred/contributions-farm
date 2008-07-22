@@ -58,17 +58,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first githubfarm profile entry that matches the target.</summary>
-        public static long LocateGithubfarmProfileIndex(long[] data, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Paused,
+            Retry,
+            Draft,
         }
     }
 }
