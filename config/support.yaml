@@ -1,17 +1,7 @@
 # support settings
-verbose:
-  - 140
-  - 466
-notes_size: 63.96
-persist:
-  burst_ttl_s: true
-  min_window_ms: 6342
-  base_timeout: 85
-  base_ratio_s:
-    cache_threshold: cached
-    flush_ratio_count: false
-    metric_size: legacy
-    verbose: 11.91
-  burst_size_ms: latest
-  poll_threshold_pct: 1024
-base_threshold_pct: latest
+record_delay: latest
+hard_timeout_count:
+  - 210
+  - 253
+  - 392
+record_capacity: blue
