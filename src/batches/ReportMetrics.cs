@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) >= datum)
+                if (items[i] <= limit)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
