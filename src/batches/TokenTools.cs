@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Blend two queue metric measurements.</summary>
