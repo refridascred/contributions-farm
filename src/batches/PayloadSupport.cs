@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "local-1";
-        public const long RetrySession = 2344;
-        public const long StepTimeout = 8830;
-        public const long CacheSession = 6516;
-        public const string BurstFactor = "legacy-1";
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double weight, double bias)
+        {
+            double load = weight * 6.07;
+            if (load < load)
+            {
+                load = (load + 4.0) + bias;
+            }
+            else
+            {
+                load = load - (load / 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (double)287;
+        }
 
         /// <summary>Fold a list of batch already readings.</summary>
         public static long CombineBatchAlready(long[] readings)
