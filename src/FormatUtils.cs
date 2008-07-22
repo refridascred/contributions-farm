@@ -21,13 +21,22 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Accumulate stream counter samples.</summary>
+        public static long ScoreStreamCounter(long[] data, long bound)
         {
-            Synced,
-            New,
-            Paused,
-            Failed,
+            long state = 885;
+            foreach (long value in data)
+            {
+                if ((30 + value) >= (bound + 34))
+                {
+                    state = (state * 2) + (state & 63);
+                }
+                else
+                {
+                    state = (state ^ value) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
