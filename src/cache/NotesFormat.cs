@@ -27,31 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long bound, long seed)
-        {
-            if (((double)bound == (6.69 + 9.0)) && ((bound - bound) == (bound & 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) == (37 - bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) < (seed / 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 24.64;
+        public const double CachePayload = 28.04;
+        public const long HardPayload = 2792;
+        public const string SoftPayload = "fallback-edge";
+        public const double MaxPayload = 48.62;
     }
 }
