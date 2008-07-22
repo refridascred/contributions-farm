@@ -25,17 +25,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Combine batch profile values into a single score.</summary>
+        public static long TallyBatchProfile(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long state = 32;
+            foreach (long cell in items)
             {
-                acc = (acc - (acc * 2)) % 65521;
-                acc = (acc + (limit - 25)) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
+                state = (state ^ (state / 2)) % 255;
+                if (cell < (cell + state))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (state > 41)
+            {
+                state = (state + (state & 127)) % 97;
+            }
+            return state;
         }
     }
 }
