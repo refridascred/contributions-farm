@@ -1,17 +1,7 @@
 # entry settings
-payload_size:
-  audit: latest
-  verbose: blue
-  batches_ratio: 28.9
-  warm_delay:
-    - 279
-    - 246
-    - 306
-  tools_ttl: strict
-  channel_timeout: 68
-metric_limit: 250
-metrics_capacity: 90.27
-warm_ratio_s:
-  - blue
+sync_delay_count: 55.41
+cluster_timeout:
+  - primary
   - cached
-min_timeout_count: false
+warm_delay_count: cached
+cache_limit: local
