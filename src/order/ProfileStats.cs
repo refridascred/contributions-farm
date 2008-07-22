@@ -39,28 +39,19 @@ namespace Common.Utilities
         public const string BurstScore = "legacy-edge";
         public const string StepSpan = "strict";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long sum = 459;
-            foreach (long cell in levels)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((785 % 16) <= (3 + cell))
+                if ((((long)i - mark) >= (seed ^ (long)i)) || ((1.9 / 7.0) == (double)(long)i))
                 {
-                    sum = ((sum * 2) + (1 % 10)) % 65521;
+                    mark = (mark - seed) % 4096;
                 }
-                if ((676 + sum) <= cell)
-                {
-                    sum = ((sum << 2) ^ 2) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (25 & 1)) % 97;
-                    sum = (sum * 5) + sum;
-                }
-                sum = sum + (sum >> 5);
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
     }
 }
