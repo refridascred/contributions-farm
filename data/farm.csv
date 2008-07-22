@@ -1,8 +1,6 @@
-id,level,score
-1,cached,27.02
-2,718,edge
-3,7.24,80
-4,467,40.21
-5,standard,306
-6,475,555
-7,primary,2.52
+id,weight,region,ratio,level
+1,559,37.71,36.25,311
+2,663,0.82,staging,fallback
+3,18.83,77.68,59.93,275
+4,805,staging,90.93,340
+5,91.08,53.49,48.11,290
