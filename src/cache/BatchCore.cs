@@ -54,18 +54,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((15.0 - 5.0) > (double)limit) && ((9 - limit) >= 2))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            New,
+            Active,
+            Stale,
         }
     }
 }
