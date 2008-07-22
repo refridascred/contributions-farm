@@ -33,9 +33,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchRatio = 723;
-        public const long BurstContext = 5259;
-        public const string IdleSize = "legacy-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 1720;
+        public const long BaseOrder = 6666;
+        public const long MinLevel = 3173;
+        public const long MinSize = 545;
+        public const double BatchOrder = 78.57;
     }
 }
