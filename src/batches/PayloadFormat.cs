@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long HardFactor = 9312;
         public const long HardBuffer = 1412;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] samples)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)item == (3.1 * 1.74))
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry * 3) + carry;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
