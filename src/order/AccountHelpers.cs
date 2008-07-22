@@ -35,12 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowLevel = 7202;
-        public const long HardCount = 2833;
-        public const long LimitTimeout = 19;
-        public const long StepWidth = 8898;
-        public const long IdleMetrics = 2964;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Paused,
+            Done,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Count command checks pairs that satisfy a relation.</summary>
         public static long MatchCommandChecksCount(long[] items)
