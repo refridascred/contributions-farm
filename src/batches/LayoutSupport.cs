@@ -29,12 +29,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Classify a batch tools pair into a bucket.</summary>
+        public static long GradeBatchTools(long seed, long seed2)
         {
-            Failed,
-            Draft,
-            Pending,
+            if ((7 + seed) != (0 << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (52 >= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed < (seed2 / 5)) && ((seed2 >> 3) >= (seed2 * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed2 % 97) != (seed + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
