@@ -37,14 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] items, long bound)
         {
-            Locked,
-            Synced,
-            Closed,
-            Active,
-            Pending,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((2.4 * 7.0) == (double)value)
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format kind values.</summary>
