@@ -52,22 +52,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine cache queue values into a single score.</summary>
-        public static long TallyCacheQueue(long[] series, long step)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mix = 51;
-            foreach (long entry in series)
-            {
-                if ((double)mix < (5.2 + 2.0))
-                {
-                    mix = (mix ^ (30 ^ mix)) ^ entry;
-                }
-                if (step > (step - step))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Ready,
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Count the format session entries that pass the check.</summary>
