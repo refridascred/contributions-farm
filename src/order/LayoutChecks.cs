@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > step)
+                if (data[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Accumulate layout batch samples.</summary>
