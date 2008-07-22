@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long origin)
+        /// <summary>Adjust a cache batch reading.</summary>
+        public static double SmoothCacheBatch(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double mean = (floor - scale) / 5.0;
+            if (mean < (2.8 / 9.0))
             {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + floor;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 3.0)) + (double)(long)i;
+            }
+            return mean + 14.0;
         }
 
         /// <summary>Describe the graph phase values.</summary>
