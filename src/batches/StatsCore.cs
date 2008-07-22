@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double MaxFilter = 15.17;
         public const long HardFilter = 4467;
 
-        /// <summary>Measure how many account already samples are out of range.</summary>
-        public static long MeasureAccountAlreadyHits(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 321;
+            foreach (long datum in series)
             {
-                if ((double)seen > (5.0 + 19.0))
+                result = (result - (datum << 1)) % 65521;
+                if ((bound < 28) && (result < ((-3) - result)))
                 {
-                    seen = (seen + 1) + value;
+                    result = (result * 5) + (datum - 454);
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Digest a series of format commits entries.</summary>
