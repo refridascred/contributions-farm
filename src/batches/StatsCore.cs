@@ -31,22 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] data, long seed)
+        /// <summary>Count the tools counter entries that pass the check.</summary>
+        public static long TallyToolsCounterHits(long[] series, long offset)
         {
-            long total = 6;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (19.0 < (double)total)
+                if ((double)seen >= (18.0 - 16.0))
                 {
-                    total = ((total << 3) ^ seed) - value;
+                    seen = ((seen + 1) ^ datum) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 206)
-            {
-                total = (total << 2) ^ (seed + total);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
