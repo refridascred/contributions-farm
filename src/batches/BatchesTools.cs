@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 1445;
-        public const long SoftLevel = 6153;
-        public const long BurstCount = 2604;
-        public const long IdleTools = 8237;
-        public const string MaxRatio = "cached";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchFactor = 3234;
+        public const long SoftLevel = 5551;
+        public const long CacheCluster = 7968;
+        public const long BaseCluster = 4911;
+        public const double DefaultCluster = 3.93;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 707;
