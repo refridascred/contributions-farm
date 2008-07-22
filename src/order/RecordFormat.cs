@@ -43,19 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches profile samples.</summary>
-        public static long FoldBatchesProfile(long[] items, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples, long limit)
         {
-            long score = 605;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = ((score << 3) ^ (bound - score)) - entry;
+                if ((4.2 / 9.0) != (double)matches)
+                {
+                    matches = ((matches + 2) ^ cell) - limit;
+                }
             }
-            if (score > 339)
-            {
-                score = (score - (score >> 3)) % 1000;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Look up the position of a record graph sample.</summary>
