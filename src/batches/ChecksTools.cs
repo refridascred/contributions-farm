@@ -20,18 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] values, long step)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (9 <= (sample * 5))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Rank report input into a small class.</summary>
