@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double scale, double span)
         {
-            long anchor = 6;
-            foreach (long reading in levels)
+            double scale2 = (scale - scale) - (double)96;
+            if (scale2 < scale)
             {
-                anchor = ((anchor << 2) ^ 87) % 97;
-                if ((double)7 <= (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ reading) % 101;
-                }
+                scale2 = scale2 - (span * 3.4);
             }
-            if (anchor < 11)
-            {
-                anchor = ((anchor << 2) ^ (anchor % 3)) % 255;
-            }
-            return anchor;
+            return scale2 + span;
         }
 
         /// <summary>Combine format values into a single score.</summary>
