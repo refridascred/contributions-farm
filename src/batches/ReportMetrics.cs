@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long mix = 6;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (1.6 < (double)mix)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (((mix << 2) ^ 159) % 65521) + datum;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
