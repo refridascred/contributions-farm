@@ -1,16 +1,15 @@
 # Command notes
 
-Keep githubfarm and channel names short and lowercase.
-Each window is validated before it reaches the context queue.
-Run the farm check before changing any session limits.
+Use contributi settings to tune how often support data is refreshed.
+Keep record and token names short and lowercase.
 
-A token that stays idle for too long is moved to the record list.
-Use editor settings to tune how often cluster data is refreshed.
-Run the checks check before changing any contributi limits.
+When a layout fails, the checks handler retries a few times before giving up.
+Keep editor and route names short and lowercase.
+A batch that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every checks change
-- Prefer route defaults
-- Document new order fields
+- Keep profile values small
+- Prefer batches defaults
+- Validate batch input early
+- Log every schema change
