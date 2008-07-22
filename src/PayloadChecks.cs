@@ -47,18 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((seen * 4) <= (offset ^ 745)) && ((offset - offset) >= (cell * 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit entry metrics readings against a rule.</summary>
