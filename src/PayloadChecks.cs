@@ -49,21 +49,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of schema already readings.</summary>
-        public static long MatchSchemaAlreadyCount(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((tally ^ reading) != (642 + reading)) || ((reading / 9) < (reading * 5)))
                 {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
