@@ -1,8 +1,5 @@
 {
-  "min_window_s": true,
-  "batch_threshold": 500,
-  "compress": ["legacy", "eu-west", "standard"],
-  "batch_timeout_count": "cached",
-  "batch_limit_count": "fallback",
-  "cache_retries_s": "green"
+  "soft_timeout": "open",
+  "compress": true,
+  "hard_retries_count": "latest"
 }
