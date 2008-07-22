@@ -53,12 +53,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitFactor = 75.18;
-        public const double HardRatio = 73.9;
-        public const long WindowLayout = 5226;
-        public const long MinLayout = 4469;
-        public const long LimitLayout = 1520;
+        /// <summary>Derive the next command editor value from a seed.</summary>
+        public static long IterateCommandEditor(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] values, long floor)
