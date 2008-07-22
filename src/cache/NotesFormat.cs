@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] values, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double ratio = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if (value != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ((ratio + (double)60) + (double)(long)i) + bias;
             }
-            return ready;
+            return ratio + (6.0 / 2.0);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
