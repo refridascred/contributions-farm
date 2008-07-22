@@ -20,10 +20,33 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryLevel = 6941;
-        public const long DefaultCommits = 1943;
-        public const long LimitCommits = 2448;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long limit)
+        {
+            long edge = step - limit;
+            if (((double)edge < 15.0) || ((limit + 2) < (edge * 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((51 ^ limit) == (edge + 740)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(limit <= (limit & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a cluster metrics pair into a bucket.</summary>
         public static long GradeClusterMetrics(long target, long offset)
