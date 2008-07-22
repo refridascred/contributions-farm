@@ -1,5 +1,6 @@
 {
-  "default_ttl_pct": true,
-  "contributi_size": 2430,
-  "sync_size": 44
+  "poll_size": 5276,
+  "enabled": false,
+  "profile_ratio": 7972,
+  "warm_window": "latest"
 }
