@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
