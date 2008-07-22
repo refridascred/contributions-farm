@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const double MinRoute = 21.16;
         public const long MaxSpan = 37;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] readings, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (item < limit)
+                if (sample < limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Compare every pair of schema already readings.</summary>
