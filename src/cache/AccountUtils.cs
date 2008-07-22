@@ -26,32 +26,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long origin, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] values, long bound)
         {
-            long diff = origin + floor;
-            if ((88 << 1) > (diff * 3))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 3) > diff)
+                if (value > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin % 5) >= (diff + diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
