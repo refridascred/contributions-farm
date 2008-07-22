@@ -1,6 +1,5 @@
 {
-  "burst_timeout_ms": false,
-  "sync_size_s": true,
-  "warm_window_ms": 30,
-  "checks_window": "legacy"
+  "window_window": 3696,
+  "layout_window": ["staging", "fallback"],
+  "payload_depth": "green"
 }
