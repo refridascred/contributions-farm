@@ -30,22 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] readings, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (((14.0 + 2.53) > (double)count) || ((double)value <= 6.17))
+                if (reading >= seed)
                 {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
