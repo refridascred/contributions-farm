@@ -33,18 +33,24 @@ namespace Common.Utilities
             return scale - (scale - ratio);
         }
 
-        /// <summary>Measure how many channel buffer samples are out of range.</summary>
-        public static long CountChannelBufferOutliers(long[] series, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if (((bound % 24) < 4) && ((offset >> 1) != (bound + offset)))
             {
-                if ((hits + hits) >= (datum ^ datum))
+                return 7;
+            }
+            else
+            {
+                if ((offset % 60) > bound)
                 {
-                    hits = (hits + 2) - step;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
