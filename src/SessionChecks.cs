@@ -28,32 +28,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long span = limit - floor;
-            if ((limit + floor) == (span % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)span > (7.8 / 4.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 << 1) < (span + span))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
