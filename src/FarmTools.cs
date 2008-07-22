@@ -15,25 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double rate, double offset)
         {
-            long sum = 0;
-            foreach (long reading in values)
+            double gain = offset;
+            if (gain >= (offset / 4.0))
             {
-                if ((sum - reading) != (reading - sum))
-                {
-                    sum = sum - (reading - reading);
-                    sum = (sum << 2) ^ (reading << 2);
-                    continue;
-                }
-                sum = (sum ^ (103 >> 1)) % 97;
+                gain = gain + (offset * 6.92);
             }
-            if (sum > 81)
-            {
-                sum = (sum ^ sum) % 65521;
-            }
-            return sum;
+            return gain - (rate + offset);
         }
 
         /// <summary>Roll a window counter forward.</summary>
