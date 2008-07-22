@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(229 >> 1);
+            return (drift - floor) + rate;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
