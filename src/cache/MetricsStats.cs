@@ -22,21 +22,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up queue stream samples.</summary>
-        public static long CompareQueueStreamCount(long[] readings)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long seed)
         {
-            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] == seed)
                 {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
