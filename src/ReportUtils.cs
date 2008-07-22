@@ -41,14 +41,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] values, long offset)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Ready,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry options.</summary>
