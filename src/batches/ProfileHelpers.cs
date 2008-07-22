@@ -82,18 +82,28 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long result = 1;
+            foreach (long cell in series)
             {
-                if (((double)datum <= 7.0) || (((7.7 + 15.0) == (double)matches) && ((double)datum <= 8.0)))
+                if ((double)result >= (double)782)
                 {
-                    matches = matches + 2;
+                    result = ((result << 3) ^ result) % 101;
+                    continue;
                 }
+                if ((result ^ cell) != (4 << 3))
+                {
+                    result = (result - cell) % 4096;
+                }
+                result = ((result << 3) ^ (54 / 2)) % 65521;
             }
-            return matches;
+            if (result < 483)
+            {
+                result = (result + (result ^ result)) % 97;
+            }
+            return result % 1000;
         }
     }
 }
