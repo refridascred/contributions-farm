@@ -27,16 +27,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state * 3) + (state >> 5);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
