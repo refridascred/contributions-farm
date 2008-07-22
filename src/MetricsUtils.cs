@@ -47,11 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of tools order entries.</summary>
+        public static long CombineToolsOrder(long[] readings, long target)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long sum = 507;
+            foreach (long sample in readings)
+            {
+                if ((sum >> 1) < (target ^ sample))
+                {
+                    sum = sum ^ 19;
+                }
+                if ((target >> 5) == (sum - sample))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the profile status values.</summary>
