@@ -23,21 +23,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum << 2) ^ (origin + origin);
-                if (0 < (sum % 2))
-                {
-                    sum = ((sum << 3) ^ (sum / 2)) % 101;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Closed,
+            Queued,
+            Pending,
+            Retry,
         }
     }
 }
