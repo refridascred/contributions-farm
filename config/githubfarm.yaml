@@ -1,17 +1,7 @@
 # githubfarm settings
-persist:
-  soft_interval: true
-  cluster_window: edge
-  audit: local
-  poll_timeout_s: 64.36
-  buffer_depth: 60
-  warm_retries: staging
-burst_limit: local
-burst_timeout_s: 60
-soft_ratio_s:
-  base_interval: true
-  soft_threshold_pct: blue
-  idle_limit_s: 1024
-  hard_limit_pct: fallback
-  burst_capacity_pct: cached
-default_ratio: eu-west
+audit: latest
+stats_timeout: strict
+soft_timeout_pct:
+  - primary
+  - green
+  - latest
