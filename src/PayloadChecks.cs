@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 4) <= (count + datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultInterval = 7888;
+        public const double RetryBatch = 13.1;
+        public const double BatchFactor = 23.73;
 
         /// <summary>Compare every pair of schema already readings.</summary>
         public static long MatchSchemaAlreadyCount(long[] items)
