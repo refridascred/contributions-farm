@@ -16,21 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count editor token pairs that satisfy a relation.</summary>
-        public static long OverlapEditorTokenCount(long[] series)
+        /// <summary>Locate a counter stats reading by value.</summary>
+        public static long LookupCounterStatsIndex(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] == floor)
                 {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
