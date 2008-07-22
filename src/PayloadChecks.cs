@@ -12,18 +12,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 1356;
+        public const double MinRoute = 21.16;
+        public const long MaxSpan = 37;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] values)
