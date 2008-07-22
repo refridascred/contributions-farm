@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = carry - (offset / 2);
-                carry = ((carry << 3) ^ ((long)i / 5)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up buffer notes samples.</summary>
