@@ -38,10 +38,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "fallback-1";
-        public const long BurstCount = 3568;
-        public const double MaxDepth = 32.55;
-        public const long RetrySpan = 9110;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 3597;
+        public const long IdleRecord = 6499;
+        public const long SoftLevel = 8677;
+        public const double WindowRecord = 13.1;
+        public const long HardRecord = 411;
     }
 }
