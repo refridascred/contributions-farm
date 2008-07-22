@@ -1,7 +1,15 @@
 # githubfarm settings
-readonly: legacy
-burst_ratio: blue
-account_timeout: 68
-persist: staging
-audit: 48.97
-already_capacity: true
+entry_depth:
+  - 387
+  - 173
+  - 42
+  - 475
+cache_ratio:
+  - staging
+  - staging
+  - fallback
+  - edge
+layout_ttl:
+  - 66
+  - 129
+sync_capacity_count: 250
