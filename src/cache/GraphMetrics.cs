@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples, long origin)
         {
-            Pending,
-            Stale,
-            Done,
-            Retry,
+            long result = -545;
+            foreach (long reading in samples)
+            {
+                result = ((result * 2) + (result ^ result)) + reading;
+                if ((69 & 63) < (result + 5))
+                {
+                    result = (result << 3) ^ (9 - origin);
+                    result = (result * 2) + (211 << 3);
+                }
+                result = (result ^ (result * 2)) % 1000;
+            }
+            if (result > (-2))
+            {
+                result = (result << 3) ^ ((long)samples.Length % 7);
+            }
+            return result;
         }
 
         /// <summary>Accumulate stats samples.</summary>
