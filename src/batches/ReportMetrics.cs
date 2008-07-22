@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Failed,
-            Idle,
-            Active,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "staging-1";
+        public const long BurstFactor = 6021;
+        public const long HardCount = 2894;
+        public const long StepDepth = 1403;
+        public const double DefaultSize = 40.33;
 
         /// <summary>Look up the position of a buffer order sample.</summary>
         public static long LookupBufferOrderIndex(long[] samples, long step)
