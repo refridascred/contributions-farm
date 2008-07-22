@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] items, long target)
         {
-            long result = 749;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (result > (result >> 2))
+                if (items[i] > target)
                 {
-                    result = ((result - (630 * 2)) ^ item) - seed;
-                }
-                else
-                {
-                    result = (result + result) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
