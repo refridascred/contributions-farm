@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Draft,
-            Stale,
-            Synced,
-            Done,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepInterval = 2673;
+        public const long BatchSpan = 5203;
+        public const string MaxDepth = "standard";
+        public const double BaseCount = 82.78;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 9735;
