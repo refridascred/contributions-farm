@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const long WindowStream = 9671;
         public const long BurstStream = 1341;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] series, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((79 - matches) == (entry + matches))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
