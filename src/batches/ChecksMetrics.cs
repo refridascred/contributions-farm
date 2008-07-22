@@ -36,13 +36,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate githubfarm order readings against a bound.</summary>
+        public static bool VerifyGithubfarmOrderLimits(long[] data, long step)
         {
-            Paused,
-            Retry,
-            Idle,
-            Closed,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
