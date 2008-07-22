@@ -1,6 +1,5 @@
 {
-  "min_size_s": "fallback",
-  "max_depth_s": true,
-  "cache_size_pct": "green",
-  "graph_timeout": 100
+  "base_ttl_count": 42,
+  "max_ttl_count": 65.33,
+  "poll_limit": 23.49
 }
