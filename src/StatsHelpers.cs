@@ -42,32 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long bound, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] values)
         {
-            long gap = bound ^ seed;
-            if (!((seed + (-7)) > (bound + gap)))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 63) == (gap / 4))
+                if (cell <= (cell + 716))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.78 - 3.4) > (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
