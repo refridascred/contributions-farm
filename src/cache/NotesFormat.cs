@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = 36;
-            foreach (long sample in levels)
-            {
-                if ((4 % 97) == (14 - sample))
-                {
-                    acc = ((acc * 3) + offset) % 97;
-                }
-            }
-            return acc % 97;
+            Closed,
+            Retry,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
