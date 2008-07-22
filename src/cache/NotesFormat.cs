@@ -31,35 +31,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long step, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long bound, long seed)
         {
-            if ((target << 2) >= (target - target))
+            if (((double)bound == (6.69 + 9.0)) && ((bound - bound) == (bound & 1)))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((double)step != (9.28 * 4.49))
+                if ((bound - bound) == (37 - bound))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((step + 233) == (126 << 2))
+                    if ((seed + seed) < (seed / 9))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)step != (11.0 / 9.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 2;
                     }
                 }
             }
