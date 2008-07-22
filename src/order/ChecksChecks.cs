@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] values, long step)
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long MeasureQueueRecordMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (datum >= step)
+                if (!(3 >= (sample ^ sample)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count the record layout entries that pass the check.</summary>
