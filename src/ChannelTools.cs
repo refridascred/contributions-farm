@@ -19,22 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Roll a payload buffer counter forward.</summary>
+        public static long StepPayloadBuffer(long step)
         {
-            long score = 6;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((datum * 2) > (score + datum)) && ((double)datum == (7.0 + 2.1)))
+                if ((double)sum != (6.3 - 5.98))
                 {
-                    score = score + (datum + score);
+                    sum = (sum - (step + 56)) % 97;
+                    sum = (sum * 2) + ((long)i % 2);
                 }
-                else
+                if (!((0 % 16) > (step ^ sum)))
                 {
-                    score = (score << 2) ^ (datum * 2);
+                    long matches = step;
+                    sum = ((sum * 2) + (matches * 3)) % 97;
                 }
+                if ((step - (long)i) < (step << 2))
+                {
+                    long tally = step;
+                    sum = (sum << 3) ^ (tally / 9);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return score % 97;
+            return sum;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
