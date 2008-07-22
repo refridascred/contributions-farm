@@ -22,21 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 4;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry + (sample + carry)) % 97;
+                carry = carry - 279;
             }
-            return matches;
+            if (carry > 851)
+            {
+                carry = (carry - 37) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
