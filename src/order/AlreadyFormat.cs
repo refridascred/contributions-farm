@@ -34,18 +34,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] items, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((2.4 * 7.0) == (double)value)
-                {
-                    seen = (seen + 1) + bound;
-                }
+                state = (state * 3) + (state >> 5);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
