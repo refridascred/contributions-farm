@@ -38,21 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Blend two context stats measurements.</summary>
+        public static double SmoothContextStats(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = scale;
+            if (gain < (scale * 4.05))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain + scale) - offset;
             }
-            return seen;
+            return gain + scale;
         }
     }
 }
