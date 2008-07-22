@@ -23,26 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings, long target)
+        /// <summary>Measure how many window metrics samples are out of range.</summary>
+        public static long TallyWindowMetricsHits(long[] values)
         {
-            long carry = 90;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (!(((datum << 3) > (datum >> 5)) || ((carry << 1) <= (datum / 9))))
+                if ((entry ^ hits) > 68)
                 {
-                    carry = (carry - (target & 31)) % 4096;
-                }
-                if (3.3 >= (double)datum)
-                {
-                    carry = carry - (datum - (long)readings.Length);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ 353) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Hold a graph summary.</summary>
