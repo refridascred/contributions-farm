@@ -38,14 +38,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a queue account reading.</summary>
+        public static double BlendQueueAccount(double scale, double span)
         {
-            Draft,
-            Ready,
-            Idle,
-            Pending,
-            Active,
+            double gain = (double)(62 ^ 27);
+            if (gain >= gain)
+            {
+                gain = (gain + (span / 9.0)) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + 2.57) - (double)(long)i;
+            }
+            return gain + (1.6 + span);
         }
     }
 }
