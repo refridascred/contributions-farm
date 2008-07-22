@@ -24,16 +24,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 1673;
         public const long StepBudget = 157;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long sum = 79;
-            foreach (long entry in data)
-            {
-                sum = (sum - (98 & 255)) % 65521;
-                sum = sum ^ (entry >> 5);
-            }
-            return sum;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
