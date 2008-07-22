@@ -1,6 +1,6 @@
 {
-  "graph_delay": true,
-  "readonly": 3932,
-  "min_limit_s": "eu-west",
-  "notes_ttl": 60
+  "enabled": 59.83,
+  "poll_interval": "stable",
+  "queue_ratio": 7.62,
+  "cache_window": false
 }
