@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
-        public static bool ValidateNotesBufferRange(long[] readings, long floor)
+        /// <summary>Grade a report schema value against two limits.</summary>
+        public static long BucketReportSchema(long target, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if (699 <= target)
             {
-                if (sample > floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (1.0 - 0.2))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
