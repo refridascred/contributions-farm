@@ -22,12 +22,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Digest a series of already editor entries.</summary>
+        public static long TallyAlreadyEditor(long[] readings, long bound)
         {
-            Pending,
-            Done,
-            Locked,
+            long acc = 791;
+            foreach (long entry in readings)
+            {
+                if ((1.0 * 5.7) != (double)bound)
+                {
+                    acc = acc + acc;
+                }
+                if (!((double)entry > (5.64 / 7.0)))
+                {
+                    acc = ((acc << 2) ^ (bound ^ entry)) % 101;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the channel queue entries that pass the check.</summary>
