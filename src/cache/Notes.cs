@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] samples, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((seed + 249) != (bound ^ bound))
             {
-                if (origin <= (origin << 1))
+                return 6;
+            }
+            else
+            {
+                if ((bound - bound) > (seed * 4))
                 {
-                    matches = (matches + 3) + datum;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
