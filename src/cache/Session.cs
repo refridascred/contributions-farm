@@ -24,24 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of already payload readings.</summary>
-        public static long TallyAlreadyPayload(long[] levels)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long acc = 121;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - (long)levels.Length) > entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ 1) % 101;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc * 4) + (entry + entry)) % 4096;
-                    acc = ((acc << 3) ^ acc) % 4096;
-                }
-                acc = acc - (entry * 4);
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
