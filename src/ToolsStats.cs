@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] readings, long step)
         {
-            long state = 3;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((state * 4) > datum)
+                if (datum <= step)
                 {
-                    state = ((state * 5) + (state << 2)) % 97;
-                }
-                if ((3.9 + 7.1) >= (double)target)
-                {
-                    state = (state ^ (state & 15)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the payload level values.</summary>
