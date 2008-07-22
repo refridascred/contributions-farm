@@ -52,12 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxRatio = 73.72;
-        public const long RetryDepth = 3618;
-        public const long HardChannel = 3390;
-        public const long SoftChannel = 4604;
-        public const long BatchBudget = 6969;
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
