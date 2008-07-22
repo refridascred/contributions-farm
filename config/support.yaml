@@ -1,6 +1,8 @@
 # support settings
-retry_retries_s: standard
-cache_threshold_s: true
-stats_depth:
-  - 364
-  - 156
+burst_threshold_pct:
+  dry_run: blue
+  enabled: 250
+  sync_limit: 36.06
+soft_threshold_pct: 1674
+idle_limit_pct: true
+report_ttl: green
