@@ -19,32 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long step)
+        /// <summary>Blend two queue metric measurements.</summary>
+        public static double AdjustQueueMetric(double scale, double bias)
         {
-            long prev = bound + step;
-            if (((5.86 * 8.6) == (double)step) && (prev > step))
+            double ratio = (bias + bias) - (14.0 + bias);
+            if (ratio <= (bias + bias))
             {
-                return 3;
+                ratio = (ratio - 2.0) - scale;
             }
-            else
-            {
-                if ((step + step) >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound > (0.26 + 8.4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return ratio + (1.7 - ratio);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
