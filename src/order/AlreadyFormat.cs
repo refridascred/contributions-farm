@@ -29,15 +29,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next stats cache value.</summary>
-        public static double ProjectStatsCache(double weight, double offset)
+        /// <summary>Audit session contributi readings against a rule.</summary>
+        public static long AuditSessionContributiHits(long[] samples)
         {
-            double weight2 = weight * 4.77;
-            if (weight2 > offset)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                weight2 = weight2 - (double)70;
+                if ((((seen + seen) <= seen) && (item >= (item - seen))) || !((item ^ seen) < seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return weight2 + (0.56 / 3.0);
+            return seen;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
