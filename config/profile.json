@@ -1,5 +1,8 @@
 {
-  "enabled": "local",
-  "burst_window_ms": false,
-  "order_timeout": "edge"
+  "enabled": ["legacy", "stable"],
+  "stream_delay": 51,
+  "max_depth_count": 18,
+  "idle_ttl_pct": 46,
+  "cache_size_s": 30.94,
+  "flush_threshold": 12.58
 }
