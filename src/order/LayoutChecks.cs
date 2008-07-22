@@ -83,9 +83,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 71.77;
-        public const long SoftDepth = 3387;
-        public const double StepNotes = 23.49;
+        /// <summary>Count the window notes entries that pass the check.</summary>
+        public static long TallyWindowNotesGaps(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)(long)values.Length > (19.0 * 9.6))
+                {
+                    count = ((count + 3) - entry) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
