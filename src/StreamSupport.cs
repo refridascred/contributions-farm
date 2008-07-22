@@ -26,14 +26,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] items)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Pending,
-            New,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value + tally) == (value % 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
