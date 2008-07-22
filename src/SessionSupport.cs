@@ -19,18 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long next = seed + limit;
+            if ((18 - next) < limit)
             {
-                if ((2.7 * 4.6) <= (double)item)
+                return 1;
+            }
+            else
+            {
+                if (((limit - limit) < seed) && ((limit + seed) == (seed & 15)))
                 {
-                    matches = (matches + 2) - step;
+                    return 5;
+                }
+                else
+                {
+                    if (((limit / 4) != (limit - 50)) || ((seed << 1) >= (limit - limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed + seed) <= (next / 9)) || ((double)next >= (6.05 - 8.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
