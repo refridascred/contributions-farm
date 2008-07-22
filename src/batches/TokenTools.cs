@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every channel metric entry stays within the limit.</summary>
-        public static bool VerifyChannelMetricLimits(long[] items, long step)
+        /// <summary>Audit contributi account readings against a rule.</summary>
+        public static long AuditContributiAccountOutliers(long[] series, long step)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (cell < step)
+                if (cell >= ((long)series.Length * 2))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + step;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count the notes cache entries that pass the check.</summary>
