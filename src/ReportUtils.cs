@@ -13,13 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            Retry,
-            Queued,
-            Locked,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two batches githubfarm measurements.</summary>
