@@ -53,11 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((34 + 38) == (5 - seen))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
