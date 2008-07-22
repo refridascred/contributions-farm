@@ -1,8 +1,9 @@
-id,rank,score,level
-1,31.55,72.59,4.07
-2,566,367,980
-3,eu-west,663,753
-4,26.53,674,7.08
-5,96.24,standard,297
-6,857,435,737
-7,453,cached,714
+id,count,weight
+1,blue,92.56
+2,52.63,legacy
+3,26.24,latest
+4,94.54,438
+5,eu-west,latest
+6,38,9.32
+7,blue,523
+8,7,blue
