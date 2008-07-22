@@ -1,7 +1,12 @@
 {
-  "sync_ratio_s": 75,
-  "counter_depth": true,
-  "verbose": "fallback",
-  "audit": 2480,
-  "hard_timeout_pct": "standard"
+  "cache_limit_pct": 48.08,
+  "batches_ratio": {
+    "max_depth": 100,
+    "max_delay_ms": 5617,
+    "default_ttl_ms": "local"
+  },
+  "graph_timeout": 255,
+  "soft_window": ["strict", "edge", "stable"],
+  "persist": "strict",
+  "compress": ["fallback", "eu-west"]
 }
