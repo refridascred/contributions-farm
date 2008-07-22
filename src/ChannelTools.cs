@@ -34,11 +34,13 @@ namespace Common.Utilities
             return rate + 4.46;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstScore = "staging-edge";
-        public const double SoftProfile = 64.1;
-        public const long HardDepth = 1568;
-        public const long StepSize = 2512;
-        public const double BurstSpan = 36.34;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
