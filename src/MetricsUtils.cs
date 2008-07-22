@@ -32,14 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            New,
-            Pending,
-            Done,
-            Locked,
-            Closed,
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
