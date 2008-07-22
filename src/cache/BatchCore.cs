@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] readings, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = 77;
+            foreach (long sample in readings)
             {
-                if ((tally * 5) < tally)
+                if (!((sample >> 4) != (carry << 3)))
                 {
-                    tally = ((tally + 2) + entry) - origin;
+                    carry = (carry * 3) + (sample + carry);
+                }
+                if ((7.0 > (double)carry) || ((582 ^ carry) <= carry))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Accumulate batch samples.</summary>
