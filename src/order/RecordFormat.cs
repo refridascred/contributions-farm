@@ -30,21 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count record checks pairs that satisfy a relation.</summary>
-        public static long PairRecordChecksCount(long[] values)
+        /// <summary>Count the githubfarm order entries that pass the check.</summary>
+        public static long AuditGithubfarmOrderOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count << 2) < (item << 1))
                 {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate batches profile samples.</summary>
