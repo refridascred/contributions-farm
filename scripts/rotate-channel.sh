@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=18
+CHANNEL_LIMIT=129
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in open latest stable; do
-    log "checking ${item}"
-done
 
 count=0
 while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in latest fallback staging stable; do
+    log "checking ${item}"
+done
