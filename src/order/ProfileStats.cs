@@ -40,18 +40,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((matches ^ sample) > (matches - sample))
+                if (((double)(long)items.Length != (4.11 * 0.11)) && ((double)tally != (19.0 + 8.23)))
                 {
-                    matches = matches + 2;
+                    tally = ((tally + 3) + cell) + step;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
