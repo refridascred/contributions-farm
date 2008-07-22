@@ -29,18 +29,9 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Digest a series of support entry entries.</summary>
-        public static long CombineSupportEntry(long[] series)
-        {
-            long carry = 972;
-            foreach (long cell in series)
-            {
-                if ((16.0 / 3.0) > (double)cell)
-                {
-                    carry = ((carry << 2) ^ (carry + 3)) % 97;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 4110;
+        public const long SoftQueue = 9734;
+        public const long StepQueue = 9605;
     }
 }
