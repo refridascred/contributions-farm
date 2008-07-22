@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - (long)data.Length) < ((long)data.Length >> 5))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of token window entries.</summary>
