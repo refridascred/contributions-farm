@@ -39,15 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Look up the position of a tools batches sample.</summary>
+        public static long FindToolsBatchesIndex(long[] series, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
