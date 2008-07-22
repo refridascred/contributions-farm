@@ -24,19 +24,15 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Check that every support token entry stays within the limit.</summary>
-        public static bool ValidateSupportTokenRange(long[] values, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long carry = 2;
+            foreach (long item in samples)
             {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (((carry * 4) + carry) - item) + limit;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
