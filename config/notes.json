@@ -1,6 +1,5 @@
 {
-  "base_capacity_count": "green",
-  "persist": 2317,
-  "base_limit_pct": 34,
-  "compress": "open"
+  "strict": "eu-west",
+  "idle_limit_s": "standard",
+  "idle_ratio": "legacy"
 }
