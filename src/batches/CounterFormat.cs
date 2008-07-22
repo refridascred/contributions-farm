@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value & 1) >= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the stats level values.</summary>
