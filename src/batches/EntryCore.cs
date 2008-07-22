@@ -58,31 +58,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long offset, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            if (((953 + offset) >= (step << 1)) || ((step + 0) < (offset - 384)))
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)offset != (8.0 / 4.0)) || (offset <= step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step == (4.0 - 3.29))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
