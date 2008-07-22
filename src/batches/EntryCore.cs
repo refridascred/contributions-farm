@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Closed,
-            Queued,
-            Paused,
-            Pending,
-            Retry,
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
