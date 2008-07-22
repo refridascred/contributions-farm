@@ -1,5 +1,18 @@
 {
-  "compress": "legacy",
-  "tools_window": 76,
-  "soft_threshold_s": 9248
+  "hard_threshold_count": 2.23,
+  "batch_delay_pct": {
+    "poll_depth_s": false,
+    "sync_capacity": ["blue", "green", "edge", "standard"],
+    "idle_timeout_count": "green",
+    "hard_delay": {
+      "default_retries_count": 1.52,
+      "soft_ratio_pct": true,
+      "payload_window": "green",
+      "burst_retries": 3039,
+      "queue_ratio": "local",
+      "token_retries": 100
+    },
+    "queue_ttl": "blue"
+  },
+  "dry_run": false
 }
