@@ -24,14 +24,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxDepth = 4198;
+        public const string BatchCluster = "cached";
+        public const long WindowScore = 1284;
+        public const long WindowCluster = 7272;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionGaps(long[] levels)
