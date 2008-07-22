@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Locked,
-            Draft,
-            Ready,
-            Synced,
-            Done,
+            Idle,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
