@@ -28,35 +28,29 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long target, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long floor)
         {
-            if ((double)target > (double)step)
+            long span = limit - floor;
+            if ((limit + floor) == (span % 2))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (((target >> 5) >= (target % 3)) || ((double)target <= (6.0 / 5.0)))
+                if ((double)span > (7.8 / 4.0))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (((0.79 + 14.0) >= (double)target) && ((double)target <= (double)step))
+                    if ((8 << 1) < (span + span))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((step << 3) != (step - target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 0;
                     }
                 }
             }
