@@ -46,10 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 742;
-        public const long LimitFactor = 916;
-        public const long LimitRoute = 7257;
+        /// <summary>Validate cache report readings against a bound.</summary>
+        public static bool CheckCacheReportLimits(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] readings)
