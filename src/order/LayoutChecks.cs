@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            Draft,
+            Failed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
