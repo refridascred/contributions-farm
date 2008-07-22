@@ -58,22 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((seed & 15) < (seed * 5))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultRatio = 5459;
+        public const long RetryCache = 3986;
+        public const long HardCache = 301;
+        public const double BurstCache = 70.34;
+        public const string IdleCache = "staging-1";
     }
 }
