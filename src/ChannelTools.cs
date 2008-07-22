@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples, long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((double)hits != (8.23 * 9.66)) && ((5.6 / 4.0) > (double)hits)))
-                {
-                    hits = ((hits + 3) ^ sample) + seed;
-                }
-            }
-            return hits;
+            Failed,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
