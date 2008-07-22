@@ -58,14 +58,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] items, long seed)
         {
-            Closed,
-            Locked,
-            Paused,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((seed & 15) < (seed * 5))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
