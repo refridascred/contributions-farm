@@ -53,10 +53,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "legacy";
-        public const long WindowFarm = 5500;
-        public const long MaxFarm = 2794;
-        public const long BatchRatio = 3709;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "strict-edge";
+        public const double HardRatio = 19.67;
+        public const string BaseSpan = "fallback-edge";
+        public const long RetryMetric = 4354;
+        public const double SoftWidth = 77.11;
     }
 }
