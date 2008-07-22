@@ -1,9 +1,25 @@
 # support settings
-session_window:
-  - 255
-  - 332
-session_timeout: 100
-readonly: 1423
-retry_interval_pct: true
-verbose: latest
-compress: 100
+enabled: 250
+schema_depth: 30
+token_timeout: 1024
+retry_window_pct:
+  - 192
+  - 42
+  - 245
+verbose: local
+cache_capacity:
+  sync_threshold:
+    base_size_pct:
+      - open
+      - fallback
+      - blue
+    window_size: green
+    dry_run: false
+  filter_interval: 9.46
+  profile_retries: 50.07
+  base_retries: open
+  default_threshold:
+    - 223
+    - 286
+    - 53
+  base_size_count: strict
