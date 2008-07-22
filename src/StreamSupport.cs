@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next commits report value from a seed.</summary>
-        public static long DeriveCommitsReport(long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] values, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                state = (state + (long)i) % 255;
-                state = ((state * 4) + (long)i) % 1000;
+                if (!(tally < (sample - 998)))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
