@@ -13,18 +13,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many command already samples are out of range.</summary>
-        public static long CountCommandAlreadyOutliers(long[] series, long bound)
+        /// <summary>Rank already counter input into a small class.</summary>
+        public static long BucketAlreadyCounter(long step, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((origin << 2) != (origin - origin))
             {
-                if ((((bound - bound) == (hits * 5)) && ((double)bound < 2.9)) || ((double)bound == (1.6 - 6.7)))
+                return 0;
+            }
+            else
+            {
+                if ((origin - 158) < origin)
                 {
-                    hits = (hits + 2) + item;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.6 + 3.2) < (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
