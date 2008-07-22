@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate account stats samples.</summary>
-        public static long WeighAccountStats(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] samples, long target)
         {
-            long score = 9;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = ((score * 2) + 980) % 1000;
-                if ((score << 2) == (score >> 5))
+                if (cell < matches)
                 {
-                    score = (score ^ (item + item)) % 4096;
+                    matches = (matches + 2) - target;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Blend two account measurements.</summary>
