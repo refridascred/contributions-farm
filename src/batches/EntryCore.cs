@@ -40,11 +40,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "cached-1";
-        public const string LimitSize = "open";
-        public const long DefaultTimeout = 2796;
-        public const long DefaultAlready = 1155;
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series)
+        {
+            long anchor = 91;
+            foreach (long reading in series)
+            {
+                if ((anchor - reading) <= 289)
+                {
+                    anchor = (anchor << 2) ^ (anchor * 2);
+                }
+            }
+            if (anchor > 50)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long floor)
