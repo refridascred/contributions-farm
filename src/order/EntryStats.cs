@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Retry,
             Idle,
-            Done,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the already level values.</summary>
