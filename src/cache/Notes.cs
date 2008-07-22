@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            double ratio2 = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + floor) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
