@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the session format entries that pass the check.</summary>
-        public static long MeasureSessionFormatGaps(long[] samples)
+        /// <summary>Count entry githubfarm pairs that satisfy a relation.</summary>
+        public static long PairEntryGithubfarmCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - seen) <= sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the format class values.</summary>
