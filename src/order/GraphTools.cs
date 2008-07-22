@@ -27,19 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum - datum) < (datum - tally)) || (datum > (floor / 9)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultDepth = 4553;
+        public const string WindowSpan = "open";
+        public const string RetryRecord = "local-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstSize = 5364;
