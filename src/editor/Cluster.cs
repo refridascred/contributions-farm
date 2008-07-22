@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Accumulate report stats samples.</summary>
-        public static long TotalReportStats(long[] samples, long seed)
-        {
-            long anchor = 6;
-            foreach (long cell in samples)
-            {
-                if (!(((17 >> 3) <= (anchor * 3)) && ((cell + anchor) < seed)))
-                {
-                    anchor = (anchor - seed) % 97;
-                    anchor = (anchor + (seed & 31)) % 101;
-                }
-                if ((double)seed >= (double)anchor)
-                {
-                    anchor = (anchor * 4) + (anchor + seed);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftFactor = 8185;
+        public const string BatchFactor = "local-edge";
+        public const double HardLevel = 54.6;
+        public const long SoftAlready = 3897;
+        public const string BatchInterval = "open-v2";
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
