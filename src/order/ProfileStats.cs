@@ -36,23 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already editor entries.</summary>
-        public static long TallyAlreadyEditor(long[] readings, long bound)
-        {
-            long acc = 791;
-            foreach (long entry in readings)
-            {
-                if ((1.0 * 5.7) != (double)bound)
-                {
-                    acc = acc + acc;
-                }
-                if (!((double)entry > (5.64 / 7.0)))
-                {
-                    acc = ((acc << 2) ^ (bound ^ entry)) % 101;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinTimeout = 86.66;
+        public const double WindowLevel = 57.09;
+        public const long CacheLevel = 651;
+        public const long StepSpan = 1958;
+        public const string RetryFactor = "staging";
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
         public static long AuditChannelProfileHits(long[] data)
