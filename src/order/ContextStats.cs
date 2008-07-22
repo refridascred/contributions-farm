@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] levels, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (levels[i] <= target)
+                if ((entry - 62) == ((-880) * 2))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
