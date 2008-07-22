@@ -40,21 +40,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long seen = 0;
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 15)
+                    if ((values[i] - values[j]) < 8)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
