@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((double)matches <= (3.71 - 6.2))
+                if (!((count ^ 831) <= (count + sample)))
                 {
-                    matches = (matches + 1) + sample;
+                    count = (count + 1) - bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a editor cache sample.</summary>
