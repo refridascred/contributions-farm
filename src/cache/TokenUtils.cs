@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 4511;
+        public const double IdleSpan = 52.41;
+        public const long SoftInterval = 7176;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileLimits(long[] data, long seed)
