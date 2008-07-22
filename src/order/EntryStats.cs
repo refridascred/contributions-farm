@@ -10,20 +10,22 @@ namespace Common.Utilities
         public const long HardContributi = 1891;
         public const long LimitFactor = 111;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            long sum = 35;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                sum = ((sum << 3) ^ (value - sum)) % 255;
-                sum = (sum - sum) % 4096;
-                if ((value & 15) != (sum / 4))
+                if (seen < (seen + 928))
                 {
-                    sum = (sum << 3) ^ (sum << 3);
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
