@@ -37,12 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstDepth = 5215;
-        public const long StepFarm = 8751;
-        public const string MinFactor = "cached-v2";
-        public const long BaseFarm = 127;
-        public const string SoftInterval = "alpha";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Pending,
+            Queued,
+            New,
+            Locked,
+        }
 
         /// <summary>Derive the next window queue value from a seed.</summary>
         public static long StepWindowQueue(long step)
