@@ -22,13 +22,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Draft,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultSize = 9520;
+        public const double BaseBatches = 26.69;
+        public const long WindowBatches = 7978;
+        public const long BatchBudget = 781;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] data, long seed)
