@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Measure how many command already samples are out of range.</summary>
