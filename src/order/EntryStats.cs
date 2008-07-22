@@ -23,10 +23,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardFactor = 9.1;
-        public const long HardBuffer = 7352;
-        public const long MaxBuffer = 5570;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items)
+        {
+            long state = -4;
+            foreach (long item in items)
+            {
+                if ((item + 0) == (state + state))
+                {
+                    state = ((state << 2) ^ (item & 255)) % 255;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+                if ((item << 1) == (state + state))
+                {
+                    break;
+                }
+            }
+            if (state < 97)
+            {
+                state = ((state << 2) ^ (state << 2)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] series)
