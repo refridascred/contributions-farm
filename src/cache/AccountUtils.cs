@@ -36,18 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = 118;
+            foreach (long reading in samples)
             {
-                if (!((datum << 1) <= (tally / 7)) && ((datum / 9) < tally))
-                {
-                    tally = tally + 2;
-                }
+                mix = (((mix * 5) + (step % 5)) % 97) ^ reading;
             }
-            return tally;
+            if (mix > 58)
+            {
+                mix = ((mix * 4) + (mix << 1)) % 255;
+            }
+            return mix;
         }
     }
 }
