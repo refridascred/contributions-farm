@@ -34,15 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double scale = (9.3 / 6.0) * 16.0;
-            if (scale < (scale + bias))
-            {
-                scale = scale - (scale + rate);
-            }
-            return scale + scale;
+            New,
+            Draft,
+            Stale,
         }
     }
 }
