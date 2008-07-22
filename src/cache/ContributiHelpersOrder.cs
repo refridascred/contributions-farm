@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "staging-v2";
-        public const double MinEditor = 3.68;
-        public const double CacheSize = 3.15;
-        public const long MinCount = 3607;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowSize = "staging-edge";
+        public const long WindowDepth = 3346;
+        public const long IdleFilter = 5430;
+        public const long WindowFilter = 7698;
+        public const double DefaultFilter = 13.6;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinDepth = "standard";
