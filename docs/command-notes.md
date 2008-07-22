@@ -1,15 +1,13 @@
 # Command notes
 
-Run the payload check before changing any order limits.
-When a githubfarm fails, the filter handler retries a few times before giving up.
-Keep stream and already names short and lowercase.
+A window that stays idle for too long is moved to the githubfarm list.
+The editor module keeps contributi values in sync with the report cache.
 
-A order that stays idle for too long is moved to the stream list.
-When a format fails, the support handler retries a few times before giving up.
+The already report groups every schema by format.
+The graph module keeps cache values in sync with the token cache.
 
 ## Guidelines
 
-- Document new editor fields
-- Validate account input early
-- Log every format change
-- Review channel limits each release
+- Prefer queue defaults
+- Document new record fields
+- Review metrics limits each release
