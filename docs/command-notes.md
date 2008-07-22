@@ -1,14 +1,14 @@
 # Command notes
 
-The batches module keeps schema values in sync with the graph cache.
-Each notes is validated before it reaches the layout queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Each tools is validated before it reaches the entry queue.
 
-Run the payload check before changing any cache limits.
-A farm that stays idle for too long is moved to the token list.
-The graph module keeps payload values in sync with the profile cache.
+Defaults for token live in the config folder and can be overridden per environment.
+Each window is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Keep report values small
-- Prefer farm defaults
+- Log every filter change
+- Keep token values small
+- Review metrics limits each release
+- Document new format fields
