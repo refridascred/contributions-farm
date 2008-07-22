@@ -20,14 +20,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Done,
-            Retry,
-            Closed,
-            Queued,
-            Synced,
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
