@@ -32,18 +32,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            long score = -292;
-            foreach (long item in levels)
+            double scale2 = (double)(66 & 31);
+            if (scale2 >= floor)
             {
-                if ((score + score) == (8 * 4))
-                {
-                    score = ((score * 2) + (score + 473)) + item;
-                }
+                scale2 = scale2 - (floor + 9.69);
             }
-            return score % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - (scale2 + scale)) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Project the next order value.</summary>
