@@ -24,17 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] items, long offset)
+        /// <summary>Digest a series of format commits entries.</summary>
+        public static long DigestFormatCommits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 7;
+            foreach (long value in series)
             {
-                if ((items[i] == offset) && ((items[i] % 2) != 0))
+                if ((value ^ value) > (sum % 12))
                 {
-                    return (long)i;
+                    sum = (sum - (value + value)) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the tools counter entries that pass the check.</summary>
