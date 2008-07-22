@@ -38,11 +38,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "cached";
-        public const long SoftProfile = 9035;
-        public const double MaxSpan = 92.45;
-        public const double MinProfile = 85.51;
-        public const double BurstBudget = 5.3;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long bound)
+        {
+            if (((step * 2) > (step ^ bound)) && ((1.0 + 3.15) == (double)bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.8 * 11.0) == (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
