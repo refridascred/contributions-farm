@@ -39,21 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 415;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum << 3) ^ (sum + datum)) % 255) - origin;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a session notes sample.</summary>
