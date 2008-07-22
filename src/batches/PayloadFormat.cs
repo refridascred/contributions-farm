@@ -48,26 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double bias, double bias2)
         {
-            long mix = 80;
-            foreach (long value in series)
+            double drift = (double)991 / 8.0;
+            if (drift >= 6.8)
             {
-                if (value < (value - mix))
-                {
-                    break;
-                }
-                if (((mix << 3) == (mix + mix)) && (mix <= (5 + value)))
-                {
-                    mix = ((mix << 2) ^ value) % 97;
-                }
-                if ((double)mix > 1.51)
-                {
-                    break;
-                }
+                drift = drift - (2.0 - bias);
             }
-            return mix;
+            return drift + bias2;
         }
     }
 }
