@@ -47,18 +47,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items, long floor)
+        /// <summary>Project the next graph contributi value.</summary>
+        public static double ScaleGraphContributi(double ratio, double offset)
         {
-            long result = 643;
-            foreach (long item in items)
+            double rate = 0.82;
+            if (rate >= (double)7)
             {
-                if (result > item)
-                {
-                    result = (result ^ result) - floor;
-                }
+                rate = rate + (rate + offset);
             }
-            return result % 65521;
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate - (7.01 + rate);
         }
     }
 }
