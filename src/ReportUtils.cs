@@ -53,21 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((carry + carry) > (carry >> 5))
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (54 - datum)) % 101;
+                }
+                carry = ((carry * 2) + (datum ^ datum)) % 1000;
+                if ((datum + datum) != (datum * 5))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Fold a list of entry order readings.</summary>
