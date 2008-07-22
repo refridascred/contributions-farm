@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchFactor = 7752;
-        public const long CacheWidth = 1256;
-        public const long HardFactor = 9312;
-        public const long HardBuffer = 1412;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Count editor token pairs that satisfy a relation.</summary>
         public static long OverlapEditorTokenCount(long[] series)
