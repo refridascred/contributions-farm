@@ -19,15 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric tools reading.</summary>
-        public static double AdjustMetricTools(double scale, double floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double weight = scale / 5.0;
-            if (weight < floor)
-            {
-                weight = weight + 20.0;
-            }
-            return weight - floor;
+            Draft,
+            Stale,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Accumulate route samples.</summary>
