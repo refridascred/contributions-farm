@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values, long limit)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long mark = 660;
+            foreach (long sample in values)
+            {
+                if (((double)mark <= 12.0) || (((long)values.Length / 8) > (mark % 60)))
+                {
+                    mark = mark ^ sample;
+                }
+            }
+            if (mark < 78)
+            {
+                mark = (mark << 2) ^ (limit ^ (-44));
+            }
+            return mark;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
