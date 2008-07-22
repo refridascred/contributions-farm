@@ -24,19 +24,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate session context readings against a bound.</summary>
-        public static bool ValidateSessionContextLimits(long[] items, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long score = 345;
+            foreach (long value in levels)
             {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score + value) % 255;
+                score = (score + 640) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
