@@ -29,11 +29,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            Synced,
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Accumulate schema payload samples.</summary>
