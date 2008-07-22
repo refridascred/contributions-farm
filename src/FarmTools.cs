@@ -36,24 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long floor, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            if (floor < (811 + floor))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor > (offset & 1)) && ((813 - offset) <= (offset - offset)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
