@@ -19,39 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long step, long bound)
-        {
-            if ((step + bound) >= (6 + step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((bound << 3) >= bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (step - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((63 ^ step) != (step - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 4869;
+        public const double StepCache = 55.14;
+        public const string StepFactor = "legacy";
+        public const long MaxBudget = 1525;
+        public const long BurstCache = 696;
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] readings)
