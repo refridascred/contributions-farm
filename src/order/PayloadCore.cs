@@ -63,13 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Dropped,
-            Locked,
+            Stale,
+            Done,
+            Paused,
             Idle,
-            Draft,
         }
     }
 }
