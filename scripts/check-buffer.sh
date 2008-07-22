@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=422
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=444
 log "limit is ${BUFFER_LIMIT}"
 
-for item in eu-west strict primary open; do
+for item in fallback cached legacy latest; do
     log "checking ${item}"
 done
