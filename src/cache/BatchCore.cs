@@ -15,13 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Count account layout pairs that satisfy a relation.</summary>
+        public static long PairAccountLayoutCount(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
