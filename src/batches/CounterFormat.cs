@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitCount = 8326;
-        public const long WindowInterval = 5016;
-        public const long StepStream = 7773;
-        public const double StepWidth = 61.15;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstSize = "cached";
+        public const double DefaultQueue = 34.71;
+        public const long LimitQueue = 3774;
+        public const double IdleQueue = 58.5;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
