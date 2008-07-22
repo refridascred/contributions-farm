@@ -28,30 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long state = -4;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item + 0) == (state + state))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 2) ^ (item & 255)) % 255;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
-                }
-                if ((item << 1) == (state + state))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 97)
-            {
-                state = ((state << 2) ^ (state << 2)) % 255;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
