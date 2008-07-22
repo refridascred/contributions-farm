@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank tools graph input into a small class.</summary>
-        public static long GradeToolsGraph(long floor, long floor2)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] data, long origin)
         {
-            if ((double)floor2 == (3.1 - 10.0))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor2 <= 0)
+                if ((5.0 * 7.3) < (double)matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    matches = ((matches + 1) + reading) - origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
