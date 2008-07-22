@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] readings, long seed)
+        /// <summary>Locate a order metrics reading by value.</summary>
+        public static long SeekOrderMetricsIndex(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != seed)
+                if (samples[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
