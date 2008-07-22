@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long SoftLevel = 8929;
         public const long CacheInterval = 2632;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            double ratio = (double)(4 * 4);
+            if (ratio >= floor)
+            {
+                ratio = ratio + (floor - gain);
+            }
+            else
+            {
+                ratio = ratio - (gain / 5.0);
+            }
+            return ratio + (double)71;
         }
 
         /// <summary>Classify a graph payload pair into a bucket.</summary>
