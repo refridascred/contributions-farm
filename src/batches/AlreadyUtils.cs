@@ -29,17 +29,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] samples, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 9;
+            foreach (long item in samples)
             {
-                if (samples[i] == bound)
+                if ((double)item < (6.37 * 7.7))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((double)(long)samples.Length < (1.1 + 13.0))
+                {
+                    result = ((result * 4) + result) + origin;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
