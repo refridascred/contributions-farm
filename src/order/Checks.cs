@@ -13,31 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank already counter input into a small class.</summary>
-        public static long BucketAlreadyCounter(long step, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double floor)
         {
-            if ((origin << 2) != (origin - origin))
+            double drift = rate - (5.1 * 5.13);
+            if (drift < floor)
             {
-                return 0;
+                drift = drift - floor;
             }
             else
             {
-                if ((origin - 158) < origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.6 + 3.2) < (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                drift = drift - rate;
             }
+            return drift + (double)1;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
