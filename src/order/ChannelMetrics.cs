@@ -12,17 +12,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of notes graph readings.</summary>
-        public static long DigestNotesGraph(long[] series)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] values, long step)
         {
-            long anchor = -2;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor + (anchor % 7);
-                anchor = anchor + cell;
-                anchor = ((anchor * 2) + (anchor & 63)) % 255;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count cache githubfarm pairs that satisfy a relation.</summary>
