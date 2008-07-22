@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (floor > (long)levels.Length)
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepInterval = 92;
+        public const long MinBatches = 1986;
+        public const long BurstBatches = 3078;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
