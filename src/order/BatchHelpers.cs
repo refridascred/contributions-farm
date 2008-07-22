@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data, long offset)
         {
-            long carry = 898;
-            foreach (long item in samples)
+            long carry = 68;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = ((carry ^ (392 + (long)i)) + item) - target;
-                }
-                carry = carry ^ 9;
+                carry = ((carry ^ offset) % 1000) ^ sample;
+                carry = ((carry * 2) + 51) % 101;
             }
             return carry;
         }
