@@ -28,10 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBudget = 29.48;
-        public const long CacheBuffer = 150;
-        public const double MaxCount = 19.05;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] items, long origin)
