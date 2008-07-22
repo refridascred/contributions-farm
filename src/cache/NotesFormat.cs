@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] values, long offset)
         {
-            long delta = floor ^ step;
-            if ((delta << 1) > delta)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((2 << 2) != (floor + delta)) || ((760 << 2) <= (floor >> 2)))
+                if (values[i] > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
