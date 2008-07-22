@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] samples, long offset)
+        /// <summary>Blend two commits checks measurements.</summary>
+        public static double SmoothCommitsChecks(double scale, double span)
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = scale + (double)781;
+            return (gain - (double)93) + span;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
