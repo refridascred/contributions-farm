@@ -25,18 +25,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] samples)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((0 ^ tally) >= (tally + entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a record record.</summary>
