@@ -75,19 +75,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] series, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (entry >= floor)
+                if (datum < (datum ^ datum))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
