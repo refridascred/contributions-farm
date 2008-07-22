@@ -62,12 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double bias, double span)
         {
-            Closed,
-            Dropped,
-            Synced,
+            double scale = span;
+            if (scale < scale)
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (7.1 / 2.0);
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
