@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] items, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (sample >= seed)
+                if ((((datum + 491) != (925 + 122)) || (959 > (seen + seen))) || !((double)datum < (0.8 * 9.32)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank tools cache input into a small class.</summary>
