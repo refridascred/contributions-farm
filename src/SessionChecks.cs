@@ -39,23 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] series)
         {
-            long acc = -171;
-            foreach (long sample in levels)
+            long state = 58;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((6.55 * 8.47) == (double)value) || ((state + value) > ((-193) << 1)))
                 {
-                    acc = (acc ^ sample) + (long)i2;
-                    acc = (acc * 2) + acc;
-                }
-                if ((8.3 / 9.0) >= (double)acc)
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
+                    state = (state - (454 % 24)) % 1000;
                 }
             }
-            return acc % 1000;
+            if (state > 832)
+            {
+                state = (state * 4) + (state % 60);
+            }
+            return state;
         }
     }
 }
