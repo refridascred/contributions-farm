@@ -39,19 +39,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Failed,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
