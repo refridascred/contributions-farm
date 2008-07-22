@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a window session reading by value.</summary>
-        public static long FindWindowSessionIndex(long[] data, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((-492) - 454) < target)
             {
-                if (data[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= (double)target)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target < (target << 3)) || ((double)step != (7.1 - 6.9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step + target) <= step) && (target >= (468 - (-80))))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a contributi record.</summary>
