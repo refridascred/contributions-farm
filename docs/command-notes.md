@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Each schema is validated before it reaches the batch queue.
-Use metric settings to tune how often route data is refreshed.
+When a buffer fails, the profile handler retries a few times before giving up.
+Use entry settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new cluster fields
-- Log every checks change
-- Validate batches input early
+- Prefer checks defaults
+- Review record limits each release
+- Keep commits values small
+- Validate stats input early
