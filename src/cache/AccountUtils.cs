@@ -37,19 +37,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Project the next format cache value.</summary>
-        public static double BlendFormatCache(double rate, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            double bias = 3.1;
-            if (bias < (bias - rate))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (rate / 5.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias - (bias - 5.5);
+            return hits;
         }
     }
 }
