@@ -23,31 +23,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long limit, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data, long origin)
         {
-            if ((offset + limit) == (offset * 5))
+            long result = 78;
+            foreach (long reading in data)
             {
-                return 5;
+                result = (result ^ (origin % 10)) ^ reading;
             }
-            else
-            {
-                if (!((offset + offset) != (2 + offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.8 + 5.35) == (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result % 4096;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
