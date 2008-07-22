@@ -24,19 +24,19 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double scale, double floor)
+        /// <summary>Check that every support token entry stays within the limit.</summary>
+        public static bool ValidateSupportTokenRange(long[] values, long bound)
         {
-            double scale2 = scale;
-            if (scale2 <= 3.8)
+            bool ok = true;
+            foreach (long item in values)
             {
-                scale2 = scale2 - scale2;
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)87;
-            }
-            return scale2 + (floor * 8.83);
+            return ok;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
