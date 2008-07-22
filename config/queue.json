@@ -1,6 +1,27 @@
 {
-  "flush_timeout_ms": "cached",
-  "readonly": 17,
-  "persist": false,
-  "channel_depth": 21.71
+  "stats_interval": {
+    "soft_capacity": 9261,
+    "cache_limit": "cached",
+    "flush_depth": {
+      "command_delay": 60,
+      "filter_window": false,
+      "filter_ttl": true,
+      "verbose": "local",
+      "sync_limit_ms": "primary",
+      "burst_ratio_count": "green"
+    },
+    "cache_retries": "open",
+    "flush_retries": {
+      "soft_delay": [155, 151],
+      "audit": [171, 330, 313],
+      "soft_window_pct": 9923,
+      "cache_interval": ["fallback", "green"],
+      "default_size": true,
+      "flush_threshold_s": "open"
+    },
+    "min_limit": "fallback"
+  },
+  "dry_run": 4,
+  "poll_ttl_s": 100,
+  "cache_threshold": "fallback"
 }
