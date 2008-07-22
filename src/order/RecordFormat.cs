@@ -54,26 +54,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data, long seed)
+        /// <summary>Project the next farm counter value.</summary>
+        public static double BlendFarmCounter(double scale, double floor)
         {
-            long mix = -846;
-            foreach (long entry in data)
+            double load = floor;
+            if (load <= (floor / 4.0))
             {
-                if ((seed << 1) >= mix)
-                {
-                    mix = ((mix << 3) ^ (entry + 8)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (199 ^ 882)) % 101;
-                }
+                load = load - (double)49;
             }
-            if (mix > 4)
+            else
             {
-                mix = (mix * 4) + (seed % 97);
+                load = load - (double)7;
             }
-            return mix % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load + (double)1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
