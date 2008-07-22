@@ -23,19 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window metrics samples are out of range.</summary>
-        public static long TallyWindowMetricsHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry ^ hits) > 68)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseLevel = 7617;
+        public const double BurstScore = 39.53;
+        public const long WindowRecord = 1159;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BurstRecord = "fallback-1";
