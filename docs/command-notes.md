@@ -1,15 +1,14 @@
 # Command notes
 
-Use contributi settings to tune how often support data is refreshed.
-Keep record and token names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The context module keeps format values in sync with the graph cache.
+Run the window check before changing any farm limits.
 
-When a layout fails, the checks handler retries a few times before giving up.
-Keep editor and route names short and lowercase.
-A batch that stays idle for too long is moved to the record list.
+The layout report groups every commits by already.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep profile values small
-- Prefer batches defaults
-- Validate batch input early
-- Log every schema change
+- Review stats limits each release
+- Keep context values small
+- Log every cache change
