@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] items, long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double rate = 9.34;
+            if (rate >= (5.8 - ratio))
             {
-                if (171 < (70 - hits))
-                {
-                    hits = ((hits + 3) ^ entry) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate + bias;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (4.6 * 9.34)) + (double)(long)i;
+            }
+            return rate - (rate / 7.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
