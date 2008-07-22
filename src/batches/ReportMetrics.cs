@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit token cache readings against a rule.</summary>
-        public static long MeasureTokenCacheOutliers(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell <= (seen + seen))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = seen + 1;
+                    mark = ((mark << 3) ^ (origin + mark)) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
