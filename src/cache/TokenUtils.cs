@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 4511;
-        public const double IdleSpan = 52.41;
-        public const long SoftInterval = 7176;
+        /// <summary>Project the next graph batches value.</summary>
+        public static double ProjectGraphBatches(double scale, double floor)
+        {
+            double rate = floor;
+            if (rate < scale)
+            {
+                rate = rate + (scale - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)291) - (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Find the first counter layout entry that matches the target.</summary>
         public static long LookupCounterLayoutIndex(long[] levels, long floor)
