@@ -19,18 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels, long step)
+        /// <summary>Roll a editor stream counter forward.</summary>
+        public static long SeriesEditorStream(long target)
         {
-            long result = 480;
-            foreach (long item in levels)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((step + step) != (long)levels.Length))
+                total = total + ((long)i << 1);
+                if (165 < (total & 3))
                 {
-                    result = result + (item & 31);
+                    total = (total + (target - target)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the commits phase values.</summary>
