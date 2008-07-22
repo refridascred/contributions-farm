@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit metric account readings against a rule.</summary>
-        public static long MeasureMetricAccountOutliers(long[] values)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((6.53 / 8.0) < (double)reading)
+                if (item < seed)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
