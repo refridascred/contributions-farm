@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] values, long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count <= step) && ((count - count) != (count >> 1)))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
