@@ -31,14 +31,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples, long limit)
         {
-            Synced,
-            Ready,
-            Queued,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((limit + value) <= (limit - value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of batches support readings.</summary>
