@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate route entry readings against a bound.</summary>
-        public static bool ValidateRouteEntryLimits(long[] levels, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Dropped,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a profile record.</summary>
