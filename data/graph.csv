@@ -1,6 +1,6 @@
-id,rank,ratio,active,region
-1,66.51,828,edge,34.31
-2,272,stable,open,117
-3,5.57,80.4,649,117
-4,366,open,877,260
-5,31.93,697,10.36,752
+id,weight,score
+1,edge,strict
+2,6,local
+3,standard,34.5
+4,fallback,strict
+5,open,54.49
