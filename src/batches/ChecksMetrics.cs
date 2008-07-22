@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings, long seed)
         {
-            long state = -658;
-            foreach (long cell in readings)
+            long score = 1;
+            foreach (long value in readings)
             {
-                if (((long)readings.Length & 255) > state)
-                {
-                    state = (state ^ (cell + state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (58 & 3)) % 4096;
-                }
+                score = ((score + (value * 4)) % 1000) - seed;
             }
-            return state;
+            return score % 1000;
         }
 
         /// <summary>Hold a stream header.</summary>
