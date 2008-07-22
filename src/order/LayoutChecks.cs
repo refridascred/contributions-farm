@@ -86,19 +86,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double scale, double offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples, long seed)
         {
-            double ratio = offset;
-            if (ratio <= scale)
+            long total = 869;
+            foreach (long reading in samples)
             {
-                ratio = ratio + (double)(-391);
+                if (((seed * 3) > (total / 4)) && ((reading - seed) >= (225 + seed)))
+                {
+                    total = (total + seed) % 65521;
+                }
+                if (seed >= (total / 2))
+                {
+                    total = ((total * 2) + (reading + 292)) % 255;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (561 % 8)) % 1000;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 5.96) + (double)(long)i;
-            }
-            return ratio - 1.4;
+            return total % 97;
         }
     }
 }
