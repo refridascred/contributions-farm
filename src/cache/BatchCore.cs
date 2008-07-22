@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 1.53;
+        public const long DefaultLevel = 4002;
+        public const long SoftWidth = 4254;
+        public const long WindowEditor = 7580;
 
         /// <summary>Count account layout pairs that satisfy a relation.</summary>
         public static long PairAccountLayoutCount(long[] data)
