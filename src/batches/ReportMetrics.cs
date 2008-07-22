@@ -13,18 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
-        public static long AuditContextGithubfarmHits(long[] data)
+        /// <summary>Count the format batches entries that pass the check.</summary>
+        public static long AuditFormatBatchesMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((entry - tally) < (57 + entry))
+                if ((sample % 5) == (63 + sample))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
