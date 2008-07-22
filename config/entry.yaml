@@ -1,14 +1,7 @@
 # entry settings
-poll_ttl_ms:
-  - blue
-  - eu-west
-  - staging
-  - edge
-poll_limit_pct: primary
-burst_threshold_count: 103
-min_interval_ms: 93
-batches_ratio:
-  order_depth: 30
-  idle_size_count: 81
-  hard_delay_pct: 30
-  soft_window_pct: local
+report_interval: false
+strict: 42.84
+flush_threshold_count:
+  - 233
+  - 287
+  - 482
