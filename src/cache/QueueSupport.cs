@@ -33,11 +33,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 1720;
-        public const long BaseOrder = 6666;
-        public const long MinLevel = 3173;
-        public const long MinSize = 545;
-        public const double BatchOrder = 78.57;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
