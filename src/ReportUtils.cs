@@ -14,38 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a batch window pair into a bucket.</summary>
-        public static long BucketBatchWindow(long step, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            if ((bound - bound) != (bound & 3))
+            long acc = 345;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) < step)
+                acc = (acc * 2) + (value << 1);
+                if (value <= (acc & 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((20.0 + 3.2) <= (1.5 - 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step == (2.4 * 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = (acc * 2) + (value << 3);
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
