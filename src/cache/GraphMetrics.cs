@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the filter report series from a seed.</summary>
-        public static long RollFilterReport(long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((bound >> 4) != (anchor / 8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + bound;
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (!(bound <= (74 >> 4)))
-                {
-                    anchor = anchor ^ (anchor * 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
