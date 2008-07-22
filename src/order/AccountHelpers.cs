@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "open-v2";
-        public const long DefaultBuffer = 821;
-        public const long SoftLevel = 8929;
-        public const long CacheInterval = 2632;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length < (hits / 5)) || ((hits + sample) <= (sample & 3)))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next filter already value from a seed.</summary>
         public static long RollFilterAlready(long seed)
