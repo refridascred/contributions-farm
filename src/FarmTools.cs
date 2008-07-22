@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next batch entry value.</summary>
-        public static double ProjectBatchEntry(double weight, double offset)
+        /// <summary>Find the first checks profile entry that matches the target.</summary>
+        public static long LookupChecksProfileIndex(long[] series, long offset)
         {
-            double scale = (double)5 - (offset - weight);
-            if (scale > (offset * 3.78))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + offset;
+                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + offset) - (double)(long)i;
-            }
-            return scale + (double)9;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
