@@ -15,17 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
