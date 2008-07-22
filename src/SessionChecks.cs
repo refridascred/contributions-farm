@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mark = 9;
-            foreach (long sample in data)
-            {
-                mark = (mark + (mark << 1)) % 101;
-                if ((sample << 3) < (mark + sample))
-                {
-                    break;
-                }
-            }
-            if (mark < 486)
-            {
-                mark = mark ^ (922 + mark);
-            }
-            return mark;
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
