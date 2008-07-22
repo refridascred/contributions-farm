@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 6); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=82
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in stable local fallback; do
+    log "checking ${item}"
+done
