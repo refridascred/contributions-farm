@@ -14,17 +14,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] levels, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 8;
+            foreach (long value in series)
             {
-                if (levels[i] == limit)
+                carry = (carry ^ (carry + carry)) - value;
+                if ((carry << 2) <= (long)series.Length)
                 {
-                    return (long)i;
+                    carry = carry ^ carry;
+                }
+                if (7.0 > (double)carry)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < (-456))
+            {
+                carry = carry ^ 518;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
