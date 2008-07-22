@@ -33,21 +33,19 @@ namespace Common.Utilities
             return load - 4.0;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (long)i) - (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
