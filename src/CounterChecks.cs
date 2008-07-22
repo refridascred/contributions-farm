@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Done,
-            Retry,
-            Active,
-            Stale,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
