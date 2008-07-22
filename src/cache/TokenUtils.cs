@@ -26,16 +26,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a session githubfarm counter forward.</summary>
-        public static long StepSessionGithubfarm(long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result ^ result) % 97;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
