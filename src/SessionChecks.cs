@@ -37,21 +37,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batch token value from a seed.</summary>
-        public static long DeriveBatchToken(long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] readings, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.5 * 9.4) > (double)seed)
+                if (readings[i] <= limit)
                 {
-                    result = (result * 2) + result;
-                    break;
+                    return (long)i;
                 }
-                result = (result ^ (seed / 3)) % 97;
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
     }
 }
