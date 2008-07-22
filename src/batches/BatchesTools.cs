@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const double IdleRatio = 4.31;
         public const double CacheLevel = 5.88;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((long)series.Length + cell) > (cell >> 5))
+                if (!((888 % 12) < seen))
                 {
-                    tally = tally + 2;
+                    seen = ((seen + 3) + datum) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
