@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] values, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (((item + tally) >= tally) && ((target - target) >= (item - tally)))
+                if (value != seed)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Roll a report counter forward.</summary>
