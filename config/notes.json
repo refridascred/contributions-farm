@@ -1,11 +1,8 @@
 {
-  "base_limit": 60,
-  "enabled": [434, 291, 424],
-  "audit": {
-    "cache_ttl_count": 47.87,
-    "dry_run": "latest",
-    "enabled": 60
-  },
-  "hard_capacity": "open",
-  "max_size_ms": 24
+  "min_window_s": true,
+  "batch_threshold": 500,
+  "compress": ["legacy", "eu-west", "standard"],
+  "batch_timeout_count": "cached",
+  "batch_limit_count": "fallback",
+  "cache_retries_s": "green"
 }
