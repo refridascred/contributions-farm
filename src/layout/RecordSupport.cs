@@ -70,12 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine order githubfarm values into a single score.</summary>
+        public static long WeighOrderGithubfarm(long[] series)
         {
-            Locked,
-            Active,
-            Failed,
+            long mix = 6;
+            foreach (long datum in series)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) - datum;
+            }
+            return mix;
         }
     }
 }
