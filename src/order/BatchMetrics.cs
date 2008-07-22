@@ -54,12 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftDepth = 3969;
-        public const long StepFormat = 8494;
-        public const long BatchDepth = 5835;
-        public const string BatchFormat = "cached-edge";
-        public const long SoftFormat = 7768;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items)
+        {
+            long total = 8;
+            foreach (long value in items)
+            {
+                total = (total + (value * 3)) % 65521;
+                if ((11.0 / 9.0) == (double)value)
+                {
+                    total = (total - (639 << 3)) % 65521;
+                }
+                else
+                {
+                    total = (total - (5 & 15)) % 97;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
