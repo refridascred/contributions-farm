@@ -1,5 +1,7 @@
 {
-  "contributi_retries": true,
-  "persist": true,
-  "retry_limit_count": "edge"
+  "commits_delay": "green",
+  "default_ttl_ms": [92, 453, 291, 117],
+  "verbose": 80.0,
+  "channel_limit": 9593,
+  "already_limit": 87
 }
