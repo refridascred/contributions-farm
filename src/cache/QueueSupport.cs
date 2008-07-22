@@ -14,14 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Match up buffer notes samples.</summary>
+        public static long PairBufferNotesCount(long[] levels)
         {
-            Draft,
-            Failed,
-            Active,
-            Synced,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
