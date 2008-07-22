@@ -32,10 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitBudget = 27.27;
-        public const long RetryCommand = 3198;
-        public const long BatchDepth = 7184;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series, long limit)
+        {
+            long result = -55;
+            foreach (long sample in series)
+            {
+                result = (result ^ limit) % 65521;
+                result = (result + (sample + sample)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] levels)
