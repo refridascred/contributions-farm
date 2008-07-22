@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (tally > (tally - tally))
+                if (entry < origin)
                 {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Fold a list of support readings.</summary>
