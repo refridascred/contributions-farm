@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry / 9) > (339 / 9))
+                if (data[i] <= floor)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a tools stats.</summary>
