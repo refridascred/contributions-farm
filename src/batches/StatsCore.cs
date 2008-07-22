@@ -68,12 +68,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Synced,
-            Locked,
-            Idle,
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
