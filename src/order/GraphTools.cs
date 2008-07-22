@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowBudget = 4833;
-        public const long IdleInterval = 6499;
-        public const string LimitSchema = "open-v2";
-        public const double IdleRatio = 5.35;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (target <= (target - tally))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up cluster counter samples.</summary>
         public static long MatchClusterCounterCount(long[] values)
