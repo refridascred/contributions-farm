@@ -23,20 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long floor)
-        {
-            long mix = 42;
-            foreach (long sample in samples)
-            {
-                mix = ((mix * 3) + floor) ^ sample;
-            }
-            if (mix > 363)
-            {
-                mix = ((mix * 2) + (mix >> 1)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 22.6;
+        public const long BurstInterval = 9353;
+        public const long CacheCount = 8907;
+        public const long MinInterval = 8534;
 
         /// <summary>Audit layout queue readings against a rule.</summary>
         public static long CountLayoutQueueHits(long[] series)
