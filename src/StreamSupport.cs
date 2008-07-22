@@ -24,15 +24,9 @@ namespace Common.Utilities
         public const long WindowCount = 6363;
         public const long StepChecks = 8356;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double floor)
-        {
-            double drift = floor;
-            if (drift < (8.0 + drift))
-            {
-                drift = (drift + (9.32 * 8.87)) - ratio;
-            }
-            return drift + (double)44;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryScore = "latest-1";
+        public const long SoftFactor = 3507;
+        public const double MaxStream = 3.07;
     }
 }
