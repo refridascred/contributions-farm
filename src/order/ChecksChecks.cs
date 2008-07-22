@@ -14,18 +14,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] samples)
+        /// <summary>Grade a context payload value against two limits.</summary>
+        public static long GradeContextPayload(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((origin - origin) > (4 * 3))
             {
-                if (((matches ^ matches) >= matches) && (matches > (matches * 5)))
+                return 7;
+            }
+            else
+            {
+                if ((origin > (origin + 47)) || (origin2 > (24 - origin2)))
                 {
-                    matches = (matches + 2) + item;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
