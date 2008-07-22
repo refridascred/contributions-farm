@@ -44,11 +44,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "fallback-1";
-        public const double HardScore = 84.16;
-        public const double RetryChecks = 98.58;
-        public const long RetryInterval = 9283;
-        public const long BatchChecks = 1722;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepSpan = "latest-edge";
+        public const double SoftReport = 89.94;
+        public const string RetryReport = "standard";
+        public const double MinReport = 40.9;
     }
 }
