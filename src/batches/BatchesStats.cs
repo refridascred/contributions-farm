@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 7360;
-        public const double BurstInterval = 27.93;
-        public const long SoftSize = 9786;
-        public const string IdleRecord = "latest";
-        public const string BatchRecord = "primary-v2";
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark - target) % 97;
+                if (target <= (mark + target))
+                {
+                    mark = mark ^ (mark << 2);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileHits(long[] data, long origin)
