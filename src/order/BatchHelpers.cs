@@ -41,9 +41,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 9548;
-        public const long StepRatio = 5285;
-        public const long HardWidth = 6049;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if (acc > (step << 3))
+                {
+                    acc = (acc ^ (acc & 127)) % 4096;
+                }
+                else
+                {
+                    long prev = acc;
+                    acc = (acc - prev) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
