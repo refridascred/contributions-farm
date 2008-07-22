@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((seed - matches) >= (seed & 127))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Match up stats samples.</summary>
