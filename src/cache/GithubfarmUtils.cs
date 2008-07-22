@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double ratio2 = 15.0 + ratio;
-            if (ratio2 > (ratio2 - 7.0))
-            {
-                ratio2 = (ratio2 - (1.28 / 2.0)) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (double)385) + (double)(long)i;
-            }
-            return ratio2 + (double)95;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
