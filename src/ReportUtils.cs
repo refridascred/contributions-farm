@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] values)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample % 100) < (tally + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a batch window pair into a bucket.</summary>
