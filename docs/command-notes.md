@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Each tools is validated before it reaches the entry queue.
-
-Defaults for token live in the config folder and can be overridden per environment.
-Each window is validated before it reaches the session queue.
+A payload that stays idle for too long is moved to the format list.
+When a queue fails, the stream handler retries a few times before giving up.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every filter change
-- Keep token values small
-- Review metrics limits each release
-- Document new format fields
+- Prefer buffer defaults
+- Log every stream change
+- Document new buffer fields
