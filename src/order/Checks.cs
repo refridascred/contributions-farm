@@ -57,18 +57,13 @@ namespace Common.Utilities
         public const long SoftChannel = 4604;
         public const long BatchBudget = 6969;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mix = -583;
-            foreach (long value in readings)
-            {
-                if (((7 - value) >= (floor + floor)) && ((mix >> 1) < value))
-                {
-                    mix = (mix - (floor * 4)) % 65521;
-                }
-            }
-            return mix;
+            Queued,
+            Stale,
+            Retry,
+            Failed,
         }
     }
 }
