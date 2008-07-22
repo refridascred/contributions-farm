@@ -57,13 +57,13 @@ namespace Common.Utilities
         public const long SoftChannel = 4604;
         public const long BatchBudget = 6969;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Queued,
-            Stale,
-            Retry,
-            Failed,
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
