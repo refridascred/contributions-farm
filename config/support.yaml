@@ -1,11 +1,13 @@
 # support settings
-strict: 4371
-persist: 8308
-readonly: 77
-default_timeout:
-  - 435
-  - 211
-  - 487
-  - 404
-already_threshold: 60
-flush_ratio: 100
+batch_delay: legacy
+idle_capacity_pct:
+  burst_threshold_count: 77.15
+  burst_depth_pct: 1188
+  buffer_window:
+    max_timeout: 31.43
+    retry_size: false
+    cluster_interval: 86
+    readonly: true
+  default_ttl_pct: 30.36
+  window_timeout: 6137
+flush_ratio: 66
