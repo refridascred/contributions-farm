@@ -1,22 +1,6 @@
 {
-  "persist": true,
-  "profile_depth": {
-    "persist": "edge",
-    "base_interval_ms": 5608,
-    "poll_size_s": 72.11,
-    "compress": "latest"
-  },
-  "warm_limit_pct": {
-    "account_window": 45.92,
-    "default_ttl_pct": {
-      "idle_capacity_s": 88.01,
-      "session_window": "green",
-      "default_timeout_count": 100
-    },
-    "layout_retries": 73.22,
-    "retry_timeout": 6104,
-    "readonly": true,
-    "min_delay_count": [459, 1, 76]
-  },
-  "queue_delay": 47.55
+  "graph_delay": true,
+  "readonly": 3932,
+  "min_limit_s": "eu-west",
+  "notes_ttl": 60
 }
