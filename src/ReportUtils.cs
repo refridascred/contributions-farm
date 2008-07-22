@@ -63,13 +63,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 5167;
+        public const double LimitChannel = 94.24;
+        public const double HardChannel = 21.72;
+        public const long IdleDepth = 9221;
+        public const string BurstChannel = "latest";
     }
 }
