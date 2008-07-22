@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support editor readings.</summary>
-        public static long OverlapSupportEditorCount(long[] values)
+        /// <summary>Count the contributi channel entries that pass the check.</summary>
+        public static long MeasureContributiChannelGaps(long[] items, long step)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen * 2) != (value - step))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
