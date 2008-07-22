@@ -14,22 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] items, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen + seen) <= seed)
-                {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Validate queue support readings against a bound.</summary>
