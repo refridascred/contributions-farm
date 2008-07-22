@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 9506;
-        public const long WindowContributi = 9671;
-        public const long WindowSize = 6640;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] levels)
