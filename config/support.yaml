@@ -1,8 +1,29 @@
 # support settings
-poll_delay:
-  - eu-west
-  - standard
-  - stable
-window_interval: standard
-report_ttl: 5304
-max_ttl_pct: 5377
+notes_timeout:
+  compress: 100
+  audit: 1024
+  persist: green
+  idle_depth_count: 40.91
+  verbose:
+    - 477
+    - 34
+    - 125
+flush_timeout_s:
+  command_retries: green
+  max_delay:
+    retry_limit_ms: 5661
+    compress:
+      - 375
+      - 194
+      - 262
+      - 271
+    max_timeout_count: 100
+    commits_limit: primary
+    githubfarm_capacity:
+      - staging
+      - stable
+      - stable
+    metric_interval: true
+  min_depth_pct: 26.29
+flush_ttl_pct: 1024
+poll_depth_s: stable
