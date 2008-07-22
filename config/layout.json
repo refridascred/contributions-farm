@@ -1,6 +1,25 @@
 {
-  "session_interval": "standard",
-  "cache_window_pct": 47,
-  "checks_timeout": 100,
-  "flush_capacity_s": 1024
+  "filter_limit": false,
+  "verbose": 90.52,
+  "batch_limit": {
+    "enabled": "cached",
+    "idle_threshold": [237, 406],
+    "cache_ratio_count": "strict",
+    "default_capacity_s": {
+      "stream_depth": "latest",
+      "contributi_ttl": ["blue", "eu-west"],
+      "editor_delay": "strict",
+      "layout_threshold": "legacy"
+    },
+    "layout_capacity": {
+      "channel_ratio": "eu-west",
+      "batch_depth": 20.21,
+      "dry_run": "green",
+      "min_capacity": "cached",
+      "burst_limit_s": "stable",
+      "flush_threshold_s": "green"
+    },
+    "queue_interval": 610
+  },
+  "compress": "stable"
 }
