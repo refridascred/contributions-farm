@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] values, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double scale = (double)(622 & 63);
+            if (scale >= (ratio * 8.61))
             {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - ratio;
             }
-            return ready;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (bias - scale)) + (double)(long)i;
+            }
+            return scale - (scale - ratio);
         }
 
         /// <summary>Fold a list of support readings.</summary>
