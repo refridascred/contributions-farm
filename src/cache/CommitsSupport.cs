@@ -80,18 +80,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long TallyWindowBufferGaps(long[] series, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((long)series.Length >> 4) <= matches)
+                if (count >= (1 % 97))
                 {
-                    matches = ((matches + 2) ^ entry) - target;
+                    count = ((count + 3) + reading) + floor;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
