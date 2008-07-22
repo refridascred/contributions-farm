@@ -44,11 +44,11 @@ namespace Common.Utilities
             return ratio + (1.7 - ratio);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstSize = "fallback-edge";
-        public const string MaxInterval = "open-1";
-        public const string BaseTools = "strict";
-        public const string WindowLevel = "staging-v2";
-        public const double BatchTools = 77.37;
+        /// <summary>Project the next notes context value.</summary>
+        public static double ProjectNotesContext(double gain, double span)
+        {
+            double drift = (double)(52 + 536);
+            return (drift + span) + gain;
+        }
     }
 }
