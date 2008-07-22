@@ -1,7 +1,10 @@
 {
-  "batch_size": [170, 77, 323, 86],
-  "strict": ["strict", "local", "stable", "blue"],
-  "base_window_ms": true,
-  "notes_delay": 93,
-  "max_window_s": false
+  "sync_interval_s": 24,
+  "cache_limit_ms": 32.27,
+  "retry_threshold_count": {
+    "compress": 1024,
+    "verbose": true,
+    "metrics_timeout": 250
+  },
+  "notes_limit": ["edge", "strict"]
 }
