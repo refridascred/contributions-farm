@@ -46,13 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Adjust a context reading.</summary>
