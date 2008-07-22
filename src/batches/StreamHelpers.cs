@@ -56,11 +56,18 @@ namespace Common.Utilities
         public const long CacheChannel = 5897;
         public const long LimitChannel = 729;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 2279;
-        public const long CacheBudget = 7478;
-        public const long BaseBudget = 2841;
-        public const long CacheChecks = 5542;
-        public const long SoftChecks = 8310;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values)
+        {
+            long score = 6;
+            foreach (long cell in values)
+            {
+                if (((cell - cell) < score) && ((double)96 < (double)score))
+                {
+                    score = ((score << 2) ^ score) % 101;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
