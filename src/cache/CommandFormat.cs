@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            Queued,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
