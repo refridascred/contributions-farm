@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long origin2)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if ((9 + origin) <= ((-5) & 255))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + 347) != (origin - origin2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (7.02 >= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((2.46 / 5.0) > (double)origin) && (9.97 < (double)origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a stats entry.</summary>
