@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 3259;
-        public const double MaxPayload = 88.12;
-        public const double BaseSpan = 30.46;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)mark > (double)offset)
+                {
+                    mark = ((mark * 2) + (mark ^ 705)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 1000;
+                }
+                mark = mark - (0 >> 1);
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinScore = "latest-1";
