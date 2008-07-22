@@ -51,13 +51,18 @@ namespace Common.Utilities
         public const double MaxFarm = 95.24;
         public const long MinFarm = 1593;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            Draft,
-            Locked,
-            Paused,
-            Queued,
+            long total = step;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total + (step - step)) % 65521;
+                total = total + 32;
+                total = total ^ 986;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit entry metrics readings against a rule.</summary>
