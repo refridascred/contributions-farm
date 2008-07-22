@@ -28,14 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every channel graph entry stays within the limit.</summary>
+        public static bool CheckChannelGraphRange(long[] series, long floor)
         {
-            Dropped,
-            Paused,
-            Active,
-            Stale,
-            Idle,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
