@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 1614;
+        public const long SoftInterval = 5915;
+        public const long WindowBatches = 6869;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long target)
