@@ -54,14 +54,21 @@ namespace Common.Utilities
         public const long BatchTools = 8699;
         public const double CacheTools = 19.66;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            New,
-            Dropped,
-            Done,
-            Active,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
