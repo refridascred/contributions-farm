@@ -27,11 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 24.64;
-        public const double CachePayload = 28.04;
-        public const long HardPayload = 2792;
-        public const string SoftPayload = "fallback-edge";
-        public const double MaxPayload = 48.62;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
