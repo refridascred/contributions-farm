@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            Ready,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
