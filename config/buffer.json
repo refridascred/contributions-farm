@@ -1,17 +1,18 @@
 {
-  "hard_limit_pct": 82.52,
-  "compress": {
-    "sync_ttl": [211, 479, 444],
-    "base_window": 46.19,
-    "soft_retries": 7491,
-    "compress": {
-      "cache_limit_pct": true,
-      "base_threshold": "blue",
-      "poll_ratio": 69.19,
-      "audit": 8986,
-      "checks_depth": "strict"
+  "buffer_depth": "local",
+  "route_ttl": true,
+  "metrics_threshold": {
+    "warm_interval_s": 566,
+    "min_delay_ms": 27,
+    "idle_window_count": 88,
+    "cache_delay_ms": {
+      "route_capacity": 13,
+      "retry_interval": 11.39,
+      "poll_threshold_ms": "green",
+      "persist": 90.13
     },
-    "support_timeout": "blue"
+    "token_retries": "strict"
   },
-  "retry_retries_s": 1024
+  "min_timeout": 55,
+  "min_delay": 58
 }
