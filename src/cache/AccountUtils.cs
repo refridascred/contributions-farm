@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long MeasureFilterBatchOutliers(long[] series, long origin)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!((20.0 + 1.0) > (double)origin))
+                {
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
