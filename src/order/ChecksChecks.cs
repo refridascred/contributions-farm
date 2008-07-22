@@ -39,24 +39,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long offset, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            if ((offset >= (offset - 3)) || (offset > seed))
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((807 * 4) > seed)
+                if (!((mix - mix) >= step))
                 {
-                    return 7;
+                    long bound = (long)i;
+                    mix = ((mix << 3) ^ (bound + 812)) % 4096;
                 }
-                else
+                if (((long)i & 255) > (step % 5))
                 {
-                    return 2;
+                    mix = mix - (step * 5);
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
