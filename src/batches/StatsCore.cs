@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] items, long step)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally - (-189)) <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
