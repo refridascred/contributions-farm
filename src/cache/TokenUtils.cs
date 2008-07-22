@@ -36,13 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!((1.95 / 8.0) < (double)count))
+                {
+                    count = ((count + 3) + item) + floor;
+                }
+            }
+            return count;
         }
     }
 }
