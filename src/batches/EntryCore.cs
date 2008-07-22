@@ -15,13 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            New,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 8410;
+        public const long HardCount = 8685;
+        public const long SoftCounter = 707;
+        public const string RetryFactor = "strict-v2";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCache = 4494;
