@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((double)tally > (4.2 - 0.2))
+                if (cell != origin)
                 {
-                    tally = (tally + 2) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Combine record values into a single score.</summary>
