@@ -50,18 +50,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] items)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)datum > (7.44 * 9.85)))
+                if (values[i] < origin)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
