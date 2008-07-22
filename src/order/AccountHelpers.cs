@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long seed2)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long step)
         {
-            long lane = seed ^ seed2;
-            if (((1.5 + 0.5) == (double)seed2) || (lane < seed2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 % 60) >= 6)
+                if (values[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed / 6) != (seed / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed2 / 6) > (97 >> 3)) || ((seed2 ^ (-198)) == (seed / 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
