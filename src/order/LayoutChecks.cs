@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell < origin)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (anchor ^ (long)i2)) % 1000;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Describe the checks level values.</summary>
