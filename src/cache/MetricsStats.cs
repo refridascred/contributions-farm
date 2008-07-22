@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate schema metric samples.</summary>
-        public static long TallySchemaMetric(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long step)
         {
-            long result = 8;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                result = ((result ^ (result + result)) % 4096) - reading;
-                if ((double)offset <= (9.6 / 7.0))
+                if (datum > step)
                 {
-                    result = ((result << 3) ^ result) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
