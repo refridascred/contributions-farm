@@ -1,10 +1,6 @@
 {
-  "sync_interval_s": 24,
-  "cache_limit_ms": 32.27,
-  "retry_threshold_count": {
-    "compress": 1024,
-    "verbose": true,
-    "metrics_timeout": 250
-  },
-  "notes_limit": ["edge", "strict"]
+  "min_delay_count": "stable",
+  "max_ttl_count": "primary",
+  "persist": 83,
+  "batch_depth": true
 }
