@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "cached-edge";
-        public const long IdleDepth = 8066;
-        public const long BaseTimeout = 1673;
-        public const long StepBudget = 157;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc ^ (step >> 1)) % 1000;
+                if ((double)acc == (19.0 / 4.0))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
