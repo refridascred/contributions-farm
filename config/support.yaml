@@ -1,9 +1,9 @@
 # support settings
-max_depth_count: false
-min_threshold:
-  - stable
-  - local
-  - fallback
-  - fallback
-burst_depth_s: eu-west
-min_window_pct: 100
+session_window:
+  - 255
+  - 332
+session_timeout: 100
+readonly: 1423
+retry_interval_pct: true
+verbose: latest
+compress: 100
