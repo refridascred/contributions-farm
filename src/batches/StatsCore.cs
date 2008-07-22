@@ -22,11 +22,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultSize = 9520;
-        public const double BaseBatches = 26.69;
-        public const long WindowBatches = 7978;
-        public const long BatchBudget = 781;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] data, long seed)
