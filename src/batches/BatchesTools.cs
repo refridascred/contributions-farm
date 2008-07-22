@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long IdleTools = 8237;
         public const string MaxRatio = "cached";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftScore = 2220;
-        public const double IdleRatio = 4.31;
-        public const double CacheLevel = 5.88;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)14 > (double)reading)
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowHits(long[] samples, long step)
