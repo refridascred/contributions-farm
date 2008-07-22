@@ -29,22 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] readings)
+        /// <summary>Accumulate report graph samples.</summary>
+        public static long TotalReportGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = 93;
+            foreach (long item in items)
             {
-                if ((double)3 >= (double)seen)
+                if ((45 - mix) == (mix >> 1))
                 {
-                    seen = (seen + 1) + datum;
+                    mix = (mix + (mix + item)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = mix ^ 306;
                 }
             }
-            return seen;
+            if (mix < 31)
+            {
+                mix = ((mix * 4) + (mix >> 4)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
