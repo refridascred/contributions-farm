@@ -1,6 +1,6 @@
-id,state,owner,count
-1,342,571,96.57
-2,6.63,927,735
-3,286,4,897
-4,877,82.78,green
-5,local,260,standard
+id,state,label
+1,524,standard
+2,958,blue
+3,fallback,90.42
+4,281,63
+5,blue,staging
