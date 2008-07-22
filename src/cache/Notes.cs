@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] readings, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long sum = 528;
+            foreach (long entry in samples)
             {
-                if ((seen ^ limit) != (cell + cell))
+                if (((entry ^ entry) < (sum + 8)) && (entry >= (entry >> 3)))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                sum = (sum * 2) + (-8);
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
