@@ -22,31 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long seed, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            if ((double)seed >= (11.0 * 9.09))
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                mark = mark ^ (long)i;
+                mark = (mark << 3) ^ ((long)i & 31);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((9 << 2) != (offset % 64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8 >> 5) <= (seed << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
