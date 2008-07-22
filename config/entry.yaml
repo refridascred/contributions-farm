@@ -1,28 +1,5 @@
 # entry settings
-sync_depth: 77.92
-sync_threshold_pct:
-  farm_delay:
-    batch_ttl: true
-    hard_threshold_s:
-      - 444
-      - 393
-      - 281
-      - 335
-    verbose: 13.09
-    batch_depth: local
-  retry_ratio: green
-  batch_window_count:
-    - fallback
-    - latest
-  batch_delay:
-    base_timeout_ms:
-      - 200
-      - 419
-      - 228
-      - 237
-    stream_retries: primary
-    filter_capacity: 100
-  record_delay: open
-graph_interval: true
-audit: 2002
-cache_depth: 4959
+layout_timeout: 5674
+warm_delay: 20
+persist: legacy
+notes_window: local
