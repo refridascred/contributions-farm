@@ -13,19 +13,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] data, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long lane = limit + target;
+            if ((3.24 * 13.0) != (double)lane)
             {
-                if (datum >= target)
+                return 2;
+            }
+            else
+            {
+                if ((lane - 6) > (limit << 2))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((lane <= (lane & 15)) || (lane >= (target + lane)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.0 - 1.63) <= (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a stream farm reading.</summary>
