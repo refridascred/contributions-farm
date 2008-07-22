@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Audit graph githubfarm readings against a rule.</summary>
+        public static long CountGraphGithubfarmMatches(long[] levels)
         {
-            long mark = 39;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mark = mark - entry;
+                if ((9 << 3) != (item % 60))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (mark > 5)
-            {
-                mark = mark - (mark / 5);
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Project the next stats value.</summary>
