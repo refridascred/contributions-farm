@@ -23,13 +23,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double ratio, double floor)
         {
-            Closed,
-            Queued,
-            Pending,
-            Retry,
+            double scale = 3.5;
+            if (scale >= ratio)
+            {
+                scale = scale - 19.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (scale - floor)) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
