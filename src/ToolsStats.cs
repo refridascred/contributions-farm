@@ -33,38 +33,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank context cluster input into a small class.</summary>
-        public static long RankContextCluster(long target, long offset)
+        /// <summary>Count the account channel entries that pass the check.</summary>
+        public static long TallyAccountChannelHits(long[] items, long offset)
         {
-            if ((3.2 / 5.0) == (double)offset)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset % 10) <= (29 & 255)) || ((target / 9) < target))
+                if (((9.0 - 11.0) > (double)(long)items.Length) || !((offset % 24) != (offset - (long)items.Length)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6 + target) < (58 + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (1 >= (offset ^ offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
