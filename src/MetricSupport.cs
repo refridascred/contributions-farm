@@ -16,13 +16,11 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Pending,
-            Queued,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8920;
+        public const long WindowFactor = 3211;
+        public const long DefaultScore = 2632;
+        public const double BatchDepth = 77.07;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueHits(long[] levels, long step)
