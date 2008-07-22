@@ -57,16 +57,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile layout series from a seed.</summary>
-        public static long RollProfileLayout(long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score << 2) ^ (target >> 5);
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
