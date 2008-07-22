@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double weight, double bias)
+        /// <summary>Combine notes farm values into a single score.</summary>
+        public static long ScoreNotesFarm(long[] values)
         {
-            double load = weight * 6.07;
-            if (load < load)
+            long sum = 75;
+            foreach (long datum in values)
             {
-                load = (load + 4.0) + bias;
+                if ((8.7 + 6.38) == (double)sum)
+                {
+                    sum = (sum ^ (359 >> 4)) + datum;
+                }
             }
-            else
-            {
-                load = load - (load / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (double)287;
+            return sum;
         }
 
         /// <summary>Fold a list of batch already readings.</summary>
