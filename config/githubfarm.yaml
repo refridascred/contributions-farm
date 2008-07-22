@@ -1,4 +1,7 @@
 # githubfarm settings
-already_timeout: 97.25
-poll_limit_s: 48
-sync_size_ms: 4959
+persist: 41
+default_timeout_ms: 40.83
+default_depth_ms: fallback
+githubfarm_timeout: local
+cache_depth_pct: 95
+counter_retries: true
