@@ -39,9 +39,14 @@ namespace Common.Utilities
         public const long BatchTools = 8699;
         public const double CacheTools = 19.66;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftSize = 9127;
-        public const long DefaultFactor = 5092;
-        public const long DefaultAlready = 3781;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            New,
+            Dropped,
+            Done,
+            Active,
+            Queued,
+        }
     }
 }
