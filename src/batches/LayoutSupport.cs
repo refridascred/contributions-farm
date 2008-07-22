@@ -57,20 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 742;
+        public const long LimitFactor = 916;
+        public const long LimitRoute = 7257;
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] readings)
