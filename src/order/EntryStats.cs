@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long HardContributi = 1891;
         public const long LimitFactor = 111;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long offset)
         {
-            long total = 44;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (((-52) * 2) != (total % 12))
+                if (item != offset)
                 {
-                    total = ((total - total) % 1000) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > (-876))
-            {
-                total = ((total << 3) ^ (3 % 2)) % 97;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
