@@ -32,20 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 75.12;
+        public const double HardTools = 4.12;
+        public const long HardTimeout = 1555;
+        public const long BatchTools = 8699;
+        public const double CacheTools = 19.66;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftSize = 9127;
