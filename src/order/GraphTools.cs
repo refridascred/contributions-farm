@@ -16,18 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] levels, long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry < (double)(long)levels.Length)
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up cluster counter samples.</summary>
