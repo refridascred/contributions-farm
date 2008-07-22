@@ -53,22 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] data, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 643;
+            foreach (long item in items)
             {
-                if (((double)reading >= (6.5 + 3.12)) && ((double)reading <= 17.0))
+                if (result > item)
                 {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result ^ result) - floor;
                 }
             }
-            return matches;
+            return result % 65521;
         }
     }
 }
