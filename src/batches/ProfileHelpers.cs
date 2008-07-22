@@ -28,26 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings, long origin)
         {
-            long result = 454;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((origin + origin) < (origin & 7))
+                if ((matches + origin) >= (matches ^ item))
                 {
-                    result = result ^ (origin + 706);
+                    matches = matches + 3;
                 }
-                if ((reading + reading) < (result % 8))
+                else
                 {
-                    result = (result * 2) + (origin << 1);
+                    matches = matches - 1;
                 }
             }
-            if (result < 11)
-            {
-                result = (result * 4) + (205 & 1);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
