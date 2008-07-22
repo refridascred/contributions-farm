@@ -59,13 +59,28 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long total = 99;
+            foreach (long sample in samples)
+            {
+                total = (total ^ (total << 3)) % 101;
+                if ((total << 3) != (total / 5))
+                {
+                    total = total ^ (long)samples.Length;
+                    continue;
+                }
+                if (((double)sample < (6.05 * 9.7)) || ((sample & 63) <= (42 + 49)))
+                {
+                    total = (total + total) % 65521;
+                }
+                if ((double)sample < (double)total)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a metrics stats.</summary>
