@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitScore = "open-edge";
+        public const long WindowCount = 6363;
+        public const long StepChecks = 8356;
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double ratio, double floor)
