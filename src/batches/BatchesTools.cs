@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long step)
         {
-            double weight = rate;
-            return weight + span;
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)46 < (double)step)
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
