@@ -50,17 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] samples, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Digest a series of session entries.</summary>
