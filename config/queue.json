@@ -1,7 +1,9 @@
 {
-  "idle_timeout_pct": 2281,
-  "warm_retries_count": 67,
-  "persist": 5.72,
-  "min_interval": 1024,
-  "flush_retries_count": 56.63
+  "idle_limit": {
+    "burst_delay": false,
+    "session_size": 56.38,
+    "readonly": [408, 64]
+  },
+  "base_capacity": 59.34,
+  "default_window_pct": "green"
 }
