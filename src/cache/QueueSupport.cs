@@ -19,13 +19,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Queued,
-            Active,
-            Failed,
             Stale,
+            Failed,
+            Done,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
