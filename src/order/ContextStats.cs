@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Failed,
-            Active,
-            Synced,
-            Closed,
-            New,
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
