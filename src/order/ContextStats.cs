@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseLevel = 2371;
-        public const long StepAccount = 7860;
-        public const long MaxRatio = 1973;
-        public const long BurstAccount = 1969;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((-11) % 3) != (count % 10))
+                {
+                    count = ((count + 3) ^ entry) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutMatches(long[] readings, long offset)
