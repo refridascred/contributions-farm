@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
