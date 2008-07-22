@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Paused,
+            Retry,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
