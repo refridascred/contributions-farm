@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((sample + sample) == (747 * 2))
+                if ((datum * 4) <= (count + datum))
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of schema already readings.</summary>
