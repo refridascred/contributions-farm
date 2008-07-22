@@ -30,28 +30,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Accumulate graph stream samples.</summary>
+        public static long TallyGraphStream(long[] values, long offset)
         {
-            long mark = 83;
-            foreach (long datum in values)
+            long mark = 2;
+            foreach (long value in values)
             {
-                if ((10.0 / 5.0) >= (double)datum)
+                if ((double)offset < 10.0)
                 {
-                    mark = (mark << 2) ^ (mark + datum);
+                    mark = (((mark * 5) + (offset * 3)) % 97) ^ value;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ (243 + datum);
-                }
-                if ((double)mark >= 19.0)
-                {
-                    mark = ((mark * 4) + (datum & 3)) % 255;
+                    mark = ((mark << 3) ^ (mark + offset)) % 65521;
                 }
             }
-            if (mark > 68)
+            if (mark < 828)
             {
-                mark = mark - (mark + mark);
+                mark = (mark - ((long)values.Length + mark)) % 65521;
             }
             return mark % 97;
         }
