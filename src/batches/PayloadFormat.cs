@@ -27,22 +27,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account farm entries.</summary>
-        public static long DigestAccountFarm(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double scale, double offset)
         {
-            long mix = 88;
-            foreach (long datum in items)
+            double mean = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if ((2.93 + 7.0) < (double)mix)
-                {
-                    mix = ((mix ^ (75 & 7)) % 4096) + datum;
-                }
+                mean = ((mean + scale) + (double)(long)i) + offset;
             }
-            if (mix > 20)
-            {
-                mix = (mix - ((-33) * 3)) % 4096;
-            }
-            return mix % 65521;
+            return mean + scale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
