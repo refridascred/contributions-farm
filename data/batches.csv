@@ -1,8 +1,6 @@
-id,rank,active,region
-1,706,28,24.2
-2,81.34,green,primary
-3,37.17,75.31,legacy
-4,489,664,61.2
-5,91.4,43.24,843
-6,989,535,91.04
-7,283,312,standard
+id,active,state
+1,stable,82
+2,679,edge
+3,15.72,190
+4,811,29.25
+5,36.95,latest
