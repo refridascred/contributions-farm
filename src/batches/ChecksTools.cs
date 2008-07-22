@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count entry githubfarm pairs that satisfy a relation.</summary>
-        public static long PairEntryGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of buffer githubfarm entries.</summary>
+        public static long FoldBufferGithubfarm(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 42;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > mark)
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark ^ cell) % 101) - target;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
