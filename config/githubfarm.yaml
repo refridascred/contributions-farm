@@ -1,9 +1,5 @@
 # githubfarm settings
-flush_ratio_pct: false
-retry_limit_ms: 0.31
-burst_delay: eu-west
-max_depth:
-  cluster_threshold: 3797
-  max_capacity: standard
-  batch_delay: 500
-  payload_retries: 24.61
+strict: 42.62
+batch_delay_pct: 8668
+hard_threshold: 59.02
+retry_limit_ms: 1024
