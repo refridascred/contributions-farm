@@ -1,6 +1,11 @@
 {
-  "context_capacity": 93.3,
-  "hard_ttl_pct": true,
-  "flush_threshold": 6033,
-  "audit": false
+  "max_ratio_pct": "primary",
+  "dry_run": "open",
+  "batch_size_ms": 500,
+  "token_interval": {
+    "min_size_ms": "primary",
+    "record_interval": 34,
+    "warm_timeout_pct": false,
+    "hard_ratio_pct": 9941
+  }
 }
