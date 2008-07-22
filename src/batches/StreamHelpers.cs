@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 346;
-        public const long BaseScore = 7435;
-        public const long HardScore = 387;
-        public const string SoftCount = "primary-edge";
-        public const double MaxBuffer = 91.74;
+        /// <summary>Measure how many queue session samples are out of range.</summary>
+        public static long AuditQueueSessionGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((value + value) >= (83 + 477)) || ((double)value <= (0.9 - 8.86)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] series)
