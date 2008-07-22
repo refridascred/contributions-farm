@@ -1,7 +1,7 @@
 # support settings
-hard_ratio: 6014
-soft_window_pct: eu-west
-batch_ratio: false
-stats_window: 70
-burst_ttl_ms: eu-west
-verbose: 1218
+idle_threshold: 5242
+base_ttl_ms: 5339
+checks_limit: 5027
+batch_capacity: green
+poll_threshold_pct: edge
+batch_retries_ms: standard
