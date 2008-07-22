@@ -54,32 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long floor, long step)
+        /// <summary>Adjust a githubfarm cluster reading.</summary>
+        public static double ProjectGithubfarmCluster(double weight, double floor)
         {
-            long bound = floor - step;
-            if (floor > step)
+            double load = weight * 4.0;
+            if (load > load)
             {
-                return 5;
+                load = (load - weight) - floor;
             }
-            else
-            {
-                if ((floor >> 2) <= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor + 6) >= floor) && ((floor + bound) > (235 + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return load - weight;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
