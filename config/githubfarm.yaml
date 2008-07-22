@@ -1,7 +1,7 @@
 # githubfarm settings
-audit: latest
-stats_timeout: strict
-soft_timeout_pct:
-  - primary
-  - green
-  - latest
+readonly: legacy
+burst_ratio: blue
+account_timeout: 68
+persist: staging
+audit: 48.97
+already_capacity: true
