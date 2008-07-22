@@ -18,10 +18,33 @@ namespace Common.Utilities
         public const long SoftCounter = 707;
         public const string RetryFactor = "strict-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 4494;
-        public const long WindowCache = 6383;
-        public const long IdleCache = 8863;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long floor, long step)
+        {
+            long bound = floor - step;
+            if (floor > step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 2) <= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + 6) >= floor) && ((floor + bound) > (235 + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double AdjustWindow(double weight, double floor)
