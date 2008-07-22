@@ -45,26 +45,21 @@ namespace Common.Utilities
         public const double RetrySession = 94.71;
         public const long WindowDepth = 5788;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            long state = 407;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((54 + reading) > (state >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (((state * 2) + state) % 4096) - seed;
-                }
-                else
-                {
-                    state = state - 58;
-                }
-                if ((reading - reading) <= 77)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
