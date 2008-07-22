@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long IdleTools = 8237;
         public const string MaxRatio = "cached";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)14 > (double)reading)
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 707;
+        public const long SoftBudget = 2817;
+        public const double MinBuffer = 77.72;
+        public const double MaxSize = 26.28;
 
         /// <summary>Find the first editor cache entry that matches the target.</summary>
         public static long SeekEditorCacheIndex(long[] data, long origin)
