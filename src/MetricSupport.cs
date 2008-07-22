@@ -40,25 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long limit, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data)
         {
-            long next = limit + step;
-            if ((step * 5) >= limit)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + 6) < next)
+                if ((hits + 45) < (hits & 255))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
