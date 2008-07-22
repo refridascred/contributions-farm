@@ -22,18 +22,10 @@ namespace Common.Utilities
         public const long DefaultScore = 2632;
         public const double BatchDepth = 77.07;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((94 ^ count) <= (count + step))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftRatio = "standard-edge";
+        public const long StepContext = 7490;
+        public const string BurstContext = "cached";
+        public const long MaxContext = 495;
     }
 }
