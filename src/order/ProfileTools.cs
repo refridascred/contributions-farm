@@ -50,17 +50,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session notes sample.</summary>
-        public static long LookupSessionNotesIndex(long[] values, long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
