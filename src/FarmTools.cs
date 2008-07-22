@@ -15,39 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a route commits value against two limits.</summary>
-        public static long GradeRouteCommits(long step, long step2)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long seed)
         {
-            long prev = step + step2;
-            if (((double)step == (double)prev) && ((step2 - prev) < (step2 << 2)))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step << 2) > prev)
+                if ((seed - matches) >= (seed & 127))
                 {
-                    return 6;
+                    matches = (matches + 3) + value;
                 }
                 else
                 {
-                    if ((step2 << 3) == (step * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step >= (prev - step2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
