@@ -60,12 +60,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            Done,
-            Closed,
-            Idle,
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 2) + (mix % 5)) % 4096;
+                mix = (mix ^ (mix << 3)) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a farm entry.</summary>
