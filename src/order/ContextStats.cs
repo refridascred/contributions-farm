@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long MaxRatio = 1973;
         public const long BurstAccount = 1969;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] data, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((long)i / 4) >= bound))
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    score = score - (score - bound);
-                    score = (score + 86) % 65521;
+                    return (long)i;
                 }
-                score = score ^ score;
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
