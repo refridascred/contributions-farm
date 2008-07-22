@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstSize = 30;
-        public const string IdleScore = "fallback";
-        public const long WindowLayout = 5634;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (1.9 > (double)offset)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long step, long floor)
