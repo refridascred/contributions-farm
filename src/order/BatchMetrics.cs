@@ -23,13 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "open-v2";
+        public const long MaxCommits = 8849;
+        public const long BatchCommits = 3307;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long offset, long seed)
