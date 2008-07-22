@@ -31,24 +31,10 @@ namespace Common.Utilities
             return rate + (rate / 3.0);
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long offset)
-        {
-            if (((bound % 24) < 4) && ((offset >> 1) != (bound + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 60) > bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 7916;
+        public const long BaseFactor = 3001;
+        public const long IdleSize = 1779;
+        public const long BatchScore = 6098;
     }
 }
