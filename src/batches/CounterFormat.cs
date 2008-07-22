@@ -22,24 +22,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long target2)
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool ValidateFarmPayloadLimits(long[] data, long floor)
         {
-            if ((double)target == (6.0 / 8.0))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (target <= (target2 / 4))
+                if (item < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
