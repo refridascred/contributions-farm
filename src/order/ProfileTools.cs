@@ -32,14 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] data, long seed)
         {
-            Paused,
-            Active,
-            Retry,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
