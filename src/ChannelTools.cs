@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Adjust a metric tools reading.</summary>
+        public static double AdjustMetricTools(double scale, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            double weight = scale / 5.0;
+            if (weight < floor)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (((acc << 2) ^ (floor * 2)) % 101) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                weight = weight + 20.0;
             }
-            return acc;
+            return weight - floor;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
