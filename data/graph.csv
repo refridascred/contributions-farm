@@ -1,6 +1,7 @@
-id,level,ratio,count
-1,10.48,44.33,678
-2,fallback,433,454
-3,158,19,blue
-4,476,5.0,eu-west
-5,607,200,staging
+id,region,state
+1,primary,primary
+2,96,156
+3,blue,eu-west
+4,5.38,stable
+5,staging,637
+6,40.26,blue
