@@ -36,10 +36,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 52.16;
-        public const long RetryScore = 1582;
-        public const long BurstPayload = 8385;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] levels, long floor)
