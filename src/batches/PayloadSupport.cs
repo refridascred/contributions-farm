@@ -24,18 +24,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value - tally) >= (tally + value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
