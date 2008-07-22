@@ -21,18 +21,13 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] levels)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((3.5 + 2.4) >= (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
