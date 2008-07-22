@@ -39,23 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next githubfarm commits value.</summary>
-        public static double BlendGithubfarmCommits(double ratio, double offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            double bias = 5.14;
-            if (bias <= (1.0 * 9.15))
+            double scale = (9.3 / 6.0) * 16.0;
+            if (scale < (scale + bias))
             {
-                bias = (bias - (bias * 8.7)) + offset;
+                scale = scale - (scale + rate);
             }
-            else
-            {
-                bias = bias + (9.97 * 15.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias - (bias - 4.13);
+            return scale + scale;
         }
     }
 }
