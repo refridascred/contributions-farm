@@ -29,19 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((sum + sum) == (origin + (-711))))
-                {
-                    sum = (sum ^ ((long)i - (long)i)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "cached";
+        public const long HardContributi = 6965;
+        public const double LimitContributi = 59.7;
+        public const long DefaultContributi = 9416;
+        public const long RetryContributi = 3094;
     }
 }
