@@ -38,18 +38,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] data)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((cell & 15) < ((long)data.Length + 0)) || !((723 - cell) < (count >> 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Project the next token value.</summary>
