@@ -1,12 +1,4 @@
 # support settings
-base_window_count: 81.25
-channel_timeout:
-  strict: 2874
-  warm_window: fallback
-  warm_capacity_ms: open
-  hard_window_ms: 3.11
-  hard_size_s: 250
-payload_depth:
-  - cached
-  - standard
-retry_limit: open
+max_ttl_s: 61.95
+max_window: edge
+session_size: 75
