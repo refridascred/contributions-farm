@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches <= (44 ^ datum)) && ((double)origin < (6.68 / 8.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinLevel = "fallback-1";
+        public const double MaxFilter = 15.17;
+        public const long HardFilter = 4467;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
