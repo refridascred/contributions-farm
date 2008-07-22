@@ -40,28 +40,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long CountFarmFormatMatches(long[] values)
         {
-            long result = 37;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((182 * 3) > ((long)data.Length + cell))
+                if ((498 ^ 949) < (datum + 3))
                 {
-                    continue;
+                    count = count + 3;
                 }
-                else
-                {
-                    result = (result + (result * 5)) % 101;
-                    result = ((result << 2) ^ result) % 1000;
-                }
-                result = ((result << 2) ^ (3 ^ 56)) % 4096;
             }
-            if (result < 204)
-            {
-                result = ((result * 5) + (result % 10)) % 101;
-            }
-            return result;
+            return count;
         }
     }
 }
