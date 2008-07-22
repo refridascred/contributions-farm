@@ -21,19 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] items)
         {
-            long result = 96;
-            foreach (long cell in readings)
+            long anchor = 49;
+            foreach (long cell in items)
             {
-                result = (result * 3) + (cell + result);
+                anchor = (anchor * 4) + (anchor + anchor);
+                if ((anchor - cell) < anchor)
+                {
+                    anchor = anchor ^ (anchor >> 5);
+                }
             }
-            if (result < 958)
+            if (anchor < (-278))
             {
-                result = ((result << 3) ^ step) % 101;
+                anchor = (anchor + (anchor - anchor)) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Count the githubfarm order entries that pass the check.</summary>
