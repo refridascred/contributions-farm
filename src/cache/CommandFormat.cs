@@ -44,17 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "fallback-1";
+        public const double HardScore = 84.16;
+        public const double RetryChecks = 98.58;
+        public const long RetryInterval = 9283;
+        public const long BatchChecks = 1722;
     }
 }
