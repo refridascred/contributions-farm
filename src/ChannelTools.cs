@@ -19,30 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a payload buffer counter forward.</summary>
-        public static long StepPayloadBuffer(long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)sum != (6.3 - 5.98))
-                {
-                    sum = (sum - (step + 56)) % 97;
-                    sum = (sum * 2) + ((long)i % 2);
-                }
-                if (!((0 % 16) > (step ^ sum)))
-                {
-                    long matches = step;
-                    sum = ((sum * 2) + (matches * 3)) % 97;
-                }
-                if ((step - (long)i) < (step << 2))
-                {
-                    long tally = step;
-                    sum = (sum << 3) ^ (tally / 9);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate support samples.</summary>
