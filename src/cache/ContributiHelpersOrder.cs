@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double rate, double offset)
-        {
-            double mean = 1.43;
-            if (mean >= rate)
-            {
-                mean = (mean - (13.0 - 6.3)) - offset;
-            }
-            return mean + (double)(-2);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "staging-v2";
+        public const double MinEditor = 3.68;
+        public const double CacheSize = 3.15;
+        public const long MinCount = 3607;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinDepth = "standard";
