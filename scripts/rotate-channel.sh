@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=479
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-eu-west}"
+mode="${1:-edge}"
 case "${mode}" in
-    eu-west)
+    standard)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+CHANNEL_LIMIT=219
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in cached legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
