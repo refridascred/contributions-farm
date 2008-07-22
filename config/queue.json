@@ -1,8 +1,6 @@
 {
-  "notes_window": 60,
-  "support_delay": 41.42,
-  "counter_window": [434, 151, 154],
-  "counter_retries": "legacy",
-  "entry_interval": 53,
-  "support_capacity": 51.63
+  "contributi_size": "staging",
+  "warm_threshold": "staging",
+  "burst_capacity_count": "open",
+  "base_size_count": 100
 }
