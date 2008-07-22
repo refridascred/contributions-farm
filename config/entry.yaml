@@ -1,18 +1,5 @@
 # entry settings
-hard_delay: green
-batch_depth_count:
-  - 454
-  - 363
-  - 28
-  - 455
-audit:
-  - 162
-  - 189
-  - 113
-route_limit: open
-batch_threshold_ms:
-  - 77
-  - 220
-  - 47
-  - 39
-default_size_s: primary
+max_delay_ms: 92
+verbose: 18
+idle_timeout: latest
+warm_limit_ms: 30.27
