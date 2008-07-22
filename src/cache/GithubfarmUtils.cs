@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] data, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ ((long)i ^ 64)) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
