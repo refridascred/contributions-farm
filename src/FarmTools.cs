@@ -22,38 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long seed2)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] readings, long target)
         {
-            if (((seed2 << 1) >= 61) && ((double)seed < 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((3.8 * 2.26) <= (double)seed2) || ((583 - seed) != (94 + seed)))
+                if (readings[i] < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed2 <= (6.92 - 12.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed > (seed2 * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
