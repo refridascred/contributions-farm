@@ -29,19 +29,11 @@ namespace Common.Utilities
             return mean - (3.8 / 4.0);
         }
 
-        /// <summary>Derive the next githubfarm account value from a seed.</summary>
-        public static long StepGithubfarmAccount(long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i >> 3) == (78 - mark))
-                {
-                    mark = (mark * 2) + ((-2) % 24);
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
