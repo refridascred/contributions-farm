@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph notes input into a small class.</summary>
-        public static long RankGraphNotes(long limit, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long limit)
         {
-            if ((limit - seed) < (seed - 291))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 5) != (limit + seed))
+                if (datum >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) != (2 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a already counter forward.</summary>
