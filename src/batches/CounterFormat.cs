@@ -38,11 +38,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long seed)
         {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            if (!(156 > (2 + floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed << 2) >= floor) || (seed <= 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-703) * 2) <= (floor << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (471 ^ floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
