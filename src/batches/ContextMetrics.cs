@@ -25,12 +25,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Scale a channel already figure with a bias.</summary>
+        public static double ScaleChannelAlready(double ratio, double floor)
         {
-            New,
-            Retry,
-            Stale,
+            double weight = 1.8;
+            if (weight >= (weight * 3.3))
+            {
+                weight = weight - (ratio - 9.72);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (floor * 14.0)) - (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
