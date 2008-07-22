@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a buffer entry sample.</summary>
+        public static long LocateBufferEntryIndex(long[] values, long floor)
         {
-            Queued,
-            Done,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a route support reading.</summary>
