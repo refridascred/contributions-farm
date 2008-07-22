@@ -40,18 +40,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if ((step + step) != (step - step))
             {
-                if (((step + 24) < count) && (((count + 3) >= (step & 255)) && ((double)78 <= (double)reading)))
+                return 1;
+            }
+            else
+            {
+                if ((double)(-819) != (double)step)
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((710 ^ step) > 8)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
