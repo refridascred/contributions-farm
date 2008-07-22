@@ -1,6 +1,8 @@
 {
-  "order_timeout": 90,
-  "base_window_ms": 7518,
-  "persist": 73.67,
-  "sync_ttl_pct": "legacy"
+  "idle_ratio": false,
+  "already_capacity": 95.07,
+  "checks_retries": [475, 191, 94, 47],
+  "batch_interval_ms": "eu-west",
+  "burst_delay": 42,
+  "persist": "legacy"
 }
