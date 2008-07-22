@@ -1,23 +1,4 @@
 # githubfarm settings
-compress:
-  commits_limit: 2504
-  queue_ratio: legacy
-  persist:
-    - standard
-    - edge
-    - staging
-    - staging
-  poll_depth_pct: false
-  sync_timeout_ms: staging
-  soft_depth_ms:
-    - 403
-    - 121
-min_capacity_s:
-  - 415
-  - 347
-  - 140
-  - 360
-retry_interval_s: fallback
-metric_ttl: 82.06
-record_window: false
-base_retries: 68.79
+already_timeout: 97.25
+poll_limit_s: 48
+sync_size_ms: 4959
