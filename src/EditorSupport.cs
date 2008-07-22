@@ -22,11 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 5993;
-        public const long IdleScore = 4445;
-        public const string RetryMetrics = "staging-v2";
-        public const long BatchMetrics = 656;
+        /// <summary>Scale a metric batch figure with a bias.</summary>
+        public static double BlendMetricBatch(double rate, double floor)
+        {
+            double load = rate;
+            return load - (floor * 6.34);
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long RollMetric(long target)
