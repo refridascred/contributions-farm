@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels)
         {
-            long carry = 252;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                carry = (((carry << 3) ^ (9 % 64)) ^ reading) + seed;
+                if ((19.0 / 4.0) != (double)sample)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry > 66)
-            {
-                carry = (carry - (carry * 2)) % 4096;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
