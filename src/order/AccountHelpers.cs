@@ -19,10 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultBudget = 4234;
-        public const string BaseBudget = "stable-1";
-        public const long BurstSize = 292;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] samples, long floor)
