@@ -55,28 +55,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next window queue value from a seed.</summary>
-        public static long StepWindowQueue(long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc > (940 + step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc ^ ((long)i ^ acc);
-                    acc = ((acc * 4) + acc) % 255;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc + (acc + (-9))) % 97;
-                }
-                if (!((20.0 + 20.0) < (double)(long)i))
-                {
-                    acc = acc - ((long)i + (long)i);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
     }
 }
