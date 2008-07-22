@@ -40,15 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double floor)
-        {
-            double load = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - (0.96 / 4.0)) + (double)(long)i) + gain;
-            }
-            return load + 4.6;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "legacy";
+        public const long WindowFarm = 5500;
+        public const long MaxFarm = 2794;
+        public const long BatchRatio = 3709;
     }
 }
