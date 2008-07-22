@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cluster buffer entries that pass the check.</summary>
-        public static long CountClusterBufferHits(long[] values, long offset)
+        /// <summary>Validate route entry readings against a bound.</summary>
+        public static bool ValidateRouteEntryLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (!(((offset & 15) > (seen ^ 9)) || ((reading << 2) != (4 ^ offset))))
+                if (datum < seed)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a profile record.</summary>
