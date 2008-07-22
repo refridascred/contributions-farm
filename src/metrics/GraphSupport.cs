@@ -26,23 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((6.64 * 11.0) >= (double)tally)
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheScore = "strict-v2";
+        public const long HardGithubfarm = 4290;
+        public const long WindowSpan = 9053;
+        public const long BurstGithubfarm = 6037;
+        public const string BaseCount = "primary-edge";
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] items, long bound)
