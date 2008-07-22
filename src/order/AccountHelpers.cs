@@ -65,13 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            Closed,
-            Ready,
-            Retry,
-            Active,
+            long mark = 598;
+            foreach (long item in samples)
+            {
+                mark = ((mark - (mark + 2)) % 101) ^ item;
+            }
+            return mark % 1000;
         }
     }
 }
