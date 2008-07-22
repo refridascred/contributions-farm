@@ -53,17 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer order sample.</summary>
-        public static long LookupBufferOrderIndex(long[] samples, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
