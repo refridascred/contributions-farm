@@ -24,17 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first entry cluster entry that matches the target.</summary>
-        public static long FindEntryClusterIndex(long[] data, long step)
+        /// <summary>Adjust a stream farm reading.</summary>
+        public static double BlendStreamFarm(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = rate;
+            if (mean >= 9.4)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = mean + span;
             }
-            return -1;
+            return mean - mean;
         }
     }
 }
