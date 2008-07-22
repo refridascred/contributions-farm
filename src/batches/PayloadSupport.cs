@@ -35,19 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] items, long bound)
         {
-            long carry = 213;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                carry = ((carry ^ floor) % 4096) - datum;
+                if ((bound << 2) < seen)
+                {
+                    seen = (seen + 3) + value;
+                }
             }
-            if (carry > 31)
-            {
-                carry = ((carry * 4) + (floor + floor)) % 1000;
-            }
-            return carry;
+            return seen;
         }
     }
 }
