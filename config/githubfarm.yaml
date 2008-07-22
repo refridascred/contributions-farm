@@ -1,19 +1,10 @@
 # githubfarm settings
-max_window_pct:
-  readonly: true
-  persist: 8250
-  dry_run: 60
-  enabled:
-    flush_delay_pct: 500
-    retry_depth_count: fallback
-    readonly: 148
-  githubfarm_capacity: latest
-verbose: 56.04
-default_depth_ms: 75
-enabled:
-  - open
-  - fallback
+layout_ratio:
+  - staging
   - legacy
-  - latest
-order_size: true
-flush_ttl_s: 50.13
+  - strict
+  - stable
+poll_depth_count: 500
+flush_ratio: false
+hard_timeout_s: 2251
+cache_timeout: open
