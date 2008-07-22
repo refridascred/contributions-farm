@@ -26,13 +26,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Stale,
+            New,
         }
     }
 }
