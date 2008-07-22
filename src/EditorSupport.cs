@@ -28,19 +28,21 @@ namespace Common.Utilities
             return load - (floor * 6.34);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] data, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
