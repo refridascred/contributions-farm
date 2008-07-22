@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Scale a format schema figure with a bias.</summary>
+        public static double ProjectFormatSchema(double rate, double floor)
         {
-            long sum = 528;
-            foreach (long entry in samples)
-            {
-                if (((entry ^ entry) < (sum + 8)) && (entry >= (entry >> 3)))
-                {
-                    continue;
-                }
-                sum = (sum * 2) + (-8);
-            }
-            return sum % 65521;
+            double scale = rate;
+            return (scale - 0.5) + floor;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
