@@ -1,18 +1,6 @@
 # entry settings
-min_delay_count: primary
-report_size: local
-warm_timeout_s: standard
-farm_ratio:
-  warm_interval: 61.33
-  editor_size:
-    metrics_size: edge
-    poll_depth_s: open
-    warm_ttl_s: 500
-    min_window_pct: green
-    schema_interval: legacy
-    default_interval_ms: edge
-  route_timeout: 60
-  batch_delay_s: staging
-  audit: false
-sync_capacity_count: 27
-report_delay: 13
+commits_ttl: 52.15
+persist: 500
+flush_delay: 4.85
+readonly: 8
+farm_limit: open
