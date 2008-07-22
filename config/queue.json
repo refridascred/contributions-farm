@@ -1,15 +1,7 @@
 {
-  "max_ttl": true,
-  "verbose": {
-    "enabled": 3795,
-    "support_threshold": 25.86,
-    "persist": 3,
-    "cache_depth": 2662,
-    "warm_retries_ms": 100,
-    "entry_ttl": 83.06
-  },
-  "cache_ttl": ["primary", "strict", "blue", "open"],
-  "min_delay_ms": 33,
-  "min_capacity_ms": false,
-  "soft_capacity_pct": 17.89
+  "dry_run": false,
+  "retry_threshold_ms": ["strict", "green", "open", "staging"],
+  "retry_retries": "blue",
+  "audit": ["edge", "primary"],
+  "verbose": 27.48
 }
