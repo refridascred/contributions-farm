@@ -29,19 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (anchor + (anchor ^ (long)i2)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Active,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
