@@ -42,13 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
+            Queued,
+            Dropped,
             Ready,
-            Paused,
-            Synced,
-            Locked,
+            New,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
