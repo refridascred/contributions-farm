@@ -57,18 +57,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token batches readings against a rule.</summary>
-        public static long AuditTokenBatchesMatches(long[] items, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                if ((origin - sample) >= 98)
+                if ((mark * 4) > (mark >> 3))
                 {
-                    hits = hits + 1;
+                    mark = (mark + (mark ^ sample)) % 4096;
+                }
+                mark = (mark - sample) % 101;
+                if (((sample / 3) >= (sample + (long)levels.Length)) || ((sample & 63) <= mark))
+                {
+                    mark = (mark * 5) + (50 % 5);
                 }
             }
-            return hits;
+            return mark % 1000;
         }
     }
 }
