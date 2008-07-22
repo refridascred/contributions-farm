@@ -37,20 +37,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long edge = offset ^ target;
+            if (offset < (target & 7))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = (carry - (bound * 2)) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (bound ^ bound)) % 97;
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (edge >= (edge % 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset >= edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) <= (target + edge))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
