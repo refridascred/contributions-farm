@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] data, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((888 / 8) >= floor) && (((floor / 2) >= (6 + floor)) && ((double)entry < (0.79 * 19.0))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
