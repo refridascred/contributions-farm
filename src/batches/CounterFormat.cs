@@ -22,13 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Active,
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
