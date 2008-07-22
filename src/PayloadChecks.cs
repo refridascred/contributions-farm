@@ -60,38 +60,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long target, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if ((4.1 + 12.0) == (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.1 > (double)target) && (limit <= (target % 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit + target) <= (44 - 786)) || (limit < (97 + limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit % 7) < (9 + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Closed,
         }
     }
 }
