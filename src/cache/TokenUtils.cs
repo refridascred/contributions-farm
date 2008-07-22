@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            double ratio = scale * 14.0;
+            if (ratio > (ratio + ratio))
+            {
+                ratio = (ratio + scale) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (scale - 3.3)) + (double)(long)i;
+            }
+            return ratio + (scale * 8.79);
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
