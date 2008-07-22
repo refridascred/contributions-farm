@@ -21,13 +21,24 @@ namespace Common.Utilities
         public const string IdleScore = "fallback";
         public const long WindowLayout = 5634;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long floor)
         {
-            Ready,
-            Idle,
-            Closed,
-            Synced,
+            if (336 < (step - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.94 + 6.5) > (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the tools phase values.</summary>
