@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a cache batch reading.</summary>
-        public static double SmoothCacheBatch(double scale, double floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long limit2)
         {
-            double mean = (floor - scale) / 5.0;
-            if (mean < (2.8 / 9.0))
+            long bound = limit + limit2;
+            if (bound <= (limit + limit2))
             {
-                mean = mean + floor;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean + (mean / 3.0)) + (double)(long)i;
+                if (((50 ^ limit) > bound) || ((bound + 248) >= limit2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mean + 14.0;
         }
 
         /// <summary>Describe the batches phase values.</summary>
