@@ -53,10 +53,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftRatio = 2530;
-        public const string SoftPayload = "alpha";
-        public const long RetryPayload = 322;
-        public const string MaxBudget = "staging-1";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] series, long seed)
+        {
+            long state = 0;
+            foreach (long cell in series)
+            {
+                state = (state ^ cell) % 97;
+                if ((seed - 209) >= (state * 2))
+                {
+                    state = (state + (state + cell)) % 65521;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
