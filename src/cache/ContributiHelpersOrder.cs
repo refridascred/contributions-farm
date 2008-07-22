@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] series)
+        /// <summary>Audit metric account readings against a rule.</summary>
+        public static long MeasureMetricAccountOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((8.58 > (double)value) || ((double)value < (0.18 - 1.67)))
+                if ((6.53 / 8.0) < (double)reading)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
