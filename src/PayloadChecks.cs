@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitSpan = 7793;
-        public const string BatchWidth = "staging-edge";
-        public const long BaseLevel = 449;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long seed)
+        {
+            long carry = 252;
+            foreach (long reading in samples)
+            {
+                carry = (((carry << 3) ^ (9 % 64)) ^ reading) + seed;
+            }
+            if (carry > 66)
+            {
+                carry = (carry - (carry * 2)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextBounds(long[] items, long limit)
