@@ -39,21 +39,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Combine channel farm values into a single score.</summary>
+        public static long TallyChannelFarm(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long score = 339;
+            foreach (long item in readings)
             {
-                state = (state + (state << 2)) % 255;
-                state = state + (step / 5);
-                if (!((state & 3) <= 22))
+                if ((item << 3) > item)
                 {
-                    state = ((state * 4) + (step * 5)) % 101;
+                    score = (score << 2) ^ (874 % 7);
                 }
-                state = ((state * 2) + (long)i) % 1000;
+                if ((offset * 5) == (item / 8))
+                {
+                    break;
+                }
             }
-            return state;
+            return score % 1000;
         }
     }
 }
