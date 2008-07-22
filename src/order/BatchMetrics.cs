@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Scale a window already figure with a bias.</summary>
+        public static double SmoothWindowAlready(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double mean = (double)(-189) * 2.0;
+            if (mean < mean)
             {
-                if (cell <= (cell + (long)levels.Length))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean - (weight / 3.0);
             }
-            return hits;
+            else
+            {
+                mean = mean - (weight - 4.29);
+            }
+            return mean + offset;
         }
 
         /// <summary>Fold a list of account readings.</summary>
