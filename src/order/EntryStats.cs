@@ -22,15 +22,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double gain, double bias)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            double load = (double)(-556) / 3.0;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (((load - 9.0) + (double)(long)i) - gain) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - 4.0;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
