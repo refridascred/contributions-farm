@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long step, long target)
+        /// <summary>Classify a order support pair into a bucket.</summary>
+        public static long BucketOrderSupport(long floor, long limit)
         {
-            if (((-492) - 454) < target)
+            if ((18.0 * 5.0) <= (double)floor)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((double)step <= (double)target)
+                if (floor > (limit + 1))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((target < (target << 3)) || ((double)step != (7.1 - 6.9)))
+                    if ((8.7 < (double)floor) || (337 <= (floor - floor)))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if (((step + target) <= step) && (target >= (468 - (-80))))
+                        if ((limit >> 1) >= floor)
                         {
-                            return 8;
+                            return 0;
                         }
                         else
                         {
-                            return 1;
+                            return 3;
                         }
                     }
                 }
