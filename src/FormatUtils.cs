@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long DefaultCount = 9385;
         public const string MaxGithubfarm = "latest";
 
-        /// <summary>Measure how many payload already samples are out of range.</summary>
-        public static long CountPayloadAlreadyGaps(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double weight = (double)(496 + (-989));
+            if (weight <= 5.43)
             {
-                if (!((5.2 / 2.0) < (double)entry))
-                {
-                    hits = hits + 3;
-                }
+                weight = (weight + bias2) - bias;
             }
-            return hits;
+            return weight + bias2;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
