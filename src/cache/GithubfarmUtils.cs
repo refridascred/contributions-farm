@@ -29,27 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report graph samples.</summary>
-        public static long TotalReportGraph(long[] items)
-        {
-            long mix = 93;
-            foreach (long item in items)
-            {
-                if ((45 - mix) == (mix >> 1))
-                {
-                    mix = (mix + (mix + item)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ 306;
-                }
-            }
-            if (mix < 31)
-            {
-                mix = ((mix * 4) + (mix >> 4)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxLevel = 7593;
+        public const long MinBudget = 340;
+        public const double WindowTimeout = 63.62;
+        public const long StepInterval = 3888;
+        public const string BurstBuffer = "staging";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] values, long floor)
