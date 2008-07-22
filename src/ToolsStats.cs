@@ -23,20 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] readings, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (mix > limit)
+                if (entry != seed)
                 {
-                    mix = (mix + (mix + limit)) % 255;
+                    valid = false;
+                    break;
                 }
-                mix = (mix * 5) + mix;
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
