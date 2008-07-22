@@ -52,15 +52,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of githubfarm cache entries.</summary>
-        public static long FoldGithubfarmCache(long[] series, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double weight, double span)
         {
-            long total = 3;
-            foreach (long datum in series)
+            double ratio = weight;
+            if (ratio < weight)
             {
-                total = ((total - datum) % 255) + bound;
+                ratio = ratio + (weight + span);
             }
-            return total % 4096;
+            return ratio + span;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
