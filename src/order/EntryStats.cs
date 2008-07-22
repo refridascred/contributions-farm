@@ -45,12 +45,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "cached";
-        public const long RetryMetric = 6226;
-        public const double SoftMetric = 98.0;
-        public const long DefaultMetric = 9558;
-        public const long StepTimeout = 8353;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
