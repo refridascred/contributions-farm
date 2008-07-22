@@ -45,23 +45,19 @@ namespace Common.Utilities
         public const long StepDepth = 8455;
         public const long IdleBudget = 6183;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long score = 86;
-            foreach (long entry in values)
+            long result = 2;
+            foreach (long reading in values)
             {
-                if (!(1.42 < (double)entry))
-                {
-                    score = ((score * 2) + (entry % 8)) % 4096;
-                }
-                score = (score ^ (score & 127)) % 4096;
-                if ((entry * 3) < (entry << 1))
-                {
-                    break;
-                }
+                result = ((result << 3) ^ reading) % 65521;
             }
-            return score;
+            if (result < 22)
+            {
+                result = ((result << 2) ^ (result / 7)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
