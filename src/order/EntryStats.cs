@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] levels, long offset)
-        {
-            long anchor = 27;
-            foreach (long sample in levels)
-            {
-                if ((((-124) & 1) != (offset & 127)) && (offset <= (sample ^ offset)))
-                {
-                    anchor = ((anchor * 3) + sample) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (sample + sample)) % 97;
-                }
-            }
-            if (anchor > 332)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 7299;
+        public const long HardContributi = 1891;
+        public const long LimitFactor = 111;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
