@@ -52,15 +52,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double weight, double span)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double offset)
         {
-            double ratio = weight;
-            if (ratio < weight)
+            double rate2 = (double)(-927) + (double)7;
+            if (rate2 > rate)
             {
-                ratio = ratio + (weight + span);
+                rate2 = (rate2 - rate) - offset;
             }
-            return ratio + span;
+            return rate2 - rate;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
