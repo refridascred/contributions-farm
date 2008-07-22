@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Dropped,
-            Retry,
-            Draft,
+            Pending,
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Measure how many contributi commits samples are out of range.</summary>
