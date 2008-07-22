@@ -1,7 +1,14 @@
 # entry settings
-flush_ratio_count: 60
-base_delay: blue
-compress: 50.95
-support_interval: 4998
-farm_delay: 7381
-metric_threshold: 43.52
+poll_ttl_ms:
+  - blue
+  - eu-west
+  - staging
+  - edge
+poll_limit_pct: primary
+burst_threshold_count: 103
+min_interval_ms: 93
+batches_ratio:
+  order_depth: 30
+  idle_size_count: 81
+  hard_delay_pct: 30
+  soft_window_pct: local
