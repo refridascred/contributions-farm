@@ -62,22 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric record readings.</summary>
-        public static long DigestMetricRecord(long[] items, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long carry = 90;
-            foreach (long datum in items)
-            {
-                if ((step + 408) > (313 % 7))
-                {
-                    carry = ((carry - (carry * 3)) % 4096) + datum;
-                }
-            }
-            if (carry < 218)
-            {
-                carry = (carry - (step >> 3)) % 65521;
-            }
-            return carry % 1000;
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate farm route samples.</summary>
