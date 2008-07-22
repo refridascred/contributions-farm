@@ -31,15 +31,11 @@ namespace Common.Utilities
         public const double StepPayload = 60.89;
         public const string BurstFactor = "local";
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double floor)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            double bias = floor - rate;
+            return bias - 13.0;
         }
     }
 }
