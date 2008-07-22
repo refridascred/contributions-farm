@@ -35,12 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseWidth = 8272;
-        public const long DefaultStream = 7658;
-        public const double BaseStream = 77.52;
-        public const long WindowStream = 9671;
-        public const long BurstStream = 1341;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Closed,
+            Retry,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
