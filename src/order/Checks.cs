@@ -61,19 +61,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double rate, double floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] readings, long floor)
         {
-            double drift = floor;
-            if (drift <= (drift - rate))
+            long mix = -583;
+            foreach (long value in readings)
             {
-                drift = drift - drift;
+                if (((7 - value) >= (floor + floor)) && ((mix >> 1) < value))
+                {
+                    mix = (mix - (floor * 4)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift - 10.0;
+            return mix;
         }
     }
 }
