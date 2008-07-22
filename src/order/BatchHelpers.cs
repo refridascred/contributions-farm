@@ -23,15 +23,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] readings, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] samples)
         {
-            long anchor = 2;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                anchor = (((anchor << 2) ^ value) % 4096) - seed;
+                if ((hits + hits) > 9)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
