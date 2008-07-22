@@ -26,17 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] readings, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Paused,
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
