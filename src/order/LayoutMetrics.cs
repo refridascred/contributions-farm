@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mean + 14.0;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Active,
+            Ready,
             Closed,
-            Stale,
-            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the payload kind values.</summary>
