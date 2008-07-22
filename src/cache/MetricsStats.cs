@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((floor + floor) >= floor))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSize = 7218;
+        public const string WindowToken = "primary";
+        public const long IdleToken = 7932;
+        public const long RetryToken = 4536;
+        public const long BaseToken = 4133;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] data, long origin)
