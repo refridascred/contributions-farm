@@ -32,13 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] data)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (0.52 > (double)hits)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
