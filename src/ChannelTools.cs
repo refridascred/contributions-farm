@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double bias, double offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items)
         {
-            double rate = (double)(24 - (-714));
-            if (rate <= offset)
+            long score = 6;
+            foreach (long datum in items)
             {
-                rate = rate - offset;
+                if (((datum * 2) > (score + datum)) && ((double)datum == (7.0 + 2.1)))
+                {
+                    score = score + (datum + score);
+                }
+                else
+                {
+                    score = (score << 2) ^ (datum * 2);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (bias * 7.3)) + (double)(long)i;
-            }
-            return rate + 4.46;
+            return score % 97;
         }
 
         /// <summary>Hold a notes info.</summary>
