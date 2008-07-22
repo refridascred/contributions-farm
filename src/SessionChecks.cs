@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const double WindowTimeout = 55.38;
         public const long DefaultRecord = 3063;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Count the record counter entries that pass the check.</summary>
+        public static long AuditRecordCounterHits(long[] data, long offset)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long entry in data)
             {
-                if ((cell - cell) < (tally >> 4))
+                if (((double)entry == (1.43 - 9.8)) || ((entry <= (entry - 693)) && ((double)entry != (double)offset)))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
