@@ -25,11 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowRatio = 4859;
-        public const long HardDepth = 623;
-        public const string RetryProfile = "standard-1";
-        public const long LimitProfile = 8157;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Draft,
+            New,
+            Stale,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
