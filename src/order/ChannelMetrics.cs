@@ -28,11 +28,17 @@ namespace Common.Utilities
             return scale2 + (floor * 8.83);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "local-v2";
-        public const long RetryDepth = 5424;
-        public const long LimitInterval = 1015;
-        public const double BaseLayout = 93.88;
-        public const double HardLayout = 42.64;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
