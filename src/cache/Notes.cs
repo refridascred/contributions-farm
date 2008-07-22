@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a format schema figure with a bias.</summary>
-        public static double ProjectFormatSchema(double rate, double floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long seed)
         {
-            double scale = rate;
-            return (scale - 0.5) + floor;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
