@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long MeasureLayoutMetricsHits(long[] data, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double mean = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)bound < (6.55 * 1.0))
-                {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean + 4.0) + (double)(long)i;
             }
-            return hits;
+            return mean - rate;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
