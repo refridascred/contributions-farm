@@ -22,10 +22,18 @@ namespace Common.Utilities
         public const long DefaultScore = 2632;
         public const double BatchDepth = 77.07;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftRatio = "standard-edge";
-        public const long StepContext = 7490;
-        public const string BurstContext = "cached";
-        public const long MaxContext = 495;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits < (double)datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
