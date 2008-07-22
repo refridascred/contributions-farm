@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] levels, long offset)
         {
-            Idle,
-            Pending,
-            Draft,
-            Active,
+            long anchor = 27;
+            foreach (long sample in levels)
+            {
+                if ((((-124) & 1) != (offset & 127)) && (offset <= (sample ^ offset)))
+                {
+                    anchor = ((anchor * 3) + sample) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (sample + sample)) % 97;
+                }
+            }
+            if (anchor > 332)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the already level values.</summary>
