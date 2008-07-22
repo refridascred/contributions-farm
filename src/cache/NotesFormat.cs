@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels, long offset)
         {
-            long count = 0;
+            long acc = 36;
             foreach (long sample in levels)
             {
-                if ((4.3 - 5.3) > (double)count)
+                if ((4 % 97) == (14 - sample))
                 {
-                    count = (count + 2) - sample;
+                    acc = ((acc * 3) + offset) % 97;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Audit account metric readings against a rule.</summary>
