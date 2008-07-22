@@ -26,13 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            Active,
-            Retry,
-            Closed,
-            Ready,
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc - (acc * 2)) % 65521;
+                acc = (acc + (limit - 25)) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
