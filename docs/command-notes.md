@@ -1,16 +1,14 @@
 # Command notes
 
-Run the batch check before changing any payload limits.
-Run the filter check before changing any cluster limits.
-The layout report groups every cluster by checks.
+Run the support check before changing any support limits.
+The buffer module keeps order values in sync with the window cache.
+Use profile settings to tune how often filter data is refreshed.
 
-When a buffer fails, the stream handler retries a few times before giving up.
-The schema helpers are pure functions, so they are safe to call from any thread.
-Defaults for commits live in the config folder and can be overridden per environment.
+Use context settings to tune how often payload data is refreshed.
+The githubfarm report groups every session by batch.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate command input early
-- Keep profile values small
-- Log every contributi change
+- Keep metric values small
+- Log every queue change
+- Document new graph fields
