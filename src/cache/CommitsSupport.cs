@@ -77,9 +77,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 7357;
-        public const long IdleInterval = 6810;
-        public const long WindowStats = 1709;
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long TallyWindowBufferGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length >> 4) <= matches)
+                {
+                    matches = ((matches + 2) ^ entry) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
