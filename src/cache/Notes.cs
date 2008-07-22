@@ -15,19 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double rate, double bias)
+        /// <summary>Validate filter metric readings against a bound.</summary>
+        public static bool VerifyFilterMetricBounds(long[] samples, long bound)
         {
-            double mean = bias;
-            if (mean >= bias)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                mean = mean + rate;
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)268;
-            }
-            return mean - mean;
+            return ready;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
