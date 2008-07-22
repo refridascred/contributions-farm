@@ -1,26 +1,18 @@
 # entry settings
-audit: false
-context_ratio:
-  base_timeout:
-    dry_run: legacy
-    default_size_s: primary
-    compress: 100
-    min_delay_pct: primary
-    burst_timeout_s: 60
-  route_limit: 62.44
-  batch_ttl:
-    - 224
-    - 68
-    - 272
-retry_window_s: 30
-strict: staging
-enabled:
-  enabled: 500
-  base_depth_count: 7744
-  retry_threshold: 1024
-  poll_threshold_pct:
-    - 362
-    - 38
-    - 336
-    - 181
-  verbose: cached
+hard_delay: green
+batch_depth_count:
+  - 454
+  - 363
+  - 28
+  - 455
+audit:
+  - 162
+  - 189
+  - 113
+route_limit: open
+batch_threshold_ms:
+  - 77
+  - 220
+  - 47
+  - 39
+default_size_s: primary
