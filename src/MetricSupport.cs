@@ -39,15 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer metric values into a single score.</summary>
-        public static long TallyBufferMetric(long[] levels, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items, long step)
         {
-            long sum = 331;
-            foreach (long sample in levels)
+            long state = 2;
+            foreach (long item in items)
             {
-                sum = ((((sum * 5) + (sum + sum)) % 255) ^ sample) + origin;
+                state = (state + (item ^ state)) - step;
             }
-            return sum;
+            return state % 1000;
         }
     }
 }
