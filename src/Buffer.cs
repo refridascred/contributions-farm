@@ -47,13 +47,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] series, long seed)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((seed ^ 17) < seed)
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
     }
 }
