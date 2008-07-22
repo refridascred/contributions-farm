@@ -20,29 +20,25 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long total = 46;
-            foreach (long sample in levels)
+            long sum = 0;
+            foreach (long reading in values)
             {
-                if ((target / 5) >= sample)
+                if ((sum - reading) != (reading - sum))
                 {
-                    total = total ^ sample;
-                    break;
+                    sum = sum - (reading - reading);
+                    sum = (sum << 2) ^ (reading << 2);
+                    continue;
                 }
-                else
-                {
-                    total = ((total << 2) ^ ((-629) + total)) % 4096;
-                }
-                total = (total << 2) ^ (target >> 3);
-                total = total ^ target;
+                sum = (sum ^ (103 >> 1)) % 97;
             }
-            if (total > 527)
+            if (sum > 81)
             {
-                total = total - 37;
+                sum = (sum ^ sum) % 65521;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Roll a window counter forward.</summary>
