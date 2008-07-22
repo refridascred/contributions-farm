@@ -47,15 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Look up the position of a stats report sample.</summary>
+        public static long FindStatsReportIndex(long[] items, long offset)
         {
-            double bias = floor * 5.71;
-            if (bias < (double)36)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + bias) + weight;
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)46;
+            return -1;
         }
     }
 }
