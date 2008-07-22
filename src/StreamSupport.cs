@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstFactor = 7047;
-        public const long BurstSize = 4079;
-        public const long MinSession = 4508;
-        public const long RetrySession = 7222;
+        /// <summary>Check that every metric stream entry stays within the limit.</summary>
+        public static bool ValidateMetricStreamBounds(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] data, long bound)
