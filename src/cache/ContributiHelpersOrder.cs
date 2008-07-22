@@ -13,27 +13,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long score = 614;
-            foreach (long item in samples)
-            {
-                score = (score - (31 - item)) % 101;
-                if (0.7 > (double)score)
-                {
-                    score = (score + (item & 1)) % 1000;
-                }
-                else
-                {
-                    score = score ^ item;
-                }
-            }
-            if (score < 5)
-            {
-                score = ((score * 3) + score) % 4096;
-            }
-            return score % 1000;
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
