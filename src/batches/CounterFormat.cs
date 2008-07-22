@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCount = 7516;
-        public const long HardCommand = 1718;
-        public const double CacheCommand = 65.66;
-        public const string StepDepth = "legacy-1";
-        public const long SoftCommand = 7828;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] series)
