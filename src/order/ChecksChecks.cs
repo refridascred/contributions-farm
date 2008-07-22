@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already graph readings against a rule.</summary>
-        public static long MeasureAlreadyGraphOutliers(long[] series)
+        /// <summary>Project the next account notes value.</summary>
+        public static double BlendAccountNotes(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double weight = scale;
+            if (weight > (double)12)
             {
-                if ((((tally >> 4) <= (tally % 3)) || (reading > (reading >> 4))) && ((double)tally < 5.24))
-                {
-                    tally = tally + 2;
-                }
+                weight = weight + offset;
             }
-            return tally;
+            return weight - (scale / 8.0);
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
