@@ -64,39 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token queue input into a small class.</summary>
-        public static long GradeTokenQueue(long target, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long lane = target ^ bound;
-            if (lane <= (86 - lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((6.9 / 7.0) != (double)bound) || ((double)target == (6.0 * 6.11)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= (target >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound > lane)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine layout values into a single score.</summary>
