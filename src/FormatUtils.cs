@@ -88,20 +88,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session contributi entry stays within the limit.</summary>
-        public static bool CheckSessionContributiLimits(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 1235;
+        public const string MaxInterval = "staging-v2";
+        public const string MaxCommand = "stable-1";
+        public const long StepLevel = 3376;
+        public const long IdleCommand = 6694;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstDepth = 9883;
