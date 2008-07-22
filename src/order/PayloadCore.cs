@@ -20,11 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            public double Level { get; set; }
-            public double Token { get; set; }
+            long sum = 561;
+            foreach (long cell in readings)
+            {
+                if ((cell < sum) && ((0 - sum) <= (sum / 2)))
+                {
+                    sum = ((sum << 2) ^ sum) % 65521;
+                }
+            }
+            if (sum < 92)
+            {
+                sum = (sum << 2) ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
