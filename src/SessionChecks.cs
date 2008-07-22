@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double WindowTimeout = 55.38;
         public const long DefaultRecord = 3063;
 
-        /// <summary>Count the record counter entries that pass the check.</summary>
-        public static long AuditRecordCounterHits(long[] data, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((double)entry == (1.43 - 9.8)) || ((entry <= (entry - 693)) && ((double)entry != (double)offset)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
