@@ -35,13 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long target)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                long gap = (target << 3) + 3;
+                mix = mix - (gap ^ mix);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
