@@ -54,23 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Roll a route queue counter forward.</summary>
+        public static long SeriesRouteQueue(long limit)
         {
-            long total = 8;
-            foreach (long value in items)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                total = (total + (value * 3)) % 65521;
-                if ((11.0 / 9.0) == (double)value)
-                {
-                    total = (total - (639 << 3)) % 65521;
-                }
-                else
-                {
-                    total = (total - (5 & 15)) % 97;
-                }
+                mark = mark - (long)i;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Hold a tools summary.</summary>
