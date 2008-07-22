@@ -21,20 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFactor = 4489;
+        public const double CacheScore = 95.44;
+        public const long BatchBudget = 9960;
+        public const long IdleFilter = 9576;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long floor, long floor2)
