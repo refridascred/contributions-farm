@@ -36,21 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics command series from a seed.</summary>
-        public static long StepMetricsCommand(long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = mark - (mark >> 2);
-                mark = (mark ^ (target / 9)) % 255;
-                if ((target / 3) <= mark)
-                {
-                    mark = ((mark << 2) ^ (455 + target)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Synced,
+            Idle,
+            Stale,
+            New,
         }
     }
 }
