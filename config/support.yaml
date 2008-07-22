@@ -1,6 +1,10 @@
 # support settings
-flush_threshold_pct: cached
-persist: true
-base_size: 6032
-contributi_limit: 60
-buffer_size: staging
+commits_threshold: true
+min_size_pct: 1015
+readonly:
+  - 307
+  - 328
+  - 91
+  - 456
+max_timeout_ms: staging
+poll_window: strict
