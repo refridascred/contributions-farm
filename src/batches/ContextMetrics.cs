@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] values, long bound)
         {
-            long result = 9;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (!((result + item) == (item * 2)))
+                if (entry > bound)
                 {
-                    result = (result * 5) + (item - item);
-                }
-                else
-                {
-                    result = (result - result) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
