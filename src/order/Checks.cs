@@ -52,13 +52,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Digest a series of queue metric entries.</summary>
+        public static long FoldQueueMetric(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long mark = 642;
+            foreach (long value in series)
+            {
+                if (mark > (mark / 5))
+                {
+                    mark = mark + (value * 3);
+                }
+                else
+                {
+                    mark = (mark - (30 << 3)) % 65521;
+                }
+                if (((double)value < (6.1 + 4.0)) && ((double)value != (20.0 * 7.3)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of session entries.</summary>
