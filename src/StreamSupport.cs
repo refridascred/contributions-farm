@@ -38,21 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order graph readings.</summary>
-        public static long PairOrderGraphCount(long[] readings)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
