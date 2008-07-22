@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (offset + 0.5) / 5.0;
+            if (gain > weight)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            else
+            {
+                gain = gain - weight;
+            }
+            return gain - (offset * 9.56);
         }
 
         /// <summary>Hold a tools summary.</summary>
