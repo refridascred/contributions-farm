@@ -20,10 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftSpan = 3.88;
-        public const string IdleTimeout = "standard-1";
-        public const long BaseMetrics = 8307;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Failed,
+            Synced,
+            Locked,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
