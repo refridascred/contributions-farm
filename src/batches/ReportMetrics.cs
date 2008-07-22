@@ -28,13 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Stale,
+            Dropped,
         }
     }
 }
