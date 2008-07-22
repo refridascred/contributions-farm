@@ -24,22 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long offset)
+        /// <summary>Validate session context readings against a bound.</summary>
+        public static bool ValidateSessionContextLimits(long[] items, long origin)
         {
-            long acc = -8;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((offset & 31) != (acc - 293))
+                if (datum > origin)
                 {
-                    acc = (acc << 2) ^ (entry + offset);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (long)values.Length;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
