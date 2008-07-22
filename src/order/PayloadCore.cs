@@ -65,13 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values, long origin)
         {
-            Active,
-            Dropped,
-            Queued,
-            Closed,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (reading < (count ^ 189))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
     }
 }
