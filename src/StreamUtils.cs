@@ -44,26 +44,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long total = 79;
-            foreach (long item in items)
-            {
-                if (((1.0 * 7.0) != (double)item) && (79 <= total))
-                {
-                    total = (total << 2) ^ (total + item);
-                }
-                else
-                {
-                    total = (total + item) % 65521;
-                }
-            }
-            if (total > 75)
-            {
-                total = (total * 5) + (21 - total);
-            }
-            return total % 65521;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
