@@ -1,16 +1,19 @@
 # entry settings
-base_capacity_pct: 8908
-cache_retries_s: fallback
-persist:
-  enabled:
-    - green
-    - open
-  soft_window: 81
-  stats_limit: 81
-  metrics_retries: false
-  window_ttl: cached
-batches_timeout:
-  - 369
-  - 80
-profile_interval: true
-poll_depth: 70.36
+base_delay_pct: 60
+min_timeout_s: 63.28
+enabled:
+  poll_interval: 1
+  warm_size_s: 19.38
+  sync_timeout_count: 500
+batch_window_s: 80
+max_timeout_count:
+  burst_size:
+    poll_interval: eu-west
+    sync_ttl_pct: 72.81
+    default_retries_count:
+      - green
+      - green
+      - strict
+  command_window: 2541
+  persist: stable
+buffer_threshold: 19
