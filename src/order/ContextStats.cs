@@ -17,22 +17,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - 62) == ((-880) * 2))
-                {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
