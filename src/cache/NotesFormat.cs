@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Grade a report channel value against two limits.</summary>
+        public static long ClassifyReportChannel(long offset, long bound)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            if ((bound <= (offset + 8)) && ((offset / 5) < bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 4) > 22)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
