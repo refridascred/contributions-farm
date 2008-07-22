@@ -24,19 +24,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
