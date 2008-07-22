@@ -68,9 +68,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseRatio = "latest-v2";
-        public const long HardReport = 9030;
-        public const long StepTimeout = 1184;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
