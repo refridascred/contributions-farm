@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] samples, long origin)
+        /// <summary>Iterate the filter report series from a seed.</summary>
+        public static long RollFilterReport(long bound)
         {
-            long result = -545;
-            foreach (long reading in samples)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                result = ((result * 2) + (result ^ result)) + reading;
-                if ((69 & 63) < (result + 5))
+                if (!((bound >> 4) != (anchor / 8)))
                 {
-                    result = (result << 3) ^ (9 - origin);
-                    result = (result * 2) + (211 << 3);
+                    anchor = anchor + bound;
                 }
-                result = (result ^ (result * 2)) % 1000;
+                if (!(bound <= (74 >> 4)))
+                {
+                    anchor = anchor ^ (anchor * 2);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (result > (-2))
-            {
-                result = (result << 3) ^ ((long)samples.Length % 7);
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
