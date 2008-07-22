@@ -1,9 +1,6 @@
-id,label,weight,active
-1,0.83,22.67,open
-2,stable,30.55,829
-3,408,93.89,10.66
-4,94.19,staging,3.65
-5,cached,844,green
-6,966,705,678
-7,684,30.5,257
-8,blue,primary,fallback
+id,level,state,score,region
+1,edge,468,211,255
+2,681,420,blue,582
+3,open,green,37.07,legacy
+4,493,71.86,green,12.41
+5,401,317,84,edge
