@@ -1,12 +1,7 @@
 {
-  "cache_limit_pct": 48.08,
-  "batches_ratio": {
-    "max_depth": 100,
-    "max_delay_ms": 5617,
-    "default_ttl_ms": "local"
-  },
-  "graph_timeout": 255,
-  "soft_window": ["strict", "edge", "stable"],
-  "persist": "strict",
-  "compress": ["fallback", "eu-west"]
+  "idle_timeout_pct": 2281,
+  "warm_retries_count": 67,
+  "persist": 5.72,
+  "min_interval": 1024,
+  "flush_retries_count": 56.63
 }
