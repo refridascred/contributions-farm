@@ -39,15 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] items, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long offset)
         {
-            long state = 2;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + (item ^ state)) - step;
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
