@@ -20,10 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseLevel = 7617;
-        public const double BurstScore = 39.53;
-        public const long WindowRecord = 1159;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Paused,
+            Done,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueMatches(long[] samples)
