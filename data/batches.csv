@@ -1,8 +1,8 @@
-id,ratio,active
-1,128,104
-2,cached,90
-3,875,105
-4,green,43
-5,stable,edge
-6,latest,409
-7,60.61,52.14
+id,level,label
+1,90,73.79
+2,standard,49
+3,86.17,stable
+4,edge,753
+5,597,16.97
+6,626,74.01
+7,648,147
