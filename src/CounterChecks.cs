@@ -68,10 +68,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 8916;
-        public const long MinLayout = 9949;
-        public const long MaxSize = 9445;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
