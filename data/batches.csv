@@ -1,7 +1,7 @@
-id,score,ratio,token
-1,700,858,432
-2,local,green,39.86
-3,834,872,369
-4,916,927,local
-5,287,430,140
-6,673,886,236
+id,owner,weight,count,ratio
+1,legacy,fallback,329,287
+2,40.12,eu-west,720,30.3
+3,88.84,997,staging,96.04
+4,staging,62.61,20.18,edge
+5,49.24,latest,67.45,58
+6,86.56,fallback,595,394
