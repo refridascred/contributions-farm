@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long seed)
+        /// <summary>Compare every pair of githubfarm format readings.</summary>
+        public static long OverlapGithubfarmFormatCount(long[] data)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
