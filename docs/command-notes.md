@@ -1,16 +1,15 @@
 # Command notes
 
-Each notes is validated before it reaches the batches queue.
-The window report groups every cluster by filter.
-Each session is validated before it reaches the graph queue.
+The buffer report groups every commits by record.
+A session that stays idle for too long is moved to the payload list.
+Keep report and context names short and lowercase.
 
-When a command fails, the context handler retries a few times before giving up.
-Run the counter check before changing any stream limits.
-Keep session and counter names short and lowercase.
+Defaults for order live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the route list.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every commits change
-- Keep payload values small
-- Document new batches fields
+- Prefer metric defaults
+- Keep account values small
+- Log every format change
