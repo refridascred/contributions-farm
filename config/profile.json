@@ -1,6 +1,15 @@
 {
-  "warm_depth_pct": "fallback",
-  "poll_retries_s": 23.68,
-  "poll_limit_pct": "standard",
-  "poll_interval_pct": "open"
+  "support_limit": 52.65,
+  "retry_threshold_ms": {
+    "audit": 8381,
+    "cache_interval_pct": "eu-west",
+    "compress": 94,
+    "persist": {
+      "min_limit": 1919,
+      "sync_size": "primary",
+      "stats_depth": 100
+    }
+  },
+  "retry_capacity_ms": [434, 106, 125],
+  "soft_threshold_s": [125, 401, 194]
 }
