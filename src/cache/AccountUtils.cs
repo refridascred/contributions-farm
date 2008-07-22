@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long MeasureFilterBatchOutliers(long[] series, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double drift = bias;
+            if (drift <= (double)574)
             {
-                if (!((20.0 + 1.0) > (double)origin))
-                {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - bias) - scale;
             }
-            return seen;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + 2.32) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Project the next format cache value.</summary>
