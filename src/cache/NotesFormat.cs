@@ -31,19 +31,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] levels, long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long step, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if ((target << 2) >= (target - target))
             {
-                if (datum <= target)
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (9.28 * 4.49))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + 233) == (126 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step != (11.0 / 9.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
