@@ -61,12 +61,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Retry,
+            Dropped,
             Pending,
-            Active,
+            Closed,
+            Queued,
         }
     }
 }
