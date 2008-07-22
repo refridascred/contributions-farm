@@ -44,9 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxRatio = "alpha-edge";
-        public const long CacheAlready = 1453;
-        public const string RetryAlready = "stable-v2";
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
