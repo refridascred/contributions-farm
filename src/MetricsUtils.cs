@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many batches token samples are out of range.</summary>
-        public static long CountBatchesTokenGaps(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((4.8 - 1.5) == (double)seed)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "staging";
+        public const long MaxContributi = 592;
+        public const double DefaultContributi = 29.26;
+        public const double BurstBudget = 28.54;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
