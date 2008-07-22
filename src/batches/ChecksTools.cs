@@ -24,15 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
