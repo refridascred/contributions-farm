@@ -45,17 +45,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long seed)
+        /// <summary>Rank token queue input into a small class.</summary>
+        public static long GradeTokenQueue(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = target ^ bound;
+            if (lane <= (86 - lane))
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((6.9 / 7.0) != (double)bound) || ((double)target == (6.0 * 6.11)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (target <= (target >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound > lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
