@@ -33,19 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Locked,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the support level values.</summary>
