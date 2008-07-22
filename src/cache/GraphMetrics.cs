@@ -20,20 +20,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long carry = 4;
-            foreach (long sample in items)
-            {
-                carry = (carry + (sample + carry)) % 97;
-                carry = carry - 279;
-            }
-            if (carry > 851)
-            {
-                carry = (carry - 37) % 255;
-            }
-            return carry % 97;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
