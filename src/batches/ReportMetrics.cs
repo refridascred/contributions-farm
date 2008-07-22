@@ -20,12 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long seed, long step)
         {
-            Pending,
-            Synced,
-            Active,
+            long delta = seed + step;
+            if (((double)delta > (3.6 * 8.9)) && ((double)seed >= (3.4 - 3.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)delta >= (18.0 * 12.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
