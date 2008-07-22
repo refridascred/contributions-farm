@@ -66,11 +66,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many cluster farm samples are out of range.</summary>
+        public static long CountClusterFarmOutliers(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + tally) == (tally * 4))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
