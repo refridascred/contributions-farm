@@ -49,19 +49,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (((anchor * 2) + bound) % 255) - (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitTimeout = 4.17;
+        public const long MinAccount = 7022;
+        public const long BurstAccount = 5558;
+        public const double HardScore = 92.33;
     }
 }
