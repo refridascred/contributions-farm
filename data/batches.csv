@@ -1,9 +1,7 @@
-id,level,region,owner,score
-1,57.84,159,989,594
-2,45.65,14,745,fallback
-3,standard,892,2.53,417
-4,open,94.41,1.76,711
-5,117,64.01,759,227
-6,24.98,15.17,legacy,strict
-7,strict,staging,49.76,407
-8,465,local,90.03,staging
+id,state,active,region
+1,106,open,local
+2,stable,99,open
+3,12.35,693,506
+4,61.69,49,cached
+5,958,84.59,292
+6,584,902,stable
