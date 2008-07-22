@@ -23,19 +23,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double ratio, double floor)
+        /// <summary>Count the notes cache entries that pass the check.</summary>
+        public static long MeasureNotesCacheOutliers(long[] readings)
         {
-            double scale = 3.5;
-            if (scale >= ratio)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                scale = scale - 19.0;
+                if (((double)hits <= (4.2 + 8.43)) || ((((-64) - reading) < (reading + (long)readings.Length)) && ((hits & 255) < (reading / 5))))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (scale - floor)) + (double)(long)i;
-            }
-            return scale + scale;
+            return hits;
         }
     }
 }
