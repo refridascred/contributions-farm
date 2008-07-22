@@ -31,22 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches & 255) <= item) || ((double)matches == (4.59 + 5.01)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
