@@ -1,5 +1,6 @@
 {
-  "flush_ratio": "green",
-  "filter_timeout": false,
-  "poll_size_ms": 60
+  "retry_ratio": 20.33,
+  "graph_delay": 9819,
+  "cache_interval": false,
+  "retry_capacity": "standard"
 }
