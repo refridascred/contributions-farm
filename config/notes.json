@@ -1,7 +1,5 @@
 {
-  "default_timeout_pct": [53, 123, 184, 318],
-  "poll_retries_count": [350, 205, 297],
-  "idle_capacity_ms": 68.41,
-  "warm_depth": 29,
-  "verbose": ["stable", "cached", "local", "standard"]
+  "retry_retries_s": "latest",
+  "persist": 34.94,
+  "flush_limit_count": 1024
 }
