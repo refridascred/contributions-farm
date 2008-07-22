@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
-        {
-            long carry = 5;
-            foreach (long entry in samples)
-            {
-                if ((entry & 7) <= (entry >> 5))
-                {
-                    carry = carry + (entry - carry);
-                }
-                else
-                {
-                    carry = carry + (entry % 24);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseLevel = 6712;
+        public const long LimitRecord = 1981;
+        public const double RetryRecord = 96.62;
+        public const double WindowTimeout = 55.38;
+        public const long DefaultRecord = 3063;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesHits(long[] items)
