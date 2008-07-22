@@ -19,16 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                carry = ((carry << 3) ^ 9) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the layout level values.</summary>
