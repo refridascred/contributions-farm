@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long limit)
         {
-            if (((1.0 * 2.52) >= (double)limit) || ((offset << 2) <= (offset % 3)))
+            long sum = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((2 >> 3) < (limit + limit)))
+                sum = ((sum << 3) ^ (limit & 3)) % 65521;
+                sum = (sum - (limit << 1)) % 255;
+                if ((double)datum >= (10.0 - 5.35))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Roll a report counter forward.</summary>
