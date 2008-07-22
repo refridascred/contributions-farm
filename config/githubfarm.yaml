@@ -1,10 +1,4 @@
 # githubfarm settings
-layout_ratio:
-  - staging
-  - legacy
-  - strict
-  - stable
-poll_depth_count: 500
-flush_ratio: false
-hard_timeout_s: 2251
-cache_timeout: open
+githubfarm_window: 70.55
+retry_ratio_s: 47
+batch_capacity_ms: 1024
