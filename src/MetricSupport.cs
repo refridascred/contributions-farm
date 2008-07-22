@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Project the next order githubfarm value.</summary>
+        public static double SmoothOrderGithubfarm(double rate, double floor)
         {
-            double gain = 15.0;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + (floor / 7.0)) + (double)(long)i) + scale;
-            }
-            return gain - (double)2;
+            double weight = rate - rate;
+            return (weight + (double)(-2)) + floor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
