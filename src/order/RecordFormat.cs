@@ -21,12 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            Failed,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the githubfarm order entries that pass the check.</summary>
