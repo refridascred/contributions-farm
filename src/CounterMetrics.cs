@@ -44,19 +44,11 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values, long floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long result = -965;
-            foreach (long sample in values)
-            {
-                result = ((result + (sample ^ result)) % 65521) - floor;
-            }
-            if (result < 7)
-            {
-                result = ((result * 3) + (result >> 3)) % 65521;
-            }
-            return result;
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
