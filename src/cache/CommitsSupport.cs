@@ -44,11 +44,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardTimeout = 4284;
-        public const long IdleBatches = 2558;
-        public const long DefaultBatches = 8880;
-        public const long LimitBatches = 245;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long WeighBatches(long[] values)
