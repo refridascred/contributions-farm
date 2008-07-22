@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Done,
-            Paused,
-            Ready,
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
