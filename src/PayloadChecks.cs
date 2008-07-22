@@ -31,11 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long origin)
         {
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >= (351 + datum)) && ((double)matches < 9.0))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
