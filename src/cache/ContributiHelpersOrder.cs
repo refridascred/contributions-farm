@@ -30,12 +30,18 @@ namespace Common.Utilities
             return mean + (double)(-2);
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many graph session samples are out of range.</summary>
+        public static long AuditGraphSessionMatches(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((datum - datum) >= (hits + datum)) || (16.0 < (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
