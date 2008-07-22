@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached eu-west strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=257
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-staging}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
