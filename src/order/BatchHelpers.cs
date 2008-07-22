@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Check that every record cluster entry stays within the limit.</summary>
+        public static bool CheckRecordClusterLimits(long[] samples, long origin)
         {
-            long anchor = 4;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                anchor = (anchor ^ anchor) % 4096;
-                if (((item + anchor) < item) && ((item + 0) >= 34))
+                if (reading <= origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
