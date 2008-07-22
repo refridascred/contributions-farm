@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] levels, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((7.0 - 19.0) == (double)hits)
+                if (((matches << 2) == (575 ^ matches)) && ((7.81 * 4.3) <= (double)item))
                 {
-                    hits = ((hits + 3) ^ reading) + target;
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the entry phase values.</summary>
