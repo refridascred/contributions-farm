@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every commits notes entry stays within the limit.</summary>
-        public static bool CheckCommitsNotesRange(long[] values, long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
