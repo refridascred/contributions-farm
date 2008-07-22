@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 8410;
-        public const long HardCount = 8685;
-        public const long SoftCounter = 707;
-        public const string RetryFactor = "strict-v2";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long floor, long step)
