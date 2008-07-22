@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] items, long origin)
+        /// <summary>Locate a profile checks reading by value.</summary>
+        public static long LookupProfileChecksIndex(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < origin)
+                if (values[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
