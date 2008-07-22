@@ -35,21 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            double mean = 5.73;
+            if (mean <= span)
             {
-                if ((acc * 4) > ((long)i & 31))
-                {
-                    long prev = acc;
-                    acc = acc ^ (prev - floor);
-                }
-                acc = ((acc << 3) ^ floor) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                mean = mean + (span / 3.0);
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (gain * 2.66)) - (double)(long)i;
+            }
+            return mean - (span + 6.1);
         }
     }
 }
