@@ -49,40 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long bound, long step)
-        {
-            long diff = bound ^ step;
-            if (bound < 766)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((step % 3) <= (diff - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step - bound) > (diff + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9 <= (step / 4)) && (bound >= step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchTimeout = "primary-edge";
+        public const long CacheProfile = 1766;
+        public const long SoftTimeout = 4843;
+        public const long IdleProfile = 8453;
+        public const double StepFactor = 44.75;
 
         /// <summary>Locate a command buffer reading by value.</summary>
         public static long SeekCommandBufferIndex(long[] values, long floor)
