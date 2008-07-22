@@ -68,18 +68,9 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen & 1) > 9)
-                {
-                    seen = ((seen + 3) + value) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseRatio = "latest-v2";
+        public const long HardReport = 9030;
+        public const long StepTimeout = 1184;
     }
 }
