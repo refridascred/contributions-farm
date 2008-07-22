@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryRatio = 5357;
-        public const double HardSchema = 11.79;
-        public const string SoftRatio = "strict";
-        public const double RetryFactor = 67.4;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowLevel = 7202;
+        public const long HardCount = 2833;
+        public const long LimitTimeout = 19;
+        public const long StepWidth = 8898;
+        public const long IdleMetrics = 2964;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long step, long step2)
