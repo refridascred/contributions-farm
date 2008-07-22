@@ -55,23 +55,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double mean = (double)(887 & 3);
-            if (mean >= (mean / 8.0))
-            {
-                mean = mean - (mean + floor);
-            }
-            else
-            {
-                mean = mean - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + 6.9;
+            Draft,
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
