@@ -43,23 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long limit)
         {
-            double load = 2.13;
-            if (load < (floor + bias))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                load = load - 16.0;
+                if (((15.0 - 5.0) > (double)limit) && ((9 - limit) >= 2))
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            else
-            {
-                load = load + (load / 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + load;
+            return hits;
         }
     }
 }
