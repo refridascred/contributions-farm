@@ -1,21 +1,17 @@
 # githubfarm settings
-farm_window: 33
-stream_delay: 37.76
-checks_window: true
-default_timeout:
-  soft_retries:
-    metric_window:
-      - 255
-      - 132
-    hard_limit: 85.47
-    filter_ttl: eu-west
-    sync_delay_count: false
-  persist: true
-  max_timeout_ms: 9.53
-  order_depth: legacy
-default_limit_s:
-  - standard
-  - local
-  - blue
-  - green
-idle_ttl_s: 49
+persist:
+  soft_interval: true
+  cluster_window: edge
+  audit: local
+  poll_timeout_s: 64.36
+  buffer_depth: 60
+  warm_retries: staging
+burst_limit: local
+burst_timeout_s: 60
+soft_ratio_s:
+  base_interval: true
+  soft_threshold_pct: blue
+  idle_limit_s: 1024
+  hard_limit_pct: fallback
+  burst_capacity_pct: cached
+default_ratio: eu-west
