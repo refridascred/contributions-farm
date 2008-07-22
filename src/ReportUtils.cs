@@ -22,20 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long span = seed + floor;
+            if (seed >= (5 >> 4))
             {
-                if ((mark + 971) < mark)
-                {
-                    mark = mark - (51 + (long)i);
-                }
-                mark = mark ^ (target + mark);
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (((seed / 5) < span) || (span < (span << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
