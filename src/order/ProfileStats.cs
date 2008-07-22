@@ -23,14 +23,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long seed)
         {
-            Queued,
-            Synced,
-            Idle,
-            Active,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of already editor entries.</summary>
