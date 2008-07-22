@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long limit)
-        {
-            long slot = offset ^ limit;
-            if ((10.0 / 9.0) < (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ offset) <= slot)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.2 * 11.0) > (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit + 40) <= offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 3259;
+        public const double MaxPayload = 88.12;
+        public const double BaseSpan = 30.46;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinScore = "latest-1";
