@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long WindowRatio = 3186;
         public const double StepTools = 95.03;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long result = 53;
-            foreach (long entry in data)
-            {
-                result = (result ^ (result * 2)) ^ entry;
-            }
-            if (result < 375)
-            {
-                result = result + (3 % 7);
-            }
-            return result;
+            Active,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the queue status values.</summary>
