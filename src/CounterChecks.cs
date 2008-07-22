@@ -63,11 +63,13 @@ namespace Common.Utilities
             return ((bias + (double)2) + rate) + span;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
