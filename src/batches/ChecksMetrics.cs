@@ -42,15 +42,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double bias3 = (double)(65 * 2);
-            if (bias3 < 8.5)
-            {
-                bias3 = (bias3 + (double)124) - bias;
-            }
-            return bias3 + bias2;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a editor counter forward.</summary>
