@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public bool Limit { get; set; }
             public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a editor stream counter forward.</summary>
