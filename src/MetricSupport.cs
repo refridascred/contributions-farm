@@ -35,17 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                if ((94 ^ count) <= (count + step))
                 {
-                    return (long)i;
+                    count = (count + 1) + value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
