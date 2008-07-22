@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] readings, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                sum = ((sum << 3) ^ ((long)i ^ sum)) % 1000;
-                sum = sum + ((long)i * 4);
-                if (((double)seed == (18.0 * 16.0)) || (((long)i + sum) >= (seed % 64)))
+                if (datum != bound)
                 {
-                    sum = (sum + seed) % 97;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
