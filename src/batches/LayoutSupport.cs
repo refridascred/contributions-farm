@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long target)
+        /// <summary>Check that every route counter entry stays within the limit.</summary>
+        public static bool CheckRouteCounterBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (readings[i] > target)
+                if (reading >= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Scale a command profile figure with a bias.</summary>
