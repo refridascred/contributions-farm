@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        /// <summary>Digest a series of format farm entries.</summary>
+        public static long TallyFormatFarm(long[] samples)
         {
-            double ratio = (double)(91 - 73);
-            return (ratio - scale) + offset;
+            long acc = -80;
+            foreach (long item in samples)
+            {
+                if ((item % 12) >= acc)
+                {
+                    acc = ((acc << 2) ^ item) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (item & 255)) % 65521;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the tools mode values.</summary>
