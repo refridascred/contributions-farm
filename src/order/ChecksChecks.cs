@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 1015;
+        public const long MinCluster = 1986;
+        public const long StepRatio = 5453;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long offset, long seed)
