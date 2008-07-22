@@ -29,12 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            Draft,
+            Queued,
+            Paused,
+            New,
         }
     }
 }
