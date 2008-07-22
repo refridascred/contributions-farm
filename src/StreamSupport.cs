@@ -17,13 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long step)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
