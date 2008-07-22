@@ -62,16 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] levels, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                anchor = (anchor ^ bound) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
