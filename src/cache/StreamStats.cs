@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const string BurstTimeout = "legacy-1";
         public const long IdleBudget = 6684;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] levels, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (reading > target)
+                if (((matches - 9) > reading) || (((4.31 * 4.0) != (double)(long)values.Length) || (12.0 < (double)reading)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
