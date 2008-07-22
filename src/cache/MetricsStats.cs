@@ -61,23 +61,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate counter farm samples.</summary>
-        public static long FoldCounterFarm(long[] levels)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long floor, long limit)
         {
-            long acc = 9;
-            foreach (long sample in levels)
+            long step = floor ^ limit;
+            if (floor > 4)
             {
-                acc = ((acc - (acc >> 4)) % 1000) ^ sample;
-                if (!((acc * 3) <= acc))
+                return 0;
+            }
+            else
+            {
+                if ((step >> 4) > (limit + limit))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!(floor <= (64 >> 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (54 <= (limit & 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc > 433)
-            {
-                acc = ((acc * 2) + acc) % 4096;
-            }
-            return acc % 4096;
         }
     }
 }
