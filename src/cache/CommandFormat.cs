@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long origin)
         {
-            Paused,
-            Pending,
-            Failed,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
