@@ -37,15 +37,11 @@ namespace Common.Utilities
             return ratio + (1.7 - ratio);
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double gain, double offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double load = (double)413 + (6.0 - gain);
-            if (load > (8.86 / 7.0))
-            {
-                load = (load + (double)578) - offset;
-            }
-            return load + (double)102;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
