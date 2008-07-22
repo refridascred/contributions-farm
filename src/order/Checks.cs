@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] levels, long seed)
         {
-            Queued,
-            Failed,
-            Done,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count + count) < count)
+                {
+                    count = ((count + 1) + cell) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
