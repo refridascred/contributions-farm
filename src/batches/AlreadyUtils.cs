@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long SoftInterval = 5915;
         public const long WindowBatches = 6869;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Classify a channel notes pair into a bucket.</summary>
+        public static long SortChannelNotes(long limit, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            if ((7.0 * 3.0) <= (double)limit)
             {
-                if (7.96 < (double)(long)i)
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((double)target < (1.06 + 8.8)) || ((double)target < (4.7 / 8.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit % 5) > limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target << 2) != ((-775) * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metric record readings.</summary>
