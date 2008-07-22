@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] values, long target)
         {
-            Synced,
-            Done,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((item + tally) >= tally) && ((target - target) >= (item - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a report counter forward.</summary>
