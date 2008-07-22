@@ -29,11 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
