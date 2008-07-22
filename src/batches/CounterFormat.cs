@@ -47,17 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats report sample.</summary>
-        public static long FindStatsReportIndex(long[] items, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 56;
+            foreach (long datum in data)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (97 << 1)) - datum;
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
