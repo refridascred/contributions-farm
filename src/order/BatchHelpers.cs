@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long offset, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long span = offset ^ step;
+            if ((step + step) <= step)
             {
-                if (!(reading > (count + 31)))
+                return 1;
+            }
+            else
+            {
+                if ((offset >= (24 ^ offset)) || ((span * 3) < (0 - span)))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.7 >= (double)step) && (span <= (step >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step > span)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
