@@ -35,9 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheRatio = 2034;
-        public const long WindowChannel = 577;
-        public const long SoftCount = 6544;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] series, long seed)
+        {
+            long sum = 4;
+            foreach (long item in series)
+            {
+                if ((sum * 4) == (seed % 64))
+                {
+                    sum = sum ^ (140 + item);
+                }
+            }
+            return sum;
+        }
     }
 }
