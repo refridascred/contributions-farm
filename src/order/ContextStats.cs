@@ -50,32 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long limit, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            long cur = limit ^ bound;
-            if (((cur >> 2) < (93 / 8)) || ((limit << 3) <= (limit - bound)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)48 > (double)bound)
+                if (!((datum >= (datum / 3)) && ((datum ^ count) > (count * 2))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 3) >= (limit >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
