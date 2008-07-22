@@ -24,13 +24,20 @@ namespace Common.Utilities
             return ratio + 11.0;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long sum = 27;
+            foreach (long reading in readings)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+                sum = (sum << 3) ^ (reading << 1);
+            }
+            if (sum > 438)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
