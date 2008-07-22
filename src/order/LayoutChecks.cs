@@ -20,17 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] values, long target)
+        /// <summary>Classify a support context pair into a bucket.</summary>
+        public static long ClassifySupportContext(long origin, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((3.7 + 4.55) <= (double)origin)
             {
-                if (values[i] < target)
+                return 3;
+            }
+            else
+            {
+                if (8 > origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
