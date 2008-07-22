@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long floor, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long offset = floor + limit;
-            if ((double)limit < (1.3 / 9.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.9 / 8.0) > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the stream state values.</summary>
