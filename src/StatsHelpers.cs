@@ -46,19 +46,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCount = 415;
+        public const long IdleCommand = 9070;
+        public const long SoftTimeout = 4473;
+        public const long CacheCommand = 9095;
+        public const long BaseSpan = 208;
     }
 }
