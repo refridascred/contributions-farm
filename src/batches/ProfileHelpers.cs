@@ -22,22 +22,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings, long origin)
+        /// <summary>Locate a window entry reading by value.</summary>
+        public static long LookupWindowEntryIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches + origin) >= (matches ^ item))
+                if (values[i] > floor)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the schema class values.</summary>
