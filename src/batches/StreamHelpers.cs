@@ -39,24 +39,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples)
-        {
-            long mark = 0;
-            foreach (long sample in samples)
-            {
-                mark = ((mark * 5) + sample) % 1000;
-                if ((double)mark > (4.7 - 5.6))
-                {
-                    break;
-                }
-            }
-            if (mark > 17)
-            {
-                mark = (mark << 3) ^ (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheSize = 2262;
+        public const long LimitDepth = 8231;
+        public const double WindowChannel = 67.49;
+        public const long CacheChannel = 5897;
+        public const long LimitChannel = 729;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
