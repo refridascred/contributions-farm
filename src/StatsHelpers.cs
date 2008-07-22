@@ -48,15 +48,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the window channel series from a seed.</summary>
-        public static long StepWindowChannel(long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long mix = -5;
+            foreach (long sample in items)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                mix = (mix * 5) + (mix - 92);
+                if (((mix + limit) > limit) || (limit < (limit / 6)))
+                {
+                    mix = ((mix << 3) ^ (mix - sample)) % 255;
+                }
             }
-            return result;
+            if (mix < (-4))
+            {
+                mix = (mix - 84) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
