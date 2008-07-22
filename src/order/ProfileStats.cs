@@ -32,21 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of format readings.</summary>
