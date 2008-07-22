@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepInterval = 92;
-        public const long MinBatches = 1986;
-        public const long BurstBatches = 3078;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Pending,
+            Paused,
+            Active,
+            Draft,
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] data, long floor)
