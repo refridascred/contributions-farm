@@ -1,14 +1,7 @@
 {
-  "dry_run": "green",
-  "idle_limit_ms": {
-    "counter_capacity": "legacy",
-    "min_depth_count": 30,
-    "githubfarm_window": {
-      "batch_limit": 12,
-      "flush_delay_count": [201, 138],
-      "hard_limit_count": false
-    }
-  },
-  "cache_ratio": 6.52,
-  "compress": "staging"
+  "batch_size": [170, 77, 323, 86],
+  "strict": ["strict", "local", "stable", "blue"],
+  "base_window_ms": true,
+  "notes_delay": 93,
+  "max_window_s": false
 }
