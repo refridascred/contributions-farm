@@ -44,13 +44,10 @@ namespace Common.Utilities
             return load - (floor / 4.0);
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 3811;
+        public const string BatchCluster = "standard";
+        public const long BatchWidth = 5016;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] levels)
