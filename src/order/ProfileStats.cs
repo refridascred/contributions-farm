@@ -44,19 +44,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((long)i - mark) >= (seed ^ (long)i)) || ((1.9 / 7.0) == (double)(long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark - seed) % 4096;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
     }
 }
