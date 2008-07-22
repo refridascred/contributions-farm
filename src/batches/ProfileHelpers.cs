@@ -64,13 +64,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Find the first metric session entry that matches the target.</summary>
+        public static long LookupMetricSessionIndex(long[] items, long limit)
         {
-            Draft,
-            Closed,
-            Locked,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
