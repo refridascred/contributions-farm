@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long step)
+        /// <summary>Check that every commits notes entry stays within the limit.</summary>
+        public static bool CheckCommitsNotesRange(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((double)46 < (double)step)
+                if (cell != offset)
                 {
-                    tally = (tally + 3) - item;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Locate a githubfarm counter reading by value.</summary>
