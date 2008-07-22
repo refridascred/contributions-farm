@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const double BurstScore = 39.53;
         public const long WindowRecord = 1159;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "fallback-1";
-        public const long StepRecord = 5744;
-        public const double HardWidth = 76.22;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((0 ^ tally) >= (tally + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
