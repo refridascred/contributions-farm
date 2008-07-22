@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a layout channel value against two limits.</summary>
-        public static long BucketLayoutChannel(long target, long target2)
+        /// <summary>Audit token cache readings against a rule.</summary>
+        public static long MeasureTokenCacheOutliers(long[] items)
         {
-            if ((target - target) <= (target2 << 1))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target2 + 53) < (target / 5))
+                if (cell <= (seen + seen))
                 {
-                    return 6;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((target - 9) <= (target2 % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + target2) > target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
