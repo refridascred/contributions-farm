@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double floor)
+        /// <summary>Validate metrics session readings against a bound.</summary>
+        public static bool ValidateMetricsSessionRange(long[] readings, long floor)
         {
-            double weight = bias * 11.0;
-            if (weight < (weight * 3.0))
+            bool flag = true;
+            foreach (long value in readings)
             {
-                weight = (weight - bias) - floor;
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight - 9.0;
+            return flag;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
