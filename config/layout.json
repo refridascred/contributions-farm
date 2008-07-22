@@ -1,6 +1,12 @@
 {
-  "sync_delay_count": "primary",
-  "max_interval_pct": "standard",
-  "cache_limit_pct": 43.75,
-  "metric_threshold": "stable"
+  "graph_limit": 72,
+  "soft_window": "green",
+  "token_limit": {
+    "burst_threshold_count": "edge",
+    "burst_window_count": 5028,
+    "compress": true
+  },
+  "audit": "fallback",
+  "base_ttl_ms": 29.87,
+  "graph_ttl": "standard"
 }
