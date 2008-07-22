@@ -39,24 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((mix - mix) >= step))
+                if (((double)52 > (double)mark) && (15 <= (target + mark)))
                 {
-                    long bound = (long)i;
-                    mix = ((mix << 3) ^ (bound + 812)) % 4096;
+                    mark = ((mark << 2) ^ (mark & 7)) % 101;
                 }
-                if (((long)i & 255) > (step % 5))
-                {
-                    mix = mix - (step * 5);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
     }
 }
