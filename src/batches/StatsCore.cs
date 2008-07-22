@@ -54,19 +54,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double rate, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] values, long origin)
         {
-            double weight = (double)(279 ^ 37);
-            if (weight > (rate / 6.0))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                weight = (weight - weight) - span;
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (double)59;
-            }
-            return weight + (double)845;
+            return flag;
         }
     }
 }
