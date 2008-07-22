@@ -1,5 +1,12 @@
 {
-  "readonly": 100,
-  "hard_timeout_count": 54,
-  "min_limit_count": 51
+  "format_timeout": {
+    "poll_ratio_count": "eu-west",
+    "hard_retries": true,
+    "soft_depth_count": "open",
+    "default_timeout_ms": 7507,
+    "already_threshold": 7
+  },
+  "base_ttl_ms": 24.0,
+  "persist": 2.64,
+  "burst_size_s": 6826
 }
