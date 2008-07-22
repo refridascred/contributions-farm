@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a already filter value against two limits.</summary>
-        public static long SortAlreadyFilter(long bound, long bound2)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] levels, long seed)
         {
-            long edge = bound ^ bound2;
-            if (edge >= bound)
+            long score = 5;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 >> 2) <= (bound2 << 2)) || ((bound2 * 2) < (edge + bound)))
+                score = score + (seed + seed);
+                if ((double)item > 6.0)
                 {
-                    return 0;
+                    score = (score - (seed / 7)) % 1000;
                 }
                 else
                 {
-                    if ((bound2 + bound) >= edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (edge > 3)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = score + score;
+                }
+                if (score >= (item * 2))
+                {
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
