@@ -32,18 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length + count) == (cell ^ 857))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
