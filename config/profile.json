@@ -1,13 +1,6 @@
 {
-  "batch_size": ["primary", "primary", "edge"],
-  "burst_limit_s": 100,
-  "sync_interval_count": ["eu-west", "open"],
-  "warm_delay_s": ["fallback", "latest", "primary"],
-  "flush_ttl_count": 39.74,
-  "soft_depth": {
-    "cache_depth_pct": ["standard", "green"],
-    "idle_size_ms": "fallback",
-    "default_depth_count": 30,
-    "verbose": "primary"
-  }
+  "batch_timeout_ms": "fallback",
+  "filter_depth": "edge",
+  "batch_interval_s": 1304,
+  "contributi_timeout": true
 }
