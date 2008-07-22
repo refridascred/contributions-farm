@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Idle,
-            Stale,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseLevel = 2371;
+        public const long StepAccount = 7860;
+        public const long MaxRatio = 1973;
+        public const long BurstAccount = 1969;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long bound)
