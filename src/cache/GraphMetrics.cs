@@ -26,27 +26,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long carry = 8;
-            foreach (long value in series)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (carry ^ (carry + carry)) - value;
-                if ((carry << 2) <= (long)series.Length)
+                if (((anchor + anchor) <= (seed << 1)) && ((96 + seed) >= (long)i))
                 {
-                    carry = carry ^ carry;
+                    anchor = ((anchor << 2) ^ ((long)i * 4)) % 255;
+                    anchor = anchor + (seed >> 4);
+                    continue;
                 }
-                if (7.0 > (double)carry)
-                {
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            if (carry < (-456))
-            {
-                carry = carry ^ 518;
-            }
-            return carry % 65521;
+            return anchor;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
