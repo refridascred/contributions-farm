@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] values, long bound)
         {
-            double bias = offset;
-            if (bias >= bias)
+            long acc = 1;
+            foreach (long value in values)
             {
-                bias = bias + (bias / 2.0);
+                if (!((value + 34) >= bound))
+                {
+                    acc = ((acc * 5) + (acc << 3)) % 4096;
+                }
+                if (!((9.8 + 5.0) <= (double)acc))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (acc > 257)
             {
-                bias = (bias - (bias * 3.0)) - (double)(long)i;
+                acc = (acc ^ (acc + bound)) % 101;
             }
-            return bias + (ratio + bias);
+            return acc;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
