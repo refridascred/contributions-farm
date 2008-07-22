@@ -33,20 +33,11 @@ namespace Common.Utilities
             return load - 4.0;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc ^ (long)i) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheLevel = "staging-edge";
+        public const long DefaultCommand = 6261;
+        public const string BurstDepth = "stable";
+        public const long MaxCommand = 4753;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string StepSession = "strict-1";
