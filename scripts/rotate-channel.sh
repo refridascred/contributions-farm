@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest strict; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=315
+CHANNEL_LIMIT=377
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
