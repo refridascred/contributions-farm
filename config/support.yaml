@@ -1,5 +1,8 @@
 # support settings
-retry_threshold: 8760
-strict: 100
-min_interval_count: false
-max_capacity_count: 7
+flush_timeout: 37.51
+profile_window:
+  - blue
+  - staging
+  - fallback
+  - eu-west
+notes_limit: cached
