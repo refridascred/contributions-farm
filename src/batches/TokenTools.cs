@@ -28,18 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes cache entries that pass the check.</summary>
-        public static long MeasureNotesCacheOutliers(long[] readings)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)hits <= (4.2 + 8.43)) || ((((-64) - reading) < (reading + (long)readings.Length)) && ((hits & 255) < (reading / 5))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
