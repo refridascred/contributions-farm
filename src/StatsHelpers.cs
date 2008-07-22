@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] readings, long offset)
         {
-            long acc = 58;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
                 {
-                    acc = (acc << 2) ^ (offset % 10);
-                    acc = (acc ^ (long)i) % 97;
+                    return (long)i;
                 }
-                acc = acc ^ (acc ^ cell);
             }
-            if (acc < 948)
-            {
-                acc = (acc + (acc + acc)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
