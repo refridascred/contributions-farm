@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long offset, long seed)
         {
-            long sum = -401;
-            foreach (long sample in series)
+            long slot = offset - seed;
+            if (((seed % 97) <= seed) && ((seed % 10) >= slot))
             {
-                if ((sample / 5) == (sample + sum))
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 2) < seed)
                 {
-                    sum = ((sum << 2) ^ 9) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + offset) > (slot * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((slot / 4) <= (offset >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Blend two stream measurements.</summary>
