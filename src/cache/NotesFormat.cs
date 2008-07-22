@@ -13,15 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long MeasureBatchFilterGaps(long[] series, long seed)
         {
-            double ratio = weight;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                ratio = ((ratio + (double)60) + (double)(long)i) + bias;
+                if ((reading >> 2) < (seed ^ 84))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio + (6.0 / 2.0);
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
