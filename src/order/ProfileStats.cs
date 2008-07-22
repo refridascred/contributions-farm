@@ -40,18 +40,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches ^ sample) > (matches - sample))
                 {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
