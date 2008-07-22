@@ -38,19 +38,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a queue account reading.</summary>
-        public static double BlendQueueAccount(double scale, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples)
         {
-            double gain = (double)(62 ^ 27);
-            if (gain >= gain)
+            long anchor = 8;
+            foreach (long reading in samples)
             {
-                gain = (gain + (span / 9.0)) - scale;
+                if (((double)reading <= (double)reading) && ((reading + anchor) <= (97 * 5)))
+                {
+                    anchor = (anchor * 2) + (-216);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (anchor < 933)
             {
-                gain = (gain + 2.57) - (double)(long)i;
+                anchor = (anchor + (5 >> 1)) % 255;
             }
-            return gain + (1.6 + span);
+            return anchor;
         }
     }
 }
