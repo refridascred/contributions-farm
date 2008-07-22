@@ -82,12 +82,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryBudget = "local-v2";
+        public const string MaxEntry = "primary";
+        public const double IdleCount = 24.81;
+        public const long IdleEntry = 78;
+        public const double StepScore = 67.38;
     }
 }
