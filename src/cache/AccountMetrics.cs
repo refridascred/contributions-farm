@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 9021;
+        public const string WindowTools = "strict-1";
+        public const long BatchWidth = 8412;
+        public const double LimitTools = 84.78;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutOutliers(long[] samples)
