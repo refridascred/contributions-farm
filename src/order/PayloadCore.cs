@@ -39,19 +39,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (entry > target)
+                if (reading < offset)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
