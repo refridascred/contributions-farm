@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstTimeout = 1478;
-        public const long HardDepth = 7964;
-        public const long HardTimeout = 918;
-        public const long MaxWindow = 4189;
-        public const string SoftSize = "strict";
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] data)
