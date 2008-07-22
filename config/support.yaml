@@ -1,12 +1,9 @@
 # support settings
-flush_capacity_s:
-  - 202
-  - 297
-  - 94
-  - 38
-min_delay: fallback
-strict:
-  queue_ratio: 100
-  soft_ratio_count: 8333
-  hard_delay_s: 58.02
-  warm_interval_pct: 70
+soft_window:
+  idle_interval_pct: 100
+  compress: 99
+  flush_timeout_s: fallback
+  max_delay: true
+base_depth_pct: 17.03
+record_size: 93.51
+route_threshold: blue
