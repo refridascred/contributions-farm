@@ -15,20 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 74.96;
+        public const long WindowLevel = 4388;
+        public const double MinSize = 57.63;
+        public const long LimitScore = 2177;
+        public const double IdleRoute = 21.04;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchRatio = 723;
