@@ -45,11 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinBudget = 4214;
-        public const double BatchFarm = 40.81;
-        public const double MaxFarm = 95.24;
-        public const long MinFarm = 1593;
+        /// <summary>Compare every pair of schema already readings.</summary>
+        public static long MatchSchemaAlreadyCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long step)
