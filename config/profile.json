@@ -1,5 +1,6 @@
 {
-  "base_depth": "legacy",
-  "compress": [466, 387],
-  "channel_depth": 80.44
+  "tools_ttl": "green",
+  "token_ttl": "legacy",
+  "soft_retries_count": 6815,
+  "cache_window_ms": "fallback"
 }
