@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double rate, double floor)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double bias, double bias2)
         {
-            double drift = rate - (5.1 * 5.13);
-            if (drift < floor)
+            double weight = bias;
+            if (weight > (bias2 * 7.83))
             {
-                drift = drift - floor;
+                weight = weight + (double)76;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - rate;
+                weight = (weight + (bias2 / 6.0)) + (double)(long)i;
             }
-            return drift + (double)1;
+            return weight + (5.5 - bias2);
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
