@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] levels)
         {
-            double drift = 8.33;
-            if (drift <= (floor * 16.0))
+            long count = 0;
+            foreach (long value in levels)
             {
-                drift = (drift + 14.0) - weight;
+                if (((double)value > (4.0 / 6.0)) || !((value / 6) < (count + 1)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - drift;
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
