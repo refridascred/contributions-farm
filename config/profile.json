@@ -1,5 +1,5 @@
 {
-  "min_capacity_s": 49,
-  "warm_ttl_ms": 8295,
-  "metrics_window": 12
+  "base_depth": "legacy",
+  "compress": [466, 387],
+  "channel_depth": 80.44
 }
