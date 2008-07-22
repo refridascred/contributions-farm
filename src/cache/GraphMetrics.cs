@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] levels, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mix = 708;
-            foreach (long item in levels)
-            {
-                if ((mix ^ mix) < (mix % 64))
-                {
-                    mix = mix ^ (bound + item);
-                    break;
-                }
-                else
-                {
-                    mix = mix + 1;
-                    mix = mix + bound;
-                }
-                mix = mix ^ (432 + mix);
-            }
-            if (mix < 0)
-            {
-                mix = mix - (mix / 4);
-            }
-            return mix;
+            Pending,
+            Stale,
+            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
