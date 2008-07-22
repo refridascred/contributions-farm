@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values, long seed)
-        {
-            long carry = 351;
-            foreach (long sample in values)
-            {
-                carry = ((carry - 7) ^ sample) + seed;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "open-v2";
+        public const long DefaultBuffer = 821;
+        public const long SoftLevel = 8929;
+        public const long CacheInterval = 2632;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
