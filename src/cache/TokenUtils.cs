@@ -23,14 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] readings, long offset)
         {
-            Pending,
-            Synced,
-            Failed,
-            Draft,
-            Locked,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the entry phase values.</summary>
