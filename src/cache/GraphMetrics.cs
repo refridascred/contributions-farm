@@ -38,12 +38,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Pending,
-            Failed,
             Closed,
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Project the next token value.</summary>
