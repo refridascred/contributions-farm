@@ -1,7 +1,8 @@
-id,weight,level,region
-1,244,578,725
-2,801,primary,73.13
-3,cached,40.46,693
-4,370,open,2.0
-5,primary,latest,local
-6,968,blue,873
+id,label,active
+1,eu-west,594
+2,local,952
+3,76.54,78.6
+4,fallback,527
+5,19.02,eu-west
+6,73.34,89.19
+7,eu-west,edge
