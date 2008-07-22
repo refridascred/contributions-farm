@@ -44,11 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 78.12;
-        public const long IdleFormat = 3311;
-        public const long WindowScore = 6859;
-        public const long RetryFormat = 3986;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double AdjustLayout(double rate, double floor)
