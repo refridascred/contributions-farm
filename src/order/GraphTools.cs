@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = 62;
-            foreach (long entry in values)
-            {
-                sum = (sum ^ offset) % 101;
-                if ((entry - sum) >= offset)
-                {
-                    sum = ((sum << 2) ^ offset) % 101;
-                }
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
