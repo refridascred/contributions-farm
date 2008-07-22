@@ -1,5 +1,7 @@
 # entry settings
-max_delay_ms: 92
-verbose: 18
-idle_timeout: latest
-warm_limit_ms: 30.27
+flush_depth_ms: true
+notes_capacity: 70.62
+base_delay_s:
+  - staging
+  - open
+  - stable
