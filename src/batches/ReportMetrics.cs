@@ -33,11 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRatio = 6783;
-        public const string HardRecord = "open-v2";
-        public const long SoftRecord = 2098;
-        public const long BatchRecord = 8597;
-        public const long BatchBudget = 6616;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
