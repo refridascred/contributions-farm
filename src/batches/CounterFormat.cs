@@ -38,35 +38,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long offset, long bound)
         {
-            if (!(156 > (2 + floor)))
+            long offset2 = offset - bound;
+            if (!((offset2 >> 3) < offset2))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (((seed << 2) >= floor) || (seed <= 6))
+                if ((double)offset >= (9.2 / 3.0))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (((-703) * 2) <= (floor << 2))
+                    if ((offset & 127) >= offset)
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if (floor >= (471 ^ floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 8;
                     }
                 }
             }
