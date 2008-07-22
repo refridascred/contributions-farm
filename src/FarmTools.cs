@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] values, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long acc = 1;
-            foreach (long value in values)
-            {
-                if (!((value + 34) >= bound))
-                {
-                    acc = ((acc * 5) + (acc << 3)) % 4096;
-                }
-                if (!((9.8 + 5.0) <= (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 257)
-            {
-                acc = (acc ^ (acc + bound)) % 101;
-            }
-            return acc;
+            Closed,
+            Pending,
+            Draft,
+            Paused,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
