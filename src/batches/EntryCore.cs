@@ -43,18 +43,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((floor % 16) < entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 2034;
+        public const long WindowChannel = 577;
+        public const long SoftCount = 6544;
     }
 }
