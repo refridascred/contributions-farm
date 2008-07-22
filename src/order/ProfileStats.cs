@@ -14,12 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Synced,
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Digest a series of already editor entries.</summary>
