@@ -28,31 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long floor, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] data, long floor)
         {
-            if ((step << 1) <= (floor >> 3))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 2) <= floor)
+                if (value != floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (34 >= (floor - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a queue options.</summary>
