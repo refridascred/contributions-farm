@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Idle,
-            Synced,
-            Active,
-            Retry,
-            Ready,
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count account layout pairs that satisfy a relation.</summary>
