@@ -54,19 +54,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data, long seed)
         {
-            long carry = 994;
-            foreach (long value in samples)
+            long mix = -846;
+            foreach (long entry in data)
             {
-                carry = ((carry << 2) ^ (carry + value)) % 1000;
+                if ((seed << 1) >= mix)
+                {
+                    mix = ((mix << 3) ^ (entry + 8)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (199 ^ 882)) % 101;
+                }
             }
-            if (carry < 1)
+            if (mix > 4)
             {
-                carry = (carry - (limit / 9)) % 4096;
+                mix = (mix * 4) + (seed % 97);
             }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Hold a metric summary.</summary>
