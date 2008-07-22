@@ -1,18 +1,7 @@
 {
-  "retry_size_s": {
-    "buffer_limit": "stable",
-    "retry_ttl_pct": false,
-    "flush_interval_count": ["green", "open"],
-    "cache_limit": {
-      "readonly": 5.38,
-      "flush_delay_s": 22,
-      "context_delay": 45.0,
-      "context_ratio": "eu-west"
-    }
-  },
-  "burst_capacity": true,
-  "strict": 8.92,
-  "order_interval": 78,
-  "dry_run": "open",
-  "batches_retries": [218, 309, 70]
+  "sync_ratio_s": 75,
+  "counter_depth": true,
+  "verbose": "fallback",
+  "audit": 2480,
+  "hard_timeout_pct": "standard"
 }
