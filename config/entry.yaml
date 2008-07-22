@@ -1,5 +1,6 @@
 # entry settings
-entry_ratio: true
-burst_threshold_pct: 48
-max_delay_s: 7551
-max_ratio_ms: 30
+readonly: fallback
+audit: 98.24
+flush_depth: fallback
+compress: staging
+notes_retries: 3791
