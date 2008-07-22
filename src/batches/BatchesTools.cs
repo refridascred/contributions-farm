@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long target)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long diff = limit - target;
+            if ((8.01 - 16.0) <= (double)diff)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit % 64) < (1 + target)) && ((double)target <= (11.0 + 9.2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.0 + 10.0) < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((7.04 * 6.3) >= (double)limit) && ((limit / 3) >= (diff << 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
