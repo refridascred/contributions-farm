@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
