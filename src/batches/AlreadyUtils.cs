@@ -63,17 +63,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a metric filter reading by value.</summary>
-        public static long LookupMetricFilterIndex(long[] data, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 790;
+            foreach (long sample in readings)
             {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
+                result = ((result - (4 - sample)) % 65521) - floor;
+                result = (result ^ result) % 97;
+                if (7 > (result >> 5))
                 {
-                    return (long)i;
+                    result = (result * 5) + (847 << 1);
                 }
             }
-            return -1;
+            if (result < 536)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
     }
 }
