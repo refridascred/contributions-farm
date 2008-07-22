@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values)
-        {
-            long total = 969;
-            foreach (long value in values)
-            {
-                total = (total ^ 55) % 65521;
-                total = ((total << 2) ^ (value + 283)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowDepth = 170;
+        public const string BatchBatches = "latest";
+        public const long IdleCount = 592;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 7328;
