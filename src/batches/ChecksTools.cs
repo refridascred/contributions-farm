@@ -25,24 +25,39 @@ namespace Common.Utilities
         public const long RetryCount = 5076;
         public const string StepDepth = "open-edge";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long bound, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long edge = bound - origin;
+            if (!(edge > (edge << 1)))
             {
-                if (((double)floor < (1.0 / 4.0)) && ((floor + floor) <= acc))
+                return 8;
+            }
+            else
+            {
+                if (!((edge & 255) >= origin))
                 {
-                    acc = acc - (68 - acc);
+                    return 4;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (long)i) % 1000;
+                    if ((double)edge >= (1.2 + 8.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((edge * 4) < (bound << 1)) && ((double)bound >= (11.0 * 7.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                acc = ((acc << 2) ^ (floor % 8)) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
         }
 
         /// <summary>Describe the record kind values.</summary>
