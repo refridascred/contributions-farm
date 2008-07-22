@@ -61,11 +61,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryBudget = "local-v2";
-        public const string MaxEntry = "primary";
-        public const double IdleCount = 24.81;
-        public const long IdleEntry = 78;
-        public const double StepScore = 67.38;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
