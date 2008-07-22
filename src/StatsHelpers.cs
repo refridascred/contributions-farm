@@ -43,10 +43,13 @@ namespace Common.Utilities
             return mean + bias2;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 51.48;
-        public const double RetryCluster = 92.24;
-        public const double BurstCount = 49.47;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Closed,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesBounds(long[] data, long floor)
