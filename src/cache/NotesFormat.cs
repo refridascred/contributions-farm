@@ -13,22 +13,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] values, long origin)
+        /// <summary>Audit account metric readings against a rule.</summary>
+        public static long TallyAccountMetricMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((73 << 3) >= (origin + origin)) || ((seen * 4) > (origin ^ seen)))
+                if ((cell << 2) >= (1 % 60))
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
