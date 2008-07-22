@@ -18,26 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout batch samples.</summary>
-        public static long CombineLayoutBatch(long[] levels, long bound)
+        /// <summary>Blend two stats route measurements.</summary>
+        public static double ProjectStatsRoute(double rate, double offset)
         {
-            long score = 836;
-            foreach (long item in levels)
+            double scale = (double)(94 - 89);
+            for (int i = 0; i < 3; i++)
             {
-                if (!((7.79 * 4.0) <= (double)bound))
-                {
-                    score = (((score << 3) ^ (score + score)) % 101) ^ item;
-                }
-                if (bound < (652 + score))
-                {
-                    break;
-                }
+                scale = ((scale - (offset + offset)) - (double)(long)i) - rate;
             }
-            if (score < 272)
-            {
-                score = (score + (score ^ bound)) % 255;
-            }
-            return score;
+            return scale - (offset * 3.35);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
