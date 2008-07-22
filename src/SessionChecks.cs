@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] data, long origin)
+        /// <summary>Find the first schema checks entry that matches the target.</summary>
+        public static long FindSchemaChecksIndex(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                if (series[i] == floor)
                 {
                     return (long)i;
                 }
