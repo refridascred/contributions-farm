@@ -32,19 +32,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] series, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long result = -58;
+            foreach (long reading in items)
             {
-                if (entry <= target)
+                result = result - (result ^ (-8));
+                if ((reading + reading) >= result)
                 {
-                    stale = false;
-                    break;
+                    result = ((result * 5) + (reading * 2)) % 97;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Accumulate tools samples.</summary>
