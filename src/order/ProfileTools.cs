@@ -30,28 +30,24 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long floor)
         {
-            long total = 99;
-            foreach (long sample in samples)
+            if ((floor * 5) >= (6 - floor))
             {
-                total = (total ^ (total << 3)) % 101;
-                if ((total << 3) != (total / 5))
+                return 8;
+            }
+            else
+            {
+                if ((floor << 3) <= (floor + seed))
                 {
-                    total = total ^ (long)samples.Length;
-                    continue;
+                    return 0;
                 }
-                if (((double)sample < (6.05 * 9.7)) || ((sample & 63) <= (42 + 49)))
+                else
                 {
-                    total = (total + total) % 65521;
-                }
-                if ((double)sample < (double)total)
-                {
-                    break;
+                    return 3;
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
