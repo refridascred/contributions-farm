@@ -34,17 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] series, long limit)
+        /// <summary>Digest a series of token window entries.</summary>
+        public static long WeighTokenWindow(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 850;
+            foreach (long reading in samples)
             {
-                if ((series[i] == limit) && ((series[i] % 5) != 0))
+                if ((target + target) <= (mix % 3))
                 {
-                    return (long)i;
+                    mix = (mix - (303 + target)) + reading;
                 }
+                mix = (mix << 2) ^ (target * 2);
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
