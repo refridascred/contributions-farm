@@ -72,10 +72,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftScore = 2417;
-        public const long BurstChecks = 1378;
-        public const double StepDepth = 85.11;
-        public const long BaseTimeout = 316;
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
