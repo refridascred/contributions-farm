@@ -1,14 +1,10 @@
 # Command notes
 
-Run the support check before changing any support limits.
-The buffer module keeps order values in sync with the window cache.
-Use profile settings to tune how often filter data is refreshed.
-
-Use context settings to tune how often payload data is refreshed.
-The githubfarm report groups every session by batch.
+Each schema is validated before it reaches the profile queue.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every queue change
-- Document new graph fields
+- Keep filter values small
+- Validate command input early
+- Prefer filter defaults
