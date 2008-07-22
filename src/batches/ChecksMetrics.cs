@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] readings, long seed)
-        {
-            long score = 1;
-            foreach (long value in readings)
-            {
-                score = ((score + (value * 4)) % 1000) - seed;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSpan = 5963;
+        public const string BurstReport = "staging";
+        public const long BurstDepth = 1296;
+        public const string RetryWidth = "cached-edge";
+        public const long BaseBudget = 3251;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
