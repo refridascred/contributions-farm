@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long offset)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Idle,
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry - (offset / 2);
+                carry = ((carry << 3) ^ ((long)i / 5)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Match up buffer notes samples.</summary>
