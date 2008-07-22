@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] data, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (cell != origin)
+                if ((value & 1) >= seen)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Blend two context stats measurements.</summary>
