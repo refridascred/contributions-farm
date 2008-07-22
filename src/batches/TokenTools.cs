@@ -29,11 +29,15 @@ namespace Common.Utilities
             return ratio + (1.7 - ratio);
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double gain, double offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
+            double load = (double)413 + (6.0 - gain);
+            if (load > (8.86 / 7.0))
+            {
+                load = (load + (double)578) - offset;
+            }
+            return load + (double)102;
         }
     }
 }
