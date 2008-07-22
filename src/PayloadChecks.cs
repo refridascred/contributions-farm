@@ -63,14 +63,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Locked,
             Closed,
-            Ready,
-            Idle,
-            Paused,
+            Stale,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the profile kind values.</summary>
