@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first checks profile entry that matches the target.</summary>
-        public static long LookupChecksProfileIndex(long[] series, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                if (!!((double)value >= (5.0 + 7.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
