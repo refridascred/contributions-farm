@@ -47,18 +47,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long AuditChannelProfileHits(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long sum = 459;
+            foreach (long cell in levels)
             {
-                if ((2.77 + 11.0) >= (double)matches)
+                if ((785 % 16) <= (3 + cell))
                 {
-                    matches = (matches + 3) + datum;
+                    sum = ((sum * 2) + (1 % 10)) % 65521;
                 }
+                if ((676 + sum) <= cell)
+                {
+                    sum = ((sum << 2) ^ 2) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (25 & 1)) % 97;
+                    sum = (sum * 5) + sum;
+                }
+                sum = sum + (sum >> 5);
             }
-            return matches;
+            return sum;
         }
     }
 }
