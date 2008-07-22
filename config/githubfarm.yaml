@@ -1,15 +1,8 @@
 # githubfarm settings
-report_threshold:
-  hard_threshold_ms:
-    - latest
-    - eu-west
-  poll_timeout_pct: primary
-  audit:
-    - 209
-    - 396
-    - 464
-    - 145
-max_interval_ms: 43.09
-warm_depth_s: 100
-enabled: false
-soft_capacity: 45.5
+soft_depth_ms: true
+readonly: true
+layout_delay: green
+commits_capacity: true
+filter_depth:
+  - staging
+  - open
