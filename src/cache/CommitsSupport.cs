@@ -71,21 +71,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up buffer metric samples.</summary>
-        public static long PairBufferMetricCount(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
