@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a profile checks reading by value.</summary>
-        public static long LookupProfileChecksIndex(long[] values, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (values[i] >= seed)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
