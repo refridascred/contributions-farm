@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long bound, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if (((bound + step) >= step) || (step < (step - step)))
             {
-                if ((cell - tally) < (cell - cell))
+                return 1;
+            }
+            else
+            {
+                if (((step % 5) >= (bound >> 5)) || ((bound ^ bound) >= (bound << 3)))
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a token cache sample.</summary>
