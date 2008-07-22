@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of support queue entries.</summary>
-        public static long TotalSupportQueue(long[] samples)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            long mix = 398;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix + (mix * 4)) % 97) - datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
