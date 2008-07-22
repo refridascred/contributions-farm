@@ -27,31 +27,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a account profile pair into a bucket.</summary>
-        public static long BucketAccountProfile(long target, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            if ((target ^ seed) == (seed - 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((386 % 12) > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed + seed) > (seed - 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
