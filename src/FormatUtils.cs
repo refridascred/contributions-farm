@@ -103,17 +103,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] samples, long offset)
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long TallyToolsGithubfarmMatches(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] == offset)
+                if ((10.0 * 16.0) > (double)seed)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
