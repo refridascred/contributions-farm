@@ -15,12 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 74.96;
-        public const long WindowLevel = 4388;
-        public const double MinSize = 57.63;
-        public const long LimitScore = 2177;
-        public const double IdleRoute = 21.04;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double bias, double offset)
+        {
+            double load = (double)(20 - 484);
+            if (load > (offset + 4.57))
+            {
+                load = load + (double)5;
+            }
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (offset * 6.0)) + (double)(long)i;
+            }
+            return load - bias;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchRatio = 723;
