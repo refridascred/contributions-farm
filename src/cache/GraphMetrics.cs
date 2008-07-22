@@ -67,16 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc - origin) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
