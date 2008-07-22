@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=34
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green primary; do
+for item in cached legacy; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=446
+log "limit is ${BUFFER_LIMIT}"
