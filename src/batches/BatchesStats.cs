@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
+        public static bool ValidateNotesBufferRange(long[] readings, long floor)
         {
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
