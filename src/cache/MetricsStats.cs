@@ -35,13 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            Draft,
-            New,
-            Paused,
-            Pending,
+            long anchor = 413;
+            foreach (long entry in samples)
+            {
+                if ((entry * 4) == (entry + anchor))
+                {
+                    anchor = (anchor - (entry - entry)) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
