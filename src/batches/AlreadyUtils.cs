@@ -47,10 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 2312;
-        public const double RetryLevel = 54.86;
-        public const string CacheProfile = "cached-1";
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double span)
+        {
+            double mean = (double)(905 % 7);
+            return ((mean - (double)83) + scale) + span;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
