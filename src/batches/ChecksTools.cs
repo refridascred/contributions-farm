@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const long StepDepth = 3508;
         public const long BatchCommand = 4136;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            long slot = target ^ seed;
-            if ((target & 3) != (seed & 255))
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                sum = sum - (long)i;
+                sum = (sum ^ (4 + origin)) % 65521;
+                sum = (sum * 2) + origin;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((target ^ seed) == (seed / 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot & 63) != (target * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
