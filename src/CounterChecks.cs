@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = mark ^ (long)i;
-                mark = (mark << 3) ^ ((long)i & 31);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "latest-1";
+        public const string MinScore = "staging-1";
+        public const double HardTools = 91.54;
+        public const double BatchSpan = 39.24;
+        public const string IdleTools = "alpha-1";
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
