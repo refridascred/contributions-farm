@@ -39,18 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] values, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long acc = -171;
+            foreach (long sample in levels)
             {
-                if ((count + floor) < reading)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = count + 2;
+                    acc = (acc ^ sample) + (long)i2;
+                    acc = (acc * 2) + acc;
+                }
+                if ((8.3 / 9.0) >= (double)acc)
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
                 }
             }
-            return count;
+            return acc % 1000;
         }
     }
 }
