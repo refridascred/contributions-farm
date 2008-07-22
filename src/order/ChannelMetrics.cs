@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long offset, long limit)
         {
-            Ready,
-            Dropped,
-            Closed,
-            Active,
+            if (((limit >> 1) != (5 - offset)) || (offset <= (limit + 9)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.73 - 1.61) != (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
