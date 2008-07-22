@@ -31,18 +31,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] items)
+        /// <summary>Derive the next githubfarm account value from a seed.</summary>
+        public static long StepGithubfarmAccount(long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (2 > (hits + hits))
+                if (((long)i >> 3) == (78 - mark))
                 {
-                    hits = (hits + 1) + item;
+                    mark = (mark * 2) + ((-2) % 24);
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
