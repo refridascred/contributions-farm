@@ -30,10 +30,13 @@ namespace Common.Utilities
             return rate + (rate / 3.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 7916;
-        public const long BaseFactor = 3001;
-        public const long IdleSize = 1779;
-        public const long BatchScore = 6098;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Ready,
+            Done,
+            Synced,
+            Dropped,
+        }
     }
 }
