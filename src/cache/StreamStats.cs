@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next batches cache value.</summary>
-        public static double SmoothBatchesCache(double ratio, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] data, long limit)
         {
-            double drift = ratio;
-            if (drift <= (floor - ratio))
+            bool found = true;
+            foreach (long value in data)
             {
-                drift = drift + drift;
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)59) - (double)(long)i;
-            }
-            return drift + (ratio / 7.0);
+            return found;
         }
 
         /// <summary>Hold a cluster stats.</summary>
