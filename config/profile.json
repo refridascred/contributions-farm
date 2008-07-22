@@ -1,8 +1,5 @@
 {
-  "soft_ratio_pct": true,
-  "warm_ttl": true,
-  "route_depth": 88,
-  "strict": 77.9,
-  "route_size": [269, 163, 164, 140],
-  "cache_window": 54
+  "flush_ratio": "green",
+  "filter_timeout": false,
+  "poll_size_ms": 60
 }
