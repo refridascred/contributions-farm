@@ -14,10 +14,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 3656;
-        public const string BurstChecks = "legacy";
-        public const long BaseLevel = 9016;
+        /// <summary>Fold a list of commits schema readings.</summary>
+        public static long TallyCommitsSchema(long[] samples)
+        {
+            long sum = -465;
+            foreach (long sample in samples)
+            {
+                if (((59 - sample) == (sample * 5)) && ((sum * 3) == (635 - 3)))
+                {
+                    sum = (sum << 2) ^ 1;
+                }
+                else
+                {
+                    sum = sum + (1 * 3);
+                }
+                if (!((sum ^ sum) <= sample))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long ClassifyContext(long target, long offset)
