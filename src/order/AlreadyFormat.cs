@@ -37,18 +37,30 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)seen == (3.1 / 3.0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 1) + cell;
+                    result = result - (long)i;
+                    result = (result + ((long)i2 >> 4)) % 255;
                 }
+                if (result < (target - result))
+                {
+                    result = ((result << 2) ^ (target + (long)i)) % 255;
+                    result = (result + ((long)i + 743)) % 65521;
+                }
+                else
+                {
+                    result = (result + (long)i) % 65521;
+                    result = (result + (337 + target)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Audit session contributi readings against a rule.</summary>
