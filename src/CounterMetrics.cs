@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Adjust a route support reading.</summary>
