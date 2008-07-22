@@ -12,19 +12,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of entry graph entries.</summary>
-        public static long FoldEntryGraph(long[] samples)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double bias)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            double bias2 = scale;
+            if (bias2 <= bias)
             {
-                carry = ((carry << 2) ^ (carry + carry)) - datum;
+                bias2 = bias2 - bias2;
             }
-            if (carry > 821)
+            else
             {
-                carry = (carry + (carry & 7)) % 255;
+                bias2 = bias2 - (bias * 4.51);
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
