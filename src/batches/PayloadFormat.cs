@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long HardFactor = 9312;
         public const long HardBuffer = 1412;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Count editor token pairs that satisfy a relation.</summary>
+        public static long OverlapEditorTokenCount(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry * 3) + carry;
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
