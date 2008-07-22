@@ -32,24 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long limit, long limit2)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if ((1.69 <= (double)limit2) || ((7.4 * 7.0) != (double)limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.93 < (double)limit2) && ((limit2 + limit) <= (1 & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
