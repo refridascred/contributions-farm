@@ -16,21 +16,12 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
