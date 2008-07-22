@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] data, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((5.0 * 7.3) < (double)matches)
-                {
-                    matches = ((matches + 1) + reading) - origin;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
