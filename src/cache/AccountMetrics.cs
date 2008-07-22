@@ -86,18 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long result = 61;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= (item * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ ((-21) & 1)) - offset;
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
