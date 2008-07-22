@@ -1,14 +1,12 @@
 # support settings
-warm_capacity_s: strict
-poll_capacity_pct: 92
-enabled: false
-flush_threshold_ms:
-  - 426
-  - 310
-  - 440
-  - 431
-min_timeout: blue
+idle_size_s: 6287
+sync_delay: 52.72
+commits_limit: strict
+flush_retries: true
+soft_depth:
+  - 191
+  - 200
+  - 244
 readonly:
-  idle_delay_pct: 7.5
-  default_ratio: 57.4
-  default_interval: true
+  - 41
+  - 78
