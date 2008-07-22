@@ -51,11 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a already options.</summary>
