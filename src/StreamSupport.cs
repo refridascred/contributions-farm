@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Idle,
-            Synced,
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result + (origin - 77)) % 255;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a profile record.</summary>
