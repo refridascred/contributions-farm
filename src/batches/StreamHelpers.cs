@@ -51,19 +51,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum - ((long)i * 3)) % 101;
-                sum = (sum ^ 594) % 97;
-                sum = ((sum << 3) ^ (94 ^ (long)i)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitFactor = 75.18;
+        public const double HardRatio = 73.9;
+        public const long WindowLayout = 5226;
+        public const long MinLayout = 4469;
+        public const long LimitLayout = 1520;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] values)
