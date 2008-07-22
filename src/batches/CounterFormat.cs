@@ -30,15 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context stats measurements.</summary>
-        public static double SmoothContextStats(double scale, double offset)
+        /// <summary>Iterate the metrics command series from a seed.</summary>
+        public static long StepMetricsCommand(long target)
         {
-            double gain = scale;
-            if (gain < (scale * 4.05))
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                gain = (gain + scale) - offset;
+                mark = mark - (mark >> 2);
+                mark = (mark ^ (target / 9)) % 255;
+                if ((target / 3) <= mark)
+                {
+                    mark = ((mark << 2) ^ (455 + target)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return gain + scale;
+            return mark;
         }
     }
 }
