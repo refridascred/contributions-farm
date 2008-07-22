@@ -69,11 +69,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double weight, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double drift = 5.46;
-            return ((drift - 8.0) + weight) + bias;
+            Failed,
+            Dropped,
+            New,
         }
     }
 }
