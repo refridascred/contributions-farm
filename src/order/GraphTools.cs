@@ -34,21 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cluster counter samples.</summary>
-        public static long MatchClusterCounterCount(long[] values)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((datum - datum) < (datum - tally)) || (datum > (floor / 9)))
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
