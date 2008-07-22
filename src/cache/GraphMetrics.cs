@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a editor cache sample.</summary>
-        public static long LocateEditorCacheIndex(long[] values, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] <= offset)
+                if (levels[i] == limit)
                 {
                     return (long)i;
                 }
