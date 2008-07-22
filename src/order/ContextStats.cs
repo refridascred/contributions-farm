@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] data, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((5.0 * 4.7) < (double)hits)
+                {
+                    hits = ((hits + 1) - reading) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
