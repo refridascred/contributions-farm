@@ -34,11 +34,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "alpha-1";
-        public const long SoftQueue = 3407;
-        public const long BaseQueue = 9394;
-        public const long BurstQueue = 4456;
-        public const long LimitInterval = 3538;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 9548;
+        public const long StepRatio = 5285;
+        public const long HardWidth = 6049;
     }
 }
