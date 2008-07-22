@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] readings, long bound)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double weight, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((count ^ 831) <= (count + sample)))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            double mean = floor;
+            return mean - weight;
         }
 
         /// <summary>Look up the position of a editor cache sample.</summary>
