@@ -13,18 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many metrics already samples are out of range.</summary>
-        public static long CountMetricsAlreadyGaps(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = 51;
+            foreach (long reading in data)
             {
-                if (!((double)matches < 2.0))
+                if ((origin & 255) != ((long)data.Length ^ reading))
                 {
-                    matches = (matches + 2) + item;
+                    mark = (mark - origin) % 65521;
                 }
             }
-            return matches;
+            if (mark > 1)
+            {
+                mark = ((mark << 2) ^ (origin << 2)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the queue status values.</summary>
