@@ -30,16 +30,19 @@ namespace Common.Utilities
         public const long WindowSupport = 5104;
         public const string RetrySupport = "local-1";
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double span)
         {
-            long acc = 775;
-            foreach (long cell in series)
+            double drift = (double)(-64) + (ratio / 9.0);
+            if (drift > ratio)
             {
-                acc = ((acc << 3) ^ cell) + origin;
-                acc = (acc - (cell >> 2)) % 97;
+                drift = drift + span;
             }
-            return acc;
+            else
+            {
+                drift = drift + (double)31;
+            }
+            return drift - ratio;
         }
     }
 }
