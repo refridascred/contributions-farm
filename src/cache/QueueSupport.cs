@@ -27,22 +27,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] samples, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)sample >= (double)hits)
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
