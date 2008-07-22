@@ -1,8 +1,18 @@
 {
-  "cache_depth_ms": 63.89,
-  "max_delay_pct": false,
-  "retry_limit_s": 100,
-  "retry_threshold_s": "green",
-  "compress": 60,
-  "hard_capacity_ms": 87.18
+  "retry_size_s": {
+    "buffer_limit": "stable",
+    "retry_ttl_pct": false,
+    "flush_interval_count": ["green", "open"],
+    "cache_limit": {
+      "readonly": 5.38,
+      "flush_delay_s": 22,
+      "context_delay": 45.0,
+      "context_ratio": "eu-west"
+    }
+  },
+  "burst_capacity": true,
+  "strict": 8.92,
+  "order_interval": 78,
+  "dry_run": "open",
+  "batches_retries": [218, 309, 70]
 }
