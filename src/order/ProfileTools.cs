@@ -39,16 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Roll a session filter counter forward.</summary>
+        public static long StepSessionFilter(long limit)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                score = score ^ target;
-                score = ((score * 4) + (long)i) % 4093;
+                mark = (mark * 5) + (limit + 75);
+                if ((2.0 - 9.0) <= (double)limit)
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                if ((5.0 / 8.0) > (double)limit)
+                {
+                    mark = mark + (mark - mark);
+                    mark = (mark << 3) ^ (mark >> 5);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
