@@ -39,19 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((double)52 > (double)mark) && (15 <= (target + mark)))
-                {
-                    mark = ((mark << 2) ^ (mark & 7)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
