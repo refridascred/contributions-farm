@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the stats notes entries that pass the check.</summary>
-        public static long AuditStatsNotesHits(long[] levels)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 3) <= (412 << 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
