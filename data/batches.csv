@@ -1,6 +1,7 @@
-id,active,state
-1,stable,82
-2,679,edge
-3,15.72,190
-4,811,29.25
-5,36.95,latest
+id,label,ratio,state
+1,staging,green,845
+2,82.42,latest,373
+3,251,eu-west,71
+4,86.52,76.16,220
+5,65.71,stable,132
+6,edge,latest,latest
