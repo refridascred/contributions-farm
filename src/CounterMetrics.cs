@@ -44,11 +44,18 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many metrics tools samples are out of range.</summary>
+        public static long AuditMetricsToolsOutliers(long[] samples, long bound)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell * 2) <= (cell + hits)))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
