@@ -1,5 +1,14 @@
 {
-  "burst_depth_ms": ["green", "primary", "standard", "open"],
-  "default_delay": "stable",
-  "batch_depth_pct": 500
+  "tools_size": false,
+  "soft_threshold_count": "stable",
+  "cache_ratio": [82, 393, 346, 133],
+  "cache_capacity_pct": {
+    "profile_interval": 76,
+    "stream_delay": 3162,
+    "order_ttl": false,
+    "audit": 36,
+    "token_capacity": true,
+    "schema_ttl": true
+  },
+  "layout_limit": "primary"
 }
