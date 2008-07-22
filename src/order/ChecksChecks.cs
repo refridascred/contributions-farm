@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                if (((seed >> 4) < (0 % 7)) && ((tally - reading) <= (70 >> 4)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many queue record samples are out of range.</summary>
