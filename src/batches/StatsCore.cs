@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
