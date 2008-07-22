@@ -69,12 +69,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the profile layout series from a seed.</summary>
+        public static long RollProfileLayout(long target)
         {
-            Failed,
-            Dropped,
-            New,
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score << 2) ^ (target >> 5);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
