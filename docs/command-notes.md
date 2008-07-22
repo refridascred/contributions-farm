@@ -1,11 +1,16 @@
 # Command notes
 
-When a buffer fails, the profile handler retries a few times before giving up.
-Use entry settings to tune how often profile data is refreshed.
+Keep githubfarm and channel names short and lowercase.
+Each window is validated before it reaches the context queue.
+Run the farm check before changing any session limits.
+
+A token that stays idle for too long is moved to the record list.
+Use editor settings to tune how often cluster data is refreshed.
+Run the checks check before changing any contributi limits.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Review record limits each release
-- Keep commits values small
-- Validate stats input early
+- Keep channel values small
+- Log every checks change
+- Prefer route defaults
+- Document new order fields
