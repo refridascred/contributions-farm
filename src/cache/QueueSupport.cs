@@ -20,12 +20,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] samples, long bound)
         {
-            Active,
-            Pending,
-            Synced,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (double)hits)
+                {
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
