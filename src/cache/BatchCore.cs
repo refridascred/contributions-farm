@@ -40,15 +40,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next contributi account value from a seed.</summary>
-        public static long SeriesContributiAccount(long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double floor)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            double load = 2.13;
+            if (load < (floor + bias))
             {
-                state = ((state * 5) + (long)i) % 97;
+                load = load - 16.0;
             }
-            return state;
+            else
+            {
+                load = load + (load / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
