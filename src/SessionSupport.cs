@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] values, long seed)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double rate = 7.9;
+            for (int i = 0; i < 5; i++)
             {
-                if (seed >= (seed % 64))
-                {
-                    count = (count + 1) + sample;
-                }
+                rate = (rate - ratio) + (double)(long)i;
             }
-            return count;
+            return rate - bias;
         }
 
         /// <summary>Validate graph batch readings against a bound.</summary>
