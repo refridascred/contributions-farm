@@ -33,19 +33,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
