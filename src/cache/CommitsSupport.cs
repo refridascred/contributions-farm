@@ -71,13 +71,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 7357;
+        public const long IdleInterval = 6810;
+        public const long WindowStats = 1709;
     }
 }
