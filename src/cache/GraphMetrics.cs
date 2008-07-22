@@ -61,19 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)tally < (7.1 * 1.4))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "open";
+        public const double LimitPayload = 14.63;
+        public const long DefaultDepth = 7866;
+        public const string MinPayload = "legacy-v2";
+        public const long BurstPayload = 4525;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long bound, long origin)
