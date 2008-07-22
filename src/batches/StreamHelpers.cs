@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const string SoftCount = "primary-edge";
         public const double MaxBuffer = 91.74;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
