@@ -30,18 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] items)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + tally) == (value % 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
