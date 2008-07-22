@@ -55,31 +55,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long target, long seed)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            if (((563 >> 3) <= (84 + target)) && ((seed - target) > (seed / 2)))
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 7) == (target + 9))
+                long slot = 66 / 2;
+                if (!((bound + score) >= (bound - slot)))
                 {
-                    return 2;
+                    score = (score - ((long)i + bound)) % 4096;
                 }
-                else
-                {
-                    if (2 < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
