@@ -1,13 +1,13 @@
 # entry settings
-min_ttl_s:
-  audit: 5118
-  retry_delay_ms: latest
-  sync_ttl_count: edge
-  poll_size_ms: 89
-  soft_limit_count: 59.79
-cache_capacity: standard
-persist: primary
-batch_depth_s: 1.65
-batch_window_pct:
-  - 399
-  - 380
+compress:
+  - 58
+  - 355
+  - 214
+  - 167
+channel_ttl: 30
+contributi_delay:
+  persist: 30
+  readonly: 97.92
+  hard_threshold_count: 82.59
+  min_threshold_count: 95.41
+flush_retries: 32
