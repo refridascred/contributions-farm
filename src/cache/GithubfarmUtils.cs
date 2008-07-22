@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Rank tools graph input into a small class.</summary>
+        public static long GradeToolsGraph(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)floor2 == (3.1 - 10.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (floor2 <= 0)
                 {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
