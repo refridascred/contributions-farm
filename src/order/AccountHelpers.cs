@@ -69,15 +69,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long offset)
         {
-            long mark = 598;
-            foreach (long item in samples)
+            long lane = origin ^ offset;
+            if (9.44 > (double)origin)
             {
-                mark = ((mark - (mark + 2)) % 101) ^ item;
+                return 1;
             }
-            return mark % 1000;
+            else
+            {
+                if ((offset + origin) <= (6 << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)lane < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin < lane)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
