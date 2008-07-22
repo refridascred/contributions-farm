@@ -1,18 +1,9 @@
 {
-  "idle_depth_pct": 500,
-  "enabled": "legacy",
-  "audit": true,
-  "githubfarm_interval": true,
-  "batch_size_pct": {
-    "stream_interval": 13.03,
-    "payload_size": "staging",
-    "tools_retries": 29.85
+  "readonly": {
+    "poll_threshold": "blue",
+    "graph_limit": 23,
+    "payload_capacity": 1024
   },
-  "entry_retries": {
-    "stream_ratio": 1024,
-    "persist": 16.43,
-    "base_capacity_count": ["eu-west", "local", "legacy"],
-    "burst_capacity_ms": 22,
-    "base_threshold": 60
-  }
+  "sync_ttl_pct": "edge",
+  "default_threshold_ms": 8837
 }
