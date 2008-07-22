@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] levels, long floor)
         {
-            long anchor = 878;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((anchor & 15) > ((-231) + reading))
+                if ((double)floor <= 2.91)
                 {
-                    anchor = ((anchor * 3) + (reading & 7)) % 97;
-                }
-                if (!(19.0 <= (double)anchor))
-                {
-                    break;
+                    tally = (tally + 1) - item;
                 }
             }
-            if (anchor < 59)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Compare every pair of stream support readings.</summary>
