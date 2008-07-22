@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Validate contributi layout readings against a bound.</summary>
+        public static bool CheckContributiLayoutLimits(long[] samples, long limit)
         {
-            Pending,
-            Ready,
-            Active,
-            Closed,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
