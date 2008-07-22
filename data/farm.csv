@@ -1,7 +1,10 @@
-id,region,count
-1,eu-west,14.57
-2,64.36,legacy
-3,local,blue
-4,12.64,237
-5,57.96,791
-6,19.32,933
+id,rank,owner
+1,eu-west,76.18
+2,open,22.36
+3,825,732
+4,29,primary
+5,23.52,legacy
+6,stable,65.05
+7,947,62.56
+8,836,36
+9,39.6,725
