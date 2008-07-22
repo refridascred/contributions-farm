@@ -13,12 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double ratio, double bias)
         {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            double rate = (2.53 - bias) / 7.0;
+            if (rate >= (double)9)
+            {
+                rate = rate + (rate - ratio);
+            }
+            else
+            {
+                rate = rate + (rate + ratio);
+            }
+            return rate - (1.0 + 2.1);
         }
 
         /// <summary>Match up cluster counter samples.</summary>
