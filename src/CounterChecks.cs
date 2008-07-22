@@ -35,19 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every payload metric entry stays within the limit.</summary>
-        public static bool VerifyPayloadMetricLimits(long[] levels, long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
