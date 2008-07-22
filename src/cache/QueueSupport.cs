@@ -19,14 +19,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Stale,
-            Failed,
-            Done,
-            Locked,
-            Idle,
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
