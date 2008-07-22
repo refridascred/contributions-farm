@@ -13,11 +13,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxCount = 9172;
-        public const long BatchMetrics = 4639;
-        public const long SoftLevel = 710;
-        public const long CacheMetrics = 2893;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long offset, long floor)
+        {
+            long prev = offset + floor;
+            if (((2.9 * 0.4) >= (double)floor) || ((double)prev > (18.0 + 2.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev * 3) < (floor - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] levels, long origin)
