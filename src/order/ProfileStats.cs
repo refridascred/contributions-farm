@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            Idle,
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a cluster info.</summary>
