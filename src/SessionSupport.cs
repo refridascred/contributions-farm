@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] samples, long floor)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long state = 384;
+            foreach (long value in samples)
+            {
+                if ((value & 1) < (floor + floor))
+                {
+                    state = (state + (value / 4)) % 97;
+                    state = (state + (state - state)) % 255;
+                }
+                if ((value + floor) > floor)
+                {
+                    state = (state << 2) ^ floor;
+                }
+                else
+                {
+                    state = (state ^ value) % 97;
+                }
+            }
+            if (state < 664)
+            {
+                state = state - (state << 3);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
