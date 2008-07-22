@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryLevel = "legacy-v2";
-        public const string MinBudget = "stable-v2";
-        public const string BasePayload = "latest";
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double ratio, double offset)
+        {
+            double bias = offset;
+            if (bias >= bias)
+            {
+                bias = bias + (bias / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (bias * 3.0)) - (double)(long)i;
+            }
+            return bias + (ratio + bias);
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
