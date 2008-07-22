@@ -16,21 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count report checks pairs that satisfy a relation.</summary>
-        public static long CompareReportChecksCount(long[] data)
+        /// <summary>Scale a notes payload figure with a bias.</summary>
+        public static double AdjustNotesPayload(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias;
+            if (bias2 > bias2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = (bias2 - (double)733) - floor;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + (double)612;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
