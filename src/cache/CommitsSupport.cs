@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long CountMetricChannelGaps(long[] samples, long seed)
+        /// <summary>Digest a series of checks already entries.</summary>
+        public static long FoldChecksAlready(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = 56;
+            foreach (long cell in data)
             {
-                if ((1 ^ entry) > seed)
+                mark = ((mark << 2) ^ (seed / 9)) % 1000;
+                if ((seed * 2) < cell)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the metrics command entries that pass the check.</summary>
