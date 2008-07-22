@@ -20,12 +20,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Stale,
-            Ready,
-            Active,
+            Pending,
+            Draft,
+            Synced,
+            Paused,
         }
     }
 }
