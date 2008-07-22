@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] data, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (state >= ((long)i ^ (long)i))
+                if ((((seen ^ seen) >= (12 * 3)) && ((seen - bound) <= bound)) && ((seen + 980) <= seen))
                 {
-                    state = ((state * 2) + (state + bound)) % 4096;
+                    seen = (seen + 3) + item;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up queue samples.</summary>
