@@ -30,19 +30,12 @@ namespace Common.Utilities
         public const long WindowSupport = 5104;
         public const string RetrySupport = "local-1";
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double span)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double drift = (double)(-64) + (ratio / 9.0);
-            if (drift > ratio)
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift + (double)31;
-            }
-            return drift - ratio;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
