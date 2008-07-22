@@ -1,7 +1,6 @@
 # support settings
-command_ratio: false
-cache_ratio_s:
-  strict: 7807
-  stats_interval: 68
-  report_ttl: blue
-readonly: eu-west
+warm_timeout_ms: green
+retry_capacity: true
+audit: 80.31
+dry_run: 70
+min_retries_pct: stable
