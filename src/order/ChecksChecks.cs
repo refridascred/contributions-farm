@@ -35,24 +35,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a context payload value against two limits.</summary>
-        public static long GradeContextPayload(long origin, long origin2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items, long seed)
         {
-            if ((origin - origin) > (4 * 3))
+            long total = 8;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin > (origin + 47)) || (origin2 > (24 - origin2)))
+                if (((850 ^ seed) < (seed >> 1)) || (0.7 < (double)item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    total = total + (item << 3);
                 }
             }
+            if (total < 50)
+            {
+                total = (total + (8 - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
