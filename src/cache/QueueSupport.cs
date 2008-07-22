@@ -14,13 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] readings, long step)
         {
-            Pending,
-            Locked,
-            Retry,
-            Done,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
