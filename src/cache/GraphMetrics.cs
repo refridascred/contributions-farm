@@ -24,16 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long target)
         {
-            long score = 345;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                score = (score + value) % 255;
-                score = (score + 640) % 65521;
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
