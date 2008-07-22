@@ -1,7 +1,9 @@
-id,state,rank,label,owner
-1,584,984,22.46,78
-2,green,strict,590,6.53
-3,edge,508,stable,31.9
-4,open,legacy,112,92.4
-5,564,28.29,eu-west,strict
-6,open,43.52,staging,strict
+id,level,region,owner,score
+1,57.84,159,989,594
+2,45.65,14,745,fallback
+3,standard,892,2.53,417
+4,open,94.41,1.76,711
+5,117,64.01,759,227
+6,24.98,15.17,legacy,strict
+7,strict,staging,49.76,407
+8,465,local,90.03,staging
