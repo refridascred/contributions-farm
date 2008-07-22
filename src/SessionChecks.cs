@@ -23,38 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits support input into a small class.</summary>
-        public static long BucketCommitsSupport(long origin, long origin2)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] items)
         {
-            if ((2.0 / 7.0) == (double)origin)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin + origin2) >= origin2) && ((origin2 + origin2) > (81 + 308)))
+                if ((cell - cell) < (tally >> 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + origin) <= origin2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin2 + origin) <= (origin2 >> 4)) || (origin >= (origin + origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
