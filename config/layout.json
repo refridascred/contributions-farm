@@ -1,18 +1,9 @@
 {
-  "warm_timeout_pct": [396, 293, 161, 142],
-  "batch_limit": "latest",
-  "sync_delay_count": [245, 169, 418],
-  "burst_timeout": {
-    "sync_window_count": false,
-    "audit": 88,
-    "default_depth_count": 91,
-    "batch_ratio_count": "green"
+  "entry_threshold": 500,
+  "readonly": {
+    "metrics_window": "local",
+    "base_delay_ms": ["fallback", "stable", "open"],
+    "stream_threshold": [281, 47, 462]
   },
-  "retry_depth": 29.01,
-  "default_interval_count": {
-    "base_size_s": 95,
-    "verbose": 33.65,
-    "stream_depth": false,
-    "compress": "strict"
-  }
+  "warm_capacity_pct": false
 }
