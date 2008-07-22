@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const double SoftBudget = 68.64;
         public const long IdleTimeout = 7098;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Project the next queue order value.</summary>
+        public static double ProjectQueueOrder(double gain, double bias)
         {
-            Synced,
-            Pending,
-            Closed,
+            double weight = (double)201 + bias;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight - (bias + weight)) - (double)(long)i) - gain;
+            }
+            return weight + (double)1;
         }
 
         /// <summary>Count schema token pairs that satisfy a relation.</summary>
