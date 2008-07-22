@@ -1,19 +1,19 @@
 # githubfarm settings
-batches_interval:
-  - 219
-  - 472
-  - 199
-  - 59
-default_timeout: 2671
-compress: 2219
-context_retries: 49.79
-farm_depth:
-  poll_delay_s:
-    - green
-    - primary
-  report_retries: 35.95
-  window_ttl:
-    - 259
-    - 320
-    - 13
-  support_delay: eu-west
+enabled: 73
+report_capacity:
+  poll_window_pct:
+    max_interval_ms: true
+    flush_threshold_s: 58.62
+    enabled: 250
+  stats_timeout: edge
+  persist: 96.63
+  strict:
+    - 138
+    - 322
+    - 166
+warm_window_ms:
+  - 121
+  - 259
+  - 67
+  - 203
+checks_capacity: 1112
