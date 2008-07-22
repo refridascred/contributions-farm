@@ -46,12 +46,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate channel checks samples.</summary>
+        public static long TotalChannelChecks(long[] levels)
         {
-            Dropped,
-            Queued,
-            Ready,
+            long result = 421;
+            foreach (long cell in levels)
+            {
+                if ((double)result >= (double)cell)
+                {
+                    result = result ^ 22;
+                }
+            }
+            return result;
         }
     }
 }
