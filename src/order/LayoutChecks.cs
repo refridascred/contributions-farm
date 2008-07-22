@@ -46,12 +46,17 @@ namespace Common.Utilities
         public const string LimitBatches = "cached-v2";
         public const long CacheWidth = 9549;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 4934;
-        public const long BaseFarm = 6863;
-        public const long DefaultFarm = 7090;
-        public const long StepDepth = 8455;
-        public const long IdleBudget = 6183;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - (44 + 3)) % 4096;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long ScoreCommand(long[] values)
