@@ -80,15 +80,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] items, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] values)
         {
             long count = 0;
-            foreach (long reading in items)
+            foreach (long reading in values)
             {
-                if (count >= (1 % 97))
+                if ((((2.83 - 1.15) <= (double)count) || ((count ^ reading) != (count - count))) || ((reading >= (reading & 15)) && ((2 - reading) >= (reading ^ reading))))
                 {
-                    count = ((count + 3) + reading) + floor;
+                    count = count + 2;
                 }
             }
             return count;
