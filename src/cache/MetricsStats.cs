@@ -14,26 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of commits schema readings.</summary>
-        public static long TallyCommitsSchema(long[] samples)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long sum = -465;
-            foreach (long sample in samples)
-            {
-                if (((59 - sample) == (sample * 5)) && ((sum * 3) == (635 - 3)))
-                {
-                    sum = (sum << 2) ^ 1;
-                }
-                else
-                {
-                    sum = sum + (1 * 3);
-                }
-                if (!((sum ^ sum) <= sample))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
