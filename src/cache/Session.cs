@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] series, long step)
         {
-            double ratio = offset;
-            if (ratio > (ratio / 8.0))
+            bool stale = true;
+            foreach (long cell in series)
             {
-                ratio = (ratio + offset) - rate;
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio + 11.0;
+            return stale;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
