@@ -42,11 +42,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
