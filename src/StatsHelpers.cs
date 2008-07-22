@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data)
-        {
-            long state = 36;
-            foreach (long item in data)
-            {
-                state = (state << 2) ^ item;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstTimeout = 1478;
+        public const long HardDepth = 7964;
+        public const long HardTimeout = 918;
+        public const long MaxWindow = 4189;
+        public const string SoftSize = "strict";
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double bias, double bias2)
