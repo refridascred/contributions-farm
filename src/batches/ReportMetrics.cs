@@ -27,19 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Look up the position of a buffer order sample.</summary>
+        public static long LookupBufferOrderIndex(long[] samples, long step)
         {
-            double rate = (double)(99 * 3);
-            if (rate < (rate + weight))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (rate + rate)) - offset;
+                if ((samples[i] >= step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (rate / 4.0);
+            return -1;
         }
     }
 }
