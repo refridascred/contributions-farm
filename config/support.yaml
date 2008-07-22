@@ -1,13 +1,21 @@
 # support settings
-batch_delay: legacy
-idle_capacity_pct:
-  burst_threshold_count: 77.15
-  burst_depth_pct: 1188
-  buffer_window:
-    max_timeout: 31.43
-    retry_size: false
-    cluster_interval: 86
-    readonly: true
-  default_ttl_pct: 30.36
-  window_timeout: 6137
-flush_ratio: 66
+persist:
+  - 335
+  - 318
+  - 224
+cache_window: 19
+default_ratio_s: false
+dry_run:
+  soft_size: 500
+  commits_ttl:
+    checks_capacity: 21.11
+    hard_window: 76
+    audit: blue
+    burst_ratio_ms: 9701
+    report_depth: 92.45
+  warm_interval_s: 81.28
+  batch_ratio:
+    metric_limit: 48
+    cache_retries_count: false
+    schema_ttl: false
+    counter_ratio: stable
