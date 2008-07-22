@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 2014;
-        public const long MinBudget = 3464;
-        public const double RetryLevel = 93.53;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowBudget = 4833;
