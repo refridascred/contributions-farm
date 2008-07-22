@@ -29,19 +29,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long floor)
         {
-            double rate = floor;
-            if (rate >= bias)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                rate = rate + bias;
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + 1.3;
+            return ready;
         }
 
         /// <summary>Describe the record mode values.</summary>
