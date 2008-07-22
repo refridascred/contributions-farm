@@ -44,13 +44,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxRatio = "alpha-edge";
+        public const long CacheAlready = 1453;
+        public const string RetryAlready = "stable-v2";
     }
 }
