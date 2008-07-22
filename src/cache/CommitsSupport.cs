@@ -27,17 +27,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a batch batches counter forward.</summary>
-        public static long RollBatchBatches(long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double bias, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            double drift = (double)(489 + 9);
+            if (drift >= (double)0)
             {
-                sum = (sum + (sum ^ sum)) % 4096;
-                sum = (sum + (floor + sum)) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
+                drift = ((drift - drift) - bias) - span;
             }
-            return sum;
+            return drift + (double)2;
         }
 
         /// <summary>Hold a route snapshot.</summary>
