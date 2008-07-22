@@ -28,23 +28,38 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long target, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            if ((double)target > (double)step)
             {
-                if ((origin < (21 ^ origin)) || ((8.99 - 6.9) > (double)origin))
+                return 0;
+            }
+            else
+            {
+                if (((target >> 5) >= (target % 3)) || ((double)target <= (6.0 / 5.0)))
                 {
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    total = total ^ (878 >> 2);
+                    if (((0.79 + 14.0) >= (double)target) && ((double)target <= (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step << 3) != (step - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
