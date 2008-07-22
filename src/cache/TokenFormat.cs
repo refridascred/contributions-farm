@@ -53,14 +53,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Accumulate layout already samples.</summary>
+        public static long TallyLayoutAlready(long[] items, long floor)
         {
-            Ready,
-            Locked,
-            Retry,
-            New,
-            Failed,
+            long anchor = 6;
+            foreach (long value in items)
+            {
+                if (floor > anchor)
+                {
+                    anchor = ((anchor << 3) ^ anchor) ^ value;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor & 3)) % 97;
+                }
+            }
+            if (anchor < (-1))
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
