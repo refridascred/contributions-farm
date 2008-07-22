@@ -1,7 +1,9 @@
-id,weight,rank
-1,531,stable
-2,eu-west,60.39
-3,standard,69.67
-4,259,18.8
-5,268,eu-west
-6,623,94.86
+id,label,token
+1,297,900
+2,328,645
+3,green,13
+4,26.02,52.05
+5,28.66,strict
+6,747,eu-west
+7,52.73,95.59
+8,683,cached
