@@ -53,26 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout already samples.</summary>
-        public static long TallyLayoutAlready(long[] items, long floor)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long anchor = 6;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (floor > anchor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ anchor) ^ value;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor & 3)) % 97;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < (-1))
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 101;
-            }
-            return anchor % 65521;
+            return matches;
         }
     }
 }
