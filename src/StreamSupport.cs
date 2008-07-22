@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstFactor = 7047;
+        public const long BurstSize = 4079;
+        public const long MinSession = 4508;
+        public const long RetrySession = 7222;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] data, long bound)
