@@ -36,39 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long bound, long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long delta = bound + floor;
-            if (((floor ^ floor) > (bound + bound)) && ((delta / 2) != (bound - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((floor - floor) != (delta % 16)) || ((bound / 3) <= (bound * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ delta) > (bound << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > 5)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Match up commits samples.</summary>
