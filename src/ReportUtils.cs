@@ -54,11 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Blend two metrics session measurements.</summary>
+        public static double SmoothMetricsSession(double rate, double span)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            double scale = (double)(652 ^ (-8));
+            if (scale >= rate)
+            {
+                scale = (scale + (rate * 7.8)) - span;
+            }
+            else
+            {
+                scale = scale + (scale - scale);
+            }
+            return scale + scale;
         }
     }
 }
