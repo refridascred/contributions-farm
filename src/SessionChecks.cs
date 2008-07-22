@@ -51,21 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches support readings.</summary>
-        public static long MatchBatchesSupportCount(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
