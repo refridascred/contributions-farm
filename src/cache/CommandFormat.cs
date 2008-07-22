@@ -14,39 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long origin, long offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long bound)
         {
-            long gap = origin ^ offset;
-            if (!((5.44 / 2.0) <= (double)origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((967 & 15) < offset)
+                if (items[i] <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin >= (8.73 + 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((8.4 - 0.7) > (9.0 - 9.0)) && ((878 >> 2) <= (gap ^ offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
