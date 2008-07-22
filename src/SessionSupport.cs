@@ -32,26 +32,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels)
         {
-            long result = 93;
-            foreach (long cell in items)
+            long result = 17;
+            foreach (long reading in levels)
             {
-                if ((cell >> 1) <= ((long)items.Length ^ cell))
+                if (8.29 > (double)result)
                 {
-                    result = ((result << 3) ^ (378 * 3)) % 255;
+                    result = result ^ (result << 3);
                 }
-                if (result > (cell >> 4))
+                else
                 {
-                    break;
+                    result = ((result << 2) ^ (57 + reading)) % 97;
                 }
             }
-            if (result > 877)
-            {
-                result = result ^ (origin / 9);
-            }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
