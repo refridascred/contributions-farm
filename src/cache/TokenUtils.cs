@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double scale, double floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            double gain = (floor * 8.79) * 7.5;
-            if (gain > scale)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (double)243;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (scale * 0.6)) + (double)(long)i;
-            }
-            return gain - (double)35;
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
