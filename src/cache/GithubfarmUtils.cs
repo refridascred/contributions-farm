@@ -47,11 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] values, long floor)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((reading - 46) >= (reading + matches)) || ((0.73 / 7.0) > (double)reading))
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
