@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many order schema samples are out of range.</summary>
-        public static long CountOrderSchemaGaps(long[] samples)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading % 97) < (reading - seen)) || !((reading >> 5) >= (reading / 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
