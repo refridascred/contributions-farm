@@ -73,12 +73,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchTimeout = "primary-edge";
-        public const long CacheProfile = 1766;
-        public const long SoftTimeout = 4843;
-        public const long IdleProfile = 8453;
-        public const double StepFactor = 44.75;
+        /// <summary>Iterate the notes route series from a seed.</summary>
+        public static long StepNotesRoute(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a command buffer reading by value.</summary>
         public static long SeekCommandBufferIndex(long[] values, long floor)
