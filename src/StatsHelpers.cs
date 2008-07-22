@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleScore = "staging-1";
-        public const long BurstSize = 1923;
-        public const long HardTimeout = 64;
-        public const double IdleReport = 25.83;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double bias, double bias2)
