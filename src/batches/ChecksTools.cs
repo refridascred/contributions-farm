@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (score < (880 % 5))
-                {
-                    score = (score ^ (bound + score)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the format class values.</summary>
