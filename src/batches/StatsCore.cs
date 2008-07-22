@@ -58,12 +58,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long bound, long step)
         {
-            Synced,
-            Stale,
-            Dropped,
+            long diff = bound ^ step;
+            if (bound < 766)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step % 3) <= (diff - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step - bound) > (diff + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9 <= (step / 4)) && (bound >= step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
