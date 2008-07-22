@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] samples, long origin)
         {
-            long mark = 8;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((double)datum >= (double)mark)
+                if (origin <= (origin << 1))
                 {
-                    mark = ((mark * 2) + (mark * 5)) - seed;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
