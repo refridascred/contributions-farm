@@ -13,20 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double ratio, double bias)
-        {
-            double rate = (2.53 - bias) / 7.0;
-            if (rate >= (double)9)
-            {
-                rate = rate + (rate - ratio);
-            }
-            else
-            {
-                rate = rate + (rate + ratio);
-            }
-            return rate - (1.0 + 2.1);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowBudget = 4833;
+        public const long IdleInterval = 6499;
+        public const string LimitSchema = "open-v2";
+        public const double IdleRatio = 5.35;
 
         /// <summary>Match up cluster counter samples.</summary>
         public static long MatchClusterCounterCount(long[] values)
