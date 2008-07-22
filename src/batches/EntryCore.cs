@@ -20,25 +20,17 @@ namespace Common.Utilities
             return weight - 9.0;
         }
 
-        /// <summary>Classify a metrics window pair into a bucket.</summary>
-        public static long ClassifyMetricsWindow(long origin, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long step)
         {
-            long prev = origin - offset;
-            if (!(prev > (8 / 3)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (5 + prev))
+                if (levels[i] < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a tools summary.</summary>
