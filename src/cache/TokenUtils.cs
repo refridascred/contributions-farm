@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double IdleSpan = 52.41;
         public const long SoftInterval = 7176;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] data, long seed)
+        /// <summary>Find the first counter layout entry that matches the target.</summary>
+        public static long LookupCounterLayoutIndex(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < seed)
+                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine channel farm values into a single score.</summary>
