@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long origin, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long seed, long bound)
         {
-            long edge = origin - target;
-            if (9 < (origin + origin))
+            long step = seed - bound;
+            if (((step - seed) != (bound - bound)) && ((seed - seed) >= (step % 97)))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((96 + origin) <= (edge / 2))
+                if ((step ^ seed) <= seed)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    if ((step - seed) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
