@@ -50,32 +50,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a entry queue value against two limits.</summary>
-        public static long RankEntryQueue(long offset, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] series, long bound)
         {
-            long span = offset - seed;
-            if ((span * 4) > (span + 9))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (13.0 > (double)offset)
+                if ((seen * 5) == (cell * 4))
                 {
-                    return 1;
+                    seen = (seen + 3) - bound;
                 }
                 else
                 {
-                    if ((offset - span) != (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
