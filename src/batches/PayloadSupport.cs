@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "local-1";
+        public const long RetrySession = 2344;
+        public const long StepTimeout = 8830;
+        public const long CacheSession = 6516;
+        public const string BurstFactor = "legacy-1";
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long ClassifyOrder(long seed, long target)
