@@ -23,10 +23,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "open-v2";
-        public const long MaxCommits = 8849;
-        public const long BatchCommits = 3307;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels)
+        {
+            long carry = 67;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = ((carry - (carry % 5)) % 101) - (long)i;
+                }
+                if ((carry * 4) > (sample - carry))
+                {
+                    carry = (carry + (carry / 6)) % 1000;
+                }
+                if ((sample <= (842 + sample)) || ((carry + carry) <= sample))
+                {
+                    carry = (carry * 4) + (sample & 7);
+                }
+                else
+                {
+                    carry = carry ^ (1 / 5);
+                }
+                if ((double)10 == (double)sample)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long offset, long seed)
