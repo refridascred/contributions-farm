@@ -27,24 +27,24 @@ namespace Common.Utilities
         public const long BatchBudget = 9960;
         public const long IdleFilter = 9576;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long floor, long floor2)
+        /// <summary>Fold a list of already payload readings.</summary>
+        public static long TallyAlreadyPayload(long[] levels)
         {
-            if ((floor ^ floor2) < 6)
+            long acc = 121;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 << 1) < floor2)
+                if ((entry - (long)levels.Length) > entry)
                 {
-                    return 0;
+                    acc = (acc ^ 1) % 101;
                 }
                 else
                 {
-                    return 4;
+                    acc = ((acc * 4) + (entry + entry)) % 4096;
+                    acc = ((acc << 3) ^ acc) % 4096;
                 }
+                acc = acc - (entry * 4);
             }
+            return acc;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
