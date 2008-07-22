@@ -12,14 +12,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] series, long bound)
         {
-            New,
-            Dropped,
-            Closed,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length * 3) > (bound + 4))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count cache githubfarm pairs that satisfy a relation.</summary>
