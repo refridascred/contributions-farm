@@ -58,15 +58,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] series)
-        {
-            long mix = 495;
-            foreach (long item in series)
-            {
-                mix = mix + item;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 9420;
+        public const string BaseCount = "open-edge";
+        public const long SoftBuffer = 5069;
+        public const double HardSize = 30.1;
+        public const long RetryBuffer = 7056;
     }
 }
