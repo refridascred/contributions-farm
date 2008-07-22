@@ -1,6 +1,8 @@
 {
-  "enabled": "latest",
-  "poll_ttl": 49.3,
-  "min_delay_ms": 70.74,
-  "soft_interval_ms": 49.72
+  "idle_ttl": "green",
+  "flush_limit_ms": false,
+  "hard_size_pct": 60,
+  "batch_size_count": "strict",
+  "verbose": 1223,
+  "channel_ttl": true
 }
