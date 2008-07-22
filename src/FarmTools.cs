@@ -45,15 +45,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (!((mix * 5) != (mix - 634)))
+                {
+                    mix = (mix + (step % 12)) % 97;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (((mix << 2) ^ (-69)) % 4096) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
