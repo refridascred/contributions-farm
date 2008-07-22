@@ -83,22 +83,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the window notes entries that pass the check.</summary>
-        public static long TallyWindowNotesGaps(long[] values, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)(long)values.Length > (19.0 * 9.6))
-                {
-                    count = ((count + 3) - entry) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Queued,
+            Closed,
+            Paused,
         }
     }
 }
