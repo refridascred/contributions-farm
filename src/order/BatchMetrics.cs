@@ -68,12 +68,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] series, long floor)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
