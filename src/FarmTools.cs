@@ -20,14 +20,17 @@ namespace Common.Utilities
             return bias + (ratio + bias);
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long offset)
         {
-            Locked,
-            Active,
-            Queued,
-            Dropped,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
