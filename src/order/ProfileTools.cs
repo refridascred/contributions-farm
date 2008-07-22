@@ -19,14 +19,17 @@ namespace Common.Utilities
         public const long SoftLevel = 710;
         public const long CacheMetrics = 2893;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long origin)
         {
-            Ready,
-            Draft,
-            Failed,
-            Done,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
