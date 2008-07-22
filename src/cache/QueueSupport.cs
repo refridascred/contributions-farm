@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardFactor = 2393;
-        public const double RetryCount = 72.46;
-        public const long BatchTimeout = 2031;
-        public const long DefaultScore = 2124;
-        public const long HardTimeout = 1329;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double scale, double bias)
+        {
+            double ratio = (double)(24 - 139);
+            if (ratio < (scale * 0.01))
+            {
+                ratio = ratio + bias;
+            }
+            else
+            {
+                ratio = ratio - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (ratio * 7.32)) + (double)(long)i;
+            }
+            return ratio - scale;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordMatches(long[] items, long seed)
