@@ -1,7 +1,6 @@
 {
-  "tools_timeout": "local",
-  "default_delay": false,
-  "report_capacity": false,
-  "tools_ratio": 30,
-  "flush_interval_pct": "primary"
+  "flush_timeout_ms": "cached",
+  "readonly": 17,
+  "persist": false,
+  "channel_depth": 21.71
 }
