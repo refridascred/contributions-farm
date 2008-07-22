@@ -54,22 +54,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long bound)
         {
-            if (((step * 2) > (step ^ bound)) && ((1.0 + 3.15) == (double)bound))
+            if ((10.0 * 17.0) == (double)bound)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((1.8 * 11.0) == (double)step)
+                if ((664 >> 1) < (bound + offset))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    return 0;
                 }
             }
         }
