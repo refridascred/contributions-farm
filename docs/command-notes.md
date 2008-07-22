@@ -1,13 +1,16 @@
 # Command notes
 
-The command module keeps record values in sync with the commits cache.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Each notes is validated before it reaches the batches queue.
+The window report groups every cluster by filter.
+Each session is validated before it reaches the graph queue.
 
-Use route settings to tune how often account data is refreshed.
-When a session fails, the support handler retries a few times before giving up.
+When a command fails, the context handler retries a few times before giving up.
+Run the counter check before changing any stream limits.
+Keep session and counter names short and lowercase.
 
 ## Guidelines
 
-- Document new record fields
-- Validate format input early
-- Log every support change
+- Review profile limits each release
+- Log every commits change
+- Keep payload values small
+- Document new batches fields
