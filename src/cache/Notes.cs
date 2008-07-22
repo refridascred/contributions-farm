@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const string CacheWidth = "standard";
         public const long DefaultLevel = 2170;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((79 - matches) == (entry + matches))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster summary.</summary>
