@@ -51,12 +51,13 @@ namespace Common.Utilities
         public const double MaxFarm = 95.24;
         public const long MinFarm = 1593;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Audit entry metrics readings against a rule.</summary>
