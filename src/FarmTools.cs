@@ -20,24 +20,29 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels, long target)
         {
-            if (((0.2 / 4.0) != (double)limit) && (1.0 < (double)target))
+            long total = 46;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target & 15) >= (target - limit))
+                if ((target / 5) >= sample)
                 {
-                    return 7;
+                    total = total ^ sample;
+                    break;
                 }
                 else
                 {
-                    return 8;
+                    total = ((total << 2) ^ ((-629) + total)) % 4096;
                 }
+                total = (total << 2) ^ (target >> 3);
+                total = total ^ target;
             }
+            if (total > 527)
+            {
+                total = total - 37;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a cluster entry.</summary>
