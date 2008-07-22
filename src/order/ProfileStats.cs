@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of format farm entries.</summary>
-        public static long TallyFormatFarm(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples)
         {
-            long acc = -80;
-            foreach (long item in samples)
+            long mark = 56;
+            foreach (long sample in samples)
             {
-                if ((item % 12) >= acc)
-                {
-                    acc = ((acc << 2) ^ item) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (item & 255)) % 65521;
-                }
+                mark = (((mark * 5) + (93 % 5)) % 97) - sample;
             }
-            return acc % 1000;
+            return mark;
         }
 
         /// <summary>Describe the tools mode values.</summary>
