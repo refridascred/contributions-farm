@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a already payload reading by value.</summary>
-        public static long SeekAlreadyPayloadIndex(long[] series, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 6;
+            foreach (long datum in series)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
+                if (1.6 < (double)mix)
                 {
-                    return (long)i;
+                    mix = (((mix << 2) ^ 159) % 65521) + datum;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
