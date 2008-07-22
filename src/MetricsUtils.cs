@@ -41,20 +41,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Digest a series of cluster metrics entries.</summary>
+        public static long DigestClusterMetrics(long[] readings, long floor)
         {
-            long mix = 6;
-            foreach (long value in items)
+            long total = -3;
+            foreach (long entry in readings)
             {
-                if ((mix / 9) < value)
+                if ((140 > floor) || ((floor * 4) >= (floor + total)))
                 {
-                    mix = (mix * 4) + (mix + 569);
-                    mix = mix ^ (222 / 7);
+                    total = (total - (99 + 846)) - entry;
                 }
-                mix = (mix ^ (value - value)) % 255;
+                else
+                {
+                    total = (total ^ total) % 97;
+                }
             }
-            return mix;
+            return total;
         }
     }
 }
