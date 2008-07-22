@@ -28,17 +28,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long step, long step2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = step - step2;
+            if ((step < (step + step)) || ((double)bound >= 11.0))
             {
-                if (data[i] <= step)
+                return 1;
+            }
+            else
+            {
+                if ((step + 0) <= (6 + bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step2) != (bound * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound < 8.1)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
