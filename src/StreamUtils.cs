@@ -62,18 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((82 & 3) > (hits / 8)) && ((double)(long)samples.Length != (double)cell)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
