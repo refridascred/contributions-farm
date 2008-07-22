@@ -47,21 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = -6;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((((carry << 2) ^ 802) % 4096) + reading) - origin;
             }
-            return tally;
+            return carry % 65521;
         }
     }
 }
