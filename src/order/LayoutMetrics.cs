@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((56 ^ (long)i) == (long)i) && ((mix - mix) < (bound << 1)))
-                {
-                    break;
-                }
-                if (!!((double)bound <= (12.0 + 7.93)))
-                {
-                    mix = ((mix << 2) ^ (202 + (long)i)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
