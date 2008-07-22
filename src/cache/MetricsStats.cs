@@ -45,20 +45,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 6463;
+        public const string LimitTools = "primary-edge";
+        public const long MaxRatio = 3501;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] items, long step)
