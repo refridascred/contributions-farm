@@ -23,31 +23,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a metrics support pair into a bucket.</summary>
-        public static long GradeMetricsSupport(long origin, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long limit)
         {
-            if (origin <= (origin + origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin - bound) < (bound - bound)))
+                if (items[i] >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound >= (9.2 * 4.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
