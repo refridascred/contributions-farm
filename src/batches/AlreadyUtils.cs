@@ -47,23 +47,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks order values into a single score.</summary>
-        public static long DigestChecksOrder(long[] levels, long limit)
-        {
-            long carry = 8;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (8.2 * 6.24))
-                {
-                    carry = (carry ^ (carry + limit)) % 97;
-                }
-                if ((double)limit <= (9.2 + 4.0))
-                {
-                    carry = (carry - ((-19) * 4)) % 65521;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 2312;
+        public const double RetryLevel = 54.86;
+        public const string CacheProfile = "cached-1";
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
