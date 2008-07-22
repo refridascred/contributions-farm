@@ -1,6 +1,12 @@
 # support settings
-warm_timeout_ms: green
-retry_capacity: true
-audit: 80.31
-dry_run: 70
-min_retries_pct: stable
+base_window_count: 81.25
+channel_timeout:
+  strict: 2874
+  warm_window: fallback
+  warm_capacity_ms: open
+  hard_window_ms: 3.11
+  hard_size_s: 250
+payload_depth:
+  - cached
+  - standard
+retry_limit: open
