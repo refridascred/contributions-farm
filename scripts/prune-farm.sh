@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-FARM_LIMIT=339
-log "limit is ${FARM_LIMIT}"
-
-mode="${1:-cached}"
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy edge; do
-    log "checking ${item}"
-done
+FARM_LIMIT=16
+log "limit is ${FARM_LIMIT}"
