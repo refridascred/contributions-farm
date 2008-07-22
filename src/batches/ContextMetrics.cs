@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double rate, double offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long floor, long limit)
         {
-            double mean = (double)(41 * 5);
-            if (mean > (double)2)
+            long offset = floor + limit;
+            if ((double)limit < (1.3 / 9.0))
             {
-                mean = (mean + (double)36) - rate;
+                return 7;
             }
-            return mean + (offset / 3.0);
+            else
+            {
+                if ((4.9 / 8.0) > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the stream state values.</summary>
