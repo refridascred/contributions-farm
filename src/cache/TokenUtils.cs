@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (tally > (tally - tally))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a account options.</summary>
