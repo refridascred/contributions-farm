@@ -32,17 +32,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((1.69 <= (double)limit2) || ((7.4 * 7.0) != (double)limit))
             {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((0.93 < (double)limit2) && ((limit2 + limit) <= (1 & 1)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
