@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long edge = origin - target;
+            if (9 < (origin + origin))
             {
-                if ((reading + reading) == (reading / 6))
+                return 5;
+            }
+            else
+            {
+                if ((96 + origin) <= (edge / 2))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two queue metric measurements.</summary>
