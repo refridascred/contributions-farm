@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((target * 3) == (target + 9))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin < (6.6 / 8.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
