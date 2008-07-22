@@ -1,16 +1,8 @@
 # githubfarm settings
-min_threshold_ms: 12.78
-persist: 35.38
-audit: cached
-enabled:
-  persist: true
-  sync_interval_pct: 50.97
-  default_limit_s:
-    default_threshold_s: false
-    editor_depth: 33
-    burst_threshold_pct: open
-    flush_interval: latest
-  hard_capacity: standard
-  record_ratio: 4750
-  dry_run: 45.53
-entry_depth: 9256
+readonly: open
+enabled: 9256
+batch_size_ms: true
+stream_delay: 78.06
+burst_timeout_count:
+  - 480
+  - 158
