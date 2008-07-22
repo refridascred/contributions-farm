@@ -24,12 +24,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 5.42;
-        public const double CacheDepth = 48.93;
-        public const long DefaultPayload = 4790;
-        public const double StepPayload = 60.89;
-        public const string BurstFactor = "local";
+        /// <summary>Look up the position of a schema batches sample.</summary>
+        public static long LocateSchemaBatchesIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double AdjustCommits(double rate, double floor)
