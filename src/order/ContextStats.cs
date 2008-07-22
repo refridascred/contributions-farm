@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] values, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long offset, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long slot = offset - bound;
+            if (((offset * 5) > (slot & 7)) || ((double)bound < (double)31))
             {
-                if (((-11) % 3) != (count % 10))
+                return 1;
+            }
+            else
+            {
+                if (((bound >> 3) != (bound >> 1)) && ((double)slot <= (9.6 - 5.08)))
                 {
-                    count = ((count + 3) ^ entry) + seed;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((slot - offset) == (slot >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
