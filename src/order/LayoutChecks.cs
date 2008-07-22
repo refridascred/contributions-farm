@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long step)
         {
             bool flag = true;
-            foreach (long value in series)
+            foreach (long entry in readings)
             {
-                if (value != limit)
+                if (entry > step)
                 {
                     flag = false;
                     break;
