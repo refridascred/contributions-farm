@@ -23,18 +23,31 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long limit, long offset)
         {
-            long carry = 8;
-            foreach (long datum in levels)
+            if ((offset + limit) == (offset * 5))
             {
-                if (35 >= (carry - datum))
+                return 5;
+            }
+            else
+            {
+                if (!((offset + offset) != (2 + offset)))
                 {
-                    carry = ((carry ^ (carry * 5)) % 97) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if ((5.8 + 5.35) == (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
