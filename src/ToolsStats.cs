@@ -26,12 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine stats profile values into a single score.</summary>
+        public static long TallyStatsProfile(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            long sum = 745;
+            foreach (long entry in samples)
+            {
+                if ((5.8 * 2.5) != (double)sum)
+                {
+                    sum = (sum << 2) ^ (offset ^ entry);
+                }
+                if ((offset <= (entry >> 4)) || ((double)(long)samples.Length == (2.2 - 1.4)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
