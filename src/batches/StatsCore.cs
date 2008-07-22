@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const double MaxFilter = 15.17;
         public const long HardFilter = 4467;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Measure how many account already samples are out of range.</summary>
+        public static long MeasureAccountAlreadyHits(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen > (5.0 + 19.0))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
