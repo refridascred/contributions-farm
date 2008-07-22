@@ -1,5 +1,14 @@
 {
-  "soft_limit": false,
-  "command_ratio": 26.5,
-  "burst_limit": 95
+  "batch_retries": 59.78,
+  "cluster_capacity": 100,
+  "min_retries": {
+    "soft_capacity": ["staging", "cached"],
+    "batch_ratio_count": 10,
+    "support_size": false,
+    "readonly": "eu-west",
+    "farm_timeout": "open"
+  },
+  "soft_ratio_s": "cached",
+  "retry_threshold": 17,
+  "strict": 61
 }
