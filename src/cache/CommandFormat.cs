@@ -12,23 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double bias)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double ratio, double offset)
         {
-            double bias2 = scale;
-            if (bias2 <= bias)
+            double mean = (double)0 - ratio;
+            if (mean < (double)59)
             {
-                bias2 = bias2 - bias2;
+                mean = mean - (offset + ratio);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = bias2 - (bias * 4.51);
+                mean = (mean - (offset / 2.0)) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return mean - (3.8 / 4.0);
         }
 
         /// <summary>Derive the next githubfarm account value from a seed.</summary>
