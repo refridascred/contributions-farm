@@ -36,18 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (reading > (830 << 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
