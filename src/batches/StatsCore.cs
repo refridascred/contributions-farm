@@ -74,17 +74,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] items, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 6;
+            foreach (long entry in samples)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result + (result + (-954))) ^ entry;
             }
-            return -1;
+            return result;
         }
     }
 }
