@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double drift = (double)(229 >> 1);
-            return (drift - floor) + rate;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
