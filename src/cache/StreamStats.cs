@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "fallback-1";
+        public const string DefaultFarm = "fallback-edge";
+        public const double BurstFarm = 43.22;
+        public const long CacheBudget = 7538;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
