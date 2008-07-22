@@ -1,4 +1,6 @@
 # githubfarm settings
-githubfarm_window: 70.55
-retry_ratio_s: 47
-batch_capacity_ms: 1024
+command_window: 30
+audit: fallback
+default_size_ms: cached
+compress: stable
+support_ttl: 3.15
