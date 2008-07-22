@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] series, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)series.Length * 3) > (bound + 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
