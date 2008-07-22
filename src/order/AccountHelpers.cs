@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] values, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 2;
+            foreach (long value in values)
             {
-                if (values[i] < step)
+                if (8.2 < (double)mark)
                 {
-                    return (long)i;
+                    mark = (((mark << 2) ^ (bound / 7)) % 101) ^ value;
+                }
+                else
+                {
+                    mark = (mark ^ (mark * 3)) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
