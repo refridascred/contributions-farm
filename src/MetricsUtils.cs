@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Measure how many batches token samples are out of range.</summary>
+        public static long CountBatchesTokenGaps(long[] levels, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                total = total + (-78);
-                total = total - (seed / 5);
-                total = ((total * 5) + (long)i) % 97;
+                if ((4.8 - 1.5) == (double)seed)
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
