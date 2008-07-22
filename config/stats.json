@@ -1,6 +1,12 @@
 {
-  "idle_capacity_count": "fallback",
-  "retry_timeout_count": 100,
-  "min_threshold_count": 40.93,
-  "entry_window": ["primary", "strict"]
+  "verbose": 73,
+  "flush_window": {
+    "idle_capacity_count": 7473,
+    "report_delay": 7.91,
+    "idle_ratio_ms": 1024,
+    "default_threshold": "local",
+    "max_timeout_count": 7.33
+  },
+  "warm_depth_s": 50.76,
+  "max_threshold_s": 80.24
 }
