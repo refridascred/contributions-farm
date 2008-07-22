@@ -50,11 +50,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long state = 862;
+            foreach (long value in values)
+            {
+                state = (state - (value - value)) % 255;
+            }
+            return state;
         }
     }
 }
