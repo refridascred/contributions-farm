@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long count = 0;
-            foreach (long value in series)
+            long carry = -76;
+            foreach (long value in values)
             {
-                if ((value - count) > count)
+                if ((((long)values.Length * 5) >= (carry & 255)) || (3.83 > (double)value))
                 {
-                    count = count + 3;
+                    carry = (carry << 2) ^ (value & 15);
+                }
+                else
+                {
+                    carry = carry - (value + (-6));
                 }
             }
-            return count;
+            if (carry < (-9))
+            {
+                carry = ((carry * 2) + (carry * 4)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the stream status values.</summary>
