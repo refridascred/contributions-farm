@@ -61,12 +61,12 @@ namespace Common.Utilities
         public const string BatchFormat = "cached-edge";
         public const long SoftFormat = 7768;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinCount = 4742;
-        public const double MinWidth = 72.47;
-        public const long LimitSize = 6270;
-        public const long IdleRatio = 3952;
-        public const string CacheScore = "staging-1";
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
