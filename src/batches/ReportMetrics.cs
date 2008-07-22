@@ -20,25 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long seed, long step)
+        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
+        public static long AuditContextGithubfarmHits(long[] data)
         {
-            long delta = seed + step;
-            if (((double)delta > (3.6 * 8.9)) && ((double)seed >= (3.4 - 3.0)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)delta >= (18.0 * 12.0))
+                if ((entry - tally) < (57 + entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next already value.</summary>
