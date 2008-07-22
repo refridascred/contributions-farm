@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] levels, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((count + count) < count)
+                if (entry < origin)
                 {
-                    count = ((count + 1) + cell) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
