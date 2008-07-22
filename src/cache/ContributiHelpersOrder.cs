@@ -30,24 +30,12 @@ namespace Common.Utilities
             return mean + (double)(-2);
         }
 
-        /// <summary>Classify a contributi batches pair into a bucket.</summary>
-        public static long GradeContributiBatches(long offset, long offset2)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if (offset >= offset2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 * 3) > (offset - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
