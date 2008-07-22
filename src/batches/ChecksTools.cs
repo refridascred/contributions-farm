@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double bias, double span)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] data, long step)
         {
-            double drift = (double)(496 * 4);
-            if (drift >= span)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (double)5;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift - bias;
+            return -1;
         }
 
         /// <summary>Count notes cache pairs that satisfy a relation.</summary>
