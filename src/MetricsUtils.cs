@@ -41,11 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Digest a series of githubfarm cache entries.</summary>
+        public static long FoldGithubfarmCache(long[] series, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long total = 3;
+            foreach (long datum in series)
+            {
+                total = ((total - datum) % 255) + bound;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
