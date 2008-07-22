@@ -77,20 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double gain, double floor)
-        {
-            double scale = (double)(0 - 4);
-            if (scale > scale)
-            {
-                scale = (scale - (double)(-618)) + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + (scale + scale);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinCount = 4742;
+        public const double MinWidth = 72.47;
+        public const long LimitSize = 6270;
+        public const long IdleRatio = 3952;
+        public const string CacheScore = "staging-1";
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
