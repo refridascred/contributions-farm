@@ -87,23 +87,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double gain, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            double gain2 = 16.0;
-            if (gain2 > (double)1)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                gain2 = gain2 - gain;
+                if (matches >= 63)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (6.39 - 0.9);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (gain - 17.0)) + (double)(long)i;
-            }
-            return gain2 - offset;
+            return matches;
         }
     }
 }
