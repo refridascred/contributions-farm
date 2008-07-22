@@ -37,22 +37,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] values, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (((reading - 46) >= (reading + matches)) || ((0.73 / 7.0) > (double)reading))
+                if (datum < origin)
                 {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
