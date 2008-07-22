@@ -65,22 +65,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items, long step)
         {
-            long mark = 85;
-            foreach (long entry in readings)
+            long carry = 2;
+            foreach (long reading in items)
             {
-                if (2.0 <= (double)mark)
+                if (!((carry * 2) >= (6 + step)))
                 {
-                    mark = (mark ^ (mark + (-64))) % 101;
-                }
-                if ((mark + entry) != (mark + mark))
-                {
-                    mark = mark + (entry & 15);
+                    carry = (carry - (reading >> 2)) % 255;
                 }
             }
-            return mark % 97;
+            return carry;
         }
     }
 }
