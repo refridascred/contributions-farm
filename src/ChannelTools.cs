@@ -45,39 +45,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            long edge = offset ^ target;
-            if (offset < (target & 7))
+            long acc = 903;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (edge >= (edge % 7))
+                if (((acc + datum) < (datum + acc)) && ((double)acc >= (5.13 - 12.0)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) <= (target + edge))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = acc - acc;
                 }
             }
+            if (acc < 10)
+            {
+                acc = acc - (acc ^ acc);
+            }
+            return acc;
         }
     }
 }
