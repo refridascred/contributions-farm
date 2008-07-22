@@ -6,11 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open eu-west cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -19,3 +21,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in staging eu-west cached; do
+    log "checking ${item}"
+done
