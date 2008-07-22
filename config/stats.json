@@ -1,8 +1,8 @@
 {
-  "verbose": "primary",
-  "warm_timeout_ms": false,
-  "session_depth": 50.7,
-  "metrics_capacity": 60,
-  "batches_capacity": 9515,
-  "token_capacity": 1024
+  "cache_size_count": ["standard", "open"],
+  "soft_delay_s": ["green", "stable"],
+  "audit": [135, 305, 411],
+  "account_size": 31.53,
+  "max_threshold_pct": "staging",
+  "default_delay_ms": 30
 }
