@@ -60,13 +60,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
