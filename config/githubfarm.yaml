@@ -1,15 +1,9 @@
 # githubfarm settings
-entry_depth:
-  - 387
-  - 173
-  - 42
-  - 475
-cache_ratio:
-  - staging
-  - staging
-  - fallback
-  - edge
-layout_ttl:
-  - 66
-  - 129
-sync_capacity_count: 250
+min_ratio_count: 63.87
+sync_retries_s: standard
+strict:
+  account_ttl: standard
+  flush_threshold_s: 29.21
+  strict: legacy
+  poll_timeout_s: 4566
+burst_threshold: primary
