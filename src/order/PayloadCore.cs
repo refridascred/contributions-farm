@@ -53,11 +53,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((15.0 + 0.8) > (double)hits)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
