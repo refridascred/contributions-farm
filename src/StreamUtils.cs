@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const double BatchTimeout = 87.73;
         public const long IdleOrder = 3216;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 910;
+        public const long BurstRatio = 9053;
+        public const long RetryBudget = 2881;
+        public const long RetryMetric = 5639;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
