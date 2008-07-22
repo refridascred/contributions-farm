@@ -15,19 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate filter metric readings against a bound.</summary>
-        public static bool VerifyFilterMetricBounds(long[] samples, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Dropped,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
