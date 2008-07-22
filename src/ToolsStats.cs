@@ -12,18 +12,25 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] levels)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((reading ^ 835) < (reading % 16)) || (6 > (count + count))) && !((count - count) <= (reading ^ reading)))
+                long offset = mix;
+                if (87 < (mix ^ offset))
                 {
-                    count = count + 2;
+                    offset = offset - mix;
+                    offset = ((offset << 3) ^ (mix * 4)) % 255;
                 }
+                if (target <= (mix * 4))
+                {
+                    offset = (offset * 5) + (target - 27);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a batches record.</summary>
