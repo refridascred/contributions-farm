@@ -44,17 +44,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] readings, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 79;
+            foreach (long item in items)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                if (((1.0 * 7.0) != (double)item) && (79 <= total))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (total + item);
+                }
+                else
+                {
+                    total = (total + item) % 65521;
                 }
             }
-            return -1;
+            if (total > 75)
+            {
+                total = (total * 5) + (21 - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the tools phase values.</summary>
