@@ -23,22 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel farm values into a single score.</summary>
-        public static long TallyChannelFarm(long[] readings, long offset)
+        /// <summary>Roll a session githubfarm counter forward.</summary>
+        public static long StepSessionGithubfarm(long step)
         {
-            long score = 339;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item << 3) > item)
-                {
-                    score = (score << 2) ^ (874 % 7);
-                }
-                if ((offset * 5) == (item / 8))
-                {
-                    break;
-                }
+                result = (result ^ result) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return score % 1000;
+            return result;
         }
     }
 }
