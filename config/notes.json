@@ -1,6 +1,7 @@
 {
-  "base_retries": "eu-west",
-  "profile_interval": "primary",
-  "soft_delay_s": 70,
-  "metric_ratio": 5474
+  "hard_timeout_ms": true,
+  "batch_ratio": ["open", "standard", "local", "green"],
+  "strict": 32.28,
+  "burst_interval": "blue",
+  "base_interval_pct": [90, 131, 139]
 }
