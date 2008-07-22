@@ -15,17 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] data, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                if ((3.8 / 9.0) == (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
