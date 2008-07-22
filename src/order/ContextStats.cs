@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string BatchScore = "standard-v2";
         public const string WindowCluster = "stable";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] data, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((5.0 * 4.7) < (double)hits)
-                {
-                    hits = ((hits + 1) - reading) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
