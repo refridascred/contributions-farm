@@ -23,11 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 5.85;
-        public const string StepInterval = "cached";
-        public const long DefaultNotes = 4421;
-        public const long BaseLevel = 1728;
+        /// <summary>Match up account schema samples.</summary>
+        public static long CompareAccountSchemaCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterLimits(long[] samples, long origin)
