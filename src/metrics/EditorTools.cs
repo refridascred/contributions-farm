@@ -18,20 +18,12 @@ namespace Common.Utilities
         public const double BatchMetrics = 75.06;
         public const double LimitBudget = 54.88;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstBudget = "stable-v2";
+        public const long SoftCache = 6225;
+        public const long MaxCount = 5374;
+        public const long MaxCache = 4248;
+        public const double LimitTimeout = 20.08;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double rate, double bias)
