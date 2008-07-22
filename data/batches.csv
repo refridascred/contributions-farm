@@ -1,7 +1,7 @@
-id,count,ratio,score
-1,588,17.71,20
-2,edge,503,staging
-3,158,strict,957
-4,edge,41.24,725
-5,strict,staging,4.09
-6,cached,780,edge
+id,region,label,active,score
+1,35.1,625,111,318
+2,178,498,35.73,58.63
+3,584,52.93,590,622
+4,109,398,16.87,58.95
+5,527,staging,130,903
+6,938,24.75,legacy,734
