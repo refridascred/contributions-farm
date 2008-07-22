@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Synced,
-            Stale,
-            Closed,
-            Done,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 9506;
+        public const long WindowContributi = 9671;
+        public const long WindowSize = 6640;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileHits(long[] data, long origin)
