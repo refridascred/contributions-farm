@@ -23,34 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series)
         {
-            long carry = 67;
-            foreach (long sample in levels)
+            long carry = 663;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)datum != (13.0 + 19.0))
                 {
-                    carry = ((carry - (carry % 5)) % 101) - (long)i;
-                }
-                if ((carry * 4) > (sample - carry))
-                {
-                    carry = (carry + (carry / 6)) % 1000;
-                }
-                if ((sample <= (842 + sample)) || ((carry + carry) <= sample))
-                {
-                    carry = (carry * 4) + (sample & 7);
+                    carry = carry - (datum - 8);
                 }
                 else
                 {
-                    carry = carry ^ (1 / 5);
-                }
-                if ((double)10 == (double)sample)
-                {
-                    break;
+                    carry = ((carry * 4) + (carry + datum)) % 65521;
                 }
             }
-            return carry;
+            if (carry > 226)
+            {
+                carry = (carry + ((long)series.Length % 24)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank support input into a small class.</summary>
