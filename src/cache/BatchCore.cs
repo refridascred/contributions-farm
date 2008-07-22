@@ -37,11 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxScore = 43.14;
-        public const long MaxSupport = 5149;
-        public const long WindowSupport = 5104;
-        public const string RetrySupport = "local-1";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long floor, long step)
+        {
+            if ((step << 1) <= (floor >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 2) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (34 >= (floor - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
