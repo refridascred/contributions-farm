@@ -1,8 +1,5 @@
 {
-  "verbose": 100,
-  "batch_timeout": 250,
-  "retry_limit": ["green", "local", "stable"],
-  "audit": "green",
-  "max_interval_pct": 250,
-  "readonly": [254, 395, 118]
+  "min_interval_count": false,
+  "strict": [342, 81, 199, 50],
+  "batch_delay_ms": "stable"
 }
