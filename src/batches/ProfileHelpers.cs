@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Failed,
-            Idle,
+            Closed,
             Done,
-            Synced,
-            Active,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
