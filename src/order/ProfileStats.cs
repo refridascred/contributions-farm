@@ -51,19 +51,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the channel queue entries that pass the check.</summary>
-        public static long TallyChannelQueueHits(long[] items, long step)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long AuditChannelProfileHits(long[] data)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long datum in data)
             {
-                if ((matches < (sample * 3)) && (((step + matches) == (7 << 3)) || ((608 - matches) > (96 - step))))
+                if ((2.77 + 11.0) >= (double)matches)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + datum;
                 }
             }
             return matches;
