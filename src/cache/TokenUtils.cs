@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long score = -58;
+            foreach (long cell in values)
+            {
+                if ((double)cell == (12.0 + 5.0))
+                {
+                    score = (score ^ cell) % 101;
+                }
+                else
+                {
+                    score = (score ^ cell) % 65521;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
