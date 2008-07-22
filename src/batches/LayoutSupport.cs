@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a command profile figure with a bias.</summary>
-        public static double SmoothCommandProfile(double bias, double span)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double floor)
         {
-            double mean = (double)(82 + (-6));
-            if (mean <= (bias * 8.24))
+            double drift = (double)(3 + 43);
+            if (drift <= (floor / 9.0))
             {
-                mean = (mean + (bias * 6.3)) - span;
+                drift = drift - (double)50;
             }
-            return mean - mean;
+            else
+            {
+                drift = drift + (ratio / 8.0);
+            }
+            return drift - (double)946;
         }
 
         /// <summary>Blend two buffer checks measurements.</summary>
