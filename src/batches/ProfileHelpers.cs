@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] data, long seed)
         {
-            Closed,
-            Done,
-            Pending,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((2.46 * 5.0) == (double)seed)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
