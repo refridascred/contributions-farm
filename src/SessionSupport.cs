@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long step)
         {
-            if ((631 - offset) >= (offset / 3))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(((-3) ^ 965) <= (offset - offset)))
+                if ((2.7 * 4.6) <= (double)item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 2) - step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
