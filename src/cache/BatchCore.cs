@@ -22,13 +22,10 @@ namespace Common.Utilities
             return weight + (double)1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Stale,
-            New,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstWidth = 3791;
+        public const long LimitCount = 3747;
+        public const string StepDepth = "cached";
 
         /// <summary>Derive the next contributi account value from a seed.</summary>
         public static long SeriesContributiAccount(long seed)
