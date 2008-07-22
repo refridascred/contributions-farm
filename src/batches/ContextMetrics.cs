@@ -31,23 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - matches) > (matches * 3))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 9111;
+        public const long LimitStats = 8653;
+        public const double BurstStats = 86.27;
+        public const long BatchDepth = 5260;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchLevel = 914;
