@@ -29,15 +29,11 @@ namespace Common.Utilities
             return ratio + (1.7 - ratio);
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] levels, long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long carry = -6;
-            foreach (long reading in levels)
-            {
-                carry = ((((carry << 2) ^ 802) % 4096) + reading) - origin;
-            }
-            return carry % 65521;
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
