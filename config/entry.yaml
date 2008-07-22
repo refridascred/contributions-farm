@@ -1,4 +1,31 @@
 # entry settings
-poll_interval_pct: 85.3
-channel_delay: 1372
-cluster_retries: false
+metric_threshold: false
+batch_ttl_pct:
+  - legacy
+  - blue
+  - cached
+  - standard
+audit:
+  max_ttl: local
+  sync_limit_ms:
+    - fallback
+    - eu-west
+  readonly: primary
+  strict:
+    min_ttl_s: 500
+    batches_retries: local
+    stats_interval: stable
+    idle_interval:
+      - edge
+      - primary
+      - stable
+    min_ratio_ms: strict
+  cache_size:
+    - 279
+    - 286
+  hard_threshold_count:
+    - 406
+    - 160
+    - 137
+cluster_interval: false
+soft_timeout: blue
