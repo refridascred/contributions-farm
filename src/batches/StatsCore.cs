@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long result = -58;
-            foreach (long reading in items)
-            {
-                result = result - (result ^ (-8));
-                if ((reading + reading) >= result)
-                {
-                    result = ((result * 5) + (reading * 2)) % 97;
-                }
-            }
-            return result;
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Accumulate tools samples.</summary>
