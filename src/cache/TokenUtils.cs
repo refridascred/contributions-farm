@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long origin, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] samples, long bound)
         {
-            long slot = origin ^ floor;
-            if (((slot >> 4) < origin) || ((1.75 - 4.26) != (double)floor))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot >= (floor * 5)) && ((8.0 + 20.0) >= (double)slot))
+                if ((double)sample < (double)(-6))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.0 + 10.0) >= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)33 < (double)floor) && ((slot & 31) == (floor + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 2) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
