@@ -32,18 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache report readings against a rule.</summary>
-        public static long TallyCacheReportGaps(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long total = 515;
+            foreach (long datum in readings)
             {
-                if ((matches + value) >= (0 & 7))
+                total = total - (total - datum);
+                if ((datum ^ datum) >= (datum * 4))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
