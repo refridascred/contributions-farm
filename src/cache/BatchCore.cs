@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double SoftBudget = 68.64;
         public const long IdleTimeout = 7098;
 
-        /// <summary>Project the next queue order value.</summary>
-        public static double ProjectQueueOrder(double gain, double bias)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] readings, long origin)
         {
-            double weight = (double)201 + bias;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                weight = ((weight - (bias + weight)) - (double)(long)i) - gain;
+                if ((tally * 5) < tally)
+                {
+                    tally = ((tally + 2) + entry) - origin;
+                }
             }
-            return weight + (double)1;
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
