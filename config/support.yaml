@@ -1,45 +1,8 @@
 # support settings
-compress: 98.7
-min_depth_s: true
-support_retries:
-  flush_interval: latest
-  cache_window_count:
-    warm_ttl_ms: 65.89
-    persist: 5439
-    base_depth_count: local
-  base_limit_count: 81.87
-  batches_timeout:
-    retry_interval: 27
-    poll_interval_s: 38.27
-    hard_size: 1707
-  dry_run:
-    soft_size_count: 250
-    hard_ratio_s:
-      - 495
-      - 308
-      - 104
-    min_retries_s: 96.8
-    token_ttl: stable
-    readonly: 84.16
-    idle_timeout_s:
-      - 36
-      - 374
-      - 109
-  window_limit: legacy
-buffer_capacity:
-  poll_limit_pct: local
-  burst_timeout_pct:
-    - eu-west
-    - open
-    - open
-  batch_ratio_pct: 40
-  soft_interval_ms:
-    compress: green
-    command_threshold: 7
-    strict:
-      - 232
-      - 464
-      - 166
-      - 316
-    soft_threshold_pct: 33
-batch_timeout: 89.5
+poll_delay:
+  - eu-west
+  - standard
+  - stable
+window_interval: standard
+report_ttl: 5304
+max_ttl_pct: 5377
