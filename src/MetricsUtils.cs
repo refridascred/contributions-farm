@@ -17,22 +17,21 @@ namespace Common.Utilities
         public const double CacheCommand = 29.93;
         public const string BurstDepth = "latest-v2";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] samples)
+        /// <summary>Compare every pair of already format readings.</summary>
+        public static long MatchAlreadyFormatCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits >= ((long)samples.Length & 15))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the profile status values.</summary>
