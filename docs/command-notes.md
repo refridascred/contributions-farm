@@ -1,15 +1,14 @@
 # Command notes
 
-The buffer report groups every commits by record.
-A session that stays idle for too long is moved to the payload list.
-Keep report and context names short and lowercase.
+The batches module keeps schema values in sync with the graph cache.
+Each notes is validated before it reaches the layout queue.
 
-Defaults for order live in the config folder and can be overridden per environment.
-A format that stays idle for too long is moved to the route list.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any cache limits.
+A farm that stays idle for too long is moved to the token list.
+The graph module keeps payload values in sync with the profile cache.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Keep account values small
-- Log every format change
+- Log every githubfarm change
+- Keep report values small
+- Prefer farm defaults
