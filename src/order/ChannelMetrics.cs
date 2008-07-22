@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] samples)
+        /// <summary>Fold a list of notes graph readings.</summary>
+        public static long DigestNotesGraph(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long anchor = -2;
+            foreach (long cell in series)
             {
-                if (((6.9 / 6.0) < (double)(long)samples.Length) || ((entry << 3) != ((-47) - tally)))
-                {
-                    tally = tally + 1;
-                }
+                anchor = anchor + (anchor % 7);
+                anchor = anchor + cell;
+                anchor = ((anchor * 2) + (anchor & 63)) % 255;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
