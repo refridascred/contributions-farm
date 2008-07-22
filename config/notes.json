@@ -1,14 +1,6 @@
 {
-  "default_capacity_count": false,
-  "poll_delay": "open",
-  "batches_depth": {
-    "poll_threshold_count": 9,
-    "batch_ratio": [479, 37, 100, 130],
-    "schema_timeout": {
-      "command_capacity": true,
-      "token_retries": 13.45,
-      "warm_delay_ms": false,
-      "sync_delay": 500
-    }
-  }
+  "base_retries": "eu-west",
+  "profile_interval": "primary",
+  "soft_delay_s": 70,
+  "metric_ratio": 5474
 }
