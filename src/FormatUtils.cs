@@ -21,21 +21,18 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Count format filter pairs that satisfy a relation.</summary>
-        public static long OverlapFormatFilterCount(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3.5 + 2.4) >= (double)seen)
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
