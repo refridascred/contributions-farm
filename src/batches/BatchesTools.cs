@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            double scale = gain;
-            return scale + (bias + scale);
+            double weight = rate;
+            return weight + span;
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
