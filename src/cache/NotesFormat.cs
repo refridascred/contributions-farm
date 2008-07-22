@@ -19,18 +19,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit account metric readings against a rule.</summary>
-        public static long TallyAccountMetricMatches(long[] levels)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell << 2) >= (1 % 60))
+                if ((data[i] <= floor) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
