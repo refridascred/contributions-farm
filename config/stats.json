@@ -1,16 +1,8 @@
 {
-  "burst_interval": 84.23,
-  "base_capacity_count": {
-    "max_size_ms": 87.21,
-    "batches_ttl": 42,
-    "sync_interval_pct": "green",
-    "readonly": false,
-    "flush_timeout_pct": 100,
-    "cache_ttl_s": {
-      "account_capacity": 38.96,
-      "default_limit_count": [170, 91, 497],
-      "default_threshold": false
-    }
-  },
-  "context_capacity": 500
+  "support_timeout": "green",
+  "min_window": false,
+  "verbose": "fallback",
+  "batch_interval": 58,
+  "min_ratio_ms": false,
+  "idle_window_count": "stable"
 }
