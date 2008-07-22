@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] items, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((double)cell >= (1.0 * 8.8))
+                if (sample >= seed)
                 {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
