@@ -5,34 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
         {
-            long total = 4;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < (reading & 7))
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    total = ((total << 3) ^ reading) % 97;
-                }
-                if (reading <= (reading << 1))
-                {
-                    total = total - (total / 7);
-                }
-                else
-                {
-                    total = ((total * 4) + (reading >> 2)) % 255;
-                }
-                if ((reading % 64) <= (total + total))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 122)
-            {
-                total = (total * 2) + total;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
