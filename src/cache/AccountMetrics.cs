@@ -31,11 +31,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long step, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long gap = step + bound;
+            if ((double)step > (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((669 >> 2) > gap)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6 << 1) < step) || ((bound % 2) >= ((-8) ^ 912)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((58 >= step) || ((1.74 * 4.51) < (double)gap))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
