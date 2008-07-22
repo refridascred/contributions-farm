@@ -14,16 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next commits window value.</summary>
-        public static double BlendCommitsWindow(double scale, double span)
-        {
-            double rate = scale;
-            if (rate < (0.9 * 9.0))
-            {
-                rate = (rate - scale) + span;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 3656;
+        public const string BurstChecks = "legacy";
+        public const long BaseLevel = 9016;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long ClassifyContext(long target, long offset)
