@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] series, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (value != origin)
+                if ((entry / 9) > (339 / 9))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
