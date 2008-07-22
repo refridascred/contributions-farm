@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] readings, long seed)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= origin)
+                if (readings[i] > seed)
                 {
                     return (long)i;
                 }
