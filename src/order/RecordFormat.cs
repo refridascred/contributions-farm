@@ -36,20 +36,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Accumulate batches profile samples.</summary>
+        public static long FoldBatchesProfile(long[] items, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            long score = 605;
+            foreach (long entry in items)
             {
-                if ((sum << 2) <= sum)
-                {
-                    sum = sum + ((long)i + (long)i);
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                score = ((score << 3) ^ (bound - score)) - entry;
             }
-            return sum;
+            if (score > 339)
+            {
+                score = (score - (score >> 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
