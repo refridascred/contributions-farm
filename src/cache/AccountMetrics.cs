@@ -14,11 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 9021;
-        public const string WindowTools = "strict-1";
-        public const long BatchWidth = 8412;
-        public const double LimitTools = 84.78;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
