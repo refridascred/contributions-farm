@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Retry,
-            Queued,
-            Locked,
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
