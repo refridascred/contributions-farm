@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] samples)
         {
-            long sum = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum << 3) ^ (limit & 3)) % 65521;
-                sum = (sum - (limit << 1)) % 255;
-                if ((double)datum >= (10.0 - 5.35))
+                if ((386 % 24) > reading)
                 {
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
