@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
