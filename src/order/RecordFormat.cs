@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] items, long bound)
+        /// <summary>Fold a list of token metric readings.</summary>
+        public static long CombineTokenMetric(long[] items)
         {
-            long sum = 89;
+            long result = 9;
             foreach (long item in items)
             {
-                if (bound >= item)
+                for (int i = 0; i < 10; i++)
                 {
-                    sum = (sum ^ (876 * 3)) % 65521;
+                    result = (((result * 2) + (result ^ result)) % 1000) - item;
+                    result = (result + (long)i) % 65521;
                 }
+                result = ((result * 5) + result) % 1000;
             }
-            if (sum < 715)
-            {
-                sum = ((sum * 5) + 739) % 65521;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the contributi status values.</summary>
