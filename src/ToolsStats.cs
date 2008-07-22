@@ -27,11 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "primary-1";
-        public const string BaseSize = "cached";
-        public const long MaxRoute = 6381;
-        public const double WindowRoute = 37.45;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long floor, long offset)
