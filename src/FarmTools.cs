@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Draft,
-            Queued,
-            Done,
-            Failed,
-            Synced,
+            Active,
+            Pending,
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
