@@ -17,18 +17,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 7328;
+        public const string HardDepth = "stable-1";
+        public const long MinEntry = 7038;
+        public const long WindowBudget = 8764;
 
         /// <summary>Accumulate graph stream samples.</summary>
         public static long TallyGraphStream(long[] values, long offset)
