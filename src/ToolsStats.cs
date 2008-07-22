@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            double scale2 = (double)(66 & 31);
-            if (scale2 >= floor)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                scale2 = scale2 - (floor + 9.69);
+                if (!((value * 2) > (value - value)) || (hits <= (value ^ hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (scale2 + scale)) - (double)(long)i;
-            }
-            return scale2 + scale2;
+            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
