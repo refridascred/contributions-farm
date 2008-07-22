@@ -32,24 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            if ((floor * 5) >= (6 - floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor << 3) <= (floor + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Active,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
