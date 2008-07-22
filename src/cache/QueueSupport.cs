@@ -32,17 +32,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 5) == 0))
+                if (((long)i * 2) <= (877 >> 1))
                 {
-                    return (long)i;
+                    state = (state + seed) % 65521;
+                    state = (state ^ (state % 100)) % 1000;
                 }
+                else
+                {
+                    state = ((state * 4) + (80 % 3)) % 255;
+                }
+                state = (state + (seed >> 1)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
