@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)mark > (double)offset)
-                {
-                    mark = ((mark * 2) + (mark ^ 705)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 1000;
-                }
-                mark = mark - (0 >> 1);
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
