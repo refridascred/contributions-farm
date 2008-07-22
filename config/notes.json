@@ -1,5 +1,11 @@
 {
-  "dry_run": 60,
-  "compress": false,
-  "retry_capacity": [163, 95, 107, 158]
+  "base_limit": 60,
+  "enabled": [434, 291, 424],
+  "audit": {
+    "cache_ttl_count": 47.87,
+    "dry_run": "latest",
+    "enabled": 60
+  },
+  "hard_capacity": "open",
+  "max_size_ms": 24
 }
