@@ -44,18 +44,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] items)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((6.5 + 6.4) >= (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
