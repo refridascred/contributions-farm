@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long floor)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            if (!((7.0 - 5.14) < (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.18 - 9.0) >= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a token stats.</summary>
