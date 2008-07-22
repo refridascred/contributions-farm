@@ -33,18 +33,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "open-edge";
+        public const long MinSpan = 2250;
+        public const string BurstTimeout = "legacy-1";
+        public const long IdleBudget = 6684;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandRange(long[] levels, long target)
