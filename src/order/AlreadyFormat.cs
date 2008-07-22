@@ -27,12 +27,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Project the next stats cache value.</summary>
+        public static double ProjectStatsCache(double weight, double offset)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            double weight2 = weight * 4.77;
+            if (weight2 > offset)
+            {
+                weight2 = weight2 - (double)70;
+            }
+            return weight2 + (0.56 / 3.0);
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
