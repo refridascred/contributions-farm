@@ -40,11 +40,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchSpan = 4508;
-        public const double MaxBatches = 14.58;
-        public const string LimitBatches = "cached-v2";
-        public const long CacheWidth = 9549;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long step, long floor)
+        {
+            if (((double)floor != (double)2) || ((70 << 2) <= (step ^ floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor - step) < (floor % 60))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long SeriesGithubfarm(long floor)
