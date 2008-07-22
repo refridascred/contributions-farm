@@ -38,18 +38,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of stats support readings.</summary>
-        public static long CombineStatsSupport(long[] data)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double floor)
         {
-            long score = 6;
-            foreach (long reading in data)
+            double scale2 = (floor + floor) * 7.1;
+            if (scale2 >= 5.0)
             {
-                if (((score & 15) < (900 / 8)) && ((reading + score) >= (score >> 4)))
-                {
-                    score = score ^ reading;
-                }
+                scale2 = (scale2 - (double)26) - scale;
             }
-            return score % 1000;
+            return scale2 - floor;
         }
 
         /// <summary>Accumulate editor samples.</summary>
