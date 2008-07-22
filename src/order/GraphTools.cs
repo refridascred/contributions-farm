@@ -51,22 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 37.77;
+        public const long StepFilter = 1864;
+        public const long BatchBudget = 8181;
+        public const string MaxFilter = "latest-edge";
+        public const long StepLevel = 8300;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
