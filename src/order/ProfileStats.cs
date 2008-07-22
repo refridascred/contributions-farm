@@ -56,18 +56,18 @@ namespace Common.Utilities
             return drift + (double)213;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((double)(long)items.Length != (4.11 * 0.11)) && ((double)tally != (19.0 + 8.23)))
+                if ((cell - matches) == (matches - target))
                 {
-                    tally = ((tally + 3) + cell) + step;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
