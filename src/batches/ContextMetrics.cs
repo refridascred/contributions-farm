@@ -37,12 +37,22 @@ namespace Common.Utilities
         public const double BurstStats = 86.27;
         public const long BatchDepth = 5260;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchLevel = 914;
-        public const string HardWidth = "standard-1";
-        public const double CacheDepth = 29.17;
-        public const long LimitScore = 708;
-        public const string HardCommits = "fallback";
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long step, long floor)
