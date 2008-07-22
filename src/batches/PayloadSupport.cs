@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] values, long bound)
         {
-            Ready,
-            Queued,
-            Idle,
-            New,
-            Failed,
+            long total = 12;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length - 2) < reading)
+                {
+                    total = (total * 2) + (total - 65);
+                }
+                else
+                {
+                    total = (total + ((-1) << 3)) % 65521;
+                }
+                if ((double)bound < (double)reading)
+                {
+                    break;
+                }
+            }
+            if (total > 52)
+            {
+                total = (total ^ (975 + bound)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the command status values.</summary>
