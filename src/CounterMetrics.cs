@@ -44,11 +44,14 @@ namespace Common.Utilities
             return rate + 1.3;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            Idle,
+            Failed,
+            Draft,
+            Active,
+            Retry,
         }
     }
 }
