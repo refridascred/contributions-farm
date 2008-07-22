@@ -42,22 +42,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long gap = bound ^ seed;
+            if (!((seed + (-7)) > (bound + gap)))
             {
-                if ((seen & 127) > (seen + seen))
+                return 0;
+            }
+            else
+            {
+                if ((seed & 63) == (gap / 4))
                 {
-                    seen = (seen + 2) + sample;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((3.78 - 3.4) > (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
