@@ -1,6 +1,6 @@
 {
-  "poll_size": 5276,
-  "enabled": false,
-  "profile_ratio": 7972,
-  "warm_window": "latest"
+  "sync_delay_count": "primary",
+  "max_interval_pct": "standard",
+  "cache_limit_pct": 43.75,
+  "metric_threshold": "stable"
 }
