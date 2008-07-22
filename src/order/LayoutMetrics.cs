@@ -29,14 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            Synced,
-            Done,
-            Pending,
-            Draft,
-            Queued,
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((sum + sum) == (origin + (-711))))
+                {
+                    sum = (sum ^ ((long)i - (long)i)) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
