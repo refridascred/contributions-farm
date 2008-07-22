@@ -50,12 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
+            Active,
+            Dropped,
             New,
-            Draft,
-            Stale,
         }
     }
 }
