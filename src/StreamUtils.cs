@@ -62,32 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long seed, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples)
         {
-            long slot = seed + bound;
-            if ((seed << 1) > slot)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((slot + 125) > slot)
+                if (!(((82 & 3) > (hits / 8)) && ((double)(long)samples.Length != (double)cell)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound * 5) > (seed + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
