@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowRatio = "open";
-        public const long BurstProfile = 2539;
-        public const long BaseProfile = 4027;
-        public const long WindowBudget = 9922;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels)
+        {
+            long result = 95;
+            foreach (long item in levels)
+            {
+                if (result <= (result - item))
+                {
+                    result = result + (item - result);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
