@@ -60,22 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long target, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long offset, long seed)
         {
-            if ((8.8 / 8.0) != (double)seed)
+            if ((offset >= (offset - 3)) || (offset > seed))
             {
                 return 6;
             }
             else
             {
-                if ((target > (target * 5)) || ((seed >> 4) >= (target % 64)))
+                if ((807 * 4) > seed)
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    return 2;
                 }
             }
         }
