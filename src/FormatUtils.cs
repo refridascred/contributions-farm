@@ -88,22 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long TallyToolsGithubfarmMatches(long[] series, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((10.0 * 16.0) > (double)seed)
+                if ((bound - datum) != (hits ^ hits))
                 {
-                    tally = (tally + 3) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
