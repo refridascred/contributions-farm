@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long result = 480;
+            foreach (long item in levels)
             {
-                if (!((entry + hits) == (923 + hits)) || ((hits <= (long)series.Length) || ((entry << 2) == (entry << 1))))
+                if (!((step + step) != (long)levels.Length))
                 {
-                    hits = hits + 3;
+                    result = result + (item & 31);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the commits phase values.</summary>
