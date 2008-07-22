@@ -55,22 +55,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 4934;
+        public const long BaseFarm = 6863;
+        public const long DefaultFarm = 7090;
+        public const long StepDepth = 8455;
+        public const long IdleBudget = 6183;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] values)
