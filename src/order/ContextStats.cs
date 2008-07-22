@@ -28,32 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] readings, long limit)
         {
-            long prev = limit - step;
-            if ((1.44 - 3.15) != (double)step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit < (7.58 - 16.0))
+                if (readings[i] <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (prev < (prev & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next context metrics value.</summary>
