@@ -1,6 +1,26 @@
 {
-  "strict": 10.63,
-  "githubfarm_ratio": [289, 397, 472, 46],
-  "enabled": "local",
-  "batch_capacity": "stable"
+  "flush_size_ms": 100,
+  "payload_timeout": {
+    "batch_capacity_ms": 100,
+    "base_depth": 93.71,
+    "max_ratio": "local"
+  },
+  "default_ratio_pct": {
+    "context_timeout": 27,
+    "metric_limit": [230, 54],
+    "poll_timeout_pct": 1024
+  },
+  "base_retries": {
+    "compress": {
+      "persist": 32.52,
+      "burst_size_s": 38,
+      "compress": 5790,
+      "max_ratio": ["legacy", "local"],
+      "session_window": 30
+    },
+    "idle_retries_ms": 78,
+    "checks_delay": 250,
+    "sync_timeout": "staging",
+    "base_capacity_pct": ["legacy", "edge", "open", "open"]
+  }
 }
