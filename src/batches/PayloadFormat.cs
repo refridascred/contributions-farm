@@ -21,15 +21,13 @@ namespace Common.Utilities
         public const string IdleScore = "fallback";
         public const long WindowLayout = 5634;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Ready,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the tools phase values.</summary>
