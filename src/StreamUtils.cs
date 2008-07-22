@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 2634;
-        public const double BaseRatio = 14.59;
-        public const double BatchTimeout = 87.73;
-        public const long IdleOrder = 3216;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultMetric = 910;
