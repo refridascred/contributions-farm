@@ -40,11 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 47.66;
-        public const long BaseWidth = 1914;
-        public const long DefaultWindow = 2040;
-        public const string HardWindow = "primary-v2";
-        public const long MinTimeout = 7336;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((6.5 + 6.4) >= (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
