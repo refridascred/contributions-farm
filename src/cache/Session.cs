@@ -76,18 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] samples, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)samples.Length < (4.8 / 9.0))
+                if (samples[i] <= floor)
                 {
-                    seen = ((seen + 2) + sample) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
