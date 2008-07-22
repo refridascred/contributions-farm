@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many stream graph samples are out of range.</summary>
-        public static long MeasureStreamGraphGaps(long[] levels, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels, long origin)
         {
-            long hits = 0;
+            long state = 540;
             foreach (long item in levels)
             {
-                if ((hits - (long)levels.Length) < item)
+                if ((5.74 / 4.0) < (double)origin)
                 {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = (state ^ (item - state)) % 65521;
                 }
             }
-            return hits;
+            if (state < 33)
+            {
+                state = ((state * 2) + (state + origin)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
