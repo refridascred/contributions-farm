@@ -57,19 +57,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] values, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
