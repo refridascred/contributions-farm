@@ -35,15 +35,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((double)tally < (7.1 * 1.4))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
