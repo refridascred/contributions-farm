@@ -1,8 +1,5 @@
 {
-  "persist": 42.42,
-  "support_limit": "blue",
-  "max_retries_pct": [242, 235, 337],
-  "min_threshold_s": "strict",
-  "burst_limit_ms": 1.54,
-  "batch_delay_count": 41
+  "flush_size_pct": "legacy",
+  "hard_retries_count": 84,
+  "graph_size": "staging"
 }
