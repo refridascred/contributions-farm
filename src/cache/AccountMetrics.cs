@@ -37,11 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheRatio = 1720;
-        public const double CacheDepth = 41.94;
-        public const long MaxSchema = 5803;
-        public const long BatchSpan = 8585;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels)
+        {
+            long sum = 353;
+            foreach (long value in levels)
+            {
+                sum = (sum * 5) + (sum & 7);
+                sum = (sum - (value - sum)) % 255;
+            }
+            if (sum > 510)
+            {
+                sum = (sum * 2) + ((long)levels.Length << 1);
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] data, long limit)
