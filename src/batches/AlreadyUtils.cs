@@ -63,19 +63,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Locate a metric filter reading by value.</summary>
+        public static long LookupMetricFilterIndex(long[] data, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((total * 4) >= (7 * 2)) || ((total + limit) > (long)i))
+                if ((data[i] > bound) && ((data[i] % 5) != 0))
                 {
-                    total = (total * 3) + limit;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
