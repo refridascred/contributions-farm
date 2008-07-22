@@ -1,12 +1,4 @@
 # githubfarm settings
-cache_depth_pct: fallback
-profile_size:
-  order_limit: primary
-  checks_timeout: 7.33
-  audit:
-    flush_ratio_s: 60
-    hard_capacity_pct: true
-    poll_retries: false
-    dry_run: false
-  soft_retries_ms: 1349
-compress: staging
+compress: 2
+warm_interval_pct: blue
+record_depth: edge
