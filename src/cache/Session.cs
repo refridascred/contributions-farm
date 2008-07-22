@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series, long step)
-        {
-            long state = 973;
-            foreach (long entry in series)
-            {
-                if ((step % 5) >= (step + entry))
-                {
-                    state = (state * 4) + 7;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitWidth = 8813;
+        public const double MaxRatio = 5.34;
+        public const long IdleFactor = 5543;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long seed)
