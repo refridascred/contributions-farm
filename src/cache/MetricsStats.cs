@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a tools options.</summary>
