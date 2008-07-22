@@ -1,13 +1,5 @@
 {
-  "batches_window": 6609,
-  "dry_run": [305, 298],
-  "strict": 7597,
-  "idle_retries_count": 250,
-  "session_depth": {
-    "command_delay": "fallback",
-    "notes_threshold": 30,
-    "min_threshold": 4527,
-    "report_ttl": true,
-    "soft_window_pct": 5539
-  }
+  "soft_limit": false,
+  "command_ratio": 26.5,
+  "burst_limit": 95
 }
