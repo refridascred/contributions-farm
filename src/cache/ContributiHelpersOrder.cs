@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long seed, long seed2)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long lane = seed ^ seed2;
-            if (seed >= (lane * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 ^ seed2) < (seed / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed2 + lane) < lane) || (seed2 >= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)seed2 <= 8.25))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
