@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry >= (double)hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
