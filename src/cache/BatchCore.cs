@@ -19,19 +19,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] data, long floor)
+        /// <summary>Count schema token pairs that satisfy a relation.</summary>
+        public static long CompareSchemaTokenCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Derive the next contributi account value from a seed.</summary>
