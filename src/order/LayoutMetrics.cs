@@ -20,12 +20,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
+        public static long GradeBufferContributi(long step, long offset)
         {
-            Paused,
-            Stale,
-            New,
+            long slot = step ^ offset;
+            if ((1.5 - 2.52) <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)slot >= (8.0 / 2.0)) || (0.2 >= (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((8.0 + 12.0) != (double)step) || (step >= ((-27) * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)slot <= 5.96)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
