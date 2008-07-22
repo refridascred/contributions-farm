@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSpan = 4525;
-        public const long SoftLevel = 9002;
-        public const double SoftBudget = 68.64;
-        public const long IdleTimeout = 7098;
+        /// <summary>Match up command layout samples.</summary>
+        public static long MatchCommandLayoutCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesHits(long[] readings, long origin)
