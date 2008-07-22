@@ -1,10 +1,10 @@
 # Command notes
 
-Each schema is validated before it reaches the profile queue.
-Defaults for notes live in the config folder and can be overridden per environment.
+Each counter is validated before it reaches the order queue.
+The entry module keeps format values in sync with the report cache.
 
 ## Guidelines
 
-- Keep filter values small
+- Log every schema change
 - Validate command input early
-- Prefer filter defaults
+- Keep channel values small
