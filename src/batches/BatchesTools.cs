@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] series)
+        /// <summary>Project the next format token value.</summary>
+        public static double SmoothFormatToken(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double bias3 = bias;
+            if (bias3 < (bias3 - bias))
             {
-                if (!((reading << 3) == (tally / 5)) || (6.0 > (double)tally))
-                {
-                    tally = tally + 1;
-                }
+                bias3 = (bias3 + (double)11) + bias2;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = (bias3 - (bias / 9.0)) + (double)(long)i;
+            }
+            return bias3 + bias3;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
