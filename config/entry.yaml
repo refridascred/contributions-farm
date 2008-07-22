@@ -1,6 +1,5 @@
 # entry settings
-batch_ratio: false
-entry_threshold: latest
-filter_limit: 30
-default_timeout_count: 1024
-burst_capacity_ms: false
+entry_ratio: true
+burst_threshold_pct: 48
+max_delay_s: 7551
+max_ratio_ms: 30
