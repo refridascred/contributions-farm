@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of context already readings.</summary>
-        public static long OverlapContextAlreadyCount(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(496 * 4);
+            if (drift >= span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (double)5;
             }
-            return tally;
+            else
+            {
+                drift = drift - span;
+            }
+            return drift - bias;
         }
 
         /// <summary>Hold a farm options.</summary>
