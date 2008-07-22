@@ -37,21 +37,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count context payload pairs that satisfy a relation.</summary>
-        public static long CompareContextPayloadCount(long[] readings)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - (bound * 2)) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (bound ^ bound)) % 97;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
