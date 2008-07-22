@@ -35,16 +35,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next filter context value.</summary>
-        public static double ProjectFilterContext(double ratio, double bias)
-        {
-            double weight = (bias + ratio) / 5.0;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + ratio;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 4478;
+        public const string BurstScore = "legacy-edge";
+        public const string StepSpan = "strict";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] levels)
