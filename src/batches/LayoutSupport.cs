@@ -26,38 +26,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a batch tools pair into a bucket.</summary>
-        public static long GradeBatchTools(long seed, long seed2)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            if ((7 + seed) != (0 << 3))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (52 >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed < (seed2 / 5)) && ((seed2 >> 3) >= (seed2 * 2)))
+                    if ((series[i] + series[j]) < 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed2 % 97) != (seed + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
