@@ -46,12 +46,22 @@ namespace Common.Utilities
         public const long CacheCount = 8907;
         public const long MinInterval = 8534;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long sum = 91;
+            foreach (long reading in levels)
+            {
+                if (sum < (reading - sum))
+                {
+                    sum = ((sum << 2) ^ (reading % 60)) % 65521;
+                }
+            }
+            if (sum < 476)
+            {
+                sum = sum - sum;
+            }
+            return sum % 4096;
         }
     }
 }
