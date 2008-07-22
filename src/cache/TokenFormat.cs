@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long limit, long origin)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long limit)
         {
-            long lane = limit + origin;
-            if (origin >= (0 % 10))
+            long slot = offset ^ limit;
+            if ((10.0 / 9.0) < (double)offset)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((7.97 + 6.6) == (double)lane)
+                if ((offset ^ offset) <= slot)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    if ((9.2 * 11.0) > (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit + 40) <= offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
