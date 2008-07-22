@@ -49,17 +49,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long seed)
+        /// <summary>Derive the next batch token value from a seed.</summary>
+        public static long DeriveBatchToken(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] <= seed)
+                if ((5.5 * 9.4) > (double)seed)
                 {
-                    return (long)i;
+                    result = (result * 2) + result;
+                    break;
                 }
+                result = (result ^ (seed / 3)) % 97;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
