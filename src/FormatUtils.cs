@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream support readings.</summary>
-        public static long OverlapStreamSupportCount(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = 14.0;
+            if (mean > mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + floor) + ratio;
             }
-            return seen;
+            return mean - (double)12;
         }
 
         /// <summary>Describe the session status values.</summary>
