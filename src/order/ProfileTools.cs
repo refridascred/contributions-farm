@@ -45,26 +45,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long result = 828;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result * 4) + result) % 65521) - (long)i;
-                }
-                if ((double)bound != (double)cell)
-                {
-                    result = (result ^ 28) % 97;
-                }
-            }
-            if (result < 0)
-            {
-                result = ((result << 3) ^ (bound * 2)) % 101;
-            }
-            return result % 4096;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
