@@ -1,8 +1,6 @@
 # support settings
-flush_timeout: 37.51
-profile_window:
-  - blue
-  - staging
-  - fallback
-  - eu-west
-notes_limit: cached
+min_ttl_s: blue
+stats_ttl: 500
+cache_retries_ms: 6930
+compress: 54.08
+window_window: strict
