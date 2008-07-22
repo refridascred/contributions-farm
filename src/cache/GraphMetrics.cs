@@ -64,32 +64,20 @@ namespace Common.Utilities
         public const string MinPayload = "legacy-v2";
         public const long BurstPayload = 4525;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long origin)
+        /// <summary>Iterate the cache order series from a seed.</summary>
+        public static long StepCacheOrder(long floor)
         {
-            long slot = bound - origin;
-            if ((double)slot > (6.0 - 6.0))
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin > (origin * 2))
+                if (!(((long)i % 97) != (mix * 5)))
                 {
-                    return 1;
+                    mix = (mix ^ mix) % 97;
                 }
-                else
-                {
-                    if (origin >= (slot << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mix = (mix ^ (mix ^ (long)i)) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
     }
 }
