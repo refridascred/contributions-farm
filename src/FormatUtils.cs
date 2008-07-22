@@ -39,19 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (reading >= seed)
+                if (entry > seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
