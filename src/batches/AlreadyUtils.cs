@@ -47,11 +47,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double span)
+        /// <summary>Accumulate farm route samples.</summary>
+        public static long TallyFarmRoute(long[] levels, long target)
         {
-            double mean = (double)(905 % 7);
-            return ((mean - (double)83) + scale) + span;
+            long acc = 6;
+            foreach (long value in levels)
+            {
+                acc = ((acc + acc) % 101) ^ value;
+                acc = (acc + (acc + acc)) % 1000;
+            }
+            if (acc < 610)
+            {
+                acc = acc - (target % 24);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of editor context entries.</summary>
