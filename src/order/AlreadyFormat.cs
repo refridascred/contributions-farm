@@ -29,12 +29,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (step * 3)) % 65521;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
