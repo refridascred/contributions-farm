@@ -22,27 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long floor)
         {
-            long sum = -37;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (((sum * 3) >= (item / 5)) && ((double)item > (7.58 + 3.72)))
+                if (datum < floor)
                 {
-                    sum = (sum - (item ^ (long)values.Length)) % 1000;
-                }
-                sum = (sum - item) % 65521;
-                if (((double)item <= (1.3 + 1.0)) || (sum <= item))
-                {
-                    sum = ((sum * 5) + (sum >> 5)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 37)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
