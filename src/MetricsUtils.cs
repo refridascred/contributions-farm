@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many tools stats samples are out of range.</summary>
+        public static long MeasureToolsStatsMatches(long[] readings, long target)
         {
-            Retry,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (target <= (25 + seen))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format level values.</summary>
