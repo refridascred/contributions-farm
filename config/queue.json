@@ -1,8 +1,8 @@
 {
-  "notes_size": [445, 96, 5],
-  "account_size": [193, 87, 13],
-  "already_limit": "standard",
-  "payload_ratio": [280, 100, 315, 369],
-  "sync_timeout": "fallback",
-  "burst_ttl_s": 4749
+  "already_size": "eu-west",
+  "default_interval": "strict",
+  "compress": [494, 142],
+  "notes_interval": 1024,
+  "flush_ttl": ["eu-west", "standard", "edge", "strict"],
+  "max_interval_pct": 1579
 }
