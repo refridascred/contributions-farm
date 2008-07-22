@@ -37,19 +37,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] readings, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (((long)i * 5) < (mix - 87))
+                if (datum != target)
                 {
-                    mix = mix ^ 2;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
