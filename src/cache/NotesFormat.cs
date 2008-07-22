@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((4.3 - 5.3) > (double)count)
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit account metric readings against a rule.</summary>
