@@ -1,6 +1,7 @@
 {
-  "warm_ratio": 44.79,
-  "cache_size": 4017,
-  "window_limit": "eu-west",
-  "batch_timeout": "eu-west"
+  "tools_timeout": "local",
+  "default_delay": false,
+  "report_capacity": false,
+  "tools_ratio": 30,
+  "flush_interval_pct": "primary"
 }
