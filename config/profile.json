@@ -1,8 +1,8 @@
 {
-  "editor_size": "fallback",
-  "sync_limit_s": [407, 328, 19],
-  "persist": 4539,
-  "sync_window_pct": 6.59,
-  "burst_capacity": 250,
-  "sync_ratio": false
+  "verbose": 100,
+  "batch_timeout": 250,
+  "retry_limit": ["green", "local", "stable"],
+  "audit": "green",
+  "max_interval_pct": 250,
+  "readonly": [254, 395, 118]
 }
