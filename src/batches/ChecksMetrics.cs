@@ -36,19 +36,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] samples, long origin)
+        /// <summary>Audit cache report readings against a rule.</summary>
+        public static long TallyCacheReportGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (sample >= origin)
+                if ((matches + value) >= (0 & 7))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
