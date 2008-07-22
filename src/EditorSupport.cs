@@ -45,16 +45,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] items)
         {
-            long state = 6;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                state = (state + 9) + floor;
-                state = (state - reading) % 65521;
+                if ((count + item) < (item - item))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Grade a window schema value against two limits.</summary>
