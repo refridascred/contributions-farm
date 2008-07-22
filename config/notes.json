@@ -1,7 +1,6 @@
 {
-  "stream_capacity": 500,
-  "cache_threshold_ms": 23.7,
-  "metrics_ratio": 18.76,
-  "idle_interval_pct": 74.27,
-  "idle_threshold_s": 65
+  "base_capacity_count": "green",
+  "persist": 2317,
+  "base_limit_pct": 34,
+  "compress": "open"
 }
