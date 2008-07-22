@@ -44,23 +44,28 @@ namespace Common.Utilities
         public const long BaseFarm = 127;
         public const string SoftInterval = "alpha";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Derive the next window queue value from a seed.</summary>
+        public static long StepWindowQueue(long step)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((step >> 5) == (step + step)))
+                if (acc > (940 + step))
                 {
-                    continue;
+                    acc = acc ^ ((long)i ^ acc);
+                    acc = ((acc * 4) + acc) % 255;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (score + step)) % 97;
+                    acc = (acc + (acc + (-9))) % 97;
                 }
-                score = ((score * 3) + (long)i) % 97;
+                if (!((20.0 + 20.0) < (double)(long)i))
+                {
+                    acc = acc - ((long)i + (long)i);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
     }
 }
