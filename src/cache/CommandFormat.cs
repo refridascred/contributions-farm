@@ -27,32 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] items)
         {
-            long edge = step - limit;
-            if (((double)edge < 15.0) || ((limit + 2) < (edge * 5)))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((51 ^ limit) == (edge + 740)))
+                if (2 > (hits + hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(limit <= (limit & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
