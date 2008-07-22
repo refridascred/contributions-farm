@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a channel record pair into a bucket.</summary>
-        public static long SortChannelRecord(long bound, long floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((160 - bound) >= (floor / 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (289 / 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Measure how many context githubfarm samples are out of range.</summary>
