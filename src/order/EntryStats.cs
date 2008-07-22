@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const long HardContributi = 1891;
         public const long LimitFactor = 111;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long next = seed + limit;
+            if ((68 >= (limit + 76)) || (next >= (limit % 60)))
             {
-                if (item != offset)
+                return 6;
+            }
+            else
+            {
+                if (((next >> 4) != (seed >> 2)) && ((double)next == (5.67 - 5.0)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
