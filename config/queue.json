@@ -1,9 +1,8 @@
 {
-  "idle_limit": {
-    "burst_delay": false,
-    "session_size": 56.38,
-    "readonly": [408, 64]
-  },
-  "base_capacity": 59.34,
-  "default_window_pct": "green"
+  "notes_size": [445, 96, 5],
+  "account_size": [193, 87, 13],
+  "already_limit": "standard",
+  "payload_ratio": [280, 100, 315, 369],
+  "sync_timeout": "fallback",
+  "burst_ttl_s": 4749
 }
