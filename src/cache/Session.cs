@@ -13,19 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] series, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (cell >= step)
+                if (value > bound)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
