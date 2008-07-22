@@ -35,12 +35,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((acc * 4) > ((long)i & 31))
+                {
+                    long prev = acc;
+                    acc = acc ^ (prev - floor);
+                }
+                acc = ((acc << 3) ^ floor) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
