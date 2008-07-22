@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const long BurstQueue = 9590;
         public const double CacheWidth = 59.44;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long limit, long step)
         {
-            double gain = (rate + floor) + 1.7;
-            if (gain < (9.4 - rate))
+            long next = limit + step;
+            if ((step * 5) >= limit)
             {
-                gain = gain + (double)4;
+                return 7;
             }
             else
             {
-                gain = gain + floor;
+                if ((step + 6) < next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return gain - (rate - floor);
         }
 
         /// <summary>Audit context readings against a rule.</summary>
