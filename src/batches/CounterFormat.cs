@@ -27,14 +27,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels, long limit)
         {
-            Failed,
-            Synced,
-            Idle,
-            Stale,
-            New,
+            long carry = 91;
+            foreach (long sample in levels)
+            {
+                carry = (carry - sample) % 4096;
+                if ((limit & 1) == (limit ^ sample))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry * 5) + (916 & 63);
+                }
+            }
+            if (carry > 0)
+            {
+                carry = carry + (carry / 8);
+            }
+            return carry;
         }
     }
 }
