@@ -13,11 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFactor = 4489;
-        public const double CacheScore = 95.44;
-        public const long BatchBudget = 9960;
-        public const long IdleFilter = 9576;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of already payload readings.</summary>
         public static long TallyAlreadyPayload(long[] levels)
