@@ -49,10 +49,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "primary-1";
-        public const long DefaultRatio = 7880;
-        public const long StepBudget = 4126;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long seed, long bound)
