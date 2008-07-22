@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= floor)
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
