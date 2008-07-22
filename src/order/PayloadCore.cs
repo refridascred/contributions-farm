@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            New,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultWidth = 3049;
+        public const long MinLevel = 9030;
+        public const string IdleChannel = "open-1";
+        public const long SoftChannel = 8949;
+        public const long CacheTimeout = 4528;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] readings)
