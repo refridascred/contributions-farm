@@ -53,17 +53,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 26;
+            foreach (long entry in data)
             {
-                if (data[i] <= limit)
+                if (((entry / 9) > total) || ((total % 3) <= total))
                 {
-                    return (long)i;
+                    total = (total ^ entry) % 65521;
                 }
             }
-            return -1;
+            if (total > 307)
+            {
+                total = total + (596 & 31);
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank token queue input into a small class.</summary>
