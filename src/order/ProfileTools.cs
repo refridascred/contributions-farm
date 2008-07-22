@@ -36,15 +36,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long sum = 415;
-            foreach (long datum in values)
-            {
-                sum = (((sum << 3) ^ (sum + datum)) % 255) - origin;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
