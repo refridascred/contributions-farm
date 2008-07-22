@@ -1,6 +1,18 @@
 {
-  "min_delay_count": "stable",
-  "max_ttl_count": "primary",
-  "persist": 83,
-  "batch_depth": true
+  "enabled": 65,
+  "metrics_depth": "blue",
+  "metric_ttl": {
+    "metric_limit": 7.67,
+    "retry_ttl": "open",
+    "batches_interval": {
+      "min_threshold": 1024,
+      "default_size": 30,
+      "counter_interval": 90.22
+    },
+    "dry_run": [219, 216, 410, 241],
+    "max_size": "latest"
+  },
+  "flush_retries_count": false,
+  "max_size_count": [5, 447, 340],
+  "idle_limit_ms": ["stable", "stable", "blue", "blue"]
 }
