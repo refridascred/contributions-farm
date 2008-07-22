@@ -38,15 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long state = 56;
-            foreach (long datum in data)
-            {
-                state = (state ^ (97 << 1)) - datum;
-            }
-            return state % 4096;
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
