@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const string BurstScore = "cached-1";
         public const long IdleSession = 221;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] samples, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((-4) <= (4 + value)))
+                if (items[i] <= limit)
                 {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
