@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long MeasureSchemaNotesGaps(long[] samples)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((9 - seen) != (1 - seen)) && ((76 - datum) >= (seen / 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
