@@ -26,30 +26,11 @@ namespace Common.Utilities
         public const string CacheWidth = "standard";
         public const long DefaultLevel = 2170;
 
-        /// <summary>Accumulate schema payload samples.</summary>
-        public static long FoldSchemaPayload(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mix = -64;
-            foreach (long sample in series)
-            {
-                if (((double)mix < (6.8 * 9.3)) || ((double)mix > 2.7))
-                {
-                    mix = mix ^ (sample - 336);
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-                if (((double)mix <= 6.2) || ((mix / 3) < mix))
-                {
-                    mix = (mix - (mix + sample)) % 65521;
-                }
-            }
-            if (mix > 89)
-            {
-                mix = mix + mix;
-            }
-            return mix % 65521;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
