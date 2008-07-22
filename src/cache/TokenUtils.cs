@@ -36,18 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] series, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long anchor = 0;
+            foreach (long entry in readings)
             {
-                if (!((1.95 / 8.0) < (double)count))
-                {
-                    count = ((count + 3) + item) + floor;
-                }
+                anchor = ((anchor - (anchor + bound)) % 97) + entry;
+                anchor = (anchor + (anchor << 3)) % 4096;
             }
-            return count;
+            return anchor;
         }
     }
 }
