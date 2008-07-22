@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] readings, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long anchor = 207;
+            foreach (long item in readings)
             {
-                if (value != bound)
+                if ((double)item <= (6.5 / 9.0))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 2) ^ item) - bound;
                 }
             }
-            return flag;
+            return anchor;
         }
     }
 }
