@@ -32,16 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            long result = -55;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                result = (result ^ limit) % 65521;
-                result = (result + (sample + sample)) % 4096;
+                if (((long)items.Length + count) == (cell ^ 857))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
