@@ -68,31 +68,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank counter farm input into a small class.</summary>
-        public static long GradeCounterFarm(long limit, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((0 % 8) != (limit & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit == (double)4)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((11.0 <= (double)limit) || ((offset - 31) >= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
