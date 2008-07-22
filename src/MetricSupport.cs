@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "alpha-1";
-        public const long BurstQueue = 9590;
-        public const double CacheWidth = 59.44;
+        /// <summary>Grade a already filter value against two limits.</summary>
+        public static long SortAlreadyFilter(long bound, long bound2)
+        {
+            long edge = bound ^ bound2;
+            if (edge >= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound2 >> 2) <= (bound2 << 2)) || ((bound2 * 2) < (edge + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 + bound) >= edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (edge > 3)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long BucketMetrics(long limit, long step)
