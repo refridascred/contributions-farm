@@ -53,12 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Failed,
+            Draft,
+            Closed,
+            Locked,
             Active,
-            Retry,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
