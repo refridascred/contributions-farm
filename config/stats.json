@@ -1,5 +1,16 @@
 {
-  "compress": "cached",
-  "max_capacity_ms": 1,
-  "route_interval": true
+  "burst_interval": 84.23,
+  "base_capacity_count": {
+    "max_size_ms": 87.21,
+    "batches_ttl": 42,
+    "sync_interval_pct": "green",
+    "readonly": false,
+    "flush_timeout_pct": 100,
+    "cache_ttl_s": {
+      "account_capacity": 38.96,
+      "default_limit_count": [170, 91, 497],
+      "default_threshold": false
+    }
+  },
+  "context_capacity": 500
 }
