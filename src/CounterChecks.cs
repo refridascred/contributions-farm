@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 5806;
-        public const long StepBuffer = 8826;
-        public const string DefaultBuffer = "legacy-v2";
-        public const double MinBuffer = 52.38;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
