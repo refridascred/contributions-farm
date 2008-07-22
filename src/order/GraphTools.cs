@@ -68,9 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 4097;
-        public const long BatchFactor = 5517;
-        public const long StepEditor = 4845;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
