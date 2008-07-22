@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark - target) % 97;
-                if (target <= (mark + target))
-                {
-                    mark = mark ^ (mark << 2);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Synced,
+            Stale,
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
