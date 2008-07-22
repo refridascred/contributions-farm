@@ -1,5 +1,6 @@
 {
-  "retry_retries_s": "latest",
-  "persist": 34.94,
-  "flush_limit_count": 1024
+  "context_capacity": 93.3,
+  "hard_ttl_pct": true,
+  "flush_threshold": 6033,
+  "audit": false
 }
