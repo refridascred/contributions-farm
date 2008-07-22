@@ -52,21 +52,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count command checks pairs that satisfy a relation.</summary>
-        public static long MatchCommandChecksCount(long[] items)
+        /// <summary>Measure how many account order samples are out of range.</summary>
+        public static long MeasureAccountOrderMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits / 7) != (value << 2))
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the support status values.</summary>
