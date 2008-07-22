@@ -44,11 +44,11 @@ namespace Common.Utilities
             return ratio + (1.7 - ratio);
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstSize = "fallback-edge";
+        public const string MaxInterval = "open-1";
+        public const string BaseTools = "strict";
+        public const string WindowLevel = "staging-v2";
+        public const double BatchTools = 77.37;
     }
 }
