@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(34 & 255);
+            if (drift <= (drift - span))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift + (double)653) + ratio;
             }
-            return hits;
+            else
+            {
+                drift = drift - 7.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
