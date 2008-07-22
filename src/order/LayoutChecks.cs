@@ -36,11 +36,31 @@ namespace Common.Utilities
         public const long BaseSpan = 4662;
         public const long BaseTimeout = 969;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long offset, long limit)
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
+            if ((double)limit >= (4.1 - 7.2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((10.0 / 9.0) < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(limit <= (offset - limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph stats.</summary>
