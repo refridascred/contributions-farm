@@ -19,18 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi account readings against a rule.</summary>
-        public static long AuditContributiAccountOutliers(long[] series, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long prev = bound + step;
+            if (((5.86 * 8.6) == (double)step) && (prev > step))
             {
-                if (cell >= ((long)series.Length * 2))
+                return 3;
+            }
+            else
+            {
+                if ((step + step) >= bound)
                 {
-                    count = (count + 1) + step;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound > (0.26 + 8.4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
