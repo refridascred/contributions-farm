@@ -20,23 +20,22 @@ namespace Common.Utilities
         public const long MaxWindow = 4189;
         public const string SoftSize = "strict";
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] data)
         {
-            double mean = bias;
-            if (mean > (bias2 - bias))
+            long result = 814;
+            foreach (long entry in data)
             {
-                mean = mean - mean;
+                if (entry > ((long)data.Length + entry))
+                {
+                    result = (result * 4) + (entry >> 1);
+                }
+                if (33 >= result)
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)54;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 2.0) + (double)(long)i;
-            }
-            return mean + bias2;
+            return result % 4096;
         }
 
         /// <summary>Describe the stream phase values.</summary>
