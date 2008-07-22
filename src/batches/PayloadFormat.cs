@@ -16,12 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstSize = 30;
+        public const string IdleScore = "fallback";
+        public const long WindowLayout = 5634;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long StepSchema(long target)
