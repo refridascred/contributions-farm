@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate metrics session readings against a bound.</summary>
-        public static bool ValidateMetricsSessionRange(long[] readings, long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Queued,
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
