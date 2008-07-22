@@ -28,22 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools cache input into a small class.</summary>
-        public static long RankToolsCache(long floor, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long target2)
         {
-            if (target <= (floor + 40))
+            if ((double)target == (6.0 / 8.0))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((floor & 7) <= (target + 6))
+                if (target <= (target2 / 4))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    return 6;
                 }
             }
         }
