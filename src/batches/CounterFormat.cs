@@ -33,37 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stream support input into a small class.</summary>
-        public static long BucketStreamSupport(long bound, long floor)
+        /// <summary>Rank tools cache input into a small class.</summary>
+        public static long RankToolsCache(long floor, long target)
         {
-            long lane = bound ^ floor;
-            if ((lane << 2) <= bound)
+            if (target <= (floor + 40))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((1.0 + 4.6) > (double)floor)
+                if ((floor & 7) <= (target + 6))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor ^ bound) > (lane & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.0 / 6.0) < (double)lane)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
