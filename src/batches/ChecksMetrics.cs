@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSpan = 5963;
-        public const string BurstReport = "staging";
-        public const long BurstDepth = 1296;
-        public const string RetryWidth = "cached-edge";
-        public const long BaseBudget = 3251;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings)
+        {
+            long state = 69;
+            foreach (long reading in readings)
+            {
+                state = (state ^ (reading - reading)) % 4096;
+                if ((12.0 + 2.7) < (double)reading)
+                {
+                    state = state + state;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
