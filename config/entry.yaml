@@ -1,6 +1,4 @@
 # entry settings
-commits_ttl: 52.15
-persist: 500
-flush_delay: 4.85
-readonly: 8
-farm_limit: open
+warm_ttl: 58.2
+soft_limit_ms: strict
+hard_retries_count: false
