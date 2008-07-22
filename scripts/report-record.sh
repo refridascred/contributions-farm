@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-primary}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=483
-log "limit is ${RECORD_LIMIT}"
-
-for item in fallback cached strict; do
+for item in strict primary fallback open; do
     log "checking ${item}"
 done
