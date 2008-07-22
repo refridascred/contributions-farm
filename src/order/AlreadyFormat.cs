@@ -44,21 +44,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = bound - seed;
+            if (((prev - seed) > (prev % 100)) && ((prev - prev) == (bound % 16)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((-88) % 7) < bound)
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
