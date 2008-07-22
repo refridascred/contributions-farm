@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] values, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin - 6) > (target * 5))
             {
-                if (values[i] < offset)
+                return 7;
+            }
+            else
+            {
+                if ((target << 1) > origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
