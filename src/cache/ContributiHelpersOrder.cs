@@ -30,18 +30,11 @@ namespace Common.Utilities
             return mean + (double)(-2);
         }
 
-        /// <summary>Measure how many graph session samples are out of range.</summary>
-        public static long AuditGraphSessionMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((datum - datum) >= (hits + datum)) || (16.0 < (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinDepth = "standard";
+        public const double RetryFactor = 9.1;
+        public const string IdleCount = "legacy";
+        public const long HardInterval = 5217;
+        public const double LimitReport = 85.73;
     }
 }
