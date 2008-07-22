@@ -25,31 +25,23 @@ namespace Common.Utilities
         public const long HardTimeout = 64;
         public const double IdleReport = 25.83;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long seed2)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            if ((double)seed >= (6.48 / 9.0))
+            double mean = bias;
+            if (mean > (bias2 - bias))
             {
-                return 8;
+                mean = mean - mean;
             }
             else
             {
-                if (seed2 > seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed2 - seed2) != (seed - seed2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = mean - (double)54;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 2.0) + (double)(long)i;
+            }
+            return mean + bias2;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
