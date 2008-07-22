@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two commits layout measurements.</summary>
-        public static double SmoothCommitsLayout(double rate, double floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            double mean = rate;
-            for (int i = 0; i < 6; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mean = ((mean - (mean * 5.79)) + (double)(long)i) - floor;
+                carry = ((carry << 2) ^ (bound - 95)) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return mean + mean;
+            return carry;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
