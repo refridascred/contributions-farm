@@ -13,21 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count checks route pairs that satisfy a relation.</summary>
-        public static long MatchChecksRouteCount(long[] values)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
