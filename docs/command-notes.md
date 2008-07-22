@@ -1,15 +1,12 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Defaults for channel live in the config folder and can be overridden per environment.
-Keep report and channel names short and lowercase.
-
-The order report groups every notes by metrics.
-When a contributi fails, the contributi handler retries a few times before giving up.
+Each metric is validated before it reaches the layout queue.
+Keep counter and report names short and lowercase.
+Run the support check before changing any cache limits.
 
 ## Guidelines
 
-- Validate session input early
-- Prefer metrics defaults
-- Review payload limits each release
-- Keep session values small
+- Validate profile input early
+- Log every entry change
+- Document new checks fields
+- Keep cache values small
