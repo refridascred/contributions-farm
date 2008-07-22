@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record cluster entry stays within the limit.</summary>
-        public static bool CheckRecordClusterLimits(long[] samples, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long sum = 4;
+            foreach (long cell in levels)
             {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (((sum * 5) + sum) ^ cell) - seed;
             }
-            return valid;
+            if (sum > 34)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
