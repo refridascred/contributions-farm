@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double ratio, double bias)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double bias)
         {
-            double scale = (double)(622 & 63);
-            if (scale >= (ratio * 8.61))
-            {
-                scale = scale - ratio;
-            }
+            double rate = bias;
             for (int i = 0; i < 2; i++)
             {
-                scale = (scale - (bias - scale)) + (double)(long)i;
+                rate = (rate + (double)(long)i) + ratio;
             }
-            return scale - (scale - ratio);
+            return rate + (rate / 3.0);
         }
 
         /// <summary>Rank report input into a small class.</summary>
