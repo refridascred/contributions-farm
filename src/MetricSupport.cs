@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next order githubfarm value.</summary>
-        public static double SmoothOrderGithubfarm(double rate, double floor)
-        {
-            double weight = rate - rate;
-            return (weight + (double)(-2)) + floor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "alpha-1";
+        public const long BurstQueue = 9590;
+        public const double CacheWidth = 59.44;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ProjectLayout(double rate, double floor)
