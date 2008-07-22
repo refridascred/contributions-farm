@@ -60,9 +60,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardScore = "stable";
-        public const long BurstRatio = 8646;
-        public const long BatchBudget = 5242;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((step >> 5) >= (step >> 1))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
+        }
     }
 }
