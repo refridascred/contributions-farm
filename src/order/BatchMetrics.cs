@@ -68,18 +68,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many counter channel samples are out of range.</summary>
-        public static long AuditCounterChannelMatches(long[] data, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long delta = limit ^ bound;
+            if ((8.9 - 0.7) > (double)bound)
             {
-                if ((double)item > (4.8 - 6.0))
+                return 7;
+            }
+            else
+            {
+                if ((delta % 3) >= limit)
                 {
-                    tally = (tally + 3) + offset;
+                    return 6;
+                }
+                else
+                {
+                    if (3.01 >= (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (delta >= (limit + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
