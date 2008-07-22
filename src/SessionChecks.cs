@@ -12,18 +12,31 @@ namespace Common.Utilities
         public const double WindowTimeout = 55.38;
         public const long DefaultRecord = 3063;
 
-        /// <summary>Audit batches stats readings against a rule.</summary>
-        public static long MeasureBatchesStatsGaps(long[] values, long bound)
+        /// <summary>Rank graph notes input into a small class.</summary>
+        public static long RankGraphNotes(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            if ((limit - seed) < (seed - 291))
             {
-                if ((datum >> 2) <= (matches + (-77)))
+                return 7;
+            }
+            else
+            {
+                if ((seed % 5) != (limit + seed))
                 {
-                    matches = (matches + 2) - bound;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) != (2 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the metrics status values.</summary>
