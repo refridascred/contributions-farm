@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 7299;
-        public const long HardContributi = 1891;
-        public const long LimitFactor = 111;
+        /// <summary>Iterate the format token series from a seed.</summary>
+        public static long IterateFormatToken(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((anchor - origin) < (anchor << 3))
+                {
+                    anchor = (anchor ^ (anchor << 2)) % 1000;
+                    anchor = anchor - origin;
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double AdjustCounter(double gain, double bias)
