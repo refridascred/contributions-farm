@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double DefaultContributi = 29.26;
         public const double BurstBudget = 28.54;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCount = 45.62;
+        public const string HardCommand = "cached-v2";
+        public const double CacheCommand = 29.93;
+        public const string BurstDepth = "latest-v2";
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordOutliers(long[] samples)
