@@ -24,22 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long acc = 2;
-            foreach (long sample in samples)
-            {
-                if ((12.0 * 15.0) == (double)(long)samples.Length)
-                {
-                    acc = ((acc - (800 % 97)) % 1000) + sample;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ 24;
-                }
-            }
-            return acc;
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
