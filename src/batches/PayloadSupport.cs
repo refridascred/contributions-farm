@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine notes farm values into a single score.</summary>
-        public static long ScoreNotesFarm(long[] values)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long sum = 75;
-            foreach (long datum in values)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((8.7 + 6.38) == (double)sum)
-                {
-                    sum = (sum ^ (359 >> 4)) + datum;
-                }
+                total = (total - total) % 97;
+                total = (total + (offset + 114)) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
