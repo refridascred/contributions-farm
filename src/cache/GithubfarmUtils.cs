@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter already readings against a rule.</summary>
-        public static long CountFilterAlreadyHits(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (24 <= (hits & 3))
+                if (sample <= seed)
                 {
-                    hits = (hits + 2) - item;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
