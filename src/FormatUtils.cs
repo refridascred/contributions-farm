@@ -39,21 +39,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((-441) / 5) == (target & 63))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (0 >= step)
                 {
-                    if ((samples[i] ^ samples[j]) > 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((target <= 321) && ((target - target) != (26 >> 5)))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target > (target - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
