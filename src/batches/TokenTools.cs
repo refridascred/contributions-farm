@@ -13,15 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two queue metric measurements.</summary>
-        public static double AdjustQueueMetric(double scale, double bias)
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long CountMetricsAlreadyGaps(long[] levels)
         {
-            double ratio = (bias + bias) - (14.0 + bias);
-            if (ratio <= (bias + bias))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio - 2.0) - scale;
+                if (!((double)matches < 2.0))
+                {
+                    matches = (matches + 2) + item;
+                }
             }
-            return ratio + (1.7 - ratio);
+            return matches;
         }
 
         /// <summary>Describe the queue status values.</summary>
