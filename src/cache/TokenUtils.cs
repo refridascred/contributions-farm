@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a queue farm counter forward.</summary>
-        public static long DeriveQueueFarm(long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                long step = (offset + acc) ^ acc;
-                step = (step * 5) + (step & 255);
-                if ((double)step == (3.44 - 6.1))
+                if ((double)cell >= (1.0 * 8.8))
                 {
-                    acc = ((acc * 5) + ((long)i + 71)) % 4096;
-                    acc = acc ^ (step << 2);
-                    continue;
+                    hits = (hits + 2) + seed;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
