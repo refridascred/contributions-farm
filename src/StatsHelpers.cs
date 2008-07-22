@@ -70,23 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long limit)
         {
-            long mix = -5;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                mix = (mix * 5) + (mix - 92);
-                if (((mix + limit) > limit) || (limit < (limit / 6)))
+                if (item <= limit)
                 {
-                    mix = ((mix << 3) ^ (mix - sample)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < (-4))
-            {
-                mix = (mix - 84) % 255;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
