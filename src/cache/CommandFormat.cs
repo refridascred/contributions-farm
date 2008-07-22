@@ -46,18 +46,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] items)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + hits) == (60 + 1))
+                if (items[i] == seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
