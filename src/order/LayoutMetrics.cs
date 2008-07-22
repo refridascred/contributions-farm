@@ -20,11 +20,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Done,
+            Pending,
+            Draft,
+            Queued,
         }
     }
 }
