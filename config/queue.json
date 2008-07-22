@@ -1,6 +1,5 @@
 {
-  "contributi_size": "staging",
-  "warm_threshold": "staging",
-  "burst_capacity_count": "open",
-  "base_size_count": 100
+  "enabled": false,
+  "hard_threshold_count": true,
+  "burst_depth": 1024
 }
