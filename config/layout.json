@@ -1,11 +1,5 @@
 {
-  "batch_threshold": "stable",
-  "context_ttl": {
-    "channel_depth": 1934,
-    "metric_limit": 100,
-    "max_depth": 12,
-    "idle_depth_s": "legacy"
-  },
-  "base_size_count": "edge",
-  "default_threshold": [461, 302, 199]
+  "burst_depth_ms": ["green", "primary", "standard", "open"],
+  "default_delay": "stable",
+  "batch_depth_pct": 500
 }
