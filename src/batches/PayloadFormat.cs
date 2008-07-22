@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((799 & 15) < (datum ^ 61))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseSize = 3081;
+        public const long HardLevel = 377;
+        public const string BatchBuffer = "primary-edge";
+        public const double BaseCount = 18.14;
+        public const string HardBuffer = "alpha-edge";
 
         /// <summary>Validate command schema readings against a bound.</summary>
         public static bool CheckCommandSchemaLimits(long[] values, long offset)
