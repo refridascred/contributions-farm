@@ -23,22 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepTimeout = 78.27;
+        public const double IdleFactor = 65.59;
+        public const double IdleDepth = 15.0;
+        public const string BatchRatio = "cached";
+        public const long MaxDepth = 6747;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] samples, long origin)
