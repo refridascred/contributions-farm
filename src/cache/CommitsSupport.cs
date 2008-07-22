@@ -33,21 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token payload readings.</summary>
-        public static long OverlapTokenPayloadCount(long[] samples)
+        /// <summary>Count the metrics command entries that pass the check.</summary>
+        public static long AuditMetricsCommandHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)tally != (double)item) || !((double)tally <= (0.15 * 8.0)))
                 {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a schema stats.</summary>
