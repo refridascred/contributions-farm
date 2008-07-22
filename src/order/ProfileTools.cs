@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long offset, long bound)
+        /// <summary>Locate a order buffer reading by value.</summary>
+        public static long FindOrderBufferIndex(long[] series, long seed)
         {
-            if (!(134 <= bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) == (bound >> 1))
+                if (series[i] < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (890 < (bound & 255))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((bound + bound) == (3 / 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
