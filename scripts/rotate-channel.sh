@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=425
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
