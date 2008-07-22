@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] data, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                score = score + 7;
-                score = ((score * 2) + (long)i) % 97;
+                if ((matches * 2) <= (matches * 5))
+                {
+                    matches = ((matches + 1) ^ item) + origin;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the entry level values.</summary>
