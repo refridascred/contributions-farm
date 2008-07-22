@@ -1,13 +1,8 @@
 {
-  "batch_retries_s": {
-    "warm_retries": 63,
-    "burst_threshold_ms": [125, 401, 15, 320],
-    "warm_ratio_s": 9296,
-    "entry_delay": 47.89,
-    "cluster_retries": 30,
-    "max_threshold_s": false
-  },
-  "metrics_interval": "eu-west",
-  "max_threshold": "standard",
-  "metrics_threshold": ["fallback", "green", "blue"]
+  "audit": 68,
+  "tools_threshold": "primary",
+  "burst_retries_s": 19.7,
+  "batch_delay": "fallback",
+  "warm_window_ms": ["blue", "legacy", "cached", "local"],
+  "retry_interval": "open"
 }
