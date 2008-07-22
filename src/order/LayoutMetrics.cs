@@ -35,11 +35,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "cached";
-        public const long HardContributi = 6965;
-        public const double LimitContributi = 59.7;
-        public const long DefaultContributi = 9416;
-        public const long RetryContributi = 3094;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
