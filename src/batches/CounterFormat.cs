@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long floor, long bound)
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long MeasureLayoutMetricsHits(long[] data, long bound)
         {
-            long cur = floor ^ bound;
-            if ((double)floor == (20.0 - 8.0))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >= floor) && ((97 >> 4) >= (cur ^ bound)))
+                if ((double)bound < (6.55 * 1.0))
                 {
-                    return 4;
+                    hits = (hits + 3) - cell;
                 }
                 else
                 {
-                    if (bound >= (floor ^ 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
