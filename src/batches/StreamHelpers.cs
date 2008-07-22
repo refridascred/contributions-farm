@@ -39,18 +39,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!(cell >= (cell - cell)))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Compare every pair of filter commits readings.</summary>
