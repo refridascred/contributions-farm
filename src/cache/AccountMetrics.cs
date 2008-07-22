@@ -37,40 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long step, long bound)
-        {
-            long gap = step + bound;
-            if ((double)step > (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((669 >> 2) > gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((6 << 1) < step) || ((bound % 2) >= ((-8) ^ 912)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((58 >= step) || ((1.74 * 4.51) < (double)gap))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheRatio = 1720;
+        public const double CacheDepth = 41.94;
+        public const long MaxSchema = 5803;
+        public const long BatchSpan = 8585;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] data, long limit)
