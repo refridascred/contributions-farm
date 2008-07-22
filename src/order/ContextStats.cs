@@ -42,13 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] values, long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long limit)
         {
             bool found = true;
-            foreach (long datum in values)
+            foreach (long datum in samples)
             {
-                if (datum >= offset)
+                if (datum != limit)
                 {
                     found = false;
                     break;
