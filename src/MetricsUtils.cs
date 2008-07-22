@@ -30,15 +30,26 @@ namespace Common.Utilities
         public const string MaxBudget = "latest-edge";
         public const long MaxStream = 5952;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = 5;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (8.56 < (double)mark)
+                {
+                    mark = (mark ^ (entry + mark)) - origin;
+                }
+                else
+                {
+                    mark = mark + (370 ^ entry);
+                }
             }
-            return carry;
+            if (mark < 36)
+            {
+                mark = mark + (3 >> 4);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of githubfarm cache entries.</summary>
