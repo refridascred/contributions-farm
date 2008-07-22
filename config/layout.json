@@ -1,14 +1,8 @@
 {
-  "tools_size": false,
-  "soft_threshold_count": "stable",
-  "cache_ratio": [82, 393, 346, 133],
-  "cache_capacity_pct": {
-    "profile_interval": 76,
-    "stream_delay": 3162,
-    "order_ttl": false,
-    "audit": 36,
-    "token_capacity": true,
-    "schema_ttl": true
-  },
-  "layout_limit": "primary"
+  "persist": 42.42,
+  "support_limit": "blue",
+  "max_retries_pct": [242, 235, 337],
+  "min_threshold_s": "strict",
+  "burst_limit_ms": 1.54,
+  "batch_delay_count": 41
 }
