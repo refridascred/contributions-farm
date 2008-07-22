@@ -23,28 +23,28 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long offset)
+        /// <summary>Classify a metrics support pair into a bucket.</summary>
+        public static long GradeMetricsSupport(long origin, long bound)
         {
-            if (!((9 << 3) >= (offset + 55)))
+            if (origin <= (origin + origin))
             {
                 return 8;
             }
             else
             {
-                if ((1 & 127) >= (target << 2))
+                if (!((origin - bound) < (bound - bound)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (!((2.1 + 15.0) <= (double)target))
+                    if ((double)bound >= (9.2 * 4.6))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 3;
+                        return 5;
                     }
                 }
             }
