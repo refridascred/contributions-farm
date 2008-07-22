@@ -64,37 +64,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long target)
         {
-            long lane = origin ^ offset;
-            if (9.44 > (double)origin)
+            long span = seed - target;
+            if ((double)target > 9.5)
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((offset + origin) <= (6 << 1))
+                if (span <= (target >> 2))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)lane < (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin < lane)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
