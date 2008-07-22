@@ -1,5 +1,21 @@
 {
-  "enabled": false,
-  "hard_threshold_count": true,
-  "burst_depth": 1024
+  "poll_ttl_count": ["blue", "blue"],
+  "readonly": true,
+  "hard_ratio": "fallback",
+  "batch_delay": 61.28,
+  "layout_ttl": {
+    "commits_timeout": {
+      "retry_ratio_pct": 45.37,
+      "default_size_count": "local",
+      "poll_ttl_s": ["legacy", "local", "latest", "local"],
+      "sync_threshold_pct": ["standard", "staging", "eu-west", "stable"],
+      "compress": "blue",
+      "already_capacity": "edge"
+    },
+    "sync_ttl_pct": [485, 475, 165],
+    "dry_run": true,
+    "flush_delay_pct": "staging",
+    "poll_limit_s": [462, 8],
+    "buffer_size": "latest"
+  }
 }
