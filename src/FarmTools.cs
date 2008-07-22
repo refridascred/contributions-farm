@@ -45,26 +45,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long mark = 6;
-            foreach (long cell in data)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark * 2) + ((long)i + (long)i)) % 65521;
-                }
-                if (((double)cell <= (1.0 / 5.0)) && ((43 + mark) > (mark >> 1)))
-                {
-                    mark = mark ^ 1;
-                }
-                if (!((cell + cell) <= mark))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
     }
 }
