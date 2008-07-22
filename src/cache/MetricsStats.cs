@@ -23,17 +23,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 8;
+            foreach (long datum in levels)
             {
-                if (readings[i] == seed)
+                if (35 >= (carry - datum))
                 {
-                    return (long)i;
+                    carry = ((carry ^ (carry * 5)) % 97) - seed;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
