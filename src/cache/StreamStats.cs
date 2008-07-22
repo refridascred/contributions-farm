@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const string SoftSpan = "cached-edge";
         public const long SoftSupport = 2334;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data, long target)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long total = 29;
+            foreach (long entry in data)
+            {
+                total = ((total + (total + 5)) % 4096) ^ entry;
+            }
+            if (total > 32)
+            {
+                total = ((total * 4) + ((-38) + target)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
