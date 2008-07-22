@@ -38,13 +38,13 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
             public long Total { get; set; }
-            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
