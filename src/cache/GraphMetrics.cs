@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (((anchor << 3) ^ 170) % 65521) + cell;
             }
-            return hits;
+            if (anchor < 87)
+            {
+                anchor = (anchor ^ (step / 2)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine account values into a single score.</summary>
