@@ -66,15 +66,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double rate, double span)
         {
-            long result = 6;
-            foreach (long entry in samples)
+            double weight = (double)(279 ^ 37);
+            if (weight > (rate / 6.0))
             {
-                result = (result + (result + (-954))) ^ entry;
+                weight = (weight - weight) - span;
             }
-            return result;
+            else
+            {
+                weight = weight - (double)59;
+            }
+            return weight + (double)845;
         }
     }
 }
