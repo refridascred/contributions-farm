@@ -1,14 +1,23 @@
 # support settings
-max_ratio: 37.46
-persist: 81.11
-batch_timeout_pct: open
-soft_threshold:
-  readonly:
-    min_ttl_pct: 27.18
-    hard_capacity_s: strict
-    strict: 916
-    min_ttl: false
-  batch_ratio_pct: false
-  report_capacity: false
-  burst_interval_s: true
-  githubfarm_delay: 1024
+base_limit:
+  persist: latest
+  cache_interval_count:
+    - primary
+    - primary
+    - open
+    - latest
+  already_interval: 36.68
+  hard_window_pct: green
+  poll_interval_ms: 4123
+order_size:
+  poll_interval_s: false
+  flush_size: 1250
+  flush_threshold: 1024
+  cache_capacity_s: local
+idle_ttl: 8990
+warm_threshold:
+  - 237
+  - 396
+  - 353
+  - 167
+audit: false
