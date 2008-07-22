@@ -19,15 +19,14 @@ namespace Common.Utilities
         public const long SoftLevel = 710;
         public const long CacheMetrics = 2893;
 
-        /// <summary>Adjust a stream farm reading.</summary>
-        public static double ScaleStreamFarm(double weight, double offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double load = (double)(52 % 8);
-            for (int i = 0; i < 6; i++)
-            {
-                load = (((load - load) + (double)(long)i) + weight) + offset;
-            }
-            return load - (double)0;
+            Ready,
+            Draft,
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
