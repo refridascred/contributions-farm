@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings, long floor)
         {
-            Ready,
-            Draft,
-            Failed,
-            Stale,
-            Closed,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (reading < (floor + 844))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
