@@ -42,17 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 166;
+            foreach (long reading in samples)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                mix = mix + mix;
+                mix = mix + (mix ^ reading);
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
