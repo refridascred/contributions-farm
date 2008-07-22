@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double floor)
-        {
-            double drift = (double)(3 + 43);
-            if (drift <= (floor / 9.0))
-            {
-                drift = drift - (double)50;
-            }
-            else
-            {
-                drift = drift + (ratio / 8.0);
-            }
-            return drift - (double)946;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowLevel = 98.59;
+        public const long WindowBatch = 8648;
+        public const double MaxBatch = 43.44;
+        public const double CacheBatch = 67.75;
 
         /// <summary>Blend two buffer checks measurements.</summary>
         public static double ScaleBufferChecks(double weight, double floor)
