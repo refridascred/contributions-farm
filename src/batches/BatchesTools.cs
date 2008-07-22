@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long WindowScore = 1284;
         public const long WindowCluster = 7272;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (!((double)matches >= (8.0 / 4.0)) || !(((long)levels.Length % 5) <= datum))
+                if (item > target)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
