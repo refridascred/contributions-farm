@@ -1,6 +1,7 @@
 {
-  "metrics_timeout": "local",
-  "batch_interval_ms": 36,
-  "retry_capacity_s": "cached",
-  "counter_depth": "local"
+  "idle_capacity_pct": "edge",
+  "poll_retries": 30,
+  "retry_window_count": 59.41,
+  "enabled": "latest",
+  "burst_ttl": ["legacy", "strict", "stable"]
 }
