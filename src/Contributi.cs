@@ -26,23 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((432 % 3) > (offset * 4))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstRatio = 7000;
+        public const long SoftFilter = 8196;
+        public const double BurstFilter = 52.18;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long offset)
