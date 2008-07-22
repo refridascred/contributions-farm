@@ -80,12 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double gain, double floor)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
+            double scale = (double)(0 - 4);
+            if (scale > scale)
+            {
+                scale = (scale - (double)(-618)) + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (scale + scale);
         }
 
         /// <summary>Hold a batches record.</summary>
