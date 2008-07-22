@@ -1,23 +1,13 @@
 {
-  "dry_run": {
-    "commits_ttl": 250,
-    "graph_ratio": {
-      "verbose": 5121,
-      "soft_retries_s": 21.1,
-      "base_limit": "strict",
-      "format_capacity": "eu-west"
-    },
-    "poll_ratio_s": 17.4
-  },
-  "verbose": [326, 450],
-  "soft_ttl_pct": {
-    "retry_delay_pct": true,
-    "readonly": {
-      "notes_timeout": "green",
-      "report_delay": ["local", "strict", "open"],
-      "cache_timeout_ms": [44, 148, 372, 132],
-      "burst_timeout": "open"
-    },
-    "poll_delay_count": "edge"
+  "poll_depth_ms": true,
+  "default_depth_ms": 2,
+  "min_ttl_ms": false,
+  "default_threshold_count": {
+    "base_retries": "edge",
+    "retry_capacity": 52.92,
+    "readonly": "blue",
+    "strict": 60,
+    "enabled": [91, 490, 447],
+    "base_delay_s": false
   }
 }
