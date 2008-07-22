@@ -50,15 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Active,
-            Locked,
-            Paused,
-            Done,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxRatio = 73.72;
+        public const long RetryDepth = 3618;
+        public const long HardChannel = 3390;
+        public const long SoftChannel = 4604;
+        public const long BatchBudget = 6969;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long FoldSession(long[] readings, long floor)
