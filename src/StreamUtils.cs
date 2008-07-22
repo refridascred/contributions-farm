@@ -66,11 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 21.5;
-        public const string MaxStream = "stable-edge";
-        public const long MinSize = 9239;
-        public const long IdleScore = 246;
-        public const long BatchBudget = 2165;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
