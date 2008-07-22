@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] values, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (seed >= (seed % 64))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
