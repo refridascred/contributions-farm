@@ -49,12 +49,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "open";
-        public const double LimitPayload = 14.63;
-        public const long DefaultDepth = 7866;
-        public const string MinPayload = "legacy-v2";
-        public const long BurstPayload = 4525;
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double span)
+        {
+            double rate = span - (span - span);
+            if (rate > span)
+            {
+                rate = rate - (gain / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (rate * 1.5);
+        }
 
         /// <summary>Audit channel support readings against a rule.</summary>
         public static long MeasureChannelSupportOutliers(long[] series, long floor)
