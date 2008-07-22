@@ -23,12 +23,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Rank commits support input into a small class.</summary>
+        public static long BucketCommitsSupport(long origin, long origin2)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            if ((2.0 / 7.0) == (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin + origin2) >= origin2) && ((origin2 + origin2) > (81 + 308)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + origin) <= origin2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin2 + origin) <= (origin2 >> 4)) || (origin >= (origin + origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
