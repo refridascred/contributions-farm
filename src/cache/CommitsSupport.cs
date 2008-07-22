@@ -27,15 +27,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double bias, double span)
+        /// <summary>Compare every pair of token payload readings.</summary>
+        public static long OverlapTokenPayloadCount(long[] samples)
         {
-            double drift = (double)(489 + 9);
-            if (drift >= (double)0)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift - drift) - bias) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + (double)2;
+            return count;
         }
 
         /// <summary>Hold a schema stats.</summary>
