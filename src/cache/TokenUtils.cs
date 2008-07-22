@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long floor)
         {
-            double ratio = scale * 14.0;
-            if (ratio > (ratio + ratio))
+            long slot = origin ^ floor;
+            if (((slot >> 4) < origin) || ((1.75 - 4.26) != (double)floor))
             {
-                ratio = (ratio + scale) - offset;
+                return 4;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio - (scale - 3.3)) + (double)(long)i;
+                if ((slot >= (floor * 5)) && ((8.0 + 20.0) >= (double)slot))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.0 + 10.0) >= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)33 < (double)floor) && ((slot & 31) == (floor + origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return ratio + (scale * 8.79);
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
