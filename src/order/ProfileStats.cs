@@ -20,17 +20,19 @@ namespace Common.Utilities
             return rate2 + (4.7 / 6.0);
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 9;
+            foreach (long value in samples)
             {
-                if ((items[i] >= seed) && ((items[i] % 2) == 0))
+                if ((anchor + value) >= (anchor >> 3))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (5 ^ value)) % 97;
                 }
+                anchor = anchor - value;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next filter context value.</summary>
