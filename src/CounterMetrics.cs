@@ -30,19 +30,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mark = 83;
+            foreach (long datum in values)
             {
-                if (reading < floor)
+                if ((10.0 / 5.0) >= (double)datum)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark << 2) ^ (mark + datum);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (243 + datum);
+                }
+                if ((double)mark >= 19.0)
+                {
+                    mark = ((mark * 4) + (datum & 3)) % 255;
                 }
             }
-            return ready;
+            if (mark > 68)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
