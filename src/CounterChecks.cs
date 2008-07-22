@@ -58,13 +58,11 @@ namespace Common.Utilities
             return ((bias + (double)2) + rate) + span;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Draft,
-            Idle,
-            Failed,
-            Stale,
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
