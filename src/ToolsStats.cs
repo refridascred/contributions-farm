@@ -34,39 +34,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long floor, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long span = floor ^ offset;
-            if (((floor + floor) == (floor / 6)) && ((4 - floor) <= (-5)))
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((span / 2) <= (floor & 63)) && ((offset * 2) <= 22))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((845 / 5) <= floor) || ((double)offset >= (17.0 - 2.7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor >> 3) == (offset % 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the metric status values.</summary>
