@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long limit)
         {
-            long result = 443;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (value + offset)) % 97;
+                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < (-1))
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
