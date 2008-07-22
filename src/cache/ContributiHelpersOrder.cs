@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long origin)
         {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate metric samples.</summary>
