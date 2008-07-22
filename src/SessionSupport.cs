@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "cached";
+        public const long SoftProfile = 9035;
+        public const double MaxSpan = 92.45;
+        public const double MinProfile = 85.51;
+        public const double BurstBudget = 5.3;
     }
 }
