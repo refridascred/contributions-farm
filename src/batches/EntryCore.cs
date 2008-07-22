@@ -71,18 +71,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((6.3 + 9.94) >= (double)entry) && (((5.33 / 3.0) >= (double)entry) && ((tally & 255) < (entry + tally))))
                 {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
