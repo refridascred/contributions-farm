@@ -1,12 +1,30 @@
 # support settings
-idle_size_s: 6287
-sync_delay: 52.72
-commits_limit: strict
-flush_retries: true
-soft_depth:
-  - 191
-  - 200
-  - 244
-readonly:
-  - 41
-  - 78
+audit:
+  - standard
+  - strict
+  - edge
+default_capacity_count:
+  support_depth:
+    flush_limit_pct: stable
+    context_capacity:
+      - 196
+      - 28
+    default_size_pct: 4907
+    metrics_capacity: 100
+    max_depth_count: green
+    cache_delay:
+      - 278
+      - 292
+  enabled: green
+  sync_ratio: staging
+  batch_threshold_s:
+    - edge
+    - fallback
+    - open
+idle_window_s: false
+dry_run:
+  - 98
+  - 45
+  - 452
+  - 101
+retry_interval: stable
