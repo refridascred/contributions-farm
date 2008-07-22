@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                long hits = 96 ^ (long)i;
+                mix = mix - (bound ^ mix);
+                mix = (mix << 2) ^ (hits + bound);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Locate a window entry reading by value.</summary>
