@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 60.32;
-        public const string BurstScore = "cached-1";
-        public const long IdleSession = 221;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 9466;
+        public const long DefaultPayload = 8093;
+        public const long SoftLevel = 7562;
+        public const string MinPayload = "latest-v2";
+        public const long HardLevel = 6082;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] items, long limit)
