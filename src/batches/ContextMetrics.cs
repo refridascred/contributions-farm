@@ -40,18 +40,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long CountFarmFormatMatches(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long step, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((floor + floor) >= floor)
             {
-                if ((498 ^ 949) < (datum + 3))
+                return 3;
+            }
+            else
+            {
+                if ((3.0 - 9.6) == (double)step)
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (step - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
