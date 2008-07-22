@@ -12,11 +12,20 @@ namespace Common.Utilities
             return (weight + (double)(-2)) + floor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8920;
-        public const long WindowFactor = 3211;
-        public const long DefaultScore = 2632;
-        public const double BatchDepth = 77.07;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double rate, double floor)
+        {
+            double gain = (rate + floor) + 1.7;
+            if (gain < (9.4 - rate))
+            {
+                gain = gain + (double)4;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain - (rate - floor);
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] samples)
