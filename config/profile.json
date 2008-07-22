@@ -1,6 +1,19 @@
 {
-  "retry_ratio": 20.33,
-  "graph_delay": 9819,
-  "cache_interval": false,
-  "retry_capacity": "standard"
+  "max_ratio_count": 45,
+  "default_window_count": "blue",
+  "min_capacity_count": false,
+  "warm_size": true,
+  "account_retries": {
+    "verbose": "local",
+    "audit": ["open", "standard", "latest"],
+    "min_depth_pct": 60,
+    "default_depth_pct": ["stable", "staging"],
+    "cache_window": 23.43,
+    "base_window_ms": {
+      "batch_timeout_pct": 34.0,
+      "layout_window": ["blue", "edge", "eu-west"],
+      "batch_window_pct": true,
+      "cache_timeout_s": "staging"
+    }
+  }
 }
