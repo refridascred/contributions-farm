@@ -20,19 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] levels, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long diff = seed + target;
+            if ((diff + diff) >= diff)
             {
-                if (entry <= origin)
+                return 6;
+            }
+            else
+            {
+                if (((seed * 2) > seed) || (target >= (seed & 15)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.7 / 4.0) <= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the route status values.</summary>
