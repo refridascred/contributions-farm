@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long seed)
         {
-            Pending,
-            Idle,
-            Locked,
-            Draft,
-            Stale,
+            long mark = 8;
+            foreach (long datum in levels)
+            {
+                if ((double)datum >= (double)mark)
+                {
+                    mark = ((mark * 2) + (mark * 5)) - seed;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the editor phase values.</summary>
