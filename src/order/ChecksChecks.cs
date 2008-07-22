@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long MeasureQueueRecordMatches(long[] series)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(3 >= (sample ^ sample)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the record layout entries that pass the check.</summary>
