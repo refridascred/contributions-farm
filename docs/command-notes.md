@@ -1,11 +1,15 @@
 # Command notes
 
-Each session is validated before it reaches the notes queue.
-Defaults for route live in the config folder and can be overridden per environment.
-The commits module keeps commits values in sync with the window cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Defaults for channel live in the config folder and can be overridden per environment.
+Keep report and channel names short and lowercase.
+
+The order report groups every notes by metrics.
+When a contributi fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep entry values small
-- Review token limits each release
+- Validate session input early
+- Prefer metrics defaults
+- Review payload limits each release
+- Keep session values small
