@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] data, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = floor;
+            if (drift < (8.0 + drift))
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (9.32 * 8.87)) - ratio;
             }
-            return -1;
+            return drift + (double)44;
         }
     }
 }
