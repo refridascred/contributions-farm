@@ -48,17 +48,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "fallback-1";
+        public const long BurstCount = 3568;
+        public const double MaxDepth = 32.55;
+        public const long RetrySpan = 9110;
     }
 }
