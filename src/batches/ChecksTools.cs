@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] data, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] > step)
+                if (score < (880 % 5))
                 {
-                    return (long)i;
+                    score = (score ^ (bound + score)) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count notes cache pairs that satisfy a relation.</summary>
