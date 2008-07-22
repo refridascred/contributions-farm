@@ -27,10 +27,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 4079;
-        public const long RetryInterval = 7161;
-        public const long DefaultFormat = 7679;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long step, long limit)
+        {
+            if (((double)limit <= 1.1) || ((9.0 / 4.0) <= (double)step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((12.0 - 2.0) > (double)limit) && ((step & 63) < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step % 64) >= (limit - step)) || ((limit % 64) == (step * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] data, long seed)
