@@ -12,21 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Digest a series of entry graph entries.</summary>
+        public static long FoldEntryGraph(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 1;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ (carry + carry)) - datum;
             }
-            return matches;
+            if (carry > 821)
+            {
+                carry = (carry + (carry & 7)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
