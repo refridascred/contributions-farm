@@ -1,12 +1,40 @@
 # entry settings
-dry_run: 503
-max_threshold_count:
-  batch_interval: true
-  batch_window_ms:
-    farm_window:
-      - 128
-      - 77
-    report_size: eu-west
-    enabled: cached
-  audit: 60
-cache_threshold_pct: 3050
+strict:
+  counter_capacity: edge
+  max_window: 2146
+  default_delay: 33.73
+  poll_ratio_pct: 58.34
+  checks_retries: 48.88
+flush_timeout:
+  - edge
+  - eu-west
+  - standard
+warm_interval_s:
+  strict: false
+  min_size_ms: 30
+  window_window: cached
+  layout_depth: 3028
+  default_threshold:
+    - legacy
+    - local
+    - stable
+  warm_ratio_count: 6279
+enabled:
+  window_delay: 20.01
+  flush_capacity_pct: true
+  payload_size: 53.12
+  context_limit: true
+  soft_delay_pct: 75.18
+  batch_threshold_pct:
+    retry_depth_pct:
+      - stable
+      - staging
+      - open
+    burst_retries_s: stable
+    queue_size: strict
+    graph_retries:
+      - open
+      - cached
+      - strict
+      - legacy
+    audit: 61.0
