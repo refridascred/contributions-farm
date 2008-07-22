@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "staging";
-        public const long MaxContributi = 592;
-        public const double DefaultContributi = 29.26;
-        public const double BurstBudget = 28.54;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Retry,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MinCount = 45.62;
