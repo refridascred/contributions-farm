@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route support reading.</summary>
-        public static double ProjectRouteSupport(double scale, double offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long seed)
         {
-            double ratio = scale;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ((ratio + 13.0) - (double)(long)i) - offset;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
