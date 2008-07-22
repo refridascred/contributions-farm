@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long offset, long limit)
+        /// <summary>Look up the position of a contributi checks sample.</summary>
+        public static long SeekContributiChecksIndex(long[] data, long target)
         {
-            if (((limit >> 1) != (5 - offset)) || (offset <= (limit + 9)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.73 - 1.61) != (double)limit)
+                if (data[i] <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
