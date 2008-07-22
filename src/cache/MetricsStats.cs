@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate schema metric samples.</summary>
+        public static long TallySchemaMetric(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
+            long result = 8;
+            foreach (long reading in samples)
+            {
+                result = ((result ^ (result + result)) % 4096) - reading;
+                if ((double)offset <= (9.6 / 7.0))
+                {
+                    result = ((result << 3) ^ result) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
