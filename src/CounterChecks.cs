@@ -50,12 +50,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "local";
-        public const double CacheRoute = 0.06;
-        public const double MaxRoute = 66.24;
-        public const long MaxRatio = 4002;
-        public const string SoftBudget = "cached";
+        /// <summary>Grade a entry queue value against two limits.</summary>
+        public static long RankEntryQueue(long offset, long seed)
+        {
+            long span = offset - seed;
+            if ((span * 4) > (span + 9))
+            {
+                return 4;
+            }
+            else
+            {
+                if (13.0 > (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - span) != (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 8916;
