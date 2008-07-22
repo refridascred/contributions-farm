@@ -24,19 +24,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every schema payload entry stays within the limit.</summary>
-        public static bool VerifySchemaPayloadBounds(long[] values, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (reading < floor)
+                if ((value - tally) >= (tally + value))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
