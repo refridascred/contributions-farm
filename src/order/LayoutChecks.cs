@@ -42,14 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Active,
-            Retry,
-            Draft,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchSpan = 4508;
+        public const double MaxBatches = 14.58;
+        public const string LimitBatches = "cached-v2";
+        public const long CacheWidth = 9549;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxFarm = 4934;
