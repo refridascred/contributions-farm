@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Count the cluster buffer entries that pass the check.</summary>
+        public static long CountClusterBufferHits(long[] values, long offset)
         {
-            long mark = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mark = (((mark << 3) ^ (127 << 3)) % 65521) - entry;
-                if ((mark + mark) >= (mark % 5))
+                if (!(((offset & 15) > (seen ^ 9)) || ((reading << 2) != (4 ^ offset))))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark * 3) + (mark + 7);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
