@@ -35,22 +35,10 @@ namespace Common.Utilities
             return weight + (5.5 - bias2);
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "legacy-v2";
+        public const string HardChecks = "legacy";
+        public const long BatchInterval = 6022;
 
         /// <summary>Match up cache samples.</summary>
         public static long OverlapCacheCount(long[] items)
