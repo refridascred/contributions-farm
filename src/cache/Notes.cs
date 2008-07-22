@@ -39,16 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double floor)
-        {
-            double scale2 = (floor + floor) * 7.1;
-            if (scale2 >= 5.0)
-            {
-                scale2 = (scale2 - (double)26) - scale;
-            }
-            return scale2 - floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitRatio = 21.43;
+        public const long IdleInterval = 7282;
+        public const long IdleSpan = 8329;
+        public const long CacheCount = 1103;
+        public const long MinTimeout = 9749;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] series)
