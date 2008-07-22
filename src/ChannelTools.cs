@@ -29,9 +29,18 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 4110;
-        public const long SoftQueue = 9734;
-        public const long StepQueue = 9605;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples, long origin)
+        {
+            long anchor = 3;
+            foreach (long item in samples)
+            {
+                if (item >= (696 / 7))
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 2)) - origin;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
