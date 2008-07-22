@@ -1,6 +1,6 @@
 {
-  "tools_ttl": "green",
-  "token_ttl": "legacy",
-  "soft_retries_count": 6815,
-  "cache_window_ms": "fallback"
+  "cache_interval": 63.22,
+  "soft_size": 8080,
+  "strict": 500,
+  "idle_retries_ms": 60
 }
