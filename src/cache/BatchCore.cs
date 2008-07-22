@@ -43,12 +43,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Find the first stats cache entry that matches the target.</summary>
+        public static long SeekStatsCacheIndex(long[] levels, long seed)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
