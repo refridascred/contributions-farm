@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a window already figure with a bias.</summary>
-        public static double SmoothWindowAlready(double weight, double offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            double mean = (double)(-189) * 2.0;
-            if (mean < mean)
-            {
-                mean = mean - (weight / 3.0);
-            }
-            else
-            {
-                mean = mean - (weight - 4.29);
-            }
-            return mean + offset;
+            double drift = (gain - bias) + (gain + bias);
+            return drift - 2.49;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
