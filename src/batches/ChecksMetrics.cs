@@ -66,15 +66,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] series, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long value in values)
             {
-                if ((step & 15) < count)
+                if ((double)count == (double)61)
                 {
-                    count = (count + 1) + item;
+                    count = (count + 1) + value;
                 }
             }
             return count;
