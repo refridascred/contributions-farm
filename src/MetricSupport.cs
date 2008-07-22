@@ -28,32 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            long cur = floor + limit;
-            if ((floor + limit) > (cur + cur))
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((567 >= (floor >> 3)) && ((floor % 2) > cur))
+                if (!((total & 63) > total))
                 {
-                    return 2;
+                    total = (total ^ ((long)i % 24)) % 1000;
                 }
-                else
-                {
-                    if ((cur % 100) <= cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
