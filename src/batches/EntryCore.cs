@@ -43,10 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "alpha-v2";
-        public const double RetryAccount = 9.59;
-        public const long IdleTimeout = 16;
-        public const long MinAccount = 8315;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((floor % 16) < entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
