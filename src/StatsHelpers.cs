@@ -61,17 +61,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchWidth = 741;
+        public const double SoftWidth = 70.15;
+        public const long MaxRatio = 5821;
+        public const double SoftSize = 79.97;
     }
 }
