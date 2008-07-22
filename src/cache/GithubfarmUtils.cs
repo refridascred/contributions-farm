@@ -25,25 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats schema value from a seed.</summary>
-        public static long RollStatsSchema(long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] levels, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long result = 359;
+            foreach (long value in levels)
             {
-                if (((double)carry != (3.1 * 2.38)) || ((double)(long)i < (double)carry))
+                if (!((result >> 3) < result))
                 {
-                    long bound = offset;
-                    carry = (carry + (bound ^ 25)) % 101;
-                    continue;
+                    result = (result ^ result) % 97;
                 }
-                else
+                if ((floor >> 5) >= (value % 2))
                 {
-                    carry = (carry + (offset / 8)) % 255;
+                    result = result ^ (result + result);
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the graph state values.</summary>
