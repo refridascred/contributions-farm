@@ -36,12 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinTimeout = 86.66;
-        public const double WindowLevel = 57.09;
-        public const long CacheLevel = 651;
-        public const long StepSpan = 1958;
-        public const string RetryFactor = "staging";
+        /// <summary>Iterate the counter queue series from a seed.</summary>
+        public static long StepCounterQueue(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
         public static long AuditChannelProfileHits(long[] data)
