@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the session format entries that pass the check.</summary>
+        public static long MeasureSessionFormatGaps(long[] samples)
         {
-            Failed,
-            Done,
-            Pending,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - seen) <= sample)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
