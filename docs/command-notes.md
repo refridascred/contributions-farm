@@ -1,14 +1,13 @@
 # Command notes
 
-Use cache settings to tune how often record data is refreshed.
-The notes module keeps metric values in sync with the filter cache.
+The command module keeps record values in sync with the commits cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-The contributi module keeps window values in sync with the filter cache.
-The metrics report groups every schema by session.
+Use route settings to tune how often account data is refreshed.
+When a session fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new format fields
-- Validate graph input early
-- Log every editor change
-- Prefer layout defaults
+- Document new record fields
+- Validate format input early
+- Log every support change
