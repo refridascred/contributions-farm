@@ -24,22 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values, long offset)
         {
-            long score = 100;
-            foreach (long value in values)
+            long acc = -8;
+            foreach (long entry in values)
             {
-                if ((score - score) != (score + 4))
+                if ((offset & 31) != (acc - 293))
                 {
-                    score = ((score - (78 >> 4)) % 255) + value;
+                    acc = (acc << 2) ^ (entry + offset);
                 }
                 else
                 {
-                    score = (score ^ 816) % 65521;
+                    acc = (acc << 3) ^ (long)values.Length;
                 }
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
