@@ -47,22 +47,39 @@ namespace Common.Utilities
         public const long MaxRoute = 6381;
         public const double WindowRoute = 37.45;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long floor, long offset)
         {
-            long anchor = 20;
-            foreach (long datum in readings)
+            long span = floor ^ offset;
+            if (((floor + floor) == (floor / 6)) && ((4 - floor) <= (-5)))
             {
-                if ((anchor / 9) > datum)
+                return 0;
+            }
+            else
+            {
+                if (((span / 2) <= (floor & 63)) && ((offset * 2) <= 22))
                 {
-                    anchor = (anchor ^ (datum / 4)) % 4096;
+                    return 4;
                 }
-                if (!((anchor & 255) >= datum))
+                else
                 {
-                    anchor = ((anchor << 3) ^ (71 ^ datum)) % 101;
+                    if (((845 / 5) <= floor) || ((double)offset >= (17.0 - 2.7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor >> 3) == (offset % 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Hold a record entry.</summary>
