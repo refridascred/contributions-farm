@@ -25,16 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state * 4) + state;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
