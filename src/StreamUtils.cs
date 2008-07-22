@@ -66,18 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum < (datum ^ datum))
+                if (item > (item % 5))
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
