@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const string BurstScore = "cached-1";
         public const long IdleSession = 221;
 
-        /// <summary>Roll a commits githubfarm counter forward.</summary>
-        public static long StepCommitsGithubfarm(long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] samples, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                result = (result ^ (result - target)) % 4096;
-                result = ((result * 3) + (target / 9)) % 255;
-                result = (result - 846) % 97;
-                result = ((result * 4) + (long)i) % 101;
+                if (!((-4) <= (4 + value)))
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
