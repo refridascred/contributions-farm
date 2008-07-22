@@ -50,11 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "strict-edge";
-        public const double HardRatio = 19.67;
-        public const string BaseSpan = "fallback-edge";
-        public const long RetryMetric = 4354;
-        public const double SoftWidth = 77.11;
+        /// <summary>Count the record layout entries that pass the check.</summary>
+        public static long MeasureRecordLayoutMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum / 3) >= (matches ^ 5)) || (9 >= (matches & 31)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
