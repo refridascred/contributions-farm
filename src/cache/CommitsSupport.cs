@@ -42,15 +42,28 @@ namespace Common.Utilities
         public const long DefaultBatches = 8880;
         public const long LimitBatches = 245;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double bias)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values)
         {
-            double load = (bias - weight) * 6.32;
-            for (int i = 0; i < 3; i++)
+            long carry = -326;
+            foreach (long item in values)
             {
-                load = (load + (load - 6.88)) + (double)(long)i;
+                carry = (carry + (carry ^ carry)) % 4096;
+                carry = (carry - carry) % 97;
+                if ((item * 5) < (item % 12))
+                {
+                    carry = carry - (item + carry);
+                }
+                else
+                {
+                    carry = (carry ^ (item + (-905))) % 65521;
+                }
             }
-            return load - load;
+            if (carry < 54)
+            {
+                carry = carry + (long)values.Length;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
