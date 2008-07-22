@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] items, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long total = 94;
+            foreach (long sample in items)
             {
-                total = (total - total) % 97;
-                total = (total + (offset + 114)) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
+                total = ((total - (44 >> 4)) - sample) - floor;
             }
             return total;
         }
