@@ -1,17 +1,4 @@
 # githubfarm settings
-base_window: 32
-soft_timeout: strict
-enabled:
-  default_limit_count: 4643
-  burst_capacity_ms:
-    - open
-    - eu-west
-  burst_threshold_count: 8883
-  account_window: 10.55
-batch_size_ms:
-  payload_interval: false
-  burst_ratio_s: 83.48
-  base_capacity_s:
-    - 253
-    - 23
-  poll_interval_s: legacy
+poll_limit_count: green
+persist: 32.46
+cache_threshold_ms: 95.44
