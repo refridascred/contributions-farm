@@ -53,18 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] levels, long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches <= entry) || ((entry & 3) >= (matches + entry)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) - offset;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of entry order readings.</summary>
