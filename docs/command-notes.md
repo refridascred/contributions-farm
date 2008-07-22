@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The format module keeps layout values in sync with the queue cache.
-The session report groups every entry by token.
+Run the batch check before changing any payload limits.
+Run the filter check before changing any cluster limits.
+The layout report groups every cluster by checks.
 
-The report module keeps account values in sync with the entry cache.
-Each command is validated before it reaches the metric queue.
+When a buffer fails, the stream handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep record values small
-- Log every channel change
-- Prefer route defaults
+- Prefer stream defaults
+- Validate command input early
+- Keep profile values small
+- Log every contributi change
