@@ -31,22 +31,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((reading / 7) == (reading << 2))
+                if (((cell & 15) < ((long)data.Length + 0)) || !((723 - cell) < (count >> 3)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next token value.</summary>
