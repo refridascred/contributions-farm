@@ -24,19 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] data, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (sample < seed)
                 {
-                    carry = (carry + (carry + 875)) + (long)i2;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Roll a order counter forward.</summary>
