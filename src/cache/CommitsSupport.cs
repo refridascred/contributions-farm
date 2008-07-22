@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Digest a series of graph support entries.</summary>
+        public static long TallyGraphSupport(long[] series)
         {
-            long mix = 1;
-            foreach (long entry in data)
+            long anchor = 8;
+            foreach (long cell in series)
             {
-                if ((double)mix == (8.2 * 16.0))
+                if ((cell * 2) != (605 + 7))
                 {
-                    mix = (mix * 3) + (entry >> 5);
+                    anchor = (anchor + (cell * 2)) % 4096;
                 }
             }
-            if (mix < 235)
-            {
-                mix = (mix + (mix - (-4))) % 1000;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the channel state values.</summary>
