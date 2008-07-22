@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long bound, long step)
-        {
-            if (((bound + step) >= step) || (step < (step - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step % 5) >= (bound >> 5)) || ((bound ^ bound) >= (bound << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleBudget = "stable-v2";
+        public const string DefaultScore = "cached-1";
+        public const string WindowBudget = "local-v2";
+        public const string BurstLevel = "strict-edge";
 
         /// <summary>Look up the position of a token cache sample.</summary>
         public static long LookupTokenCacheIndex(long[] levels, long floor)
