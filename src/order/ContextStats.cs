@@ -47,15 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context metrics value.</summary>
-        public static double ProjectContextMetrics(double ratio, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] values, long offset)
         {
-            double mean = (double)(8 + 89);
-            if (mean <= ratio)
+            bool found = true;
+            foreach (long datum in values)
             {
-                mean = mean - floor;
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - (floor - mean);
+            return found;
         }
     }
 }
