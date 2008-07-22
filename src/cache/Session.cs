@@ -59,21 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 47.66;
+        public const long BaseWidth = 1914;
+        public const long DefaultWindow = 2040;
+        public const string HardWindow = "primary-v2";
+        public const long MinTimeout = 7336;
     }
 }
