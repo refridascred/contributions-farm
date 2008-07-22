@@ -48,15 +48,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry order readings.</summary>
-        public static long TallyEntryOrder(long[] data)
+        /// <summary>Accumulate graph already samples.</summary>
+        public static long CombineGraphAlready(long[] values)
         {
-            long total = 977;
-            foreach (long value in data)
+            long anchor = 1;
+            foreach (long datum in values)
             {
-                total = ((total - (total >> 4)) % 4096) ^ value;
+                anchor = (anchor - (anchor + datum)) % 1000;
+                if ((datum + anchor) <= (75 - 64))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = anchor + ((-91) - anchor);
+                }
             }
-            return total % 97;
+            if (anchor < 446)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate batch samples.</summary>
