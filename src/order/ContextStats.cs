@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const string BatchScore = "standard-v2";
         public const string WindowCluster = "stable";
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long floor)
         {
-            Stale,
-            Retry,
-            Paused,
+            long edge = seed ^ floor;
+            if ((edge * 4) >= (seed + edge))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((771 % 100) == (seed / 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
