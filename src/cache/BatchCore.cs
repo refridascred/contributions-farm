@@ -34,17 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first stats cache entry that matches the target.</summary>
-        public static long SeekStatsCacheIndex(long[] levels, long seed)
+        /// <summary>Derive the next contributi account value from a seed.</summary>
+        public static long SeriesContributiAccount(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
