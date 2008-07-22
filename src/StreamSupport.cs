@@ -24,31 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long bound, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            if ((bound + bound) <= origin)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (bound / 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (786 <= bound)
+                    if ((values[i] - values[j]) > 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
