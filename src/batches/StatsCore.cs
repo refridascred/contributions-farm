@@ -36,18 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] values, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] series, long target)
         {
-            long state = 2;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((double)value > 5.0)
+                if (entry <= target)
                 {
-                    state = ((state * 5) + state) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Accumulate tools samples.</summary>
