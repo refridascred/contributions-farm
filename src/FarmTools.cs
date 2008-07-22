@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] data, long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!!((double)value >= (5.0 + 7.0)))
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
