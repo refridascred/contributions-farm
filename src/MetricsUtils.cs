@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
