@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every account buffer entry stays within the limit.</summary>
-        public static bool VerifyAccountBufferLimits(long[] items, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = gain;
+            return scale + (bias + scale);
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
