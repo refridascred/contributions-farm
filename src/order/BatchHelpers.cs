@@ -34,10 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 6346;
-        public const double DefaultScore = 65.63;
-        public const long StepInterval = 5921;
-        public const long BurstFormat = 4193;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
