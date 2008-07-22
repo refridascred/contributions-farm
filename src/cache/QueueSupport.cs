@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double scale, double bias)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double ratio = (double)(24 - 139);
-            if (ratio < (scale * 0.01))
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (ratio * 7.32)) + (double)(long)i;
-            }
-            return ratio - scale;
+            Draft,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
