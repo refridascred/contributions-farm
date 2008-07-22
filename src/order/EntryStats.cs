@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long HardContributi = 1891;
         public const long LimitFactor = 111;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double load = (double)(-556) / 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (seen < (seen + 928))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (((load - 9.0) + (double)(long)i) - gain) - bias;
             }
-            return seen;
+            return load - 4.0;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
