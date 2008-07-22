@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxTimeout = 90.08;
-        public const long SoftProfile = 3002;
-        public const long MaxProfile = 1733;
+        /// <summary>Grade a window editor value against two limits.</summary>
+        public static long BucketWindowEditor(long floor, long floor2)
+        {
+            long slot = floor - floor2;
+            if (slot < (floor2 - floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor2 << 3) != (slot + slot)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double ratio, double span)
