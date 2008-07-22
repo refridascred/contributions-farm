@@ -76,13 +76,25 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            long mark = 176;
+            foreach (long reading in readings)
+            {
+                long next = (long)readings.Length;
+                if ((mark ^ mark) <= (16 << 3))
+                {
+                    next = (next - (mark % 2)) % 65521;
+                    next = next ^ mark;
+                }
+                else
+                {
+                    mark = mark + next;
+                }
+                mark = ((mark * 5) + reading) % 101;
+            }
+            return mark % 97;
         }
     }
 }
