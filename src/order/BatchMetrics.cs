@@ -42,40 +42,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long seed)
-        {
-            long step = offset - seed;
-            if ((offset - seed) > seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(step <= (seed + seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - step) > (step + 972))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.0 + 16.0) < (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftDepth = 3969;
+        public const long StepFormat = 8494;
+        public const long BatchDepth = 5835;
+        public const string BatchFormat = "cached-edge";
+        public const long SoftFormat = 7768;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinCount = 4742;
