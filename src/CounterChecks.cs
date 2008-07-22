@@ -68,13 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a farm entry.</summary>
