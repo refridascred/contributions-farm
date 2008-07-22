@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + floor) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
