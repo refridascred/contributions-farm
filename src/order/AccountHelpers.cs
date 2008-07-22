@@ -46,19 +46,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] items, long floor)
+        /// <summary>Look up the position of a metric counter sample.</summary>
+        public static long FindMetricCounterIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > floor)
+                if (items[i] <= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
