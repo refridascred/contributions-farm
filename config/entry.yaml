@@ -1,7 +1,16 @@
 # entry settings
-report_interval: false
-strict: 42.84
-flush_threshold_count:
-  - 233
-  - 287
-  - 482
+batch_limit_s: 4
+cache_timeout: 2832
+format_depth: 1024
+sync_size: 8617
+commits_limit:
+  sync_delay:
+    - cached
+    - latest
+    - staging
+  layout_ratio: true
+  default_interval: 7346
+  verbose: 47
+  entry_retries: 89.06
+  cache_ttl_ms: true
+base_threshold_ms: 10
