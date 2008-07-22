@@ -74,18 +74,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long step, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long diff = step - limit;
+            if (limit <= (9 + step))
             {
-                if ((double)count == (double)61)
+                return 7;
+            }
+            else
+            {
+                if ((step % 10) <= (303 + step))
                 {
-                    count = (count + 1) + value;
+                    return 5;
+                }
+                else
+                {
+                    if (diff > (limit * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
