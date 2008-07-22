@@ -16,19 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a notes payload figure with a bias.</summary>
-        public static double AdjustNotesPayload(double bias, double floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 - (double)733) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + (double)612;
+            return tally;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
