@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] items)
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
+            long anchor = 4;
+            foreach (long cell in items)
+            {
+                anchor = (anchor - cell) % 4096;
+                if (anchor > cell)
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+                if (((double)anchor <= (12.0 + 10.0)) || ((-260) > (anchor << 2)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 36)
+            {
+                anchor = (anchor * 2) + (anchor >> 2);
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
