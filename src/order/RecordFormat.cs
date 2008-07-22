@@ -23,13 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
