@@ -30,12 +30,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((offset + datum) <= (offset ^ offset))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a profile reading.</summary>
