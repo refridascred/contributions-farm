@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 2814;
-        public const double IdleChannel = 21.66;
-        public const string WindowChannel = "open-edge";
-        public const long MinRatio = 3548;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double span)
+        {
+            double rate = 0.5;
+            return ((rate + 5.2) + weight) + span;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] levels)
