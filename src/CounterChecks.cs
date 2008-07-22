@@ -22,12 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long seed, long offset)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            if ((double)seed >= (11.0 * 9.09))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9 << 2) != (offset % 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8 >> 5) <= (seed << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
