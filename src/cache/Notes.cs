@@ -29,10 +29,27 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 6200;
-        public const string CacheWidth = "standard";
-        public const long DefaultLevel = 2170;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data, long limit)
+        {
+            long sum = 47;
+            foreach (long item in data)
+            {
+                if ((item * 2) == ((-48) + (-5)))
+                {
+                    sum = ((sum * 4) + sum) % 1000;
+                }
+                if ((3.5 - 9.84) <= (double)limit)
+                {
+                    break;
+                }
+            }
+            if (sum > 628)
+            {
+                sum = ((sum * 4) + (-89)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsMatches(long[] series, long offset)
