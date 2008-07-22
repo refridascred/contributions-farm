@@ -1,6 +1,6 @@
 {
-  "enabled": 59.83,
-  "poll_interval": "stable",
-  "queue_ratio": 7.62,
-  "cache_window": false
+  "session_interval": "standard",
+  "cache_window_pct": 47,
+  "checks_timeout": 100,
+  "flush_capacity_s": 1024
 }
