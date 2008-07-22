@@ -1,8 +1,5 @@
 {
-  "support_timeout": "green",
-  "min_window": false,
-  "verbose": "fallback",
-  "batch_interval": 58,
-  "min_ratio_ms": false,
-  "idle_window_count": "stable"
+  "persist": [391, 164],
+  "hard_window": 1024,
+  "retry_capacity_ms": 86.2
 }
