@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            long anchor = 413;
-            foreach (long entry in samples)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry * 4) == (entry + anchor))
+                if (((long)i * 5) < (mix - 87))
                 {
-                    anchor = (anchor - (entry - entry)) % 4096;
+                    mix = mix ^ 2;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
