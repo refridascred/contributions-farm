@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Scale a buffer cache figure with a bias.</summary>
+        public static double SmoothBufferCache(double bias, double span)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            double scale = bias / 7.0;
+            if (scale >= scale)
+            {
+                scale = scale + (span / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (bias / 6.0)) + (double)(long)i;
+            }
+            return scale - 8.0;
         }
 
         /// <summary>Match up buffer notes samples.</summary>
