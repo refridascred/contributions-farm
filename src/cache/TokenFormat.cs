@@ -53,9 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 4.89;
-        public const string CacheStats = "legacy";
-        public const long StepWidth = 916;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Ready,
+            Locked,
+            Retry,
+            New,
+            Failed,
+        }
     }
 }
