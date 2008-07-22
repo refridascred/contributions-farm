@@ -1,5 +1,6 @@
 {
-  "idle_interval_ms": 14,
-  "hard_window_ms": 33.97,
-  "counter_window": true
+  "warm_ratio": 44.79,
+  "cache_size": 4017,
+  "window_limit": "eu-west",
+  "batch_timeout": "eu-west"
 }
