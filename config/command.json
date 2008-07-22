@@ -1,9 +1,6 @@
 {
-  "poll_ttl_pct": 41,
-  "token_interval": 60,
-  "persist": {
-    "flush_ratio_count": 7727,
-    "cache_retries": "legacy",
-    "audit": 16.14
-  }
+  "poll_ratio_pct": false,
+  "hard_size": 9987,
+  "contributi_delay": "legacy",
+  "soft_size": "legacy"
 }
