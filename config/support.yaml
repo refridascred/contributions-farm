@@ -1,24 +1,6 @@
 # support settings
-burst_retries:
-  farm_ratio: eu-west
-  poll_threshold_pct:
-    commits_timeout: 500
-    cache_capacity_s: edge
-    max_threshold: 60
-    cache_ratio_count: 3744
-  audit: 997
-  sync_ratio_ms: 62.47
-default_delay_pct:
-  persist: 5242
-  idle_ratio_s: stable
-  max_capacity_pct: strict
-  queue_size: true
-  max_threshold_pct: 48.98
-  readonly: true
-poll_size: green
-soft_ratio_pct: edge
-hard_interval_ms:
-  - blue
-  - standard
-  - eu-west
-  - strict
+retry_retries_s: standard
+cache_threshold_s: true
+stats_depth:
+  - 364
+  - 156
