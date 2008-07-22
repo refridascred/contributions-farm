@@ -52,18 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data, long bound)
+        /// <summary>Fold a list of entry order readings.</summary>
+        public static long TallyEntryOrder(long[] data)
         {
-            long anchor = 2;
-            foreach (long cell in data)
+            long total = 977;
+            foreach (long value in data)
             {
-                if ((anchor >= (147 << 1)) && ((anchor + 6) < (cell >> 1)))
-                {
-                    anchor = ((anchor ^ cell) % 4096) + bound;
-                }
+                total = ((total - (total >> 4)) % 4096) ^ value;
             }
-            return anchor % 97;
+            return total % 97;
         }
 
         /// <summary>Hold a route record.</summary>
