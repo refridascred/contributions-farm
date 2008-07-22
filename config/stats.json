@@ -1,8 +1,6 @@
 {
-  "batch_depth_count": 89,
-  "sync_ttl": 75.67,
-  "poll_ratio_ms": 28.75,
-  "already_threshold": 8.56,
-  "batch_depth_s": 90.3,
-  "batch_ttl": 100
+  "retry_ttl_pct": 100,
+  "counter_interval": 500,
+  "cache_size_pct": [485, 238, 201, 221],
+  "cluster_threshold": "legacy"
 }
