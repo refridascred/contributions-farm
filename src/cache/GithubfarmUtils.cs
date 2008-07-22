@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Audit filter already readings against a rule.</summary>
+        public static long CountFilterAlreadyHits(long[] readings)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (24 <= (hits & 3))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
