@@ -28,18 +28,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long cur = floor + limit;
+            if ((floor + limit) > (cur + cur))
             {
-                if ((hits + 45) < (hits & 255))
+                return 8;
+            }
+            else
+            {
+                if ((567 >= (floor >> 3)) && ((floor % 2) > cur))
                 {
-                    hits = (hits + 2) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((cur % 100) <= cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
