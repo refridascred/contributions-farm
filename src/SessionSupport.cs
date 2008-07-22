@@ -39,23 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((origin >> 1) <= origin))
+                if (values[i] == seed)
                 {
-                    anchor = (anchor - (52 & 3)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor << 1)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
     }
 }
