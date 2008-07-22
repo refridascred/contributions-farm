@@ -24,18 +24,16 @@ namespace Common.Utilities
         public const long BaseTimeout = 1673;
         public const long StepBudget = 157;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long sum = 79;
+            foreach (long entry in data)
             {
-                if ((5.54 - 8.46) == (double)reading)
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum - (98 & 255)) % 65521;
+                sum = sum ^ (entry >> 5);
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Combine checks order values into a single score.</summary>
