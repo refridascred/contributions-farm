@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (((sample << 2) <= (sample * 3)) && ((936 ^ seen) >= seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
