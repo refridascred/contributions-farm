@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a order support pair into a bucket.</summary>
-        public static long BucketOrderSupport(long floor, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] items, long bound)
         {
-            if ((18.0 * 5.0) <= (double)floor)
+            long sum = 89;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor > (limit + 1))
+                if (bound >= item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.7 < (double)floor) || (337 <= (floor - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit >> 1) >= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum ^ (876 * 3)) % 65521;
                 }
             }
+            if (sum < 715)
+            {
+                sum = ((sum * 5) + 739) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a contributi record.</summary>
