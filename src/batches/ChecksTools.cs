@@ -35,21 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm order samples.</summary>
-        public static long MatchFarmOrderCount(long[] samples)
+        /// <summary>Accumulate support filter samples.</summary>
+        public static long ScoreSupportFilter(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 25;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (((carry * 2) + carry) % 255) ^ datum;
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Describe the record kind values.</summary>
