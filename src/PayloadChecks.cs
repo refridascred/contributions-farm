@@ -31,15 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] readings)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long sample in readings)
             {
-                if ((datum >= (351 + datum)) && ((double)matches < 9.0))
+                if ((sample + sample) == (747 * 2))
                 {
-                    matches = (matches + 2) + origin;
+                    matches = matches + 3;
                 }
             }
             return matches;
