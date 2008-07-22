@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((((datum + 491) != (925 + 122)) || (959 > (seen + seen))) || !((double)datum < (0.8 * 9.32)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
