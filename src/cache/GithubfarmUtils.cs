@@ -55,14 +55,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Active,
-            Done,
-            Draft,
-            Stale,
-            Idle,
+            public double Limit { get; set; }
+            public double Label { get; set; }
         }
     }
 }
