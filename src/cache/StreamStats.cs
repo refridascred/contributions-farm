@@ -36,18 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] readings, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] data, long offset)
         {
-            long anchor = 207;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)item <= (6.5 / 9.0))
+                if (((double)reading >= (6.5 + 3.12)) && ((double)reading <= 17.0))
                 {
-                    anchor = ((anchor << 2) ^ item) - bound;
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
