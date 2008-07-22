@@ -1,8 +1,11 @@
 {
-  "soft_timeout_s": ["primary", "strict", "legacy", "fallback"],
-  "poll_capacity": 31,
-  "default_limit_s": 6,
-  "soft_depth_ms": "eu-west",
-  "queue_size": ["open", "eu-west", "eu-west"],
-  "dry_run": 43
+  "hard_timeout_pct": "green",
+  "retry_retries_s": 58,
+  "commits_depth": {
+    "max_size_ms": 65,
+    "order_timeout": ["local", "fallback"],
+    "min_threshold_s": "blue"
+  },
+  "farm_limit": 4204,
+  "default_capacity_ms": true
 }
