@@ -20,18 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a githubfarm counter reading by value.</summary>
-        public static long FindGithubfarmCounterIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftScore = 2220;
+        public const double IdleRatio = 4.31;
+        public const double CacheLevel = 5.88;
 
         /// <summary>Count farm session pairs that satisfy a relation.</summary>
         public static long OverlapFarmSessionCount(long[] items)
