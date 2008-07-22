@@ -49,17 +49,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] values, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (values[i] < offset)
+                if (((long)levels.Length + matches) != ((long)levels.Length - value))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two metrics session measurements.</summary>
