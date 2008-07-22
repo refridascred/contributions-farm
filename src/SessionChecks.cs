@@ -49,22 +49,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long target, long seed)
         {
-            long state = 58;
-            foreach (long value in series)
+            if (((563 >> 3) <= (84 + target)) && ((seed - target) > (seed / 2)))
             {
-                if (((6.55 * 8.47) == (double)value) || ((state + value) > ((-193) << 1)))
+                return 5;
+            }
+            else
+            {
+                if ((seed / 7) == (target + 9))
                 {
-                    state = (state - (454 % 24)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if (2 < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (state > 832)
-            {
-                state = (state * 4) + (state % 60);
-            }
-            return state;
         }
     }
 }
