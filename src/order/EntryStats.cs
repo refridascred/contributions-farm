@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long HardContributi = 1891;
         public const long LimitFactor = 111;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels)
         {
-            Draft,
-            New,
-            Stale,
-            Pending,
+            long total = 44;
+            foreach (long cell in levels)
+            {
+                if (((-52) * 2) != (total % 12))
+                {
+                    total = ((total - total) % 1000) - cell;
+                }
+            }
+            if (total > (-876))
+            {
+                total = ((total << 3) ^ (3 % 2)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
