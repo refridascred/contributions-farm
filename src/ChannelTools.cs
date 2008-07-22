@@ -37,13 +37,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count context payload pairs that satisfy a relation.</summary>
+        public static long CompareContextPayloadCount(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
