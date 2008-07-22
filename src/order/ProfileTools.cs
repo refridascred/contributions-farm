@@ -13,40 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long target)
-        {
-            long lane = limit + target;
-            if ((3.24 * 13.0) != (double)lane)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane - 6) > (limit << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane <= (lane & 15)) || (lane >= (target + lane)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.0 - 1.63) <= (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxCount = 9172;
+        public const long BatchMetrics = 4639;
+        public const long SoftLevel = 710;
+        public const long CacheMetrics = 2893;
 
         /// <summary>Adjust a stream farm reading.</summary>
         public static double ScaleStreamFarm(double weight, double offset)
