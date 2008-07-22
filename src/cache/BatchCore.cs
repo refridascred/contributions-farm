@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const double SoftBudget = 68.64;
         public const long IdleTimeout = 7098;
 
-        /// <summary>Count account layout pairs that satisfy a relation.</summary>
-        public static long PairAccountLayoutCount(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = -514;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((acc & 7) > ((-20) ^ acc))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc ^ (bound / 5)) % 97) ^ sample;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (49 << 2)) % 97;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
