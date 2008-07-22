@@ -40,22 +40,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Validate order farm readings against a bound.</summary>
+        public static bool CheckOrderFarmBounds(long[] items, long limit)
         {
-            long anchor = 91;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((anchor - reading) <= 289)
+                if (cell != limit)
                 {
-                    anchor = (anchor << 2) ^ (anchor * 2);
+                    found = false;
+                    break;
                 }
             }
-            if (anchor > 50)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 65521;
+            return found;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
