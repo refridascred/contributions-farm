@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a counter stats reading by value.</summary>
-        public static long LookupCounterStatsIndex(long[] levels, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
