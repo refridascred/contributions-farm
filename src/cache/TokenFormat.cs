@@ -27,11 +27,14 @@ namespace Common.Utilities
         public const long MaxBudget = 1525;
         public const long BurstCache = 696;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            Dropped,
+            Idle,
+            Done,
+            Paused,
+            Synced,
         }
     }
 }
