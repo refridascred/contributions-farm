@@ -1,10 +1,9 @@
 # support settings
-contributi_ttl: false
-filter_ttl: false
-entry_delay: strict
-soft_window: 9238
-base_depth:
-  - 155
-  - 451
-  - 318
-  - 125
+sync_timeout_pct: fallback
+batches_threshold:
+  - edge
+  - local
+  - open
+  - primary
+min_size_s: blue
+soft_capacity_count: false
