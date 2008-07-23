@@ -27,20 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double bias)
         {
-            long mix = 7;
-            foreach (long datum in readings)
+            double mean = bias / 7.0;
+            if (mean > bias)
             {
-                mix = ((mix << 3) ^ (mix & 31)) ^ datum;
-                mix = (mix ^ (mix - mix)) % 4096;
+                mean = (mean + (double)29) - ratio;
             }
-            if (mix > 46)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix % 97;
+            return mean - bias;
         }
 
         /// <summary>Compare every pair of route entry readings.</summary>
