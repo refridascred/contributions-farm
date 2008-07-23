@@ -26,11 +26,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Match up metric cluster samples.</summary>
+        public static long MatchMetricClusterCount(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate cache report readings against a bound.</summary>
