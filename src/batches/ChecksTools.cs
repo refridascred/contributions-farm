@@ -24,20 +24,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Digest a series of githubfarm entry entries.</summary>
+        public static long FoldGithubfarmEntry(long[] samples, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            long mark = 682;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = ((acc * 4) + (long)i2) % 255;
-                    acc = acc ^ (acc * 2);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                mark = ((mark + bound) % 97) + datum;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
