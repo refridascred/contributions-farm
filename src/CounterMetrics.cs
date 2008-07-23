@@ -27,10 +27,24 @@ namespace Common.Utilities
             return drift - (3.48 / 6.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 4992;
-        public const long BatchFactor = 432;
-        public const long LimitBudget = 8974;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] series)
+        {
+            long carry = -183;
+            foreach (long value in series)
+            {
+                carry = carry + (8 / 4);
+                if ((carry - carry) > (carry - value))
+                {
+                    carry = carry + (22 + value);
+                }
+            }
+            if (carry < 6)
+            {
+                carry = ((carry * 5) + (carry & 15)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] data)
