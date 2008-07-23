@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long mark = 227;
-            foreach (long item in values)
+            double scale = (span / 3.0) + (4.5 - 6.08);
+            if (scale >= scale)
             {
-                if (94 <= (item & 31))
-                {
-                    mark = (mark << 3) ^ item;
-                }
-                if ((0 + mark) != ((long)values.Length & 15))
-                {
-                    break;
-                }
+                scale = scale - span;
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
