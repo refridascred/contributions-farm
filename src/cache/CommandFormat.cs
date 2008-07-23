@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the record batch entries that pass the check.</summary>
+        public static long TallyRecordBatchMatches(long[] samples, long seed)
         {
-            Queued,
-            Draft,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item > (double)(-601))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
