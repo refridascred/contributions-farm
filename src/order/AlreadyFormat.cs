@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double rate = (9.21 * 0.5) + offset;
-            if (rate <= rate)
-            {
-                rate = rate - (double)1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias + bias)) + (double)(long)i;
-            }
-            return rate + (17.0 / 4.0);
+            New,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
