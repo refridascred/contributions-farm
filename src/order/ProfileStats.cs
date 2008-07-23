@@ -14,12 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
