@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Accumulate command cache samples.</summary>
+        public static long TotalCommandCache(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 970;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1.75 - 9.63) == (double)datum)
                 {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ 3) % 65521;
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Hold a command snapshot.</summary>
