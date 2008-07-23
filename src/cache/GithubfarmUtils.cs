@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long MaxBatches = 5987;
         public const long BaseScore = 3797;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 52;
-        public const long BurstReport = 7562;
-        public const double BatchReport = 36.54;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
