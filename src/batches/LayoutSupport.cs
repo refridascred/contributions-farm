@@ -26,12 +26,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of metrics editor entries.</summary>
+        public static long DigestMetricsEditor(long[] values, long target)
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 3;
+            foreach (long reading in values)
+            {
+                mark = (((mark - mark) % 97) + reading) + target;
+            }
+            return mark;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
