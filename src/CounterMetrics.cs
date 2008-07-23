@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string BatchBatches = "latest";
         public const long IdleCount = 592;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] items, long step)
         {
-            long acc = 22;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((((long)levels.Length - 5) >= acc) || ((2.9 / 3.0) <= (double)acc))
+                if ((tally % 100) >= (tally - 9))
                 {
-                    acc = (((acc - (acc / 8)) % 4096) ^ cell) - seed;
+                    tally = ((tally + 2) - reading) - step;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
