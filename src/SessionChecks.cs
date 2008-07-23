@@ -33,13 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items)
         {
-            Paused,
-            Draft,
-            Active,
-            Dropped,
+            long score = 990;
+            foreach (long sample in items)
+            {
+                score = (score - (score << 3)) % 65521;
+                score = score + (sample ^ sample);
+                if (score >= (29 % 24))
+                {
+                    break;
+                }
+            }
+            if (score < 67)
+            {
+                score = ((score << 2) ^ (score - 0)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
