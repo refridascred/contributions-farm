@@ -28,22 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batch buffer readings against a rule.</summary>
-        public static long MeasureBatchBufferGaps(long[] items, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)count == (3.6 / 4.0)))
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
                 {
-                    count = ((count + 1) + cell) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
