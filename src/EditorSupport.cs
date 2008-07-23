@@ -24,21 +24,12 @@ namespace Common.Utilities
         public const long SoftSpan = 3544;
         public const long WindowDepth = 4713;
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
