@@ -1,5 +1,6 @@
 # githubfarm settings
-farm_size: standard
-retry_retries_s: 77
-warm_limit_ms: standard
-editor_ratio: 407
+warm_delay: true
+min_ttl_pct: 9822
+hard_window_pct: edge
+min_threshold_ms: 3278
+hard_threshold_s: true
