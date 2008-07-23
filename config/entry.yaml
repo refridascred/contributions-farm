@@ -1,8 +1,6 @@
 # entry settings
-batch_timeout_ms: stable
-stats_interval: 67
-sync_window_s:
-  - green
-  - fallback
-compress: 1024
-schema_delay: true
+soft_depth: true
+compress: false
+soft_size:
+  - 214
+  - 33
