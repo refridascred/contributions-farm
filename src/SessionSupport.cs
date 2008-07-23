@@ -38,39 +38,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] levels, long bound)
         {
-            long span = target + bound;
-            if (((double)span >= (double)bound) && (bound > (target + span)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + 89) >= span)
+                if (levels[i] <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.04 * 4.0) != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((span / 3) >= span) && ((double)target <= (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
