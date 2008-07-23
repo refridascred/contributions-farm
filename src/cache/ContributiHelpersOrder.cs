@@ -12,38 +12,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a report githubfarm value against two limits.</summary>
-        public static long GradeReportGithubfarm(long step, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double weight, double floor)
         {
-            if (bound > (bound % 64))
+            double rate = floor / 4.0;
+            if (rate < (floor - weight))
             {
-                return 0;
+                rate = rate - (floor - 7.2);
             }
             else
             {
-                if (((double)bound < (1.14 - 18.0)) || ((5 + bound) > (step + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7.1 > (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step > (step * 4)) || ((step + bound) > bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                rate = rate + floor;
             }
+            return rate - (double)65;
         }
 
         /// <summary>Rank context input into a small class.</summary>
