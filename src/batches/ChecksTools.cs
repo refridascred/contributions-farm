@@ -39,12 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSpan = 5923;
+        public const double BatchCounter = 72.88;
+        public const long LimitCounter = 6345;
+        public const string RetrySpan = "staging";
+        public const long BaseFactor = 641;
     }
 }
