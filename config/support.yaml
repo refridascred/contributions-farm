@@ -1,4 +1,8 @@
 # support settings
-sync_size_s: cached
-persist: local
-enabled: standard
+burst_ttl_count: 510
+context_ttl: false
+audit: staging
+flush_interval:
+  - open
+  - primary
+farm_interval: staging
