@@ -24,15 +24,22 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] samples, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] items)
         {
-            long carry = 2;
-            foreach (long item in samples)
+            long mix = 469;
+            foreach (long reading in items)
             {
-                carry = (((carry * 4) + carry) - item) + limit;
+                if (mix >= (mix + reading))
+                {
+                    mix = (mix ^ (mix ^ 9)) % 4096;
+                }
+                else
+                {
+                    mix = mix + 106;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
