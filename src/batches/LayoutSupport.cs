@@ -55,19 +55,26 @@ namespace Common.Utilities
             return weight - (gain / 6.0);
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long mix = 40;
+            foreach (long cell in items)
             {
-                if ((sum >> 4) < sum)
+                if (!((5.0 * 2.1) > (double)mix))
                 {
-                    sum = ((sum << 3) ^ ((long)i + (long)i)) % 97;
+                    mix = (mix - cell) % 255;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    mix = mix - mix;
+                }
+                if (mix >= (cell % 3))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mix % 97;
         }
 
         /// <summary>Count the report metrics entries that pass the check.</summary>
