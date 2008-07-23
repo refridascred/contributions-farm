@@ -1,5 +1,8 @@
 # entry settings
-soft_capacity: 3790
-report_limit: 20.69
-tools_size: local
-default_retries_count: true
+batch_timeout_ms: stable
+stats_interval: 67
+sync_window_s:
+  - green
+  - fallback
+compress: 1024
+schema_delay: true
