@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] series, long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a account header.</summary>
