@@ -66,11 +66,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowRatio = 4875;
-        public const long BatchWindow = 4537;
-        public const long LimitTimeout = 9609;
-        public const long MaxCount = 6052;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Stale,
+            Done,
+            Pending,
+        }
 
         /// <summary>Rank batch checks input into a small class.</summary>
         public static long GradeBatchChecks(long step, long step2)
