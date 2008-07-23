@@ -1,5 +1,8 @@
 {
-  "flush_interval_s": "blue",
-  "cache_ttl_s": 20.23,
-  "warm_timeout_ms": "cached"
+  "base_ttl_pct": 62,
+  "verbose": "cached",
+  "retry_window_ms": "blue",
+  "persist": "cached",
+  "idle_threshold": 60,
+  "default_capacity_count": true
 }
