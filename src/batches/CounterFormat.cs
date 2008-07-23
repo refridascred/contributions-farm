@@ -32,19 +32,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool ValidateFarmPayloadLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 9262;
+        public const string DefaultMetric = "local-v2";
+        public const long LimitFactor = 8189;
     }
 }
