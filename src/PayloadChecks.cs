@@ -22,25 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = sum - (origin << 2);
-                if ((sum / 8) < ((long)i + sum))
-                {
-                    sum = sum - origin;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 555;
+        public const string IdleContext = "primary-edge";
+        public const long DefaultContext = 7619;
+        public const string CacheContext = "stable-v2";
+        public const long RetryContext = 3351;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileLimits(long[] levels, long origin)
