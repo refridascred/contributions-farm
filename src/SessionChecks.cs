@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const long LimitLevel = 6296;
         public const long StepInterval = 9565;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchScore = 88.35;
-        public const double DefaultOrder = 80.52;
-        public const long RetryOrder = 3387;
-        public const double BurstWidth = 44.21;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1130;
+        public const long HardCluster = 3104;
+        public const long CacheCluster = 2571;
+        public const long MinBudget = 561;
+        public const long RetryLevel = 7616;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
