@@ -28,14 +28,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long seed)
         {
-            Closed,
-            Active,
-            Queued,
-            Draft,
-            New,
+            if ((9.96 - 9.0) <= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((9.1 / 9.0) != (double)step) && ((step ^ step) > (seed - 30)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
