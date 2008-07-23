@@ -70,22 +70,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long TallyBufferNotesMatches(long[] readings, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)offset < (1.8 + 8.2))
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
                 {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
