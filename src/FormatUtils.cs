@@ -57,11 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 1864;
-        public const double HardAccount = 21.48;
-        public const long MaxRatio = 3198;
-        public const long CacheRatio = 3035;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardCommits = 82.57;
