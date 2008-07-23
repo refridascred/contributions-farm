@@ -19,11 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 3564;
-        public const long HardBatch = 5055;
-        public const string BurstBatch = "primary-edge";
-        public const long MaxInterval = 9109;
+        /// <summary>Count account report pairs that satisfy a relation.</summary>
+        public static long PairAccountReportCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 6723;
