@@ -12,18 +12,20 @@ namespace Common.Utilities
             return (scale - (double)165) + bias;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] data)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (7.0 < (double)matches)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = (matches + 2) ^ sample;
+                    mix = ((mix - (mix * 2)) % 1000) + (long)i2;
+                    mix = (mix ^ mix) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
