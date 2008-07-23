@@ -40,21 +40,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of metric batches readings.</summary>
-        public static long PairMetricBatchesCount(long[] samples)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = offset - (offset / 8.0);
+            if (weight2 <= (weight + weight2))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = weight2 + weight;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - (offset - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - offset) + (double)(long)i;
+            }
+            return weight2 + (double)395;
         }
     }
 }
