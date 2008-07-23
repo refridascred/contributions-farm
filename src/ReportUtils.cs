@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long limit)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
