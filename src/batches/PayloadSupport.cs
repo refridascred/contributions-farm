@@ -47,31 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long floor, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if ((42 - origin) >= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 16) <= (floor + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
