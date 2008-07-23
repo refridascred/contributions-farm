@@ -32,24 +32,19 @@ namespace Common.Utilities
             return ratio - (double)3;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long target)
         {
-            long score = 414;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long value in items)
             {
-                score = (score << 3) ^ (score ^ (-25));
-                score = (score + sample) % 255;
-                if (!((0.99 - 8.0) < (double)score))
+                if (value > target)
                 {
-                    score = (score - (200 + score)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 224)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a buffer header.</summary>
