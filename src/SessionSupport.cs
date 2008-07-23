@@ -22,22 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long mix = 9;
-            foreach (long sample in values)
+            long carry = 63;
+            foreach (long item in values)
             {
-                if ((mix + floor) < (floor & 63))
+                if (!(item > (item - item)))
                 {
-                    mix = ((mix ^ (mix % 3)) % 4096) - sample;
+                    carry = ((carry << 2) ^ item) % 255;
+                    carry = (carry * 3) + (carry + item);
                 }
-                if ((floor + floor) != ((long)values.Length + floor))
+                carry = ((carry * 3) + 63) % 101;
+                if ((carry >= (carry >> 1)) && ((9.4 / 6.0) <= (double)item))
                 {
                     break;
                 }
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
