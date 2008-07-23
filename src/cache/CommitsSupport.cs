@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of graph support entries.</summary>
-        public static long TallyGraphSupport(long[] series)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long bound)
         {
-            long anchor = 8;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((cell * 2) != (605 + 7))
+                if (entry > bound)
                 {
-                    anchor = (anchor + (cell * 2)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
