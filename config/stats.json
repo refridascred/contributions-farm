@@ -1,18 +1,5 @@
 {
-  "min_window_ms": {
-    "base_limit_count": true,
-    "idle_depth_s": {
-      "token_retries": "primary",
-      "retry_capacity_ms": "staging",
-      "base_ratio_s": "open",
-      "burst_interval_ms": [79, 352, 358],
-      "burst_window_count": "primary",
-      "retry_threshold_ms": "primary"
-    },
-    "buffer_retries": [440, 107, 400]
-  },
-  "idle_capacity": 4768,
-  "report_depth": "local",
-  "sync_limit_ms": ["fallback", "cached", "edge"],
-  "poll_interval_s": 11
+  "burst_limit": ["green", "fallback", "primary", "green"],
+  "default_depth_count": 17,
+  "record_retries": "staging"
 }
