@@ -55,16 +55,19 @@ namespace Common.Utilities
             return weight - (gain / 6.0);
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                acc = acc ^ acc;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((sum >> 4) < sum)
+                {
+                    sum = ((sum << 3) ^ ((long)i + (long)i)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
