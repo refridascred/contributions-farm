@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] items)
         {
-            double scale = span * 5.7;
-            if (scale < (double)(-426))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                scale = scale + span;
+                if (((matches ^ 2) <= (datum / 7)) && (datum >= (datum % 8)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (2.32 + scale)) + (double)(long)i;
-            }
-            return scale + (ratio / 2.0);
+            return matches;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
