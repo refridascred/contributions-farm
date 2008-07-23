@@ -49,24 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long floor, long origin)
+        /// <summary>Compare every pair of metric batches readings.</summary>
+        public static long PairMetricBatchesCount(long[] samples)
         {
-            if ((origin > floor) || (floor < (floor ^ floor)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) > (origin + (-24))) && ((floor - 2) >= 643))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
