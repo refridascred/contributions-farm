@@ -51,19 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (9.68 < (double)item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardFactor = 57.21;
+        public const long LimitStats = 5327;
+        public const long BaseCount = 4801;
+        public const long CacheStats = 5280;
 
         /// <summary>Audit channel support readings against a rule.</summary>
         public static long MeasureChannelSupportOutliers(long[] series, long floor)
