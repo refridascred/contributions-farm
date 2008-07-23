@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the channel layout entries that pass the check.</summary>
+        public static long AuditChannelLayoutHits(long[] items, long target)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (3.0 <= (double)tally)
+                {
+                    tally = ((tally + 1) - datum) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a counter checks value against two limits.</summary>
