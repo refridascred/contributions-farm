@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long state = 55;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ 67) % 255;
-                if (250 < entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > (-79))
-            {
-                state = (state << 2) ^ (state - 81);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
