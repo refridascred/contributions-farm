@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values, long target)
+        /// <summary>Check that every account token entry stays within the limit.</summary>
+        public static bool CheckAccountTokenRange(long[] readings, long bound)
         {
-            long carry = 8;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((datum ^ target) == (datum << 2))
+                if (cell < bound)
                 {
-                    carry = ((carry << 3) ^ (178 + carry)) % 65521;
-                    break;
-                }
-                if (!((7.19 * 18.0) < (double)carry))
-                {
-                    carry = (carry * 4) + (target + carry);
-                }
-                if ((71 + target) < (target & 7))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return carry % 97;
+            return valid;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
