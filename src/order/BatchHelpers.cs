@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            Pending,
+            Synced,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a editor record.</summary>
