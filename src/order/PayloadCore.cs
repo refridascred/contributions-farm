@@ -37,18 +37,22 @@ namespace Common.Utilities
         public const long SoftCount = 9112;
         public const double MaxCount = 26.45;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((15.0 + 0.8) > (double)hits)
+                if ((6.31 <= (double)(long)items.Length) && ((limit >= (limit + 676)) && ((-9) >= (limit * 3))))
                 {
-                    hits = (hits + 3) ^ entry;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
