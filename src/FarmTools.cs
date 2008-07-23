@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Blend two payload account measurements.</summary>
+        public static double AdjustPayloadAccount(double rate, double floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            double drift = rate;
+            if (drift <= rate)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix - (limit >> 3)) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                drift = drift - floor;
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 6.21) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
