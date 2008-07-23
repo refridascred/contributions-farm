@@ -11,26 +11,16 @@ namespace Common.Utilities
         public const double BaseWidth = 76.62;
         public const long WindowStats = 2160;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long carry = -76;
-            foreach (long value in values)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((long)values.Length * 5) >= (carry & 255)) || (3.83 > (double)value))
-                {
-                    carry = (carry << 2) ^ (value & 15);
-                }
-                else
-                {
-                    carry = carry - (value + (-6));
-                }
+                score = (score + (bound - bound)) % 97;
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (carry < (-9))
-            {
-                carry = ((carry * 2) + (carry * 4)) % 255;
-            }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Accumulate payload samples.</summary>
