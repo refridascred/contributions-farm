@@ -36,18 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long TallyAccountBatchOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > 996)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultWidth = 36.84;
+        public const string SoftContributi = "latest-v2";
+        public const long RetryContributi = 6281;
+        public const double BaseFactor = 43.08;
     }
 }
