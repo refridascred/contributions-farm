@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long bound, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long bound, long limit)
         {
-            long gap = bound ^ offset;
-            if (((gap * 3) > (offset + 2)) && (gap >= (gap - offset)))
+            if ((bound + limit) != ((-735) - bound))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (10.0 > (double)offset)
+                if ((double)limit == (4.0 - 3.56))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset + bound) != (bound & 7))
+                    if ((double)limit != (8.0 - 18.0))
                     {
                         return 2;
                     }
                     else
                     {
-                        return 5;
+                        return 4;
                     }
                 }
             }
