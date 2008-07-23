@@ -33,11 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxBudget = 2071;
-        public const long MinPayload = 4451;
-        public const string RetryPayload = "local-1";
-        public const long HardPayload = 4052;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!(((double)seed == (double)seen) || ((8.56 / 6.0) <= (double)seed)))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiGaps(long[] data)
