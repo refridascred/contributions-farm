@@ -83,25 +83,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long bound, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] data, long floor)
         {
-            long prev = bound - seed;
-            if (((prev - seed) > (prev % 100)) && ((prev - prev) == (bound % 16)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-88) % 7) < bound)
+                if (data[i] >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
