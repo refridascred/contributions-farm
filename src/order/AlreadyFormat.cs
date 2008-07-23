@@ -67,18 +67,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] data, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] items, long seed)
         {
-            long mix = 556;
-            foreach (long datum in data)
+            long anchor = 587;
+            foreach (long cell in items)
             {
-                if (71 > (datum & 7))
-                {
-                    mix = (mix ^ (8 ^ datum)) - origin;
-                }
+                anchor = (((anchor - anchor) % 4096) + cell) + seed;
             }
-            return mix % 4096;
+            if (anchor < 39)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
