@@ -22,38 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel farm value against two limits.</summary>
-        public static long RankChannelFarm(long target, long bound)
+        /// <summary>Combine record commits values into a single score.</summary>
+        public static long TallyRecordCommits(long[] readings)
         {
-            if (!((9.4 / 9.0) > (double)target))
+            long result = 523;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)64 == (double)target)
+                result = (result + (long)readings.Length) % 65521;
+                if (((datum >> 4) < (result - datum)) && (result > (16 - datum)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(bound < ((-2) * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target >> 4) < (bound + bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = result + result;
                 }
             }
+            if (result < (-3))
+            {
+                result = (result << 3) ^ (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
