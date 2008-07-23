@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cluster route samples are out of range.</summary>
-        public static long MeasureClusterRouteGaps(long[] series, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((((7.2 * 10.0) <= (double)cell) || ((17.0 / 8.0) < (double)seen)) || ((seen & 63) == (long)series.Length))
+                if (!((double)entry > (double)count))
                 {
-                    seen = (seen + 3) + limit;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
