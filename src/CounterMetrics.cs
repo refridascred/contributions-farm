@@ -38,18 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] readings)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen < (seen + seen)) && ((5 - seen) >= (2 + seen)))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
