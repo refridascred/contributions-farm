@@ -57,25 +57,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a counter metric pair into a bucket.</summary>
-        public static long GradeCounterMetric(long origin, long seed)
-        {
-            long edge = origin ^ seed;
-            if ((double)seed >= (4.23 + 12.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((954 + edge) >= seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 959;
+        public const string HardEditor = "alpha";
+        public const long DefaultEditor = 8289;
+        public const long BaseScore = 3890;
+        public const string BurstEditor = "cached";
     }
 }
