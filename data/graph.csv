@@ -1,6 +1,8 @@
-id,state,rank,score
-1,780,2.44,28.06
-2,614,578,59.65
-3,94,86.91,397
-4,67.0,22.47,52.52
-5,stable,10.92,fallback
+id,ratio,state,token
+1,stable,local,green
+2,latest,92.26,staging
+3,legacy,blue,47.23
+4,15.94,88.1,445
+5,17.51,911,509
+6,primary,cached,67
+7,496,14.43,755
