@@ -71,19 +71,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] data, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (value <= step)
+                if (datum >= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
