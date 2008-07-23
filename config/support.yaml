@@ -1,33 +1,8 @@
 # support settings
-hard_ratio: green
-base_depth: green
-dry_run:
-  profile_delay: 92.21
-  dry_run:
-    farm_retries: 500
-    min_ratio_count: 96
-    editor_capacity: 100
-    format_capacity: 43
-  idle_limit:
-    base_delay_s:
-      - 240
-      - 222
-      - 307
-    farm_ttl: green
-    sync_ratio_ms: latest
-    min_size:
-      - green
-      - local
-      - latest
-      - blue
-    record_timeout: false
-    default_ratio_pct: true
-batch_capacity_ms: open
-soft_ratio_pct: 32.96
-hard_threshold_s:
-  compress: 97
-  base_ratio_ms:
-    - eu-west
-    - blue
-    - standard
-  flush_delay: staging
+audit: latest
+dry_run: stable
+stream_depth:
+  - 461
+  - 379
+  - 299
+  - 164
