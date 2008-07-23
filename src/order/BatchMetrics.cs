@@ -22,38 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long limit, long bound)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            if ((7.6 + 3.62) <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0 & 31) > limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.6 / 2.0) == (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2 >> 2) < (bound % 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double gain = offset;
+            return (gain - (double)29) + weight;
         }
 
         /// <summary>Scale a metrics buffer figure with a bias.</summary>
