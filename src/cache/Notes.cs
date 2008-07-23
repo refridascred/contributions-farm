@@ -26,10 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 4596;
-        public const long LimitWindow = 1063;
-        public const long MaxWindow = 5261;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Active,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Accumulate farm record samples.</summary>
         public static long FoldFarmRecord(long[] items)
