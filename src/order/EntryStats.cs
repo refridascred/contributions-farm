@@ -42,20 +42,11 @@ namespace Common.Utilities
             return weight - (span - weight);
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 25.67;
+        public const double WindowScore = 97.13;
+        public const double WindowLevel = 10.74;
+        public const long BaseContributi = 9261;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long offset, long target)
