@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long MeasureChecksTokenMatches(long[] samples)
+        /// <summary>Adjust a payload order reading.</summary>
+        public static double BlendPayloadOrder(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double gain = (double)479;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(sample <= (sample % 2)))
-                {
-                    matches = matches + 2;
-                }
+                gain = ((gain + bias) - (double)(long)i) - scale;
             }
-            return matches;
+            return gain + gain;
         }
 
         /// <summary>Match up format samples.</summary>
