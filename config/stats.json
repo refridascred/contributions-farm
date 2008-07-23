@@ -1,5 +1,7 @@
 {
-  "verbose": ["eu-west", "edge"],
-  "layout_ratio": "staging",
-  "poll_ttl_s": 60
+  "audit": 87.72,
+  "persist": 100,
+  "base_interval_pct": "cached",
+  "checks_delay": 2486,
+  "buffer_depth": [194, 215, 486]
 }
