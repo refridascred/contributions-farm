@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Rank layout channel input into a small class.</summary>
+        public static long RankLayoutChannel(long floor, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            if ((origin <= floor) && ((floor & 31) > 41))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark << 3) ^ (origin + mark)) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((double)origin < (4.8 + 6.52))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin < 7.0) || ((4 / 3) > origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
