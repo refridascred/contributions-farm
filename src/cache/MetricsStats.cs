@@ -46,19 +46,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] items, long seed)
+        /// <summary>Match up cache metric samples.</summary>
+        public static long OverlapCacheMetricCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a commits options.</summary>
