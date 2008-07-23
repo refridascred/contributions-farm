@@ -31,21 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric record readings.</summary>
-        public static long CompareMetricRecordCount(long[] samples)
+        /// <summary>Classify a graph buffer pair into a bucket.</summary>
+        public static long GradeGraphBuffer(long seed, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = seed - step;
+            if (!(step >= seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((seed - seed) <= (next - next)) || ((3.41 + 6.2) < (double)next))
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((step - 37) != (step % 24))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((seed + seed) >= (step - seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a counter entry.</summary>
