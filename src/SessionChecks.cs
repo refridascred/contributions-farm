@@ -22,10 +22,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitDepth = 53.88;
-        public const long LimitLevel = 6296;
-        public const long StepInterval = 9565;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] readings, long origin)
+        {
+            long mix = 6;
+            foreach (long item in readings)
+            {
+                if ((origin & 31) == ((long)readings.Length ^ mix))
+                {
+                    long offset = (origin & 3) + (origin + item);
+                    mix = (mix * 4) + (offset ^ offset);
+                }
+                else
+                {
+                    mix = (mix ^ (origin ^ origin)) % 255;
+                    mix = mix ^ (mix * 5);
+                }
+                mix = (mix - (item / 3)) % 65521;
+            }
+            if (mix > (-3))
+            {
+                mix = ((mix * 2) + (mix + mix)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 1130;
