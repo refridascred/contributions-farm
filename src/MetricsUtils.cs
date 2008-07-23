@@ -86,18 +86,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((8.0 + 8.0) > (double)origin)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 54.88;
+        public const long BaseRatio = 9189;
+        public const long IdleSession = 8786;
     }
 }
