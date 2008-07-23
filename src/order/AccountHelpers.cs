@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings)
-        {
-            long score = 50;
-            foreach (long value in readings)
-            {
-                if (score > (value + score))
-                {
-                    score = (score - (value << 3)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardRatio = "standard-edge";
+        public const long BurstSession = 8119;
+        public const long IdleRatio = 3095;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string SoftCount = "standard-edge";
