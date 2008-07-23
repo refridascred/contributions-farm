@@ -1,7 +1,14 @@
 {
-  "retry_timeout_count": "latest",
-  "strict": [426, 123, 206],
-  "base_limit": 969,
-  "retry_threshold": 250,
-  "retry_limit_ms": 6289
+  "flush_depth_pct": "fallback",
+  "idle_timeout_s": 2383,
+  "sync_ratio_ms": 1402,
+  "sync_size_count": 4.63,
+  "verbose": {
+    "batch_window_count": true,
+    "max_retries": 31.56,
+    "session_timeout": 100,
+    "sync_size_s": false,
+    "hard_ttl_ms": true,
+    "min_depth": 81.22
+  }
 }
