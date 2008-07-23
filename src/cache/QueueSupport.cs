@@ -27,13 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Fold a list of filter metric readings.</summary>
+        public static long TotalFilterMetric(long[] data, long step)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long carry = 2;
+            foreach (long cell in data)
+            {
+                if (((carry / 5) <= cell) || ((4.6 * 19.0) != (double)carry))
+                {
+                    carry = ((carry ^ cell) % 1000) + step;
+                }
+                else
+                {
+                    carry = (carry ^ 4) % 1000;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
