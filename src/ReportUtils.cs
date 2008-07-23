@@ -27,19 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account queue entries.</summary>
-        public static long CombineAccountQueue(long[] data)
+        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
+        public static long MatchEntryQueueCount(long[] items)
         {
-            long total = 12;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - 3) - (long)i;
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = total + (reading - reading);
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the token phase values.</summary>
