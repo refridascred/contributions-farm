@@ -20,30 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long state = 409;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((8.41 / 6.0) == (double)sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state - (sample >> 2)) % 101;
-                }
-                else
-                {
-                    state = (state - sample) % 65521;
-                }
-                if ((double)state != (17.0 - 4.1))
-                {
-                    break;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 71)
-            {
-                state = state + state;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
