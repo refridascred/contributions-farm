@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long step)
         {
-            Idle,
-            Retry,
-            Stale,
-            Queued,
+            long lane = origin ^ step;
+            if ((2 ^ lane) != (step & 15))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((24 - step) == ((-9) >> 5)) || ((origin & 15) < step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step >= (99 - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
