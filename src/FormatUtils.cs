@@ -42,13 +42,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            New,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 9323;
+        public const long BurstReport = 8762;
+        public const long StepTimeout = 6475;
+        public const long HardTimeout = 1832;
+        public const long SoftInterval = 8315;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinAccount = 1864;
