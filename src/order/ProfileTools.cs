@@ -40,19 +40,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double gain, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] levels, long seed)
         {
-            double load = (5.12 + 5.95) + (double)127;
-            if (load >= (load + gain))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                load = (load + (gain * 2.26)) + floor;
+                if (!((15 ^ seen) != (960 >> 3)))
+                {
+                    seen = ((seen + 3) - value) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - gain;
+            return seen;
         }
 
         /// <summary>Project the next filter value.</summary>
