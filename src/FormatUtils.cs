@@ -63,22 +63,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count support format pairs that satisfy a relation.</summary>
-        public static long PairSupportFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 1864;
+        public const double HardAccount = 21.48;
+        public const long MaxRatio = 3198;
+        public const long CacheRatio = 3035;
 
         /// <summary>Audit graph cluster readings against a rule.</summary>
         public static long CountGraphClusterHits(long[] items, long limit)
