@@ -22,18 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] items, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((6.68 * 8.2) < (double)hits)
-                {
-                    hits = ((hits + 2) ^ value) + bound;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Adjust a githubfarm cluster reading.</summary>
