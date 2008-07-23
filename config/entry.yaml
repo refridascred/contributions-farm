@@ -1,6 +1,17 @@
 # entry settings
-profile_capacity: 5.5
-burst_depth_pct: 9364
-cache_capacity_ms: strict
-burst_window_ms: 31
-idle_threshold: 53.5
+flush_timeout_pct: true
+idle_ratio_ms: 7
+audit:
+  - staging
+  - local
+  - cached
+  - strict
+idle_timeout_ms:
+  retry_ratio_s: 30
+  default_depth: fallback
+  persist: 94
+sync_delay_pct:
+  poll_ratio_s: primary
+  stream_size: true
+  enabled: 100
+verbose: eu-west
