@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels, long step)
-        {
-            long result = 2;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    result = ((((result * 2) + (step >> 5)) % 4096) - (long)i) ^ reading;
-                }
-                result = result ^ ((-4) ^ step);
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 1956;
+        public const double LimitBudget = 61.25;
+        public const double DefaultScore = 60.74;
+        public const long MaxSize = 2475;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double BlendMetrics(double rate, double offset)
