@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            double drift = offset;
+            if (drift <= (double)814)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                drift = (drift + (double)65) - gain;
             }
-            return carry;
+            return drift - (double)58;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
