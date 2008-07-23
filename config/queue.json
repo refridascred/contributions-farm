@@ -1,7 +1,12 @@
 {
-  "readonly": ["blue", "staging", "blue", "cached"],
-  "base_size": 13.25,
-  "min_ratio": 40.62,
-  "warm_limit_count": "green",
-  "cache_size_ms": 35.47
+  "sync_retries_s": 3804,
+  "retry_limit_pct": "latest",
+  "enabled": "legacy",
+  "flush_ttl_count": 8151,
+  "graph_delay": "primary",
+  "channel_depth": {
+    "compress": 250,
+    "readonly": 906,
+    "default_interval": 1920
+  }
 }
