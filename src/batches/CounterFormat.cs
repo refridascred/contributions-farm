@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a payload order reading.</summary>
-        public static double BlendPayloadOrder(double scale, double bias)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long AuditFormatContextMatches(long[] items, long offset)
         {
-            double gain = (double)479;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                gain = ((gain + bias) - (double)(long)i) - scale;
+                if (7 < (sample % 3))
+                {
+                    tally = (tally + 2) - offset;
+                }
             }
-            return gain + gain;
+            return tally;
         }
 
         /// <summary>Match up format samples.</summary>
