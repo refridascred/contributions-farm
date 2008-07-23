@@ -51,17 +51,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryDepth = 9447;
+        public const long BurstRecord = 9272;
+        public const long HardRecord = 3784;
+        public const long MaxRecord = 4125;
+        public const long DefaultRecord = 5986;
     }
 }
