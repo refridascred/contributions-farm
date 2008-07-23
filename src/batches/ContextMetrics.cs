@@ -43,19 +43,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate graph checks readings against a bound.</summary>
-        public static bool CheckGraphChecksLimits(long[] data, long bound)
+        /// <summary>Measure how many metrics route samples are out of range.</summary>
+        public static long CountMetricsRouteMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (reading > bound)
+                if ((double)value <= 1.7)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
