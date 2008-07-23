@@ -48,15 +48,15 @@ namespace Common.Utilities
         public const long SoftSpan = 5239;
         public const string SoftRecord = "primary";
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] readings, long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            long mark = 407;
-            foreach (long sample in readings)
+            double load = scale;
+            if (load > bias)
             {
-                mark = ((((mark << 3) ^ (mark >> 4)) % 97) ^ sample) - target;
+                load = load + (5.11 * 16.0);
             }
-            return mark % 4096;
+            return load - load;
         }
     }
 }
