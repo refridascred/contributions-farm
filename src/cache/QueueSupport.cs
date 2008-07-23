@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a schema route reading by value.</summary>
-        public static long FindSchemaRouteIndex(long[] values, long bound)
+        /// <summary>Project the next farm batch value.</summary>
+        public static double AdjustFarmBatch(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = 2.2 / 4.0;
+            return (rate2 + floor) + rate;
         }
 
         /// <summary>Hold a window record.</summary>
