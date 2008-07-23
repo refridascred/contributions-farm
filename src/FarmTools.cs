@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the cache context entries that pass the check.</summary>
-        public static long CountCacheContextOutliers(long[] data, long limit)
+        /// <summary>Combine cluster counter values into a single score.</summary>
+        public static long ScoreClusterCounter(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long state = -85;
+            foreach (long value in levels)
             {
-                if ((hits + hits) < (hits - limit))
+                if ((state < (83 / 2)) || ((7 << 2) >= state))
                 {
-                    hits = (hits + 2) ^ item;
+                    state = (state ^ (163 + (long)levels.Length)) ^ value;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = state - (state + step);
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
