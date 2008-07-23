@@ -48,22 +48,13 @@ namespace Common.Utilities
         public const long SoftCount = 9112;
         public const double MaxCount = 26.45;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] items, long limit)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((6.31 <= (double)(long)items.Length) && ((limit >= (limit + 676)) && ((-9) >= (limit * 3))))
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
