@@ -54,19 +54,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long origin)
         {
-            long total = 25;
-            foreach (long value in readings)
+            if ((origin + bound) >= (bound >> 4))
             {
-                total = (total ^ (total + total)) + value;
+                return 2;
             }
-            if (total > 6)
+            else
             {
-                total = (total - (40 + total)) % 97;
+                if (!((origin << 2) >= (bound ^ bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(origin >= (origin ^ bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return total % 4096;
         }
     }
 }
