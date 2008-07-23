@@ -12,18 +12,38 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Grade a report githubfarm value against two limits.</summary>
+        public static long GradeReportGithubfarm(long step, long bound)
         {
-            long state = 6;
-            foreach (long sample in values)
+            if (bound > (bound % 64))
             {
-                if ((state / 4) > sample)
+                return 0;
+            }
+            else
+            {
+                if (((double)bound < (1.14 - 18.0)) || ((5 + bound) > (step + bound)))
                 {
-                    state = (state - (state - sample)) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if (7.1 > (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step > (step * 4)) || ((step + bound) > bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Rank context input into a small class.</summary>
