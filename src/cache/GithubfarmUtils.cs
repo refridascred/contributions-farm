@@ -10,18 +10,39 @@ namespace Common.Utilities
         public const string IdleScore = "fallback-v2";
         public const long BurstRoute = 5110;
 
-        /// <summary>Audit stream layout readings against a rule.</summary>
-        public static long CountStreamLayoutOutliers(long[] readings)
+        /// <summary>Classify a stats notes pair into a bucket.</summary>
+        public static long SortStatsNotes(long step, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long next = step - bound;
+            if (next < 659)
             {
-                if ((((datum + count) <= (datum << 3)) && (7.0 > (double)datum)) && ((double)count < 2.2))
+                return 5;
+            }
+            else
+            {
+                if ((15.0 * 4.24) == (double)bound)
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step != (1.3 - 16.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((3 >> 4) >= step) || ((next + step) < (bound / 6)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
