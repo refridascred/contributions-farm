@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double bias)
         {
-            Queued,
-            Locked,
-            Dropped,
+            double drift = (double)232 * 13.0;
+            return (drift - (scale - scale)) + bias;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
