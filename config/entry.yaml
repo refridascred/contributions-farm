@@ -1,28 +1,16 @@
 # entry settings
-base_timeout:
-  idle_depth: false
-  order_window: 25
-  retry_ttl_s:
-    - stable
-    - local
-    - strict
-    - blue
-  queue_ttl: legacy
-  verbose:
-    - 60
-    - 124
-audit:
-  cache_interval_count: 94.68
-  flush_limit_s:
-    - local
-    - legacy
-    - legacy
-  hard_threshold_s:
-    - 430
-    - 382
-    - 161
-    - 401
-  batch_timeout_count:
-    - cached
-    - cached
-burst_threshold_count: true
+persist: eu-west
+already_threshold:
+  enabled: 39
+  burst_delay_ms: cached
+  base_limit_pct: true
+  hard_ttl_s: blue
+  sync_window:
+    - staging
+    - green
+    - standard
+    - staging
+  readonly: 6
+compress: false
+enabled: blue
+flush_timeout_count: 23.25
