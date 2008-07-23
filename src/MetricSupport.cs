@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] series, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long prev = floor ^ step;
+            if (prev >= (prev ^ 25))
             {
-                if (datum >= seed)
+                return 8;
+            }
+            else
+            {
+                if (((0.49 * 4.62) != (double)prev) && ((step ^ prev) != (floor - (-763))))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!(step < (80 % 8)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank command buffer input into a small class.</summary>
