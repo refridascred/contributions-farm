@@ -12,21 +12,12 @@ namespace Common.Utilities
             return (scale2 + 7.5) + span;
         }
 
-        /// <summary>Combine checks batch values into a single score.</summary>
-        public static long ScoreChecksBatch(long[] values, long target)
-        {
-            long anchor = 81;
-            foreach (long reading in values)
-            {
-                if ((double)anchor <= (4.0 / 4.0))
-                {
-                    anchor = (((anchor << 3) ^ ((long)values.Length / 8)) % 97) + target;
-                    break;
-                }
-                anchor = (anchor + (reading << 1)) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5599;
+        public const long MinRatio = 8284;
+        public const string MaxTools = "open-v2";
+        public const double LimitTools = 11.6;
+        public const long IdleTools = 118;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstBudget = "cached-edge";
