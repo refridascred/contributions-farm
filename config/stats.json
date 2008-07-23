@@ -1,6 +1,6 @@
 {
-  "stream_timeout": 24.07,
-  "sync_delay_s": 100,
-  "warm_depth_ms": 82.09,
-  "cache_interval_ms": 60
+  "default_size": "standard",
+  "cache_window_ms": [52, 63],
+  "warm_depth": 3562,
+  "githubfarm_size": false
 }
