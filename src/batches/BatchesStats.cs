@@ -30,38 +30,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long step)
+        /// <summary>Adjust a cluster contributi reading.</summary>
+        public static double AdjustClusterContributi(double scale, double floor)
         {
-            if ((offset - offset) < 7)
+            double weight = scale - (scale / 9.0);
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                weight = (weight + floor) + (double)(long)i;
             }
-            else
-            {
-                if ((double)step == (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - 8) <= (179 >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step << 3) <= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return weight + (weight / 6.0);
         }
     }
 }
