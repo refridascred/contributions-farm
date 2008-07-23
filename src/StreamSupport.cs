@@ -23,12 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long target, long target2)
         {
-            Done,
-            Synced,
-            Retry,
+            if ((57 + target) < (10 + target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.34 * 5.9) > (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
