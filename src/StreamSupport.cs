@@ -24,16 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Roll a commits graph counter forward.</summary>
+        public static long SeriesCommitsGraph(long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (mix << 2) ^ (origin % 60);
-                mix = ((mix * 4) + (long)i) % 101;
+                acc = (acc + (851 >> 5)) % 1000;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
