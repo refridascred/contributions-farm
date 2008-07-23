@@ -33,39 +33,19 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long offset, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long seed)
         {
-            long gap = offset ^ seed;
-            if ((offset + 73) < (62 / 2))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((seed % 24) != (offset - gap)))
+                if (reading <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)gap != (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed - seed) >= (seed + 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
