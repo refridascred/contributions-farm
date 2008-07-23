@@ -40,11 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheScore = 3685;
-        public const long WindowTimeout = 6594;
-        public const long HardFactor = 3118;
-        public const long StepTools = 9547;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Pending,
+            Retry,
+            Idle,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long target)
