@@ -27,16 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] readings, long seed)
         {
-            long state = 185;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state * 5) + (offset - 0)) % 1000) ^ sample;
-                state = (state + offset) % 4096;
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster context readings.</summary>
