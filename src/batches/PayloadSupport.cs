@@ -19,10 +19,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryWidth = 3407;
-        public const double LimitDepth = 54.94;
-        public const long RetryStats = 3979;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long bound)
+        {
+            long cur = offset ^ bound;
+            if (((bound >> 1) < offset) || ((double)offset < (2.0 / 4.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.3 + 6.63) >= (double)cur)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + bound) <= cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long BucketStats(long floor, long origin)
