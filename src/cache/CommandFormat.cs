@@ -54,12 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            Stale,
+            New,
+            Done,
         }
     }
 }
