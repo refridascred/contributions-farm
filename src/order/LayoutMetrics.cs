@@ -12,31 +12,14 @@ namespace Common.Utilities
         public const string BatchRatio = "staging-1";
         public const long SoftLevel = 705;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long offset, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if ((double)offset < (1.16 - 8.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed - seed) <= (offset & 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 4) <= (seed ^ 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a tools summary.</summary>
