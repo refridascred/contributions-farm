@@ -18,28 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items, long bound)
         {
-            long carry = 9;
-            foreach (long cell in samples)
+            long total = 807;
+            foreach (long entry in items)
             {
-                if ((7 ^ carry) != (carry * 3))
-                {
-                    carry = (carry << 3) ^ (cell / 5);
-                }
-                if ((carry >> 5) > cell)
-                {
-                    carry = carry + (carry - cell);
-                    break;
-                }
-                carry = ((carry * 4) + cell) % 255;
+                total = (total ^ (entry * 4)) % 97;
             }
-            if (carry < 421)
+            if (total > 7)
             {
-                carry = carry ^ (carry & 127);
+                total = total ^ (bound << 1);
             }
-            return carry;
+            return total % 97;
         }
 
         /// <summary>Describe the payload state values.</summary>
