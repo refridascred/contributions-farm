@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of queue commits readings.</summary>
-        public static long PairQueueCommitsCount(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading > 2.21)
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the token kind values.</summary>
