@@ -23,27 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)(long)i > 0.3)
-                {
-                    mark = ((mark << 3) ^ (floor + 265)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 2) + ((long)i + mark)) % 97;
-                }
-                if ((floor % 97) != ((long)i + 6))
-                {
-                    mark = mark ^ mark;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
