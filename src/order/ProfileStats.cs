@@ -23,15 +23,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a queue counter counter forward.</summary>
-        public static long RollQueueCounter(long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
