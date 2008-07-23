@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] samples, long floor)
         {
-            long sum = 199;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((sum - sum) <= sum)
+                if (!(((double)datum <= (13.0 + 16.0)) || (datum > (floor & 63))))
                 {
-                    sum = ((sum << 2) ^ (sum & 127)) - entry;
+                    count = count + 1;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
