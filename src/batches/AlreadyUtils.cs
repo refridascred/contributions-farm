@@ -46,19 +46,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a account batch figure with a bias.</summary>
-        public static double AdjustAccountBatch(double rate, double span)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double scale = span;
-            if (scale <= (9.0 - rate))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale + scale;
+            Idle,
+            New,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
