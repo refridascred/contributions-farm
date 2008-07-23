@@ -61,22 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] items)
+        /// <summary>Look up the position of a report cache sample.</summary>
+        public static long LookupReportCacheIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((entry % 5) < (seen + entry)) || ((4.0 / 7.0) != (double)seen)) || (0.29 <= (1.0 * 2.0)))
+                if (series[i] >= seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
