@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long AuditSupportQueueMatches(long[] values, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((5.0 * 8.48) != (double)tally) && (9.5 >= (double)seed)))
+                if (values[i] == origin)
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
