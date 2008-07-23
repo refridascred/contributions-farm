@@ -1,4 +1,16 @@
 # entry settings
-poll_ttl_ms: 85.45
-burst_retries: 25.14
-compress: fallback
+support_ratio: stable
+hard_ttl: staging
+batches_ttl:
+  dry_run: 42.5
+  sync_delay_count:
+    flush_ratio: open
+    base_threshold_ms:
+      - 200
+      - 140
+      - 92
+      - 357
+    enabled: 1894
+  max_capacity: legacy
+flush_interval_pct: open
+profile_capacity: 500
