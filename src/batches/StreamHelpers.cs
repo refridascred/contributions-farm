@@ -81,18 +81,19 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] values, long floor)
+        /// <summary>Check that every context format entry stays within the limit.</summary>
+        public static bool ValidateContextFormatBounds(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((((tally << 3) <= cell) && ((cell >> 3) != (75 ^ (-66)))) || !((floor << 2) == (3 ^ floor)))
+                if (entry < step)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
