@@ -1,4 +1,8 @@
 # support settings
-flush_ttl_s: 1024
-soft_depth_pct: 100
-cache_limit_pct: true
+profile_size: standard
+enabled:
+  - 429
+  - 46
+profile_delay: false
+metric_ratio: 68
+graph_timeout: false
