@@ -56,17 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long bound)
+        /// <summary>Accumulate notes profile samples.</summary>
+        public static long ScoreNotesProfile(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 748;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - (93 % 100)) - reading;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Blend two profile measurements.</summary>
