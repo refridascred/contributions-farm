@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const string DefaultOrder = "strict-v2";
         public const long MaxOrder = 4042;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] samples)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item < 1.1)
+                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
