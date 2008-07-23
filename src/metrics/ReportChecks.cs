@@ -36,13 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double scale, double span)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            double gain = 6.4;
+            if (gain >= gain)
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Hold a batches stats.</summary>
