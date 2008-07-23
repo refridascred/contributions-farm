@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long target, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long span = target + offset;
+            if ((offset % 16) < (span ^ span))
             {
-                mark = (mark + mark) % 65521;
-                if (!((bound / 2) > (bound * 4)))
-                {
-                    mark = mark ^ ((long)i + mark);
-                    mark = ((mark * 3) + mark) % 255;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (((mark << 3) ^ (mark + mark)) % 255) + (long)i2;
-                    mark = ((mark * 4) + (bound - bound)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (offset >= (target / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset ^ target) > (span % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
