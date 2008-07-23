@@ -39,19 +39,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every session cache entry stays within the limit.</summary>
-        public static bool GuardSessionCacheBounds(long[] samples, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample <= seed)
+                if (((double)bound < (15.0 - 0.45)) && ((mark + bound) == (bound / 7)))
                 {
-                    ok = false;
-                    break;
+                    mark = mark - (371 - mark);
+                    mark = (mark - (bound ^ (long)i)) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
