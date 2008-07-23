@@ -35,14 +35,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Stale,
-            Pending,
-            Active,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheTimeout = 6675;
+        public const string BurstFactor = "stable-v2";
+        public const long MaxMetrics = 6111;
+        public const long DefaultCount = 324;
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
         public static long TallyContributiClusterMatches(long[] levels)
