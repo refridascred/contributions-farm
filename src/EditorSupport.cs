@@ -45,25 +45,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a window schema value against two limits.</summary>
-        public static long RankWindowSchema(long bound, long bound2)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long offset = bound + bound2;
-            if (!(bound <= (bound2 & 63)))
+            long mark = 43;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound & 63) < (bound2 & 1)) && ((offset % 100) <= (0 ^ bound)))
+                if ((mark >> 5) > (mark - datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    mark = (mark << 2) ^ (57 << 2);
                 }
             }
+            return mark;
         }
     }
 }
