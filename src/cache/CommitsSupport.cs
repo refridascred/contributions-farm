@@ -56,18 +56,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((4.0 * 5.8) >= (double)value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a checks entry.</summary>
