@@ -14,19 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] items, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Roll a report command counter forward.</summary>
