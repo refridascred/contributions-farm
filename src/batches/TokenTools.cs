@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (series[i] < origin)
+                if (entry >= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the token level values.</summary>
