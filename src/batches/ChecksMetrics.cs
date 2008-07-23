@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = 865;
-            foreach (long item in values)
-            {
-                if ((item / 7) < (item ^ floor))
-                {
-                    mix = (mix ^ floor) % 97;
-                }
-            }
-            return mix;
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Describe the format mode values.</summary>
