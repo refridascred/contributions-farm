@@ -13,31 +13,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            if (origin > (915 - floor))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor == (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 3) == (floor ^ origin))
+                    if ((values[i] + values[j]) > 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
