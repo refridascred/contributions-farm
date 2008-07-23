@@ -47,18 +47,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] items)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (2.2 > (double)24)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Adjust a report reading.</summary>
