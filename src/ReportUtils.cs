@@ -54,17 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long target)
+        /// <summary>Digest a series of account queue entries.</summary>
+        public static long CombineAccountQueue(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 12;
+            foreach (long reading in data)
             {
-                if (series[i] == target)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    total = (total - 3) - (long)i;
                 }
+                total = total + (reading - reading);
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the token phase values.</summary>
