@@ -36,11 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
