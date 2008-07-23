@@ -13,17 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
