@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                if ((step + item) >= (seen % 24))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
