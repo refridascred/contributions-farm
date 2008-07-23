@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items)
-        {
-            long total = -596;
-            foreach (long datum in items)
-            {
-                if (82 <= total)
-                {
-                    total = ((total + total) % 255) ^ datum;
-                }
-            }
-            if (total > 5)
-            {
-                total = ((total << 3) ^ (total / 6)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5786;
+        public const string HardSize = "fallback";
+        public const long WindowToken = 6294;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] values, long seed)
