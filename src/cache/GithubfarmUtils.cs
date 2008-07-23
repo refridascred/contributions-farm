@@ -41,22 +41,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats counter samples are out of range.</summary>
-        public static long AuditStatsCounterOutliers(long[] items, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)tally != (5.53 / 7.0))
+                if (sample > offset)
                 {
-                    tally = ((tally + 2) + item) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
