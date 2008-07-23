@@ -22,26 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record farm values into a single score.</summary>
-        public static long ScoreRecordFarm(long[] items)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mix = 9;
-            foreach (long reading in items)
-            {
-                if (reading < (reading + reading))
-                {
-                    mix = (mix * 5) + (mix / 2);
-                }
-                else
-                {
-                    mix = mix - (reading << 3);
-                }
-            }
-            if (mix < (-187))
-            {
-                mix = (mix * 5) + mix;
-            }
-            return mix;
+            Stale,
+            Pending,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Project the next support command value.</summary>
