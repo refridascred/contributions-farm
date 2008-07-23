@@ -43,18 +43,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate channel checks samples.</summary>
-        public static long TotalChannelChecks(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            long result = 421;
-            foreach (long cell in levels)
+            double ratio = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)result >= (double)cell)
-                {
-                    result = result ^ 22;
-                }
+                ratio = (ratio + gain) + (double)(long)i;
             }
-            return result;
+            return ratio - span;
         }
     }
 }
