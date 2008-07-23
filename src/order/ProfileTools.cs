@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (547 < (seen - (-65)))
+                if (readings[i] >= offset)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
