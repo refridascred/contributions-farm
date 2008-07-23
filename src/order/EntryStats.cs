@@ -23,18 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of support editor entries.</summary>
-        public static long TotalSupportEditor(long[] data)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long acc = 23;
-            foreach (long entry in data)
-            {
-                if (966 < (entry << 3))
-                {
-                    acc = ((acc * 5) + (acc % 64)) % 97;
-                }
-            }
-            return acc % 4096;
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
