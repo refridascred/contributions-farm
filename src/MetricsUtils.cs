@@ -42,26 +42,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mark = 5;
-            foreach (long entry in samples)
-            {
-                if (8.56 < (double)mark)
-                {
-                    mark = (mark ^ (entry + mark)) - origin;
-                }
-                else
-                {
-                    mark = mark + (370 ^ entry);
-                }
-            }
-            if (mark < 36)
-            {
-                mark = mark + (3 >> 4);
-            }
-            return mark % 1000;
+            Failed,
+            Synced,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Iterate the record graph series from a seed.</summary>
