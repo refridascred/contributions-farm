@@ -38,12 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 75.12;
-        public const double HardTools = 4.12;
-        public const long HardTimeout = 1555;
-        public const long BatchTools = 8699;
-        public const double CacheTools = 19.66;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double weight, double span)
+        {
+            double bias = weight / 7.0;
+            return bias - (span * 10.0);
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] series)
