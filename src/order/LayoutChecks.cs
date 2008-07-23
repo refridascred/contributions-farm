@@ -48,24 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long seed)
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long AuditContributiEditorGaps(long[] samples, long floor)
         {
-            if ((44 % 64) < (9 - step))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= (2.8 + 3.5))
+                if ((((value - floor) == (seen & 127)) || ((32 + floor) != (floor - seen))) || ((floor * 3) < (floor - seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up farm samples.</summary>
