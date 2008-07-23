@@ -29,32 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long offset = seed - floor;
-            if (!((offset << 3) <= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.5 - 2.0) < (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > 536)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
