@@ -29,24 +29,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            long carry = 63;
-            foreach (long item in values)
+            if ((double)seed > (1.0 * 9.0))
             {
-                if (!(item > (item - item)))
+                return 3;
+            }
+            else
+            {
+                if ((seed * 5) != (step - step))
                 {
-                    carry = ((carry << 2) ^ item) % 255;
-                    carry = (carry * 3) + (carry + item);
+                    return 8;
                 }
-                carry = ((carry * 3) + 63) % 101;
-                if ((carry >= (carry >> 1)) && ((9.4 / 6.0) <= (double)item))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the format level values.</summary>
