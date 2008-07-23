@@ -1,16 +1,5 @@
 # entry settings
-support_ratio: stable
-hard_ttl: staging
-batches_ttl:
-  dry_run: 42.5
-  sync_delay_count:
-    flush_ratio: open
-    base_threshold_ms:
-      - 200
-      - 140
-      - 92
-      - 357
-    enabled: 1894
-  max_capacity: legacy
-flush_interval_pct: open
-profile_capacity: 500
+farm_delay: fallback
+base_capacity: 500
+enabled: 97.77
+poll_timeout_s: primary
