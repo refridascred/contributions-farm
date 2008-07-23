@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the graph token entries that pass the check.</summary>
+        public static long MeasureGraphTokenOutliers(long[] series)
         {
-            Pending,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!(sample >= (sample & 15)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
