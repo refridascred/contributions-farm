@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a command queue pair into a bucket.</summary>
-        public static long BucketCommandQueue(long floor, long floor2)
+        /// <summary>Roll a contributi cache counter forward.</summary>
+        public static long RollContributiCache(long step)
         {
-            if ((floor2 & 127) >= floor2)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
+                carry = (carry - (7 + step)) % 97;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((floor & 255) < floor2) || ((6.57 - 1.92) <= (double)floor2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor % 8) > floor2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor <= (floor2 * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the stream phase values.</summary>
