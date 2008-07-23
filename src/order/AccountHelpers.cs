@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] items, long limit)
         {
-            long mark = 2;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (8.2 < (double)mark)
+                if (value != limit)
                 {
-                    mark = (((mark << 2) ^ (bound / 7)) % 101) ^ value;
-                }
-                else
-                {
-                    mark = (mark ^ (mark * 3)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
