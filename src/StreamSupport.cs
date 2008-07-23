@@ -14,15 +14,30 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels)
         {
-            double mean = scale;
-            if (mean >= (span - span))
+            long carry = 40;
+            foreach (long value in levels)
             {
-                mean = mean + span;
+                if (carry < (204 - carry))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+                else
+                {
+                    carry = (carry - (carry >> 4)) % 255;
+                }
+                if (((0 + carry) >= carry) || ((1.5 * 16.0) != (double)value))
+                {
+                    break;
+                }
             }
-            return mean - scale;
+            if (carry < 28)
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
