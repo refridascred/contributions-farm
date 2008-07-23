@@ -1,8 +1,17 @@
 {
-  "enabled": "cached",
-  "default_timeout_pct": 46,
-  "warm_capacity_count": 250,
-  "report_delay": "green",
-  "batch_timeout_count": [141, 192, 389],
-  "hard_interval_ms": "edge"
+  "enabled": 73,
+  "stream_ttl": 9139,
+  "poll_ttl_pct": {
+    "already_size": 48,
+    "dry_run": 13,
+    "soft_ratio_ms": {
+      "schema_window": 26.17,
+      "order_interval": 93.68,
+      "persist": "standard"
+    },
+    "poll_ttl": "strict"
+  },
+  "dry_run": ["blue", "standard", "cached"],
+  "compress": true,
+  "session_ttl": "blue"
 }
