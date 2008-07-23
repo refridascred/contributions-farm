@@ -57,14 +57,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long target)
         {
-            Active,
-            Queued,
-            Failed,
-            Closed,
-            Dropped,
+            if (offset > (target * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - target) > (3 / 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
