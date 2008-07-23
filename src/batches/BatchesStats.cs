@@ -30,11 +30,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 155;
-        public const long LimitContributi = 2131;
-        public const double RetryContributi = 83.73;
-        public const string DefaultRatio = "fallback-edge";
+        /// <summary>Adjust a checks format reading.</summary>
+        public static double ScaleChecksFormat(double gain, double bias)
+        {
+            double ratio = (double)59 + gain;
+            if (ratio < (double)0)
+            {
+                ratio = (ratio - (ratio * 7.0)) + bias;
+            }
+            else
+            {
+                ratio = ratio - (ratio / 7.0);
+            }
+            return ratio - (double)6;
+        }
 
         /// <summary>Audit schema entry readings against a rule.</summary>
         public static long AuditSchemaEntryOutliers(long[] levels, long step)
