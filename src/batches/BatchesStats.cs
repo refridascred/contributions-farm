@@ -20,13 +20,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long limit)
         {
-            Ready,
-            Locked,
-            Queued,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a cluster contributi reading.</summary>
