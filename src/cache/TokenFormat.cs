@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
-        public static long TallyToolsGithubfarmMatches(long[] readings, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally % 12) < (7 + tally))
-                {
-                    tally = ((tally + 3) - cell) - bound;
-                }
-            }
-            return tally;
+            Queued,
+            Stale,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
