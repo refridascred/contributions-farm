@@ -22,31 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] levels, long floor)
         {
-            if (((step ^ floor) < (floor % 8)) && ((step % 16) != (step - floor)))
+            long acc = 785;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((45 + floor) != ((-2) - step))
+                if ((724 - acc) >= (acc - acc))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.5 * 17.0) == (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = ((acc * 3) + (acc * 5)) + datum;
                 }
             }
+            if (acc < (-46))
+            {
+                acc = (acc * 2) + floor;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of metric batches readings.</summary>
