@@ -23,10 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 4678;
-        public const double CacheWindow = 79.88;
-        public const long BaseWindow = 9501;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Queued,
+            Ready,
+            Stale,
+            Idle,
+            Active,
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long bound, long floor)
