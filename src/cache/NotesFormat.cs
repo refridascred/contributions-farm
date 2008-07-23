@@ -22,22 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long total = -596;
+            foreach (long datum in items)
             {
-                if ((3.8 / 9.0) == (double)hits)
+                if (82 <= total)
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total + total) % 255) ^ datum;
                 }
             }
-            return hits;
+            if (total > 5)
+            {
+                total = ((total << 3) ^ (total / 6)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit schema stats readings against a rule.</summary>
