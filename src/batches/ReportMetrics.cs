@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series, long target)
-        {
-            long total = 302;
-            foreach (long cell in series)
-            {
-                total = ((((total * 5) + (3 - (long)series.Length)) % 101) ^ cell) + target;
-                if ((double)total == (double)(long)series.Length)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseSize = "latest-edge";
+        public const long RetryDepth = 3085;
+        public const double BatchBudget = 11.38;
+        public const string MaxDepth = "stable-v2";
+        public const long MinContext = 5174;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
