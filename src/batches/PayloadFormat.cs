@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Stale,
-            Synced,
-            Dropped,
-            New,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 24.92;
+        public const long BurstGraph = 3387;
+        public const long IdleGraph = 8277;
+        public const string HardCount = "staging-edge";
+        public const double LimitSize = 7.18;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long ScoreRecord(long[] readings)
