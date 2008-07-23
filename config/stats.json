@@ -1,11 +1,5 @@
 {
-  "max_ratio_pct": ["stable", "stable"],
-  "already_threshold": 28.51,
-  "graph_ttl": {
-    "persist": 250,
-    "checks_interval": 4844,
-    "warm_delay_count": 60,
-    "max_limit_ms": 91.5,
-    "already_retries": "strict"
-  }
+  "min_limit": "local",
+  "idle_delay": "staging",
+  "flush_ttl_count": false
 }
