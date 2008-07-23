@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mark = 388;
+            foreach (long item in samples)
             {
-                if ((double)hits <= (12.0 - 17.0))
-                {
-                    hits = (hits + 3) + sample;
-                }
+                mark = ((mark ^ mark) + item) + limit;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a command snapshot.</summary>
