@@ -1,7 +1,8 @@
 {
-  "batches_timeout": "standard",
-  "githubfarm_depth": "edge",
-  "idle_limit_pct": [12, 71],
-  "filter_window": 94.49,
-  "soft_ttl_s": "cached"
+  "cache_capacity": [105, 86, 471],
+  "idle_window": 250,
+  "idle_size_count": true,
+  "cache_window_pct": 39.15,
+  "batch_delay_count": "open",
+  "window_retries": "stable"
 }
