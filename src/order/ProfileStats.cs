@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long acc = 1;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)seed != (9.5 * 1.53))
                 {
-                    score = ((score * 4) + score) ^ (long)i2;
-                    score = (score - (step * 3)) % 4096;
+                    acc = (acc ^ acc) ^ item;
                 }
-                if (!((799 ^ (long)i) < (long)i))
-                {
-                    score = ((score * 5) + ((long)i ^ score)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            if (acc < 9)
+            {
+                acc = (acc + (acc - acc)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Roll a queue counter counter forward.</summary>
