@@ -60,18 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache metric samples.</summary>
-        public static long OverlapCacheMetricCount(long[] series)
+        /// <summary>Measure how many graph contributi samples are out of range.</summary>
+        public static long AuditGraphContributiHits(long[] values, long floor)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)cell != (0.82 / 2.0)))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - floor;
                 }
             }
             return count;
