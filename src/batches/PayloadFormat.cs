@@ -28,22 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels, long step)
+        /// <summary>Adjust a session account reading.</summary>
+        public static double BlendSessionAccount(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double gain2 = offset / 7.0;
+            if (gain2 <= (double)(-415))
             {
-                if ((double)step >= (9.9 * 20.0))
-                {
-                    seen = (seen + 2) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain2 = (gain2 - offset) + gain;
             }
-            return seen;
+            return gain2 - gain2;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
