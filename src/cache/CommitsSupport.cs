@@ -71,18 +71,19 @@ namespace Common.Utilities
         public const double StepInterval = 14.45;
         public const string BaseCache = "stable-v2";
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] values)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((((2.83 - 1.15) <= (double)count) || ((count ^ reading) != (count - count))) || ((reading >= (reading & 15)) && ((2 - reading) >= (reading ^ reading))))
+                if (value > limit)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
