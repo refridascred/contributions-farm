@@ -31,11 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheLevel = "staging-edge";
-        public const long DefaultCommand = 6261;
-        public const string BurstDepth = "stable";
-        public const long MaxCommand = 4753;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits + hits) < (datum << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
