@@ -49,19 +49,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate githubfarm already readings against a bound.</summary>
-        public static bool GuardGithubfarmAlreadyRange(long[] values, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != limit)
+                if ((values[i] <= origin) && ((values[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
