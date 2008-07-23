@@ -42,10 +42,15 @@ namespace Common.Utilities
             return rate - (ratio - ratio);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 532;
-        public const double MinReport = 65.6;
-        public const string StepReport = "stable-v2";
-        public const long HardReport = 2963;
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double bias)
+        {
+            double load = weight;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (load - load)) + (double)(long)i) + bias;
+            }
+            return load + load;
+        }
     }
 }
