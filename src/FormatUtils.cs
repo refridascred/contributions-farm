@@ -52,22 +52,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batches metric samples are out of range.</summary>
-        public static long TallyBatchesMetricGaps(long[] samples)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((hits + hits) < (hits + 330)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank route input into a small class.</summary>
