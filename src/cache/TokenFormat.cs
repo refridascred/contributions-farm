@@ -26,17 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 84;
+            foreach (long reading in series)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = (((carry - carry) % 255) - reading) - floor;
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
