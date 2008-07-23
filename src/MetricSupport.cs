@@ -31,26 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long result = 9;
-            foreach (long datum in series)
+            long anchor = 712;
+            foreach (long value in readings)
             {
-                if ((limit << 1) < (limit + 9))
+                if ((anchor & 255) <= (anchor / 5))
                 {
-                    result = ((result * 2) + 35) + datum;
-                }
-                else
-                {
-                    result = (result + limit) % 101;
+                    anchor = ((anchor + (391 << 2)) % 255) - value;
                 }
             }
-            if (result > 830)
-            {
-                result = (result * 2) + (limit - limit);
-            }
-            return result % 1000;
+            return anchor % 65521;
         }
     }
 }
