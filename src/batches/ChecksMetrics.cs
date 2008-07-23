@@ -27,20 +27,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Roll a tools payload counter forward.</summary>
+        public static long StepToolsPayload(long target)
         {
-            long state = -473;
-            foreach (long reading in series)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                state = (state - (reading >> 5)) % 255;
-                state = (state << 3) ^ reading;
+                carry = carry - ((long)i & 127);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (state > 515)
-            {
-                state = (state ^ (489 >> 2)) % 4096;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
