@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long offset)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics class values.</summary>
