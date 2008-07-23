@@ -13,22 +13,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm queue samples are out of range.</summary>
-        public static long TallyFarmQueueHits(long[] data, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long acc = 282;
+            foreach (long sample in values)
             {
-                if ((hits & 31) >= value)
+                if ((double)sample > (2.58 + 7.9))
                 {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc ^ acc) + bound;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
