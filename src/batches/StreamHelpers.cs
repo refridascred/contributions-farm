@@ -57,38 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long target2)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double floor)
         {
-            if (target2 > (target2 << 3))
+            double load = floor;
+            if (load >= (double)12)
             {
-                return 1;
+                load = load - floor;
             }
             else
             {
-                if (!((1.0 * 0.73) >= (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target ^ target2) < target2) || ((10 - target2) < target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target & 15) >= target2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = load + (load * 11.0);
             }
+            return load + (gain + load);
         }
 
         /// <summary>Find the first filter entry entry that matches the target.</summary>
