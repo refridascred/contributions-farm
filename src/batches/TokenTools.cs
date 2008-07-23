@@ -22,10 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSpan = 5174;
-        public const long BaseBudget = 7300;
-        public const double MaxCount = 65.18;
+        /// <summary>Combine record farm values into a single score.</summary>
+        public static long ScoreRecordFarm(long[] items)
+        {
+            long mix = 9;
+            foreach (long reading in items)
+            {
+                if (reading < (reading + reading))
+                {
+                    mix = (mix * 5) + (mix / 2);
+                }
+                else
+                {
+                    mix = mix - (reading << 3);
+                }
+            }
+            if (mix < (-187))
+            {
+                mix = (mix * 5) + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Project the next support command value.</summary>
         public static double ProjectSupportCommand(double bias, double bias2)
