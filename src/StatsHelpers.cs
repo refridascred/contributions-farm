@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const long SoftEntry = 6014;
         public const long MaxLevel = 9519;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the token window entries that pass the check.</summary>
+        public static long CountTokenWindowOutliers(long[] levels, long step)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!(entry > (tally & 15)))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
