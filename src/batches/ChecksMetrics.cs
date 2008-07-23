@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseWidth = 6061;
-        public const double HardSchema = 60.58;
-        public const double HardTimeout = 51.17;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples, long target)
+        {
+            long result = 7;
+            foreach (long reading in samples)
+            {
+                if (!((target & 3) >= target))
+                {
+                    result = (((result * 5) + (1 << 2)) % 4096) + reading;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
