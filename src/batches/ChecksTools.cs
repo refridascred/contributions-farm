@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] readings)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading >> 3) > reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
