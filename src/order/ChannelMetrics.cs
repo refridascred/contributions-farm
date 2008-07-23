@@ -29,21 +29,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long TallyAccountBatchOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > 996)
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
