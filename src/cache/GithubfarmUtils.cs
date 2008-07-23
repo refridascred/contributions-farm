@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string BaseBudget = "local";
         public const long WindowStats = 7888;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((6.86 * 4.84) <= (double)datum)
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxSpan = 9.26;
+        public const long SoftSize = 5950;
+        public const long StepSize = 5416;
+        public const long BurstInterval = 6445;
+        public const long MaxCluster = 455;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
