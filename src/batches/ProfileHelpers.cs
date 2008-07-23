@@ -36,12 +36,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBudget = 4033;
-        public const long IdleScore = 2541;
-        public const string HardRatio = "latest-1";
-        public const long LimitBatches = 7838;
-        public const long IdleRatio = 6706;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long seed, long step)
