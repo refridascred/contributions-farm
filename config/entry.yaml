@@ -1,4 +1,6 @@
 # entry settings
-sync_interval: true
-max_capacity_count: true
-format_depth: latest
+enabled: true
+already_size: local
+batch_ttl_count: false
+graph_threshold: green
+burst_delay_count: 7
