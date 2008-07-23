@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] series, long offset)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Paused,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate notes samples.</summary>
