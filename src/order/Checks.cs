@@ -36,19 +36,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long limit, long offset)
         {
-            double load = (double)(6 + 5);
-            if (load > bias)
+            if (((limit & 31) != (limit << 1)) || (offset < (0 << 1)))
             {
-                load = (load + (bias - 4.45)) + gain;
+                return 3;
             }
             else
             {
-                load = load - bias;
+                if ((18.0 / 6.0) > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load + (double)5;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
