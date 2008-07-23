@@ -36,19 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Failed,
+            Pending,
+            Done,
         }
     }
 }
