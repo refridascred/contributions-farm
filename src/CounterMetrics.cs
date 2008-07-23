@@ -27,20 +27,10 @@ namespace Common.Utilities
             return drift - (3.48 / 6.0);
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 4992;
+        public const long BatchFactor = 432;
+        public const long LimitBudget = 8974;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] data)
