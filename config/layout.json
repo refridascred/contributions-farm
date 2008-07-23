@@ -1,6 +1,20 @@
 {
-  "batch_capacity_pct": 10,
-  "enabled": 6036,
-  "verbose": true,
-  "cache_depth_pct": "standard"
+  "max_capacity_ms": 89,
+  "compress": ["open", "edge", "fallback"],
+  "channel_window": true,
+  "payload_size": {
+    "cache_interval": {
+      "hard_window": 83.72,
+      "batches_ttl": "open",
+      "default_window_ms": 9236
+    },
+    "readonly": "fallback",
+    "payload_capacity": {
+      "cache_threshold_s": 9285,
+      "burst_ttl_ms": 100,
+      "payload_threshold": [58, 246, 472],
+      "verbose": "legacy"
+    }
+  },
+  "layout_interval": 84
 }
