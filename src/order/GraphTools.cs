@@ -35,10 +35,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultDepth = 4553;
-        public const string WindowSpan = "open";
-        public const string RetryRecord = "local-v2";
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Pending,
+            New,
+            Synced,
+            Idle,
+            Active,
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
