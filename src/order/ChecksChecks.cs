@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((3.26 / 9.0) <= (double)count))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
