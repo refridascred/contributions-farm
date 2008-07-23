@@ -1,14 +1,7 @@
 # githubfarm settings
-tools_timeout: 49.41
-token_depth: legacy
-idle_ttl_count:
-  profile_depth: eu-west
-  cache_threshold:
-    - blue
-    - latest
-  notes_interval: primary
-  default_retries_s: 53
-  flush_capacity: true
-  burst_threshold_count: primary
-already_window: false
-dry_run: latest
+batch_retries_count:
+  - standard
+  - blue
+audit: true
+poll_ratio: 35.52
+cache_interval_pct: 71.19
