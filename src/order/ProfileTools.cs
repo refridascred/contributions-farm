@@ -34,17 +34,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long seed, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long delta = seed ^ floor;
+            if ((223 >> 2) < delta)
             {
-                if (levels[i] <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > (double)delta)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
