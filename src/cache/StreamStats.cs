@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank command farm input into a small class.</summary>
-        public static long GradeCommandFarm(long step, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long next = step + seed;
-            if ((seed + seed) <= (step + seed))
+            long carry = -4;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((500 + step) >= seed)
+                if (!(((-64) >> 3) <= carry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((next - step) >= (step ^ step)) && ((next + step) > (step % 100)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((16.0 * 4.4) == (double)next)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry ^ (carry / 9)) + reading;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
