@@ -14,10 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 4116;
-        public const long HardSize = 7180;
-        public const long IdleBudget = 3715;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a report command counter forward.</summary>
         public static long StepReportCommand(long limit)
