@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mix = 741;
-            foreach (long entry in levels)
-            {
-                if ((mix % 60) > mix)
-                {
-                    mix = mix ^ ((-2) % 97);
-                    mix = mix - ((-8) + mix);
-                }
-                if ((step >> 3) > (77 - step))
-                {
-                    mix = (mix * 4) + entry;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = ((mix * 5) + mix) % 255;
-            }
-            return mix % 1000;
+            Failed,
+            Paused,
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
