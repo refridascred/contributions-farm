@@ -33,13 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit batch buffer readings against a rule.</summary>
+        public static long MeasureBatchBufferGaps(long[] items, long floor)
         {
-            Draft,
-            Done,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)count == (3.6 / 4.0)))
+                {
+                    count = ((count + 1) + cell) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
