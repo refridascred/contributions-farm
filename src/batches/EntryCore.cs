@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2038;
+        public const double RetryToken = 95.7;
+        public const long BaseToken = 5313;
+        public const long LimitInterval = 7050;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] items, long bound)
