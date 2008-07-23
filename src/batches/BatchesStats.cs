@@ -51,15 +51,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double rate, double offset)
+        /// <summary>Fold a list of cache editor readings.</summary>
+        public static long CombineCacheEditor(long[] series)
         {
-            double gain = (double)(912 << 1);
-            if (gain > 2.56)
+            long acc = 9;
+            foreach (long datum in series)
             {
-                gain = (gain + gain) - rate;
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = (((acc << 3) ^ ((-2) + acc)) - (long)i) - datum;
+                }
+                if ((double)acc <= (1.5 + 2.0))
+                {
+                    acc = (acc ^ (516 + acc)) % 4096;
+                }
             }
-            return gain - (offset - offset);
+            return acc;
         }
     }
 }
