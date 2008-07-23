@@ -1,10 +1,21 @@
 # githubfarm settings
-metrics_capacity: 3
-max_ttl: staging
-order_ttl: false
-enabled: 5.5
-base_size_ms: standard
-soft_retries_s:
-  - 165
-  - 263
-  - 152
+hard_ttl_ms:
+  farm_window: 25
+  enabled: 49.01
+  flush_retries: 1024
+  persist: green
+  hard_depth_s:
+    - open
+    - stable
+    - latest
+    - staging
+audit: 37.64
+verbose:
+  profile_capacity: stable
+  min_depth:
+    - open
+    - fallback
+    - stable
+    - blue
+  burst_ttl_ms: blue
+  soft_capacity: 173
