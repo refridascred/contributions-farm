@@ -32,22 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long TallyReportLayoutGaps(long[] samples)
         {
-            long carry = 80;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (((carry + carry) != (entry & 15)) || ((entry * 2) <= (entry / 6)))
+                if ((double)seen < (double)sample)
                 {
-                    carry = (carry * 2) + (entry << 1);
+                    seen = seen + 1;
                 }
             }
-            if (carry < 4)
-            {
-                carry = carry + (carry % 16);
-            }
-            return carry;
+            return seen;
         }
     }
 }
