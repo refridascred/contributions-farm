@@ -43,10 +43,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 19.92;
-        public const string BaseSize = "local-edge";
-        public const double DefaultTimeout = 52.81;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] readings)
