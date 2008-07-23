@@ -20,10 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardSize = 29.74;
-        public const double LimitTimeout = 54.31;
-        public const long WindowContributi = 4335;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardLevel = 66.44;
+        public const double StepFactor = 69.32;
+        public const long BaseFormat = 9315;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
