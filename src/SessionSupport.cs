@@ -57,14 +57,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long bound)
         {
-            Paused,
-            New,
-            Dropped,
-            Synced,
-            Stale,
+            long span = target + bound;
+            if (((double)span >= (double)bound) && (bound > (target + span)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + 89) >= span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0.04 * 4.0) != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((span / 3) >= span) && ((double)target <= (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
