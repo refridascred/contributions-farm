@@ -1,4 +1,14 @@
 # support settings
-soft_timeout_pct: 9
-batch_delay: 100
-payload_timeout: eu-west
+hard_timeout:
+  - 490
+  - 315
+  - 117
+  - 17
+editor_capacity: 5111
+schema_retries:
+  - strict
+  - green
+  - strict
+report_interval: legacy
+graph_delay: open
+batch_interval_count: 17.46
