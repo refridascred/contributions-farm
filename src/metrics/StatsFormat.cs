@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheSpan = "legacy-1";
+        public const double SoftScore = 98.95;
+        public const long RetryLevel = 3010;
+        public const long WindowEditor = 1524;
+        public const double BatchEditor = 64.2;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
