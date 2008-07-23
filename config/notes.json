@@ -1,14 +1,12 @@
 {
-  "enabled": 83.56,
-  "report_timeout": 500,
-  "record_capacity": {
-    "max_window": "eu-west",
-    "stream_interval": 31.27,
-    "poll_timeout_s": 32,
-    "account_ratio": {
-      "command_depth": true,
-      "max_retries_pct": "standard",
-      "max_retries": 68
-    }
-  }
+  "command_window": [168, 426, 354, 390],
+  "session_threshold": "eu-west",
+  "compress": 4473,
+  "batch_window": {
+    "cache_timeout": "open",
+    "schema_limit": true,
+    "batch_timeout": 2.03,
+    "dry_run": 2.51
+  },
+  "max_threshold": 250
 }
