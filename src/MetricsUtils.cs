@@ -42,19 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] values, long step)
+        /// <summary>Validate entry payload readings against a bound.</summary>
+        public static bool GuardEntryPayloadLimits(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (sample < step)
+                if (reading > target)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
