@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseDepth = "cached-edge";
-        public const double RetryBuffer = 66.64;
-        public const long WindowInterval = 5540;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseScore = "legacy-v2";
+        public const string LimitEditor = "local-1";
+        public const long DefaultCount = 4335;
+        public const long HardFactor = 6273;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesBounds(long[] values, long bound)
