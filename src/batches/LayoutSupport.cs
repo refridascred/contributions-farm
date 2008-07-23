@@ -27,15 +27,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of metrics editor entries.</summary>
-        public static long DigestMetricsEditor(long[] values, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double gain, double offset)
         {
-            long mark = 3;
-            foreach (long reading in values)
+            double weight = (double)(78 ^ 2);
+            if (weight >= offset)
             {
-                mark = (((mark - mark) % 97) + reading) + target;
+                weight = weight + gain;
             }
-            return mark;
+            else
+            {
+                weight = weight + (double)3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (double)9) - (double)(long)i;
+            }
+            return weight - (gain / 6.0);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
