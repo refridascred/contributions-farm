@@ -27,15 +27,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the counter batch series from a seed.</summary>
-        public static long IterateCounterBatch(long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long origin, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            if ((6.64 / 8.0) < (double)step)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (origin <= (555 - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step << 1) != (step >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin < 9.07)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
