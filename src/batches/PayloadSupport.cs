@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long TallyFormatGraphMatches(long[] values, long floor)
         {
-            Failed,
-            Ready,
-            Queued,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item - item) != (item + 1))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
