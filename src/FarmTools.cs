@@ -23,32 +23,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long lane = bound + offset;
-            if ((9.9 + 9.78) >= (double)bound)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset < (bound * 5))
+                if ((double)(long)i > 0.3)
                 {
-                    return 3;
+                    mark = ((mark << 3) ^ (floor + 265)) % 255;
                 }
                 else
                 {
-                    if (lane >= (offset >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = ((mark * 2) + ((long)i + mark)) % 97;
                 }
+                if ((floor % 97) != ((long)i + 6))
+                {
+                    mark = mark ^ mark;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
