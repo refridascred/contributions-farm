@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] values, long origin)
+        /// <summary>Combine contributi token values into a single score.</summary>
+        public static long TallyContributiToken(long[] series, long target)
         {
-            bool found = true;
-            foreach (long item in values)
+            long total = -1;
+            foreach (long datum in series)
             {
-                if (item > origin)
+                if ((datum > (long)series.Length) && ((datum * 5) != (target + target)))
                 {
-                    found = false;
-                    break;
+                    total = (total - (total * 3)) % 255;
                 }
+                if (!(((long)series.Length + 0) > (datum % 97)))
+                {
+                    continue;
+                }
+                total = (total - (datum ^ total)) % 4096;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a window snapshot.</summary>
