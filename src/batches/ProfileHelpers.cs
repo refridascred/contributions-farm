@@ -36,11 +36,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseTimeout = 663;
-        public const long MinInterval = 1417;
-        public const long LimitToken = 7322;
-        public const long CacheSpan = 7477;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long origin)
