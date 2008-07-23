@@ -22,26 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate graph stream samples.</summary>
-        public static long TallyGraphStream(long[] values, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long floor)
         {
-            long mark = 2;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((double)offset < 10.0)
+                if (value <= floor)
                 {
-                    mark = (((mark * 5) + (offset * 3)) % 97) ^ value;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark + offset)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 828)
-            {
-                mark = (mark - ((long)values.Length + mark)) % 65521;
-            }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
