@@ -36,12 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next token tools value.</summary>
-        public static double AdjustTokenTools(double bias, double floor)
-        {
-            double bias2 = (bias + 4.0) / 2.0;
-            return (bias2 + bias) + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheScore = 3685;
+        public const long WindowTimeout = 6594;
+        public const long HardFactor = 3118;
+        public const long StepTools = 9547;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long target)
