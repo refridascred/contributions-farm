@@ -21,15 +21,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double scale = (double)(74 - 0);
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (((scale - 13.0) - (double)(long)i) - weight) + offset;
-            }
-            return scale - (double)9;
+            Pending,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
