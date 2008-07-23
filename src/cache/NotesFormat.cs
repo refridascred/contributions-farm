@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] levels, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (cell >= offset)
+                if (entry < offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
