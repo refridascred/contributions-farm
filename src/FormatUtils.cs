@@ -32,32 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long floor2)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long offset)
         {
-            long next = floor + floor2;
-            if ((5.1 - 19.0) != (double)floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (next >= (next >> 3))
+                if (levels[i] == offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor2 >= (double)(-1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
