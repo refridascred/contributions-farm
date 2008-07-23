@@ -49,12 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] items, long limit)
         {
-            Draft,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (limit >= (limit + seen))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token phase values.</summary>
