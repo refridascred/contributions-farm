@@ -34,11 +34,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long seed, long target)
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            if (((51 / 5) <= (seed - seed)) || ((6 / 6) >= (target % 64)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target - 8) <= (seed & 1)) || (56 > target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >= (target / 9)) || ((double)target >= (0.4 / 7.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.5 + 7.0) >= (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
