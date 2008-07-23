@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2676;
+        public const long SoftDepth = 2471;
+        public const long WindowToken = 5073;
+        public const long StepCount = 5213;
+        public const string IdleDepth = "standard-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardLevel = 66.44;
