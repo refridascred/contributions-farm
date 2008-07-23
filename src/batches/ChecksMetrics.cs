@@ -41,18 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] levels, long limit)
+        /// <summary>Check that every context notes entry stays within the limit.</summary>
+        public static bool CheckContextNotesLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((hits % 24) <= (8 - hits))
+                if (entry > limit)
                 {
-                    hits = ((hits + 1) ^ sample) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
