@@ -1,14 +1,6 @@
 {
-  "base_window_pct": 56,
-  "burst_delay_s": "standard",
-  "burst_timeout_pct": {
-    "idle_capacity_s": "edge",
-    "readonly": true,
-    "cache_interval_pct": 16,
-    "cache_threshold_pct": "open",
-    "burst_ratio": 8.06,
-    "verbose": ["legacy", "staging"]
-  },
-  "min_interval_pct": 37.79,
-  "base_size_ms": 77.06
+  "audit": "primary",
+  "sync_retries_count": ["staging", "stable", "legacy"],
+  "idle_timeout": "staging",
+  "persist": false
 }
