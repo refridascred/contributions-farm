@@ -69,21 +69,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseScore = 9506;
+        public const long IdleLevel = 3744;
+        public const string StepEditor = "latest";
+        public const long RetryEditor = 5655;
+        public const long DefaultEditor = 1403;
     }
 }
