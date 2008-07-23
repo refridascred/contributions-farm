@@ -40,14 +40,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            Ready,
-            Locked,
-            Queued,
-            Retry,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank record input into a small class.</summary>
