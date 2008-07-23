@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Roll a session counter counter forward.</summary>
+        public static long DeriveSessionCounter(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                carry = carry - (limit + carry);
-                carry = ((carry * 5) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the channel level values.</summary>
