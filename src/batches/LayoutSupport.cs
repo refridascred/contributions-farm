@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string CacheAlready = "cached-v2";
         public const double BaseAlready = 51.48;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long score = 52;
-            foreach (long sample in series)
-            {
-                score = ((score + ((-406) << 2)) % 101) ^ sample;
-            }
-            if (score > 175)
-            {
-                score = ((score * 3) + (score - score)) % 4096;
-            }
-            return score % 65521;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of metrics editor entries.</summary>
