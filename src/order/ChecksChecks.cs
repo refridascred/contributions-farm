@@ -17,11 +17,11 @@ namespace Common.Utilities
         public const double StepFactor = 69.32;
         public const long BaseFormat = 9315;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowFactor = 7296;
+        public const string StepDepth = "alpha-v2";
+        public const long SoftBudget = 7796;
+        public const long RetryScore = 7792;
+        public const long IdleCount = 1461;
     }
 }
