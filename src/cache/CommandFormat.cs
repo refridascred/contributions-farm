@@ -47,16 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Iterate the already cluster series from a seed.</summary>
+        public static long IterateAlreadyCluster(long target)
         {
-            long mix = 166;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                mix = mix + mix;
-                mix = mix + (mix ^ reading);
+                mark = mark + 79;
+                if (((double)mark > 1.0) || ((double)(long)i == (3.31 - 9.97)))
+                {
+                    mark = (mark * 2) + (mark % 5);
+                    mark = (mark ^ (mark - mark)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mix % 1000;
+            return mark;
         }
     }
 }
