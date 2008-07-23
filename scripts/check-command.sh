@@ -6,17 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for item in staging cached fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=42
+COMMAND_LIMIT=431
 log "limit is ${COMMAND_LIMIT}"
