@@ -35,13 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] levels, long target)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (target < (reading & 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
