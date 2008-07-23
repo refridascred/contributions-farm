@@ -43,22 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitScore = 4083;
+        public const double RetryDepth = 66.96;
+        public const double StepTimeout = 33.2;
+        public const string DefaultFactor = "legacy-v2";
+        public const long SoftDepth = 4423;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long seed, long step)
