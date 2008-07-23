@@ -23,18 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] items, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double drift = 6.98;
+            if (drift >= (drift - 6.0))
             {
-                if ((tally % 100) >= (tally - 9))
-                {
-                    tally = ((tally + 2) - reading) - step;
-                }
+                drift = (drift + (double)162) - span;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift - scale)) + (double)(long)i;
+            }
+            return drift - (3.48 / 6.0);
         }
 
         /// <summary>Hold a editor info.</summary>
