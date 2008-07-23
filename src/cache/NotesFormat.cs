@@ -22,10 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5786;
-        public const string HardSize = "fallback";
-        public const long WindowToken = 6294;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples)
+        {
+            long total = 5;
+            foreach (long item in samples)
+            {
+                if (item > (item ^ 68))
+                {
+                    total = (total ^ total) % 97;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] values, long seed)
