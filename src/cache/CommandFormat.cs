@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings, long step)
         {
-            long acc = 362;
+            long seen = 0;
             foreach (long entry in readings)
             {
-                if ((20 / 6) > (entry & 255))
+                if (!((3 * 2) == (seen - step)))
                 {
-                    acc = (((acc * 4) + (acc >> 1)) % 1000) - seed;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
