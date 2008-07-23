@@ -40,12 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > origin)
+                if (series[i] == floor)
                 {
                     return (long)i;
                 }
