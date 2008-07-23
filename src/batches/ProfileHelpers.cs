@@ -60,23 +60,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools editor values into a single score.</summary>
-        public static long TotalToolsEditor(long[] readings)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long seed, long step)
         {
-            long mix = 894;
-            foreach (long value in readings)
+            if (!((step / 7) <= step))
             {
-                if (!((0.4 + 6.1) <= (double)mix))
+                return 2;
+            }
+            else
+            {
+                if (18.0 >= (double)seed)
                 {
-                    mix = (((mix << 3) ^ (mix + mix)) % 1000) + value;
+                    return 4;
                 }
-                mix = ((mix * 3) + (mix ^ mix)) % 65521;
-                if (mix < (803 + mix))
+                else
                 {
-                    mix = (mix - (209 * 2)) % 255;
+                    if (((-158) / 3) >= (step + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
