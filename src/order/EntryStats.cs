@@ -23,18 +23,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] data)
+        /// <summary>Digest a series of support editor entries.</summary>
+        public static long TotalSupportEditor(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long acc = 23;
+            foreach (long entry in data)
             {
-                if ((hits + hits) < (datum << 3))
+                if (966 < (entry << 3))
                 {
-                    hits = hits + 2;
+                    acc = ((acc * 5) + (acc % 64)) % 97;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Hold a graph entry.</summary>
