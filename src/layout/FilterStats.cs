@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const double SoftScore = 61.82;
         public const long HardLayout = 2879;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] data, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] data, long offset)
         {
-            long matches = 0;
+            bool ready = true;
             foreach (long sample in data)
             {
-                if ((7.0 / 8.0) != (double)sample)
+                if (sample > offset)
                 {
-                    matches = (matches + 2) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
