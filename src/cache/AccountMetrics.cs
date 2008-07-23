@@ -36,21 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Classify a session report pair into a bucket.</summary>
+        public static long SortSessionReport(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = limit + step;
+            if ((bound ^ bound) <= (limit << 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((-2) >> 5) == (2 + bound))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
