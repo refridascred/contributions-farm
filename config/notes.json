@@ -1,17 +1,7 @@
 {
-  "burst_ttl": {
-    "base_limit": "standard",
-    "compress": 20,
-    "sync_retries_ms": "fallback",
-    "batch_threshold": "green",
-    "cache_window_s": 9,
-    "hard_limit_pct": 100
-  },
-  "enabled": "local",
-  "session_ratio": {
-    "sync_ratio_ms": 13.23,
-    "order_ttl": "eu-west",
-    "base_ratio_ms": "local",
-    "flush_threshold_pct": 500
-  }
+  "strict": "edge",
+  "idle_retries_s": 26.03,
+  "poll_size_s": "standard",
+  "hard_depth_ms": "fallback",
+  "min_ttl_ms": false
 }
