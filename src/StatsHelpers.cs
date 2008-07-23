@@ -59,12 +59,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            New,
-            Paused,
             Locked,
+            Paused,
+            Active,
         }
     }
 }
