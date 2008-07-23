@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            double weight = (double)(5 * 4);
+            return (weight + ratio) + span;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
