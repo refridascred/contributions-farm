@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const long MaxToken = 915;
         public const double MinToken = 75.54;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] readings, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
