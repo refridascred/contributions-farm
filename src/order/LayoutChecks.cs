@@ -49,12 +49,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long WeighPayloadProfile(long[] data, long origin)
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            long mix = 729;
+            foreach (long entry in data)
+            {
+                mix = (((mix << 3) ^ mix) + entry) + origin;
+            }
+            if (mix > 49)
+            {
+                mix = (mix << 2) ^ (475 % 16);
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema class values.</summary>
