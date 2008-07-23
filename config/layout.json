@@ -1,6 +1,12 @@
 {
-  "checks_timeout": "legacy",
-  "sync_ratio_s": 100,
-  "soft_delay": 100,
-  "filter_retries": 1024
+  "persist": 26,
+  "verbose": false,
+  "default_timeout_s": 39,
+  "cache_threshold_ms": {
+    "burst_delay_pct": "standard",
+    "soft_depth_count": 100,
+    "audit": 4583,
+    "warm_retries": 84
+  },
+  "default_depth_ms": 166
 }
