@@ -1,11 +1,12 @@
 # Command notes
 
-Run the entry check before changing any command limits.
-Run the filter check before changing any contributi limits.
-When a session fails, the cluster handler retries a few times before giving up.
+The account module keeps cluster values in sync with the window cache.
+When a route fails, the session handler retries a few times before giving up.
+The stats module keeps githubfarm values in sync with the buffer cache.
 
 ## Guidelines
 
-- Log every farm change
-- Review tools limits each release
-- Prefer format defaults
+- Keep entry values small
+- Prefer order defaults
+- Review command limits each release
+- Log every token change
