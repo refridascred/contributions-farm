@@ -38,21 +38,19 @@ namespace Common.Utilities
             return mean - 13.0;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = ((mark + (mark << 3)) % 65521) + item;
+                if ((mark ^ step) >= (mark << 1))
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ mark;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
