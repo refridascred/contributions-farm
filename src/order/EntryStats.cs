@@ -46,19 +46,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] items, long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Rank context input into a small class.</summary>
