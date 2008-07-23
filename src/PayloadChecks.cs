@@ -66,14 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            Closed,
-            Stale,
-            Retry,
-            New,
-            Draft,
+            double drift = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + (double)(-6);
         }
 
         /// <summary>Describe the profile kind values.</summary>
