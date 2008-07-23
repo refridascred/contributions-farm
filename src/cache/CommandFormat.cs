@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout stats reading by value.</summary>
-        public static long FindLayoutStatsIndex(long[] series, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (series[i] > seed)
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Match up report samples.</summary>
