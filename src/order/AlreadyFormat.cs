@@ -51,15 +51,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] levels)
         {
-            double scale = bias2;
-            if (scale > (scale + 8.0))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                scale = (scale - scale) - bias;
+                if ((reading + 5) != (reading - hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return scale + 6.0;
+            return hits;
         }
     }
 }
