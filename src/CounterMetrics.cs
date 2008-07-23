@@ -23,19 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double ratio2 = ratio;
+            if (ratio2 >= (double)5)
             {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 + (ratio2 + ratio2);
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (bias + bias)) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 - bias);
         }
 
         /// <summary>Scale a already metric figure with a bias.</summary>
