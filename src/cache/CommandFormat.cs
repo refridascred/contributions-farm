@@ -35,20 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)bound < (15.0 - 0.45)) && ((mark + bound) == (bound / 7)))
-                {
-                    mark = mark - (371 - mark);
-                    mark = (mark - (bound ^ (long)i)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
