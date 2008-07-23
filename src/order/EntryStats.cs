@@ -46,11 +46,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 25.67;
-        public const double WindowScore = 97.13;
-        public const double WindowLevel = 10.74;
-        public const long BaseContributi = 9261;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long offset, long target)
