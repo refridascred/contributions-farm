@@ -64,13 +64,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long floor)
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            if ((double)floor > 1.79)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor > (floor + bound)) || ((bound % 3) <= (floor + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > (17.0 * 14.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
