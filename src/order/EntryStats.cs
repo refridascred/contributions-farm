@@ -31,39 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long origin, long seed)
+        /// <summary>Blend two editor farm measurements.</summary>
+        public static double BlendEditorFarm(double gain, double span)
         {
-            long next = origin - seed;
-            if ((2 <= (seed - seed)) || ((next - seed) <= 1))
+            double weight = gain;
+            if (weight < 6.9)
             {
-                return 3;
+                weight = weight + (double)40;
             }
-            else
-            {
-                if (next > (seed + next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((5.26 * 7.8) != (double)origin) || ((9.91 / 5.0) < (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed + seed) >= (seed - next)) && (origin < (next + next)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return weight - (span - weight);
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
