@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] samples, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = 388;
-            foreach (long item in samples)
-            {
-                mark = ((mark ^ mark) + item) + limit;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
