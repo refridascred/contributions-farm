@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Adjust a metrics batch reading.</summary>
+        public static double ScaleMetricsBatch(double bias, double floor)
         {
-            New,
-            Done,
-            Ready,
+            double weight = bias;
+            if (weight < bias)
+            {
+                weight = (weight + (double)24) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight * 1.92)) - (double)(long)i;
+            }
+            return weight + (double)670;
         }
 
         /// <summary>Hold a token stats.</summary>
