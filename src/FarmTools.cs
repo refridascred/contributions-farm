@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
+            long mix = 899;
+            foreach (long datum in samples)
+            {
+                if (limit >= mix)
+                {
+                    mix = mix + datum;
+                }
+                else
+                {
+                    mix = (mix ^ (89 * 4)) % 97;
+                }
+            }
+            if (mix > (-745))
+            {
+                mix = mix ^ limit;
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools class values.</summary>
