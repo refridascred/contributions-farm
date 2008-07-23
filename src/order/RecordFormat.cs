@@ -23,23 +23,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            double ratio = (18.0 * 13.0) - (offset / 3.0);
-            if (ratio < (double)42)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - ratio) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio + 7.39);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 3.36) + (double)(long)i;
-            }
-            return ratio - (double)3;
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
