@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const double MaxSpan = 19.62;
         public const long SoftGithubfarm = 1323;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] levels, long limit)
         {
-            long total = 5;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > (item ^ 68))
+                if (levels[i] < limit)
                 {
-                    total = (total ^ total) % 97;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
