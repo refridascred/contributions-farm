@@ -35,9 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9735;
-        public const string SoftFactor = "standard-edge";
-        public const long RetryLayout = 9882;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Dropped,
+            Stale,
+            Draft,
+            Retry,
+        }
     }
 }
