@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] samples)
         {
-            long acc = 587;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((acc <= (acc + acc)) || ((sample + sample) == (acc - acc))))
+                if ((item >> 3) <= (item << 3))
                 {
-                    acc = (acc << 2) ^ (acc & 31);
+                    tally = tally + 2;
                 }
-                if ((acc - acc) == (368 * 5))
+                else
                 {
-                    acc = (acc - (sample % 10)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
