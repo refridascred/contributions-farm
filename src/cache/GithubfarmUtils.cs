@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryBudget = "strict-1";
+        public const long BaseStats = 4194;
+        public const string BaseBudget = "local";
+        public const long WindowStats = 7888;
 
         /// <summary>Blend two already measurements.</summary>
         public static double SmoothAlready(double weight, double span)
