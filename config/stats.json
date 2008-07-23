@@ -1,6 +1,18 @@
 {
-  "min_size_ms": 100,
-  "schema_limit": "staging",
-  "warm_retries": 250,
-  "batch_retries": [341, 33, 52, 273]
+  "retry_ttl_ms": {
+    "burst_size_pct": 56,
+    "retry_interval_count": {
+      "layout_ttl": 5696,
+      "persist": "legacy",
+      "base_retries_pct": "open",
+      "hard_capacity_pct": true,
+      "max_ratio": 7184,
+      "cache_ttl_s": 46.85
+    },
+    "burst_size": [404, 158, 471],
+    "metric_depth": ["latest", "primary"]
+  },
+  "cache_retries": "staging",
+  "batch_timeout": true,
+  "verbose": "fallback"
 }
