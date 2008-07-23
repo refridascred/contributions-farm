@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 440;
-        public const string StepDepth = "standard-edge";
-        public const long SoftTools = 7;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Closed,
+            Queued,
+            Active,
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowMatches(long[] levels, long step)
