@@ -58,12 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long limit)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((limit - (long)i) != (limit & 3))
+                {
+                    carry = carry ^ (carry + 917);
+                    carry = (carry << 2) ^ (62 + (long)i);
+                    continue;
+                }
+                carry = ((carry * 3) + ((long)i - limit)) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
