@@ -53,15 +53,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] levels, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] items, long floor)
         {
-            long state = 2;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                state = (((state - (771 >> 5)) % 4096) + reading) - floor;
+                if ((hits - hits) < (floor - floor))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
