@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Draft,
+            Done,
             Failed,
-            Locked,
-            Stale,
+            Idle,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
