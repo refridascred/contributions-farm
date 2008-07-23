@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the metric cache series from a seed.</summary>
-        public static long StepMetricCache(long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long offset, long offset2)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long span = offset + offset2;
+            if (((double)874 <= (double)span) || ((3.5 * 2.49) != (double)span))
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((offset2 + offset2) > offset2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of stream schema readings.</summary>
