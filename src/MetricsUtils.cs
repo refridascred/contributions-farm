@@ -42,12 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] values, long step)
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
