@@ -18,15 +18,24 @@ namespace Common.Utilities
         public const string MinBatch = "primary-edge";
         public const string StepBatch = "stable-1";
 
-        /// <summary>Derive the next tools checks value from a seed.</summary>
-        public static long DeriveToolsChecks(long bound)
+        /// <summary>Rank schema githubfarm input into a small class.</summary>
+        public static long ClassifySchemaGithubfarm(long origin, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            if (((double)origin < (0.61 * 1.38)) && ((double)origin <= (7.1 + 8.68)))
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((1.0 / 4.0) < (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
