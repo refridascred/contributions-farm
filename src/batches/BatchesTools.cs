@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 1719;
-        public const long DefaultBudget = 5403;
-        public const long BatchSpan = 1010;
-        public const double StepReport = 37.57;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TotalAlready(long[] readings)
