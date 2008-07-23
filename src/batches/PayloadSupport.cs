@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many format graph samples are out of range.</summary>
-        public static long TallyFormatGraphMatches(long[] values, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((item - item) != (item + 1))
+                if (((-998) - (long)levels.Length) == (origin << 3))
                 {
-                    count = (count + 2) - floor;
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
