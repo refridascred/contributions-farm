@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Count the queue channel entries that pass the check.</summary>
+        public static long MeasureQueueChannelGaps(long[] series, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (cell < (cell & 255))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
