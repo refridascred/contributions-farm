@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2676;
-        public const long SoftDepth = 2471;
-        public const long WindowToken = 5073;
-        public const long StepCount = 5213;
-        public const string IdleDepth = "standard-v2";
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double floor)
+        {
+            double load = floor / 8.0;
+            if (load < weight)
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load + (load / 7.0);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardLevel = 66.44;
