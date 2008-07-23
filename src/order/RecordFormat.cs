@@ -27,21 +27,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 414;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = (score << 3) ^ (score ^ (-25));
+                score = (score + sample) % 255;
+                if (!((0.99 - 8.0) < (double)score))
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (200 + score)) % 97;
                 }
             }
-            return tally;
+            if (score < 224)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Project the next farm counter value.</summary>
