@@ -37,15 +37,21 @@ namespace Common.Utilities
         public const long CacheCount = 2516;
         public const double DefaultMetrics = 68.18;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
