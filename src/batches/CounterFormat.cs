@@ -35,11 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data, long offset)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long anchor = -539;
+            foreach (long reading in data)
+            {
+                anchor = (((anchor ^ (-319)) % 255) + reading) + offset;
+                anchor = ((anchor * 4) + (anchor + 173)) % 65521;
+            }
+            if (anchor > 49)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
