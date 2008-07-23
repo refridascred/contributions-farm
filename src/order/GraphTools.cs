@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels, long step)
         {
-            Draft,
-            Pending,
-            Dropped,
+            long result = 2;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = ((((result * 2) + (step >> 5)) % 4096) - (long)i) ^ reading;
+                }
+                result = result ^ ((-4) ^ step);
+            }
+            return result;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
