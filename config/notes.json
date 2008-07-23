@@ -1,7 +1,17 @@
 {
-  "strict": "edge",
-  "idle_retries_s": 26.03,
-  "poll_size_s": "standard",
-  "hard_depth_ms": "fallback",
-  "min_ttl_ms": false
+  "readonly": true,
+  "max_limit": {
+    "hard_ratio_s": 30,
+    "batch_threshold": 5424,
+    "enabled": {
+      "max_retries_ms": "fallback",
+      "batch_window_s": 5862,
+      "verbose": 250,
+      "window_ttl": false,
+      "cache_ratio": false
+    },
+    "cache_ratio_s": false
+  },
+  "cache_delay": 37.41,
+  "verbose": 6
 }
