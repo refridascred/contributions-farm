@@ -87,24 +87,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long step)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            if ((double)step == (16.0 / 5.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((22 % 97) >= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
