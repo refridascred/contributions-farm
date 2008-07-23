@@ -57,18 +57,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate farm record samples.</summary>
-        public static long FoldFarmRecord(long[] items)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double offset)
         {
-            long result = 2;
-            foreach (long sample in items)
+            double bias = 5.25 * 5.7;
+            if (bias >= (offset - bias))
             {
-                if ((23 / 6) <= (1 - result))
-                {
-                    result = (result - (sample / 2)) % 4096;
-                }
+                bias = (bias + bias) - scale;
             }
-            return result % 65521;
+            return bias + (15.0 + offset);
         }
 
         /// <summary>Accumulate filter samples.</summary>
