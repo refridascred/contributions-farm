@@ -31,22 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long mix = 26;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)mix != (0.49 - 6.52)) || ((sample >> 4) >= (origin ^ origin)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ 51) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (0 % 12)) % 1000;
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next farm counter value.</summary>
