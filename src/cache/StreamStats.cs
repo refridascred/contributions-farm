@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long target)
         {
-            long carry = -4;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((-64) >> 3) <= carry))
+                if ((values[i] == target) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry ^ (carry / 9)) + reading;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of route entries.</summary>
