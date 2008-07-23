@@ -1,29 +1,4 @@
 # githubfarm settings
-retry_delay_pct: false
-cluster_ttl: 88
-dry_run: open
-audit:
-  poll_size: blue
-  sync_ratio_count:
-    - local
-    - latest
-    - primary
-  retry_depth_pct: standard
-  tools_depth:
-    - 24
-    - 340
-    - 83
-    - 356
-  retry_ttl_s:
-    soft_ttl:
-      - stable
-      - local
-    flush_threshold: 27.25
-    warm_retries_pct: 8066
-    audit: primary
-    payload_limit: 30
-hard_retries_count: 1989
-warm_delay_ms:
-  - strict
-  - blue
-  - cached
+min_limit_s: latest
+poll_threshold: fallback
+default_timeout_ms: 4609
