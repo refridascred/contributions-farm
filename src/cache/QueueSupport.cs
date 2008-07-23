@@ -27,15 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
