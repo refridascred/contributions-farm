@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of filter buffer entries.</summary>
+        public static long CombineFilterBuffer(long[] items, long offset)
         {
-            Closed,
-            Idle,
-            Synced,
+            long score = 35;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length + offset) > ((-8) >> 2))
+                {
+                    score = (score + 6) - sample;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Rank tools layout input into a small class.</summary>
