@@ -46,10 +46,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstSize = 7509;
-        public const string SoftLevel = "primary-edge";
-        public const long DefaultBudget = 8522;
-        public const string MinDepth = "local-v2";
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
+        {
+            double scale = bias2;
+            if (scale > (scale + 8.0))
+            {
+                scale = (scale - scale) - bias;
+            }
+            return scale + 6.0;
+        }
     }
 }
