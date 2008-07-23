@@ -42,13 +42,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long acc = -452;
+            foreach (long datum in readings)
+            {
+                acc = ((acc * 2) + acc) + datum;
+                acc = ((acc * 3) + acc) % 97;
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
