@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Digest a series of support entries.</summary>
