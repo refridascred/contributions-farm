@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items)
         {
-            long anchor = 8;
+            long acc = 1;
             foreach (long cell in items)
             {
-                anchor = (((anchor << 3) ^ 170) % 65521) + cell;
+                if (((857 + acc) > acc) && ((3.2 - 9.3) != (double)cell))
+                {
+                    continue;
+                }
+                if ((acc % 100) >= (cell >> 5))
+                {
+                    acc = acc - (cell - 225);
+                }
+                else
+                {
+                    acc = acc ^ cell;
+                }
             }
-            if (anchor < 87)
-            {
-                anchor = (anchor ^ (step / 2)) % 65521;
-            }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Hold a context options.</summary>
