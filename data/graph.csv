@@ -1,9 +1,6 @@
-id,ratio,level
-1,554,49.67
-2,112,323
-3,fallback,401
-4,green,23
-5,29.25,873
-6,918,62.12
-7,latest,stable
-8,39.47,26
+id,level,ratio,weight,active
+1,legacy,575,local,95.01
+2,54.95,standard,183,primary
+3,573,legacy,98.76,32.51
+4,fallback,222,fallback,eu-west
+5,25.68,65.45,3.93,80.93
