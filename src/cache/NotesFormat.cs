@@ -36,17 +36,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] values, long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
