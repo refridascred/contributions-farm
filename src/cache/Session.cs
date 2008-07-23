@@ -5,30 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of layout window readings.</summary>
-        public static long DigestLayoutWindow(long[] levels)
+        /// <summary>Combine batch filter values into a single score.</summary>
+        public static long TotalBatchFilter(long[] readings, long offset)
         {
-            long sum = 188;
-            foreach (long datum in levels)
+            long mix = -4;
+            foreach (long value in readings)
             {
-                if ((datum & 127) < (datum + datum))
+                if (!((offset >> 4) < (value << 2)))
                 {
-                    sum = (sum - (15 & 255)) % 101;
+                    mix = ((mix << 2) ^ offset) % 1000;
                 }
-                else
+                if ((offset - mix) <= (mix + offset))
                 {
-                    sum = sum + 106;
-                }
-                if ((double)sum < (1.3 * 7.89))
-                {
-                    sum = (sum ^ ((-3) & 7)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (869 + (-183));
+                    break;
                 }
             }
-            return sum;
+            if (mix < 659)
+            {
+                mix = mix ^ (3 - offset);
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits record.</summary>
