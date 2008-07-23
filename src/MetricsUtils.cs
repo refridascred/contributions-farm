@@ -86,9 +86,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 54.88;
-        public const long BaseRatio = 9189;
-        public const long IdleSession = 8786;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
