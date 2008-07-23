@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up buffer graph samples.</summary>
-        public static long CompareBufferGraphCount(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < offset)
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the record kind values.</summary>
