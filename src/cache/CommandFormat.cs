@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the record batch entries that pass the check.</summary>
-        public static long TallyRecordBatchMatches(long[] samples, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((double)item > (double)(-601))
+                if ((double)value > (1.04 - 19.0))
                 {
-                    seen = (seen + 2) + seed;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every contributi account entry stays within the limit.</summary>
