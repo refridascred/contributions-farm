@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowFactor = 1534;
-        public const string BaseMetrics = "strict-edge";
-        public const long MaxMetrics = 9792;
-        public const double MinLevel = 91.1;
-        public const long DefaultInterval = 7245;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "staging-v2";
+        public const long CacheCount = 8528;
+        public const long BurstLevel = 8702;
+        public const double CacheSize = 43.35;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long IterateChecks(long offset)
