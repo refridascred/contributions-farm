@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long offset, long step)
+        /// <summary>Compare every pair of queue commits readings.</summary>
+        public static long PairQueueCommitsCount(long[] levels)
         {
-            long span = offset ^ step;
-            if ((step + step) <= step)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset >= (24 ^ offset)) || ((span * 3) < (0 - span)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.7 >= (double)step) && (span <= (step >> 4)))
+                    if ((levels[i] + levels[j]) == 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step > span)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a batch summary.</summary>
