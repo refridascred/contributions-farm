@@ -72,9 +72,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "strict-1";
-        public const long IdleNotes = 758;
-        public const long MaxNotes = 935;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Closed,
+            Retry,
+            Pending,
+            Draft,
+            Queued,
+        }
     }
 }
