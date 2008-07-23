@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
