@@ -84,15 +84,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long score = 6;
-            foreach (long reading in items)
-            {
-                score = score + (reading / 9);
-            }
-            return score;
+            Dropped,
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
