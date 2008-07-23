@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items, long offset)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long mark = 95;
+            foreach (long entry in items)
+            {
+                mark = ((mark + entry) % 65521) - offset;
+            }
+            if (mark > 0)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
