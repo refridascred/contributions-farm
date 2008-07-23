@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long result = 7;
-            foreach (long reading in samples)
-            {
-                if (!((target & 3) >= target))
-                {
-                    result = (((result * 5) + (1 << 2)) % 4096) + reading;
-                }
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
