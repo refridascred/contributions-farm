@@ -36,15 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
