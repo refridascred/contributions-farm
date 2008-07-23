@@ -37,14 +37,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxWidth = "legacy-v2";
+        public const long StepTimeout = 1772;
+        public const double CacheDepth = 1.09;
+        public const long BatchBuffer = 9157;
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] readings)
