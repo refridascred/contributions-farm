@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseScore = 8023;
-        public const long CacheScore = 4816;
-        public const long LimitSize = 6387;
-        public const string HardContributi = "cached-1";
-        public const string BurstContributi = "legacy";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string RetryCluster = "strict-v2";
