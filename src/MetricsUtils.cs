@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every account token entry stays within the limit.</summary>
-        public static bool CheckAccountTokenRange(long[] readings, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < bound)
+                mark = (mark + mark) % 65521;
+                if (!((bound / 2) > (bound * 4)))
                 {
-                    valid = false;
-                    break;
+                    mark = mark ^ ((long)i + mark);
+                    mark = ((mark * 3) + mark) % 255;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (((mark << 3) ^ (mark + mark)) % 255) + (long)i2;
+                    mark = ((mark * 4) + (bound - bound)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
