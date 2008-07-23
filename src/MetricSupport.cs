@@ -31,18 +31,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 9;
+            foreach (long datum in series)
             {
-                if ((value % 7) < (value + matches))
+                if ((limit << 1) < (limit + 9))
                 {
-                    matches = matches + 1;
+                    result = ((result * 2) + 35) + datum;
+                }
+                else
+                {
+                    result = (result + limit) % 101;
                 }
             }
-            return matches;
+            if (result > 830)
+            {
+                result = (result * 2) + (limit - limit);
+            }
+            return result % 1000;
         }
     }
 }
