@@ -55,17 +55,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support editor reading by value.</summary>
-        public static long SeekSupportEditorIndex(long[] values, long origin)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a report reading.</summary>
