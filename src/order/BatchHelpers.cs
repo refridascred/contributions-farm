@@ -38,38 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long origin, long step)
-        {
-            if ((6.64 / 8.0) < (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (555 - origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 1) != (step >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin < 9.07)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheWidth = 73.58;
+        public const double CacheGraph = 6.22;
+        public const long BatchSpan = 2605;
+        public const long SoftDepth = 7039;
+        public const double BaseGraph = 74.65;
     }
 }
