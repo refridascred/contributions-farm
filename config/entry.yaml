@@ -1,16 +1,11 @@
 # entry settings
-warm_threshold: primary
-soft_size_ms: latest
-default_ratio_count: 1527
-dry_run:
-  farm_timeout: 74.22
-  idle_retries_ms:
-    soft_delay_count: true
-    stats_retries: 2669
-    base_capacity_pct: 151
-    buffer_threshold:
-      - open
-      - eu-west
-    strict: local
-  base_depth_count: 10
-report_window: 1024
+readonly: false
+queue_delay:
+  - eu-west
+  - green
+default_interval_pct:
+  - local
+  - strict
+  - edge
+warm_delay_pct: 250
+channel_window: 69.49
