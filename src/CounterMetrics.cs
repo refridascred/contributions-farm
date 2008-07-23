@@ -38,19 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double bias, double bias2)
+        /// <summary>Scale a already metric figure with a bias.</summary>
+        public static double BlendAlreadyMetric(double weight, double offset)
         {
-            double gain = (double)((-8) * 5);
-            if (gain >= (double)82)
+            double weight2 = (double)(47 + 198);
+            if (weight2 >= offset)
             {
-                gain = (gain - (double)8) - bias;
+                weight2 = weight2 - weight2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain - (6.8 * 15.0)) - (double)(long)i;
+                weight2 = weight2 - weight;
             }
-            return gain - bias2;
+            return weight2 + weight2;
         }
     }
 }
