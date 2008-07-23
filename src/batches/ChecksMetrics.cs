@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] samples, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (cell < limit)
+                if (reading >= step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the format mode values.</summary>
