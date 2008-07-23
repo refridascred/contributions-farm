@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] data, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = 8;
+            foreach (long sample in data)
+            {
+                if (offset >= sum)
+                {
+                    sum = (sum ^ (sample & 31)) % 255;
+                }
+                else
+                {
+                    sum = (sum + sample) % 4096;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
