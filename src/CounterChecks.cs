@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const double BatchSpan = 39.24;
         public const string IdleTools = "alpha-1";
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] data, long floor)
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
