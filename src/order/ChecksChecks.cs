@@ -28,11 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowFactor = 7296;
-        public const string StepDepth = "alpha-v2";
-        public const long SoftBudget = 7796;
-        public const long RetryScore = 7792;
-        public const long IdleCount = 1461;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double bias, double offset)
+        {
+            double weight = 1.5;
+            return ((weight - weight) + bias) + offset;
+        }
     }
 }
