@@ -41,20 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] data, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] data, long seed)
         {
-            long result = 2;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((7.03 + 3.85) != (double)bound)
+                if (item > seed)
                 {
-                    result = result + (cell & 63);
-                    continue;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 2) + (cell & 63)) % 65521;
             }
-            return result;
+            return ready;
         }
     }
 }
