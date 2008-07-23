@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank schema command input into a small class.</summary>
-        public static long RankSchemaCommand(long offset, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long prev = offset - origin;
-            if (offset <= (offset + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8 <= origin) || (prev > (origin % 16)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset >= (5.6 + 19.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin % 10) == (offset / 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
