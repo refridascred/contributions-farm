@@ -53,18 +53,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.06 / 2.0) == (double)count)
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
                 {
-                    count = (count + 1) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
