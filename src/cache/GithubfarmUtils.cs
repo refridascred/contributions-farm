@@ -25,19 +25,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double bias, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] values, long floor)
         {
-            double drift = floor;
-            if (drift < 6.74)
+            long carry = 56;
+            foreach (long entry in values)
             {
-                drift = drift - floor;
+                carry = (carry + (floor - carry)) ^ entry;
+                carry = ((carry << 3) ^ (carry % 64)) % 4096;
+                if (carry >= floor)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (carry < 6)
             {
-                drift = (drift - (0.31 / 5.0)) + (double)(long)i;
+                carry = ((carry * 3) + (carry + floor)) % 65521;
             }
-            return drift + (bias - bias);
+            return carry;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
