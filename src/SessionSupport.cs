@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
