@@ -37,11 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit filter buffer readings against a rule.</summary>
+        public static long CountFilterBufferHits(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((5.3 + 2.4) != (double)datum) && !((datum - datum) >= datum))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window snapshot.</summary>
