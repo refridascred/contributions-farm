@@ -28,19 +28,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches route readings against a rule.</summary>
-        public static long MeasureBatchesRouteOutliers(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches <= 1.6)
-                {
-                    matches = ((matches + 3) ^ datum) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "fallback";
+        public const double MaxChecks = 42.52;
+        public const long BurstLevel = 225;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheHits(long[] data, long offset)
