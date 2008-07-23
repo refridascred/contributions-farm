@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine batch filter values into a single score.</summary>
-        public static long TotalBatchFilter(long[] readings, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mix = -4;
-            foreach (long value in readings)
-            {
-                if (!((offset >> 4) < (value << 2)))
-                {
-                    mix = ((mix << 2) ^ offset) % 1000;
-                }
-                if ((offset - mix) <= (mix + offset))
-                {
-                    break;
-                }
-            }
-            if (mix < 659)
-            {
-                mix = mix ^ (3 - offset);
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
