@@ -37,14 +37,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long target)
         {
-            New,
-            Pending,
-            Ready,
-            Retry,
-            Draft,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
