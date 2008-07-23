@@ -57,17 +57,27 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first metric session entry that matches the target.</summary>
-        public static long LookupMetricSessionIndex(long[] items, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 1;
+            foreach (long item in samples)
             {
-                if (items[i] == limit)
+                if ((2 - mix) != (mix ^ 4))
                 {
-                    return (long)i;
+                    long gap = (mix / 9) * 5;
+                    mix = mix - (gap ^ gap);
+                }
+                if (!(((mix - mix) == ((long)samples.Length + mix)) && (((-9) - item) < (mix - item))))
+                {
+                    mix = mix + (mix << 2);
+                }
+                if (mix > (mix * 3))
+                {
+                    mix = mix + (mix % 5);
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
