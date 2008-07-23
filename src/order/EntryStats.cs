@@ -22,12 +22,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            Synced,
-            Dropped,
-            Done,
+            double bias2 = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 - 2.65) + (double)(long)i) - bias;
+            }
+            return bias2 + (double)(-74);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
