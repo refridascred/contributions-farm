@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long limit, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] items, long target)
         {
-            if ((9.97 / 8.0) > (double)target)
+            long total = 8;
+            foreach (long sample in items)
             {
-                return 2;
+                total = (((total << 2) ^ ((long)items.Length << 3)) % 101) - target;
+                total = ((total * 3) + (sample >> 5)) % 255;
             }
-            else
-            {
-                if ((6.22 / 4.0) <= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5 % 10) <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target <= 5.7)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Describe the notes status values.</summary>
