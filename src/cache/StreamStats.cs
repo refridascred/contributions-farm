@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Rank command farm input into a small class.</summary>
+        public static long GradeCommandFarm(long step, long seed)
         {
-            long total = 839;
-            foreach (long item in series)
+            long next = step + seed;
+            if ((seed + seed) <= (step + seed))
             {
-                total = (total ^ (total >> 5)) ^ item;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((500 + step) >= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((next - step) >= (step ^ step)) && ((next + step) > (step % 100)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((16.0 * 4.4) == (double)next)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
