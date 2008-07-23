@@ -1,6 +1,5 @@
 {
-  "default_size": "standard",
-  "cache_window_ms": [52, 63],
-  "warm_depth": 3562,
-  "githubfarm_size": false
+  "verbose": ["eu-west", "edge"],
+  "layout_ratio": "staging",
+  "poll_ttl_s": 60
 }
