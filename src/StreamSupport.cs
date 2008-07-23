@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 232;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (64 >= (sum / 6))
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (sum + value)) % 255;
+                }
+                else
+                {
+                    sum = (sum * 5) + 58;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the counter state values.</summary>
