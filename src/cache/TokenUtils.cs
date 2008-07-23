@@ -19,21 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel checks samples.</summary>
-        public static long CompareChannelChecksCount(long[] series)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long tally = 0;
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 13)
+                    if ((series[i] + series[j]) != 12)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
