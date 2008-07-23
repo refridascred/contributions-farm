@@ -1,8 +1,4 @@
 # support settings
-min_ratio: true
-compress: 30
-schema_window:
-  - standard
-  - staging
-  - cached
-flush_depth: 69.68
+metric_depth: 500
+stream_ratio: 17
+burst_delay: latest
