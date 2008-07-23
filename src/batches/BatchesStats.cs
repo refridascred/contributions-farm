@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of command window entries.</summary>
-        public static long FoldCommandWindow(long[] series)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long sum = 79;
-            foreach (long reading in series)
-            {
-                if ((reading + reading) > (reading - 4))
-                {
-                    sum = ((sum * 3) + (33 - sum)) % 4096;
-                }
-            }
-            if (sum < (-98))
-            {
-                sum = sum + (3 >> 2);
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
