@@ -1,5 +1,5 @@
 {
-  "sync_interval_pct": ["legacy", "local", "edge", "legacy"],
-  "retry_size_count": 78,
-  "flush_ratio": [357, 69]
+  "batch_interval_pct": "strict",
+  "report_limit": "blue",
+  "idle_threshold_s": 54
 }
