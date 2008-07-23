@@ -25,19 +25,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            long total = 807;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = (total ^ (entry * 4)) % 97;
+                if ((51 / 4) >= matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (total > 7)
-            {
-                total = total ^ (bound << 1);
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
