@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            double drift = offset;
-            if (drift <= (double)814)
+            double load = (double)((-41) / 6);
+            if (load > (9.7 / 6.0))
             {
-                drift = (drift + (double)65) - gain;
+                load = (load + offset) - gain;
             }
-            return drift - (double)58;
+            else
+            {
+                load = load + load;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
