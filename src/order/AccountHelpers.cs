@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long WindowInterval = 3841;
         public const string RetryLevel = "fallback";
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double floor)
         {
-            Paused,
-            Done,
-            Locked,
-            Synced,
+            double weight = 15.0;
+            if (weight <= (floor / 6.0))
+            {
+                weight = (weight - floor) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + 5.2) + (double)(long)i;
+            }
+            return weight - (double)678;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
