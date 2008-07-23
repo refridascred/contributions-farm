@@ -40,18 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit schema stats readings against a rule.</summary>
-        public static long CountSchemaStatsMatches(long[] values)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((96 * 3) <= (item - item))
+                if ((values[i] == seed) && ((values[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
