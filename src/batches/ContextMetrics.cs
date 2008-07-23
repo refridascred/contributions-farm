@@ -58,31 +58,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long step, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] levels, long floor)
         {
-            if ((floor + floor) >= floor)
+            long state = 2;
+            foreach (long reading in levels)
             {
-                return 3;
+                state = (((state - (771 >> 5)) % 4096) + reading) - floor;
             }
-            else
-            {
-                if ((3.0 - 9.6) == (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (step - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
