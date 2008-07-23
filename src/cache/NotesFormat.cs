@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheRatio = "staging-edge";
+        public const long CacheCluster = 1238;
+        public const long IdleCluster = 116;
+        public const long BatchCluster = 142;
+        public const long MinCluster = 4133;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
