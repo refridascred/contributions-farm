@@ -47,21 +47,16 @@ namespace Common.Utilities
         public const double RetryGraph = 87.7;
         public const double MinGraph = 15.84;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 7;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor + anchor) + entry;
+                anchor = ((anchor << 2) ^ 640) % 1000;
             }
-            return tally;
+            return anchor % 97;
         }
     }
 }
