@@ -46,12 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Rank schema command input into a small class.</summary>
+        public static long SortSchemaCommand(long seed, long target)
         {
-            New,
-            Retry,
-            Synced,
+            if ((4.9 / 9.0) > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (5.7 >= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target + seed) <= (seed & 255)) || ((seed + seed) == (target / 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph record.</summary>
