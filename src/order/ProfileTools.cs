@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of metric record readings.</summary>
+        public static long CompareMetricRecordCount(long[] samples)
         {
             long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)datum <= (13.0 + 16.0)) || (datum > (floor & 63))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
