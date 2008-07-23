@@ -36,12 +36,18 @@ namespace Common.Utilities
         public const double RetryContributi = 83.73;
         public const string DefaultRatio = "fallback-edge";
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit schema entry readings against a rule.</summary>
+        public static long AuditSchemaEntryOutliers(long[] levels, long step)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (15.0 < (double)value)
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
     }
 }
