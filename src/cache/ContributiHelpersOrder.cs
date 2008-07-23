@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a route batch pair into a bucket.</summary>
+        public static long ClassifyRouteBatch(long offset, long bound)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
+            if ((9 >= offset) || ((382 + bound) < (bound + offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound + offset) < (bound + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound <= (8.21 / 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate channel context samples.</summary>
