@@ -17,18 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] levels, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target << 1) < (datum + seen))
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
