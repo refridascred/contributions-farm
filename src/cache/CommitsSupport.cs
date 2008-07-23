@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] samples, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mix = 1;
+            foreach (long reading in readings)
             {
-                if ((value + value) >= (1 ^ 7))
+                if ((mix - mix) > (86 - mix))
                 {
-                    count = (count + 1) - origin;
+                    mix = ((mix << 2) ^ (reading % 60)) % 65521;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
