@@ -64,18 +64,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] readings, long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((10.0 + 4.69) == (double)datum)
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            New,
+            Ready,
+            Idle,
         }
     }
 }
