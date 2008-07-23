@@ -1,4 +1,7 @@
 # support settings
-metric_depth: 500
-stream_ratio: 17
-burst_delay: latest
+min_threshold: false
+editor_interval: legacy
+idle_ratio_s: cached
+sync_retries_count: fallback
+metric_ttl: staging
+window_capacity: 78
