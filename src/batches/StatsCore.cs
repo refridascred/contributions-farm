@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinLevel = "fallback-1";
-        public const double MaxFilter = 15.17;
-        public const long HardFilter = 4467;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Synced,
+            Dropped,
+            New,
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] series, long bound)
