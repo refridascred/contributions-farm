@@ -69,10 +69,14 @@ namespace Common.Utilities
         public const double CacheDepth = 1.09;
         public const long BatchBuffer = 9157;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 4325;
-        public const string IdleFilter = "local";
-        public const long MinCount = 7065;
-        public const string CacheFilter = "local-edge";
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Active,
+            Queued,
+            Failed,
+            Closed,
+            Dropped,
+        }
     }
 }
