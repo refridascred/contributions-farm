@@ -74,39 +74,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank batch checks input into a small class.</summary>
-        public static long GradeBatchChecks(long step, long step2)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] levels, long seed)
         {
-            long offset = step - step2;
-            if ((step2 % 12) >= (step + offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)4 < (double)offset)
+                if (levels[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((8.0 + 18.0) >= (double)step) && ((step2 + step2) != (offset * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step2 % 100) < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
