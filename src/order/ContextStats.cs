@@ -35,19 +35,14 @@ namespace Common.Utilities
         public const long CacheCount = 2516;
         public const double DefaultMetrics = 68.18;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] samples, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Idle,
+            Locked,
+            Draft,
+            Failed,
         }
     }
 }
