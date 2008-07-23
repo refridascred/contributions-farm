@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "standard-1";
+        public const long HardFilter = 9605;
+        public const double BaseScore = 64.61;
+        public const double BatchFilter = 24.5;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 2183;
