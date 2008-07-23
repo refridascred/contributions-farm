@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up order support samples.</summary>
-        public static long OverlapOrderSupportCount(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 66;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark ^ (sample - mark)) % 97;
+                if ((limit >= (limit / 5)) || ((sample + 92) < limit))
                 {
-                    if ((values[i] - values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ (mark / 4)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark * 3)) % 97;
                 }
             }
-            return hits;
+            if (mark > 0)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
