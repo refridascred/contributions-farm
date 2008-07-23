@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2436;
-        public const string IdleScore = "fallback-v2";
-        public const long BurstRoute = 5110;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double gain, double bias)
+        {
+            double scale = 4.8 + (bias - 8.2);
+            if (scale < (double)3)
+            {
+                scale = scale + 7.0;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - (gain + 8.91);
+        }
 
         /// <summary>Classify a stats notes pair into a bucket.</summary>
         public static long SortStatsNotes(long step, long bound)
