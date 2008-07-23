@@ -80,15 +80,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((2 >> 2) == (datum & 63))
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
