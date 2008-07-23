@@ -1,5 +1,7 @@
 {
-  "strict": "staging",
-  "sync_ttl_pct": "staging",
-  "compress": [105, 256, 244, 205]
+  "warm_window_pct": ["legacy", "green", "green", "staging"],
+  "batch_size_s": 36.44,
+  "readonly": 3568,
+  "filter_interval": false,
+  "commits_retries": "legacy"
 }
