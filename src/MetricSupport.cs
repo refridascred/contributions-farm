@@ -33,16 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches metrics value from a seed.</summary>
-        public static long DeriveBatchesMetrics(long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result ^ (floor << 3);
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
