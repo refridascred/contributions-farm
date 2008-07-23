@@ -32,21 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report layout pairs that satisfy a relation.</summary>
-        public static long PairReportLayoutCount(long[] items)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result + ((long)i / 7)) % 97;
+                if (result < (result + result))
                 {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (origin ^ 188)) % 255;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
