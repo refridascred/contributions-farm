@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinTimeout = 97.36;
-        public const double StepTimeout = 29.43;
-        public const long SoftEditor = 4287;
-        public const double MinDepth = 0.96;
-        public const long BatchEditor = 9588;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinContributi = 8283;
