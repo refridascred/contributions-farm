@@ -1,5 +1,5 @@
 {
-  "retry_size": "strict",
-  "record_capacity": ["staging", "cached"],
-  "batch_ttl": 14
+  "poll_interval": "standard",
+  "min_timeout_s": [107, 249, 382, 391],
+  "warm_limit_pct": "eu-west"
 }
