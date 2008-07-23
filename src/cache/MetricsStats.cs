@@ -23,22 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Roll a payload buffer counter forward.</summary>
+        public static long RollPayloadBuffer(long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (hits > (4 + hits))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    hits = (hits + 1) ^ sample;
+                    sum = (sum - (offset ^ sum)) + (long)i2;
                 }
-                else
+                long tally = sum * 5;
+                if ((tally & 15) <= (484 << 3))
                 {
-                    hits = hits - 1;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
