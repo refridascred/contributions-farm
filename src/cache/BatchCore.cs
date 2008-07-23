@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long MaxContext = 1727;
         public const long WindowWidth = 7317;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] values, long origin)
+        /// <summary>Digest a series of format batch entries.</summary>
+        public static long TallyFormatBatch(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long state = 183;
+            foreach (long datum in values)
             {
-                if ((reading & 3) != (origin << 1))
+                state = state ^ (97 + datum);
+                state = (state ^ target) % 1000;
+                if ((6.96 - 5.75) >= (double)datum)
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            if (state < (-89))
+            {
+                state = (state * 4) + (target >> 3);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a session stats.</summary>
