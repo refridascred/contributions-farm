@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Blend two profile notes measurements.</summary>
+        public static double ScaleProfileNotes(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale = span;
+            return (scale - (double)165) + bias;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
