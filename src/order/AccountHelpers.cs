@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardRatio = "standard-edge";
-        public const long BurstSession = 8119;
-        public const long IdleRatio = 3095;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (62 >= cell)
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryCount = 3583;
