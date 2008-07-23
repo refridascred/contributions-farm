@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph token entries that pass the check.</summary>
-        public static long MeasureGraphTokenOutliers(long[] series)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(sample >= (sample & 15)))
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
