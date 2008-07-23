@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data)
         {
-            Active,
-            Failed,
-            Locked,
+            long anchor = 538;
+            foreach (long sample in data)
+            {
+                if ((661 % 2) <= (anchor - sample))
+                {
+                    anchor = (anchor + 2) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
