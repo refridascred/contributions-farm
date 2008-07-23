@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] data, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 684;
+            foreach (long datum in readings)
             {
-                if ((data[i] > offset) && ((data[i] % 3) != 0))
+                if ((datum - datum) <= datum)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (mark - 879)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (datum - datum)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 2)
+            {
+                mark = ((mark << 3) ^ mark) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a window reading by value.</summary>
