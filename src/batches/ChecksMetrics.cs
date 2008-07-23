@@ -65,11 +65,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Match up route counter samples.</summary>
+        public static long CompareRouteCounterCount(long[] items)
         {
-            double load = 0.4;
-            return ((load + load) + gain) + offset;
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
