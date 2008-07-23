@@ -56,16 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long state = 8;
-            foreach (long datum in items)
-            {
-                state = state - (datum - datum);
-                state = (state ^ datum) % 1000;
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
