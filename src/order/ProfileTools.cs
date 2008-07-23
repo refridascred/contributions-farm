@@ -84,19 +84,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache commits entry stays within the limit.</summary>
-        public static bool VerifyCacheCommitsBounds(long[] items, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
