@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            double scale = (span / 3.0) + (4.5 - 6.08);
-            if (scale >= scale)
+            double ratio2 = ratio * 1.2;
+            if (ratio2 >= (double)22)
             {
-                scale = scale - span;
+                ratio2 = (ratio2 - (8.21 - 9.0)) + offset;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale - bias) - (double)(long)i;
+                ratio2 = ratio2 - (ratio * 8.93);
             }
-            return scale - bias;
+            return ratio2 + (ratio2 - ratio);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
