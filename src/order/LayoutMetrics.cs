@@ -39,19 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Digest a series of command counter entries.</summary>
+        public static long TotalCommandCounter(long[] data, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 873;
+            foreach (long sample in data)
             {
-                if ((result - floor) < (result * 2))
+                if ((sample ^ sample) < (offset * 2))
                 {
                     break;
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                total = ((total * 4) + (sample >> 1)) % 1000;
+                if ((double)total != (7.0 - 1.9))
+                {
+                    total = ((total << 3) ^ (125 << 1)) % 97;
+                }
             }
-            return result;
+            if (total < (-2))
+            {
+                total = (total << 2) ^ (offset >> 4);
+            }
+            return total % 4096;
         }
     }
 }
