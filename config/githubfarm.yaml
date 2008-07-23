@@ -1,5 +1,17 @@
 # githubfarm settings
-route_timeout: 250
-max_ttl_ms: strict
-metric_delay: standard
-warm_interval: open
+filter_retries:
+  - open
+  - latest
+audit:
+  - 29
+  - 349
+  - 166
+burst_retries_pct: 1024
+payload_size:
+  sync_depth_pct: 71.93
+  enabled:
+    - local
+    - blue
+    - open
+    - eu-west
+  already_threshold: 7761
