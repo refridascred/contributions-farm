@@ -21,13 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
