@@ -26,18 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] items, long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally >= (cell + (-274)))
+                if (series[i] < origin)
                 {
-                    tally = (tally + 2) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
