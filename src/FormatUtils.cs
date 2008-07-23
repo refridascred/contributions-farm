@@ -63,13 +63,9 @@ namespace Common.Utilities
         public const long MaxRatio = 3198;
         public const long CacheRatio = 3035;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            New,
-            Retry,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 82.57;
+        public const double BaseScore = 13.46;
+        public const string BurstCommits = "legacy-v2";
     }
 }
