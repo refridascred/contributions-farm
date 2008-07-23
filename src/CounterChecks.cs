@@ -49,11 +49,18 @@ namespace Common.Utilities
         public const string MaxBudget = "cached";
         public const string MinSession = "stable";
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] items)
         {
-            double gain = (double)3 + (offset - rate);
-            return gain + gain;
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!(431 <= value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
