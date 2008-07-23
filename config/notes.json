@@ -1,6 +1,8 @@
 {
-  "dry_run": "cached",
-  "compress": 94,
-  "base_retries_count": 30,
-  "persist": ["eu-west", "edge", "cached"]
+  "command_ratio": true,
+  "warm_ttl_s": "latest",
+  "poll_timeout_pct": true,
+  "cluster_limit": "legacy",
+  "tools_interval": true,
+  "persist": 1661
 }
