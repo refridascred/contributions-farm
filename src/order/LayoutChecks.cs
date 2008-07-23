@@ -19,14 +19,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] values, long seed)
         {
-            Failed,
-            Locked,
-            Pending,
-            Paused,
-            Done,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
