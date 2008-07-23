@@ -38,18 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long carry = 817;
-            foreach (long entry in values)
-            {
-                if ((carry / 2) > carry)
-                {
-                    carry = (carry - (entry + (long)values.Length)) % 65521;
-                }
-            }
-            return carry;
+            Ready,
+            Paused,
+            Dropped,
         }
     }
 }
