@@ -34,14 +34,11 @@ namespace Common.Utilities
         public const long CacheCount = 2516;
         public const double DefaultMetrics = 68.18;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Active,
-            Idle,
-            Locked,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 4540;
+        public const long BatchStream = 7200;
+        public const long BaseStream = 6593;
+        public const string MaxSize = "latest-v2";
+        public const string BatchScore = "standard-v2";
     }
 }
