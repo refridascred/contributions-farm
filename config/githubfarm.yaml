@@ -1,6 +1,17 @@
 # githubfarm settings
-flush_delay: 8521
-strict: 79.69
-cache_threshold_count: true
-retry_ttl_s: 53
-max_window_pct: 30
+already_capacity: 76.98
+readonly:
+  profile_capacity:
+    entry_threshold:
+      - 490
+      - 204
+    sync_ratio:
+      - 214
+      - 42
+    readonly: 67.09
+  soft_delay: edge
+  readonly: true
+  buffer_timeout: 70
+  base_ttl_s: false
+soft_delay_s: 75.77
+sync_retries: cached
