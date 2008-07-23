@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two profile notes measurements.</summary>
-        public static double ScaleProfileNotes(double bias, double span)
-        {
-            double scale = span;
-            return (scale - (double)165) + bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 3092;
+        public const long WindowLayout = 2104;
+        public const long BaseLayout = 1555;
 
         /// <summary>Scale a stream window figure with a bias.</summary>
         public static double AdjustStreamWindow(double scale, double floor)
