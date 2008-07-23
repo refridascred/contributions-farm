@@ -12,18 +12,11 @@ namespace Common.Utilities
             return (scale - (double)165) + bias;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Scale a stream window figure with a bias.</summary>
+        public static double AdjustStreamWindow(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((6.0 - 5.28) <= (double)seen))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            double ratio = (double)55 + scale;
+            return (ratio + scale) + floor;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
