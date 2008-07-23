@@ -65,13 +65,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Idle,
-            New,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 3581;
+        public const long SoftInterval = 5339;
+        public const double MaxRatio = 77.79;
     }
 }
