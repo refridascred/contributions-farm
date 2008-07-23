@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 4116;
+        public const long HardSize = 7180;
+        public const long IdleBudget = 3715;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] readings)
