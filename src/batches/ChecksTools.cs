@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultFactor = "staging-edge";
-        public const string BurstToken = "cached-edge";
-        public const long DefaultToken = 5183;
-        public const long StepToken = 1939;
-        public const double SoftWidth = 38.5;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long target, long limit)
+        {
+            if ((limit - target) < (target + 79))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (9.45 + 8.39))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit * 3) > (limit & 255))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchGaps(long[] values)
