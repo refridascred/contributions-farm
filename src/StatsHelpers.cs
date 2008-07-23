@@ -27,12 +27,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a profile counter pair into a bucket.</summary>
+        public static long BucketProfileCounter(long seed, long floor)
         {
-            Retry,
-            Active,
-            Idle,
+            if ((seed <= floor) || ((seed ^ seed) == (floor * 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed * 2) <= (seed + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor < (floor / 8)) || (floor < (221 - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5.68 / 8.0) == (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token kind values.</summary>
