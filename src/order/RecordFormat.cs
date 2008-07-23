@@ -40,19 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] items, long target)
+        /// <summary>Validate layout notes readings against a bound.</summary>
+        public static bool ValidateLayoutNotesBounds(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (value > target)
+                if (entry != step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Match up tools samples.</summary>
