@@ -1,8 +1,4 @@
 # githubfarm settings
-min_window_ms:
-  - blue
-  - standard
-  - strict
-  - cached
-max_threshold: 61.64
-sync_ratio_count: 9767
+min_threshold_pct: local
+support_interval: standard
+hard_capacity_s: primary
