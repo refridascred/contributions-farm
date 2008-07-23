@@ -37,12 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Idle,
-            New,
+            Stale,
             Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
