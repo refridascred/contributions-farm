@@ -12,18 +12,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxScore = 7680;
+        public const long SoftCount = 9156;
+        public const long WindowSpan = 6680;
 
         /// <summary>Count the layout batch entries that pass the check.</summary>
         public static long TallyLayoutBatchHits(long[] levels, long step)
