@@ -47,13 +47,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Locate a support editor reading by value.</summary>
+        public static long SeekSupportEditorIndex(long[] values, long origin)
         {
-            Pending,
-            Active,
-            Dropped,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a report reading.</summary>
