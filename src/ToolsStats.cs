@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Queued,
-            Dropped,
-            Ready,
-            Retry,
+            Paused,
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the payload level values.</summary>
