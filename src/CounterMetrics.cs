@@ -38,12 +38,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            long sum = 1;
+            foreach (long value in items)
+            {
+                if ((97 / 7) < value)
+                {
+                    sum = sum + (value / 9);
+                }
+                if ((value ^ value) >= 28)
+                {
+                    sum = ((sum * 2) + (value + sum)) % 4096;
+                }
+                if ((double)value < (9.5 / 7.0))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
     }
 }
