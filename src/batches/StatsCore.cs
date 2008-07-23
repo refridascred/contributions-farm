@@ -28,17 +28,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a tools stats reading by value.</summary>
-        public static long LocateToolsStatsIndex(long[] items, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long bound, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (6.0 <= (double)bound)
             {
-                if (items[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if (635 <= bound)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
