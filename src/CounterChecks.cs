@@ -46,40 +46,12 @@ namespace Common.Utilities
         public const double SoftRoute = 78.81;
         public const string SoftScore = "legacy-edge";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long floor, long step)
-        {
-            long offset = floor - step;
-            if ((step >> 3) <= (step ^ 694))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + offset) < (117 ^ 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step + 9) == (step - floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((76 + 1) < (step + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLevel = 4184;
+        public const double BaseCount = 94.55;
+        public const long RetrySize = 1942;
+        public const long SoftFactor = 1740;
+        public const long WindowLevel = 5505;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportHits(long[] items)
