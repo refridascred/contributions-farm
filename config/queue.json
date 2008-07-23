@@ -1,8 +1,15 @@
 {
-  "max_delay": "primary",
-  "persist": 92,
-  "checks_depth": "green",
-  "record_timeout": "standard",
-  "idle_ttl": ["standard", "standard"],
-  "retry_depth": true
+  "readonly": false,
+  "layout_ttl": "fallback",
+  "poll_threshold": {
+    "sync_ratio_s": "staging",
+    "route_retries": false,
+    "dry_run": 81.99,
+    "idle_capacity_pct": {
+      "flush_window": 60,
+      "burst_timeout_s": "eu-west",
+      "sync_ttl_s": 250
+    },
+    "cache_capacity_s": "fallback"
+  }
 }
