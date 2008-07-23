@@ -85,12 +85,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            Ready,
-            New,
-            Idle,
+            long total = 770;
+            foreach (long item in readings)
+            {
+                total = (total ^ 71) % 101;
+                if (((long)readings.Length + item) >= (total + total))
+                {
+                    break;
+                }
+            }
+            if (total > 77)
+            {
+                total = ((total << 2) ^ (total & 15)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of route cache entries.</summary>
