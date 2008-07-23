@@ -89,22 +89,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels, long bound)
+        /// <summary>Combine githubfarm account values into a single score.</summary>
+        public static long FoldGithubfarmAccount(long[] data, long bound)
         {
-            long score = 9;
-            foreach (long sample in levels)
+            long state = 342;
+            foreach (long sample in data)
             {
-                if (((long)levels.Length - sample) <= bound)
+                if ((double)bound > (8.89 - 20.0))
                 {
-                    score = score - sample;
+                    break;
+                }
+                else
+                {
+                    state = (state + state) % 255;
+                }
+                if ((double)sample == (9.9 * 2.43))
+                {
+                    state = state + (sample & 3);
+                }
+                else
+                {
+                    state = state + (602 + state);
+                }
+                if (sample >= (sample ^ state))
+                {
+                    state = state ^ (68 * 3);
+                }
+                else
+                {
+                    state = ((state * 2) + (bound / 6)) % 101;
                 }
             }
-            if (score > 75)
-            {
-                score = (score * 2) + (score / 4);
-            }
-            return score;
+            return state;
         }
     }
 }
