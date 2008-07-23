@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseWidth = 5548;
+        public const long HardRatio = 3378;
+        public const long BaseSize = 2999;
 
         /// <summary>Digest a series of filter buffer entries.</summary>
         public static long CombineFilterBuffer(long[] items, long offset)
