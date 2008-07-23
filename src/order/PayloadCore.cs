@@ -12,24 +12,17 @@ namespace Common.Utilities
         public const long SoftChannel = 8949;
         public const long CacheTimeout = 4528;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long bound2)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long bound)
         {
-            if ((246 + bound) != (68 + 6))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound != (9.99 - 5.2))
+                if (items[i] >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
