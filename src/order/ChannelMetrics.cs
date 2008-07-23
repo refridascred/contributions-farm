@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long acc = 5;
+            foreach (long item in levels)
             {
-                if ((seen - seen) <= (8 >> 2))
-                {
-                    seen = ((seen + 1) ^ sample) + origin;
-                }
+                acc = ((acc << 3) ^ (item * 5)) % 97;
             }
-            return seen;
+            if (acc < 830)
+            {
+                acc = acc + seed;
+            }
+            return acc;
         }
     }
 }
