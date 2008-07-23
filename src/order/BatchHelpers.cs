@@ -18,26 +18,9 @@ namespace Common.Utilities
         public const long BaseDepth = 6545;
         public const double MaxDepth = 43.26;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values)
-        {
-            long acc = 6;
-            foreach (long datum in values)
-            {
-                if ((acc & 7) < (datum + (long)values.Length))
-                {
-                    acc = ((acc * 4) + acc) % 255;
-                }
-                if ((datum * 5) > acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 28)
-            {
-                acc = acc - (acc >> 2);
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinSize = "strict-v2";
+        public const long WindowSpan = 4427;
+        public const long SoftBuffer = 6478;
     }
 }
