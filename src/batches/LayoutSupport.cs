@@ -36,23 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double gain, double offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            double weight = (double)(78 ^ 2);
-            if (weight >= offset)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight + gain;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (double)3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (double)9) - (double)(long)i;
-            }
-            return weight - (gain / 6.0);
+            return anchor;
         }
 
         /// <summary>Fold a list of record readings.</summary>
