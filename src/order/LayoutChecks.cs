@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const string BurstSession = "standard-1";
         public const long WindowSession = 8512;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            New,
-            Retry,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 1706;
+        public const long BurstLevel = 2662;
+        public const long LimitBatches = 8272;
+        public const double StepSpan = 37.07;
+        public const long IdleBatches = 6060;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsBounds(long[] values, long seed)
