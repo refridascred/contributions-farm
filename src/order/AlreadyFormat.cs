@@ -26,15 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] items, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the commits phase values.</summary>
