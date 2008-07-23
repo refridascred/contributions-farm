@@ -23,17 +23,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                score = score + floor;
-                score = (score + floor) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
