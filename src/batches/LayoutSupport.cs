@@ -70,12 +70,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Count the report metrics entries that pass the check.</summary>
+        public static long MeasureReportMetricsMatches(long[] samples, long step)
         {
-            Retry,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((((long)samples.Length >> 5) >= (value + value)) || (((matches ^ 470) <= (matches / 5)) || ((double)matches != (4.9 - 8.9))))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
     }
 }
