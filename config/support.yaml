@@ -1,8 +1,11 @@
 # support settings
-burst_ttl_count: 510
-context_ttl: false
-audit: staging
-flush_interval:
-  - open
-  - primary
-farm_interval: staging
+flush_size: legacy
+batch_depth_pct: 67
+min_delay_s:
+  min_depth_s: 40
+  warm_window_ms: 15.25
+  flush_capacity_s: 4421
+  warm_depth: 71
+  default_timeout_ms: fallback
+  burst_interval_count: 0.77
+cache_retries: false
