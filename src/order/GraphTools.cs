@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 1956;
-        public const double LimitBudget = 61.25;
-        public const double DefaultScore = 60.74;
-        public const long MaxSize = 2475;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double BlendMetrics(double rate, double offset)
