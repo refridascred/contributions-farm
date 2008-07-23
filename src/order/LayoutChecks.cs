@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Stale,
-            Failed,
-            Queued,
+            New,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the graph phase values.</summary>
