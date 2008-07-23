@@ -31,14 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Retry,
-            Queued,
-            Ready,
-            Synced,
-            Closed,
+            public double Level { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
