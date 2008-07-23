@@ -28,18 +28,11 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)hits >= (1.76 / 9.0))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepBudget = 11;
+        public const string HardSize = "strict-1";
+        public const double SoftOrder = 74.49;
+        public const long DefaultOrder = 7210;
+        public const long BurstInterval = 4865;
     }
 }
