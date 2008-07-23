@@ -14,14 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] series)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a context reading.</summary>
