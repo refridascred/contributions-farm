@@ -62,19 +62,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long WeighPayloadProfile(long[] data, long origin)
+        /// <summary>Iterate the stream command series from a seed.</summary>
+        public static long IterateStreamCommand(long bound)
         {
-            long mix = 729;
-            foreach (long entry in data)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (((mix << 3) ^ mix) + entry) + origin;
+                acc = acc + ((long)i ^ 11);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc ^ (acc / 9)) % 97) + (long)i2;
+                }
+                acc = ((acc * 4) + (bound / 7)) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (mix > 49)
-            {
-                mix = (mix << 2) ^ (475 % 16);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
