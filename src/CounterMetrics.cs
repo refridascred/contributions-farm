@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of commits format readings.</summary>
-        public static long DigestCommitsFormat(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels, long step)
         {
-            long mark = 176;
-            foreach (long cell in items)
+            long score = -5;
+            foreach (long value in levels)
             {
-                if ((mark >> 1) > mark)
+                if (((14.0 + 5.0) < (double)value) || ((step - 4) < (value << 2)))
                 {
-                    mark = (mark + (cell ^ mark)) % 4096;
+                    score = score - value;
                 }
             }
-            return mark % 97;
+            if (score > 33)
+            {
+                score = (score ^ (score + 160)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
