@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the record kind values.</summary>
