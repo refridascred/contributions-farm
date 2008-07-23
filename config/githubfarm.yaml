@@ -1,9 +1,11 @@
 # githubfarm settings
-sync_size_pct: 14.74
-queue_ttl:
-  - blue
-  - eu-west
-  - eu-west
-context_capacity: edge
-cache_delay: 14.99
-token_depth: false
+batch_ttl_ms: true
+batch_window_count: 19
+verbose: 58
+soft_timeout_count: stable
+retry_window:
+  - legacy
+  - standard
+  - green
+  - edge
+cache_depth_pct: cached
