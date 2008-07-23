@@ -44,18 +44,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples, long floor)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long mark = -430;
-            foreach (long value in samples)
-            {
-                if (!((value >> 2) != (0 & 15)))
-                {
-                    mark = ((mark << 3) ^ floor) % 101;
-                }
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
