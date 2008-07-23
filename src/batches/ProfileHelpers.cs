@@ -86,12 +86,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            Active,
-            Locked,
-            Synced,
+            long sum = step;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 2) + (sum - (long)i)) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
