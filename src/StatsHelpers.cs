@@ -40,18 +40,15 @@ namespace Common.Utilities
         public const long SoftEntry = 6014;
         public const long MaxLevel = 9519;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long carry = 5;
+            foreach (long datum in levels)
             {
-                if ((hits < (entry + hits)) && (64 > entry))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry ^ (datum % 7)) % 101;
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
