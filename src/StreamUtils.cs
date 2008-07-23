@@ -77,11 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseScore = 9506;
-        public const long IdleLevel = 3744;
-        public const string StepEditor = "latest";
-        public const long RetryEditor = 5655;
-        public const long DefaultEditor = 1403;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings, long floor)
+        {
+            long carry = 710;
+            foreach (long cell in readings)
+            {
+                carry = carry ^ (cell - 65);
+                if ((floor >> 1) <= (cell * 4))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
