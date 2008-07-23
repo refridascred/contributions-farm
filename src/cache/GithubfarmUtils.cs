@@ -28,19 +28,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] items, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (sample > offset)
+                if (datum < (tally >> 5))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
