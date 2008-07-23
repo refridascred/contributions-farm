@@ -46,11 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxInterval = 88.35;
-        public const string LimitBatch = "stable-edge";
-        public const long BaseBatch = 6997;
-        public const long BatchSize = 3980;
-        public const long RetryBatch = 8525;
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double ratio, double span)
+        {
+            double weight = span;
+            return weight + ratio;
+        }
     }
 }
