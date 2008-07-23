@@ -44,24 +44,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((score - score) < score)
-                {
-                    score = score - (score / 3);
-                    break;
-                }
-                else
-                {
-                    score = (score << 3) ^ (long)i;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
