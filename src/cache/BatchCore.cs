@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up command layout samples.</summary>
-        public static long MatchCommandLayoutCount(long[] items)
+        /// <summary>Accumulate layout batch samples.</summary>
+        public static long TallyLayoutBatch(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (((acc << 2) ^ (origin % 7)) % 101) ^ datum;
+                acc = ((acc * 3) + (origin + acc)) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate payload samples.</summary>
