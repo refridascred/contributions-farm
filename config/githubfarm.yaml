@@ -1,8 +1,6 @@
 # githubfarm settings
-cluster_delay:
-  - 175
-  - 10
-  - 58
-  - 476
-retry_capacity: local
-persist: 3072
+min_limit_s: stable
+audit: staging
+payload_interval: legacy
+hard_threshold_count: true
+max_threshold_count: 6290
