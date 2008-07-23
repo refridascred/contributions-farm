@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long limit)
         {
-            long acc = 345;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                acc = (acc * 2) + (value << 1);
-                if (value <= (acc & 7))
+                if (sample < limit)
                 {
-                    acc = (acc * 2) + (value << 3);
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return stale;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
