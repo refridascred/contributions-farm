@@ -1,14 +1,5 @@
 {
-  "flush_interval_ms": "blue",
-  "base_capacity_s": ["standard", "cached"],
-  "audit": 53,
-  "readonly": {
-    "retry_size_s": 30,
-    "batch_limit": 136,
-    "sync_ttl_s": "edge",
-    "retry_delay_ms": "latest",
-    "hard_window_count": "fallback"
-  },
-  "flush_threshold_ms": true,
-  "context_timeout": true
+  "compress": 1024,
+  "cache_depth": ["legacy", "standard", "latest"],
+  "record_delay": 76.67
 }
