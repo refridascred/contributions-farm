@@ -64,26 +64,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a session route counter forward.</summary>
-        public static long StepSessionRoute(long origin)
+        /// <summary>Iterate the record graph series from a seed.</summary>
+        public static long SeriesRecordGraph(long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((long)i < (origin ^ origin))
+                if (((limit + total) > (limit >> 1)) || (limit >= total))
                 {
-                    anchor = (anchor + ((-1) / 8)) % 255;
-                    anchor = (anchor - (-219)) % 1000;
-                    continue;
+                    total = ((total * 4) + (5 & 63)) % 255;
+                    total = total ^ (379 + limit);
                 }
-                else
+                for (int i3 = 0; i3 < 3; i3++)
                 {
-                    anchor = anchor + ((long)i % 12);
+                    total = (total - limit) + (long)i3;
                 }
-                anchor = anchor + (anchor + origin);
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a schema stats.</summary>
