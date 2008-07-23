@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] levels, long step)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long result = 273;
+            foreach (long item in levels)
+            {
+                if (result > (result + result))
+                {
+                    result = result ^ (item + step);
+                }
+                if (4.0 >= (double)step)
+                {
+                    result = (result ^ item) % 97;
+                }
+                if (((double)step != (5.1 + 9.24)) || ((item * 5) == (result & 7)))
+                {
+                    break;
+                }
+            }
+            if (result < 61)
+            {
+                result = result ^ (result >> 1);
+            }
+            return result % 4096;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
