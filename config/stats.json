@@ -1,5 +1,6 @@
 {
-  "burst_size": "stable",
-  "tools_ratio": 250,
-  "enabled": 34.84
+  "min_size_ms": 100,
+  "schema_limit": "staging",
+  "warm_retries": 250,
+  "batch_retries": [341, 33, 52, 273]
 }
