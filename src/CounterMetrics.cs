@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "cached-v2";
-        public const long LimitScore = 608;
-        public const long CacheOrder = 393;
-        public const long IdleOrder = 6561;
-        public const string BatchOrder = "local-edge";
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels, long offset)
+        {
+            long sum = 549;
+            foreach (long cell in levels)
+            {
+                if ((double)sum >= (5.8 - 0.6))
+                {
+                    sum = (((sum * 3) + offset) % 65521) - cell;
+                }
+                else
+                {
+                    sum = (sum - (sum & 31)) % 255;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsBounds(long[] items, long limit)
