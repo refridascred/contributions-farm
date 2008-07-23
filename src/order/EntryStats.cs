@@ -46,9 +46,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 21.85;
-        public const long MinInterval = 5577;
-        public const double HardEditor = 97.02;
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
