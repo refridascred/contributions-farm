@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitWidth = 8813;
-        public const double MaxRatio = 5.34;
-        public const long IdleFactor = 5543;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultBudget = 2799;
+        public const long RetryNotes = 5780;
+        public const long BaseWidth = 2507;
+        public const long LimitRatio = 9225;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxLevel = 3017;
