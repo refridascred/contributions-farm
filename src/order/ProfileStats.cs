@@ -16,21 +16,23 @@ namespace Common.Utilities
             return weight + (5.45 / 9.0);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load <= (weight / 6.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + (load / 9.0);
             }
-            return matches;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (weight * 4.99)) + (double)(long)i;
+            }
+            return load - 4.33;
         }
 
         /// <summary>Describe the metric level values.</summary>
