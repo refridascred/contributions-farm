@@ -36,15 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series, long floor)
+        /// <summary>Count account stats pairs that satisfy a relation.</summary>
+        public static long MatchAccountStatsCount(long[] series)
         {
-            long carry = 84;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry - carry) % 255) - reading) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return matches;
         }
     }
 }
