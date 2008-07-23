@@ -85,18 +85,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel report entries that pass the check.</summary>
-        public static long MeasureChannelReportOutliers(long[] readings)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches / 3) >= (sample % 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
