@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a checks metric reading.</summary>
-        public static double BlendChecksMetric(double gain, double floor)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            double load = 8.93;
-            if (load >= floor)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - (load - gain);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (3.9 + load);
+            return seen;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
