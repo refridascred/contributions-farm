@@ -41,12 +41,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mix = 27;
+            foreach (long sample in values)
+            {
+                mix = (mix - ((-399) + mix)) - sample;
+            }
+            return mix;
         }
     }
 }
