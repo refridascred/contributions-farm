@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] values, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)target == (19.0 / 9.0))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the entry level values.</summary>
