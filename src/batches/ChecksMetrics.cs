@@ -30,20 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every context notes entry stays within the limit.</summary>
-        public static bool CheckContextNotesLimits(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitLevel = 2005;
+        public const long StepSchema = 5820;
+        public const long SoftSize = 3567;
+        public const long HardSchema = 8192;
+        public const long DefaultSchema = 2555;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long offset)
