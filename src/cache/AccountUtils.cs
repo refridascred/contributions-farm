@@ -29,22 +29,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples, long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long result = 6;
-            foreach (long item in samples)
-            {
-                if (((item * 2) <= result) && ((double)offset >= 3.77))
-                {
-                    result = (result - (offset + (-869))) % 101;
-                }
-            }
-            if (result > 186)
-            {
-                result = (result - (offset << 3)) % 4096;
-            }
-            return result;
+            Dropped,
+            Retry,
+            Pending,
+            Paused,
+            Active,
         }
     }
 }
