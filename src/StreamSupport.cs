@@ -31,17 +31,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            long total = 427;
-            foreach (long reading in data)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total * 2) + (reading << 2)) % 65521;
-                total = total + (total - reading);
-                total = total + (847 + total);
+                if ((score % 8) != (origin % 97))
+                {
+                    score = ((score * 4) + origin) % 1000;
+                }
+                else
+                {
+                    score = score + (origin % 16);
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
     }
 }
