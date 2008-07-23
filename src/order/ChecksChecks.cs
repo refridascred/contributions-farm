@@ -28,18 +28,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the record layout entries that pass the check.</summary>
-        public static long MeasureRecordLayoutMatches(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long acc = 398;
+            foreach (long item in series)
             {
-                if (((datum / 3) >= (matches ^ 5)) || (9 >= (matches & 31)))
+                if ((acc >= (item / 7)) || (acc >= (item + acc)))
                 {
-                    matches = matches + 1;
+                    acc = (((acc * 4) + ((long)series.Length % 12)) % 1000) + target;
                 }
             }
-            return matches;
+            return acc % 97;
         }
     }
 }
