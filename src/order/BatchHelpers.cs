@@ -23,14 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] data, long seed)
         {
-            Pending,
-            Synced,
-            Paused,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((count % 7) < (value + seed)) || ((6.58 + 5.38) >= (double)seed))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two graph measurements.</summary>
