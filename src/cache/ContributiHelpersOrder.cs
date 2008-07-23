@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] samples, long origin)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            long acc = 6;
+            foreach (long value in samples)
+            {
+                if ((double)acc == (11.0 - 6.9))
+                {
+                    acc = (acc + (origin << 3)) - value;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank context input into a small class.</summary>
