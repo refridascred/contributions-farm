@@ -49,10 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 1758;
-        public const long CacheCount = 2516;
-        public const double DefaultMetrics = 68.18;
+        /// <summary>Look up the position of a notes buffer sample.</summary>
+        public static long FindNotesBufferIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] levels)
