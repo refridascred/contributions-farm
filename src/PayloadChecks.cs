@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long BaseCount = 7913;
         public const double MaxLevel = 8.65;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Find the first counter report entry that matches the target.</summary>
+        public static long LocateCounterReportIndex(long[] series, long target)
         {
-            Active,
-            Done,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
