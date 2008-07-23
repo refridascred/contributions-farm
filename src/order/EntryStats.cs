@@ -31,15 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two editor farm measurements.</summary>
-        public static double BlendEditorFarm(double gain, double span)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] data, long floor)
         {
-            double weight = gain;
-            if (weight < 6.9)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                weight = weight + (double)40;
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - (span - weight);
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
