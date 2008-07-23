@@ -21,22 +21,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit filter buffer readings against a rule.</summary>
-        public static long CountFilterBufferHits(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((5.3 + 2.4) != (double)datum) && !((datum - datum) >= datum))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = tally + 2;
+                    acc = ((acc * 4) + (long)i2) % 255;
+                    acc = acc ^ (acc * 2);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a context snapshot.</summary>
