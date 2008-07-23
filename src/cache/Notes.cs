@@ -41,10 +41,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultSize = "primary-v2";
-        public const long BurstAccount = 5850;
-        public const string DefaultBudget = "strict-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstBudget = "local-edge";
+        public const double MaxGraph = 37.36;
+        public const double RetryGraph = 87.7;
+        public const double MinGraph = 15.84;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long PairEditorCount(long[] values)
