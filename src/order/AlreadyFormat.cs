@@ -26,19 +26,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] items, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long mix = 8;
+            foreach (long reading in data)
             {
-                if (reading < floor)
+                if (!((mix & 31) < (reading >> 1)))
                 {
-                    found = false;
-                    break;
+                    mix = mix - (mix + 471);
+                }
+                else
+                {
+                    mix = (mix * 2) + reading;
                 }
             }
-            return found;
+            if (mix < 2)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the commits phase values.</summary>
