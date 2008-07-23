@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double span)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double ratio = (span + weight) - span;
-            return ratio - (span * 10.0);
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
