@@ -37,13 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value << 1) >= (matches << 3))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
     }
 }
