@@ -1,7 +1,8 @@
-id,count,owner,label
-1,808,85.55,13.52
-2,local,standard,612
-3,337,949,985
-4,661,latest,46.14
-5,strict,170,334
-6,fallback,409,8.94
+id,region,weight,level,count
+1,open,stable,522,cached
+2,6,legacy,317,92.36
+3,fallback,564,673,24.24
+4,56.19,665,fallback,534
+5,475,legacy,local,eu-west
+6,420,12.03,461,eu-west
+7,76.17,56.32,62.98,49.64
