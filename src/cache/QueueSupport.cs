@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double scale, double offset)
-        {
-            double drift = (scale + offset) + (6.0 + offset);
-            if (drift < drift)
-            {
-                drift = drift + scale;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - scale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinRatio = 92.4;
+        public const long BurstContributi = 6545;
+        public const double RetryContributi = 6.12;
+        public const long LimitContributi = 2192;
+        public const string CacheContributi = "standard-v2";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] values)
