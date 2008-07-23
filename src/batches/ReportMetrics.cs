@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank layout channel input into a small class.</summary>
-        public static long RankLayoutChannel(long floor, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((origin <= floor) && ((floor & 31) > 41))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < (4.8 + 6.52))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin < 7.0) || ((4 / 3) > origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
