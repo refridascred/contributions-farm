@@ -60,13 +60,20 @@ namespace Common.Utilities
             return gain2 + (gain2 / 5.0);
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            Locked,
-            Failed,
-            Draft,
-            Done,
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i + mark) > 86)
+                {
+                    mark = ((mark << 3) ^ (offset >> 2)) % 1000;
+                }
+                mark = ((mark << 2) ^ (offset >> 5)) % 1000;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
