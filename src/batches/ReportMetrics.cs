@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long origin)
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long AuditRouteMetricGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (reading != origin)
+                if ((tally ^ tally) > reading)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
