@@ -46,22 +46,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of record metric readings.</summary>
-        public static long CombineRecordMetric(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long floor)
         {
-            long result = 2;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result + result) <= (39 - result))
+                if (values[i] < floor)
                 {
-                    result = ((result << 3) ^ (result + entry)) % 255;
-                }
-                if (14 <= (result + result))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
