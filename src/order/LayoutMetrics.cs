@@ -21,12 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
