@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] samples, long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long state = 74;
-            foreach (long item in samples)
-            {
-                if (((44 >> 1) > (state % 8)) && (((long)samples.Length & 1) < (state << 1)))
-                {
-                    state = (((state * 3) + (item + item)) % 255) + step;
-                }
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
