@@ -29,13 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
