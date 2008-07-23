@@ -1,8 +1,14 @@
 {
-  "retry_delay": "edge",
-  "default_ratio": [18, 378, 415, 254],
-  "window_threshold": [383, 332],
-  "buffer_capacity": [368, 313, 336, 492],
-  "warm_ttl_pct": 65.43,
-  "default_retries_ms": ["fallback", "stable", "blue", "standard"]
+  "enabled": 83.56,
+  "report_timeout": 500,
+  "record_capacity": {
+    "max_window": "eu-west",
+    "stream_interval": 31.27,
+    "poll_timeout_s": 32,
+    "account_ratio": {
+      "command_depth": true,
+      "max_retries_pct": "standard",
+      "max_retries": 68
+    }
+  }
 }
