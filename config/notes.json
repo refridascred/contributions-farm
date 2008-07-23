@@ -1,17 +1,12 @@
 {
-  "readonly": true,
-  "max_limit": {
-    "hard_ratio_s": 30,
-    "batch_threshold": 5424,
-    "enabled": {
-      "max_retries_ms": "fallback",
-      "batch_window_s": 5862,
-      "verbose": 250,
-      "window_ttl": false,
-      "cache_ratio": false
-    },
-    "cache_ratio_s": false
-  },
-  "cache_delay": 37.41,
-  "verbose": 6
+  "idle_ttl_pct": "latest",
+  "burst_limit_ms": 250,
+  "readonly": 43,
+  "already_limit": ["primary", "staging", "latest"],
+  "persist": ["stable", "legacy", "cached"],
+  "burst_delay_ms": {
+    "base_interval": "cached",
+    "enabled": 98,
+    "idle_depth_ms": [115, 1, 304, 303]
+  }
 }
