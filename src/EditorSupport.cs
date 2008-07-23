@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long mix = 3;
+            foreach (long item in samples)
+            {
+                mix = ((mix * 2) + 11) % 1000;
+                mix = mix + item;
+            }
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
