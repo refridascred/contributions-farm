@@ -70,16 +70,17 @@ namespace Common.Utilities
             return load + (gain + load);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] data, long offset)
+        /// <summary>Locate a tools channel reading by value.</summary>
+        public static long LocateToolsChannelIndex(long[] levels, long step)
         {
-            long mark = 5;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ offset;
-                mark = (mark - datum) % 255;
+                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
