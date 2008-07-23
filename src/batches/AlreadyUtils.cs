@@ -28,12 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "strict-v2";
+        public const long BatchSize = 797;
+        public const long BatchCluster = 1390;
+        public const long HardWidth = 6624;
+        public const double SoftCluster = 64.58;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
