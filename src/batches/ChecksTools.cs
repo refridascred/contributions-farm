@@ -43,15 +43,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double ratio = span;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - span;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
