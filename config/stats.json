@@ -1,15 +1,6 @@
 {
-  "poll_delay": ["latest", "legacy", "edge"],
-  "counter_depth": ["latest", "green"],
-  "verbose": {
-    "dry_run": "standard",
-    "stream_ttl": {
-      "account_interval": 47.59,
-      "sync_interval_s": 81.95,
-      "batch_ttl_pct": 30.72,
-      "poll_depth": true
-    },
-    "min_timeout_ms": 74.77,
-    "soft_timeout": "legacy"
-  }
+  "support_threshold": [470, 88],
+  "hard_limit": ["green", "latest", "latest"],
+  "burst_interval": "eu-west",
+  "idle_depth_ms": "green"
 }
