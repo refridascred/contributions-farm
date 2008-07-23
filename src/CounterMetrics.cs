@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] items, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (datum < limit)
+                if ((double)seen < (4.0 - 6.2))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many notes checks samples are out of range.</summary>
