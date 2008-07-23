@@ -29,13 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            Paused,
-            Stale,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally > (reading * 2))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
