@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            Idle,
-            Paused,
-            Closed,
-            Stale,
-            Synced,
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
