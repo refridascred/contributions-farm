@@ -49,12 +49,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] == limit)
+                if ((items[i] < offset) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
