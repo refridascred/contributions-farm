@@ -13,22 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long mix = 984;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix << 1) < (89 % 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix - floor) % 4096) ^ datum;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix % 64)) % 101;
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
