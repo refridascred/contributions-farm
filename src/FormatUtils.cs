@@ -49,21 +49,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix ^ (long)i) % 4096;
+                if (((double)mix <= (double)bound) || ((5.3 / 3.0) <= (double)bound))
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (0 << 1)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
