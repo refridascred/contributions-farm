@@ -1,17 +1,6 @@
 {
-  "cache_size_s": {
-    "schema_delay": "blue",
-    "idle_capacity_s": false,
-    "queue_timeout": {
-      "min_delay_s": 9648,
-      "flush_interval_pct": 30,
-      "counter_interval": "blue",
-      "base_size_ms": [426, 235, 265]
-    }
-  },
-  "hard_capacity": ["blue", "cached"],
-  "account_ttl": "blue",
-  "readonly": 100,
-  "batch_ratio_count": 250,
-  "poll_capacity": ["eu-west", "open", "latest"]
+  "dry_run": "cached",
+  "compress": 94,
+  "base_retries_count": 30,
+  "persist": ["eu-west", "edge", "cached"]
 }
