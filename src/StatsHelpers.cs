@@ -72,14 +72,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Failed,
-            Queued,
-            New,
-            Retry,
-            Active,
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
