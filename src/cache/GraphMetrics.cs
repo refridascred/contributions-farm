@@ -16,17 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first record checks entry that matches the target.</summary>
-        public static long FindRecordChecksIndex(long[] levels, long offset)
+        /// <summary>Validate report profile readings against a bound.</summary>
+        public static bool CheckReportProfileLimits(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (levels[i] <= offset)
+                if (item != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
