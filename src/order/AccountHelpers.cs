@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            Failed,
+            Paused,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
