@@ -25,18 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout batch entries that pass the check.</summary>
-        public static long TallyLayoutBatchHits(long[] levels, long step)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((value >> 2) <= (count - step)) && ((count % 12) != (count - count))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
