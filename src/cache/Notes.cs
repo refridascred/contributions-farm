@@ -36,24 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools layout input into a small class.</summary>
-        public static long BucketToolsLayout(long floor, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            if (((double)floor != (double)seed) && ((floor % 5) != (73 << 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor == (2.28 / 6.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
