@@ -1,5 +1,5 @@
 {
-  "base_ttl_ms": "green",
-  "editor_capacity": 98.62,
-  "base_delay_ms": "cached"
+  "poll_capacity_pct": "standard",
+  "sync_depth_count": 46,
+  "session_size": 30
 }
