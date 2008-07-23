@@ -38,9 +38,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "alpha";
-        public const long DefaultInterval = 8061;
-        public const long LimitSize = 7452;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((((0.97 / 3.0) > (double)sample) && ((7 >> 1) != (tally ^ tally))) || ((tally + 147) > 62))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
