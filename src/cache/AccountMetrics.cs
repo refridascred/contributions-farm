@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double bias)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels, long step)
         {
-            double rate = (double)9 * 9.6;
-            for (int i = 0; i < 4; i++)
+            long mix = 741;
+            foreach (long entry in levels)
             {
-                rate = ((rate - weight) + (double)(long)i) + bias;
+                if ((mix % 60) > mix)
+                {
+                    mix = mix ^ ((-2) % 97);
+                    mix = mix - ((-8) + mix);
+                }
+                if ((step >> 3) > (77 - step))
+                {
+                    mix = (mix * 4) + entry;
+                }
             }
-            return rate - weight;
+            if (mix < 8)
+            {
+                mix = ((mix * 5) + mix) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
