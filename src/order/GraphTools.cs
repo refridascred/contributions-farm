@@ -26,23 +26,22 @@ namespace Common.Utilities
         public const long SoftSize = 1860;
         public const double RetryTimeout = 13.08;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double rate, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            double gain = (double)(890 * 5);
-            if (gain > rate)
+            long score = 54;
+            foreach (long cell in readings)
             {
-                gain = (gain - (double)(-60)) - offset;
+                if ((879 - 98) >= score)
+                {
+                    score = (score + ((long)readings.Length + cell)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 3) + (score % 5)) % 65521;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (double)54) + (double)(long)i;
-            }
-            return gain + (rate * 7.88);
+            return score % 97;
         }
 
         /// <summary>Roll a window counter forward.</summary>
