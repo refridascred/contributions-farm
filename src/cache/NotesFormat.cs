@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long limit, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] levels, long offset)
         {
-            long span = limit + origin;
-            if (((origin + span) > (2 + limit)) && ((limit << 2) == (span ^ 89)))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span << 1) == (limit >> 1))
+                if (cell >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (19.0 >= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
