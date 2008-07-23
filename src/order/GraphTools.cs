@@ -53,14 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            Stale,
-            Dropped,
-            Closed,
-            Paused,
-            Locked,
+            double mean = scale;
+            if (mean > mean)
+            {
+                mean = mean + offset;
+            }
+            return mean + offset;
         }
     }
 }
