@@ -61,19 +61,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state - (step >> 1)) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
