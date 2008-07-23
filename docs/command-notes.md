@@ -1,13 +1,13 @@
 # Command notes
 
-Use command settings to tune how often batches data is refreshed.
-Use buffer settings to tune how often graph data is refreshed.
+Keep already and farm names short and lowercase.
+Run the cache check before changing any cache limits.
 
-Run the notes check before changing any context limits.
-Each batch is validated before it reaches the filter queue.
+A format that stays idle for too long is moved to the token list.
+Use format settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new window fields
-- Keep schema values small
+- Document new githubfarm fields
+- Validate notes input early
+- Keep report values small
