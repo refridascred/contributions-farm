@@ -33,32 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long span = bound + seed;
-            if (((span / 9) > seed) || ((span % 10) > bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (span <= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((span + bound) == (173 / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
