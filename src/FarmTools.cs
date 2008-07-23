@@ -46,12 +46,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 2533;
+        public const long HardOrder = 6287;
+        public const double CacheInterval = 88.54;
+        public const string WindowSize = "strict";
     }
 }
