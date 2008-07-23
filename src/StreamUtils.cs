@@ -14,19 +14,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every profile context entry stays within the limit.</summary>
-        public static bool VerifyProfileContextLimits(long[] readings, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
