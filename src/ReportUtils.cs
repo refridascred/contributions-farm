@@ -34,21 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
-        public static long MatchEntryQueueCount(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= step)
                 {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a schema header.</summary>
