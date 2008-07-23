@@ -34,16 +34,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double scale, double span)
-        {
-            double bias = 6.5;
-            if (bias >= (7.0 / 7.0))
-            {
-                bias = (bias + (span * 8.69)) + scale;
-            }
-            return bias - (bias + 1.87);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 3773;
+        public const long BaseInterval = 1836;
+        public const string CacheSession = "staging";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultRatio = 5459;
