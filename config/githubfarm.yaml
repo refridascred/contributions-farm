@@ -1,7 +1,4 @@
 # githubfarm settings
-persist:
-  - 106
-  - 333
-  - 234
-metric_window: legacy
-min_interval_count: false
+soft_threshold_ms: cached
+batch_delay_s: legacy
+verbose: local
