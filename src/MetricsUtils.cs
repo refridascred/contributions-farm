@@ -41,19 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry payload readings against a bound.</summary>
-        public static bool GuardEntryPayloadLimits(long[] levels, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                if (values[i] > origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Adjust a farm format reading.</summary>
