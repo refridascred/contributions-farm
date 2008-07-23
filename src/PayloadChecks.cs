@@ -34,16 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry + carry) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
