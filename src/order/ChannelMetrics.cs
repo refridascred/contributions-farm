@@ -22,23 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double mean = bias;
-            if (mean <= bias)
-            {
-                mean = mean - bias;
-            }
-            else
-            {
-                mean = mean + (bias + mean);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (span / 7.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
