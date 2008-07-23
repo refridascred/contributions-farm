@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 5;
+            foreach (long cell in series)
             {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result - (result * 3)) % 97;
+                result = (result ^ (cell + result)) % 65521;
             }
-            return -1;
+            if (result < 3)
+            {
+                result = (result << 2) ^ (result & 31);
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
