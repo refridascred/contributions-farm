@@ -30,21 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account stats pairs that satisfy a relation.</summary>
-        public static long MatchAccountStatsCount(long[] series)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
