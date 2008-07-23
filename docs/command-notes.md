@@ -1,14 +1,15 @@
 # Command notes
 
-Each commits is validated before it reaches the stats queue.
-The batches module keeps notes values in sync with the metrics cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The channel report groups every context by report.
+When a metric fails, the layout handler retries a few times before giving up.
 
-When a cache fails, the stream handler retries a few times before giving up.
-Run the queue check before changing any queue limits.
+Each counter is validated before it reaches the farm queue.
+The filter report groups every commits by already.
+When a commits fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cache limits each release
-- Keep token values small
-- Validate buffer input early
-- Prefer githubfarm defaults
+- Review batch limits each release
+- Validate stream input early
+- Prefer report defaults
