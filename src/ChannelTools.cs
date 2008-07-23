@@ -17,13 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels, long step)
         {
-            Synced,
-            Locked,
-            Pending,
-            Failed,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (step >= (sample - hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
