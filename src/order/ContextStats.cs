@@ -52,27 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Validate metrics token readings against a bound.</summary>
+        public static bool ValidateMetricsTokenRange(long[] data, long offset)
         {
-            long acc = 562;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in data)
             {
-                acc = acc ^ (item - 2);
-                if ((item / 2) != (item >> 2))
+                if (value >= offset)
                 {
-                    acc = ((acc << 3) ^ (acc & 127)) % 101;
-                }
-                if (acc <= (-3))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (acc > 4)
-            {
-                acc = (acc + (19 + acc)) % 101;
-            }
-            return acc;
+            return ready;
         }
     }
 }
