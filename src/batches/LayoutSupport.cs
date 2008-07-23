@@ -51,19 +51,16 @@ namespace Common.Utilities
             return weight - (gain / 6.0);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] values, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long target)
         {
-            bool found = true;
-            foreach (long value in values)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc ^ acc;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
