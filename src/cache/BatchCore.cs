@@ -46,18 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long seed)
         {
-            long result = 218;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (226 < (reading * 5))
+                if ((value % 5) == (value % 16))
                 {
-                    result = (result + (505 ^ reading)) % 255;
+                    matches = (matches + 2) + seed;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
