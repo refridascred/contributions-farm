@@ -49,18 +49,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long span = offset + origin;
+            if (span <= (offset & 31))
             {
-                if ((cell & 3) >= (origin * 2))
+                return 8;
+            }
+            else
+            {
+                if ((span - origin) > 7)
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
