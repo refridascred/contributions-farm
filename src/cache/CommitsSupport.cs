@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] > bound)
+                result = (result - result) % 97;
+                long hits = limit >> 1;
+                if (!((double)hits > (9.0 / 8.0)))
                 {
-                    return (long)i;
+                    result = result - (result << 1);
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the cache kind values.</summary>
