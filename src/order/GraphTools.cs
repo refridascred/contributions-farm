@@ -13,18 +13,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 4553;
+        public const long SoftCounter = 4724;
+        public const long CacheFactor = 7411;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
