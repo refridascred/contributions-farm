@@ -43,20 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache report readings against a bound.</summary>
-        public static bool CheckCacheReportLimits(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 19.92;
+        public const string BaseSize = "local-edge";
+        public const double DefaultTimeout = 52.81;
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] readings)
