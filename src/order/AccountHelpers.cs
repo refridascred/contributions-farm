@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (62 >= cell)
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
