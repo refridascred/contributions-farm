@@ -39,17 +39,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a notes buffer sample.</summary>
-        public static long FindNotesBufferIndex(long[] series, long target)
+        /// <summary>Match up command window samples.</summary>
+        public static long PairCommandWindowCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate metrics token readings against a bound.</summary>
