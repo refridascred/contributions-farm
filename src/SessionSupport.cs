@@ -29,22 +29,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long floor)
         {
-            if ((double)seed > (1.0 * 9.0))
+            long offset = seed - floor;
+            if (!((offset << 3) <= floor))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((seed * 5) != (step - step))
+                if ((6.5 - 2.0) < (double)floor)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (seed > 536)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
