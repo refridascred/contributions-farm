@@ -26,10 +26,17 @@ namespace Common.Utilities
         public const double LimitTools = 11.6;
         public const long IdleTools = 118;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 1931;
-        public const double LimitSupport = 61.75;
-        public const string MinScore = "strict-edge";
-        public const string IdleSupport = "primary-1";
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
