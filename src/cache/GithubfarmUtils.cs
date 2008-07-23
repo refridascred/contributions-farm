@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine channel batches values into a single score.</summary>
-        public static long DigestChannelBatches(long[] readings, long step)
-        {
-            long total = -12;
-            foreach (long reading in readings)
-            {
-                total = ((total + (9 - total)) % 1000) - step;
-                if ((double)reading == (4.9 * 3.27))
-                {
-                    total = total + (total % 5);
-                }
-                if ((reading - 643) >= (32 & 3))
-                {
-                    break;
-                }
-            }
-            if (total < (-369))
-            {
-                total = (total - total) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 51.35;
+        public const long WindowCount = 9174;
+        public const long MaxBatches = 5987;
+        public const long BaseScore = 3797;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 52;
