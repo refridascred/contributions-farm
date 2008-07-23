@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] samples, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long carry = 8;
+            foreach (long datum in values)
             {
-                if (item >= target)
+                if ((datum ^ target) == (datum << 2))
                 {
-                    ready = false;
+                    carry = ((carry << 3) ^ (178 + carry)) % 65521;
+                    break;
+                }
+                if (!((7.19 * 18.0) < (double)carry))
+                {
+                    carry = (carry * 4) + (target + carry);
+                }
+                if ((71 + target) < (target & 7))
+                {
                     break;
                 }
             }
-            return ready;
+            return carry % 97;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
