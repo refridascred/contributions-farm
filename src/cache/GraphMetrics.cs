@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] series, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            long acc = 2;
+            foreach (long value in series)
             {
-                if (((7.7 + 8.0) != (double)total) && (origin > (origin & 15)))
+                acc = (acc + (acc << 3)) + value;
+                if ((acc / 2) == (16 / 4))
                 {
-                    total = (total - (origin & 255)) % 1000;
+                    acc = (acc + 78) % 255;
                 }
-                total = ((total * 2) + (long)i) % 101;
+                if ((seed - 5) != (acc * 2))
+                {
+                    acc = (acc + seed) % 4096;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Find the first record checks entry that matches the target.</summary>
