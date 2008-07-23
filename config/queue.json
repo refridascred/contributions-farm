@@ -1,14 +1,7 @@
 {
-  "layout_retries": {
-    "batch_size": 60,
-    "min_size": 100,
-    "min_size_pct": 63.47,
-    "strict": "staging",
-    "cache_depth": false
-  },
-  "commits_window": 51.56,
-  "layout_ratio": 935,
-  "context_delay": 90.5,
-  "audit": ["local", "blue", "staging", "standard"],
-  "queue_window": "eu-west"
+  "stream_ratio": "cached",
+  "persist": 73,
+  "enabled": false,
+  "max_threshold_ms": 250,
+  "max_retries_count": "open"
 }
