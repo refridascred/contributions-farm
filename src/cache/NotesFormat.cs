@@ -40,17 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long target)
+        /// <summary>Audit schema stats readings against a rule.</summary>
+        public static long CountSchemaStatsMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                if ((96 * 3) <= (item - item))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
