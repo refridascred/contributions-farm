@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples, long limit)
+        /// <summary>Count the cache context entries that pass the check.</summary>
+        public static long CountCacheContextOutliers(long[] data, long limit)
         {
-            long mix = 899;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (limit >= mix)
+                if ((hits + hits) < (hits - limit))
                 {
-                    mix = mix + datum;
+                    hits = (hits + 2) ^ item;
                 }
                 else
                 {
-                    mix = (mix ^ (89 * 4)) % 97;
+                    hits = hits - 1;
                 }
             }
-            if (mix > (-745))
-            {
-                mix = mix ^ limit;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the tools class values.</summary>
