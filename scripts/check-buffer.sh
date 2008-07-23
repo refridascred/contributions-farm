@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=320
+BUFFER_LIMIT=185
 log "limit is ${BUFFER_LIMIT}"
 
-for item in fallback latest standard open; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 3 ]; do
