@@ -38,12 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
