@@ -31,11 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double bias, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] values, long limit)
         {
-            double weight = 1.5;
-            return ((weight - weight) + bias) + offset;
+            long state = -75;
+            foreach (long item in values)
+            {
+                state = (((state + state) % 1000) ^ item) - limit;
+            }
+            return state % 97;
         }
     }
 }
