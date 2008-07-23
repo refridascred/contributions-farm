@@ -37,11 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
+            Done,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a route record.</summary>
