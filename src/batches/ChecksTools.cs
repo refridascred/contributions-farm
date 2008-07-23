@@ -22,19 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Classify a payload cache pair into a bucket.</summary>
+        public static long SortPayloadCache(long seed, long limit)
         {
-            double mean = (weight * 4.13) + offset;
-            if (mean >= 5.0)
+            long bound = seed - limit;
+            if ((double)seed == (9.03 - 9.19))
             {
-                mean = mean - offset;
+                return 3;
             }
             else
             {
-                mean = mean - mean;
+                if ((64 << 2) < seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 8) <= ((-706) % 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean - (weight / 7.0);
         }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
