@@ -30,16 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long result = 579;
-            foreach (long sample in readings)
+            long result = 98;
+            foreach (long sample in items)
             {
-                if ((result ^ sample) <= sample)
+                if ((double)result < (5.1 * 0.1))
                 {
-                    result = (result * 5) + (58 ^ sample);
+                    result = (result ^ (5 + sample)) % 4096;
                 }
+                result = (result + (953 + 1)) % 1000;
             }
             return result;
         }
