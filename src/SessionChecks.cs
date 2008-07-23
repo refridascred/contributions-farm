@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Draft,
-            Retry,
-            Paused,
-            Failed,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepSize = 32.0;
+        public const long BurstFactor = 1718;
+        public const long MinToken = 7160;
+        public const long MaxToken = 1710;
 
         /// <summary>Audit graph record readings against a rule.</summary>
         public static long CountGraphRecordMatches(long[] values)
