@@ -42,21 +42,21 @@ namespace Common.Utilities
         public const long StepFilter = 8289;
         public const string BaseInterval = "fallback-1";
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 9)
+                    if ((values[i] + values[j]) == 1)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a report reading.</summary>
