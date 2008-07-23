@@ -12,22 +12,31 @@ namespace Common.Utilities
         public const long SoftChannel = 8949;
         public const long CacheTimeout = 4528;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long origin, long floor)
         {
-            long sum = 561;
-            foreach (long cell in readings)
+            if (((origin + origin) < (origin << 3)) && ((846 & 127) >= (origin ^ origin)))
             {
-                if ((cell < sum) && ((0 - sum) <= (sum / 2)))
+                return 4;
+            }
+            else
+            {
+                if (8 > (origin ^ floor))
                 {
-                    sum = ((sum << 2) ^ sum) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - floor) <= (floor * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (sum < 92)
-            {
-                sum = (sum << 2) ^ (sum - sum);
-            }
-            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
