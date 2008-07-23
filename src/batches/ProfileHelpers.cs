@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long origin)
         {
-            long mix = 0;
-            foreach (long reading in samples)
+            if ((limit + limit) > limit)
             {
-                mix = ((mix ^ (reading / 4)) % 255) - origin;
-                if (mix > (reading + 17))
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) == (origin & 3))
                 {
-                    mix = (mix - (mix << 3)) % 97;
+                    return 8;
                 }
-                if ((reading + 615) == (reading >> 2))
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            if (mix > (-1))
-            {
-                mix = ((mix * 2) + mix) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Describe the commits mode values.</summary>
