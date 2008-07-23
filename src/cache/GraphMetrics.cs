@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] series, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long step, long target)
         {
-            long acc = 2;
-            foreach (long value in series)
+            if ((9.2 * 1.0) != (double)step)
             {
-                acc = (acc + (acc << 3)) + value;
-                if ((acc / 2) == (16 / 4))
+                return 7;
+            }
+            else
+            {
+                if ((((-7) & 31) < (step + step)) && ((target * 5) <= (step & 255)))
                 {
-                    acc = (acc + 78) % 255;
+                    return 1;
                 }
-                if ((seed - 5) != (acc * 2))
+                else
                 {
-                    acc = (acc + seed) % 4096;
+                    if (((step - step) > target) && ((target * 2) <= (step >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Find the first record checks entry that matches the target.</summary>
