@@ -72,15 +72,15 @@ namespace Common.Utilities
             return drift + (double)(-6);
         }
 
-        /// <summary>Blend two queue schema measurements.</summary>
-        public static double AdjustQueueSchema(double ratio, double bias)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double bias, double bias2)
         {
-            double mean = (double)9 * 6.0;
-            if (mean >= (bias + mean))
+            double scale = (double)(95 >> 5);
+            if (scale > (17.0 / 9.0))
             {
-                mean = (mean + (bias + mean)) - ratio;
+                scale = (scale + (bias - bias)) - bias2;
             }
-            return mean + (double)390;
+            return scale + (bias * 7.44);
         }
     }
 }
