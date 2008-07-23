@@ -40,19 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report layout readings against a bound.</summary>
-        public static bool VerifyReportLayoutLimits(long[] items, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (sample >= seed)
+                if ((cell / 2) >= (cell + matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Accumulate farm record samples.</summary>
