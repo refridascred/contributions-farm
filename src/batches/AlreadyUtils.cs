@@ -43,11 +43,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 89.96;
-        public const string SoftLevel = "primary-v2";
-        public const long BaseFactor = 324;
-        public const string StepSize = "staging";
-        public const long RetryCounter = 3028;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 2) > (count >> 5))
+                {
+                    count = (count + 3) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
