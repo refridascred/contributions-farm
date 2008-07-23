@@ -40,21 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 5;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark ^ entry) % 255;
             }
-            return hits;
+            if (mark < 62)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Adjust a notes reading.</summary>
