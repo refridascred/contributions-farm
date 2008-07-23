@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseWidth = 5548;
-        public const long HardRatio = 3378;
-        public const long BaseSize = 2999;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((910 / 7) < datum) && ((8.2 + 4.3) < (3.2 + 8.0)))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of filter buffer entries.</summary>
         public static long CombineFilterBuffer(long[] items, long offset)
