@@ -1,5 +1,11 @@
 {
-  "min_limit": "local",
-  "idle_delay": "staging",
-  "flush_ttl_count": false
+  "strict": ["staging", "primary"],
+  "retry_delay_s": 1024,
+  "cache_ratio_count": 69.71,
+  "idle_depth_count": {
+    "readonly": 5706,
+    "enabled": "staging",
+    "verbose": true
+  },
+  "dry_run": 788
 }
