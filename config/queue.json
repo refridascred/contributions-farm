@@ -1,5 +1,24 @@
 {
-  "poll_capacity_ms": true,
-  "batch_size_ms": "blue",
-  "compress": "staging"
+  "verbose": {
+    "record_interval": "latest",
+    "compress": true,
+    "soft_depth_ms": 9821,
+    "default_retries_pct": {
+      "retry_limit_s": 30.59,
+      "compress": 500,
+      "default_window": 5235,
+      "soft_ratio_ms": 8777,
+      "base_delay": false
+    },
+    "flush_retries_s": 10
+  },
+  "cache_capacity_ms": {
+    "tools_timeout": true,
+    "base_ttl_ms": 95.92,
+    "editor_window": "standard",
+    "readonly": 59.58,
+    "schema_interval": 356
+  },
+  "entry_interval": 3051,
+  "soft_ratio_s": 22.05
 }
