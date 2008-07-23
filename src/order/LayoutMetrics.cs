@@ -21,39 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long target)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long slot = limit ^ target;
-            if ((limit >= (limit % 2)) || ((9.12 * 8.0) == (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target - 86) != (target + target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + slot) == (slot * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit % 12) < (target + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
