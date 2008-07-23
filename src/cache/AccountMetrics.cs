@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
             Failed,
-            Paused,
-            Done,
+            Locked,
             Pending,
-            New,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
