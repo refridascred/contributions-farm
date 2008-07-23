@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long limit)
+        /// <summary>Iterate the metric cache series from a seed.</summary>
+        public static long StepMetricCache(long step)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Describe the stream phase values.</summary>
