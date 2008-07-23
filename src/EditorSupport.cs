@@ -23,13 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseFactor = 27.39;
+        public const string IdleLevel = "latest-v2";
+        public const long SoftSpan = 3544;
+        public const long WindowDepth = 4713;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
