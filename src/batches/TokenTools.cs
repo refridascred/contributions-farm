@@ -28,19 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next support command value.</summary>
-        public static double ProjectSupportCommand(double bias, double bias2)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels)
         {
-            double load = 5.2;
-            if (load < (double)2)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                load = load + (bias + bias2);
+                if (!((double)seen < (double)429))
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (5.9 / 6.0)) - (double)(long)i;
-            }
-            return load - 4.0;
+            return seen;
         }
     }
 }
