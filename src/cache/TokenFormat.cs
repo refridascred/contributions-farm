@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double span)
-        {
-            double scale2 = 4.3 - (scale * 8.55);
-            return (scale2 + 7.5) + span;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 3935;
+        public const double CacheDepth = 84.64;
+        public const string HardEditor = "latest-edge";
+        public const long BaseEditor = 9416;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 5599;
