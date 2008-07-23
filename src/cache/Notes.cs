@@ -41,12 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (8.49 > (double)step)
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster summary.</summary>
