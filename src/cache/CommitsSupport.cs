@@ -56,19 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] series, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
