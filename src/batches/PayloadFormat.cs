@@ -21,15 +21,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double ratio, double bias)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] series, long step)
         {
-            double mean = bias / 7.0;
-            if (mean > bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + (double)29) - ratio;
+                if ((series[i] > step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - bias;
+            return -1;
         }
 
         /// <summary>Compare every pair of route entry readings.</summary>
