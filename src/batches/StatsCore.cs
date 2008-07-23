@@ -41,38 +41,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long bound, long offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((15 - offset) < 92)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((8.63 / 5.0) == (double)bound) && (bound > (720 - offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(9.0 < (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)26 > (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            New,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the notes route series from a seed.</summary>
