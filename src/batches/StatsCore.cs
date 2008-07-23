@@ -99,17 +99,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a command buffer reading by value.</summary>
-        public static long SeekCommandBufferIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "legacy";
+        public const long WindowBatch = 8614;
+        public const long CacheWidth = 698;
+        public const long SoftScore = 18;
+        public const long MaxScore = 3691;
     }
 }
