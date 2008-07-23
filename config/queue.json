@@ -1,5 +1,14 @@
 {
-  "poll_capacity_pct": "standard",
-  "sync_depth_count": 46,
-  "session_size": 30
+  "compress": {
+    "counter_ratio": "eu-west",
+    "readonly": "legacy",
+    "metrics_ttl": 9250,
+    "soft_interval_count": ["eu-west", "cached", "open", "eu-west"],
+    "burst_window": "staging"
+  },
+  "hard_delay_pct": "latest",
+  "counter_limit": 31,
+  "hard_ttl_pct": 39,
+  "hard_retries_count": 27,
+  "warm_interval_ms": "standard"
 }
