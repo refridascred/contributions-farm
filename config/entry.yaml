@@ -1,4 +1,7 @@
 # entry settings
-flush_ttl: true
-commits_ttl: local
-base_ratio_ms: false
+min_depth: open
+filter_retries:
+  - standard
+  - cached
+max_retries: 9334
+farm_window: fallback
