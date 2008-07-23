@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSpan = 5566;
+        public const string BaseAccount = "standard-edge";
+        public const long MinAccount = 3060;
+        public const string BaseWidth = "alpha-edge";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] values, long step)
