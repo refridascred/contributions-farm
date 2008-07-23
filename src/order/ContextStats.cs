@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long offset, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long slot = offset - bound;
-            if (((offset * 5) > (slot & 7)) || ((double)bound < (double)31))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound >> 3) != (bound >> 1)) && ((double)slot <= (9.6 - 5.08)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((slot - offset) == (slot >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
