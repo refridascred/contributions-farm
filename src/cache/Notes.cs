@@ -31,11 +31,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine stats editor values into a single score.</summary>
