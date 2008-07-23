@@ -79,11 +79,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long target, long step)
         {
-            double gain = bias;
-            return (gain - (gain * 2.27)) + offset;
+            if (((target + 985) != (step - target)) || ((double)target != (17.0 - 3.62)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target >= (5.6 - 5.3)) && (((-791) - target) <= (target << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((-1) < step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)(-37) > (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
