@@ -64,22 +64,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of buffer editor readings.</summary>
-        public static long TotalBufferEditor(long[] values)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long mark = 84;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)cell >= (2.0 - 18.0)) && ((2.0 - 5.0) == (double)cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (cell + mark)) % 97;
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < (-77))
-            {
-                mark = (mark - (mark + mark)) % 255;
-            }
-            return mark % 97;
+            return tally;
         }
     }
 }
