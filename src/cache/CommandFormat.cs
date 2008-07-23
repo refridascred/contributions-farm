@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long bound)
+        /// <summary>Project the next batch command value.</summary>
+        public static double AdjustBatchCommand(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (gain * 1.0) * 3.32;
+            if (scale <= floor)
             {
-                if ((values[i] > bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (scale + floor);
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)96;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + gain) - (double)(long)i;
+            }
+            return scale + (gain + floor);
         }
 
         /// <summary>Check that every contributi account entry stays within the limit.</summary>
