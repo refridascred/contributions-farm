@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics cluster entries.</summary>
-        public static long CombineMetricsCluster(long[] series)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double span)
         {
-            long acc = 4;
-            foreach (long entry in series)
+            double scale = 2.0;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc ^ entry) % 97;
-                acc = acc + (acc % 97);
-                acc = (acc ^ (acc & 7)) % 97;
+                scale = ((scale + scale) - (double)(long)i) - span;
             }
-            return acc;
+            return scale + bias;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
