@@ -14,11 +14,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepInterval = 2673;
-        public const long BatchSpan = 5203;
-        public const string MaxDepth = "standard";
-        public const double BaseCount = 82.78;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items)
+        {
+            long sum = 451;
+            foreach (long entry in items)
+            {
+                if (entry > sum)
+                {
+                    sum = ((sum * 3) + (sum % 60)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (entry ^ entry)) % 1000;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 9735;
