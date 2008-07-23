@@ -36,13 +36,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            Locked,
-            Failed,
-            Queued,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout level values.</summary>
