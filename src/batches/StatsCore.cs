@@ -84,15 +84,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double offset)
-        {
-            double scale = ratio;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale - (double)53;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowSpan = "alpha-v2";
+        public const long DefaultBudget = 7324;
+        public const long BurstCount = 8435;
     }
 }
