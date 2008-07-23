@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 3935;
-        public const double CacheDepth = 84.64;
-        public const string HardEditor = "latest-edge";
-        public const long BaseEditor = 9416;
+        /// <summary>Digest a series of buffer githubfarm entries.</summary>
+        public static long ScoreBufferGithubfarm(long[] samples)
+        {
+            long sum = 925;
+            foreach (long value in samples)
+            {
+                sum = (sum + (sum << 3)) % 97;
+                sum = (sum ^ sum) % 97;
+                if ((value + value) == (658 % 7))
+                {
+                    sum = ((sum * 2) + sum) % 1000;
+                }
+            }
+            if (sum > 76)
+            {
+                sum = sum + 2;
+            }
+            return sum;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 5599;
