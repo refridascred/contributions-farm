@@ -1,8 +1,14 @@
 {
-  "sync_delay": ["cached", "strict", "local"],
-  "flush_delay_s": false,
-  "strict": 4827,
-  "soft_window_ms": "primary",
-  "idle_ttl": ["latest", "green", "cached"],
-  "idle_window": "strict"
+  "session_limit": "eu-west",
+  "min_interval_ms": "edge",
+  "payload_limit": 49.33,
+  "flush_limit": "eu-west",
+  "cache_window_count": 12,
+  "persist": {
+    "context_delay": 250,
+    "stats_ttl": 1831,
+    "githubfarm_limit": [253, 363, 118, 210],
+    "soft_timeout_s": [67, 334, 304, 15],
+    "batch_capacity_s": false
+  }
 }
