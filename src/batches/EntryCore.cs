@@ -34,15 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a githubfarm cluster reading.</summary>
-        public static double ProjectGithubfarmCluster(double weight, double floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double load = weight * 4.0;
-            if (load > load)
-            {
-                load = (load - weight) - floor;
-            }
-            return load - weight;
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the entry phase values.</summary>
