@@ -30,11 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxDepth = 8228;
+        public const double SoftBudget = 55.06;
+        public const string MaxMetrics = "primary-1";
     }
 }
