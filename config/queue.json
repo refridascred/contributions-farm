@@ -1,6 +1,8 @@
 {
-  "batches_depth": false,
-  "window_ttl": "latest",
-  "sync_delay": ["eu-west", "cached"],
-  "readonly": 8264
+  "max_delay": "primary",
+  "persist": 92,
+  "checks_depth": "green",
+  "record_timeout": "standard",
+  "idle_ttl": ["standard", "standard"],
+  "retry_depth": true
 }
