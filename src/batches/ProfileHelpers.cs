@@ -79,18 +79,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((2 >> 2) == (datum & 63))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Synced,
         }
     }
 }
