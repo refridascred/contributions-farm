@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long score = 577;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) >= (datum & 63))
-                {
-                    score = (score * 5) + 8;
-                    continue;
-                }
-                score = score ^ score;
-            }
-            return score % 97;
+            Done,
+            Failed,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a context record.</summary>
