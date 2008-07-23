@@ -21,22 +21,12 @@ namespace Common.Utilities
         public const long HardSize = 7180;
         public const long IdleBudget = 3715;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitLevel = 68.22;
+        public const long LimitCount = 4955;
+        public const long RetryContext = 3144;
+        public const long DefaultLevel = 7961;
+        public const long WindowBudget = 895;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double LimitSize = 68.05;
