@@ -70,22 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] levels, long step)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((65 / 6) < step)
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Blend two profile measurements.</summary>
