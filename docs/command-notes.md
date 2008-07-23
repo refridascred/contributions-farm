@@ -1,12 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Each stats is validated before it reaches the batch queue.
-The channel report groups every command by payload.
+Keep tools and batch names short and lowercase.
+Use cache settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Log every channel change
-- Document new stats fields
-- Validate batches input early
-- Review order limits each release
+- Review entry limits each release
+- Log every cache change
+- Keep farm values small
