@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowFactor = 9783;
-        public const double SoftDepth = 7.45;
-        public const double DefaultReport = 64.68;
-        public const long BaseSize = 1175;
-        public const long IdleReport = 36;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenMatches(long[] samples)
