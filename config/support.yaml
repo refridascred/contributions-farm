@@ -1,9 +1,5 @@
 # support settings
-warm_retries_count:
-  - stable
-  - cached
-hard_retries: 8714
-report_interval: edge
-idle_depth_ms: edge
-readonly: staging
-enabled: 74.25
+idle_ratio_ms: 500
+buffer_ratio: 83.36
+default_window: 21
+default_timeout_ms: false
