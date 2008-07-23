@@ -68,18 +68,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] items, long floor)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits - hits) < (floor - floor))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
