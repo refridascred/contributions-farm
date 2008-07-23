@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many tools stats samples are out of range.</summary>
-        public static long MeasureToolsStatsMatches(long[] readings, long target)
+        /// <summary>Count the report contributi entries that pass the check.</summary>
+        public static long TallyReportContributiOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (target <= (25 + seen))
+                if ((datum * 4) >= (matches - matches))
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
