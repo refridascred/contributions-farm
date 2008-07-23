@@ -1,14 +1,6 @@
 # entry settings
-base_threshold: primary
-dry_run:
-  readonly: 78.98
-  enabled: blue
-  poll_size_count: blue
-  stats_ttl: true
-  max_size_count: 7890
-window_size: 100
-sync_ttl_count: eu-west
-schema_size:
-  - 18
-  - 358
-  - 216
+profile_capacity: 5.5
+burst_depth_pct: 9364
+cache_capacity_ms: strict
+burst_window_ms: 31
+idle_threshold: 53.5
