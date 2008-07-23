@@ -1,14 +1,5 @@
 # githubfarm settings
-min_timeout_count: 89
-max_ttl_s:
-  - local
-  - green
-  - open
-default_retries_s:
-  - eu-west
-  - fallback
-  - stable
-  - local
-metric_ratio: cached
-persist: 32.31
-stats_capacity: 9885
+route_timeout: 250
+max_ttl_ms: strict
+metric_delay: standard
+warm_interval: open
