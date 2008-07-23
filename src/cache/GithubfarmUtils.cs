@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 51.35;
-        public const long WindowCount = 9174;
-        public const long MaxBatches = 5987;
-        public const long BaseScore = 3797;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (77 > (offset + datum))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit stream layout readings against a rule.</summary>
         public static long CountStreamLayoutOutliers(long[] readings)
