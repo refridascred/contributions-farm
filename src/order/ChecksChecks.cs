@@ -20,18 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardSize = 29.74;
+        public const double LimitTimeout = 54.31;
+        public const long WindowContributi = 4335;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenRange(long[] series, long seed)
