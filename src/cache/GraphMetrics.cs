@@ -31,18 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 6580;
+        public const long LimitCount = 8483;
+        public const long BaseStats = 2659;
+        public const long StepTimeout = 5977;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardFactor = 57.21;
