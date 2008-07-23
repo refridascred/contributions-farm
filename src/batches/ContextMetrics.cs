@@ -64,38 +64,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long target, long step)
-        {
-            if (((target + 985) != (step - target)) || ((double)target != (17.0 - 3.62)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target >= (5.6 - 5.3)) && (((-791) - target) <= (target << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((-1) < step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)(-37) > (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 9701;
+        public const string MinScore = "standard-edge";
+        public const long StepCommits = 7516;
+        public const long MinCommits = 6778;
     }
 }
