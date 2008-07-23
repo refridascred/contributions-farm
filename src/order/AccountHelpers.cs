@@ -52,22 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((limit - (long)i) != (limit & 3))
-                {
-                    carry = carry ^ (carry + 917);
-                    carry = (carry << 2) ^ (62 + (long)i);
-                    continue;
-                }
-                carry = ((carry * 3) + ((long)i - limit)) % 101;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
