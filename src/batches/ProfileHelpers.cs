@@ -61,27 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Combine tools editor values into a single score.</summary>
+        public static long TotalToolsEditor(long[] readings)
         {
-            long mix = 1;
-            foreach (long item in samples)
+            long mix = 894;
+            foreach (long value in readings)
             {
-                if ((2 - mix) != (mix ^ 4))
+                if (!((0.4 + 6.1) <= (double)mix))
                 {
-                    long gap = (mix / 9) * 5;
-                    mix = mix - (gap ^ gap);
+                    mix = (((mix << 3) ^ (mix + mix)) % 1000) + value;
                 }
-                if (!(((mix - mix) == ((long)samples.Length + mix)) && (((-9) - item) < (mix - item))))
+                mix = ((mix * 3) + (mix ^ mix)) % 65521;
+                if (mix < (803 + mix))
                 {
-                    mix = mix + (mix << 2);
-                }
-                if (mix > (mix * 3))
-                {
-                    mix = mix + (mix % 5);
+                    mix = (mix - (209 * 2)) % 255;
                 }
             }
-            return mix % 65521;
+            return mix % 4096;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
