@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order metric entries that pass the check.</summary>
-        public static long AuditOrderMetricOutliers(long[] data, long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen < (limit >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) - item;
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
