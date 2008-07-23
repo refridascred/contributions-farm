@@ -21,16 +21,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the order context series from a seed.</summary>
-        public static long DeriveOrderContext(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardFactor = 6332;
+        public const long StepProfile = 2038;
+        public const long IdleBudget = 3352;
+        public const long DefaultProfile = 7155;
+        public const long HardProfile = 1808;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long target)
