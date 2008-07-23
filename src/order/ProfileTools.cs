@@ -27,12 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 9655;
+        public const long WindowScore = 6674;
+        public const long BaseRatio = 6223;
 
         /// <summary>Compare every pair of cluster context readings.</summary>
         public static long OverlapClusterContextCount(long[] samples)
