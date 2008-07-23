@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSize = 3081;
-        public const long HardLevel = 377;
-        public const string BatchBuffer = "primary-edge";
-        public const double BaseCount = 18.14;
-        public const string HardBuffer = "alpha-edge";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Pending,
+            Dropped,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Validate command schema readings against a bound.</summary>
         public static bool CheckCommandSchemaLimits(long[] values, long offset)
