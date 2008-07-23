@@ -18,18 +18,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] values, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((bound % 24) >= limit)
             {
-                if ((7.68 / 2.0) > (double)value)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit == (double)bound)
                 {
-                    hits = (hits + 2) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + 7) != (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + limit) >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count entry queue pairs that satisfy a relation.</summary>
