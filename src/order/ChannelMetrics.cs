@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many order account samples are out of range.</summary>
-        public static long CountOrderAccountMatches(long[] items, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long carry = 86;
+            foreach (long cell in data)
             {
-                if ((double)count > (1.1 - 13.0))
+                if (((long)data.Length + cell) > carry)
                 {
-                    count = ((count + 3) + value) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = carry - (cell - cell);
                 }
             }
-            return count;
+            if (carry < 26)
+            {
+                carry = ((carry * 2) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit command account readings against a rule.</summary>
