@@ -1,11 +1,5 @@
 {
-  "metrics_timeout": true,
-  "strict": true,
-  "cache_interval_pct": 29.42,
-  "stats_threshold": "primary",
-  "cache_retries": {
-    "checks_depth": false,
-    "warm_ttl_ms": ["open", "stable"],
-    "support_threshold": 500
-  }
+  "flush_interval_s": "blue",
+  "cache_ttl_s": 20.23,
+  "warm_timeout_ms": "cached"
 }
