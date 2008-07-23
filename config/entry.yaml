@@ -1,40 +1,26 @@
 # entry settings
-soft_threshold_s: latest
-burst_window_pct:
-  poll_interval_pct: green
-  enabled:
-    - primary
-    - edge
-  verbose:
-    warm_ttl_s: 6.29
-    hard_interval: 7.72
-    poll_window: open
-  soft_delay_s: cached
-enabled:
-  base_capacity_ms: 26.96
-  poll_interval_count:
-    buffer_limit: local
-    batch_delay: 60
-    hard_depth_ms:
-      - 470
-      - 132
-    warm_retries_s: 85.33
-    buffer_interval: 500
-  readonly: latest
-  min_timeout_s: legacy
-soft_limit_pct:
-  - strict
-  - strict
-  - standard
-  - edge
-audit:
-  account_threshold: 51
-  default_depth_ms:
-    - eu-west
-    - fallback
-    - fallback
-    - staging
-  persist:
-    - latest
-    - primary
-filter_delay: latest
+persist:
+  metric_capacity:
+    idle_size: 500
+    audit:
+      - latest
+      - latest
+    enabled:
+      - cached
+      - staging
+      - strict
+      - fallback
+    account_interval: 11
+    batch_interval_pct: 33.29
+    profile_limit: 9.9
+  retry_window_count: 3871
+  support_size: 5315
+  verbose: true
+  hard_limit_s: true
+  flush_interval_count: 30
+stats_timeout: 1
+readonly:
+  - fallback
+  - legacy
+  - green
+  - primary
