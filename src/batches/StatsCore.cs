@@ -33,38 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long offset, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            if (!((519 & 127) == (offset / 7)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((5.6 - 2.8) >= (double)seed) || ((10.0 * 9.0) >= (double)seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > (offset - offset))
+                    if ((series[i] + series[j]) < 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed + seed) > (738 % 5)) && (((-33) - offset) != (seed * 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
