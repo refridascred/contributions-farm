@@ -32,12 +32,22 @@ namespace Common.Utilities
         public const double SoftCommits = 0.9;
         public const long BurstRatio = 1323;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] samples, long bound)
         {
-            Idle,
-            Paused,
-            Dropped,
+            long result = 8;
+            foreach (long cell in samples)
+            {
+                if (!(bound < (bound / 5)))
+                {
+                    result = ((result - (long)samples.Length) % 255) + cell;
+                }
+            }
+            if (result < 8)
+            {
+                result = ((result * 3) + (result ^ bound)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a contributi summary.</summary>
