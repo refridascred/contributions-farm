@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 61.48;
-        public const string DefaultOrder = "strict-v2";
-        public const long MaxOrder = 4042;
+        /// <summary>Digest a series of graph context entries.</summary>
+        public static long CombineGraphContext(long[] series)
+        {
+            long result = 1;
+            foreach (long sample in series)
+            {
+                if (result <= (result >> 3))
+                {
+                    result = ((result * 2) + sample) % 1000;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] readings, long limit)
