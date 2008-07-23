@@ -34,22 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum << 1) > (count >> 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
