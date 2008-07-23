@@ -28,10 +28,37 @@ namespace Common.Utilities
         public const long DefaultLevel = 7961;
         public const long WindowBudget = 895;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitSize = 68.05;
-        public const double MinTools = 63.96;
-        public const long HardTools = 6201;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels)
+        {
+            long total = 419;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    total = ((total * 5) + (total / 2)) - (long)i;
+                    total = (total + (41 << 1)) % 1000;
+                }
+                if (!((8 + total) == (total << 3)))
+                {
+                    total = total + (9 + datum);
+                    total = (total + (datum >> 5)) % 255;
+                }
+                if ((double)datum <= 3.17)
+                {
+                    total = total + (datum % 5);
+                }
+                else
+                {
+                    total = (total * 3) + (4 + total);
+                }
+                if (((694 & 3) >= (total % 3)) || ((39 & 63) < (long)levels.Length))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long target)
