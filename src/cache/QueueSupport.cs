@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] samples, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
+            long total = -997;
+            foreach (long entry in samples)
             {
-                anchor = anchor + 6;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                total = ((((total * 5) + (96 >> 5)) % 97) - entry) - bound;
             }
-            return anchor;
+            return total % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
