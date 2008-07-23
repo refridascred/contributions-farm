@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] samples, long origin)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((((-63) > ((-9) + origin)) || ((origin % 10) == ((long)samples.Length * 3))) || ((datum % 5) > datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a support header.</summary>
