@@ -41,11 +41,25 @@ namespace Common.Utilities
         public const long BaseInterval = 1836;
         public const string CacheSession = "staging";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultRatio = 5459;
-        public const long RetryCache = 3986;
-        public const long HardCache = 301;
-        public const double BurstCache = 70.34;
-        public const string IdleCache = "staging-1";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long step, long target)
+        {
+            long cur = step + target;
+            if (6 < target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((860 & 15) != (target - cur))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
