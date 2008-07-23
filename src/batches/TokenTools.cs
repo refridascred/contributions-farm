@@ -27,19 +27,25 @@ namespace Common.Utilities
         public const long BaseBudget = 7300;
         public const double MaxCount = 65.18;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long cur = seed ^ limit;
+            if ((double)seed < (0.9 - 7.23))
             {
-                if (sample > floor)
+                return 6;
+            }
+            else
+            {
+                if ((seed / 2) == (cur * 5))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
     }
 }
