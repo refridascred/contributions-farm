@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            Idle,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the route level values.</summary>
