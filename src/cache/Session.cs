@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample + result) <= 128)
                 {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (((result * 5) + result) % 1000) - seed;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
