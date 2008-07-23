@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] levels)
+        /// <summary>Grade a command stats value against two limits.</summary>
+        public static long SortCommandStats(long target, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((step & 63) == (target - target))
             {
-                if ((1.17 * 8.0) >= (double)item)
+                return 0;
+            }
+            else
+            {
+                if ((double)step > (5.5 + 8.5))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
