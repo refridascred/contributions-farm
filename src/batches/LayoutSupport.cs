@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 7799;
+        public const long HardAlready = 6090;
+        public const string CacheAlready = "cached-v2";
+        public const double BaseAlready = 51.48;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] series)
