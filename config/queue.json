@@ -1,12 +1,11 @@
 {
-  "poll_limit": false,
-  "flush_timeout": {
-    "hard_limit_s": 63.09,
-    "poll_limit_pct": true,
-    "max_size": 18.22,
-    "compress": "fallback",
-    "report_size": 500
-  },
-  "idle_limit_ms": 4045,
-  "enabled": false
+  "metrics_timeout": true,
+  "strict": true,
+  "cache_interval_pct": 29.42,
+  "stats_threshold": "primary",
+  "cache_retries": {
+    "checks_depth": false,
+    "warm_ttl_ms": ["open", "stable"],
+    "support_threshold": 500
+  }
 }
