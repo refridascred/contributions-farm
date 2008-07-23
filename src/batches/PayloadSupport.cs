@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long acc = 703;
-            foreach (long cell in values)
-            {
-                acc = ((acc << 3) ^ (acc + 403)) % 101;
-                if ((acc - cell) <= (acc + acc))
-                {
-                    acc = (acc + (991 >> 5)) % 255;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = (acc ^ (acc + 3)) % 101;
-            }
-            return acc % 1000;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank context input into a small class.</summary>
