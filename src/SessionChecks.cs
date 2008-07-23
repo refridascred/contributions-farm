@@ -42,22 +42,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double span)
         {
-            long acc = 90;
-            foreach (long reading in samples)
+            double rate2 = 1.74;
+            if (rate2 > (span / 7.0))
             {
-                if ((double)acc == (double)reading)
-                {
-                    acc = (acc * 5) + (310 - floor);
-                }
+                rate2 = (rate2 - (rate2 / 8.0)) + rate;
             }
-            if (acc < 39)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 1000;
+            return rate2 + (rate2 / 6.0);
         }
 
         /// <summary>Project the next editor value.</summary>
