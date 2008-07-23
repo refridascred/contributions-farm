@@ -1,12 +1,21 @@
 # support settings
-readonly: 1370
-compress: false
-base_window_ms: green
-enabled:
-  order_limit: false
-  persist: 53
-  stats_ttl: false
-  flush_delay_count: 91
-  hard_depth: 1024
-  audit: local
-poll_retries: 94.58
+max_size_ms: strict
+cache_retries_count: true
+profile_window: 250
+sync_window_ms:
+  audit:
+    - edge
+    - edge
+    - legacy
+    - blue
+  context_interval: 100
+  cache_ratio_ms: 93
+  burst_window_s: legacy
+commits_ratio:
+  readonly:
+    - local
+    - standard
+  cache_window: 68.34
+  session_retries:
+    - edge
+    - green
