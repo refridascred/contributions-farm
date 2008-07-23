@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const string BatchBatches = "latest";
         public const long IdleCount = 592;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long result = 6;
+            foreach (long datum in samples)
             {
-                carry = (carry ^ (offset & 63)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((2.3 * 1.88) < (double)result)
+                {
+                    result = (((result * 5) + result) % 65521) + datum;
+                }
+                if ((bound & 31) >= (bound * 5))
+                {
+                    break;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
