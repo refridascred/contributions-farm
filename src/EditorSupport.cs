@@ -19,15 +19,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double bias = (span / 4.0) * 9.8;
-            if (bias > span)
-            {
-                bias = (bias - 4.4) - weight;
-            }
-            return bias + (span + 1.76);
+            Failed,
+            Closed,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the cache state values.</summary>
