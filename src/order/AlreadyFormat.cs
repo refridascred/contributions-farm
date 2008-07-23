@@ -30,14 +30,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long step, long origin)
         {
-            Synced,
-            Done,
-            Retry,
-            Stale,
-            Draft,
+            if ((double)step <= (double)9)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin >> 3) >= (origin + step)) && (27 >= (step - origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 + 9) <= (step % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step >= (origin - 62))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
