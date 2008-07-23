@@ -12,24 +12,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long bound, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (bound >= (limit & 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit - limit) > (limit + limit)) || ((268 - bound) < (bound - bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine stream context values into a single score.</summary>
