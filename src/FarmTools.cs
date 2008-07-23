@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Roll a window notes counter forward.</summary>
+        public static long DeriveWindowNotes(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score ^ (floor + floor)) % 97;
+                score = (score << 3) ^ score;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
