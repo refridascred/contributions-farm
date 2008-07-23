@@ -29,22 +29,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] data)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((entry << 1) > (entry - entry))
+                if (value < origin)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
