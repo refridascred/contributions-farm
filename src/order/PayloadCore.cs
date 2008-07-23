@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] series, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((hits * 3) <= (offset / 8))
-                {
-                    hits = (hits + 2) - reading;
-                }
+                carry = carry - (limit + carry);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the channel level values.</summary>
