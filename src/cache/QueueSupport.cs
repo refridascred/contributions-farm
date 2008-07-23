@@ -19,20 +19,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((228 * 5) < (offset + offset)))
-                {
-                    mark = (mark + (offset << 1)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitTimeout = 48.95;
+        public const string CacheBatch = "staging-edge";
+        public const long RetryBatch = 6259;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long target)
