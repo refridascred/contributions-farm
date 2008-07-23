@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a report schema value against two limits.</summary>
-        public static long BucketReportSchema(long target, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if (699 <= target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor != (1.0 - 0.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
