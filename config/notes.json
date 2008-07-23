@@ -1,13 +1,8 @@
 {
-  "warm_size_ms": ["primary", "stable", "fallback"],
-  "strict": 11,
-  "burst_timeout_pct": true,
-  "cluster_ttl": 28.86,
-  "window_threshold": "cached",
-  "stats_size": {
-    "soft_ttl": 30,
-    "audit": "stable",
-    "payload_retries": 4900,
-    "persist": 32.71
-  }
+  "order_threshold": 5710,
+  "audit": "strict",
+  "enabled": false,
+  "readonly": 30,
+  "flush_ttl_count": true,
+  "soft_retries_s": ["standard", "primary", "eu-west"]
 }
