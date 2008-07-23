@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step2 = bound ^ step;
+            if ((bound <= (step2 >> 3)) || ((step2 % 24) >= step2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step - step) <= 6)
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the notes class values.</summary>
