@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
-        public static long PairProfileGithubfarmCount(long[] values)
+        /// <summary>Grade a graph cluster value against two limits.</summary>
+        public static long SortGraphCluster(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((926 ^ bound) != (bound + 91))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((57 << 3) != (step & 15))
                 {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
