@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (offset > (item - (-46)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSize = 3024;
+        public const double MaxContributi = 28.86;
+        public const long BatchContributi = 1948;
+        public const string BurstContributi = "legacy-edge";
+        public const long LimitContributi = 773;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutGaps(long[] values, long step)
