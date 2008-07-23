@@ -30,11 +30,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long target)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)result < (9.38 * 8.1))
+                {
+                    result = (result * 5) + (target - target);
+                }
+                result = (result * 2) + (long)i;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a counter stats.</summary>
