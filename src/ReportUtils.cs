@@ -29,23 +29,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            long carry = 3;
-            foreach (long datum in items)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((carry + carry) > (carry >> 5))
-                {
-                    carry = (carry + (54 - datum)) % 101;
-                }
-                carry = ((carry * 2) + (datum ^ datum)) % 1000;
-                if ((datum + datum) != (datum * 5))
-                {
-                    break;
-                }
+                score = score + floor;
+                score = (score + floor) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
