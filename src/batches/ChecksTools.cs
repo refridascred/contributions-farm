@@ -22,18 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] values)
+        /// <summary>Classify a stream profile pair into a bucket.</summary>
+        public static long GradeStreamProfile(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (((floor & 255) == (bound % 16)) || (((-350) + floor) != (floor - floor)))
             {
-                if ((3.5 - 5.0) == (double)entry)
+                return 5;
+            }
+            else
+            {
+                if ((6.0 <= (double)bound) && ((double)bound <= (5.5 / 7.0)))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= ((-7) << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context entry.</summary>
