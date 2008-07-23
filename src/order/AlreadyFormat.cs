@@ -26,23 +26,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state - state) <= state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state + (state - target)) % 4096;
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    state = (state - (state - 37)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
