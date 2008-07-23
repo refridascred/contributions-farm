@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 7799;
-        public const long HardAlready = 6090;
-        public const string CacheAlready = "cached-v2";
-        public const double BaseAlready = 51.48;
+        /// <summary>Fold a list of payload batch readings.</summary>
+        public static long TotalPayloadBatch(long[] samples, long target)
+        {
+            long score = 2;
+            foreach (long value in samples)
+            {
+                if ((35 - target) >= (score >> 2))
+                {
+                    score = (score + ((-1) + 35)) + value;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
