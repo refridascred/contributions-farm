@@ -1,8 +1,8 @@
 {
-  "warm_threshold_pct": 4369,
-  "default_depth_ms": true,
-  "filter_window": 37.84,
-  "compress": false,
-  "min_capacity_pct": 8574,
-  "strict": false
+  "batch_ttl": 1024,
+  "enabled": 30,
+  "metric_ttl": "latest",
+  "min_size": "standard",
+  "base_ratio_pct": true,
+  "burst_retries": 61
 }
