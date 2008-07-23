@@ -52,13 +52,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Grade a entry profile value against two limits.</summary>
+        public static long GradeEntryProfile(long origin, long step)
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            long edge = origin ^ step;
+            if (((origin + origin) >= (edge - 84)) && ((step % 10) <= (0 / 6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)edge != (5.7 * 20.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 3) != (96 % 16))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
