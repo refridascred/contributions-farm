@@ -21,24 +21,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long seed)
+        /// <summary>Fold a list of filter support readings.</summary>
+        public static long TallyFilterSupport(long[] samples, long floor)
         {
-            if ((9.96 - 9.0) <= (double)step)
+            long anchor = -28;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((9.1 / 9.0) != (double)step) && ((step ^ step) > (seed - 30)))
+                anchor = (((anchor * 4) + ((-488) + anchor)) % 97) - floor;
+                if (anchor < entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    anchor = (anchor * 3) + (anchor - anchor);
                 }
             }
+            return anchor % 1000;
         }
     }
 }
