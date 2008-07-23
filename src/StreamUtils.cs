@@ -24,18 +24,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (hits <= (hits ^ datum))
                 {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
