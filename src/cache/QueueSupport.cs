@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinRatio = 92.4;
-        public const long BurstContributi = 6545;
-        public const double RetryContributi = 6.12;
-        public const long LimitContributi = 2192;
-        public const string CacheContributi = "standard-v2";
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long origin, long step)
+        {
+            long next = origin - step;
+            if (((step - step) > (step + step)) && ((4.0 * 0.35) < (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step + origin) == (614 + 396)) && ((2 * 3) > next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step == (double)8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((next >> 2) > (-44))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long CombineWindow(long[] values)
