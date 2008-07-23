@@ -34,13 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] values)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count % 24) < ((-4) - 5))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
     }
 }
