@@ -15,13 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Pending,
-            Dropped,
-            Closed,
-            Retry,
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
