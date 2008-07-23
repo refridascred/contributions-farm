@@ -47,21 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already cluster series from a seed.</summary>
-        public static long IterateAlreadyCluster(long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                mark = mark + 79;
-                if (((double)mark > 1.0) || ((double)(long)i == (3.31 - 9.97)))
-                {
-                    mark = (mark * 2) + (mark % 5);
-                    mark = (mark ^ (mark - mark)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
     }
 }
