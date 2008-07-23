@@ -46,12 +46,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of notes batches readings.</summary>
+        public static long CombineNotesBatches(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long mark = 52;
+            foreach (long sample in items)
+            {
+                mark = mark + (sample << 3);
+            }
+            return mark;
         }
     }
 }
