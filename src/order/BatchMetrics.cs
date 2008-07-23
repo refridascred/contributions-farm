@@ -53,19 +53,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many cluster farm samples are out of range.</summary>
-        public static long CountClusterFarmOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + tally) == (tally * 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 1502;
+        public const double DefaultCache = 25.71;
+        public const long RetryLevel = 6600;
+        public const long IdleCache = 5689;
+        public const long BurstCache = 7707;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterMatches(long[] values, long offset)
