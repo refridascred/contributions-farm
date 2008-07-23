@@ -26,18 +26,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the account channel entries that pass the check.</summary>
-        public static long TallyAccountChannelHits(long[] items, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double scale = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (((9.0 - 11.0) > (double)(long)items.Length) || !((offset % 24) != (offset - (long)items.Length)))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                scale = ((scale + scale) - (double)(long)i) - offset;
             }
-            return seen;
+            return scale - 5.89;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
