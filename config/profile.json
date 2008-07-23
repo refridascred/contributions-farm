@@ -1,13 +1,6 @@
 {
-  "dry_run": 4399,
-  "min_retries": "legacy",
-  "notes_capacity": {
-    "hard_threshold": false,
-    "max_window_pct": 2224,
-    "context_window": 2018,
-    "farm_delay": [490, 283, 148],
-    "burst_delay": "standard",
-    "notes_window": "edge"
-  },
-  "checks_depth": 113
+  "dry_run": [52, 223, 160, 64],
+  "max_threshold_pct": "eu-west",
+  "flush_delay": 6341,
+  "verbose": [358, 448, 70]
 }
