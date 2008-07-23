@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const string HardCount = "staging-edge";
         public const double LimitSize = 7.18;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
-        {
-            long anchor = -3;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor - ((-39) * 4)) - cell;
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor - (anchor + anchor)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "local-1";
+        public const double SoftSize = 92.38;
+        public const long BaseBudget = 4398;
+        public const string RetryLevel = "staging-1";
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double bias, double span)
