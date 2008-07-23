@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next batch command value.</summary>
-        public static double AdjustBatchCommand(double gain, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] levels, long offset)
         {
-            double scale = (gain * 1.0) * 3.32;
-            if (scale <= floor)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                scale = scale - (scale + floor);
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)96;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + gain) - (double)(long)i;
-            }
-            return scale + (gain + floor);
+            return valid;
         }
 
         /// <summary>Check that every contributi account entry stays within the limit.</summary>
