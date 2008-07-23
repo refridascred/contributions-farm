@@ -75,12 +75,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Done,
+            Idle,
+            Ready,
+            Stale,
         }
     }
 }
