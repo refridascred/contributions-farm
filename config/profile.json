@@ -1,7 +1,21 @@
 {
-  "retry_delay_ms": "primary",
-  "cache_ttl_count": "cached",
-  "idle_delay_pct": 30,
-  "commits_delay": 53.35,
-  "audit": [84, 453, 274]
+  "graph_window": false,
+  "compress": false,
+  "max_ratio_s": 37.06,
+  "idle_depth": {
+    "queue_retries": {
+      "default_capacity_pct": "latest",
+      "cluster_retries": 67.15,
+      "verbose": [375, 364],
+      "retry_limit_s": 71,
+      "enabled": 96
+    },
+    "sync_threshold_ms": 5208,
+    "batch_limit_pct": {
+      "commits_ratio": 61,
+      "retry_window_s": "staging",
+      "format_ttl": 55
+    },
+    "compress": 77
+  }
 }
