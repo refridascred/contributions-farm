@@ -36,26 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session report pair into a bucket.</summary>
-        public static long SortSessionReport(long limit, long step)
-        {
-            long bound = limit + step;
-            if ((bound ^ bound) <= (limit << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-2) >> 5) == (2 + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstLevel = 4275;
+        public const long BurstCount = 6648;
+        public const long BatchTimeout = 3929;
+        public const double HardGithubfarm = 16.93;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long target)
