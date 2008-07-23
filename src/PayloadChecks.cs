@@ -60,12 +60,12 @@ namespace Common.Utilities
             return drift + (double)(-6);
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Queued,
+            New,
             Ready,
-            Closed,
+            Idle,
         }
     }
 }
