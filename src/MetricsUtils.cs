@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the report contributi entries that pass the check.</summary>
-        public static long TallyReportContributiOutliers(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum * 4) >= (matches - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
