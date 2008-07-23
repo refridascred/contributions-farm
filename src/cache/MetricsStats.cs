@@ -27,15 +27,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long seed, long target)
         {
-            long result = 78;
-            foreach (long reading in data)
+            if ((69 - seed) >= (seed >> 2))
             {
-                result = (result ^ (origin % 10)) ^ reading;
+                return 5;
             }
-            return result % 4096;
+            else
+            {
+                if (!((seed - seed) == (222 % 100)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target >= 14.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((8.1 + 11.0) != (double)seed) && ((double)seed != (5.0 - 8.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cache metric samples.</summary>
