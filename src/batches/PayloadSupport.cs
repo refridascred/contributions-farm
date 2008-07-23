@@ -13,21 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double drift = (double)470 / 3.0;
+            return ((drift - (double)88) + ratio) + bias;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
