@@ -30,13 +30,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] data, long target)
         {
-            Locked,
-            Done,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((((68 & 63) < (item - target)) || (target < (target - item))) || ((double)hits != (8.22 + 2.8)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
