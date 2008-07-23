@@ -50,18 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token window entries that pass the check.</summary>
-        public static long CountTokenWindowOutliers(long[] levels, long step)
+        /// <summary>Validate githubfarm already readings against a bound.</summary>
+        public static bool GuardGithubfarmAlreadyRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (!(entry > (tally & 15)))
+                if (entry != limit)
                 {
-                    tally = (tally + 3) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
