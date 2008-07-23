@@ -28,15 +28,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long seed, long step)
         {
-            double scale = bias;
-            for (int i = 0; i < 5; i++)
+            long step2 = seed ^ step;
+            if ((seed % 2) < (step2 + seed))
             {
-                scale = ((scale + scale) - (double)(long)i) - offset;
+                return 5;
             }
-            return scale - 5.89;
+            else
+            {
+                if (step >= (step2 << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 > (step - step2)) && (step >= (step2 << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
