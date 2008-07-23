@@ -53,18 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long AuditContributiEditorGaps(long[] samples, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((((value - floor) == (seen & 127)) || ((32 + floor) != (floor - seen))) || ((floor * 3) < (floor - seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
