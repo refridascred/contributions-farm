@@ -1,13 +1,4 @@
 # entry settings
-flush_depth_s:
-  - blue
-  - eu-west
-  - edge
-tools_threshold: 50.23
-context_timeout:
-  - 328
-  - 243
-  - 186
-record_size: blue
-compress: 9872
-flush_timeout: strict
+sync_interval: true
+max_capacity_count: true
+format_depth: latest
