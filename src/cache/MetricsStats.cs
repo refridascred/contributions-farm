@@ -51,18 +51,11 @@ namespace Common.Utilities
         public const string LimitTools = "primary-edge";
         public const long MaxRatio = 3501;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long carry = 2;
-            foreach (long reading in items)
-            {
-                if (!((carry * 2) >= (6 + step)))
-                {
-                    carry = (carry - (reading >> 2)) % 255;
-                }
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
