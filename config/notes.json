@@ -1,18 +1,8 @@
 {
-  "metric_delay": {
-    "persist": "blue",
-    "batches_timeout": [383, 413, 107],
-    "cache_retries_s": {
-      "retry_ratio_s": 8079,
-      "readonly": 60,
-      "flush_delay_ms": [240, 45],
-      "warm_depth_count": "strict"
-    },
-    "retry_ttl_ms": 4.99,
-    "batch_ratio_count": 47.04,
-    "warm_retries": "strict"
-  },
-  "base_timeout_ms": "staging",
-  "filter_depth": 29,
-  "hard_limit_count": "strict"
+  "idle_capacity_pct": 27.2,
+  "enabled": "open",
+  "burst_ratio_s": 66,
+  "warm_depth": ["latest", "local"],
+  "support_threshold": 250,
+  "default_limit_ms": "blue"
 }
