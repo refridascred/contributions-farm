@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double span)
-        {
-            double rate = bias + span;
-            if (rate >= span)
-            {
-                rate = rate - (double)87;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate + (7.7 / 2.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowFactor = 68.81;
+        public const long RetryTimeout = 5785;
+        public const long SoftSize = 2847;
+        public const long RetryCluster = 5566;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double weight, double span)
