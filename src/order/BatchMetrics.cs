@@ -77,39 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long limit, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] values, long offset)
         {
-            long delta = limit ^ bound;
-            if ((8.9 - 0.7) > (double)bound)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta % 3) >= limit)
+                if (cell > (seen << 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (3.01 >= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (delta >= (limit + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 3) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
