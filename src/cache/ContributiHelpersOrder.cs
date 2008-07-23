@@ -27,31 +27,18 @@ namespace Common.Utilities
             return rate - (double)65;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long seed, long seed2)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            if (((7 - seed) >= (seed2 % 3)) || (20.0 <= (double)seed))
+            long result = -5;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 + seed) < (seed2 * 3))
+                if (!((entry + result) == (result + result)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed2 >= (979 - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result ^ (9 + entry)) % 4096;
                 }
             }
+            return result % 1000;
         }
     }
 }
