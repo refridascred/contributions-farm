@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long BaseBudget = 7300;
         public const double MaxCount = 65.18;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long AuditBufferMetricOutliers(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((double)hits > (4.8 - 3.3))
+                if ((tally >> 4) >= (tally & 31))
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = ((tally + 1) + item) + step;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
