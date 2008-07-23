@@ -64,12 +64,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long offset)
         {
-            New,
-            Ready,
-            Done,
+            long result = -67;
+            foreach (long entry in readings)
+            {
+                if ((10.0 / 8.0) >= (double)offset)
+                {
+                    result = (result * 4) + (result ^ entry);
+                }
+                else
+                {
+                    result = (result * 4) + (result + 384);
+                }
+            }
+            if (result < 79)
+            {
+                result = (result - offset) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate notes samples.</summary>
