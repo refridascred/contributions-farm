@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 55;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state ^ 67) % 255;
+                if (250 < entry)
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (state > (-79))
+            {
+                state = (state << 2) ^ (state - 81);
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
