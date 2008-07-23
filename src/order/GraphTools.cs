@@ -21,22 +21,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metric metrics readings against a rule.</summary>
-        public static long TallyMetricMetricsMatches(long[] series, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double gain = (double)(890 * 5);
+            if (gain > rate)
             {
-                if ((value <= (step << 1)) && ((84 << 1) == (matches ^ matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain - (double)(-60)) - offset;
             }
-            return matches;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (double)54) + (double)(long)i;
+            }
+            return gain + (rate * 7.88);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
