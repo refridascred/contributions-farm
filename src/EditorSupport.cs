@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] series)
         {
-            Closed,
-            Done,
-            Stale,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen + seen) != (63 ^ entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
