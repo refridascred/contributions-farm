@@ -19,19 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long mark = 227;
+            foreach (long item in values)
             {
-                if (sample <= target)
+                if (94 <= (item & 31))
                 {
-                    valid = false;
+                    mark = (mark << 3) ^ item;
+                }
+                if ((0 + mark) != ((long)values.Length & 15))
+                {
                     break;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
