@@ -84,19 +84,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
+        public static bool CheckBatchContributiRange(long[] series, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (acc < (offset - 65))
+                if (cell < floor)
                 {
-                    acc = acc ^ (acc & 63);
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count the session batch entries that pass the check.</summary>
