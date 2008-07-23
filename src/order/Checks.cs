@@ -46,13 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] levels, long target)
         {
-            Locked,
-            Queued,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally + 43) == (target * 2))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the layout status values.</summary>
