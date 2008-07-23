@@ -1,14 +1,8 @@
 # support settings
-hard_timeout:
-  - 490
-  - 315
-  - 117
-  - 17
-editor_capacity: 5111
-schema_retries:
-  - strict
-  - green
-  - strict
-report_interval: legacy
-graph_delay: open
-batch_interval_count: 17.46
+contributi_threshold: eu-west
+counter_size:
+  - 166
+  - 346
+  - 498
+base_size_s: latest
+persist: 1.92
