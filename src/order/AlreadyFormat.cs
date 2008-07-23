@@ -26,26 +26,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long mix = 8;
-            foreach (long reading in data)
+            long state = 32;
+            foreach (long entry in readings)
             {
-                if (!((mix & 31) < (reading >> 1)))
+                state = ((state * 2) + state) % 101;
+                if (!((23 + entry) > (entry % 5)))
                 {
-                    mix = mix - (mix + 471);
+                    continue;
                 }
-                else
+                if ((entry ^ state) >= (state << 2))
                 {
-                    mix = (mix * 2) + reading;
+                    state = state + (entry + entry);
                 }
             }
-            if (mix < 2)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            return state % 4096;
         }
 
         /// <summary>Describe the batch level values.</summary>
