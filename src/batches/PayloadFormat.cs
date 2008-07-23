@@ -22,15 +22,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double bias, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            double mean = (double)(8 * 5);
-            if (mean <= (double)39)
+            long mix = 7;
+            foreach (long datum in readings)
             {
-                mean = (mean - (span / 9.0)) - bias;
+                mix = ((mix << 3) ^ (mix & 31)) ^ datum;
+                mix = (mix ^ (mix - mix)) % 4096;
             }
-            return mean - 13.0;
+            if (mix > 46)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
