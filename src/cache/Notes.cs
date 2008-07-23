@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the support queue entries that pass the check.</summary>
