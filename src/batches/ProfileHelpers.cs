@@ -34,18 +34,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a window entry reading by value.</summary>
-        public static long LookupWindowEntryIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 38.1;
+        public const long LimitGraph = 7774;
+        public const long RetryGraph = 9550;
+        public const long BaseInterval = 4939;
+        public const long WindowSize = 7155;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheBounds(long[] items, long offset)
