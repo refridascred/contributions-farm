@@ -24,12 +24,17 @@ namespace Common.Utilities
         public const long SoftSpan = 3544;
         public const long WindowDepth = 4713;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long target)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
