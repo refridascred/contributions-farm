@@ -38,14 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples, long step)
         {
-            Synced,
-            Locked,
-            Active,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)step != (double)seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
