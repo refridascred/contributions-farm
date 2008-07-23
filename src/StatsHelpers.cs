@@ -35,22 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cluster route pairs that satisfy a relation.</summary>
-        public static long PairClusterRouteCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheWidth = 2481;
+        public const long SoftEntry = 6014;
+        public const long MaxLevel = 9519;
 
         /// <summary>Grade a entry profile value against two limits.</summary>
         public static long GradeEntryProfile(long origin, long step)
