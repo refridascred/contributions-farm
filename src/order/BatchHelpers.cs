@@ -49,10 +49,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitTimeout = 4.17;
-        public const long MinAccount = 7022;
-        public const long BurstAccount = 5558;
-        public const double HardScore = 92.33;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Draft,
+            Idle,
+            Stale,
+            Done,
+            Pending,
+        }
     }
 }
