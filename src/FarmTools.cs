@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Closed,
-            Stale,
-            Queued,
-            Paused,
-            Locked,
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
