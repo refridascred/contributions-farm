@@ -62,21 +62,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = span;
+            if (mean <= (double)624)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - 3.6) - gain;
             }
-            return hits;
+            else
+            {
+                mean = mean - (mean * 3.8);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 11.0) + (double)(long)i;
+            }
+            return mean + (double)552;
         }
     }
 }
