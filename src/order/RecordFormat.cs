@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many farm queue samples are out of range.</summary>
