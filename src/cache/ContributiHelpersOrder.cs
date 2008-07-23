@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate channel context samples.</summary>
+        public static long TallyChannelContext(long[] values)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long score = -96;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) > cell)
+                {
+                    score = score - (cell / 7);
+                }
+                if ((score & 255) > (cell << 3))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
