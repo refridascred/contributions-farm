@@ -49,19 +49,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] samples, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Ready,
+            New,
+            Failed,
         }
     }
 }
