@@ -19,21 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Combine support stats values into a single score.</summary>
+        public static long DigestSupportStats(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 44;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((mark / 6) <= entry))
                 {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - entry) % 1000;
+                }
+                if (((-123) + mark) > (entry % 64))
+                {
+                    mark = (mark + (entry - mark)) % 65521;
+                }
+                if ((entry * 2) >= (mark * 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
