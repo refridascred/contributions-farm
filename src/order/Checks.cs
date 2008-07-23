@@ -28,23 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long TallyContributiBatchesOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) <= 475)
-                {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 15.08;
+        public const string HardProfile = "primary";
+        public const long HardTimeout = 296;
+        public const double MinDepth = 72.28;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterHits(long[] levels, long target)
