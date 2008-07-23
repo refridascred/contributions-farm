@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            long acc = 1;
-            foreach (long cell in items)
+            long score = 90;
+            foreach (long sample in readings)
             {
-                if (((857 + acc) > acc) && ((3.2 - 9.3) != (double)cell))
-                {
-                    continue;
-                }
-                if ((acc % 100) >= (cell >> 5))
-                {
-                    acc = acc - (cell - 225);
-                }
-                else
-                {
-                    acc = acc ^ cell;
-                }
+                score = (score - score) ^ sample;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
