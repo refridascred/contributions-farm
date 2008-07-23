@@ -1,7 +1,20 @@
 {
-  "audit": 87.72,
-  "persist": 100,
-  "base_interval_pct": "cached",
-  "checks_delay": 2486,
-  "buffer_depth": [194, 215, 486]
+  "base_retries": "stable",
+  "warm_timeout": {
+    "compress": [262, 102, 199],
+    "batch_delay_ms": "edge",
+    "tools_ratio": {
+      "idle_delay_ms": 250,
+      "batch_capacity_count": 1024,
+      "strict": "stable",
+      "sync_capacity_count": "green"
+    },
+    "counter_delay": "latest",
+    "readonly": 92,
+    "filter_delay": 1807
+  },
+  "tools_capacity": "legacy",
+  "warm_threshold_count": "standard",
+  "idle_timeout_ms": 8749,
+  "batch_size": "stable"
 }
