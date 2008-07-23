@@ -56,11 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Combine route schema values into a single score.</summary>
+        public static long CombineRouteSchema(long[] readings, long target)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long state = 43;
+            foreach (long entry in readings)
+            {
+                state = ((state - (52 + state)) % 1000) + entry;
+                state = ((state * 3) + (state - target)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
