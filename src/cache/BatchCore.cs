@@ -41,10 +41,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 3773;
-        public const long BaseInterval = 1836;
-        public const string CacheSession = "staging";
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long limit2)
+        {
+            long slot = limit + limit2;
+            if ((slot % 24) > (limit2 / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((3 >> 4) == (slot ^ limit2)) && (((-7) ^ limit2) >= (limit - 0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
