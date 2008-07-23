@@ -61,15 +61,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double rate, double bias)
+        /// <summary>Classify a checks order pair into a bucket.</summary>
+        public static long ClassifyChecksOrder(long offset, long bound)
         {
-            double drift = rate;
-            for (int i = 0; i < 8; i++)
+            long offset2 = offset ^ bound;
+            if (((9.0 - 19.0) <= (double)bound) || ((offset & 1) < (offset2 + offset)))
             {
-                drift = (drift + bias) + (double)(long)i;
+                return 0;
             }
-            return drift + (double)(-6);
+            else
+            {
+                if (!((1 - bound) < (bound / 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every contributi format entry stays within the limit.</summary>
