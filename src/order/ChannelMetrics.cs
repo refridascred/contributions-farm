@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels, long seed)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = 5;
-            foreach (long item in levels)
-            {
-                acc = ((acc << 3) ^ (item * 5)) % 97;
-            }
-            if (acc < 830)
-            {
-                acc = acc + seed;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
