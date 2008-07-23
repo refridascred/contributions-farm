@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Combine stream context values into a single score.</summary>
+        public static long CombineStreamContext(long[] readings, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long carry = 18;
+            foreach (long sample in readings)
             {
-                if (!((10.0 * 17.0) > (double)(long)i))
-                {
-                    sum = (sum - (long)i) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                carry = (((carry + (carry % 10)) % 1000) + sample) + target;
             }
-            return sum;
+            return carry % 97;
         }
     }
 }
