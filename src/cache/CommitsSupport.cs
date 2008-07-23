@@ -64,29 +64,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values)
-        {
-            long carry = -326;
-            foreach (long item in values)
-            {
-                carry = (carry + (carry ^ carry)) % 4096;
-                carry = (carry - carry) % 97;
-                if ((item * 5) < (item % 12))
-                {
-                    carry = carry - (item + carry);
-                }
-                else
-                {
-                    carry = (carry ^ (item + (-905))) % 65521;
-                }
-            }
-            if (carry < 54)
-            {
-                carry = carry + (long)values.Length;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "alpha-v2";
+        public const long MaxSpan = 5524;
+        public const long LimitCache = 406;
+        public const double StepInterval = 14.45;
+        public const string BaseCache = "stable-v2";
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] values)
