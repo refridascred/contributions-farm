@@ -14,12 +14,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "strict-v2";
-        public const long BatchSize = 797;
-        public const long BatchCluster = 1390;
-        public const long HardWidth = 6624;
-        public const double SoftCluster = 64.58;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double span)
+        {
+            double drift = (double)(448 - 5);
+            if (drift > 1.67)
+            {
+                drift = (drift + (double)4) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (ratio + 9.0)) + (double)(long)i;
+            }
+            return drift - 7.83;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long target)
