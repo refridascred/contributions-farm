@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long origin, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long limit)
         {
-            long next = origin - step;
-            if (((step - step) > (step + step)) && ((4.0 * 0.35) < (double)origin))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step + origin) == (614 + 396)) && ((2 * 3) > next))
+                if (item >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step == (double)8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((next >> 2) > (-44))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of window readings.</summary>
