@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] samples)
         {
-            Draft,
-            Paused,
-            Pending,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (547 < (seen - (-65)))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
