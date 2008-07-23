@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + seen) != (63 ^ entry))
+                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
