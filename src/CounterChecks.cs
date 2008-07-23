@@ -22,20 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long result = 89;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(result >= (54 << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 4) + (result % 97)) + cell;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = result ^ (5 >> 4);
-                result = (result << 2) ^ floor;
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
