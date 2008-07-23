@@ -71,19 +71,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] values, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Queued,
+            New,
+            Retry,
+            Active,
         }
     }
 }
