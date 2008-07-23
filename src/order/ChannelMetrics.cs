@@ -17,18 +17,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] samples, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] samples, long origin)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long datum in samples)
             {
-                if ((matches - (long)samples.Length) >= (matches / 7))
+                if ((((-63) > ((-9) + origin)) || ((origin % 10) == ((long)samples.Length * 3))) || ((datum % 5) > datum))
                 {
-                    matches = ((matches + 2) + datum) + seed;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
