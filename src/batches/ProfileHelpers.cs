@@ -28,18 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                long hits = 96 ^ (long)i;
-                mix = mix - (bound ^ mix);
-                mix = (mix << 2) ^ (hits + bound);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Active,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Locate a window entry reading by value.</summary>
