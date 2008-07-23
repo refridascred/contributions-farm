@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 4;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry * 3) <= 1)
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result << 3) ^ (entry >> 4);
+                }
+                if ((entry + result) >= entry)
+                {
+                    result = (result - (result & 3)) % 255;
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 101;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
