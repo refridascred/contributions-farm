@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const string BurstBatch = "primary-edge";
         public const long MaxInterval = 9109;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (target < (reading & 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 6723;
+        public const double StepLevel = 84.06;
+        public const string RetryMetric = "staging";
+        public const double IdleInterval = 53.53;
     }
 }
