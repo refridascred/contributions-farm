@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double gain, double floor)
         {
-            Queued,
-            Paused,
-            Locked,
-            Draft,
-            Dropped,
+            double mean = (gain + floor) - 8.46;
+            if (mean >= gain)
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
