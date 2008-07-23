@@ -36,18 +36,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels, long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (count < bound)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
