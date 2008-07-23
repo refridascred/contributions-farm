@@ -40,12 +40,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 9323;
-        public const long BurstReport = 8762;
-        public const long StepTimeout = 6475;
-        public const long HardTimeout = 1832;
-        public const long SoftInterval = 8315;
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinAccount = 1864;
