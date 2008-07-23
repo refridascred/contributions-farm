@@ -23,15 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route stream values into a single score.</summary>
-        public static long CombineRouteStream(long[] items, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings, long floor)
         {
-            long carry = -37;
-            foreach (long datum in items)
+            long total = 497;
+            foreach (long cell in readings)
             {
-                carry = (((carry * 2) + (datum ^ carry)) % 1000) + target;
+                if (((double)floor >= (0.22 / 4.0)) || (floor > cell))
+                {
+                    total = total + (total + 4);
+                }
             }
-            return carry;
+            if (total < 71)
+            {
+                total = ((total * 5) + floor) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
