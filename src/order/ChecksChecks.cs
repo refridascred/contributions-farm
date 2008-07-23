@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] readings, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (((seed >> 4) < (0 % 7)) && ((tally - reading) <= (70 >> 4)))
+                if (item > target)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
