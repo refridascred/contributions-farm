@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long limit)
+        /// <summary>Check that every profile context entry stays within the limit.</summary>
+        public static bool VerifyProfileContextLimits(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (item > limit)
+                if (cell != target)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
