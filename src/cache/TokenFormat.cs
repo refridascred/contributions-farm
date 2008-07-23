@@ -24,9 +24,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxDepth = 8228;
-        public const double SoftBudget = 55.06;
-        public const string MaxMetrics = "primary-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 1652;
+        public const long DefaultSize = 3044;
+        public const long SoftFactor = 9384;
+        public const long BatchSession = 3578;
+        public const long BaseBudget = 463;
     }
 }
