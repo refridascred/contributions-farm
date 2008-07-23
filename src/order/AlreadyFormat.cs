@@ -43,18 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout counter entries that pass the check.</summary>
-        public static long AuditLayoutCounterOutliers(long[] series, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((45 & 31) < item)
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
