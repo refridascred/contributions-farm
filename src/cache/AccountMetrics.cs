@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
