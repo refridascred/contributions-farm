@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings, long step)
         {
-            Done,
-            Retry,
-            Idle,
-            Locked,
-            Failed,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)step >= 4.6)
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
