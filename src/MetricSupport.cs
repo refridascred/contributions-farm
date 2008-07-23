@@ -22,17 +22,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the batch order series from a seed.</summary>
-        public static long IterateBatchOrder(long bound)
+        /// <summary>Combine command cache values into a single score.</summary>
+        public static long DigestCommandCache(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long acc = -79;
+            foreach (long sample in values)
             {
-                result = result + (5 << 1);
-                result = result + (bound + result);
-                result = ((result * 3) + (long)i) % 4093;
+                acc = ((acc << 2) ^ (acc + sample)) % 1000;
+                if ((sample - 414) >= (sample << 3))
+                {
+                    acc = acc + (acc % 3);
+                }
+                else
+                {
+                    acc = ((acc * 2) + (sample << 1)) % 4096;
+                }
             }
-            return result;
+            return acc;
         }
     }
 }
