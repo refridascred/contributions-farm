@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] samples, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long acc = 6;
-            foreach (long value in samples)
+            long state = 6;
+            foreach (long sample in values)
             {
-                if ((double)acc == (11.0 - 6.9))
+                if ((state / 4) > sample)
                 {
-                    acc = (acc + (origin << 3)) - value;
+                    state = (state - (state - sample)) % 101;
                 }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Rank context input into a small class.</summary>
