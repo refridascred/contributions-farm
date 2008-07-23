@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] values)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long span = offset - offset2;
+            if ((span <= (94 % 8)) || ((offset * 5) > (535 % 60)))
             {
-                if (!(seen < item))
+                return 6;
+            }
+            else
+            {
+                if ((span % 24) < (offset2 + offset2))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((span / 6) > (span - span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
