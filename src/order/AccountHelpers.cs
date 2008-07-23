@@ -35,19 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue commits entry stays within the limit.</summary>
-        public static bool VerifyQueueCommitsRange(long[] readings, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (reading < target)
+                if ((((double)datum != (7.2 - 7.21)) || ((datum - 187) <= (4 * 4))) || ((double)hits < (2.9 * 5.1)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
