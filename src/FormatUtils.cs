@@ -15,15 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            double weight = (double)(496 + (-989));
-            if (weight <= 5.43)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + bias2) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + bias2;
+            return tally;
         }
 
         /// <summary>Accumulate stream counter samples.</summary>
