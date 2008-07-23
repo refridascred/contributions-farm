@@ -39,18 +39,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value % 5) == (value % 16))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxInterval = 88.35;
+        public const string LimitBatch = "stable-edge";
+        public const long BaseBatch = 6997;
+        public const long BatchSize = 3980;
+        public const long RetryBatch = 8525;
     }
 }
