@@ -34,19 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((matches ^ 2) <= (datum / 7)) && (datum >= (datum % 8)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardLevel = 7125;
+        public const long CacheSize = 3706;
+        public const long BatchBuffer = 2764;
+        public const double BaseInterval = 58.21;
+        public const long LimitBuffer = 610;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportHits(long[] levels)
