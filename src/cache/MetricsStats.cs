@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next channel checks value.</summary>
-        public static double AdjustChannelChecks(double weight, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] items)
         {
-            double weight2 = weight;
-            if (weight2 >= weight2)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                weight2 = weight2 + (floor - weight2);
+                if (hits > (4 + hits))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - (double)26;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
