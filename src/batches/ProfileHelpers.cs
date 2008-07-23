@@ -36,12 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitScore = 4083;
-        public const double RetryDepth = 66.96;
-        public const double StepTimeout = 33.2;
-        public const string DefaultFactor = "legacy-v2";
-        public const long SoftDepth = 4423;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Failed,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long seed, long step)
