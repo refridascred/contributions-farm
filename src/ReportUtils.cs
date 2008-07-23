@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Roll a tools metrics counter forward.</summary>
+        public static long IterateToolsMetrics(long step)
         {
-            Failed,
-            Done,
-            New,
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result << 3) ^ ((long)i + result);
+                result = (result - result) % 4096;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
