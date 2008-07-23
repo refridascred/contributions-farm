@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long RetryEntry = 4381;
         public const string LimitFactor = "cached-edge";
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] levels, long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((6.61 / 7.0) != (double)seed)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
