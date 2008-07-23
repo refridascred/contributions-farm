@@ -24,11 +24,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 9835;
-        public const double WindowBudget = 22.15;
-        public const long MaxCount = 6055;
-        public const long WindowContributi = 9193;
-        public const long WindowSpan = 9098;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "primary-v2";
+        public const string StepGithubfarm = "fallback";
+        public const double DefaultInterval = 54.88;
     }
 }
