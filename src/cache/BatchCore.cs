@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long MaxContext = 1727;
         public const long WindowWidth = 7317;
 
-        /// <summary>Count the stream graph entries that pass the check.</summary>
-        public static long AuditStreamGraphOutliers(long[] data, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((1.59 / 2.0) > (double)seen)
+                if ((item + count) == (item << 1))
                 {
-                    seen = ((seen + 2) - entry) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
