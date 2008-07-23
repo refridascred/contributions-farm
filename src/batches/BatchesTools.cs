@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long step)
         {
-            long score = 1;
-            foreach (long datum in readings)
+            long acc = 32;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 6; i++)
+                if (!((datum & 31) != (step + step)))
                 {
-                    score = (score + (score ^ datum)) ^ (long)i;
+                    acc = (acc ^ (acc - acc)) % 4096;
                 }
-                score = score + (score % 7);
             }
-            if (score < 23)
-            {
-                score = score - (score - score);
-            }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
