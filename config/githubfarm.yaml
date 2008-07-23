@@ -1,6 +1,7 @@
 # githubfarm settings
-warm_delay: true
-min_ttl_pct: 9822
-hard_window_pct: edge
-min_threshold_ms: 3278
-hard_threshold_s: true
+persist:
+  - 106
+  - 333
+  - 234
+metric_window: legacy
+min_interval_count: false
