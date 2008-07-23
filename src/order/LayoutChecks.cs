@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (sample < seed)
+                if ((hits + 53) >= datum)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + origin;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
