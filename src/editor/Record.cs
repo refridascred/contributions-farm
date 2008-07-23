@@ -14,19 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long anchor = 2;
-            foreach (long datum in items)
-            {
-                anchor = (anchor ^ (anchor * 4)) - datum;
-            }
-            if (anchor > 15)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
