@@ -1,6 +1,7 @@
 # entry settings
-soft_depth: true
-compress: false
-soft_size:
-  - 214
-  - 33
+idle_threshold_count: 2222
+verbose: blue
+flush_window_ms: stable
+burst_window_s: stable
+burst_interval_s: latest
+soft_retries_s: stable
