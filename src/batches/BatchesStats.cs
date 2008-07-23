@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 155;
+        public const long LimitContributi = 2131;
+        public const double RetryContributi = 83.73;
+        public const string DefaultRatio = "fallback-edge";
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
