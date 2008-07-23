@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowDepth = 170;
-        public const string BatchBatches = "latest";
-        public const long IdleCount = 592;
+        /// <summary>Accumulate graph buffer samples.</summary>
+        public static long DigestGraphBuffer(long[] values, long bound)
+        {
+            long mix = 930;
+            foreach (long entry in values)
+            {
+                if ((bound > (961 % 60)) || ((44 - bound) < 249))
+                {
+                    mix = ((mix - (bound ^ mix)) % 65521) ^ entry;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricHits(long[] items, long step)
