@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const double MaxRatio = 5.34;
         public const long IdleFactor = 5543;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 3017;
+        public const double BurstProfile = 63.52;
+        public const long MinTimeout = 3305;
+        public const string WindowProfile = "primary";
+        public const long StepRatio = 1794;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] data)
