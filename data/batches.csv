@@ -1,7 +1,10 @@
-id,state,active,region
-1,106,open,local
-2,stable,99,open
-3,12.35,693,506
-4,61.69,49,cached
-5,958,84.59,292
-6,584,902,stable
+id,count,score
+1,598,230
+2,legacy,blue
+3,191,437
+4,597,52.02
+5,green,59.85
+6,629,49.87
+7,894,eu-west
+8,blue,8.12
+9,527,40.39
