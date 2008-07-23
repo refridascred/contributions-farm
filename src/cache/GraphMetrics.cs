@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            double ratio = (double)(61 + 7);
-            for (int i = 0; i < 3; i++)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = (ratio - (weight + offset)) - (double)(long)i;
+                if (((7.7 + 8.0) != (double)total) && (origin > (origin & 15)))
+                {
+                    total = (total - (origin & 255)) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return ratio + 3.7;
+            return total;
         }
 
         /// <summary>Find the first record checks entry that matches the target.</summary>
