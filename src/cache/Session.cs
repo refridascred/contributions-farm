@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next buffer token value from a seed.</summary>
+        public static long DeriveBufferToken(long offset)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((offset - (long)i) != (result ^ result)) && ((offset ^ result) == (offset / 4)))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result - offset) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
