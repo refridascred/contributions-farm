@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] samples, long target)
         {
-            long score = 654;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((origin ^ score) > (datum ^ datum))
+                if (item >= target)
                 {
-                    score = score ^ (4 % 24);
-                }
-                if ((datum - score) > datum)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (score < 289)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Fold a list of order channel readings.</summary>
