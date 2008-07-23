@@ -1,13 +1,15 @@
 # Command notes
 
-When a report fails, the cache handler retries a few times before giving up.
-A cache that stays idle for too long is moved to the counter list.
+Use session settings to tune how often queue data is refreshed.
+When a report fails, the cluster handler retries a few times before giving up.
 
-The channel module keeps graph values in sync with the account cache.
-The checks report groups every layout by already.
+Run the record check before changing any schema limits.
+The window report groups every editor by metric.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep format values small
-- Validate session input early
-- Log every commits change
+- Document new profile fields
+- Log every batch change
+- Keep counter values small
+- Validate context input early
