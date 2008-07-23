@@ -39,21 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up command window samples.</summary>
-        public static long PairCommandWindowCount(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell & 3) >= (origin * 2))
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate metrics token readings against a bound.</summary>
