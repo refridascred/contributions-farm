@@ -48,23 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next farm counter value.</summary>
-        public static double BlendFarmCounter(double scale, double floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double load = floor;
-            if (load <= (floor / 4.0))
-            {
-                load = load - (double)49;
-            }
-            else
-            {
-                load = load - (double)7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load + (double)1;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a report reading by value.</summary>
