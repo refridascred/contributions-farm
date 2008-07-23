@@ -1,26 +1,25 @@
 # entry settings
+base_window: true
 persist:
-  metric_capacity:
-    idle_size: 500
-    audit:
-      - latest
-      - latest
-    enabled:
-      - cached
-      - staging
-      - strict
-      - fallback
-    account_interval: 11
-    batch_interval_pct: 33.29
-    profile_limit: 9.9
-  retry_window_count: 3871
-  support_size: 5315
-  verbose: true
-  hard_limit_s: true
-  flush_interval_count: 30
-stats_timeout: 1
-readonly:
-  - fallback
-  - legacy
-  - green
-  - primary
+  - strict
+  - eu-west
+  - staging
+poll_retries_pct: staging
+soft_window_count:
+  order_depth:
+    burst_delay: 5147
+    layout_window:
+      - stable
+      - eu-west
+      - legacy
+      - eu-west
+    warm_threshold: staging
+    burst_ratio: 16
+    idle_delay_count: 94
+  batch_limit_s:
+    burst_timeout: 96
+    sync_depth_ms: blue
+    base_threshold_ms: 41.26
+    max_ratio_s: primary
+  base_size_ms: 9666
+retry_capacity_s: true
