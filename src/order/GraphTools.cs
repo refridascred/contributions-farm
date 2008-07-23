@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many context batch samples are out of range.</summary>
-        public static long CountContextBatchMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(((86 & 255) == (datum << 3)) || ((datum + datum) < (tally >> 1))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 5502;
+        public const double WindowSize = 47.81;
+        public const long SoftSize = 1860;
+        public const double RetryTimeout = 13.08;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double BlendMetrics(double rate, double offset)
