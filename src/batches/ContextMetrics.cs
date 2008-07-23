@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long offset, long offset2)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] values, long bound)
         {
-            long span = offset - offset2;
-            if ((span <= (94 % 8)) || ((offset * 5) > (535 % 60)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span % 24) < (offset2 + offset2))
+                if (values[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((span / 6) > (span - span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
