@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] values, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (9 <= (reading - 22))
+                if (entry > offset)
                 {
-                    tally = (tally + 2) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Accumulate record samples.</summary>
