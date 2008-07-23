@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] levels, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mix = 2;
+            foreach (long value in levels)
             {
-                if (target <= (target - tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                mix = ((mix + value) % 97) - step;
             }
-            return tally;
+            if (mix < 952)
+            {
+                mix = ((mix << 2) ^ (mix * 3)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
