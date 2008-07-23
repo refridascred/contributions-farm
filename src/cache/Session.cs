@@ -13,18 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long result = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + result) <= 128)
-                {
-                    result = (((result * 5) + result) % 1000) - seed;
-                }
-            }
-            return result % 1000;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
