@@ -1,6 +1,5 @@
 {
-  "warm_interval": "standard",
-  "default_threshold": "primary",
-  "hard_threshold_count": true,
-  "payload_timeout": 90.9
+  "counter_delay": "legacy",
+  "retry_size_ms": true,
+  "token_depth": "open"
 }
