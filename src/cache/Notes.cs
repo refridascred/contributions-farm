@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long LimitWindow = 1063;
         public const long MaxWindow = 5261;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstBudget = "local-edge";
-        public const double MaxGraph = 37.36;
-        public const double RetryGraph = 87.7;
-        public const double MinGraph = 15.84;
+        /// <summary>Accumulate farm record samples.</summary>
+        public static long FoldFarmRecord(long[] items)
+        {
+            long result = 2;
+            foreach (long sample in items)
+            {
+                if ((23 / 6) <= (1 - result))
+                {
+                    result = (result - (sample / 2)) % 4096;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] readings)
