@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 28.9;
-        public const string MinTimeout = "fallback-1";
-        public const long RetryTimeout = 5192;
-        public const long HardCommits = 3670;
-        public const string StepCommits = "staging-v2";
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] data)
