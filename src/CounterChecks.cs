@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] values, long floor)
         {
-            long acc = 41;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((item - acc) != (acc * 2)) && (acc > (item + acc)))
+                if ((double)count <= (3.98 * 8.0))
                 {
-                    acc = (acc - (item + item)) % 255;
+                    count = ((count + 2) + datum) - floor;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
