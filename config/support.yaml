@@ -1,8 +1,8 @@
 # support settings
-contributi_threshold: eu-west
-counter_size:
-  - 166
-  - 346
-  - 498
-base_size_s: latest
-persist: 1.92
+min_ratio: true
+compress: 30
+schema_window:
+  - standard
+  - staging
+  - cached
+flush_depth: 69.68
