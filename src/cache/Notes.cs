@@ -32,13 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] series, long step)
         {
-            Closed,
-            Retry,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!((datum / 9) <= (step - datum)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
