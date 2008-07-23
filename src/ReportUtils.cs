@@ -73,19 +73,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
-        {
-            long state = 274;
-            foreach (long sample in samples)
-            {
-                state = ((state * 3) + (state ^ 8)) - sample;
-                if ((13.0 + 4.2) != (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 585;
+        public const long HardScore = 1434;
+        public const long MaxMetrics = 542;
+        public const double SoftMetrics = 5.88;
+        public const long BaseMetrics = 8118;
     }
 }
