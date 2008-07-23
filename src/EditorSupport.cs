@@ -19,12 +19,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5034;
-        public const long BatchCount = 9299;
-        public const long BaseQueue = 6743;
-        public const long HardSpan = 5659;
-        public const long WindowQueue = 5550;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Ready,
+            Done,
+            Idle,
+            Active,
+            Queued,
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
