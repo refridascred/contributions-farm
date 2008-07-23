@@ -42,18 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((3 << 1) > matches)
+                if ((double)item == (9.0 / 2.0))
                 {
-                    matches = (matches + 2) ^ sample;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the route kind values.</summary>
