@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values, long target)
         {
-            Draft,
-            Failed,
-            Stale,
+            long sum = 202;
+            foreach (long reading in values)
+            {
+                sum = ((sum * 4) + (sum % 60)) % 65521;
+                if (sum <= (reading - (-999)))
+                {
+                    sum = (sum + (target % 5)) % 101;
+                }
+                if (((double)target == (2.78 - 6.1)) && ((sum + 403) < ((long)values.Length - sum)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a token options.</summary>
