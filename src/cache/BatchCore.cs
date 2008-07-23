@@ -46,25 +46,12 @@ namespace Common.Utilities
         public const long BaseInterval = 1836;
         public const string CacheSession = "staging";
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long step, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long cur = step + target;
-            if (6 < target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((860 & 15) != (target - cur))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
