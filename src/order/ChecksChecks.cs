@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cluster command counter forward.</summary>
-        public static long IterateClusterCommand(long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long state = 4;
+            foreach (long reading in samples)
             {
-                if (((step * 3) < (anchor + anchor)) && ((4.0 + 6.49) > (double)step))
-                {
-                    anchor = (anchor + (step + step)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                state = (state + (state ^ state)) + reading;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
