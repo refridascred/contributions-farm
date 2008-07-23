@@ -57,23 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] readings)
-        {
-            long score = 54;
-            foreach (long cell in readings)
-            {
-                if ((879 - 98) >= score)
-                {
-                    score = (score + ((long)readings.Length + cell)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 3) + (score % 5)) % 65521;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 49.81;
+        public const long RetryEntry = 279;
+        public const double StepInterval = 53.27;
+        public const long HardCount = 3850;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TallyWindow(long[] data, long limit)
