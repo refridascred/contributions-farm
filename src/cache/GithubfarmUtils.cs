@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const string BaseBudget = "local";
         public const long WindowStats = 7888;
 
-        /// <summary>Validate metrics editor readings against a bound.</summary>
-        public static bool ValidateMetricsEditorRange(long[] values, long step)
+        /// <summary>Iterate the account order series from a seed.</summary>
+        public static long DeriveAccountOrder(long offset)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score - (score - score)) % 4096;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
