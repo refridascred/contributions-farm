@@ -39,19 +39,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long result = -522;
+            foreach (long reading in data)
             {
-                if (datum > floor)
+                if ((reading < 0) || ((6.93 / 7.0) <= (double)result))
                 {
-                    valid = false;
-                    break;
+                    result = ((result << 2) ^ 7) % 4096;
                 }
+                result = ((result * 2) + reading) % 65521;
+                result = (result * 5) + (4 - result);
             }
-            return valid;
+            return result % 1000;
         }
     }
 }
