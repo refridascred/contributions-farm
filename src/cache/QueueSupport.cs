@@ -37,21 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long acc = 60;
-            foreach (long entry in levels)
+            long carry = 817;
+            foreach (long entry in values)
             {
-                if ((acc << 3) < (acc << 2))
+                if ((carry / 2) > carry)
                 {
-                    acc = ((acc << 2) ^ (long)levels.Length) % 4096;
-                    acc = (acc * 4) + entry;
-                    break;
+                    carry = (carry - (entry + (long)values.Length)) % 65521;
                 }
-                acc = ((acc * 3) + (entry & 15)) % 97;
             }
-            return acc;
+            return carry;
         }
     }
 }
