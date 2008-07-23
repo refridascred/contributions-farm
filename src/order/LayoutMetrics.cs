@@ -29,22 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel graph samples are out of range.</summary>
-        public static long TallyChannelGraphHits(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((2 % 60) < seed)
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstLevel = "local";
+        public const double HardFarm = 96.32;
+        public const string BurstFarm = "local-edge";
+        public const long DefaultFarm = 4817;
     }
 }
