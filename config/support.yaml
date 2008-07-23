@@ -1,26 +1,6 @@
 # support settings
-readonly: 9156
-metrics_ttl:
-  support_capacity: green
-  sync_limit_pct:
-    - 362
-    - 223
-  idle_delay: edge
-  dry_run: stable
-  sync_capacity_count: 78.13
-cache_threshold: stable
-counter_window:
-  idle_ttl_count: cached
-  hard_retries_ms: 30
-  sync_threshold_ms: 100
-max_window_count:
-  verbose: strict
-  flush_limit_s: false
-  batches_retries:
-    poll_capacity_s: 250
-    verbose: 72.61
-    persist: strict
-    base_window: green
-    cluster_window: 36.37
-    compress: eu-west
-  max_interval: 14
+warm_delay: standard
+audit: stable
+hard_retries: false
+retry_ratio_pct: false
+sync_depth_ms: true
