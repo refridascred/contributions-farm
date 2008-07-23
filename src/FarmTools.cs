@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two payload account measurements.</summary>
-        public static double AdjustPayloadAccount(double rate, double floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            double drift = rate;
-            if (drift <= rate)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 6.21) - (double)(long)i;
-            }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
