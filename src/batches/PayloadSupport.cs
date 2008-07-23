@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] items, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long total = 94;
-            foreach (long sample in items)
-            {
-                total = ((total - (44 >> 4)) - sample) - floor;
-            }
-            return total;
+            Paused,
+            New,
+            Stale,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
