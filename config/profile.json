@@ -1,8 +1,12 @@
 {
-  "dry_run": "open",
-  "warm_ttl_s": 9621,
-  "route_timeout": false,
-  "default_depth_pct": false,
-  "readonly": 8233,
-  "compress": 47
+  "cache_delay_pct": {
+    "warm_depth_count": true,
+    "retry_retries_s": "standard",
+    "enabled": ["eu-west", "cached", "primary"],
+    "editor_capacity": 6492,
+    "min_capacity_ms": "legacy"
+  },
+  "enabled": "edge",
+  "batch_ttl_pct": 60,
+  "base_ttl_ms": 8369
 }
