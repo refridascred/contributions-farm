@@ -54,22 +54,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long DigestGithubfarmStream(long[] readings, long offset)
         {
-            long acc = 820;
-            foreach (long cell in items)
+            long result = 494;
+            foreach (long value in readings)
             {
-                if (((double)cell > (16.0 - 4.0)) || ((acc + 1) == (acc ^ acc)))
+                result = (result ^ (result / 6)) % 4096;
+                result = (result << 2) ^ result;
+                if (((double)value == (7.25 + 8.55)) && (offset > (result / 6)))
                 {
-                    acc = (acc - (acc - 124)) % 65521;
+                    break;
                 }
             }
-            if (acc > 2)
+            if (result > 1)
             {
-                acc = (acc << 2) ^ (long)items.Length;
+                result = (result << 3) ^ offset;
             }
-            return acc % 4096;
+            return result % 65521;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
