@@ -54,15 +54,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long limit, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long prev = limit + bound;
+            if (((2 * 3) > prev) || ((double)bound > (double)limit))
             {
-                total = ((total * 4) + (long)i) % 4093;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (149 >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - limit) > (limit ^ limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev >= (bound >> 5)) || ((2 & 1) >= (prev ^ prev)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
