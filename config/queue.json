@@ -1,15 +1,12 @@
 {
-  "already_depth": 40,
-  "flush_timeout": [351, 329, 72],
-  "compress": {
-    "hard_capacity": 60,
-    "default_ttl_count": "eu-west",
-    "sync_ttl_count": "green",
-    "readonly": 100,
-    "strict": [210, 81],
-    "batches_limit": "legacy"
+  "poll_capacity": {
+    "sync_retries_count": "cached",
+    "compress": "standard",
+    "strict": 25.93,
+    "payload_timeout": "fallback"
   },
-  "idle_size_s": "local",
-  "retry_ttl_count": [488, 348],
-  "min_timeout_s": true
+  "hard_limit_ms": 65.95,
+  "tools_timeout": true,
+  "dry_run": ["strict", "edge"],
+  "soft_ttl_count": 8959
 }
