@@ -23,22 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long offset)
         {
-            long total = 497;
-            foreach (long cell in readings)
+            long lane = bound + offset;
+            if ((9.9 + 9.78) >= (double)bound)
             {
-                if (((double)floor >= (0.22 / 4.0)) || (floor > cell))
+                return 7;
+            }
+            else
+            {
+                if (offset < (bound * 5))
                 {
-                    total = total + (total + 4);
+                    return 3;
+                }
+                else
+                {
+                    if (lane >= (offset >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total < 71)
-            {
-                total = ((total * 5) + floor) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
