@@ -1,6 +1,6 @@
 # githubfarm settings
-batch_ttl: false
-compress: standard
-min_delay_count: false
-enabled: false
-dry_run: true
+flush_delay: 8521
+strict: 79.69
+cache_threshold_count: true
+retry_ttl_s: 53
+max_window_pct: 30
