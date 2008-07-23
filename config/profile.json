@@ -1,6 +1,13 @@
 {
-  "strict": false,
-  "cluster_interval": 3256,
-  "window_ttl": false,
-  "poll_retries": "staging"
+  "dry_run": 4399,
+  "min_retries": "legacy",
+  "notes_capacity": {
+    "hard_threshold": false,
+    "max_window_pct": 2224,
+    "context_window": 2018,
+    "farm_delay": [490, 283, 148],
+    "burst_delay": "standard",
+    "notes_window": "edge"
+  },
+  "checks_depth": 113
 }
