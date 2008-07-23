@@ -20,17 +20,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a checks githubfarm reading by value.</summary>
-        public static long FindChecksGithubfarmIndex(long[] series, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = span - (double)121;
+            for (int i = 0; i < 3; i++)
             {
-                if ((series[i] >= origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean - 5.36) + (double)(long)i) + weight;
             }
-            return -1;
+            return mean + (4.46 + span);
         }
     }
 }
