@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string BurstSession = "standard-1";
         public const long WindowSession = 8512;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] values, long origin)
         {
-            long total = 41;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = (((total << 3) ^ (total + 54)) % 97) - datum;
+                if (((long)values.Length + reading) > (9 << 1))
+                {
+                    tally = (tally + 2) + origin;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
