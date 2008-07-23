@@ -56,15 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes profile samples.</summary>
-        public static long ScoreNotesProfile(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] levels, long step)
         {
-            long mix = 748;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mix = (mix - (93 % 100)) - reading;
+                if ((65 / 6) < step)
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
