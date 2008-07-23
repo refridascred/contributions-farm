@@ -39,11 +39,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double span)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long offset, long target)
         {
-            double bias = weight / 7.0;
-            return bias - (span * 10.0);
+            if ((offset ^ 18) == (offset / 9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >= 1) && (target < (offset + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset == (6.96 * 5.8)) || ((offset << 2) > (offset & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target >> 2) < offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
