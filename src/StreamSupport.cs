@@ -22,23 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record commits values into a single score.</summary>
-        public static long TallyRecordCommits(long[] readings)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long result = 523;
-            foreach (long datum in readings)
-            {
-                result = (result + (long)readings.Length) % 65521;
-                if (((datum >> 4) < (result - datum)) && (result > (16 - datum)))
-                {
-                    result = result + result;
-                }
-            }
-            if (result < (-3))
-            {
-                result = (result << 3) ^ (result << 2);
-            }
-            return result;
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
