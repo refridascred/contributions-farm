@@ -34,24 +34,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long limit, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] series)
         {
-            if (((limit & 31) != (limit << 1)) || (offset < (0 << 1)))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((18.0 / 6.0) > (double)offset)
+                if ((datum << 1) > (count >> 3))
                 {
-                    return 6;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
