@@ -1,49 +1,16 @@
 # entry settings
-schema_depth: true
-poll_limit:
-  editor_size:
-    min_ttl_count:
-      - fallback
-      - primary
-    soft_delay: local
-    min_interval:
-      - 8
-      - 154
-      - 205
-    audit: 29.99
-    idle_depth_s: 10.96
-  compress:
-    - staging
-    - fallback
-    - local
-    - strict
-  persist: 60.04
-  dry_run:
-    min_size_pct: 4587
-    cache_capacity_count:
-      - fallback
-      - stable
-    flush_delay: 33.44
-    enabled: 6054
-    burst_timeout_pct:
-      - 227
-      - 252
-      - 112
-    burst_size: open
-  cache_depth_s: stable
-  enabled:
-    - local
-    - stable
-    - cached
-base_ttl_pct: 2584
-max_ratio: eu-west
-default_interval_s: 8056
-flush_ratio_count:
-  metric_timeout: 64.69
-  poll_timeout: green
-  cache_size: 25.42
-  stats_window:
-    report_window: true
-    account_interval: 7588
-    poll_interval: primary
-  counter_ratio: 57.52
+warm_threshold: primary
+soft_size_ms: latest
+default_ratio_count: 1527
+dry_run:
+  farm_timeout: 74.22
+  idle_retries_ms:
+    soft_delay_count: true
+    stats_retries: 2669
+    base_capacity_pct: 151
+    buffer_threshold:
+      - open
+      - eu-west
+    strict: local
+  base_depth_count: 10
+report_window: 1024
