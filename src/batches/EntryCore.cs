@@ -61,18 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((6.3 + 9.94) >= (double)entry) && (((5.33 / 3.0) >= (double)entry) && ((tally & 255) < (entry + tally))))
+                if ((0.06 / 2.0) == (double)count)
                 {
-                    tally = tally + 1;
+                    count = (count + 1) + cell;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
