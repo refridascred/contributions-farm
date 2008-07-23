@@ -30,12 +30,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Paused,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 94.62;
+        public const long HardContributi = 9964;
+        public const string DefaultContributi = "alpha-1";
+        public const string BatchCount = "standard-1";
     }
 }
