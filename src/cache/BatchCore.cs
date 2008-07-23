@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const long MaxContext = 1727;
         public const long WindowWidth = 7317;
 
-        /// <summary>Digest a series of format batch entries.</summary>
-        public static long TallyFormatBatch(long[] values, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = 183;
-            foreach (long datum in values)
-            {
-                state = state ^ (97 + datum);
-                state = (state ^ target) % 1000;
-                if ((6.96 - 5.75) >= (double)datum)
-                {
-                    break;
-                }
-            }
-            if (state < (-89))
-            {
-                state = (state * 4) + (target >> 3);
-            }
-            return state % 1000;
+            Draft,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a session stats.</summary>
