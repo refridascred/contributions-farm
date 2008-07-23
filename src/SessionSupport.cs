@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric counter measurements.</summary>
-        public static double ScaleMetricCounter(double scale, double floor)
+        /// <summary>Check that every checks counter entry stays within the limit.</summary>
+        public static bool VerifyChecksCounterLimits(long[] values, long limit)
         {
-            double drift = scale / 7.0;
-            if (drift < (drift + drift))
+            bool ready = true;
+            foreach (long item in values)
             {
-                drift = drift + scale;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + floor;
+            return ready;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
