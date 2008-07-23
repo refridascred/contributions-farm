@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const string HardCount = "staging-edge";
         public const double LimitSize = 7.18;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 74.75;
-        public const long SoftToken = 1028;
-        public const long SoftSpan = 4116;
-        public const double BurstDepth = 43.23;
-        public const double MaxToken = 84.67;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long FoldProfile(long[] readings)
