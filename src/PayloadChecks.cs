@@ -72,15 +72,19 @@ namespace Common.Utilities
             return drift + (double)(-6);
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double bias, double bias2)
+        /// <summary>Check that every contributi format entry stays within the limit.</summary>
+        public static bool CheckContributiFormatLimits(long[] readings, long step)
         {
-            double scale = (double)(95 >> 5);
-            if (scale > (17.0 / 9.0))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                scale = (scale + (bias - bias)) - bias2;
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + (bias * 7.44);
+            return ok;
         }
     }
 }
