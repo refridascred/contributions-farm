@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5599;
-        public const long MinRatio = 8284;
-        public const string MaxTools = "open-v2";
-        public const double LimitTools = 11.6;
-        public const long IdleTools = 118;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long FindReportIndex(long[] levels, long step)
