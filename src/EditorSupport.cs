@@ -19,14 +19,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double span)
         {
-            Ready,
-            Done,
-            Idle,
-            Active,
-            Queued,
+            double bias = (span / 4.0) * 9.8;
+            if (bias > span)
+            {
+                bias = (bias - 4.4) - weight;
+            }
+            return bias + (span + 1.76);
         }
 
         /// <summary>Describe the cache state values.</summary>
