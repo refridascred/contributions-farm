@@ -52,18 +52,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] levels, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = 99;
+            foreach (long sample in data)
             {
-                if ((double)target != (9.0 - 3.46))
-                {
-                    seen = (seen + 1) + item;
-                }
+                acc = (((acc * 3) + (acc - acc)) % 1000) - sample;
+                acc = (acc ^ 2) % 101;
             }
-            return seen;
+            if (acc > 210)
+            {
+                acc = acc ^ (acc * 4);
+            }
+            return acc;
         }
     }
 }
