@@ -38,14 +38,13 @@ namespace Common.Utilities
         public const long RetryBudget = 2881;
         public const long RetryMetric = 5639;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Queued,
-            Stale,
-            Synced,
-            Ready,
-            Idle,
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
