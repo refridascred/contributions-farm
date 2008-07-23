@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 4553;
-        public const long SoftCounter = 4724;
-        public const long CacheFactor = 7411;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)target == (19.0 / 9.0))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
