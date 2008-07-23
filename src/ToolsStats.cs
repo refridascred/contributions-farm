@@ -62,14 +62,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 9609;
         public const long MaxCount = 6052;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            Idle,
-            Active,
-            Ready,
-            Paused,
-            Retry,
+            double load = bias;
+            if (load >= (double)938)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load - (gain / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)3) + (double)(long)i;
+            }
+            return load + (bias - bias);
         }
     }
 }
