@@ -13,20 +13,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a editor stream counter forward.</summary>
-        public static long SeriesEditorStream(long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total + ((long)i << 1);
-                if (165 < (total & 3))
-                {
-                    total = (total + (target - target)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            New,
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the commits phase values.</summary>
