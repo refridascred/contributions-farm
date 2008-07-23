@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepInterval = 7591;
-        public const long IdleLayout = 6106;
-        public const long BurstWidth = 8702;
-        public const string BatchRatio = "staging-1";
-        public const long SoftLevel = 705;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseWidth = 82.35;
+        public const long MinEntry = 4700;
+        public const double HardEntry = 40.25;
+        public const long RetryEntry = 8063;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
