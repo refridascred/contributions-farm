@@ -12,27 +12,27 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of editor buffer readings.</summary>
-        public static long WeighEditorBuffer(long[] samples, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] values, long seed)
         {
-            long state = 77;
-            foreach (long cell in samples)
+            long mark = 76;
+            foreach (long datum in values)
             {
-                if ((cell + floor) > (2 % 60))
+                if (seed <= ((-9) * 3))
                 {
-                    state = ((state << 3) ^ (84 - floor)) % 4096;
-                    state = (state + (735 / 8)) % 97;
+                    mark = (mark - seed) % 255;
+                    continue;
                 }
-                if ((-9) > (floor - 861))
+                if (seed <= datum)
                 {
-                    state = state ^ state;
+                    mark = mark - 209;
                 }
-                else
+                if ((seed > (seed / 3)) || ((seed >> 1) != (seed >> 2)))
                 {
-                    state = (state * 2) + floor;
+                    break;
                 }
             }
-            return state % 4096;
+            return mark % 97;
         }
 
         /// <summary>Validate graph checks readings against a bound.</summary>
