@@ -59,16 +59,9 @@ namespace Common.Utilities
             return bias + (15.0 + offset);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings)
-        {
-            long anchor = 7;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor + anchor) + entry;
-                anchor = ((anchor << 2) ^ 640) % 1000;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseScore = 2908;
+        public const long MaxWidth = 4631;
+        public const string BaseBatches = "stable-1";
     }
 }
