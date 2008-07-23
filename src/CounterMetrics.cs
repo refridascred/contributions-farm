@@ -38,14 +38,11 @@ namespace Common.Utilities
             return drift - (3.48 / 6.0);
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "local-1";
+        public const string StepWidth = "latest";
+        public const long CacheTimeout = 1211;
+        public const string MaxCommand = "latest-v2";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] items)
