@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Synced,
+            Draft,
         }
     }
 }
