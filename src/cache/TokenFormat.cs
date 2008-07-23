@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchLevel = "primary-edge";
-        public const long BurstSpan = 6308;
-        public const long HardFilter = 8378;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long target)
+        {
+            if ((step - step) == (target & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((77 > (step + step)) && ((target << 3) < step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) == (step + 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + 640) == (step + 690))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
