@@ -56,13 +56,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
+            Failed,
             Ready,
-            New,
-            Active,
-            Locked,
+            Retry,
         }
 
         /// <summary>Hold a checks entry.</summary>
