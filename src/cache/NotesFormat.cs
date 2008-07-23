@@ -33,15 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double scale, double floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long floor)
         {
-            double rate = floor + (scale + floor);
-            if (rate >= floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (scale - rate);
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (double)345;
+            return -1;
         }
     }
 }
