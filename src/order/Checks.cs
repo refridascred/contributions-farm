@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the support commits entries that pass the check.</summary>
+        public static long CountSupportCommitsHits(long[] items, long floor)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count + count) != (item + count))
+                {
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of metrics cluster entries.</summary>
