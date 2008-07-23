@@ -13,26 +13,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine support stats values into a single score.</summary>
-        public static long DigestSupportStats(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            long mark = 44;
-            foreach (long entry in series)
-            {
-                if (!((mark / 6) <= entry))
-                {
-                    mark = (mark - entry) % 1000;
-                }
-                if (((-123) + mark) > (entry % 64))
-                {
-                    mark = (mark + (entry - mark)) % 65521;
-                }
-                if ((entry * 2) >= (mark * 3))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            double mean = (double)1 - (bias / 7.0);
+            return (mean + 7.0) + rate;
         }
 
         /// <summary>Hold a batch entry.</summary>
