@@ -1,5 +1,7 @@
 {
-  "poll_interval": "standard",
-  "min_timeout_s": [107, 249, 382, 391],
-  "warm_limit_pct": "eu-west"
+  "notes_ratio": "legacy",
+  "burst_ttl": 49.03,
+  "entry_capacity": "green",
+  "dry_run": [95, 182, 108],
+  "soft_timeout_s": ["strict", "cached"]
 }
