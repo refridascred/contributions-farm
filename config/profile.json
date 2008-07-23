@@ -1,13 +1,6 @@
 {
-  "graph_interval": true,
-  "order_window": 4447,
-  "persist": {
-    "persist": "primary",
-    "filter_threshold": "fallback",
-    "record_size": "standard",
-    "base_limit": true,
-    "metric_retries": true,
-    "base_limit_ms": 31.31
-  },
-  "counter_retries": 250
+  "buffer_capacity": true,
+  "compress": "legacy",
+  "audit": 75,
+  "verbose": ["strict", "green"]
 }
