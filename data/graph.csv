@@ -1,11 +1,6 @@
-id,region,ratio,count
-1,stable,95,336
-2,blue,765,615
-3,285,open,strict
-4,open,951,465
-5,12.48,0.53,970
-6,latest,16.93,32.83
-7,161,edge,64.02
-8,93.96,latest,779
-9,383,83.49,green
-10,283,staging,69.91
+id,token,rank,label
+1,301,707,55.78
+2,standard,421,55.01
+3,87.77,298,220
+4,latest,staging,31.88
+5,919,stable,primary
