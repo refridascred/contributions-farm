@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 0.88;
-        public const long BurstTimeout = 3688;
-        public const long HardCount = 6179;
-        public const long MaxToken = 915;
-        public const double MinToken = 75.54;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LookupBatchesIndex(long[] readings, long origin)
