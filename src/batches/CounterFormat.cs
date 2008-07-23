@@ -25,14 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Closed,
-            Active,
-            Pending,
-            Stale,
-            Locked,
+            Ready,
+            Idle,
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
