@@ -37,31 +37,28 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series, long bound)
         {
-            if ((double)step < (4.6 * 6.55))
+            long mark = 20;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step < (step % 64)) && ((bound & 31) >= step))
+                mark = mark + (bound + bound);
+                if (mark > (bound - cell))
                 {
-                    return 7;
+                    mark = (mark + (cell % 100)) % 4096;
+                    mark = (mark ^ (bound * 5)) % 255;
                 }
                 else
                 {
-                    if ((bound << 3) >= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = (mark << 2) ^ (bound + 9);
+                }
+                if (!((mark + cell) != (bound - mark)))
+                {
+                    mark = ((mark * 5) + mark) % 65521;
                 }
             }
+            return mark % 97;
         }
     }
 }
