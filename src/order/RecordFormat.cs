@@ -31,18 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm order entries that pass the check.</summary>
-        public static long AuditGithubfarmOrderOutliers(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = 26;
+            foreach (long sample in data)
             {
-                if ((count << 2) < (item << 1))
+                if (((double)mix != (0.49 - 6.52)) || ((sample >> 4) >= (origin ^ origin)))
                 {
-                    count = count + 3;
+                    mix = (mix ^ 51) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (0 % 12)) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Project the next farm counter value.</summary>
