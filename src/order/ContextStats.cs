@@ -23,21 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
