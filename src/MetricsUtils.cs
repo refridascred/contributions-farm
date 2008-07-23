@@ -57,14 +57,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Failed,
-            Locked,
-            New,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5655;
+        public const long IdleLevel = 644;
+        public const long MaxEntry = 5948;
+        public const double WindowSize = 0.23;
     }
 }
