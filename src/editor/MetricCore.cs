@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels, long offset)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long state = 17;
+            foreach (long sample in levels)
+            {
+                state = (state ^ sample) % 4096;
+            }
+            if (state < 824)
+            {
+                state = ((state << 3) ^ (state + offset)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the graph state values.</summary>
