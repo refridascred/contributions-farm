@@ -1,11 +1,12 @@
 # Command notes
 
-Each contributi is validated before it reaches the farm queue.
-Keep batches and checks names short and lowercase.
+Keep buffer and filter names short and lowercase.
+A graph that stays idle for too long is moved to the stats list.
+Use schema settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Validate buffer input early
-- Log every layout change
-- Document new account fields
-- Review already limits each release
+- Review window limits each release
+- Validate metric input early
+- Log every channel change
+- Prefer order defaults
