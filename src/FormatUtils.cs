@@ -51,39 +51,22 @@ namespace Common.Utilities
         public const long DefaultRecord = 7827;
         public const double StepSpan = 60.46;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long floor)
+        /// <summary>Measure how many batches metric samples are out of range.</summary>
+        public static long TallyBatchesMetricGaps(long[] samples)
         {
-            long lane = seed - floor;
-            if ((double)lane == (double)82)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (lane >= 445)
+                if (!((hits + hits) < (hits + 330)))
                 {
-                    return 8;
+                    hits = (hits + 2) - datum;
                 }
                 else
                 {
-                    if ((771 * 3) >= (8 ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(seed >= (floor % 12)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank route input into a small class.</summary>
