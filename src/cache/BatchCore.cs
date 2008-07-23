@@ -41,25 +41,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long limit2)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long bound)
         {
-            long slot = limit + limit2;
-            if ((slot % 24) > (limit2 / 9))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((3 >> 4) == (slot ^ limit2)) && (((-7) ^ limit2) >= (limit - 0)))
+                if (items[i] <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
