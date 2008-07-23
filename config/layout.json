@@ -1,6 +1,8 @@
 {
-  "audit": "primary",
-  "sync_retries_count": ["staging", "stable", "legacy"],
-  "idle_timeout": "staging",
-  "persist": false
+  "enabled": "cached",
+  "default_timeout_pct": 46,
+  "warm_capacity_count": 250,
+  "report_delay": "green",
+  "batch_timeout_count": [141, 192, 389],
+  "hard_interval_ms": "edge"
 }
