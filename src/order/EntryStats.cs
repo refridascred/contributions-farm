@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples, long target)
-        {
-            long acc = 4;
-            foreach (long value in samples)
-            {
-                acc = (((acc << 2) ^ target) % 97) - value;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 71.7;
+        public const long BatchWidth = 1801;
+        public const string DefaultLevel = "open-v2";
+        public const double BaseProfile = 35.8;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderLimits(long[] levels, long step)
