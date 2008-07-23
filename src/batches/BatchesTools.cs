@@ -20,21 +20,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = origin - limit;
+            if ((edge - edge) != (edge / 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((origin - limit) >= (868 - origin)) || ((double)limit == (2.6 * 7.4)))
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
