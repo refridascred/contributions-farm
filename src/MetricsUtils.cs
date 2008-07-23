@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series, long origin)
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long score = 654;
+            foreach (long datum in series)
+            {
+                if ((origin ^ score) > (datum ^ datum))
+                {
+                    score = score ^ (4 % 24);
+                }
+                if ((datum - score) > datum)
+                {
+                    break;
+                }
+            }
+            if (score < 289)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
