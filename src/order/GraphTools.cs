@@ -13,19 +13,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long mix = 2;
-            foreach (long value in levels)
+            long sum = 64;
+            foreach (long value in values)
             {
-                mix = ((mix + value) % 97) - step;
+                if ((0.5 - 2.25) > (double)value)
+                {
+                    sum = ((sum * 5) + value) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (value ^ sum)) % 255;
+                }
             }
-            if (mix < 952)
+            if (sum > (-512))
             {
-                mix = ((mix << 2) ^ (mix * 3)) % 4096;
+                sum = ((sum << 3) ^ (sum / 2)) % 4096;
             }
-            return mix;
+            return sum % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
