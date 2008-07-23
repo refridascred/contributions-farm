@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long seed, long bound)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long next = seed - bound;
-            if (!((double)bound < (4.11 / 7.0)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - 46) <= next)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.05 + 17.0) == (double)bound)
+                    if ((items[i] - items[j]) != 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next ^ 124) != (seed << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next profile counter value from a seed.</summary>
