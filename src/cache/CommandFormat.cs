@@ -38,21 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 362;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((20 / 6) > (entry & 255))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc * 4) + (acc >> 1)) % 1000) - seed;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a context entry.</summary>
