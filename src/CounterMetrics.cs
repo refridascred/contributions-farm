@@ -34,11 +34,14 @@ namespace Common.Utilities
             return drift - (3.48 / 6.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "local-1";
-        public const string StepWidth = "latest";
-        public const long CacheTimeout = 1211;
-        public const string MaxCommand = "latest-v2";
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Synced,
+            Failed,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] items)
