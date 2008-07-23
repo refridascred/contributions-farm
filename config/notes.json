@@ -1,12 +1,7 @@
 {
-  "idle_ttl_pct": "latest",
-  "burst_limit_ms": 250,
-  "readonly": 43,
-  "already_limit": ["primary", "staging", "latest"],
-  "persist": ["stable", "legacy", "cached"],
-  "burst_delay_ms": {
-    "base_interval": "cached",
-    "enabled": 98,
-    "idle_depth_ms": [115, 1, 304, 303]
-  }
+  "batch_delay_s": "latest",
+  "retry_window_s": "cached",
+  "cluster_depth": 9493,
+  "readonly": 3806,
+  "hard_ratio_s": [398, 265, 34, 188]
 }
