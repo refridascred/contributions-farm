@@ -38,39 +38,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long limit, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long prev = limit + bound;
-            if (((2 * 3) > prev) || ((double)bound > (double)limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (149 >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - limit) > (limit ^ limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev >= (bound >> 5)) || ((2 & 1) >= (prev ^ prev)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Dropped,
+            Ready,
         }
     }
 }
