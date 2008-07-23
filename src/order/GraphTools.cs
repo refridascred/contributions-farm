@@ -54,10 +54,19 @@ namespace Common.Utilities
             return gain + (rate * 7.88);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepLevel = 6239;
-        public const double LimitFactor = 7.21;
-        public const double HardSize = 38.47;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry >> 1) < (1 - entry)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string WindowRatio = "local-1";
