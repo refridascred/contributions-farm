@@ -19,18 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor batch readings against a rule.</summary>
-        public static long CountEditorBatchOutliers(long[] levels)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long score = 5;
+            foreach (long datum in readings)
             {
-                if ((((matches << 2) != (matches ^ 327)) && ((entry % 3) != (matches << 1))) && ((matches + matches) > (matches << 2)))
+                if (score <= datum)
                 {
-                    matches = matches + 3;
+                    score = (score - ((-5) - 252)) % 255;
+                }
+                else
+                {
+                    score = score + bound;
                 }
             }
-            return matches;
+            if (score < 53)
+            {
+                score = ((score * 2) + bound) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
