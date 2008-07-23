@@ -19,25 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long bound, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] readings)
         {
-            long step = bound - seed;
-            if ((double)seed >= (9.0 / 5.0))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step + step) >= step))
+                if (34 >= (count + item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
