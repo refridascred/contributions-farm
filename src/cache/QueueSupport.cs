@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Digest a series of session graph entries.</summary>
+        public static long WeighSessionGraph(long[] samples)
         {
-            long result = 53;
-            foreach (long datum in readings)
+            long mix = 6;
+            foreach (long item in samples)
             {
-                result = ((result * 3) + (result << 3)) % 101;
-                if ((double)datum <= (7.2 * 18.0))
+                mix = (mix - (mix << 3)) % 97;
+                mix = mix ^ mix;
+                if ((mix & 127) != (743 + item))
                 {
                     break;
                 }
             }
-            return result;
+            if (mix < (-542))
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
