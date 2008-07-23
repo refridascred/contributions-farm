@@ -13,25 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long offset, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] levels, long target)
         {
-            long prev = offset + floor;
-            if (((2.9 * 0.4) >= (double)floor) || ((double)prev > (18.0 + 2.0)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev * 3) < (floor - floor))
+                if (levels[i] == target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
