@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels)
         {
-            long carry = 86;
-            foreach (long cell in data)
+            long state = 46;
+            foreach (long value in levels)
             {
-                if (((long)data.Length + cell) > carry)
-                {
-                    carry = carry - (cell - cell);
-                }
+                state = ((state << 3) ^ state) + value;
+                state = (state ^ (state >> 2)) % 1000;
             }
-            if (carry < 26)
-            {
-                carry = ((carry * 2) + carry) % 101;
-            }
-            return carry;
+            return state % 4096;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
