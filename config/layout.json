@@ -1,5 +1,13 @@
 {
-  "flush_capacity": "local",
-  "cluster_interval": 4.74,
-  "schema_window": true
+  "batch_ttl_pct": {
+    "verbose": true,
+    "flush_size": 7,
+    "audit": ["cached", "standard", "eu-west"],
+    "readonly": "blue",
+    "tools_size": ["latest", "stable"]
+  },
+  "dry_run": 500,
+  "enabled": false,
+  "poll_ratio_count": ["latest", "green", "edge"],
+  "notes_window": 81.55
 }
