@@ -28,19 +28,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate command schema readings against a bound.</summary>
-        public static bool CheckCommandSchemaLimits(long[] values, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell < offset)
+                if ((double)step >= (9.9 * 20.0))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
