@@ -22,38 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long origin2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] items, long bound)
         {
-            if ((origin2 % 24) >= (origin2 & 255))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin > 2.2))
+                if ((6.68 * 8.2) < (double)hits)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (974 < origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((27 / 8) == (19 + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = ((hits + 2) ^ value) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a githubfarm cluster reading.</summary>
