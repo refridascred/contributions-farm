@@ -14,13 +14,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Grade a counter checks value against two limits.</summary>
+        public static long ClassifyCounterChecks(long seed, long seed2)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long slot = seed + seed2;
+            if (slot > (seed2 & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((0 >> 1) != (slot + slot)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 - seed2) != (232 + seed2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - slot) >= (seed2 + seed2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format mode values.</summary>
