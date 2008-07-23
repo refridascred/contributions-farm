@@ -51,18 +51,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] levels)
+        /// <summary>Fold a list of graph window readings.</summary>
+        public static long TotalGraphWindow(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long anchor = 0;
+            foreach (long item in data)
             {
-                if ((reading + 5) != (reading - hits))
+                if (item < (item + 470))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor + (offset + offset)) % 255;
                 }
             }
-            return hits;
+            if (anchor < 71)
+            {
+                anchor = anchor - (offset ^ (long)data.Length);
+            }
+            return anchor;
         }
     }
 }
