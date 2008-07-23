@@ -29,17 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a stats command sample.</summary>
-        public static long FindStatsCommandIndex(long[] levels, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if ((((-61) + reading) >= (reading ^ count)) && ((count ^ count) != (count - 70)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
