@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 76.48;
-        public const double SoftInterval = 72.12;
-        public const string MinSchema = "strict";
+        /// <summary>Measure how many layout command samples are out of range.</summary>
+        public static long MeasureLayoutCommandGaps(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((0 % 24) != (value - limit))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up channel checks samples.</summary>
         public static long CompareChannelChecksCount(long[] series)
