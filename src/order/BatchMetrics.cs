@@ -101,18 +101,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of route cache entries.</summary>
-        public static long WeighRouteCache(long[] levels, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            long result = 7;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((target + target) == (result % 3)) || ((target >> 5) < 86))
+                if (((datum < (datum ^ datum)) && ((double)datum > (3.5 / 3.0))) && ((seen ^ datum) == (long)samples.Length))
                 {
-                    result = (result * 3) + (cell / 2);
+                    seen = seen + 2;
                 }
             }
-            return result % 97;
+            return seen;
         }
     }
 }
