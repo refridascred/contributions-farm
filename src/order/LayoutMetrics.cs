@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseWidth = 82.35;
-        public const long MinEntry = 4700;
-        public const double HardEntry = 40.25;
-        public const long RetryEntry = 8063;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long limit, long target)
+        {
+            if ((9.97 / 8.0) > (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.22 / 4.0) <= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5 % 10) <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target <= 5.7)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
