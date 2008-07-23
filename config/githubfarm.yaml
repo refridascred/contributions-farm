@@ -1,17 +1,14 @@
 # githubfarm settings
-already_capacity: 76.98
-readonly:
-  profile_capacity:
-    entry_threshold:
-      - 490
-      - 204
-    sync_ratio:
-      - 214
-      - 42
-    readonly: 67.09
-  soft_delay: edge
-  readonly: true
-  buffer_timeout: 70
-  base_ttl_s: false
-soft_delay_s: 75.77
-sync_retries: cached
+tools_timeout: 49.41
+token_depth: legacy
+idle_ttl_count:
+  profile_depth: eu-west
+  cache_threshold:
+    - blue
+    - latest
+  notes_interval: primary
+  default_retries_s: 53
+  flush_capacity: true
+  burst_threshold_count: primary
+already_window: false
+dry_run: latest
