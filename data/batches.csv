@@ -1,10 +1,7 @@
-id,count,score
-1,598,230
-2,legacy,blue
-3,191,437
-4,597,52.02
-5,green,59.85
-6,629,49.87
-7,894,eu-west
-8,blue,8.12
-9,527,40.39
+id,rank,region
+1,46.85,48.23
+2,65.67,legacy
+3,1.29,86.86
+4,stable,green
+5,local,742
+6,330,local
