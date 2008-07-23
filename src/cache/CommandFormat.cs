@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] levels, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a layout stats reading by value.</summary>
