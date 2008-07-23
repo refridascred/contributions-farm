@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] levels, long floor)
+        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLayoutLimits(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (reading < floor)
+                if (value != origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Describe the metric kind values.</summary>
