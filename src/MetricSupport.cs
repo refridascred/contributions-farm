@@ -22,17 +22,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Iterate the batch order series from a seed.</summary>
+        public static long IterateBatchOrder(long bound)
         {
-            long score = 28;
-            foreach (long cell in levels)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                long gap = cell;
-                score = (score ^ (gap / 2)) % 255;
-                score = ((score * 5) + (cell % 24)) % 4096;
+                result = result + (5 << 1);
+                result = result + (bound + result);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return score % 65521;
+            return result;
         }
     }
 }
