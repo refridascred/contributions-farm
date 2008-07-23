@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate channel graph readings against a bound.</summary>
+        public static bool GuardChannelGraphBounds(long[] levels, long seed)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two token measurements.</summary>
