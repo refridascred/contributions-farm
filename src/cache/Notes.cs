@@ -32,19 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum / 9) <= (step - datum)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseSize = 74.02;
+        public const long WindowDepth = 531;
+        public const double HardFactor = 60.78;
+        public const double LimitScore = 88.87;
+        public const double LimitLevel = 15.08;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BurstBudget = "local-edge";
