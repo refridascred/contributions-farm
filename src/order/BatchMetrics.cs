@@ -50,24 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings)
-        {
-            long total = 770;
-            foreach (long item in readings)
-            {
-                total = (total ^ 71) % 101;
-                if (((long)readings.Length + item) >= (total + total))
-                {
-                    break;
-                }
-            }
-            if (total > 77)
-            {
-                total = ((total << 2) ^ (total & 15)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 8.88;
+        public const long LimitBudget = 1720;
+        public const long SoftWidth = 6619;
+        public const double WindowBudget = 2.32;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] samples)
