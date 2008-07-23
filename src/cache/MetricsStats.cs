@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] levels, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (value < seed)
+                if (((seen % 100) >= (limit - seen)) || ((seen & 255) == (seen + limit)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Project the next channel checks value.</summary>
