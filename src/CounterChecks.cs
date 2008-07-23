@@ -67,12 +67,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Adjust a counter buffer reading.</summary>
+        public static double SmoothCounterBuffer(double bias, double floor)
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            double scale = bias - (bias * 5.65);
+            if (scale <= (double)8)
+            {
+                scale = (scale - 9.3) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - 8.0;
         }
     }
 }
