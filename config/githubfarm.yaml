@@ -1,4 +1,14 @@
 # githubfarm settings
-hard_ratio: strict
-retry_interval_count: 10.6
-persist: open
+persist:
+  - 195
+  - 386
+  - 478
+  - 339
+burst_capacity_ms: 24
+cache_depth_count: strict
+readonly:
+  - 226
+  - 56
+  - 129
+  - 451
+max_delay_s: standard
