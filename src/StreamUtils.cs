@@ -45,13 +45,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of support buffer entries.</summary>
+        public static long TotalSupportBuffer(long[] items)
         {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 50;
+            foreach (long cell in items)
+            {
+                anchor = (((anchor * 3) + (long)items.Length) % 97) + cell;
+                if (2 <= (anchor / 2))
+                {
+                    break;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor - (anchor + anchor)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
