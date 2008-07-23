@@ -77,19 +77,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] samples, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
