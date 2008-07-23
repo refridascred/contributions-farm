@@ -49,19 +49,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] data, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            New,
+            Dropped,
+            Synced,
+            Stale,
         }
     }
 }
