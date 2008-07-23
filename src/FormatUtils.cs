@@ -63,18 +63,13 @@ namespace Common.Utilities
         public const long MaxRatio = 3198;
         public const long CacheRatio = 3035;
 
-        /// <summary>Audit graph cluster readings against a rule.</summary>
-        public static long CountGraphClusterHits(long[] items, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((((5.43 - 0.18) == (double)item) && ((double)item <= (3.7 - 20.0))) && ((item + seen) <= seen))
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Closed,
+            Draft,
         }
     }
 }
