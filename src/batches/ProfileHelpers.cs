@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up cluster format samples.</summary>
-        public static long PairClusterFormatCount(long[] readings)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
