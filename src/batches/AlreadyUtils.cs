@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples, long seed)
-        {
-            long score = 33;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = score + ((long)i >> 3);
-                }
-                score = (score - seed) % 101;
-                if (((6.72 + 8.08) < (double)cell) && ((seed - score) <= (seed + 569)))
-                {
-                    break;
-                }
-            }
-            if (score > 70)
-            {
-                score = (score + seed) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseScore = 8023;
+        public const long CacheScore = 4816;
+        public const long LimitSize = 6387;
+        public const string HardContributi = "cached-1";
+        public const string BurstContributi = "legacy";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string RetryCluster = "strict-v2";
