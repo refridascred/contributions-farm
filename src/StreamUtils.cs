@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const long LimitBudget = 8274;
         public const string BaseRatio = "legacy-1";
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double ratio, double floor)
         {
-            Closed,
-            Done,
-            Synced,
-            Dropped,
-            Active,
+            double scale = floor;
+            if (scale <= 8.33)
+            {
+                scale = scale + (7.25 + ratio);
+            }
+            return scale + floor;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
