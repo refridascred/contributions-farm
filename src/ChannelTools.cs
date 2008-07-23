@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double ratio, double span)
+        /// <summary>Scale a payload queue figure with a bias.</summary>
+        public static double ProjectPayloadQueue(double rate, double floor)
         {
-            double drift = 8.8;
-            if (drift > (ratio + ratio))
+            double load = (double)(98 & 3);
+            if (load < load)
             {
-                drift = (drift + (double)885) - span;
+                load = (load - floor) - rate;
             }
-            else
-            {
-                drift = drift + (drift * 9.61);
-            }
-            return drift + drift;
+            return load + (floor + 6.7);
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
