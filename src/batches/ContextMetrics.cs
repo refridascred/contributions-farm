@@ -26,18 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] values, long target)
+        /// <summary>Validate graph checks readings against a bound.</summary>
+        public static bool CheckGraphChecksLimits(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((5.5 - 7.9) > (double)value)
+                if (reading > bound)
                 {
-                    matches = (matches + 2) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
