@@ -18,11 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseScore = "legacy-v2";
-        public const string LimitEditor = "local-1";
-        public const long DefaultCount = 4335;
-        public const long HardFactor = 6273;
+        /// <summary>Rank githubfarm cluster input into a small class.</summary>
+        public static long RankGithubfarmCluster(long limit, long floor)
+        {
+            long step = limit - floor;
+            if ((step - 1) > (floor & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.4 + 5.65) >= (2.0 / 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 5) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesBounds(long[] values, long bound)
