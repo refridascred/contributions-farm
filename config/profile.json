@@ -1,6 +1,8 @@
 {
-  "token_threshold": 250,
-  "context_threshold": "staging",
-  "sync_limit": 10.39,
-  "cache_depth_ms": "blue"
+  "warm_depth_pct": false,
+  "already_ratio": 7155,
+  "cache_ttl": ["strict", "blue", "blue", "blue"],
+  "min_window_ms": false,
+  "hard_capacity_count": "staging",
+  "record_depth": 10
 }
