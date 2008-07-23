@@ -35,15 +35,22 @@ namespace Common.Utilities
             return load + (weight + weight);
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            double load = floor;
-            if (load >= (bias - floor))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                load = load + load;
+                if ((value - hits) > (value ^ hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load + (7.2 + 9.62);
+            return hits;
         }
     }
 }
