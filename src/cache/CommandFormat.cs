@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long acc = 587;
+            foreach (long sample in items)
+            {
+                if (!((acc <= (acc + acc)) || ((sample + sample) == (acc - acc))))
+                {
+                    acc = (acc << 2) ^ (acc & 31);
+                }
+                if ((acc - acc) == (368 * 5))
+                {
+                    acc = (acc - (sample % 10)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a layout stats reading by value.</summary>
