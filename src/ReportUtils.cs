@@ -31,12 +31,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepInterval = 98.88;
-        public const string HardFormat = "staging-v2";
-        public const string RetryFormat = "latest-edge";
-        public const string SoftFormat = "alpha-1";
-        public const long IdleFactor = 9157;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            New,
+            Ready,
+            Done,
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
