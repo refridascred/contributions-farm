@@ -22,14 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Retry,
-            Paused,
-            Failed,
-            Synced,
-            Dropped,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
