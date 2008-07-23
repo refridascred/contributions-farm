@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
