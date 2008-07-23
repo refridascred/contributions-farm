@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinRatio = 38.5;
+        public const long LimitBudget = 8274;
+        public const string BaseRatio = "legacy-1";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
