@@ -43,23 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((score % 8) != (origin % 97))
-                {
-                    score = ((score * 4) + origin) % 1000;
-                }
-                else
-                {
-                    score = score + (origin % 16);
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
