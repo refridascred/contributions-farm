@@ -24,17 +24,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Look up the position of a channel account sample.</summary>
-        public static long LookupChannelAccountIndex(long[] values, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                if (entry > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
