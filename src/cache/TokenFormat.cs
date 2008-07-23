@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the counter order series from a seed.</summary>
-        public static long SeriesCounterOrder(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchLevel = "primary-edge";
+        public const long BurstSpan = 6308;
+        public const long HardFilter = 8378;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] series)
