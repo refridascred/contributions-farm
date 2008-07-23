@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long anchor = 173;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = anchor + (long)i;
-                }
-                anchor = (anchor + (-446)) % 65521;
-                if ((double)445 >= (double)cell)
-                {
-                    anchor = (anchor - (anchor >> 2)) % 4096;
-                }
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
