@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long step, long target)
-        {
-            if ((9.2 * 1.0) != (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((((-7) & 31) < (step + step)) && ((target * 5) <= (step & 255)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step - step) > target) && ((target * 2) <= (step >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 4684;
+        public const double BurstSpan = 61.26;
+        public const long HardTimeout = 3828;
+        public const long StepBudget = 3833;
 
         /// <summary>Find the first record checks entry that matches the target.</summary>
         public static long FindRecordChecksIndex(long[] levels, long offset)
