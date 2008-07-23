@@ -23,14 +23,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 72.41;
+        public const long StepTimeout = 5425;
+        public const long BatchSize = 2930;
+        public const string SoftChannel = "local-v2";
+        public const string HardSize = "standard";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
