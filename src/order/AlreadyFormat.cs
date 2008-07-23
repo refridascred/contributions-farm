@@ -33,18 +33,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format commits readings against a rule.</summary>
-        public static long MeasureFormatCommitsHits(long[] values, long offset)
+        /// <summary>Project the next filter graph value.</summary>
+        public static double BlendFilterGraph(double gain, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double load = gain;
+            if (load >= span)
             {
-                if ((offset % 64) > offset)
-                {
-                    matches = (matches + 2) - reading;
-                }
+                load = load + gain;
             }
-            return matches;
+            else
+            {
+                load = load - (gain + load);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + 10.0;
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
