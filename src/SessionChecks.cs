@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstCount = "standard-edge";
-        public const long WindowQueue = 9370;
-        public const string HardSpan = "standard-1";
-        public const double WindowLevel = 33.16;
-        public const double BaseQueue = 50.63;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Draft,
+            Retry,
+            Paused,
+            Failed,
+            New,
+        }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
         public static long SeekBufferCommandIndex(long[] data, long bound)
