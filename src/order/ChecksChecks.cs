@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data)
+        /// <summary>Roll a cluster command counter forward.</summary>
+        public static long IterateClusterCommand(long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((3.26 / 9.0) <= (double)count))
+                if (((step * 3) < (anchor + anchor)) && ((4.0 + 6.49) > (double)step))
                 {
-                    count = (count + 3) + datum;
+                    anchor = (anchor + (step + step)) % 1000;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
