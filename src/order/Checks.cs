@@ -42,18 +42,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] data)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((entry & 127) != (seen - 8)) || ((seen + seen) < (entry / 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Roll a order counter forward.</summary>
