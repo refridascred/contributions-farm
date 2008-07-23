@@ -37,17 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] == offset)
+                if ((seen - seen) <= (8 >> 2))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ sample) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
