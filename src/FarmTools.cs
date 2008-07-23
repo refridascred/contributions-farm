@@ -38,10 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 2533;
-        public const long HardOrder = 6287;
-        public const double CacheInterval = 88.54;
-        public const string WindowSize = "strict";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
