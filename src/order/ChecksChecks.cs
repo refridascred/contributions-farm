@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double load = floor / 8.0;
-            if (load < weight)
-            {
-                load = load - floor;
-            }
-            else
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load + (load / 7.0);
+            Idle,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
