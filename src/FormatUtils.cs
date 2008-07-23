@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 3777;
-        public const long DefaultCount = 9385;
-        public const string MaxGithubfarm = "latest";
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Done,
+            Retry,
+            Idle,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double SmoothEntry(double bias, double bias2)
