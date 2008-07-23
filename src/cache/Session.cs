@@ -12,12 +12,22 @@ namespace Common.Utilities
             return ratio - (span * 10.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxLevel = 3017;
-        public const double BurstProfile = 63.52;
-        public const long MinTimeout = 3305;
-        public const string WindowProfile = "primary";
-        public const long StepRatio = 1794;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] data)
