@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double bias)
         {
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            double rate = (double)9 * 9.6;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - weight) + (double)(long)i) + bias;
+            }
+            return rate - weight;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
