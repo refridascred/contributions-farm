@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long BatchCluster = 142;
         public const long MinCluster = 4133;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] series, long offset)
         {
-            Locked,
-            New,
-            Done,
-            Closed,
-            Stale,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
