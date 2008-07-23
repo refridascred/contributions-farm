@@ -28,14 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Active,
-            Dropped,
-            Done,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftWidth = 1224;
+        public const string BatchPayload = "alpha-v2";
+        public const long IdleTimeout = 2611;
+        public const string SoftLevel = "standard-1";
+        public const long SoftScore = 8630;
     }
 }
