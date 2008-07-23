@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long total = 302;
+            foreach (long cell in series)
+            {
+                total = ((((total * 5) + (3 - (long)series.Length)) % 101) ^ cell) + target;
+                if ((double)total == (double)(long)series.Length)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
