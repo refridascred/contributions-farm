@@ -30,17 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long score = 3;
-            foreach (long cell in series)
-            {
-                score = (score + score) + cell;
-                score = score ^ 254;
-                score = (score + (9 << 1)) % 255;
-            }
-            return score;
+            Synced,
+            Done,
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
