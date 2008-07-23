@@ -28,39 +28,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long seed, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long span = seed ^ step;
-            if ((span ^ 37) >= (span + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(seed < (seed ^ span)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed == (double)span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step - (-26)) < (seed + step)) || ((span + seed) > span))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
