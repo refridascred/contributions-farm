@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long bound, long offset)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            long gap = bound ^ offset;
+            if (((gap * 3) > (offset + 2)) && (gap >= (gap - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (10.0 > (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + bound) != (bound & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank context input into a small class.</summary>
