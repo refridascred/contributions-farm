@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const long RetryOrder = 3387;
         public const double BurstWidth = 44.21;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] items, long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
