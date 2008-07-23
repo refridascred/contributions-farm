@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 3998;
-        public const long BatchLevel = 9720;
-        public const long LimitAccount = 262;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowFactor = 9783;
