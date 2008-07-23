@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a command stats value against two limits.</summary>
-        public static long SortCommandStats(long target, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if ((step & 63) == (target - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step > (5.5 + 8.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account readings.</summary>
