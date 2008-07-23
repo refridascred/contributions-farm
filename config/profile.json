@@ -1,8 +1,7 @@
 {
-  "warm_depth_pct": false,
-  "already_ratio": 7155,
-  "cache_ttl": ["strict", "blue", "blue", "blue"],
-  "min_window_ms": false,
-  "hard_capacity_count": "staging",
-  "record_depth": 10
+  "buffer_retries": 23,
+  "batch_delay": false,
+  "cache_threshold": ["stable", "strict"],
+  "enabled": [206, 430, 284, 251],
+  "hard_size": 32
 }
