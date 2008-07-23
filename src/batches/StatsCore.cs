@@ -25,18 +25,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of format commits entries.</summary>
-        public static long DigestFormatCommits(long[] series)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long floor)
         {
-            long sum = 7;
-            foreach (long value in series)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value ^ value) > (sum % 12))
+                if ((double)total != (0.81 + 9.9))
                 {
-                    sum = (sum - (value + value)) % 255;
+                    total = (total + (415 - (long)i)) % 1000;
+                    total = total - total;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
