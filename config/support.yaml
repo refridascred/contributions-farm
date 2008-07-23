@@ -1,8 +1,4 @@
 # support settings
-profile_size: standard
-enabled:
-  - 429
-  - 46
-profile_delay: false
-metric_ratio: 68
-graph_timeout: false
+sync_size_s: cached
+persist: local
+enabled: standard
