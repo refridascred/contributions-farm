@@ -23,17 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] levels, long floor)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
