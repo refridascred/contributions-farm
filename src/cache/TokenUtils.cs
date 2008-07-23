@@ -19,21 +19,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count account report pairs that satisfy a relation.</summary>
-        public static long PairAccountReportCount(long[] readings)
+        /// <summary>Rank route graph input into a small class.</summary>
+        public static long ClassifyRouteGraph(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = origin + limit;
+            if ((origin + limit) > (limit + 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ origin) <= lane)
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
