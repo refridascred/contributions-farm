@@ -68,9 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 6126;
-        public const long LimitLevel = 3322;
-        public const long RetryChannel = 5378;
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
