@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3192;
-        public const long StepScore = 4141;
-        public const double BaseWidth = 76.62;
-        public const long WindowStats = 2160;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Pending,
+            Done,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long bound)
