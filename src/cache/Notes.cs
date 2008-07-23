@@ -27,12 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
