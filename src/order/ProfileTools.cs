@@ -50,22 +50,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] levels, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!((15 ^ seen) != (960 >> 3)))
-                {
-                    seen = ((seen + 3) - value) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Rank counter tools input into a small class.</summary>
