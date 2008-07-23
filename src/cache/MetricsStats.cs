@@ -46,10 +46,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 6463;
-        public const string LimitTools = "primary-edge";
-        public const long MaxRatio = 3501;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
