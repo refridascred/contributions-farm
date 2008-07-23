@@ -22,16 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Count the buffer record entries that pass the check.</summary>
+        public static long AuditBufferRecordMatches(long[] items, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (hits >= (hits * 3))
+                {
+                    hits = ((hits + 1) ^ sample) - offset;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the checks kind values.</summary>
