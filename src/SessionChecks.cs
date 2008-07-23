@@ -57,12 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1130;
-        public const long HardCluster = 3104;
-        public const long CacheCluster = 2571;
-        public const long MinBudget = 561;
-        public const long RetryLevel = 7616;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftBudget = 216;
+        public const long WindowBudget = 961;
+        public const long SoftSpan = 5239;
+        public const string SoftRecord = "primary";
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TotalCluster(long[] readings, long target)
