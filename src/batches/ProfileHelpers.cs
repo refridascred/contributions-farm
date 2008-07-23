@@ -42,31 +42,23 @@ namespace Common.Utilities
         public const long LimitToken = 7322;
         public const long CacheSpan = 7477;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long seed, long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            if (!((step / 7) <= step))
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (18.0 >= (double)seed)
+                if ((origin % 100) <= origin)
                 {
-                    return 4;
+                    continue;
                 }
                 else
                 {
-                    if (((-158) / 3) >= (step + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = ((state * 2) + state) % 255;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
