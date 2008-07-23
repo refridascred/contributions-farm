@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            long total = 474;
+            foreach (long item in samples)
+            {
+                if ((3.05 + 3.07) != (double)total)
+                {
+                    total = (total - (origin >> 2)) - item;
+                }
+                else
+                {
+                    total = ((total * 4) + (32 * 3)) % 1000;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two farm measurements.</summary>
