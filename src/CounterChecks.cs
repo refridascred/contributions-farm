@@ -69,17 +69,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Accumulate contributi buffer samples.</summary>
+        public static long CombineContributiBuffer(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            long sum = 6;
+            foreach (long entry in values)
             {
-                mix = ((mix * 2) + (mix % 5)) % 4096;
-                mix = (mix ^ (mix << 3)) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((entry / 4) < (sum - sum))
+                {
+                    sum = (sum - sum) % 255;
+                }
+                else
+                {
+                    sum = sum + (sum * 2);
+                }
             }
-            return mix;
+            return sum % 65521;
         }
 
         /// <summary>Roll a command counter forward.</summary>
