@@ -40,25 +40,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long offset, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long step)
         {
-            long edge = offset + target;
-            if ((double)target != (double)edge)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6 - offset) >= (-637))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 1;
+                    anchor = ((anchor << 3) ^ ((long)i * 2)) ^ (long)i2;
+                    anchor = ((anchor << 2) ^ (anchor / 3)) % 101;
                 }
-                else
-                {
-                    return 8;
-                }
+                anchor = (anchor * 2) + (anchor + (long)i);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Classify a counter metric pair into a bucket.</summary>
