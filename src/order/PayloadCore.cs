@@ -56,13 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Ready,
+            Dropped,
         }
     }
 }
