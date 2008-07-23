@@ -40,11 +40,14 @@ namespace Common.Utilities
         public const string WindowSpan = "open";
         public const string RetryRecord = "local-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstSize = 5364;
-        public const double DefaultMetrics = 58.48;
-        public const double WindowInterval = 42.62;
-        public const string LimitScore = "staging-v2";
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Locked,
+            Failed,
+            Queued,
+            Done,
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
