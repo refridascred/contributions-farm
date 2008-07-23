@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double StepBudget = 36.37;
         public const long LimitDepth = 8550;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
