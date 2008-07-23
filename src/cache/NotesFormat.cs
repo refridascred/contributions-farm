@@ -21,19 +21,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of filter support readings.</summary>
-        public static long TallyFilterSupport(long[] samples, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = -28;
-            foreach (long entry in samples)
-            {
-                anchor = (((anchor * 4) + ((-488) + anchor)) % 97) - floor;
-                if (anchor < entry)
-                {
-                    anchor = (anchor * 3) + (anchor - anchor);
-                }
-            }
-            return anchor % 1000;
+            Locked,
+            New,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
