@@ -33,19 +33,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next batches queue value.</summary>
-        public static double ScaleBatchesQueue(double rate, double span)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long origin)
         {
-            double drift = (double)(3 / 3);
-            if (drift <= (double)19)
+            long acc = 9;
+            foreach (long datum in items)
             {
-                drift = (drift + (drift + rate)) - span;
+                acc = (((acc - acc) % 1000) - datum) - origin;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)213;
+            return acc;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
