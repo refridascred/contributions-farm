@@ -43,13 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Stale,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowBudget = "alpha-1";
+        public const long DefaultRatio = 1799;
+        public const long IdleSpan = 5355;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long MatchContextCount(long[] values)
