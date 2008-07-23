@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const string BatchBatches = "latest";
         public const long IdleCount = 592;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long limit)
+        /// <summary>Combine buffer githubfarm values into a single score.</summary>
+        public static long CombineBufferGithubfarm(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long value in readings)
             {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    result = ((((result << 2) ^ (result << 2)) % 97) ^ (long)i) + value;
+                }
+                if ((seed >> 2) < (32 + result))
+                {
+                    result = (result + result) % 1000;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
