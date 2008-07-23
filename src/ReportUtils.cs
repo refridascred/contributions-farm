@@ -64,26 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long result = -67;
-            foreach (long entry in readings)
-            {
-                if ((10.0 / 8.0) >= (double)offset)
-                {
-                    result = (result * 4) + (result ^ entry);
-                }
-                else
-                {
-                    result = (result * 4) + (result + 384);
-                }
-            }
-            if (result < 79)
-            {
-                result = (result - offset) % 97;
-            }
-            return result;
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
