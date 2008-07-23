@@ -56,21 +56,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up profile session samples.</summary>
-        public static long OverlapProfileSessionCount(long[] values)
+        /// <summary>Roll a session route counter forward.</summary>
+        public static long StepSessionRoute(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((long)i < (origin ^ origin))
                 {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + ((-1) / 8)) % 255;
+                    anchor = (anchor - (-219)) % 1000;
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor + ((long)i % 12);
+                }
+                anchor = anchor + (anchor + origin);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
