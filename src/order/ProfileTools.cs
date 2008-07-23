@@ -53,14 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Active,
-            Failed,
-            Stale,
-            Synced,
-            Paused,
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank counter tools input into a small class.</summary>
