@@ -16,12 +16,17 @@ namespace Common.Utilities
             return ratio + 3.7;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Find the first record checks entry that matches the target.</summary>
+        public static long FindRecordChecksIndex(long[] levels, long offset)
         {
-            New,
-            Draft,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
