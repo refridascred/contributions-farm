@@ -1,17 +1,18 @@
 # githubfarm settings
-strict: false
-soft_size_s:
-  - 54
-  - 466
-soft_window:
-  retry_threshold_count: 43
-  batch_retries_count:
-    default_timeout:
-      - 251
-      - 64
-      - 82
-      - 320
-    default_ttl: 81.73
-    cache_interval: 78.64
-    idle_size_count: 88
-  max_interval_s: eu-west
+strict: 7640
+flush_limit_ms:
+  warm_window_s: blue
+  sync_threshold_count:
+    - 267
+    - 224
+    - 437
+  warm_retries_s: 73
+  retry_retries_pct:
+    - 451
+    - 386
+    - 46
+    - 87
+  filter_limit: 30
+dry_run: 7096
+poll_retries: false
+cache_interval_ms: 24.99
