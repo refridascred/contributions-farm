@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long origin)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the contributi class values.</summary>
