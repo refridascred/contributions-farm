@@ -19,11 +19,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinDepth = "standard";
-        public const double RetryFactor = 9.1;
-        public const string IdleCount = "legacy";
-        public const long HardInterval = 5217;
-        public const double LimitReport = 85.73;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings)
+        {
+            long result = 579;
+            foreach (long sample in readings)
+            {
+                if ((result ^ sample) <= sample)
+                {
+                    result = (result * 5) + (58 ^ sample);
+                }
+            }
+            return result;
+        }
     }
 }
