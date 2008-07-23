@@ -63,18 +63,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long step, long target)
         {
-            long mark = 6;
-            foreach (long datum in readings)
+            long next = step ^ target;
+            if (1.65 < (double)target)
             {
-                if ((double)mark > 4.0)
+                return 8;
+            }
+            else
+            {
+                if (!((double)next >= (double)target))
                 {
-                    mark = ((mark * 2) + (mark & 127)) ^ datum;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a checks entry.</summary>
