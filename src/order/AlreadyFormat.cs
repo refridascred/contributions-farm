@@ -44,17 +44,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] data, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -430;
+            foreach (long value in samples)
             {
-                if (data[i] >= floor)
+                if (!((value >> 2) != (0 & 15)))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ floor) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
