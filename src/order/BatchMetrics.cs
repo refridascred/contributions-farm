@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((sum & 255) <= (long)i))
+                if (!((long)i < (seed / 8)))
                 {
-                    sum = (sum * 4) + (sum - limit);
-                    sum = (sum + ((long)i * 5)) % 101;
+                    continue;
                 }
-                sum = (sum + ((long)i % 5)) % 97;
-                if ((13.0 / 9.0) < (double)limit)
-                {
-                    sum = sum ^ (limit << 3);
-                }
-                else
-                {
-                    sum = sum - (limit + (long)i);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
