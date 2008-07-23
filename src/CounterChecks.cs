@@ -52,22 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] series, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((seen * 5) == (cell * 4))
+                if (!(entry <= (1 - count)) && ((entry > (count % 3)) && ((2.27 + 5.01) == (double)entry)))
                 {
-                    seen = (seen + 3) - bound;
+                    count = count + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the cluster status values.</summary>
