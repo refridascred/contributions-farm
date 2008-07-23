@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] values, long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
