@@ -27,12 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                if ((data[i] == target) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
