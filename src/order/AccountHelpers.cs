@@ -27,11 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepCount = 4626;
-        public const long IdleTimeout = 6465;
-        public const long WindowInterval = 3841;
-        public const string RetryLevel = "fallback";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (740 > (cell ^ 69))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ProjectSupport(double scale, double floor)
