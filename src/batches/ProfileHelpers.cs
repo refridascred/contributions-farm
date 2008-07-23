@@ -36,22 +36,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseTimeout = 663;
+        public const long MinInterval = 1417;
+        public const long LimitToken = 7322;
+        public const long CacheSpan = 7477;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long seed, long step)
