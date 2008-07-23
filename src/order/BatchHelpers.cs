@@ -38,17 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] readings, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                if ((double)hits >= (1.76 / 9.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
