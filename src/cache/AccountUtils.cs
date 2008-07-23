@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] readings, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)limit >= (double)floor) || (limit > (72 + 5)))
             {
-                if (readings[i] == target)
+                return 4;
+            }
+            else
+            {
+                if ((limit & 127) == (floor % 12))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((852 - limit) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
