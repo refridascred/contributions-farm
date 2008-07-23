@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Count account githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchAccountGithubfarmCount(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - seed) % 1000;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = (carry - (carry + (long)i)) % 65521;
-                carry = (carry + (seed ^ (long)i)) % 97;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
