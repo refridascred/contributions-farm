@@ -21,18 +21,31 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (((7 - seed) >= (seed2 % 3)) || (20.0 <= (double)seed))
             {
-                if ((((sample + sample) > (hits / 8)) || ((double)9 <= (double)hits)) || ((hits + hits) <= (sample + hits)))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 + seed) < (seed2 * 3))
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (seed2 >= (979 - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
