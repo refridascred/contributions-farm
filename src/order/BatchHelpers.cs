@@ -31,14 +31,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Draft,
-            Idle,
-            Stale,
-            Done,
-            Pending,
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
