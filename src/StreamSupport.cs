@@ -24,19 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long origin)
         {
-            long result = 3;
-            foreach (long item in samples)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((double)126 != (double)item) || ((result * 2) <= result)))
-                {
-                    result = (result - (item + result)) % 4096;
-                }
-                result = ((result << 3) ^ (item << 2)) % 255;
+                mix = (mix << 2) ^ (origin % 60);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
