@@ -23,19 +23,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] readings, long offset)
+        /// <summary>Derive the next profile counter value from a seed.</summary>
+        public static long DeriveProfileCounter(long target)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the entry phase values.</summary>
