@@ -1,25 +1,5 @@
 {
-  "max_window_s": true,
-  "min_ttl_s": 17.51,
-  "base_interval_pct": {
-    "base_limit_count": 10,
-    "default_ratio": "eu-west",
-    "burst_threshold": {
-      "retry_delay": ["edge", "open"],
-      "audit": 80,
-      "metrics_retries": [380, 253, 489, 357],
-      "readonly": 1024,
-      "strict": ["local", "strict", "strict", "fallback"],
-      "layout_threshold": "strict"
-    },
-    "min_ratio_count": false,
-    "audit": 85,
-    "min_threshold": false
-  },
-  "sync_timeout": {
-    "default_ratio_pct": false,
-    "schema_window": 19.11,
-    "base_limit_count": "local",
-    "warm_size_pct": "cached"
-  }
+  "poll_capacity_ms": true,
+  "batch_size_ms": "blue",
+  "compress": "staging"
 }
