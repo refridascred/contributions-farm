@@ -56,12 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long TallySessionBatchGaps(long[] samples, long seed)
         {
-            Locked,
-            Pending,
-            Ready,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry < (85 + count))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
     }
 }
