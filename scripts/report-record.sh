@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict standard stable cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest blue fallback green; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
