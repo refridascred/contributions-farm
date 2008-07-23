@@ -63,21 +63,10 @@ namespace Common.Utilities
         public const double CacheDepth = 1.09;
         public const long BatchBuffer = 9157;
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 4325;
+        public const string IdleFilter = "local";
+        public const long MinCount = 7065;
+        public const string CacheFilter = "local-edge";
     }
 }
