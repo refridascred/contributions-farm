@@ -47,16 +47,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseInterval = 8226;
+        public const long RetryFarm = 2332;
+        public const double HardFarm = 58.88;
+        public const long LimitInterval = 1775;
+        public const double DefaultSize = 29.74;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double rate, double bias)
