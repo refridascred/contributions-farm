@@ -42,22 +42,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] levels)
+        /// <summary>Look up the position of a tools filter sample.</summary>
+        public static long LocateToolsFilterIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((361 & 3) < seen))
+                if (samples[i] >= step)
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
