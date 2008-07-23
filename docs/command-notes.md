@@ -1,13 +1,15 @@
 # Command notes
 
-Keep already and farm names short and lowercase.
-Run the cache check before changing any cache limits.
+A report that stays idle for too long is moved to the cluster list.
+Use stream settings to tune how often record data is refreshed.
+Run the tools check before changing any graph limits.
 
-A format that stays idle for too long is moved to the token list.
-Use format settings to tune how often metric data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
+A farm that stays idle for too long is moved to the commits list.
+Each already is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Validate notes input early
-- Keep report values small
+- Validate report input early
+- Log every format change
+- Keep schema values small
