@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long IdleOrder = 6561;
         public const string BatchOrder = "local-edge";
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] items, long limit)
         {
-            double drift = 6.98;
-            if (drift >= (drift - 6.0))
+            bool found = true;
+            foreach (long datum in items)
             {
-                drift = (drift + (double)162) - span;
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift - scale)) + (double)(long)i;
-            }
-            return drift - (3.48 / 6.0);
+            return found;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
