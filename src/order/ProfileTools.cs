@@ -26,10 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 9655;
-        public const long WindowScore = 6674;
-        public const long BaseRatio = 6223;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series)
+        {
+            long sum = 199;
+            foreach (long entry in series)
+            {
+                if ((sum - sum) <= sum)
+                {
+                    sum = ((sum << 2) ^ (sum & 127)) - entry;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double gain, double floor)
