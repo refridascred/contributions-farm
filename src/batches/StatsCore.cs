@@ -65,23 +65,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm notes entries.</summary>
-        public static long TallyFarmNotes(long[] data, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            long total = 72;
-            foreach (long reading in data)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total * 3) + (reading - reading)) % 4096;
-                if ((total >> 5) >= total)
+                if (limit < (long)i)
                 {
-                    total = (total + (target + target)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    total = (total - (target >> 2)) % 97;
-                }
+                mix = mix ^ ((long)i & 31);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Locate a command buffer reading by value.</summary>
