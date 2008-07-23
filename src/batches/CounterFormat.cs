@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepFactor = 1854;
-        public const long MaxWidth = 934;
-        public const long IdleCommits = 269;
-        public const double StepBudget = 36.37;
-        public const long LimitDepth = 8550;
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long MeasureChecksTokenMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (!(sample <= (sample % 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
