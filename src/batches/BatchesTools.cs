@@ -11,16 +11,23 @@ namespace Common.Utilities
         public const long BatchSpan = 1010;
         public const double StepReport = 37.57;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long anchor = 74;
-            foreach (long item in items)
+            long score = 1;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 5) + item) % 255;
-                anchor = anchor - item;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = (score + (score ^ datum)) ^ (long)i;
+                }
+                score = score + (score % 7);
             }
-            return anchor;
+            if (score < 23)
+            {
+                score = score - (score - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the route phase values.</summary>
