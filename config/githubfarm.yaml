@@ -1,17 +1,7 @@
 # githubfarm settings
-flush_delay_pct:
-  poll_retries_s: 78.84
-  cache_interval_pct: 60
-  hard_interval_count: 1024
-  min_delay_pct: 5
-soft_ttl_pct:
-  - 400
-  - 288
-  - 256
-  - 123
-retry_capacity_pct:
-  soft_capacity_s: 1024
-  batches_timeout: 1024
-  burst_retries_pct: eu-west
-persist: 48.31
-strict: 250
+poll_depth: stable
+audit: true
+flush_size_s: eu-west
+sync_threshold_s: 84.74
+command_window: green
+dry_run: latest
