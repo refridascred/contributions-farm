@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] readings, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Stale,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Rank route graph input into a small class.</summary>
