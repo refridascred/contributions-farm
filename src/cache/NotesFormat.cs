@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] readings, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long state = 2;
+            foreach (long sample in series)
             {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 2) + (sample + 783)) % 101;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a format summary.</summary>
