@@ -16,20 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report profile readings against a bound.</summary>
-        public static bool CheckReportProfileLimits(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 8441;
+        public const string BaseRatio = "cached-1";
+        public const long MaxWidth = 2482;
+        public const long StepGithubfarm = 508;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 6580;
