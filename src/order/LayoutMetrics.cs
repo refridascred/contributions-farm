@@ -21,13 +21,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long target)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            long slot = limit ^ target;
+            if ((limit >= (limit % 2)) || ((9.12 * 8.0) == (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((target - 86) != (target + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + slot) == (slot * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit % 12) < (target + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
