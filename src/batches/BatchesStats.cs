@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
