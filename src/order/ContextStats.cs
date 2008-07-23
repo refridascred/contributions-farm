@@ -12,22 +12,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] items, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((9.0 * 20.0) < (double)tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 3) + entry) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
