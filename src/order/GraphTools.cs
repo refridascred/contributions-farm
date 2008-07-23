@@ -21,14 +21,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit metric metrics readings against a rule.</summary>
+        public static long TallyMetricMetricsMatches(long[] series, long step)
         {
-            Pending,
-            New,
-            Synced,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value <= (step << 1)) && ((84 << 1) == (matches ^ matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
