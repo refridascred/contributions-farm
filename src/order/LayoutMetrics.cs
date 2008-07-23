@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 2226;
-        public const long MaxPayload = 9603;
-        public const double SoftPayload = 29.36;
-        public const string DefaultSize = "local-v2";
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] data, long target)
