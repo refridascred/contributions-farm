@@ -33,19 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] values, long step)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Scale a already metric figure with a bias.</summary>
