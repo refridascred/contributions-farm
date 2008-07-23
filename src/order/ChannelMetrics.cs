@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double bias, double bias2)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            double gain = bias2;
-            if (gain <= gain)
+            long state = 9;
+            foreach (long reading in values)
             {
-                gain = (gain + 13.0) + bias;
+                state = ((state + state) % 255) ^ reading;
             }
-            return gain - (bias2 / 6.0);
+            return state % 1000;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
