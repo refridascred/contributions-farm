@@ -33,17 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long target)
+        /// <summary>Measure how many channel graph samples are out of range.</summary>
+        public static long TallyChannelGraphHits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
+                if ((2 % 60) < seed)
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
