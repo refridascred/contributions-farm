@@ -65,17 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer session sample.</summary>
-        public static long LookupBufferSessionIndex(long[] samples, long target)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
