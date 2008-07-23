@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green local edge; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=270
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-eu-west}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=462
-log "limit is ${BUFFER_LIMIT}"
