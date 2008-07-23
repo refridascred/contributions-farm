@@ -18,24 +18,9 @@ namespace Common.Utilities
         public const string MinBatch = "primary-edge";
         public const string StepBatch = "stable-1";
 
-        /// <summary>Rank schema githubfarm input into a small class.</summary>
-        public static long ClassifySchemaGithubfarm(long origin, long seed)
-        {
-            if (((double)origin < (0.61 * 1.38)) && ((double)origin <= (7.1 + 8.68)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.0 / 4.0) < (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstBudget = "cached-edge";
+        public const long LimitCount = 9198;
+        public const long StepBudget = 3386;
     }
 }
