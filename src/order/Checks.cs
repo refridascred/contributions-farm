@@ -28,19 +28,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer record entries that pass the check.</summary>
-        public static long AuditBufferRecordMatches(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (hits >= (hits * 3))
-                {
-                    hits = ((hits + 1) ^ sample) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryRatio = "stable-edge";
+        public const long HardWidth = 5007;
+        public const string WindowCommits = "stable-v2";
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
