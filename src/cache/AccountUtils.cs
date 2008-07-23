@@ -29,19 +29,39 @@ namespace Common.Utilities
             return drift - (double)58;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] values, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long offset, long seed)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long gap = offset ^ seed;
+            if ((offset + 73) < (62 / 2))
             {
-                if (entry > bound)
+                return 1;
+            }
+            else
+            {
+                if (!((seed % 24) != (offset - gap)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)gap != (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed - seed) >= (seed + 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
