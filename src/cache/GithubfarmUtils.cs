@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((8.2 - 8.0) >= (double)bound))
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchSize = 8429;
+        public const string HardLevel = "primary-v2";
+        public const long MaxLayout = 8543;
+        public const double BatchLayout = 55.87;
+        public const long BaseLayout = 51;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
