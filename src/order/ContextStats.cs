@@ -49,25 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long span = offset + origin;
-            if (span <= (offset & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((span - origin) > 7)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
