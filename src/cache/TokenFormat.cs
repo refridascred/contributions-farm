@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Iterate the counter order series from a seed.</summary>
+        public static long SeriesCounterOrder(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
