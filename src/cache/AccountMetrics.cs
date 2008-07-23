@@ -48,12 +48,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultCount = 6711;
-        public const long RetryPayload = 842;
-        public const long IdleDepth = 978;
-        public const string CachePayload = "primary-v2";
-        public const string DefaultLevel = "strict-v2";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Closed,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] samples, long origin)
