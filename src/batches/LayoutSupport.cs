@@ -27,15 +27,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Closed,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of record readings.</summary>
