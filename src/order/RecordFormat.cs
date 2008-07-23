@@ -13,19 +13,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] samples, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double ratio = (18.0 * 13.0) - (offset / 3.0);
+            if (ratio < (double)42)
             {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio - ratio) - rate;
             }
-            return found;
+            else
+            {
+                ratio = ratio + (ratio + 7.39);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 3.36) + (double)(long)i;
+            }
+            return ratio - (double)3;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
