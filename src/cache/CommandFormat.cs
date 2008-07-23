@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxScore = 7680;
-        public const long SoftCount = 9156;
-        public const long WindowSpan = 6680;
+        /// <summary>Locate a layout stats reading by value.</summary>
+        public static long FindLayoutStatsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the layout batch entries that pass the check.</summary>
         public static long TallyLayoutBatchHits(long[] levels, long step)
