@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const string HardChecks = "legacy";
         public const long BatchInterval = 6022;
 
-        /// <summary>Look up the position of a batch githubfarm sample.</summary>
-        public static long LocateBatchGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
+                if ((cell >> 4) > (step * 2))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the metrics status values.</summary>
