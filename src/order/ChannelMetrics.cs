@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] readings, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((3.12 + 4.1) > (2.5 * 5.8))
+                if (datum <= floor)
                 {
-                    seen = ((seen + 2) + cell) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
