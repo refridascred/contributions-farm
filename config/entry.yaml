@@ -1,11 +1,4 @@
 # entry settings
-readonly: false
-queue_delay:
-  - eu-west
-  - green
-default_interval_pct:
-  - local
-  - strict
-  - edge
-warm_delay_pct: 250
-channel_window: 69.49
+poll_ttl_ms: 85.45
+burst_retries: 25.14
+compress: fallback
