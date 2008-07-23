@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long BaseBudget = 7300;
         public const double MaxCount = 65.18;
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long AuditBufferMetricOutliers(long[] series, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((tally >> 4) >= (tally & 31))
+                if (sample > floor)
                 {
-                    tally = ((tally + 1) + item) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
