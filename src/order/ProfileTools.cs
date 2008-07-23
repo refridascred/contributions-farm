@@ -39,38 +39,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long offset, long target)
+        /// <summary>Compare every pair of cluster context readings.</summary>
+        public static long OverlapClusterContextCount(long[] samples)
         {
-            if ((offset ^ 18) == (offset / 9))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >= 1) && (target < (offset + offset)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset == (6.96 * 5.8)) || ((offset << 2) > (offset & 255)))
+                    if ((samples[i] + samples[j]) > 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target >> 2) < offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
