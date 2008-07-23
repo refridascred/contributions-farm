@@ -1,8 +1,6 @@
 {
-  "order_threshold": 5710,
-  "audit": "strict",
-  "enabled": false,
-  "readonly": 30,
-  "flush_ttl_count": true,
-  "soft_retries_s": ["standard", "primary", "eu-west"]
+  "soft_ratio_ms": "local",
+  "base_delay_pct": 1024,
+  "session_limit": [255, 310, 462, 493],
+  "batch_delay": 3.22
 }
