@@ -28,17 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long limit)
+        /// <summary>Audit batches route readings against a rule.</summary>
+        public static long MeasureBatchesRouteOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                if ((double)matches <= 1.6)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) ^ datum) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
