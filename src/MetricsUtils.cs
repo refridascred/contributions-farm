@@ -27,14 +27,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Failed,
-            Synced,
-            Locked,
-            Dropped,
-            Paused,
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the record graph series from a seed.</summary>
