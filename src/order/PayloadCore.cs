@@ -43,12 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Locked,
-            Ready,
-            Dropped,
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
