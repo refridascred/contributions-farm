@@ -59,15 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long seed)
         {
-            double bias2 = bias + (double)49;
-            if (bias2 >= (3.29 / 2.0))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                bias2 = (bias2 + (bias * 6.2)) + weight;
+                if ((4.5 * 15.0) == (double)count)
+                {
+                    count = ((count + 3) ^ reading) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias2 - (double)73;
+            return count;
         }
     }
 }
