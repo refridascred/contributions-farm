@@ -57,11 +57,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            long state = 274;
+            foreach (long sample in samples)
+            {
+                state = ((state * 3) + (state ^ 8)) - sample;
+                if ((13.0 + 4.2) != (double)state)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
     }
 }
