@@ -27,18 +27,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseDepth = "cached-edge";
+        public const double RetryBuffer = 66.64;
+        public const long WindowInterval = 5540;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesBounds(long[] values, long bound)
