@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + item) >= (seen % 24))
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
