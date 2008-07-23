@@ -39,11 +39,21 @@ namespace Common.Utilities
         public const long MinWidth = 6618;
         public const long BurstAccount = 288;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
