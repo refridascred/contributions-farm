@@ -1,4 +1,14 @@
 # entry settings
-enabled: standard
-burst_size_s: standard
-burst_threshold: false
+base_threshold: primary
+dry_run:
+  readonly: 78.98
+  enabled: blue
+  poll_size_count: blue
+  stats_ttl: true
+  max_size_count: 7890
+window_size: 100
+sync_ttl_count: eu-west
+schema_size:
+  - 18
+  - 358
+  - 216
