@@ -14,16 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score + (bound - bound)) % 97;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a counter stats.</summary>
