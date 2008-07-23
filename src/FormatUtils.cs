@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings, long step)
+        /// <summary>Scale a entry editor figure with a bias.</summary>
+        public static double ProjectEntryEditor(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double ratio = (double)(83 % 5);
+            if (ratio >= (double)53)
             {
-                if ((double)step >= 4.6)
-                {
-                    tally = (tally + 1) - datum;
-                }
+                ratio = (ratio + scale) + floor;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - 11.0;
         }
 
         /// <summary>Combine support stats values into a single score.</summary>
