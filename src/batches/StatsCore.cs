@@ -23,20 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long bound)
-        {
-            long result = 321;
-            foreach (long datum in series)
-            {
-                result = (result - (datum << 1)) % 65521;
-                if ((bound < 28) && (result < ((-3) - result)))
-                {
-                    result = (result * 5) + (datum - 454);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 4678;
+        public const double CacheWindow = 79.88;
+        public const long BaseWindow = 9501;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long bound, long floor)
