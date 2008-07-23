@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] >= bound)
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
