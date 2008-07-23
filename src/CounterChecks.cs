@@ -50,22 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = 906;
+            foreach (long sample in items)
             {
-                if (!(entry <= (1 - count)) && ((entry > (count % 3)) && ((2.27 + 5.01) == (double)entry)))
+                if ((sample & 1) <= sample)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry ^ (292 ^ carry)) % 4096;
                 }
             }
-            return count;
+            if (carry > (-6))
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the cluster status values.</summary>
