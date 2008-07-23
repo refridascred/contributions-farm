@@ -1,28 +1,5 @@
 # support settings
-report_threshold: 53.88
-hard_window: 93
-warm_limit_count:
-  persist:
-    verbose:
-      - eu-west
-      - primary
-    hard_capacity_ms:
-      - 104
-      - 259
-      - 166
-    enabled: 97.38
-    max_ttl_count: 90
-    tools_depth: stable
-    base_limit:
-      - green
-      - latest
-      - strict
-      - local
-  burst_capacity_pct:
-    - 467
-    - 431
-    - 278
-    - 396
-  min_limit_pct: 30
-idle_limit_pct: 4.1
-profile_size: true
+record_size: false
+persist: 14.31
+enabled: 100
+command_timeout: 500
