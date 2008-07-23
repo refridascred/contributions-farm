@@ -54,24 +54,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            if (offset > (target * 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - target) > (3 / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
