@@ -68,18 +68,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data, long step)
+        /// <summary>Count the channel report entries that pass the check.</summary>
+        public static long MeasureChannelReportOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((step >> 5) >= (step >> 1))
+                if ((matches / 3) >= (sample % 5))
                 {
-                    count = (count + 3) - sample;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
