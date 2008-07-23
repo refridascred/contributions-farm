@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long LimitContributi = 2192;
         public const string CacheContributi = "standard-v2";
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Locked,
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Accumulate filter samples.</summary>
