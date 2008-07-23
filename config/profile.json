@@ -1,7 +1,6 @@
 {
-  "buffer_size": ["legacy", "standard", "eu-west"],
-  "poll_threshold_ms": false,
-  "warm_capacity": 4735,
-  "soft_delay_count": 2419,
-  "token_ttl": 250
+  "strict": false,
+  "cluster_interval": 3256,
+  "window_ttl": false,
+  "poll_retries": "staging"
 }
