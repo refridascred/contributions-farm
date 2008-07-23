@@ -38,27 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] items)
-        {
-            long acc = 47;
-            foreach (long cell in items)
-            {
-                if ((20.0 / 3.0) >= (double)acc)
-                {
-                    acc = (acc ^ (8 + 99)) % 255;
-                }
-                else
-                {
-                    acc = acc + (cell - (-252));
-                }
-            }
-            if (acc < 770)
-            {
-                acc = (acc * 2) + (5 + 580);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepInterval = 98.88;
+        public const string HardFormat = "staging-v2";
+        public const string RetryFormat = "latest-edge";
+        public const string SoftFormat = "alpha-1";
+        public const long IdleFactor = 9157;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
