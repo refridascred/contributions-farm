@@ -27,13 +27,19 @@ namespace Common.Utilities
             return drift - (3.48 / 6.0);
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] data, long origin)
         {
-            Synced,
-            Failed,
-            Stale,
-            Closed,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
