@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long MinAccount = 3060;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long bound)
         {
-            Done,
-            Pending,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
