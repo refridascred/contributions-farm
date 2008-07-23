@@ -39,11 +39,14 @@ namespace Common.Utilities
         public const double WindowInterval = 42.62;
         public const string LimitScore = "staging-v2";
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
+            Stale,
+            Dropped,
+            Closed,
+            Paused,
+            Locked,
         }
     }
 }
