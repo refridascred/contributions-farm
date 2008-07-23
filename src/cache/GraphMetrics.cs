@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 4684;
-        public const double BurstSpan = 61.26;
-        public const long HardTimeout = 3828;
-        public const long StepBudget = 3833;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Find the first record checks entry that matches the target.</summary>
         public static long FindRecordChecksIndex(long[] levels, long offset)
