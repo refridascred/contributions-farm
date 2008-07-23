@@ -48,27 +48,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate graph already samples.</summary>
-        public static long CombineGraphAlready(long[] values)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long anchor = 1;
-            foreach (long datum in values)
-            {
-                anchor = (anchor - (anchor + datum)) % 1000;
-                if ((datum + anchor) <= (75 - 64))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = anchor + ((-91) - anchor);
-                }
-            }
-            if (anchor < 446)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
