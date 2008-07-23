@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a metrics batch reading.</summary>
-        public static double ScaleMetricsBatch(double bias, double floor)
+        /// <summary>Count the schema commits entries that pass the check.</summary>
+        public static long AuditSchemaCommitsOutliers(long[] data, long floor)
         {
-            double weight = bias;
-            if (weight < bias)
+            long count = 0;
+            foreach (long cell in data)
             {
-                weight = (weight + (double)24) - floor;
+                if (((cell + cell) == (cell * 4)) || (cell >= (cell + floor)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight * 1.92)) - (double)(long)i;
-            }
-            return weight + (double)670;
+            return count;
         }
 
         /// <summary>Hold a token stats.</summary>
