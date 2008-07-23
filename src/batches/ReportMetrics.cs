@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 61.48;
+        public const string DefaultOrder = "strict-v2";
+        public const long MaxOrder = 4042;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenMatches(long[] samples)
