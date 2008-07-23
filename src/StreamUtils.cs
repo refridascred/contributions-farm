@@ -40,17 +40,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] readings, long limit)
+        /// <summary>Fold a list of record metric readings.</summary>
+        public static long CombineRecordMetric(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 2;
+            foreach (long entry in series)
             {
-                if (readings[i] <= limit)
+                if ((result + result) <= (39 - result))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (result + entry)) % 255;
+                }
+                if (14 <= (result + result))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
