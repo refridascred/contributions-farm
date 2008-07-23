@@ -20,15 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] values, long seed)
+        /// <summary>Match up stream tools samples.</summary>
+        public static long OverlapStreamToolsCount(long[] data)
         {
             long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry & 7) == (seen + entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + seed;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
