@@ -33,13 +33,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Failed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBudget = 4033;
+        public const long IdleScore = 2541;
+        public const string HardRatio = "latest-1";
+        public const long LimitBatches = 7838;
+        public const long IdleRatio = 6706;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long seed, long step)
