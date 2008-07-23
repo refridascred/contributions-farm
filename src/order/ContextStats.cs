@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values, long floor)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            long total = 754;
+            foreach (long value in values)
+            {
+                total = ((total << 3) ^ (value >> 3)) % 97;
+                if (((long)values.Length - total) != (floor * 5))
+                {
+                    total = total ^ (total + value);
+                }
+                else
+                {
+                    total = (total ^ floor) % 97;
+                }
+            }
+            if (total < 48)
+            {
+                total = ((total * 4) + total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream phase values.</summary>
