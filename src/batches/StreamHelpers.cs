@@ -66,19 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data, long step)
         {
-            double mean = rate / 5.0;
-            if (mean <= (span * 14.0))
+            long acc = -38;
+            foreach (long cell in data)
             {
-                mean = mean - 0.6;
+                if ((double)acc > (3.3 / 2.0))
+                {
+                    acc = acc ^ (cell - step);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc < 53)
             {
-                mean = (mean + (mean - span)) + (double)(long)i;
+                acc = acc - step;
             }
-            return mean - rate;
+            return acc % 1000;
         }
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
