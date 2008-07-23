@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-blue}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in open cached strict; do
+for item in cached legacy primary green; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=359
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
