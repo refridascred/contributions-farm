@@ -59,17 +59,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] levels, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = bias + (double)49;
+            if (bias2 >= (3.29 / 2.0))
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (bias * 6.2)) + weight;
             }
-            return -1;
+            return bias2 - (double)73;
         }
     }
 }
