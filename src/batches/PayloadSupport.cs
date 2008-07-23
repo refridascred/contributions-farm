@@ -33,32 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long floor, long target)
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long CombineFarmSchema(long[] items, long origin)
         {
-            long offset = floor ^ target;
-            if ((floor / 5) < floor)
+            long carry = 6;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + target) <= (floor - offset))
+                if (262 < datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 3) >= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry ^ datum) % 65521) - origin;
                 }
             }
+            if (carry > 47)
+            {
+                carry = (carry ^ (54 / 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a farm info.</summary>
