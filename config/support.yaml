@@ -1,9 +1,15 @@
 # support settings
-sync_timeout_pct: fallback
-batches_threshold:
-  - edge
-  - local
-  - open
-  - primary
-min_size_s: blue
-soft_capacity_count: false
+idle_retries: 3766
+soft_delay_s: 34.21
+max_ttl_count:
+  poll_capacity_ms: 45.41
+  cache_depth: 9299
+  payload_retries: staging
+  already_delay:
+    poll_depth_pct: true
+    route_window: false
+    cache_retries: eu-west
+    stats_window: 4721
+    strict: 3152
+    max_limit_count: 100
+  readonly: green
