@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a token command counter forward.</summary>
-        public static long DeriveTokenCommand(long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] series, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor - floor;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
