@@ -1,8 +1,15 @@
 # githubfarm settings
-burst_capacity: edge
-batch_size_s:
-  - standard
-  - stable
-  - legacy
-  - legacy
-warm_delay: true
+compress: 500
+cluster_ratio: strict
+hard_limit: true
+warm_delay_count:
+  farm_interval: 46.43
+  record_window: edge
+  retry_depth: true
+  max_retries: 64
+  stats_ratio: green
+flush_interval_pct:
+  support_limit: false
+  readonly: blue
+  burst_size_pct: false
+base_delay_pct: local
