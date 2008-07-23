@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (item < (origin - item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3192;
+        public const long StepScore = 4141;
+        public const double BaseWidth = 76.62;
+        public const long WindowStats = 2160;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] values)
