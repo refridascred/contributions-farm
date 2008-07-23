@@ -17,26 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] levels, long target)
         {
-            long sum = 451;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (entry > sum)
+                if ((target << 1) < (datum + seen))
                 {
-                    sum = ((sum * 3) + (sum % 60)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (entry ^ entry)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (sum < 0)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
