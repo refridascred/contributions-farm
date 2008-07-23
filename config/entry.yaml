@@ -1,6 +1,4 @@
 # entry settings
-enabled: true
-already_size: local
-batch_ttl_count: false
-graph_threshold: green
-burst_delay_count: 7
+enabled: standard
+burst_size_s: standard
+burst_threshold: false
