@@ -25,24 +25,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] values, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long carry = 56;
-            foreach (long entry in values)
-            {
-                carry = (carry + (floor - carry)) ^ entry;
-                carry = ((carry << 3) ^ (carry % 64)) % 4096;
-                if (carry >= floor)
-                {
-                    break;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = ((carry * 3) + (carry + floor)) % 65521;
-            }
-            return carry;
+            Synced,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
