@@ -32,23 +32,12 @@ namespace Common.Utilities
         public const double SoftCommits = 0.9;
         public const long BurstRatio = 1323;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples, long bound)
-        {
-            long result = 8;
-            foreach (long cell in samples)
-            {
-                if (!(bound < (bound / 5)))
-                {
-                    result = ((result - (long)samples.Length) % 255) + cell;
-                }
-            }
-            if (result < 8)
-            {
-                result = ((result * 3) + (result ^ bound)) % 97;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 81.95;
+        public const double CacheWidth = 71.79;
+        public const string BurstReport = "alpha-edge";
+        public const long MinBudget = 9466;
+        public const long RetryDepth = 6285;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
