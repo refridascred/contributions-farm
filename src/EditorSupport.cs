@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double scale, double bias)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double drift = (double)232 * 13.0;
-            return (drift - (scale - scale)) + bias;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
