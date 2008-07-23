@@ -51,17 +51,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items)
         {
-            long acc = -452;
-            foreach (long datum in readings)
+            long state = 8;
+            foreach (long datum in items)
             {
-                acc = ((acc * 2) + acc) + datum;
-                acc = ((acc * 3) + acc) % 97;
-                acc = (acc << 3) ^ acc;
+                state = state - (datum - datum);
+                state = (state ^ datum) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
