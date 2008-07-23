@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const double SoftInterval = 72.12;
         public const string MinSchema = "strict";
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Match up channel checks samples.</summary>
+        public static long CompareChannelChecksCount(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ (target + target)) % 4096;
-                carry = (carry - (target * 2)) % 255;
-                carry = (carry << 3) ^ 5;
-                carry = ((carry * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
