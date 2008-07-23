@@ -1,7 +1,5 @@
 {
-  "compress": 9085,
-  "cluster_size": "green",
-  "graph_retries": ["blue", "fallback", "legacy"],
-  "contributi_retries": 43.54,
-  "retry_depth_ms": [44, 25]
+  "base_ttl_ms": "green",
+  "editor_capacity": 98.62,
+  "base_delay_ms": "cached"
 }
