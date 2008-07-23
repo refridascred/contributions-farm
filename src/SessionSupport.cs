@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardLevel = 7.55;
-        public const string DefaultFactor = "stable-edge";
-        public const long SoftSchema = 3110;
-        public const string BurstRatio = "cached";
+        /// <summary>Derive the next session graph value from a seed.</summary>
+        public static long SeriesSessionGraph(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((total >= (total - (long)i)) || ((limit / 9) > 5))
+                {
+                    total = total ^ limit;
+                    total = (total + total) % 97;
+                }
+                if (6 >= (limit ^ (long)i))
+                {
+                    total = (total + total) % 255;
+                }
+                else
+                {
+                    total = ((total * 5) + (limit + 0)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long ScoreFarm(long[] values)
