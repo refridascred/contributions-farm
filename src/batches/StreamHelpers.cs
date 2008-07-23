@@ -76,12 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "open-1";
-        public const long StepAccount = 7480;
-        public const double BurstSpan = 1.71;
-        public const string SoftCount = "strict-edge";
-        public const double CacheAccount = 1.53;
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double bias, double bias2)
+        {
+            double ratio = bias;
+            if (ratio > (bias2 * 1.0))
+            {
+                ratio = ratio - 2.16;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (double)15;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
