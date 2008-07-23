@@ -1,4 +1,29 @@
 # entry settings
-burst_ratio_ms: stable
-default_threshold: 4548
-warm_window: 20.07
+flush_ratio:
+  enabled: 58
+  compress: open
+  checks_threshold: blue
+  verbose: open
+  cache_timeout_count: 30
+  commits_threshold: 4
+idle_retries: 75.25
+warm_limit_count:
+  retry_limit_s:
+    - staging
+    - legacy
+  audit:
+    - local
+    - fallback
+    - eu-west
+    - blue
+  soft_depth_count:
+    - 382
+    - 119
+    - 239
+  hard_size_ms: 24
+  hard_size_count:
+    - 430
+    - 364
+    - 406
+    - 186
+hard_depth_pct: 8455
