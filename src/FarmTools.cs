@@ -32,15 +32,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine stream context values into a single score.</summary>
-        public static long CombineStreamContext(long[] readings, long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            long carry = 18;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry + (carry % 10)) % 1000) + sample) + target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
