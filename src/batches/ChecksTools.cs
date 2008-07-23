@@ -10,31 +10,15 @@ namespace Common.Utilities
         public const long SoftMetrics = 1091;
         public const long IdleMetrics = 7573;
 
-        /// <summary>Classify a stream profile pair into a bucket.</summary>
-        public static long GradeStreamProfile(long floor, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data, long floor)
         {
-            if (((floor & 255) == (bound % 16)) || (((-350) + floor) != (floor - floor)))
+            long result = 96;
+            foreach (long reading in data)
             {
-                return 5;
+                result = ((result << 3) ^ (reading ^ reading)) - floor;
             }
-            else
-            {
-                if ((6.0 <= (double)bound) && ((double)bound <= (5.5 / 7.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= ((-7) << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Audit filter buffer readings against a rule.</summary>
