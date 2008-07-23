@@ -33,12 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long step)
         {
-            Ready,
-            Draft,
-            Done,
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((0.7 + 1.2) == (double)total)
+                {
+                    total = ((total << 2) ^ (long)i) % 101;
+                    continue;
+                }
+                if ((step >= (long)i) && ((5.4 - 8.0) <= (double)total))
+                {
+                    total = ((total << 3) ^ step) % 1000;
+                }
+                if (0 < (long)i)
+                {
+                    total = (total + (step + total)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
