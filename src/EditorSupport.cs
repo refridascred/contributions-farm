@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double BaseScore = 64.61;
         public const double BatchFilter = 24.5;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 2183;
-        public const long SoftChannel = 4694;
-        public const long WindowChannel = 6891;
-        public const long StepChannel = 4305;
-        public const double LimitChannel = 89.79;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Closed,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BaseFactor = 27.39;
