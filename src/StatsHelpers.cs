@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!(((328 ^ step) == (sample >> 4)) && ((sample >> 4) == (sample - step))))
+                if ((tally + datum) <= tally)
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
