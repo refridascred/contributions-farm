@@ -14,18 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] series)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits <= (value - value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
