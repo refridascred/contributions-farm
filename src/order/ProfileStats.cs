@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 4) + score) ^ (long)i2;
+                    score = (score - (step * 3)) % 4096;
                 }
+                if (!((799 ^ (long)i) < (long)i))
+                {
+                    score = ((score * 5) + ((long)i ^ score)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Roll a queue counter counter forward.</summary>
