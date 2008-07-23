@@ -45,15 +45,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Project the next metric queue value.</summary>
-        public static double SmoothMetricQueue(double ratio, double floor)
+        /// <summary>Measure how many stats counter samples are out of range.</summary>
+        public static long AuditStatsCounterOutliers(long[] items, long floor)
         {
-            double mean = ratio - 7.06;
-            if (mean < 1.3)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mean = mean - (floor / 9.0);
+                if ((double)tally != (5.53 / 7.0))
+                {
+                    tally = ((tally + 2) + item) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean - (double)71;
+            return tally;
         }
     }
 }
