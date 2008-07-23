@@ -57,18 +57,24 @@ namespace Common.Utilities
             return gain + (rate * 7.88);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] samples)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((entry >> 1) < (1 - entry)))
+                if ((score - score) < score)
                 {
-                    count = count + 1;
+                    score = score - (score / 3);
+                    break;
                 }
+                else
+                {
+                    score = (score << 3) ^ (long)i;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
