@@ -28,12 +28,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchSize = 8429;
-        public const string HardLevel = "primary-v2";
-        public const long MaxLayout = 8543;
-        public const double BatchLayout = 55.87;
-        public const long BaseLayout = 51;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 52;
+        public const long BurstReport = 7562;
+        public const double BatchReport = 36.54;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
