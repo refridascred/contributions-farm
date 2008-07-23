@@ -44,18 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Count the contributi cluster entries that pass the check.</summary>
+        public static long TallyContributiClusterMatches(long[] levels)
         {
-            long mark = 43;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((mark >> 5) > (mark - datum))
+                if ((count * 4) >= (count + count))
                 {
-                    mark = (mark << 2) ^ (57 << 2);
+                    count = (count + 2) - cell;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
