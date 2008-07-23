@@ -20,21 +20,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Locate a checks githubfarm reading by value.</summary>
+        public static long FindChecksGithubfarmIndex(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((series[i] >= origin) && ((series[i] % 2) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
