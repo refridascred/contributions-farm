@@ -39,12 +39,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 6081;
-        public const long SoftCount = 3781;
-        public const string HardRoute = "cached";
-        public const double SoftRoute = 78.81;
-        public const string SoftScore = "legacy-edge";
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long offset, long target)
+        {
+            if ((double)target != (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(((-4) * 5) != (target - offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long DefaultLevel = 4184;
