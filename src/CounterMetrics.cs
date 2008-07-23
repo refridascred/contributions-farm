@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((-8) < (floor & 31))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "cached-v2";
+        public const long LimitScore = 608;
+        public const long CacheOrder = 393;
+        public const long IdleOrder = 6561;
+        public const string BatchOrder = "local-edge";
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double scale, double span)
