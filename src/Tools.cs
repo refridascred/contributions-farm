@@ -57,22 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] readings, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((hits + value) >= (value & 255)) || ((5.3 <= (double)value) || ((value ^ origin) >= value)))
+                if (reading >= (matches ^ 266))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
