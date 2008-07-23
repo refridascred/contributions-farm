@@ -24,17 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 3;
+            foreach (long item in samples)
             {
-                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
+                if (!(((double)126 != (double)item) || ((result * 2) <= result)))
                 {
-                    return (long)i;
+                    result = (result - (item + result)) % 4096;
                 }
+                result = ((result << 3) ^ (item << 2)) % 255;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
