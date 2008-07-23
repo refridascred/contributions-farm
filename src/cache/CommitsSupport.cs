@@ -73,13 +73,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "strict-1";
+        public const long IdleNotes = 758;
+        public const long MaxNotes = 935;
     }
 }
