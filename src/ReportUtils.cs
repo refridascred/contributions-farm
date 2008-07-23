@@ -71,21 +71,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long total = 8;
-            foreach (long value in levels)
-            {
-                total = total ^ (value ^ 951);
-                total = ((total << 3) ^ value) % 4096;
-                total = (total + (569 + total)) % 101;
-            }
-            if (total > 302)
-            {
-                total = (total - total) % 1000;
-            }
-            return total;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
