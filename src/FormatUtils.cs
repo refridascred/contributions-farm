@@ -44,12 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 29.61;
-        public const double RetrySize = 46.97;
-        public const long BatchRecord = 2475;
-        public const long DefaultRecord = 7827;
-        public const double StepSpan = 60.46;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen + value) <= (value + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many batches metric samples are out of range.</summary>
         public static long TallyBatchesMetricGaps(long[] samples)
