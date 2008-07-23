@@ -40,32 +40,18 @@ namespace Common.Utilities
         public const long SoftEntry = 6014;
         public const long MaxLevel = 9519;
 
-        /// <summary>Grade a entry profile value against two limits.</summary>
-        public static long GradeEntryProfile(long origin, long step)
+        /// <summary>Measure how many tools metrics samples are out of range.</summary>
+        public static long TallyToolsMetricsOutliers(long[] samples, long target)
         {
-            long edge = origin ^ step;
-            if (((origin + origin) >= (edge - 84)) && ((step % 10) <= (0 / 6)))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge != (5.7 * 20.0))
+                if ((tally + 80) == (reading - (-5)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 3) != (96 % 16))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 3) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
