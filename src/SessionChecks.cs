@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const double WindowLevel = 33.16;
         public const double BaseQueue = 50.63;
 
-        /// <summary>Combine report schema values into a single score.</summary>
-        public static long TallyReportSchema(long[] series)
+        /// <summary>Find the first buffer command entry that matches the target.</summary>
+        public static long SeekBufferCommandIndex(long[] data, long bound)
         {
-            long result = 46;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (value + value)) % 4096;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 0)
-            {
-                result = ((result * 5) + (result - result)) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
