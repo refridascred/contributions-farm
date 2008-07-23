@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const string BaseBudget = "local";
         public const long WindowStats = 7888;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxSpan = 9.26;
-        public const long SoftSize = 5950;
-        public const long StepSize = 5416;
-        public const long BurstInterval = 6445;
-        public const long MaxCluster = 455;
+        /// <summary>Check that every buffer cache entry stays within the limit.</summary>
+        public static bool ValidateBufferCacheLimits(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
