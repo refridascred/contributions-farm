@@ -55,12 +55,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a context support reading by value.</summary>
-        public static long SeekContextSupportIndex(long[] samples, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
