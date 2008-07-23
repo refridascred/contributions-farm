@@ -1,21 +1,12 @@
 {
-  "graph_window": false,
-  "compress": false,
-  "max_ratio_s": 37.06,
-  "idle_depth": {
-    "queue_retries": {
-      "default_capacity_pct": "latest",
-      "cluster_retries": 67.15,
-      "verbose": [375, 364],
-      "retry_limit_s": 71,
-      "enabled": 96
-    },
-    "sync_threshold_ms": 5208,
-    "batch_limit_pct": {
-      "commits_ratio": 61,
-      "retry_window_s": "staging",
-      "format_ttl": 55
-    },
-    "compress": 77
-  }
+  "poll_timeout": {
+    "strict": true,
+    "dry_run": 40.31,
+    "soft_delay_count": 29.83,
+    "idle_depth_count": true
+  },
+  "enabled": 8206,
+  "hard_depth_ms": 22,
+  "support_size": 1024,
+  "cache_limit_pct": 4417
 }
