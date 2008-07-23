@@ -65,12 +65,25 @@ namespace Common.Utilities
         public const string StepContributi = "fallback-edge";
         public const long BaseContributi = 9921;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long floor, long limit)
         {
-            Stale,
-            Done,
-            Pending,
+            long cur = floor - limit;
+            if (((double)cur < (9.19 + 4.98)) || ((limit ^ cur) > 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if (cur <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
