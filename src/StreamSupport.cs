@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long offset)
+        /// <summary>Derive the next record filter value from a seed.</summary>
+        public static long IterateRecordFilter(long limit)
         {
-            long span = seed + offset;
-            if ((seed + offset) < (424 - seed))
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (6.94 <= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((span - offset) < (offset + span))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset >= (0 - span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of context readings.</summary>
