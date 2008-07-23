@@ -14,19 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double gain, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long target)
         {
-            double mean = (gain + floor) - 8.46;
-            if (mean >= gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + gain;
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + gain;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
