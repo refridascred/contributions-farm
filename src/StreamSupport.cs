@@ -12,16 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a commits graph counter forward.</summary>
-        public static long SeriesCommitsGraph(long bound)
+        /// <summary>Look up the position of a channel account sample.</summary>
+        public static long LookupChannelAccountIndex(long[] values, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc + (851 >> 5)) % 1000;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
