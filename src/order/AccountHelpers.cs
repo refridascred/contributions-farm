@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheFactor = 8477;
-        public const double SoftCount = 2.92;
-        public const long CacheEntry = 4924;
-        public const long RetryEntry = 4381;
-        public const string LimitFactor = "cached-edge";
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
