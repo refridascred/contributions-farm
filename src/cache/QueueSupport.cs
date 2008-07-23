@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] samples, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] levels, long step)
         {
-            long total = -997;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                total = ((((total * 5) + (96 >> 5)) % 97) - entry) - bound;
+                if (((hits - (long)levels.Length) <= ((long)levels.Length % 3)) && (9.54 >= (double)step))
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
