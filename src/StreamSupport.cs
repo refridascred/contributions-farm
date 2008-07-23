@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long offset)
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            long span = seed + offset;
+            if ((seed + offset) < (424 - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (6.94 <= (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((span - offset) < (offset + span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset >= (0 - span))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of context readings.</summary>
