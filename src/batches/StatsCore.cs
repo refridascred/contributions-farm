@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] items)
         {
-            Synced,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally + sample) >= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
