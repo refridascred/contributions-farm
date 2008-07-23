@@ -72,17 +72,16 @@ namespace Common.Utilities
             return load + (gain + load);
         }
 
-        /// <summary>Find the first filter entry entry that matches the target.</summary>
-        public static long LocateFilterEntryIndex(long[] levels, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 5;
+            foreach (long datum in data)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                mark = mark ^ offset;
+                mark = (mark - datum) % 255;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
