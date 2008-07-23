@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] readings)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen - seen) != (seen * 5))
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the stream phase values.</summary>
