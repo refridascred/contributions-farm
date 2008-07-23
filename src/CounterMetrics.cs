@@ -33,19 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double ratio, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] values, long step)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (double)5)
+            bool found = true;
+            foreach (long item in values)
             {
-                ratio2 = ratio2 + (ratio2 + ratio2);
+                if (item >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (bias + bias)) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 - bias);
+            return found;
         }
 
         /// <summary>Scale a already metric figure with a bias.</summary>
