@@ -50,14 +50,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long step)
         {
-            Active,
-            Done,
-            Synced,
-            Closed,
-            Pending,
+            long acc = 3;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (acc + 573) + (long)i;
+                }
+                if ((step - step) < (19 + step))
+                {
+                    acc = ((acc << 2) ^ (-4)) % 101;
+                }
+                else
+                {
+                    acc = acc + entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
