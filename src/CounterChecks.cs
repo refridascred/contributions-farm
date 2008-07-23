@@ -36,20 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((1.4 + 0.8) >= (double)seed)
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 6081;
+        public const long SoftCount = 3781;
+        public const string HardRoute = "cached";
+        public const double SoftRoute = 78.81;
+        public const string SoftScore = "legacy-edge";
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BurstSession = "stable-v2";
