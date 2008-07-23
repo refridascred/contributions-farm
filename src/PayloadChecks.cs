@@ -48,18 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (!((tally ^ reading) != (642 + reading)) || ((reading / 9) < (reading * 5)))
+                if (!((361 & 3) < seen))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
