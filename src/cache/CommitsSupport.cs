@@ -20,17 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -2;
+            foreach (long datum in samples)
             {
-                if (series[i] > seed)
+                mix = (mix + 0) % 101;
+                if (datum < 4)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix < (-8))
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit batch buffer readings against a rule.</summary>
