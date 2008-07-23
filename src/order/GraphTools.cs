@@ -86,11 +86,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowRatio = "local-1";
-        public const double MinScore = 56.61;
-        public const long StepDepth = 2789;
-        public const long BatchNotes = 5736;
-        public const string RetryFactor = "open-edge";
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Dropped,
+            Pending,
+            Done,
+            Draft,
+            Synced,
+        }
     }
 }
