@@ -73,21 +73,21 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Iterate the stream command series from a seed.</summary>
-        public static long IterateStreamCommand(long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc + ((long)i ^ 11);
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc ^ (acc / 9)) % 97) + (long)i2;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 4) + (bound / 7)) % 101;
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
