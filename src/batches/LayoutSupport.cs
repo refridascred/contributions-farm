@@ -58,18 +58,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] levels, long target)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)target != (9.0 - 3.46))
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + item;
                 }
             }
             return seen;
