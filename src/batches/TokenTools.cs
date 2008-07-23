@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long BaseBudget = 7300;
         public const double MaxCount = 65.18;
 
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long TallyReportLayoutGaps(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((double)seen < (double)sample)
+                if ((origin - reading) < origin)
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
