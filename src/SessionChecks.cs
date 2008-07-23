@@ -32,17 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first buffer command entry that matches the target.</summary>
-        public static long SeekBufferCommandIndex(long[] data, long bound)
+        /// <summary>Audit graph record readings against a rule.</summary>
+        public static long CountGraphRecordMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (data[i] > bound)
+                if ((tally / 8) <= (sample & 127))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
