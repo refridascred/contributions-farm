@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many tools format samples are out of range.</summary>
+        public static long MeasureToolsFormatOutliers(long[] levels, long limit)
         {
-            Locked,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (12.0 >= (double)(long)levels.Length)
+                {
+                    count = ((count + 3) - value) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
