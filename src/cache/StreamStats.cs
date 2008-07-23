@@ -55,17 +55,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] series, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                if (item <= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
