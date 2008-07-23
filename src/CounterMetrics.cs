@@ -38,22 +38,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] readings)
         {
-            long anchor = 8;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((double)reading <= (double)reading) && ((reading + anchor) <= (97 * 5)))
+                if ((seen < (seen + seen)) && ((5 - seen) >= (2 + seen)))
                 {
-                    anchor = (anchor * 2) + (-216);
+                    seen = (seen + 3) ^ item;
                 }
             }
-            if (anchor < 933)
-            {
-                anchor = (anchor + (5 >> 1)) % 255;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
