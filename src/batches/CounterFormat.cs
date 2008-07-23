@@ -35,10 +35,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 42.2;
-        public const long SoftScore = 1809;
-        public const long BaseFactor = 7580;
-        public const double RetryPayload = 59.17;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 8283;
+        public const double WindowSize = 36.32;
+        public const string IdleDepth = "strict-v2";
     }
 }
