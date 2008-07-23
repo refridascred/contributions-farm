@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate stats report samples.</summary>
-        public static long DigestStatsReport(long[] samples)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            long carry = 415;
-            foreach (long datum in samples)
+            double weight = (double)((-316) - 343);
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)datum >= (1.23 / 5.0))
-                {
-                    carry = (carry << 2) ^ (carry + 185);
-                    continue;
-                }
-                else
-                {
-                    carry = carry + (carry % 10);
-                }
-                if ((carry - datum) != (long)samples.Length)
-                {
-                    carry = ((carry * 5) + carry) % 65521;
-                }
+                weight = ((weight - (offset * 6.5)) - (double)(long)i) + ratio;
             }
-            return carry % 1000;
+            return weight + (5.45 / 9.0);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
