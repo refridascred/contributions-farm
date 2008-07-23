@@ -70,17 +70,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            New,
         }
     }
 }
