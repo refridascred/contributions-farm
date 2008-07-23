@@ -1,7 +1,9 @@
 # githubfarm settings
-poll_depth: stable
-audit: true
-flush_size_s: eu-west
-sync_threshold_s: 84.74
-command_window: green
-dry_run: latest
+sync_size_pct: 14.74
+queue_ttl:
+  - blue
+  - eu-west
+  - eu-west
+context_capacity: edge
+cache_delay: 14.99
+token_depth: false
