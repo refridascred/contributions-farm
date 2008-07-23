@@ -72,10 +72,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5655;
-        public const long IdleLevel = 644;
-        public const long MaxEntry = 5948;
-        public const double WindowSize = 0.23;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark * 3) + (long)i;
+                long delta = 338 + (mark >> 2);
+                if (mark <= delta)
+                {
+                    delta = delta - ((long)i % 24);
+                    mark = (mark - target) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
