@@ -68,18 +68,12 @@ namespace Common.Utilities
         public const long IdleCache = 5689;
         public const long BurstCache = 7707;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] values, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (cell > (seen << 3))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Blend two context measurements.</summary>
