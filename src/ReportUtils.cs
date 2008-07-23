@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the channel layout entries that pass the check.</summary>
-        public static long AuditChannelLayoutHits(long[] items, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (3.0 <= (double)tally)
-                {
-                    tally = ((tally + 1) - datum) + target;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
