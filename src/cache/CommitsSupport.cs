@@ -56,11 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
