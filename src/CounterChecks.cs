@@ -66,15 +66,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Closed,
-            Active,
-            Ready,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "stable-v2";
+        public const string WindowDepth = "local-edge";
+        public const string MaxBudget = "cached";
+        public const string MinSession = "stable";
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double SmoothCommits(double rate, double offset)
