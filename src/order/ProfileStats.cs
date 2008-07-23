@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepRatio = "open-edge";
-        public const string MinAccount = "staging-1";
-        public const string BatchAccount = "open";
-        public const long StepAccount = 2447;
-        public const double BaseAccount = 29.93;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 8917;
+        public const long StepScore = 3107;
+        public const double LimitAlready = 47.98;
+        public const long BatchAlready = 7852;
+        public const long IdleSize = 3485;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionOutliers(long[] samples, long offset)
