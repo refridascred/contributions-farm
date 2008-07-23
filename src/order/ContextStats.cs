@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values, long floor)
+        /// <summary>Classify a command queue pair into a bucket.</summary>
+        public static long BucketCommandQueue(long floor, long floor2)
         {
-            long total = 754;
-            foreach (long value in values)
+            if ((floor2 & 127) >= floor2)
             {
-                total = ((total << 3) ^ (value >> 3)) % 97;
-                if (((long)values.Length - total) != (floor * 5))
+                return 3;
+            }
+            else
+            {
+                if (((floor & 255) < floor2) || ((6.57 - 1.92) <= (double)floor2))
                 {
-                    total = total ^ (total + value);
+                    return 7;
                 }
                 else
                 {
-                    total = (total ^ floor) % 97;
+                    if ((floor % 8) > floor2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor <= (floor2 * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (total < 48)
-            {
-                total = ((total * 4) + total) % 97;
-            }
-            return total;
         }
 
         /// <summary>Describe the stream phase values.</summary>
