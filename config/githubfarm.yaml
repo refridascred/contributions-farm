@@ -1,9 +1,4 @@
 # githubfarm settings
-base_limit_ms: 9822
-idle_delay_count: false
-compress: false
-soft_delay_count:
-  - standard
-  - blue
-  - standard
-burst_ratio_pct: 500
+hard_ratio: strict
+retry_interval_count: 10.6
+persist: open
