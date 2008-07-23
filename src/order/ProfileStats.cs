@@ -26,15 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long acc = 9;
-            foreach (long datum in items)
-            {
-                acc = (((acc - acc) % 1000) - datum) - origin;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the session phase values.</summary>
