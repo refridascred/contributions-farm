@@ -58,16 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (sum - (long)i)) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public double Mode { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
