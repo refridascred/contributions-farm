@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long MaxContext = 1727;
         public const long WindowWidth = 7317;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the stream graph entries that pass the check.</summary>
+        public static long AuditStreamGraphOutliers(long[] data, long target)
         {
-            Draft,
-            Closed,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((1.59 / 2.0) > (double)seen)
+                {
+                    seen = ((seen + 2) - entry) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
