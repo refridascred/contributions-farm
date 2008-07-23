@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 5566;
-        public const string BaseAccount = "standard-edge";
-        public const long MinAccount = 3060;
-        public const string BaseWidth = "alpha-edge";
+        /// <summary>Measure how many cluster route samples are out of range.</summary>
+        public static long MeasureClusterRouteGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((((7.2 * 10.0) <= (double)cell) || ((17.0 / 8.0) < (double)seen)) || ((seen & 63) == (long)series.Length))
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] values, long limit)
