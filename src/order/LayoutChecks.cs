@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string BurstSession = "standard-1";
         public const long WindowSession = 8512;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 1706;
-        public const long BurstLevel = 2662;
-        public const long LimitBatches = 8272;
-        public const double StepSpan = 37.07;
-        public const long IdleBatches = 6060;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
+        {
+            long total = 41;
+            foreach (long datum in readings)
+            {
+                total = (((total << 3) ^ (total + 54)) % 97) - datum;
+            }
+            return total;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsBounds(long[] values, long seed)
