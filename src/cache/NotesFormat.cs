@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 3934;
+        public const long WindowRoute = 9670;
+        public const double BaseRoute = 40.26;
+        public const long CacheRoute = 2829;
+        public const long LimitRoute = 5393;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LocateContributiIndex(long[] samples, long limit)
