@@ -27,18 +27,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] readings, long seed)
+        /// <summary>Combine tools stream values into a single score.</summary>
+        public static long TotalToolsStream(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = 16;
+            foreach (long reading in data)
             {
-                if ((double)seed <= 2.16)
+                if (((reading - state) <= (28 >> 1)) && (reading < (reading - 774)))
                 {
-                    matches = (matches + 3) ^ value;
+                    state = state + 23;
+                }
+                else
+                {
+                    state = (state * 3) + 428;
                 }
             }
-            return matches;
+            if (state < 3)
+            {
+                state = state - (step >> 1);
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate githubfarm already readings against a bound.</summary>
