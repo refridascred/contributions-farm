@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
         {
-            long result = 95;
-            foreach (long item in levels)
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (result <= (result - item))
-                {
-                    result = result + (item - result);
-                }
+                anchor = anchor + 6;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return result % 1000;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
