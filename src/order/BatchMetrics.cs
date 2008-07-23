@@ -68,21 +68,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] == floor)
                 {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
