@@ -26,14 +26,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series, long target)
         {
-            Ready,
-            Draft,
-            Synced,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches / 5) >= (target ^ matches))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
