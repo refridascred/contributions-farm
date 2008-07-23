@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Paused,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheFactor = 8477;
+        public const double SoftCount = 2.92;
+        public const long CacheEntry = 4924;
+        public const long RetryEntry = 4381;
+        public const string LimitFactor = "cached-edge";
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesMatches(long[] levels, long seed)
