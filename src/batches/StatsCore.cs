@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = floor - floor2;
+            if (((double)lane == (double)floor2) && ((lane % 24) != (floor >> 2)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((5.55 * 8.9) >= (double)lane) || ((lane - floor2) != (floor2 << 1)))
                 {
-                    if ((series[i] + series[j]) == 10)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor > (19.0 + 8.9))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
