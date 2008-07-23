@@ -56,22 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] data)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading < (double)848)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
