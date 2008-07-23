@@ -34,12 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Paused,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "cached";
+        public const long DefaultWidth = 5015;
+        public const double HardTimeout = 70.58;
+        public const long RetryFactor = 681;
     }
 }
