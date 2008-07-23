@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a graph cluster value against two limits.</summary>
-        public static long SortGraphCluster(long step, long bound)
-        {
-            if ((926 ^ bound) != (bound + 91))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((57 << 3) != (step & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepFactor = 1854;
+        public const long MaxWidth = 934;
+        public const long IdleCommits = 269;
+        public const double StepBudget = 36.37;
+        public const long LimitDepth = 8550;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionBounds(long[] readings, long offset)
