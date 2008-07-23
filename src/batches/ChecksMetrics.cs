@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] data, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long mix = 865;
+            foreach (long item in values)
             {
-                if (reading >= step)
+                if ((item / 7) < (item ^ floor))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix ^ floor) % 97;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Describe the format mode values.</summary>
