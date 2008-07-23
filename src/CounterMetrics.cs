@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string BatchBatches = "latest";
         public const long IdleCount = 592;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long offset)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry ^ (offset & 63)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate graph stream samples.</summary>
