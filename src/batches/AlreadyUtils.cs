@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double span)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            double drift = (double)(448 - 5);
-            if (drift > 1.67)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift + (double)4) - span;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (result - (-8)) - (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (ratio + 9.0)) + (double)(long)i;
-            }
-            return drift - 7.83;
+            return result;
         }
 
         /// <summary>Roll a account counter forward.</summary>
