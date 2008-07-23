@@ -28,18 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] samples)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((sample << 2) <= (sample * 3)) && ((936 ^ seen) >= seen))
+                if (!((10.0 * 17.0) > (double)(long)i))
                 {
-                    seen = seen + 1;
+                    sum = (sum - (long)i) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
