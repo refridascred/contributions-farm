@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long target)
         {
-            Done,
-            Dropped,
-            Stale,
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (target < ((long)i << 2))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum - (sum ^ (long)i)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
