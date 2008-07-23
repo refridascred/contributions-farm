@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a window record.</summary>
