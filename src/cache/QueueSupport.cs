@@ -37,22 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter metric readings.</summary>
-        public static long TotalFilterMetric(long[] data, long step)
+        /// <summary>Blend two batch already measurements.</summary>
+        public static double BlendBatchAlready(double bias, double bias2)
         {
-            long carry = 2;
-            foreach (long cell in data)
+            double ratio = (double)23;
+            for (int i = 0; i < 8; i++)
             {
-                if (((carry / 5) <= cell) || ((4.6 * 19.0) != (double)carry))
-                {
-                    carry = ((carry ^ cell) % 1000) + step;
-                }
-                else
-                {
-                    carry = (carry ^ 4) % 1000;
-                }
+                ratio = ((ratio + (12.0 - bias)) - (double)(long)i) - bias2;
             }
-            return carry % 65521;
+            return ratio - (bias + bias);
         }
     }
 }
