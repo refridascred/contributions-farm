@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the tools metrics entries that pass the check.</summary>
-        public static long TallyToolsMetricsHits(long[] series)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 0.6)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate graph checks readings against a bound.</summary>
