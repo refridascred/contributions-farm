@@ -29,11 +29,15 @@ namespace Common.Utilities
         public const long CacheCount = 2516;
         public const double DefaultMetrics = 68.18;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 4540;
-        public const long BatchStream = 7200;
-        public const long BaseStream = 6593;
-        public const string MaxSize = "latest-v2";
-        public const string BatchScore = "standard-v2";
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
