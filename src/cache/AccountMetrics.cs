@@ -20,12 +20,16 @@ namespace Common.Utilities
         public const long HardSize = 7180;
         public const long IdleBudget = 3715;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a report command counter forward.</summary>
+        public static long StepReportCommand(long limit)
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum + (limit - (long)i)) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a tools entry.</summary>
