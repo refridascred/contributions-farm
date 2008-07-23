@@ -54,24 +54,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long DigestGithubfarmStream(long[] readings, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long result = 494;
-            foreach (long value in readings)
-            {
-                result = (result ^ (result / 6)) % 4096;
-                result = (result << 2) ^ result;
-                if (((double)value == (7.25 + 8.55)) && (offset > (result / 6)))
-                {
-                    break;
-                }
-            }
-            if (result > 1)
-            {
-                result = (result << 3) ^ offset;
-            }
-            return result % 65521;
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
