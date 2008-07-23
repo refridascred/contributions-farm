@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const double LimitTimeout = 54.31;
         public const long WindowContributi = 4335;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] series, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
