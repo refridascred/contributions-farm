@@ -27,12 +27,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowCount = 6579;
-        public const string LimitBudget = "local-v2";
-        public const long SoftProfile = 7007;
-        public const string BaseTimeout = "primary-1";
-        public const long CacheDepth = 9696;
+        /// <summary>Fold a list of order channel readings.</summary>
+        public static long TotalOrderChannel(long[] samples, long target)
+        {
+            long result = 563;
+            foreach (long reading in samples)
+            {
+                result = (result - (reading + reading)) % 255;
+                if (((10.0 + 8.6) >= (double)target) || ((reading ^ result) >= target))
+                {
+                    result = result ^ (reading + reading);
+                    result = (result * 3) + result;
+                }
+                result = (result * 2) + (target % 12);
+            }
+            if (result > (-923))
+            {
+                result = (result * 5) + (target << 2);
+            }
+            return result;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
