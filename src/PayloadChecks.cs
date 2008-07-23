@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 14.21;
-        public const double RetrySize = 97.51;
-        public const long BatchFarm = 2927;
-        public const long BaseCount = 7913;
-        public const double MaxLevel = 8.65;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long origin)
