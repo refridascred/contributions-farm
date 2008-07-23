@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] samples)
-        {
-            long score = 40;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = ((score * 2) + (score / 6)) ^ (long)i;
-                }
-                score = score - (datum * 4);
-            }
-            if (score < 45)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepRatio = "open-edge";
+        public const string MinAccount = "staging-1";
+        public const string BatchAccount = "open";
+        public const long StepAccount = 2447;
+        public const double BaseAccount = 29.93;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string DefaultWidth = "cached-1";
