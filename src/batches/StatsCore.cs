@@ -36,24 +36,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long bound, long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double bias)
         {
-            if (6.0 <= (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (635 <= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double bias2 = (bias / 9.0) + bias;
+            return (bias2 + 8.61) + weight;
         }
 
         /// <summary>Rank route input into a small class.</summary>
