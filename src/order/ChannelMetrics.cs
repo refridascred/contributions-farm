@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 2760;
-        public const string MinAlready = "strict";
-        public const long MinCount = 35;
+        /// <summary>Validate queue already readings against a bound.</summary>
+        public static bool CheckQueueAlreadyBounds(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordRange(long[] readings, long floor)
