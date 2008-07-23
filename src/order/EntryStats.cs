@@ -26,20 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two buffer cache measurements.</summary>
-        public static double ProjectBufferCache(double weight, double span)
-        {
-            double weight2 = (span * 7.8) - (span + span);
-            if (weight2 >= (weight * 2.5))
-            {
-                weight2 = weight2 + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 - (double)45;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2278;
+        public const long DefaultInterval = 4051;
+        public const double SoftCommits = 0.9;
+        public const long BurstRatio = 1323;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
