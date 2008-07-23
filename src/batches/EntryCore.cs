@@ -53,17 +53,10 @@ namespace Common.Utilities
             return rate - (ratio - ratio);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 532;
+        public const double MinReport = 65.6;
+        public const string StepReport = "stable-v2";
+        public const long HardReport = 2963;
     }
 }
