@@ -43,23 +43,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double gain, double span)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            double mean = span;
-            if (mean <= (double)624)
+            long acc = 562;
+            foreach (long item in levels)
             {
-                mean = (mean - 3.6) - gain;
+                acc = acc ^ (item - 2);
+                if ((item / 2) != (item >> 2))
+                {
+                    acc = ((acc << 3) ^ (acc & 127)) % 101;
+                }
+                if (acc <= (-3))
+                {
+                    break;
+                }
             }
-            else
+            if (acc > 4)
             {
-                mean = mean - (mean * 3.8);
+                acc = (acc + (19 + acc)) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 11.0) + (double)(long)i;
-            }
-            return mean + (double)552;
+            return acc;
         }
     }
 }
