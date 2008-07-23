@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 13.33;
-        public const double IdleSchema = 93.62;
-        public const string StepSchema = "local-v2";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((carry + bound) != (carry >> 3)) || (carry < ((long)i % 8)))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] values)
