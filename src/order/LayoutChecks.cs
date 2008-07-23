@@ -12,23 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((bound > ((long)i + mark)) && ((6.0 - 8.48) != (double)mark))
+                if (sample < seed)
                 {
-                    mark = mark ^ bound;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the support status values.</summary>
