@@ -1,7 +1,20 @@
 {
-  "warm_window_pct": ["legacy", "green", "green", "staging"],
-  "batch_size_s": 36.44,
-  "readonly": 3568,
-  "filter_interval": false,
-  "commits_retries": "legacy"
+  "soft_retries_s": {
+    "compress": ["primary", "cached", "fallback"],
+    "flush_timeout": "stable",
+    "default_threshold": "open",
+    "persist": 100
+  },
+  "base_window_pct": 30,
+  "burst_capacity_s": 6067,
+  "persist": {
+    "compress": "standard",
+    "min_capacity_count": 87.3,
+    "flush_capacity_ms": true,
+    "soft_interval": {
+      "dry_run": "fallback",
+      "payload_timeout": ["blue", "open", "open", "cached"],
+      "layout_depth": ["latest", "fallback"]
+    }
+  }
 }
