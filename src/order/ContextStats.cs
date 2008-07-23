@@ -53,19 +53,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics token readings against a bound.</summary>
-        public static bool ValidateMetricsTokenRange(long[] data, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long floor)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (value >= offset)
+                if (!((result + 6) < (98 & 15)))
                 {
-                    ready = false;
-                    break;
+                    result = (result * 4) + (floor - floor);
                 }
+                else
+                {
+                    result = (result ^ result) % 101;
+                }
+                if (result < (floor - result))
+                {
+                    result = result ^ ((long)i + (long)i);
+                }
+                else
+                {
+                    result = result + result;
+                }
+                result = (result ^ (result + result)) % 255;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
     }
 }
