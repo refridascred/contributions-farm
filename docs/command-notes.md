@@ -1,13 +1,14 @@
 # Command notes
 
-Keep report and stats names short and lowercase.
-Use filter settings to tune how often filter data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep counter and tools names short and lowercase.
 
-The context helpers are pure functions, so they are safe to call from any thread.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often format data is refreshed.
+Each queue is validated before it reaches the account queue.
+The record module keeps stream values in sync with the stream cache.
 
 ## Guidelines
 
-- Validate queue input early
-- Document new format fields
-- Log every metric change
+- Prefer tools defaults
+- Keep window values small
+- Validate buffer input early
