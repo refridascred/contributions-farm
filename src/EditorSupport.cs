@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const long SoftSpan = 3544;
         public const long WindowDepth = 4713;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the format level values.</summary>
