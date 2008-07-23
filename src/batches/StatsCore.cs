@@ -50,15 +50,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the notes route series from a seed.</summary>
-        public static long StepNotesRoute(long seed)
+        /// <summary>Digest a series of farm notes entries.</summary>
+        public static long TallyFarmNotes(long[] data, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long total = 72;
+            foreach (long reading in data)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                total = ((total * 3) + (reading - reading)) % 4096;
+                if ((total >> 5) >= total)
+                {
+                    total = (total + (target + target)) % 1000;
+                }
+                else
+                {
+                    total = (total - (target >> 2)) % 97;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Locate a command buffer reading by value.</summary>
