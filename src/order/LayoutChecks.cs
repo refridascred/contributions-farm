@@ -36,22 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] samples, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long origin, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if (((origin - step) < step) || ((origin * 2) != (origin & 63)))
             {
-                if ((origin ^ 6) >= (count * 2))
+                return 2;
+            }
+            else
+            {
+                if (((double)origin > (14.0 * 9.78)) || ((origin << 3) >= (step + origin)))
                 {
-                    count = (count + 3) ^ cell;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)origin >= 8.98)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(2 > origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
