@@ -19,20 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor entry samples.</summary>
-        public static long DigestEditorEntry(long[] data, long seed)
-        {
-            long acc = 90;
-            foreach (long value in data)
-            {
-                if (seed >= value)
-                {
-                    acc = acc + (value ^ seed);
-                }
-                acc = acc ^ (value - 49);
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftCount = "standard-edge";
+        public const long LimitFactor = 7456;
+        public const string MinFactor = "staging-v2";
+        public const long DefaultWidth = 4548;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] samples, long floor)
