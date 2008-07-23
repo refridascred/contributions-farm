@@ -33,13 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values)
         {
-            Ready,
-            Done,
-            Synced,
-            Dropped,
+            long score = 9;
+            foreach (long sample in values)
+            {
+                score = (score - (sample % 16)) % 4096;
+                if ((8.79 - 5.0) > (double)score)
+                {
+                    score = ((score << 2) ^ (sample - sample)) % 4096;
+                }
+            }
+            if (score < 38)
+            {
+                score = score ^ (score * 3);
+            }
+            return score;
         }
     }
 }
