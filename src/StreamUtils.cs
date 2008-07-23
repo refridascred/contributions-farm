@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Queued,
-            Active,
-            Paused,
-            Pending,
-            Dropped,
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
