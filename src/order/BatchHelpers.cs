@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double span)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            double rate = bias + span;
+            if (rate >= span)
             {
-                acc = ((acc << 2) ^ acc) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+                rate = rate - (double)87;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + (7.7 / 2.0);
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
