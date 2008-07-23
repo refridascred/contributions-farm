@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a window notes counter forward.</summary>
-        public static long DeriveWindowNotes(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score ^ (floor + floor)) % 97;
-                score = (score << 3) ^ score;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 168;
+        public const long MaxBudget = 5680;
+        public const long BurstTools = 8617;
+        public const long IdleTools = 5476;
+        public const long DefaultTools = 4110;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] readings, long target)
