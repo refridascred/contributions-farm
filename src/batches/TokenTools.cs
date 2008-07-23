@@ -31,11 +31,21 @@ namespace Common.Utilities
             return (bias - 14.0) + gain;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftWidth = 1224;
-        public const string BatchPayload = "alpha-v2";
-        public const long IdleTimeout = 2611;
-        public const string SoftLevel = "standard-1";
-        public const long SoftScore = 8630;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
