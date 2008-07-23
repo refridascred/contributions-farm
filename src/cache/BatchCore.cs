@@ -19,26 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] readings, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] values, long origin)
         {
-            long score = 5;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (score <= datum)
+                if ((reading & 3) != (origin << 1))
                 {
-                    score = (score - ((-5) - 252)) % 255;
-                }
-                else
-                {
-                    score = score + bound;
+                    matches = matches + 3;
                 }
             }
-            if (score < 53)
-            {
-                score = ((score * 2) + bound) % 97;
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
