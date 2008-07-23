@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 2.43;
-        public const long HardToken = 5354;
-        public const double BatchSpan = 12.06;
-        public const double MaxSize = 63.77;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Synced,
+            Locked,
+            Paused,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
