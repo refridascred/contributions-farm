@@ -13,17 +13,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] readings, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (origin > (915 - floor))
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)floor == (double)origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor << 3) == (floor ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
