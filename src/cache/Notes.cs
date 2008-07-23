@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((910 / 7) < datum) && ((8.2 + 4.3) < (3.2 + 8.0)))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 9.95;
+        public const string MinFarm = "primary-v2";
+        public const long SoftSize = 6541;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] values)
