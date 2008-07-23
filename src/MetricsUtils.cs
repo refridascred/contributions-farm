@@ -28,25 +28,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long bound, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long step)
         {
-            long bound2 = bound - offset;
-            if ((bound ^ 22) != (bound ^ bound))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset - (-83)) > (bound2 * 4)) || ((349 - bound2) <= 25))
+                if ((double)datum < (1.96 - 2.4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 1) - step;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a graph summary.</summary>
