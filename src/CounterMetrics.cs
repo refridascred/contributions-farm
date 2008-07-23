@@ -33,13 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
             public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a already metric figure with a bias.</summary>
