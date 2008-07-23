@@ -31,14 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] values, long bound)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Paused,
-            Active,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
