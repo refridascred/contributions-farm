@@ -36,10 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 6723;
-        public const double StepLevel = 84.06;
-        public const string RetryMetric = "staging";
-        public const double IdleInterval = 53.53;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double bias, double floor)
+        {
+            double load = floor;
+            if (load >= (bias - floor))
+            {
+                load = load + load;
+            }
+            return load + (7.2 + 9.62);
+        }
     }
 }
