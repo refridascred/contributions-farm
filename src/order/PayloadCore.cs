@@ -42,10 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchInterval = 77.66;
-        public const long SoftCount = 9112;
-        public const double MaxCount = 26.45;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((origin * 4) >= seen) || ((seen % 10) < ((-622) - item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
