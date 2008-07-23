@@ -1,11 +1,19 @@
 {
-  "soft_ttl": "cached",
-  "audit": "edge",
-  "max_limit": {
-    "sync_interval": "stable",
-    "min_threshold": "latest",
-    "persist": false,
-    "max_window_ms": [61, 415]
+  "persist": ["primary", "blue"],
+  "poll_size_ms": [309, 77, 221],
+  "cache_ratio_pct": {
+    "burst_threshold_count": [58, 46, 454],
+    "warm_capacity_count": ["eu-west", "fallback", "stable", "primary"],
+    "batch_threshold": 100,
+    "farm_ratio": false,
+    "persist": "staging",
+    "verbose": {
+      "max_limit_count": 59.84,
+      "strict": "strict",
+      "warm_threshold": [482, 349]
+    }
   },
-  "warm_delay_ms": [460, 375, 456]
+  "poll_threshold": 49.38,
+  "stats_capacity": 2523,
+  "readonly": 9512
 }
