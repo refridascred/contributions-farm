@@ -42,11 +42,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 216;
-        public const long WindowBudget = 961;
-        public const long SoftSpan = 5239;
-        public const string SoftRecord = "primary";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples, long floor)
+        {
+            long acc = 90;
+            foreach (long reading in samples)
+            {
+                if ((double)acc == (double)reading)
+                {
+                    acc = (acc * 5) + (310 - floor);
+                }
+            }
+            if (acc < 39)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double AdjustEditor(double scale, double bias)
