@@ -1,6 +1,8 @@
-id,token,state,active
-1,36.0,90.99,631
-2,60.76,fallback,97.79
-3,736,latest,1.65
-4,865,local,891
-5,690,35.84,283
+id,owner,state,count
+1,540,503,974
+2,green,green,486
+3,592,70.3,standard
+4,867,local,62.98
+5,open,14.74,strict
+6,57.82,59.97,67.71
+7,531,local,eu-west
