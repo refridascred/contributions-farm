@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the format token series from a seed.</summary>
-        public static long IterateFormatToken(long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor - origin) < (anchor << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor << 2)) % 1000;
-                    anchor = anchor - origin;
-                    continue;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
