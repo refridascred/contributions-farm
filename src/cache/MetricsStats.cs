@@ -60,19 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph contributi samples are out of range.</summary>
-        public static long AuditGraphContributiHits(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)cell != (0.82 / 2.0)))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 2473;
+        public const double BatchScore = 62.83;
+        public const long LimitCounter = 3714;
+        public const double LimitCount = 50.74;
+        public const string WindowWidth = "local-1";
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] values)
