@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Stale,
-            Pending,
-            Closed,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryCount = "primary-v2";
+        public const long CacheFormat = 4988;
+        public const long HardSize = 846;
+        public const string LimitTimeout = "cached-edge";
+        public const long RetryFormat = 1308;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] levels)
