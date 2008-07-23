@@ -22,15 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile counter value from a seed.</summary>
-        public static long DeriveProfileCounter(long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
