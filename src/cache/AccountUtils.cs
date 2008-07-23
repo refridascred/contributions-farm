@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long target)
+        /// <summary>Locate a filter context reading by value.</summary>
+        public static long LocateFilterContextIndex(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                if (values[i] < origin)
                 {
                     return (long)i;
                 }
