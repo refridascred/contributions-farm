@@ -1,14 +1,8 @@
 {
-  "max_size_pct": "open",
-  "farm_interval": {
-    "metric_capacity": false,
-    "max_timeout_pct": 71.76,
-    "warm_depth_count": 26,
-    "base_limit": 20.86
-  },
-  "base_ratio": {
-    "channel_capacity": "staging",
-    "tools_threshold": "open",
-    "warm_depth_pct": 75.33
-  }
+  "persist": [221, 434, 448, 33],
+  "batch_ttl": "blue",
+  "strict": [106, 159, 376],
+  "soft_limit_s": 60,
+  "commits_depth": "eu-west",
+  "min_delay_ms": "fallback"
 }
