@@ -20,22 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] samples, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)step == (8.31 * 2.2))
-                {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a command info.</summary>
