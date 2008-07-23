@@ -40,18 +40,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a tools filter sample.</summary>
-        public static long LocateToolsFilterIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 5892;
+        public const long LimitLevel = 7944;
+        public const string DefaultStats = "cached-v2";
+        public const long RetryStats = 4733;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double rate, double bias)
