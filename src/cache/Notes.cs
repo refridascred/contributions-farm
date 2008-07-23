@@ -55,9 +55,13 @@ namespace Common.Utilities
             return bias + (15.0 + offset);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseScore = 2908;
-        public const long MaxWidth = 4631;
-        public const string BaseBatches = "stable-1";
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Queued,
+            Done,
+            Draft,
+            Pending,
+        }
     }
 }
