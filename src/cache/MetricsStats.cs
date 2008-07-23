@@ -23,24 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload buffer counter forward.</summary>
-        public static long RollPayloadBuffer(long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] samples, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 74;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (((44 >> 1) > (state % 8)) && (((long)samples.Length & 1) < (state << 1)))
                 {
-                    sum = (sum - (offset ^ sum)) + (long)i2;
+                    state = (((state * 3) + (item + item)) % 255) + step;
                 }
-                long tally = sum * 5;
-                if ((tally & 15) <= (484 << 3))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
