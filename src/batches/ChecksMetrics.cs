@@ -20,14 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] samples, long limit)
         {
-            Failed,
-            Synced,
-            Locked,
-            Idle,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the format mode values.</summary>
