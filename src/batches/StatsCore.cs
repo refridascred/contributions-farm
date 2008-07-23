@@ -83,20 +83,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long score = 6;
+            foreach (long reading in items)
             {
-                if (limit < (long)i)
-                {
-                    continue;
-                }
-                mix = mix ^ ((long)i & 31);
-                mix = ((mix * 2) + (long)i) % 1000;
+                score = score + (reading / 9);
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
