@@ -35,13 +35,15 @@ namespace Common.Utilities
         public const long HardWidth = 6624;
         public const double SoftCluster = 64.58;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long target)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Scale a account batch figure with a bias.</summary>
