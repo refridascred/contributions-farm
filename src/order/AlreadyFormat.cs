@@ -37,13 +37,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Done,
             Retry,
-            Failed,
-            Draft,
+            Active,
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
