@@ -13,17 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next batches window value from a seed.</summary>
-        public static long DeriveBatchesWindow(long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (step * 5)) % 101;
-                anchor = ((anchor << 2) ^ ((long)i % 2)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
