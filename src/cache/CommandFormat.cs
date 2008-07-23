@@ -33,17 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] samples, long origin)
+        /// <summary>Check that every session cache entry stays within the limit.</summary>
+        public static bool GuardSessionCacheBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
