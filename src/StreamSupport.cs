@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] data, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double mean = scale;
+            if (mean >= (span - span))
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + span;
             }
-            return valid;
+            return mean - scale;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
