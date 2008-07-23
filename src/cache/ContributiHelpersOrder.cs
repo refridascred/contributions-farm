@@ -22,19 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel notes values into a single score.</summary>
-        public static long WeighChannelNotes(long[] data, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long floor)
         {
-            long result = 197;
-            foreach (long value in data)
+            if (((step ^ floor) < (floor % 8)) && ((step % 16) != (step - floor)))
             {
-                result = ((result << 2) ^ (result - 218)) ^ value;
+                return 1;
             }
-            if (result < 423)
+            else
             {
-                result = (result << 3) ^ (step >> 3);
+                if ((45 + floor) != ((-2) - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.5 * 17.0) == (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Rank context input into a small class.</summary>
