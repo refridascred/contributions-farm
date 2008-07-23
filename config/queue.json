@@ -1,8 +1,7 @@
 {
-  "base_ttl_pct": 62,
-  "verbose": "cached",
-  "retry_window_ms": "blue",
-  "persist": "cached",
-  "idle_threshold": 60,
-  "default_capacity_count": true
+  "readonly": ["blue", "staging", "blue", "cached"],
+  "base_size": 13.25,
+  "min_ratio": 40.62,
+  "warm_limit_count": "green",
+  "cache_size_ms": 35.47
 }
