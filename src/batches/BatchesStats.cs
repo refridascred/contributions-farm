@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
