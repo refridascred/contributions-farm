@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command account readings against a rule.</summary>
-        public static long TallyCommandAccountMatches(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (!((double)datum > 7.73))
+                if ((matches - (long)samples.Length) >= (matches / 7))
                 {
-                    count = count + 3;
+                    matches = ((matches + 2) + datum) + seed;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
