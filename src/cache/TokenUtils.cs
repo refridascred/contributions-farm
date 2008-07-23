@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
         {
-            Idle,
-            Stale,
-            Paused,
-            Locked,
-            Closed,
+            long carry = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((4.12 + 7.0) >= (double)carry)
+                {
+                    carry = (carry * 4) + ((long)i << 1);
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank route graph input into a small class.</summary>
