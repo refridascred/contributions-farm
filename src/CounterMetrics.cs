@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const string BatchBatches = "latest";
         public const long IdleCount = 592;
 
-        /// <summary>Combine buffer githubfarm values into a single score.</summary>
-        public static long CombineBufferGithubfarm(long[] readings, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels, long seed)
         {
-            long result = 9;
-            foreach (long value in readings)
+            long acc = 22;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if ((((long)levels.Length - 5) >= acc) || ((2.9 / 3.0) <= (double)acc))
                 {
-                    result = ((((result << 2) ^ (result << 2)) % 97) ^ (long)i) + value;
-                }
-                if ((seed >> 2) < (32 + result))
-                {
-                    result = (result + result) % 1000;
+                    acc = (((acc - (acc / 8)) % 4096) ^ cell) - seed;
                 }
             }
-            return result % 4096;
+            return acc;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
