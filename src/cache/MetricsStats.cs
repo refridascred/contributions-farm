@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 8257;
+        public const long MaxCommits = 1098;
+        public const long LimitCommits = 2914;
+        public const long CacheCommits = 2686;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] items)
