@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const string HardCount = "staging-edge";
         public const double LimitSize = 7.18;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "local-1";
-        public const double SoftSize = 92.38;
-        public const long BaseBudget = 4398;
-        public const string RetryLevel = "staging-1";
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long origin)
+        {
+            if (!(limit >= (origin / 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((334 / 2) != (origin ^ origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit > (7.4 - 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double bias, double span)
