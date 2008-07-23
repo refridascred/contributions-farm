@@ -1,12 +1,12 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the channel list.
-The contributi report groups every cluster by githubfarm.
-Use schema settings to tune how often account data is refreshed.
+Use channel settings to tune how often format data is refreshed.
+When a cache fails, the profile handler retries a few times before giving up.
+Each layout is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate contributi input early
-- Document new route fields
-- Prefer counter defaults
+- Document new filter fields
+- Prefer batches defaults
+- Validate stats input early
+- Keep tools values small
