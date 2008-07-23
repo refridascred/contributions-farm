@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks cache readings against a rule.</summary>
-        public static long MeasureChecksCacheMatches(long[] items, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((11.0 - 3.0) < (double)count)
-                {
-                    count = ((count + 2) + entry) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
