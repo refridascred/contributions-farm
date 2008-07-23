@@ -36,13 +36,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Done,
-            Queued,
+            Closed,
             New,
-            Active,
+            Retry,
         }
 
         /// <summary>Fold a list of payload profile readings.</summary>
