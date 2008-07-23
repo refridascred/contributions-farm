@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long BurstSpan = 6308;
         public const long HardFilter = 8378;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell < (2.3 * 7.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
