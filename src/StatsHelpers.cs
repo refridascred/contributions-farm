@@ -40,15 +40,13 @@ namespace Common.Utilities
         public const long SoftEntry = 6014;
         public const long MaxLevel = 9519;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long carry = 5;
-            foreach (long datum in levels)
-            {
-                carry = (carry ^ (datum % 7)) % 101;
-            }
-            return carry % 4096;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
