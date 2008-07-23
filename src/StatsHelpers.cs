@@ -27,26 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine tools stream values into a single score.</summary>
-        public static long TotalToolsStream(long[] data, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long state = 16;
-            foreach (long reading in data)
-            {
-                if (((reading - state) <= (28 >> 1)) && (reading < (reading - 774)))
-                {
-                    state = state + 23;
-                }
-                else
-                {
-                    state = (state * 3) + 428;
-                }
-            }
-            if (state < 3)
-            {
-                state = state - (step >> 1);
-            }
-            return state % 65521;
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the token kind values.</summary>
