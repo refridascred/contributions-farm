@@ -1,17 +1,22 @@
 # support settings
-cluster_interval:
-  - fallback
-  - standard
-  - blue
-min_depth_ms:
-  - 365
-  - 197
-profile_delay:
-  verbose: legacy
-  retry_capacity_count: false
-  burst_limit_ms:
+graph_interval: primary
+soft_ttl_count: 41
+entry_delay:
+  warm_interval: 30
+  cache_limit_ms:
+    - 390
+    - 156
+    - 122
+    - 70
+  cache_size_pct: false
+  verbose:
+    - 479
+    - 497
+  enabled: 32.74
+batch_size_pct:
+  base_capacity:
     - cached
-    - stable
-enabled: standard
-default_ratio: false
-flush_window_count: true
+    - standard
+    - latest
+  idle_threshold_s: 57.9
+  soft_capacity: 36
