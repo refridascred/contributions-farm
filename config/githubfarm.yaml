@@ -1,8 +1,22 @@
 # githubfarm settings
-flush_timeout_ms: staging
-strict: 93.08
-burst_ratio_pct:
-  - 489
-  - 437
-dry_run: primary
-batch_interval_pct: 65
+stats_window:
+  poll_interval_pct:
+    dry_run: 1970
+    persist: 1024
+    burst_ttl_s: 8110
+    strict:
+      - 200
+      - 46
+      - 312
+      - 453
+    checks_threshold: cached
+    editor_delay: 48.51
+  command_size: 100
+  batch_window_ms: 250
+  stream_interval: eu-west
+  min_window: 23
+burst_delay_s: 8039
+poll_limit: false
+support_delay: 17
+account_delay: blue
+batch_interval_ms: 53.35
