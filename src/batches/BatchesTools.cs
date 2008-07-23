@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Iterate the cache queue series from a seed.</summary>
+        public static long IterateCacheQueue(long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((double)entry > (double)count))
+                if (!((double)score <= 9.8))
                 {
-                    count = count + 2;
+                    score = (score - (floor >> 2)) % 1000;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
