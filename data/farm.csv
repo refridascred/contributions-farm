@@ -1,6 +1,11 @@
-id,count,region,level
-1,500,4.08,20.86
-2,63.34,512,edge
-3,24.72,227,open
-4,edge,blue,76.7
-5,894,30.66,22.16
+id,count,ratio,state
+1,89.59,978,33.88
+2,447,283,52
+3,open,510,167
+4,standard,5.04,559
+5,66.47,383,811
+6,90.43,501,963
+7,59.3,staging,staging
+8,blue,staging,935
+9,edge,56,local
+10,local,74,728
