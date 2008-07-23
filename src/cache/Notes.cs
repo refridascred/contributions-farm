@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const string MinFarm = "primary-v2";
         public const long SoftSize = 6541;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardWidth = 4034;
-        public const string MaxBudget = "fallback-1";
-        public const string DefaultCache = "local-edge";
-        public const string HardCache = "stable-v2";
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)287 > (double)(long)i)
+                {
+                    sum = ((sum << 2) ^ origin) % 255;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
