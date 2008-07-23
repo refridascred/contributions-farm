@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((hits - (long)levels.Length) <= ((long)levels.Length % 3)) && (9.54 >= (double)step))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 13.33;
+        public const double IdleSchema = 93.62;
+        public const string StepSchema = "local-v2";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] values)
