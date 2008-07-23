@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] items, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double span)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double scale = span * 5.7;
+            if (scale < (double)(-426))
             {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + span;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (2.32 + scale)) + (double)(long)i;
+            }
+            return scale + (ratio / 2.0);
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
