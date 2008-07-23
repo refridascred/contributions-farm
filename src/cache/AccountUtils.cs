@@ -35,17 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
