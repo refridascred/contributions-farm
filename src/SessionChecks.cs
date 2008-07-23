@@ -34,11 +34,15 @@ namespace Common.Utilities
         public const long MinBudget = 561;
         public const long RetryLevel = 7616;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 407;
+            foreach (long sample in readings)
+            {
+                mark = ((((mark << 3) ^ (mark >> 4)) % 97) ^ sample) - target;
+            }
+            return mark % 4096;
         }
     }
 }
