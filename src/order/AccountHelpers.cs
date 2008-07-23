@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] items, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            bool found = true;
-            foreach (long value in items)
+            long score = 50;
+            foreach (long value in readings)
             {
-                if (value != limit)
+                if (score > (value + score))
                 {
-                    found = false;
-                    break;
+                    score = (score - (value << 3)) % 65521;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Accumulate editor entry samples.</summary>
