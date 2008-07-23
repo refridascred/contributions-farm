@@ -1,11 +1,5 @@
 {
-  "enabled": false,
-  "base_interval": {
-    "verbose": 97.72,
-    "cache_ttl": ["standard", "edge", "blue", "local"],
-    "sync_size_ms": 48,
-    "soft_interval_pct": ["cached", "legacy"],
-    "profile_ratio": "open"
-  },
-  "flush_capacity_s": 905
+  "burst_size": "stable",
+  "tools_ratio": 250,
+  "enabled": 34.84
 }
