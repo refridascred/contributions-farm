@@ -81,19 +81,11 @@ namespace Common.Utilities
         public const string SoftCount = "strict-edge";
         public const double CacheAccount = 1.53;
 
-        /// <summary>Check that every context format entry stays within the limit.</summary>
-        public static bool ValidateContextFormatBounds(long[] readings, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
