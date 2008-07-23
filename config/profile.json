@@ -1,6 +1,6 @@
 {
-  "min_ttl": 7850,
-  "hard_delay_pct": "eu-west",
-  "burst_window_pct": 13,
-  "max_ratio_s": "staging"
+  "token_threshold": 250,
+  "context_threshold": "staging",
+  "sync_limit": 10.39,
+  "cache_depth_ms": "blue"
 }
