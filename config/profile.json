@@ -1,6 +1,17 @@
 {
-  "buffer_capacity": true,
-  "compress": "legacy",
-  "audit": 75,
-  "verbose": ["strict", "green"]
+  "strict": 24,
+  "sync_timeout": {
+    "default_depth": 45.11,
+    "commits_limit": {
+      "readonly": "blue",
+      "cache_interval_s": "edge",
+      "sync_interval": 27.71,
+      "max_delay_count": "cached",
+      "flush_interval": "cached",
+      "enabled": 78.31
+    },
+    "flush_ratio": "local",
+    "cluster_delay": false
+  },
+  "warm_size": 60
 }
