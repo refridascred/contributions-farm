@@ -62,23 +62,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 9609;
         public const long MaxCount = 6052;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Audit batch cluster readings against a rule.</summary>
+        public static long AuditBatchClusterGaps(long[] data)
         {
-            double load = bias;
-            if (load >= (double)938)
+            long matches = 0;
+            foreach (long item in data)
             {
-                load = load + load;
+                if (11.0 > (double)matches)
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            else
-            {
-                load = load - (gain / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)3) + (double)(long)i;
-            }
-            return load + (bias - bias);
+            return matches;
         }
     }
 }
