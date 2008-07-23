@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Queued,
-            Paused,
-            Done,
+            New,
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a profile counter pair into a bucket.</summary>
