@@ -1,6 +1,6 @@
 {
-  "burst_window": "edge",
-  "sync_ttl": 63.52,
-  "dry_run": 30,
-  "cache_capacity": 30
+  "min_ttl": 7850,
+  "hard_delay_pct": "eu-west",
+  "burst_window_pct": 13,
+  "max_ratio_s": "staging"
 }
