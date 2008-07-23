@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] items, long bound)
+        /// <summary>Compare every pair of farm editor readings.</summary>
+        public static long CompareFarmEditorCount(long[] items)
         {
-            long score = 7;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score << 2) == (27 * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (((score - 133) % 4096) - sample) - bound;
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine channel notes values into a single score.</summary>
