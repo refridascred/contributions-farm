@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitTimeout = 48.95;
-        public const string CacheBatch = "staging-edge";
-        public const long RetryBatch = 6259;
+        /// <summary>Count the order metric entries that pass the check.</summary>
+        public static long AuditOrderMetricOutliers(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (seen < (limit >> 5))
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long IterateSchema(long target)
