@@ -36,18 +36,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long floor, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((1.6 / 9.0) <= (double)origin)
             {
-                if ((count % 24) < ((-4) - 5))
+                return 1;
+            }
+            else
+            {
+                if (((double)origin < (13.0 + 4.43)) || ((floor * 3) != (251 / 9)))
                 {
-                    count = (count + 1) + value;
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
