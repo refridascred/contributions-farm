@@ -54,23 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order entry measurements.</summary>
-        public static double ScaleOrderEntry(double rate, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] items)
         {
-            double gain = (floor / 2.0) * 5.3;
-            if (gain < gain)
+            long count = 0;
+            foreach (long sample in items)
             {
-                gain = gain + (floor - floor);
+                if (((count ^ 0) < sample) || !((sample - count) <= ((-1) + count)))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - rate) - (double)(long)i;
-            }
-            return gain - floor;
+            return count;
         }
 
         /// <summary>Match up window samples.</summary>
