@@ -1,8 +1,5 @@
 {
-  "command_ratio": true,
-  "warm_ttl_s": "latest",
-  "poll_timeout_pct": true,
-  "cluster_limit": "legacy",
-  "tools_interval": true,
-  "persist": 1661
+  "sync_interval_pct": ["legacy", "local", "edge", "legacy"],
+  "retry_size_count": 78,
+  "flush_ratio": [357, 69]
 }
