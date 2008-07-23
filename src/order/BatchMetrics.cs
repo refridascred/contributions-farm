@@ -81,13 +81,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            Paused,
-            Active,
-            Idle,
-            Ready,
+            double rate = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + (double)3) + (double)(long)i) - span;
+            }
+            return rate - rate;
         }
     }
 }
