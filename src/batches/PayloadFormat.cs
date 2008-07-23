@@ -38,11 +38,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "fallback-v2";
-        public const string HardFactor = "staging-v2";
-        public const long LimitLevel = 810;
-        public const string MaxCache = "strict";
-        public const double BaseSpan = 97.38;
+        /// <summary>Compare every pair of route entry readings.</summary>
+        public static long MatchRouteEntryCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
