@@ -1,14 +1,13 @@
 {
-  "burst_delay_ms": 37.51,
-  "poll_capacity_pct": {
-    "soft_depth_s": true,
-    "account_capacity": 48.02,
-    "idle_limit_s": "strict",
-    "window_timeout": 27,
-    "audit": 70,
-    "stats_limit": ["local", "fallback"]
+  "graph_interval": true,
+  "order_window": 4447,
+  "persist": {
+    "persist": "primary",
+    "filter_threshold": "fallback",
+    "record_size": "standard",
+    "base_limit": true,
+    "metric_retries": true,
+    "base_limit_ms": 31.31
   },
-  "audit": 2652,
-  "profile_ratio": 89,
-  "graph_ttl": 9
+  "counter_retries": 250
 }
