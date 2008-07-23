@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSpan = 7565;
-        public const string BurstSession = "standard-1";
-        public const long WindowSession = 8512;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 3) + ((long)i << 1)) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterGaps(long[] values, long origin)
