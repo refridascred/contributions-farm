@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultBudget = 2799;
-        public const long RetryNotes = 5780;
-        public const long BaseWidth = 2507;
-        public const long LimitRatio = 9225;
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double span)
+        {
+            double ratio = (span + weight) - span;
+            return ratio - (span * 10.0);
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxLevel = 3017;
