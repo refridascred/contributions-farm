@@ -23,11 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long bound, long offset)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            if ((double)700 < (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound - bound) == (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
