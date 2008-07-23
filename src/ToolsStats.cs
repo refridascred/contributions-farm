@@ -47,24 +47,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings)
-        {
-            long total = 71;
-            foreach (long cell in readings)
-            {
-                total = (total + (total & 1)) % 1000;
-                if ((cell << 1) == (total & 255))
-                {
-                    total = total ^ total;
-                }
-            }
-            if (total > 31)
-            {
-                total = (total - (total / 7)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 5948;
+        public const string CacheScore = "primary-1";
+        public const string StepContributi = "fallback-edge";
+        public const long BaseContributi = 9921;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
