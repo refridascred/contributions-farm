@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Stale,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
