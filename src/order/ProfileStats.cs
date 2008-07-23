@@ -14,12 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultWidth = "cached-1";
+        public const long SoftFactor = 1304;
+        public const double CacheInterval = 97.21;
+        public const string RetryRatio = "open-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardFactor = 6332;
