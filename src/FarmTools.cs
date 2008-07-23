@@ -23,13 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine route stream values into a single score.</summary>
+        public static long CombineRouteStream(long[] items, long target)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Active,
+            long carry = -37;
+            foreach (long datum in items)
+            {
+                carry = (((carry * 2) + (datum ^ carry)) % 1000) + target;
+            }
+            return carry;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
