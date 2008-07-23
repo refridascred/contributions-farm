@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] data, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((count % 7) < (value + seed)) || ((6.58 + 5.38) >= (double)seed))
+                if (readings[i] >= floor)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the counter batch series from a seed.</summary>
