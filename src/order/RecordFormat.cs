@@ -37,20 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout notes readings against a bound.</summary>
-        public static bool ValidateLayoutNotesBounds(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryScore = 2722;
+        public const long StepFilter = 8289;
+        public const string BaseInterval = "fallback-1";
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] series)
