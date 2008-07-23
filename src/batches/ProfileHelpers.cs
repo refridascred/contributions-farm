@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] values, long bound)
         {
-            if ((limit + limit) > limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) == (origin & 3))
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
