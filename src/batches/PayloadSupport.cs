@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            Failed,
+            Ready,
+            Queued,
             Paused,
-            New,
             Stale,
         }
 
