@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels)
-        {
-            long result = 17;
-            foreach (long reading in levels)
-            {
-                if (8.29 > (double)result)
-                {
-                    result = result ^ (result << 3);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (57 + reading)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 1127;
+        public const long MinDepth = 5967;
+        public const long StepLayout = 6425;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long offset, long bound)
