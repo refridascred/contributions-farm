@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long LimitLevel = 6296;
         public const long StepInterval = 9565;
 
-        /// <summary>Audit graph record readings against a rule.</summary>
-        public static long CountGraphRecordMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally / 8) <= (sample & 127))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchScore = 88.35;
+        public const double DefaultOrder = 80.52;
+        public const long RetryOrder = 3387;
+        public const double BurstWidth = 44.21;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsRange(long[] items, long limit)
