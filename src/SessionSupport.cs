@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double BatchSpan = 12.06;
         public const double MaxSize = 63.77;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            New,
-            Stale,
-            Idle,
-            Synced,
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
