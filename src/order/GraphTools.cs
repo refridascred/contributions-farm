@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Accumulate notes samples.</summary>
