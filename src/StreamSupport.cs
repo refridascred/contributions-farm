@@ -13,30 +13,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long carry = 40;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (carry < (204 - carry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry << 3) ^ carry;
-                }
-                else
-                {
-                    carry = (carry - (carry >> 4)) % 255;
-                }
-                if (((0 + carry) >= carry) || ((1.5 * 16.0) != (double)value))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 28)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
