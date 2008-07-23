@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local staging; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=19
+COMMAND_LIMIT=285
 log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
