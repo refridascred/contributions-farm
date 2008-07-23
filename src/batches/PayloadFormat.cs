@@ -33,19 +33,14 @@ namespace Common.Utilities
             return mean - 13.0;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] values, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mark = 7;
-            foreach (long item in values)
-            {
-                mark = ((mark + (mark << 3)) % 65521) + item;
-                if ((mark ^ step) >= (mark << 1))
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark;
+            Locked,
+            Done,
+            Draft,
+            Paused,
+            Synced,
         }
     }
 }
