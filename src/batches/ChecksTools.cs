@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowWidth = 1615;
-        public const long SoftMetrics = 1091;
-        public const long IdleMetrics = 7573;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Dropped,
+            Done,
+            Ready,
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] data, long floor)
