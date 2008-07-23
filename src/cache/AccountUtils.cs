@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] readings, long target)
         {
-            long mark = 684;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum - datum) <= datum)
+                if (readings[i] == target)
                 {
-                    mark = ((mark << 2) ^ (mark - 879)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (datum - datum)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark > 2)
-            {
-                mark = ((mark << 3) ^ mark) % 4096;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
