@@ -22,15 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double bias, double span)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            double scale = 2.0;
-            for (int i = 0; i < 9; i++)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                scale = ((scale + scale) - (double)(long)i) - span;
+                acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return scale + bias;
+            return acc;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
