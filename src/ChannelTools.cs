@@ -37,18 +37,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] items, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (tally >= (cell + (-274)))
                 {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - offset;
                 }
             }
             return tally;
