@@ -1,12 +1,12 @@
 # Command notes
 
-Keep batch and graph names short and lowercase.
-When a graph fails, the order handler retries a few times before giving up.
-Use queue settings to tune how often queue data is refreshed.
+When a payload fails, the contributi handler retries a few times before giving up.
+The context module keeps notes values in sync with the metrics cache.
+Run the tools check before changing any checks limits.
 
 ## Guidelines
 
-- Keep batch values small
-- Validate cluster input early
-- Log every payload change
-- Document new batches fields
+- Log every cluster change
+- Document new support fields
+- Review record limits each release
+- Validate entry input early
