@@ -67,21 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - (step >> 1)) - (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
     }
 }
