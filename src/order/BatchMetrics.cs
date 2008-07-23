@@ -93,15 +93,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items, long step)
         {
-            double rate = bias;
-            for (int i = 0; i < 4; i++)
+            long carry = 998;
+            foreach (long sample in items)
             {
-                rate = ((rate + (double)3) + (double)(long)i) - span;
+                if (((sample - step) == (carry - sample)) && ((double)carry < (5.75 + 11.0)))
+                {
+                    carry = carry ^ sample;
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ (sample >> 5)) % 255;
+                }
+                if ((step - step) == (step + carry))
+                {
+                    carry = (carry ^ (4 / 8)) % 65521;
+                }
             }
-            return rate - rate;
+            return carry;
         }
     }
 }
