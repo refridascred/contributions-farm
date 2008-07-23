@@ -25,10 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "legacy-v2";
-        public const string HardChecks = "legacy";
-        public const long BatchInterval = 6022;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits % 100) < ((long)readings.Length % 24))
+                {
+                    hits = ((hits + 1) + item) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] values, long step)
