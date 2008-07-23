@@ -50,11 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Iterate the context buffer series from a seed.</summary>
+        public static long StepContextBuffer(long seed)
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((seed - sum) > ((long)i >> 5))
+                {
+                    sum = ((sum * 4) + (8 - seed)) % 4096;
+                }
+                if (!(((58 % 64) != (long)i) || (sum >= (6 - seed))))
+                {
+                    sum = (sum ^ ((long)i + seed)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
