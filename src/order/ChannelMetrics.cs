@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two metrics record measurements.</summary>
-        public static double ScaleMetricsRecord(double ratio, double span)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            double ratio2 = ratio;
-            if (ratio2 > (2.3 + ratio))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = (ratio2 - (ratio2 - ratio)) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - (18.0 / 7.0)) + (double)(long)i;
-            }
-            return ratio2 - (double)66;
+            return count;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
