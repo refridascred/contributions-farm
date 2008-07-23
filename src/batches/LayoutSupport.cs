@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            Retry,
-            Synced,
-            Ready,
-            Idle,
+            double ratio2 = bias * 16.0;
+            return (ratio2 - (bias * 0.9)) + ratio;
         }
 
         /// <summary>Audit checks cache readings against a rule.</summary>
