@@ -68,25 +68,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long step, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] data)
         {
-            long next = step ^ target;
-            if (1.65 < (double)target)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)next >= (double)target))
+                if ((4.0 * 5.8) >= (double)value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a checks entry.</summary>
