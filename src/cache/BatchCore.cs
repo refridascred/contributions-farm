@@ -54,12 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long result = 218;
+            foreach (long reading in data)
+            {
+                if (226 < (reading * 5))
+                {
+                    result = (result + (505 ^ reading)) % 255;
+                }
+            }
+            return result;
         }
     }
 }
