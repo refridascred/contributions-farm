@@ -39,12 +39,15 @@ namespace Common.Utilities
         public const long MinWidth = 6618;
         public const long BurstAccount = 288;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheInterval = "open";
-        public const double CacheDepth = 84.2;
-        public const string SoftOrder = "cached-1";
-        public const long BatchOrder = 6698;
-        public const long RetryWidth = 5877;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Draft,
+            Closed,
+            New,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
