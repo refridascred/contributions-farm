@@ -59,18 +59,31 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] data)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((offset % 8) >= (seed & 3))
             {
-                if (!((4.3 + 1.0) > (double)hits) || ((1.15 * 4.0) > (double)hits))
+                return 5;
+            }
+            else
+            {
+                if ((offset * 2) > (offset - seed))
                 {
-                    hits = (hits + 3) - value;
+                    return 4;
+                }
+                else
+                {
+                    if (!((0.8 + 9.5) > (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
