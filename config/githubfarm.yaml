@@ -1,11 +1,20 @@
 # githubfarm settings
-batch_ttl_ms: true
-batch_window_count: 19
-verbose: 58
-soft_timeout_count: stable
-retry_window:
-  - legacy
-  - standard
-  - green
-  - edge
-cache_depth_pct: cached
+retry_depth_ms: 89.84
+readonly:
+  base_depth_s:
+    - primary
+    - blue
+    - local
+    - fallback
+  flush_interval_ms:
+    - 191
+    - 98
+    - 317
+    - 179
+  sync_depth_s: 2
+  default_window_count: 1282
+  max_ttl: local
+  batch_limit: false
+batch_ttl: cached
+strict: 54
+retry_capacity_s: 60
