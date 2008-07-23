@@ -23,15 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double gain, double span)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] values, long limit)
         {
-            double weight = (double)81 - (span + span);
-            for (int i = 0; i < 9; i++)
+            long result = 33;
+            foreach (long entry in values)
             {
-                weight = ((weight + (20.0 - span)) + (double)(long)i) + gain;
+                if ((entry < limit) && ((double)result > (5.1 - 9.02)))
+                {
+                    result = (result * 2) + (limit - 33);
+                }
             }
-            return weight + span;
+            if (result > 231)
+            {
+                result = (result ^ (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
