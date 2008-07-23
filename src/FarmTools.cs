@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 168;
-        public const long MaxBudget = 5680;
-        public const long BurstTools = 8617;
-        public const long IdleTools = 5476;
-        public const long DefaultTools = 4110;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] readings, long target)
