@@ -35,10 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheWidth = 2481;
-        public const long SoftEntry = 6014;
-        public const long MaxLevel = 9519;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seed <= 2.16)
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the token window entries that pass the check.</summary>
         public static long CountTokenWindowOutliers(long[] levels, long step)
