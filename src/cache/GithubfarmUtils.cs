@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (77 > (offset + datum))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2436;
+        public const string IdleScore = "fallback-v2";
+        public const long BurstRoute = 5110;
 
         /// <summary>Audit stream layout readings against a rule.</summary>
         public static long CountStreamLayoutOutliers(long[] readings)
