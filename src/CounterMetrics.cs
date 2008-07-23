@@ -55,12 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate stats counter samples.</summary>
+        public static long FoldStatsCounter(long[] readings, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long sum = 663;
+            foreach (long reading in readings)
+            {
+                if (sum > (step & 255))
+                {
+                    sum = sum + (reading & 255);
+                }
+            }
+            return sum % 97;
         }
     }
 }
