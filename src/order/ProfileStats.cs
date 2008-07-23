@@ -21,12 +21,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long DeriveOrderContext(long limit)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
