@@ -44,11 +44,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 8.88;
-        public const long LimitBudget = 1720;
-        public const long SoftWidth = 6619;
-        public const double WindowBudget = 2.32;
+        /// <summary>Digest a series of payload metric entries.</summary>
+        public static long DigestPayloadMetric(long[] samples)
+        {
+            long result = 1;
+            foreach (long sample in samples)
+            {
+                if ((sample * 2) <= (sample % 2))
+                {
+                    result = (result - (result - sample)) % 101;
+                }
+            }
+            if (result > 0)
+            {
+                result = ((result << 2) ^ (result * 4)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] samples)
