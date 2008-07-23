@@ -39,12 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long limit, long target)
         {
-            Synced,
-            Failed,
-            Retry,
+            if (!((38 + target) >= 826))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(8 >= (limit % 60)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
