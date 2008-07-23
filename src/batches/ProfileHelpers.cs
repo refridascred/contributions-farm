@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Match up cluster format samples.</summary>
+        public static long PairClusterFormatCount(long[] readings)
         {
-            long result = 5;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (result * 3)) % 97;
-                result = (result ^ (cell + result)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result < 3)
-            {
-                result = (result << 2) ^ (result & 31);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
