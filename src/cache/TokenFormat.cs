@@ -32,9 +32,10 @@ namespace Common.Utilities
         public const double LimitTools = 11.6;
         public const long IdleTools = 118;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstBudget = "cached-edge";
-        public const long LimitCount = 9198;
-        public const long StepBudget = 3386;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 1931;
+        public const double LimitSupport = 61.75;
+        public const string MinScore = "strict-edge";
+        public const string IdleSupport = "primary-1";
     }
 }
