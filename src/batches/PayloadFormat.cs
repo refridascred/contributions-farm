@@ -28,15 +28,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a session account reading.</summary>
-        public static double BlendSessionAccount(double gain, double offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double gain2 = offset / 7.0;
-            if (gain2 <= (double)(-415))
-            {
-                gain2 = (gain2 - offset) + gain;
-            }
-            return gain2 - gain2;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
