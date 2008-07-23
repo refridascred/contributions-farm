@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a entry editor figure with a bias.</summary>
-        public static double ProjectEntryEditor(double scale, double floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double ratio = (double)(83 % 5);
-            if (ratio >= (double)53)
-            {
-                ratio = (ratio + scale) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - 11.0;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine support stats values into a single score.</summary>
