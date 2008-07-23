@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count << 2) > count)
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
