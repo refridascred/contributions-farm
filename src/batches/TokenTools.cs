@@ -31,21 +31,22 @@ namespace Common.Utilities
             return (bias - 14.0) + gain;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 6;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mark + mark) == (8 * 3))
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 5) + (mark ^ step)) ^ cell;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (mark % 3)) % 65521;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
