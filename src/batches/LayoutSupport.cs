@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of payload batch readings.</summary>
-        public static long TotalPayloadBatch(long[] samples, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long score = 2;
-            foreach (long value in samples)
-            {
-                if ((35 - target) >= (score >> 2))
-                {
-                    score = (score + ((-1) + 35)) + value;
-                }
-            }
-            return score % 4096;
+            Retry,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a schema record.</summary>
