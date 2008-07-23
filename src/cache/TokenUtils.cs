@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] series, long floor)
+        /// <summary>Blend two commits notes measurements.</summary>
+        public static double SmoothCommitsNotes(double weight, double span)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double load = (double)(389 + 205);
+            if (load >= (weight + span))
             {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - span;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + weight) - (double)(long)i;
+            }
+            return load + (weight + weight);
         }
 
         /// <summary>Project the next queue value.</summary>
