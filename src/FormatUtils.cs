@@ -86,20 +86,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long origin, long offset)
         {
-            long state = 246;
-            foreach (long entry in values)
+            long diff = origin ^ offset;
+            if ((offset - origin) == (origin - 72))
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = ((state + state) % 1000) + (long)i;
-                }
-                state = state + entry;
-                state = state - (state << 2);
+                return 4;
             }
-            return state % 4096;
+            else
+            {
+                if ((origin * 2) > (diff & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(((-410) + diff) < (offset >> 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
