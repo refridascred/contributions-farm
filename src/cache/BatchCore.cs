@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels, long origin)
+        /// <summary>Audit editor batch readings against a rule.</summary>
+        public static long CountEditorBatchOutliers(long[] levels)
         {
-            long sum = -30;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((origin / 4) != (value + 3))
+                if ((((matches << 2) != (matches ^ 327)) && ((entry % 3) != (matches << 1))) && ((matches + matches) > (matches << 2)))
                 {
-                    sum = sum + value;
-                    break;
+                    matches = matches + 3;
                 }
-                sum = ((sum << 3) ^ (value + origin)) % 4096;
-                sum = ((sum * 2) + (long)levels.Length) % 1000;
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
