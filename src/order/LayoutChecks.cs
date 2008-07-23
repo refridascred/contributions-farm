@@ -31,19 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] values, long seed)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
