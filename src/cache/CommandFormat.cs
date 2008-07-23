@@ -32,12 +32,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Active,
-            Dropped,
-            Ready,
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
