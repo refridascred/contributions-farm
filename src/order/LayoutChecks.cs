@@ -40,18 +40,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((((-61) + reading) >= (reading ^ count)) && ((count ^ count) != (count - 70)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Hold a stats header.</summary>
