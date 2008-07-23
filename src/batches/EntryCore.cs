@@ -48,21 +48,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 1799;
         public const long IdleSpan = 5355;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = span / 8.0;
+            if (rate <= (double)44)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + (rate / 3.0);
             }
-            return hits;
+            return rate - (ratio - ratio);
         }
 
         /// <summary>Locate a session reading by value.</summary>
