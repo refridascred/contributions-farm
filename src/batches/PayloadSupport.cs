@@ -13,21 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 984;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix << 1) < (89 % 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix - floor) % 4096) ^ datum;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix % 64)) % 101;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
