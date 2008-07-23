@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Done,
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the record kind values.</summary>
