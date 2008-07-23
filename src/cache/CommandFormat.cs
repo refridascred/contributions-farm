@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the layout batch entries that pass the check.</summary>
+        public static long TallyLayoutBatchHits(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!(((value >> 2) <= (count - step)) && ((count % 12) != (count - count))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context entry.</summary>
