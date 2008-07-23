@@ -62,21 +62,15 @@ namespace Common.Utilities
             return drift + (double)(-6);
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Blend two queue schema measurements.</summary>
+        public static double AdjustQueueSchema(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)9 * 6.0;
+            if (mean >= (bias + mean))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + (bias + mean)) - ratio;
             }
-            return matches;
+            return mean + (double)390;
         }
     }
 }
