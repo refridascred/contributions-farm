@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine cluster counter values into a single score.</summary>
-        public static long ScoreClusterCounter(long[] levels, long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long state = -85;
-            foreach (long value in levels)
-            {
-                if ((state < (83 / 2)) || ((7 << 2) >= state))
-                {
-                    state = (state ^ (163 + (long)levels.Length)) ^ value;
-                }
-                else
-                {
-                    state = state - (state + step);
-                }
-            }
-            return state;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two payload account measurements.</summary>
