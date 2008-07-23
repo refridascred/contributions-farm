@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const double BatchRatio = 41.43;
         public const double BaseEditor = 11.87;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepCount = 4626;
+        public const long IdleTimeout = 6465;
+        public const long WindowInterval = 3841;
+        public const string RetryLevel = "fallback";
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
