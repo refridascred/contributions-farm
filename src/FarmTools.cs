@@ -15,17 +15,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] readings, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (bound >= (limit & 3))
             {
-                if (readings[i] < target)
+                return 0;
+            }
+            else
+            {
+                if (((limit - limit) > (limit + limit)) || ((268 - bound) < (bound - bound)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
