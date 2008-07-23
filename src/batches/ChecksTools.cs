@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!!(9 > (datum + 3)))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultFactor = "staging-edge";
+        public const string BurstToken = "cached-edge";
+        public const long DefaultToken = 5183;
+        public const long StepToken = 1939;
+        public const double SoftWidth = 38.5;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchGaps(long[] values)
