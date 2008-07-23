@@ -70,11 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 820;
+            foreach (long cell in items)
+            {
+                if (((double)cell > (16.0 - 4.0)) || ((acc + 1) == (acc ^ acc)))
+                {
+                    acc = (acc - (acc - 124)) % 65521;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc << 2) ^ (long)items.Length;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
