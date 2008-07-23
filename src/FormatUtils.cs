@@ -44,18 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] items)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen + value) <= (value + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Measure how many batches metric samples are out of range.</summary>
