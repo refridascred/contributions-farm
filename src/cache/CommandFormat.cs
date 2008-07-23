@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every contributi account entry stays within the limit.</summary>
-        public static bool GuardContributiAccountLimits(long[] items, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the record status values.</summary>
