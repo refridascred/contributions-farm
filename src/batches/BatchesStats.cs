@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine contributi token values into a single score.</summary>
-        public static long TallyContributiToken(long[] series, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = -1;
-            foreach (long datum in series)
-            {
-                if ((datum > (long)series.Length) && ((datum * 5) != (target + target)))
-                {
-                    total = (total - (total * 3)) % 255;
-                }
-                if (!(((long)series.Length + 0) > (datum % 97)))
-                {
-                    continue;
-                }
-                total = (total - (datum ^ total)) % 4096;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
