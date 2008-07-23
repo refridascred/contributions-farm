@@ -67,10 +67,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 4706;
-        public const long RetryRoute = 252;
-        public const long BurstBudget = 3351;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] data, long origin)
+        {
+            long mix = 556;
+            foreach (long datum in data)
+            {
+                if (71 > (datum & 7))
+                {
+                    mix = (mix ^ (8 ^ datum)) - origin;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long bound, long seed)
