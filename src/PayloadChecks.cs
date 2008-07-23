@@ -40,11 +40,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 5892;
-        public const long LimitLevel = 7944;
-        public const string DefaultStats = "cached-v2";
-        public const long RetryStats = 4733;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double rate, double bias)
