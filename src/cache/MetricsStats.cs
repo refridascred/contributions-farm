@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] series, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (((seen % 100) >= (limit - seen)) || ((seen & 255) == (seen + limit)))
+                if ((seed + seed) < (seed % 12))
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
