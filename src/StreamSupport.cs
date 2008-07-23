@@ -41,24 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long limit, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            if (((limit >> 1) > floor) && ((limit - limit) <= (floor * 5)))
+            long total = 427;
+            foreach (long reading in data)
             {
-                return 0;
+                total = ((total * 2) + (reading << 2)) % 65521;
+                total = total + (total - reading);
+                total = total + (847 + total);
             }
-            else
-            {
-                if (!((double)limit > (8.1 - 2.07)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
     }
 }
