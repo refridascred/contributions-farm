@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] samples, long step)
         {
-            long mix = 1;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((mix - mix) > (86 - mix))
+                if (datum != step)
                 {
-                    mix = ((mix << 2) ^ (reading % 60)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the cache kind values.</summary>
