@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] samples, long step)
+        /// <summary>Measure how many context batch samples are out of range.</summary>
+        public static long CountContextBatchMatches(long[] items)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading <= step)
+                if (!(((86 & 255) == (datum << 3)) || ((datum + datum) < (tally >> 1))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
