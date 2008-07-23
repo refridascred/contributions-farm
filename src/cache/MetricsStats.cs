@@ -71,11 +71,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long step)
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
+            if ((double)step == (16.0 / 5.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((22 % 97) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
