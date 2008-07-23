@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate graph buffer samples.</summary>
-        public static long DigestGraphBuffer(long[] values, long bound)
+        /// <summary>Fold a list of commits format readings.</summary>
+        public static long DigestCommitsFormat(long[] items)
         {
-            long mix = 930;
-            foreach (long entry in values)
+            long mark = 176;
+            foreach (long cell in items)
             {
-                if ((bound > (961 % 60)) || ((44 - bound) < 249))
+                if ((mark >> 1) > mark)
                 {
-                    mix = ((mix - (bound ^ mix)) % 65521) ^ entry;
+                    mark = (mark + (cell ^ mark)) % 4096;
                 }
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
