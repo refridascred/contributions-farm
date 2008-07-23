@@ -27,23 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Measure how many notes checks samples are out of range.</summary>
+        public static long CountNotesChecksHits(long[] items, long limit)
         {
-            long carry = -183;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                carry = carry + (8 / 4);
-                if ((carry - carry) > (carry - value))
+                if ((matches % 3) <= (matches >> 3))
                 {
-                    carry = carry + (22 + value);
+                    matches = ((matches + 1) - value) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (carry < 6)
-            {
-                carry = ((carry * 5) + (carry & 15)) % 255;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
