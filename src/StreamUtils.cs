@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinRatio = 38.5;
-        public const long LimitBudget = 8274;
-        public const string BaseRatio = "legacy-1";
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double ratio, double floor)
