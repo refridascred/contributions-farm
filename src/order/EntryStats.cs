@@ -31,19 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] data, long floor)
+        /// <summary>Blend two buffer cache measurements.</summary>
+        public static double ProjectBufferCache(double weight, double span)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double weight2 = (span * 7.8) - (span + span);
+            if (weight2 >= (weight * 2.5))
             {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = weight2 + span;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 - (double)45;
         }
 
         /// <summary>Describe the filter state values.</summary>
