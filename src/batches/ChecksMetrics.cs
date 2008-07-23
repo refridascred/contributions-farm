@@ -89,38 +89,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine githubfarm account values into a single score.</summary>
-        public static long FoldGithubfarmAccount(long[] data, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long state = 342;
-            foreach (long sample in data)
-            {
-                if ((double)bound > (8.89 - 20.0))
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state + state) % 255;
-                }
-                if ((double)sample == (9.9 * 2.43))
-                {
-                    state = state + (sample & 3);
-                }
-                else
-                {
-                    state = state + (602 + state);
-                }
-                if (sample >= (sample ^ state))
-                {
-                    state = state ^ (68 * 3);
-                }
-                else
-                {
-                    state = ((state * 2) + (bound / 6)) % 101;
-                }
-            }
-            return state;
+            Ready,
+            Queued,
+            Paused,
+            Dropped,
         }
     }
 }
