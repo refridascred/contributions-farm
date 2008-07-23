@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 2226;
+        public const long MaxPayload = 9603;
+        public const double SoftPayload = 29.36;
+        public const string DefaultSize = "local-v2";
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] data, long target)
