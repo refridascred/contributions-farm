@@ -1,6 +1,9 @@
 # support settings
-warm_delay: standard
-audit: stable
-hard_retries: false
-retry_ratio_pct: false
-sync_depth_ms: true
+warm_retries_count:
+  - stable
+  - cached
+hard_retries: 8714
+report_interval: edge
+idle_depth_ms: edge
+readonly: staging
+enabled: 74.25
