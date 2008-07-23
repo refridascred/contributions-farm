@@ -1,15 +1,28 @@
 # entry settings
-burst_limit_ms: 8407
-enabled:
-  checks_window: 250
-  batch_timeout_count: standard
-  already_ttl:
-    - 452
-    - 228
-  sync_retries: legacy
-  warm_retries_pct: legacy
-  already_size: true
-audit: staging
-schema_timeout: cached
-readonly: eu-west
-compress: 9419
+base_timeout:
+  idle_depth: false
+  order_window: 25
+  retry_ttl_s:
+    - stable
+    - local
+    - strict
+    - blue
+  queue_ttl: legacy
+  verbose:
+    - 60
+    - 124
+audit:
+  cache_interval_count: 94.68
+  flush_limit_s:
+    - local
+    - legacy
+    - legacy
+  hard_threshold_s:
+    - 430
+    - 382
+    - 161
+    - 401
+  batch_timeout_count:
+    - cached
+    - cached
+burst_threshold_count: true
