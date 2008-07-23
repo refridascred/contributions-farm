@@ -1,8 +1,15 @@
 {
-  "channel_limit": [326, 209],
-  "sync_ttl": "staging",
-  "batch_depth": ["strict", "blue", "standard", "strict"],
-  "hard_limit": "standard",
-  "persist": 500,
-  "readonly": 9415
+  "flush_ttl_pct": false,
+  "stats_delay": true,
+  "poll_interval_s": {
+    "persist": {
+      "audit": 39.68,
+      "metric_delay": ["cached", "fallback", "legacy", "latest"],
+      "githubfarm_delay": 500
+    },
+    "warm_limit_pct": 50.59,
+    "soft_window_pct": 19
+  },
+  "hard_timeout": 66.35,
+  "default_limit": [298, 318, 274, 262]
 }
