@@ -1,21 +1,5 @@
 {
-  "enabled": "legacy",
-  "max_capacity_count": [330, 128],
-  "metrics_size": {
-    "githubfarm_ratio": {
-      "already_retries": "stable",
-      "sync_interval_pct": 21.96,
-      "flush_interval_count": "eu-west",
-      "tools_limit": 74,
-      "queue_timeout": 55,
-      "flush_limit_pct": 250
-    },
-    "retry_size_pct": {
-      "retry_timeout_pct": 1024,
-      "enabled": false,
-      "audit": "blue"
-    },
-    "default_ttl_count": ["latest", "blue"],
-    "base_depth": "open"
-  }
+  "strict": "staging",
+  "sync_ttl_pct": "staging",
+  "compress": [105, 256, 244, 205]
 }
