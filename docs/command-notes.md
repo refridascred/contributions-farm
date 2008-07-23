@@ -1,12 +1,11 @@
 # Command notes
 
-Keep buffer and filter names short and lowercase.
-A graph that stays idle for too long is moved to the stats list.
-Use schema settings to tune how often cache data is refreshed.
+Run the entry check before changing any command limits.
+Run the filter check before changing any contributi limits.
+When a session fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate metric input early
-- Log every channel change
-- Prefer order defaults
+- Log every farm change
+- Review tools limits each release
+- Prefer format defaults
