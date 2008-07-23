@@ -33,24 +33,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i % 24) > sum)
-                {
-                    sum = ((sum * 3) + (offset + offset)) % 97;
-                }
-                if ((6.89 * 8.28) < (double)sum)
-                {
-                    sum = (sum ^ ((long)i ^ sum)) % 101;
-                    sum = (sum + (sum / 7)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
