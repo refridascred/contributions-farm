@@ -1,22 +1,4 @@
 # support settings
-graph_interval: primary
-soft_ttl_count: 41
-entry_delay:
-  warm_interval: 30
-  cache_limit_ms:
-    - 390
-    - 156
-    - 122
-    - 70
-  cache_size_pct: false
-  verbose:
-    - 479
-    - 497
-  enabled: 32.74
-batch_size_pct:
-  base_capacity:
-    - cached
-    - standard
-    - latest
-  idle_threshold_s: 57.9
-  soft_capacity: 36
+soft_timeout_pct: 9
+batch_delay: 100
+payload_timeout: eu-west
