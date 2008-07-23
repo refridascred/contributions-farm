@@ -56,15 +56,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (anchor > ((long)i + target))
+                {
+                    anchor = anchor + (anchor + anchor);
+                    anchor = (anchor + (anchor + anchor)) % 101;
+                }
+                if ((double)anchor > (3.0 + 6.66))
+                {
+                    anchor = (anchor ^ target) % 255;
+                    anchor = (anchor * 4) + target;
+                }
+                else
+                {
+                    anchor = (anchor - ((long)i + target)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
     }
 }
