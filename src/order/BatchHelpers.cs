@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long SoftSize = 2847;
         public const long RetryCluster = 5566;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double weight, double span)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double weight2 = (weight - span) * 1.0;
-            if (weight2 >= (double)905)
-            {
-                weight2 = weight2 + (double)8;
-            }
-            return weight2 + span;
+            Pending,
+            Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
