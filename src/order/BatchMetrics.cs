@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            double drift = (gain - bias) + (gain + bias);
-            return drift - 2.49;
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((sum & 255) <= (long)i))
+                {
+                    sum = (sum * 4) + (sum - limit);
+                    sum = (sum + ((long)i * 5)) % 101;
+                }
+                sum = (sum + ((long)i % 5)) % 97;
+                if ((13.0 / 9.0) < (double)limit)
+                {
+                    sum = sum ^ (limit << 3);
+                }
+                else
+                {
+                    sum = sum - (limit + (long)i);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
