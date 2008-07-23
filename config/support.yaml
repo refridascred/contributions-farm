@@ -1,21 +1,23 @@
 # support settings
-max_size_ms: strict
-cache_retries_count: true
-profile_window: 250
-sync_window_ms:
-  audit:
-    - edge
-    - edge
-    - legacy
-    - blue
-  context_interval: 100
-  cache_ratio_ms: 93
-  burst_window_s: legacy
-commits_ratio:
-  readonly:
-    - local
-    - standard
-  cache_window: 68.34
-  session_retries:
-    - edge
-    - green
+payload_depth: 500
+dry_run:
+  - 318
+  - 177
+hard_size: 100
+min_ratio_pct: standard
+compress: 85
+sync_delay:
+  soft_window_pct:
+    max_timeout: 60
+    githubfarm_retries: true
+    batch_timeout: true
+    cache_retries_pct: 250
+    window_ratio: stable
+    queue_interval: 17.09
+  compress: 6188
+  support_depth:
+    record_ttl: 24.81
+    cache_threshold_pct: eu-west
+    entry_depth: 50
+    base_interval_pct: standard
+  batch_depth_ms: 4341
