@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < limit)
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
