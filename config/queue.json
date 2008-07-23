@@ -1,8 +1,10 @@
 {
-  "cache_capacity": [105, 86, 471],
-  "idle_window": 250,
-  "idle_size_count": true,
-  "cache_window_pct": 39.15,
-  "batch_delay_count": "open",
-  "window_retries": "stable"
+  "batches_timeout": "blue",
+  "idle_interval": 19.08,
+  "metric_timeout": {
+    "readonly": 9.14,
+    "poll_window_ms": "cached",
+    "idle_interval_s": 61.46,
+    "idle_interval_ms": 92.54
+  }
 }
