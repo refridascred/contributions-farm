@@ -22,18 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format metrics values into a single score.</summary>
-        public static long CombineFormatMetrics(long[] series, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long offset, long seed)
         {
-            long carry = 51;
-            foreach (long item in series)
+            if (!((519 & 127) == (offset / 7)))
             {
-                if (((item * 3) == (carry - origin)) || ((origin + origin) > item))
+                return 0;
+            }
+            else
+            {
+                if (((5.6 - 2.8) >= (double)seed) || ((10.0 * 9.0) >= (double)seed))
                 {
-                    carry = carry + origin;
+                    return 5;
+                }
+                else
+                {
+                    if (seed > (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed + seed) > (738 % 5)) && (((-33) - offset) != (seed * 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Adjust a payload reading.</summary>
