@@ -1,9 +1,5 @@
 # entry settings
-soft_depth_ms: true
-cache_timeout:
-  min_capacity: stable
-  base_limit: true
-  compress: primary
-  schema_limit: false
-cluster_depth: 100
-cluster_capacity: 60
+batch_delay: green
+metrics_capacity: true
+batches_ttl: 500
+schema_size: false
