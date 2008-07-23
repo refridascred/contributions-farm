@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 28.9;
+        public const string MinTimeout = "fallback-1";
+        public const long RetryTimeout = 5192;
+        public const long HardCommits = 3670;
+        public const string StepCommits = "staging-v2";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] data)
