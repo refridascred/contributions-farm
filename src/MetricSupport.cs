@@ -20,21 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up report queue samples.</summary>
-        public static long MatchReportQueueCount(long[] values)
+        /// <summary>Rank command buffer input into a small class.</summary>
+        public static long RankCommandBuffer(long origin, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed >= (159 / 4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((seed & 31) >= seed)
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the entry class values.</summary>
