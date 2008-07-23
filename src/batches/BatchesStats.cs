@@ -41,15 +41,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster contributi reading.</summary>
-        public static double AdjustClusterContributi(double scale, double floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            double weight = scale - (scale / 9.0);
-            for (int i = 0; i < 7; i++)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                weight = (weight + floor) + (double)(long)i;
+                if (((long)i % 24) > sum)
+                {
+                    sum = ((sum * 3) + (offset + offset)) % 97;
+                }
+                if ((6.89 * 8.28) < (double)sum)
+                {
+                    sum = (sum ^ ((long)i ^ sum)) % 101;
+                    sum = (sum + (sum / 7)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return weight + (weight / 6.0);
+            return sum;
         }
     }
 }
