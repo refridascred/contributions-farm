@@ -17,17 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
