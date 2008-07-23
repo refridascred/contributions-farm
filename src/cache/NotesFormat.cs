@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = 2;
-            foreach (long sample in series)
-            {
-                state = ((state * 2) + (sample + 783)) % 101;
-            }
-            return state;
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a format summary.</summary>
