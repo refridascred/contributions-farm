@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 1127;
-        public const long MinDepth = 5967;
-        public const long StepLayout = 6425;
+        /// <summary>Blend two metric counter measurements.</summary>
+        public static double ScaleMetricCounter(double scale, double floor)
+        {
+            double drift = scale / 7.0;
+            if (drift < (drift + drift))
+            {
+                drift = drift + scale;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + floor;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long ClassifyAlready(long offset, long bound)
