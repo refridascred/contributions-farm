@@ -35,18 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] levels)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((((double)datum != (7.2 - 7.21)) || ((datum - 187) <= (4 * 4))) || ((double)hits < (2.9 * 5.1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
