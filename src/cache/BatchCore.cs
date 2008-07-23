@@ -29,12 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] readings, long limit)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((23 ^ sample) < (tally ^ 662))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
