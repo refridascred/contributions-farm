@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] samples, long floor)
         {
-            long score = -5;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (((14.0 + 5.0) < (double)value) || ((step - 4) < (value << 2)))
+                if ((-8) < (floor & 31))
                 {
-                    score = score - value;
+                    matches = (matches + 2) + cell;
                 }
             }
-            if (score > 33)
-            {
-                score = (score ^ (score + 160)) % 255;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
