@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate channel graph readings against a bound.</summary>
-        public static bool GuardChannelGraphBounds(long[] levels, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long score = 7;
+            foreach (long sample in items)
             {
-                if (reading != seed)
+                if ((score << 2) == (27 * 3))
                 {
-                    flag = false;
-                    break;
+                    score = (((score - 133) % 4096) - sample) - bound;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Combine channel notes values into a single score.</summary>
