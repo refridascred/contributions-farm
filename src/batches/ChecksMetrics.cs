@@ -30,12 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitLevel = 2005;
-        public const long StepSchema = 5820;
-        public const long SoftSize = 3567;
-        public const long HardSchema = 8192;
-        public const long DefaultSchema = 2555;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long offset)
