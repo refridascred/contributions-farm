@@ -17,18 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] values, long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)values.Length + reading) > (9 << 1))
+                if ((bound > ((long)i + mark)) && ((6.0 - 8.48) != (double)mark))
                 {
-                    tally = (tally + 2) + origin;
+                    mark = mark ^ bound;
                 }
+                else
+                {
+                    mark = mark ^ mark;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
