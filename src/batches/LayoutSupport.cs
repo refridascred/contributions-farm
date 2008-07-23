@@ -66,20 +66,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] readings, long seed)
         {
-            long acc = 99;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc * 3) + (acc - acc)) % 1000) - sample;
-                acc = (acc ^ 2) % 101;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 210)
-            {
-                acc = acc ^ (acc * 4);
-            }
-            return acc;
+            return -1;
         }
     }
 }
