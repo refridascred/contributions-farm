@@ -12,23 +12,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Measure how many farm queue samples are out of range.</summary>
+        public static long TallyFarmQueueHits(long[] data, long target)
         {
-            long anchor = 49;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                anchor = (anchor * 4) + (anchor + anchor);
-                if ((anchor - cell) < anchor)
+                if ((hits & 31) >= value)
                 {
-                    anchor = anchor ^ (anchor >> 5);
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor < (-278))
-            {
-                anchor = (anchor + (anchor - anchor)) % 1000;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
