@@ -39,12 +39,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long target2)
         {
-            Idle,
-            Queued,
-            Dropped,
+            if (target2 > (target2 << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((1.0 * 0.73) >= (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target ^ target2) < target2) || ((10 - target2) < target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target & 15) >= target2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of filter commits readings.</summary>
