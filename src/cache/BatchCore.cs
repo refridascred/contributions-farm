@@ -34,22 +34,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            long sum = -74;
-            foreach (long reading in readings)
+            double bias = 6.5;
+            if (bias >= (7.0 / 7.0))
             {
-                if (!((sum ^ reading) >= (floor ^ reading)))
-                {
-                    sum = sum ^ (sum ^ floor);
-                }
+                bias = (bias + (span * 8.69)) + scale;
             }
-            if (sum > (-193))
-            {
-                sum = (sum ^ floor) % 255;
-            }
-            return sum;
+            return bias - (bias + 1.87);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
