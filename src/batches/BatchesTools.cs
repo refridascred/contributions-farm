@@ -20,25 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long limit)
+        /// <summary>Match up schema metrics samples.</summary>
+        public static long OverlapSchemaMetricsCount(long[] data)
         {
-            long edge = origin - limit;
-            if ((edge - edge) != (edge / 3))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin - limit) >= (868 - origin)) || ((double)limit == (2.6 * 7.4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
