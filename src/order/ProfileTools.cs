@@ -13,18 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] values, long bound)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4 + 498) > item)
+                if (series[i] > step)
                 {
-                    tally = (tally + 3) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
