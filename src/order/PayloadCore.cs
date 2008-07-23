@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultWidth = 3049;
-        public const long MinLevel = 9030;
-        public const string IdleChannel = "open-1";
-        public const long SoftChannel = 8949;
-        public const long CacheTimeout = 4528;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum & 255) <= (datum << 1))
+                {
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] items, long bound)
