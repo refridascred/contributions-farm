@@ -1,13 +1,11 @@
 {
-  "base_limit": {
-    "persist": "primary",
-    "default_size_pct": ["edge", "edge", "staging"],
-    "editor_timeout": "staging",
-    "warm_limit": 20
+  "soft_ttl": "cached",
+  "audit": "edge",
+  "max_limit": {
+    "sync_interval": "stable",
+    "min_threshold": "latest",
+    "persist": false,
+    "max_window_ms": [61, 415]
   },
-  "default_retries_pct": [386, 255, 216],
-  "buffer_ttl": "strict",
-  "command_ttl": 20,
-  "payload_depth": "blue",
-  "route_threshold": 80.06
+  "warm_delay_ms": [460, 375, 456]
 }
