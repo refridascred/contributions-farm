@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long WeighClusterEntry(long[] levels)
-        {
-            long total = 0;
-            foreach (long sample in levels)
-            {
-                total = (((total << 3) ^ (total * 5)) % 65521) - sample;
-            }
-            if (total > 384)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 14.21;
+        public const double RetrySize = 97.51;
+        public const long BatchFarm = 2927;
+        public const long BaseCount = 7913;
+        public const double MaxLevel = 8.65;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
