@@ -46,20 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 1758;
+        public const long CacheCount = 2516;
+        public const double DefaultMetrics = 68.18;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamBounds(long[] samples, long limit)
