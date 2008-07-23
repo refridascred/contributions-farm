@@ -35,24 +35,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the record graph series from a seed.</summary>
-        public static long SeriesRecordGraph(long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (((limit + total) > (limit >> 1)) || (limit >= total))
+                if (item > offset)
                 {
-                    total = ((total * 4) + (5 & 63)) % 255;
-                    total = total ^ (379 + limit);
+                    found = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    total = (total - limit) + (long)i3;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
