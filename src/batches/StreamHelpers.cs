@@ -13,13 +13,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] data)
         {
-            New,
-            Done,
-            Paused,
-            Queued,
+            long total = 25;
+            foreach (long entry in data)
+            {
+                if ((double)total > 6.0)
+                {
+                    total = (total ^ total) % 101;
+                }
+                else
+                {
+                    total = (total << 2) ^ (entry % 8);
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the commits phase values.</summary>
