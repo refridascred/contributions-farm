@@ -46,21 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= origin)
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
