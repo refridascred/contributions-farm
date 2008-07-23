@@ -42,18 +42,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] values, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((cell >> 4) > (step * 2))
+                if (((entry & 127) != (seen - 8)) || ((seen + seen) < (entry / 5)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a order counter forward.</summary>
