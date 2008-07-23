@@ -74,14 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "open-1";
+        public const long StepAccount = 7480;
+        public const double BurstSpan = 1.71;
+        public const string SoftCount = "strict-edge";
+        public const double CacheAccount = 1.53;
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
         public static bool ValidateContextFormatBounds(long[] readings, long step)
