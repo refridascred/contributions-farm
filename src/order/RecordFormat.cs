@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] values, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long acc = 282;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample > (2.58 + 7.9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ acc) + bound;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
