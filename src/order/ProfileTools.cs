@@ -58,19 +58,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double scale, double floor)
+        /// <summary>Rank counter tools input into a small class.</summary>
+        public static long SortCounterTools(long target, long offset)
         {
-            double drift = scale;
-            if (drift >= floor)
+            if ((target + 9) >= offset)
             {
-                drift = drift - scale;
+                return 4;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = (drift - scale) + (double)(long)i;
+                if ((double)offset != (11.0 + 4.1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5 >> 1) <= (offset * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return drift + scale;
         }
     }
 }
