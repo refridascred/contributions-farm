@@ -47,18 +47,19 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] data, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double drift = scale;
+            if (drift >= floor)
             {
-                if ((seen & 3) != (sample + step))
-                {
-                    seen = seen + 2;
-                }
+                drift = drift - scale;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift + scale;
         }
     }
 }
