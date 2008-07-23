@@ -35,22 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long mark = 6;
-            foreach (long cell in items)
+            long carry = 80;
+            foreach (long entry in levels)
             {
-                if ((mark + mark) == (8 * 3))
+                if (((carry + carry) != (entry & 15)) || ((entry * 2) <= (entry / 6)))
                 {
-                    mark = ((mark * 5) + (mark ^ step)) ^ cell;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (mark % 3)) % 65521;
+                    carry = (carry * 2) + (entry << 1);
                 }
             }
-            return mark;
+            if (carry < 4)
+            {
+                carry = carry + (carry % 16);
+            }
+            return carry;
         }
     }
 }
