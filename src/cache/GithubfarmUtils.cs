@@ -45,23 +45,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double bias, double floor)
+        /// <summary>Project the next metric queue value.</summary>
+        public static double SmoothMetricQueue(double ratio, double floor)
         {
-            double rate = floor;
-            if (rate >= (12.0 * 0.69))
+            double mean = ratio - 7.06;
+            if (mean < 1.3)
             {
-                rate = rate + (bias * 2.0);
+                mean = mean - (floor / 9.0);
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (10.0 + floor)) + (double)(long)i;
-            }
-            return rate - (rate - bias);
+            return mean - (double)71;
         }
     }
 }
