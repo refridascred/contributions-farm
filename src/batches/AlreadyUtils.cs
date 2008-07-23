@@ -59,18 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm record samples.</summary>
-        public static long FoldFarmRecord(long[] series)
-        {
-            long acc = 836;
-            foreach (long reading in series)
-            {
-                if ((reading + acc) <= (acc << 3))
-                {
-                    acc = acc - (reading + 5);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 89.96;
+        public const string SoftLevel = "primary-v2";
+        public const long BaseFactor = 324;
+        public const string StepSize = "staging";
+        public const long RetryCounter = 3028;
     }
 }
