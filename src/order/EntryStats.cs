@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
