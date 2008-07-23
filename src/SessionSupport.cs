@@ -38,17 +38,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] levels, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= bound)
+                if (sample < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
