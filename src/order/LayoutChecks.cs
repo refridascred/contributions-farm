@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 3) + ((long)i << 1)) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
