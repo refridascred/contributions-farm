@@ -50,23 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context buffer series from a seed.</summary>
-        public static long StepContextBuffer(long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] items, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((seed - sum) > ((long)i >> 5))
+                if (cell <= offset)
                 {
-                    sum = ((sum * 4) + (8 - seed)) % 4096;
+                    valid = false;
+                    break;
                 }
-                if (!(((58 % 64) != (long)i) || (sum >= (6 - seed))))
-                {
-                    sum = (sum ^ ((long)i + seed)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
