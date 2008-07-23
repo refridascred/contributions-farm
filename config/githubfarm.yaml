@@ -1,4 +1,8 @@
 # githubfarm settings
-burst_capacity_pct: 60
-soft_delay: 4204
-base_limit_s: fallback
+burst_capacity: edge
+batch_size_s:
+  - standard
+  - stable
+  - legacy
+  - legacy
+warm_delay: true
