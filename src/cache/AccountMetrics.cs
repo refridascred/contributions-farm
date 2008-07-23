@@ -47,13 +47,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark << 3) ^ 69;
+                mark = mark - (target ^ mark);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
