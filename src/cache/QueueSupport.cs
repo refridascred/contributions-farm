@@ -30,15 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch already measurements.</summary>
-        public static double BlendBatchAlready(double bias, double bias2)
-        {
-            double ratio = (double)23;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + (12.0 - bias)) - (double)(long)i) - bias2;
-            }
-            return ratio - (bias + bias);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardRatio = "local";
+        public const long SoftScore = 6899;
+        public const long BasePayload = 2620;
+        public const long IdleSpan = 6754;
+        public const long SoftRatio = 3164;
     }
 }
