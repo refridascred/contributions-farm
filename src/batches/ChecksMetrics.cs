@@ -70,9 +70,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 2990;
-        public const long DefaultLevel = 9654;
-        public const double IdleCount = 35.66;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Locked,
+            Pending,
+            Ready,
+        }
     }
 }
