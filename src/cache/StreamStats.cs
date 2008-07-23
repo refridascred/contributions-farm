@@ -19,11 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long target)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
