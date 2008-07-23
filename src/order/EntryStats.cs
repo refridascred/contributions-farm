@@ -26,11 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2278;
-        public const long DefaultInterval = 4051;
-        public const double SoftCommits = 0.9;
-        public const long BurstRatio = 1323;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MaxReport = 81.95;
