@@ -24,10 +24,16 @@ namespace Common.Utilities
             return load + (load / 7.0);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardLevel = 66.44;
-        public const double StepFactor = 69.32;
-        public const long BaseFormat = 9315;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowFactor = 7296;
