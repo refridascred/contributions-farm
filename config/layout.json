@@ -1,7 +1,6 @@
 {
-  "readonly": 100,
-  "compress": "stable",
-  "entry_window": "green",
-  "warm_ratio_pct": "local",
-  "cache_size_pct": "eu-west"
+  "batch_capacity_pct": 10,
+  "enabled": 6036,
+  "verbose": true,
+  "cache_depth_pct": "standard"
 }
