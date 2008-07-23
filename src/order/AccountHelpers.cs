@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Accumulate editor entry samples.</summary>
+        public static long DigestEditorEntry(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 90;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seed >= value)
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc + (value ^ seed);
                 }
+                acc = acc ^ (value - 49);
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
