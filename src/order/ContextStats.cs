@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a contributi cache counter forward.</summary>
-        public static long RollContributiCache(long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                carry = (carry - (7 + step)) % 97;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (value > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the stream phase values.</summary>
