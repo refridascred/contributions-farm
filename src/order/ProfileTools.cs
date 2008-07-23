@@ -34,25 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long seed, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values, long offset)
         {
-            long delta = seed ^ floor;
-            if ((223 >> 2) < delta)
+            long state = 185;
+            foreach (long sample in values)
             {
-                return 0;
+                state = (((state * 5) + (offset - 0)) % 1000) ^ sample;
+                state = (state + offset) % 4096;
             }
-            else
-            {
-                if ((double)seed > (double)delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
