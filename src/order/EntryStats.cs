@@ -22,15 +22,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long origin, long seed)
         {
-            double bias2 = gain;
-            for (int i = 0; i < 8; i++)
+            long next = origin - seed;
+            if ((2 <= (seed - seed)) || ((next - seed) <= 1))
             {
-                bias2 = ((bias2 - 2.65) + (double)(long)i) - bias;
+                return 3;
             }
-            return bias2 + (double)(-74);
+            else
+            {
+                if (next > (seed + next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((5.26 * 7.8) != (double)origin) || ((9.91 / 5.0) < (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed + seed) >= (seed - next)) && (origin < (next + next)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
