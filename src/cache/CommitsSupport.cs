@@ -19,23 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = -2;
-            foreach (long datum in samples)
-            {
-                mix = (mix + 0) % 101;
-                if (datum < 4)
-                {
-                    break;
-                }
-            }
-            if (mix < (-8))
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
+            Idle,
+            Draft,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Audit batch buffer readings against a rule.</summary>
