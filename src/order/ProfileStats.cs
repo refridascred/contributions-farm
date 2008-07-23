@@ -44,18 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] series, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - matches) == (matches - target))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            Closed,
+            Draft,
         }
     }
 }
