@@ -1,8 +1,6 @@
 {
-  "min_limit_ms": ["stable", "standard", "fallback"],
-  "burst_window_count": 4,
-  "contributi_threshold": 7104,
-  "soft_window": 67.52,
-  "route_capacity": "latest",
-  "contributi_ttl": 27.97
+  "soft_window_ms": [231, 425, 425],
+  "retry_ratio": "latest",
+  "soft_timeout_count": [60, 31, 405],
+  "batch_threshold": 23.99
 }
