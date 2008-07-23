@@ -56,16 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route schema values into a single score.</summary>
-        public static long CombineRouteSchema(long[] readings, long target)
+        /// <summary>Scale a metrics buffer figure with a bias.</summary>
+        public static double SmoothMetricsBuffer(double weight, double floor)
         {
-            long state = 43;
-            foreach (long entry in readings)
-            {
-                state = ((state - (52 + state)) % 1000) + entry;
-                state = ((state * 3) + (state - target)) % 4096;
-            }
-            return state % 1000;
+            double drift = (floor * 8.54) + (double)9;
+            return (drift + floor) + weight;
         }
 
         /// <summary>Audit token record readings against a rule.</summary>
