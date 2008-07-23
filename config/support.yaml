@@ -1,7 +1,15 @@
 # support settings
-cache_limit_s: false
-burst_delay:
-  - local
+max_capacity_s: green
+retry_depth_pct:
+  - 384
+  - 32
+  - 318
+  - 246
+batch_limit_ms:
   - edge
+  - local
   - staging
-idle_size_s: cached
+  - fallback
+poll_limit_count: 70.49
+flush_ttl_count: true
+layout_limit: open
