@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long BurstSpan = 6308;
         public const long HardFilter = 8378;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Dropped,
-            Synced,
             Stale,
             Locked,
-            Pending,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
