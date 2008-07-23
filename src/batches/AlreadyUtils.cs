@@ -30,18 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] readings, long target)
+        /// <summary>Validate report layout readings against a bound.</summary>
+        public static bool VerifyReportLayoutLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((target + target) < (seen - target))
+                if (sample >= seed)
                 {
-                    seen = (seen + 2) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate farm record samples.</summary>
