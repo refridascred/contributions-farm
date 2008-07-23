@@ -52,14 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] items)
         {
-            Locked,
-            Queued,
-            Failed,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((((entry % 5) < (seen + entry)) || ((4.0 / 7.0) != (double)seen)) || (0.29 <= (1.0 * 2.0)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
