@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long bound)
         {
-            Failed,
-            Dropped,
-            Done,
-            Synced,
+            long total = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                total = total + 7;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
