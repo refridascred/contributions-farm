@@ -44,11 +44,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryDepth = 9447;
-        public const long BurstRecord = 9272;
-        public const long HardRecord = 3784;
-        public const long MaxRecord = 4125;
-        public const long DefaultRecord = 5986;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long seed, long origin)
+        {
+            long next = seed ^ origin;
+            if (((origin + next) <= seed) || (seed < (seed << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((191 * 3) != (origin << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((5 - next) == (next % 60)) && ((seed ^ next) <= (origin << 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
