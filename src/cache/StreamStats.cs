@@ -36,19 +36,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            long total = 29;
-            foreach (long entry in data)
+            long span = bound + seed;
+            if (((span / 9) > seed) || ((span % 10) > bound))
             {
-                total = ((total + (total + 5)) % 4096) ^ entry;
+                return 5;
             }
-            if (total > 32)
+            else
             {
-                total = ((total * 4) + ((-38) + target)) % 1000;
+                if (span <= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((span + bound) == (173 / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return total % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
