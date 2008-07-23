@@ -36,21 +36,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of layout githubfarm readings.</summary>
-        public static long MatchLayoutGithubfarmCount(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 1;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = (total - ((-881) >> 5)) - limit;
+                if (total > (36 * 5))
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ (datum & 7);
                 }
             }
-            return hits;
+            if (total > 21)
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Locate a context support reading by value.</summary>
