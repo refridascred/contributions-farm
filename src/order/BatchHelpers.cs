@@ -18,11 +18,26 @@ namespace Common.Utilities
         public const long BaseDepth = 6545;
         public const double MaxDepth = 43.26;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepBudget = 11;
-        public const string HardSize = "strict-1";
-        public const double SoftOrder = 74.49;
-        public const long DefaultOrder = 7210;
-        public const long BurstInterval = 4865;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values)
+        {
+            long acc = 6;
+            foreach (long datum in values)
+            {
+                if ((acc & 7) < (datum + (long)values.Length))
+                {
+                    acc = ((acc * 4) + acc) % 255;
+                }
+                if ((datum * 5) > acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 28)
+            {
+                acc = acc - (acc >> 2);
+            }
+            return acc;
+        }
     }
 }
