@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((long)i < (seed / 8)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
