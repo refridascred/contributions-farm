@@ -20,26 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of stream filter entries.</summary>
-        public static long TotalStreamFilter(long[] values, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mix = 1;
-            foreach (long cell in values)
-            {
-                if ((double)mix == (1.3 - 10.0))
-                {
-                    mix = (mix ^ (seed >> 1)) - cell;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ seed) % 65521;
-                }
-            }
-            if (mix > 865)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
