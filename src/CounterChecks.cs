@@ -37,17 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] == floor) && ((data[i] % 2) == 0))
+                if ((91 % 8) < (count >> 1))
                 {
-                    return (long)i;
+                    count = ((count + 3) - cell) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
