@@ -1,9 +1,4 @@
 # support settings
-batch_depth:
-  - latest
-  - latest
-persist: 15
-burst_size_pct: 7.37
-max_threshold_ms: true
-editor_size: 90.85
-soft_limit: 60
+session_ratio: true
+commits_threshold: 250
+persist: 59.43
