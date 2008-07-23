@@ -27,32 +27,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series)
         {
-            long step = offset + bound;
-            if ((step + step) > (95 - offset))
+            long state = -473;
+            foreach (long reading in series)
             {
-                return 4;
+                state = (state - (reading >> 5)) % 255;
+                state = (state << 3) ^ reading;
             }
-            else
+            if (state > 515)
             {
-                if ((13.0 - 6.89) <= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((7 + step) > (bound - offset)) || ((bound - step) > (bound / 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = (state ^ (489 >> 2)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Rank schema command input into a small class.</summary>
