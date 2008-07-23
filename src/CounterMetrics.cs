@@ -46,19 +46,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a already metric figure with a bias.</summary>
-        public static double BlendAlreadyMetric(double weight, double offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            double weight2 = (double)(47 + 198);
-            if (weight2 >= offset)
+            long score = 27;
+            foreach (long cell in items)
             {
-                weight2 = weight2 - weight2;
+                if ((double)cell > (4.78 / 3.0))
+                {
+                    score = (score + score) % 1000;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (cell << 3)) % 65521;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 + weight2;
+            return score % 65521;
         }
     }
 }
