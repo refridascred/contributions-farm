@@ -13,13 +13,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] data, long floor)
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((floor >> 3) <= (tally >> 4))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
