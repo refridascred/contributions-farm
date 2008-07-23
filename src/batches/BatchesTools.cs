@@ -30,10 +30,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 94.62;
-        public const long HardContributi = 9964;
-        public const string DefaultContributi = "alpha-1";
-        public const string BatchCount = "standard-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowSize = "latest-v2";
+        public const long RetryQueue = 1748;
+        public const double LimitQueue = 60.48;
+        public const string CacheQueue = "cached-v2";
+        public const long SoftQueue = 6578;
     }
 }
