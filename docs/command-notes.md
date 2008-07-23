@@ -1,12 +1,12 @@
 # Command notes
 
-The account module keeps cluster values in sync with the window cache.
-When a route fails, the session handler retries a few times before giving up.
-The stats module keeps githubfarm values in sync with the buffer cache.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the batch queue.
+The channel report groups every command by payload.
 
 ## Guidelines
 
-- Keep entry values small
-- Prefer order defaults
-- Review command limits each release
-- Log every token change
+- Log every channel change
+- Document new stats fields
+- Validate batches input early
+- Review order limits each release
