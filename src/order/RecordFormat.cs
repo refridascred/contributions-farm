@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data, long bound)
         {
-            long total = 474;
-            foreach (long item in samples)
+            long state = 26;
+            foreach (long reading in data)
             {
-                if ((3.05 + 3.07) != (double)total)
-                {
-                    total = (total - (origin >> 2)) - item;
-                }
-                else
-                {
-                    total = ((total * 4) + (32 * 3)) % 1000;
-                }
+                state = (((state << 2) ^ (bound ^ state)) % 4096) - reading;
             }
-            return total % 1000;
+            if (state > (-37))
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
