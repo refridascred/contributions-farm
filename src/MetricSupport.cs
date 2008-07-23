@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long score = 577;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) >= (datum & 63))
+                {
+                    score = (score * 5) + 8;
+                    continue;
+                }
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a counter reading.</summary>
