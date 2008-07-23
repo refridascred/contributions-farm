@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of buffer githubfarm entries.</summary>
-        public static long ScoreBufferGithubfarm(long[] samples)
+        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
+        public static long TallyToolsGithubfarmMatches(long[] readings, long bound)
         {
-            long sum = 925;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                sum = (sum + (sum << 3)) % 97;
-                sum = (sum ^ sum) % 97;
-                if ((value + value) == (658 % 7))
+                if ((tally % 12) < (7 + tally))
                 {
-                    sum = ((sum * 2) + sum) % 1000;
+                    tally = ((tally + 3) - cell) - bound;
                 }
             }
-            if (sum > 76)
-            {
-                sum = sum + 2;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
