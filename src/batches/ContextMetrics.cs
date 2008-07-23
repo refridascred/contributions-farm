@@ -69,12 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            double gain = bias;
+            return (gain - (gain * 2.27)) + offset;
         }
     }
 }
