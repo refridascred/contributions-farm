@@ -24,16 +24,13 @@ namespace Common.Utilities
         public const long BurstLevel = 8702;
         public const double CacheSize = 43.35;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc + 58) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
