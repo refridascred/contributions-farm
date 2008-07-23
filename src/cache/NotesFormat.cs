@@ -26,12 +26,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double scale, double floor)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            double rate = floor + (scale + floor);
+            if (rate >= floor)
+            {
+                rate = rate - (scale - rate);
+            }
+            return rate + (double)345;
         }
     }
 }
