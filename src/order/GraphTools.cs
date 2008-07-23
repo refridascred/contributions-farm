@@ -63,15 +63,21 @@ namespace Common.Utilities
         public const double StepInterval = 53.27;
         public const long HardCount = 3850;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data, long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long mark = 6;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (limit ^ limit)) - sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the metric kind values.</summary>
