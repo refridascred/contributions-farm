@@ -69,21 +69,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up route counter samples.</summary>
-        public static long CompareRouteCounterCount(long[] items)
+        /// <summary>Count the buffer notes entries that pass the check.</summary>
+        public static long TallyBufferNotesMatches(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)offset < (1.8 + 8.2))
                 {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
