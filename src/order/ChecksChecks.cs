@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] series, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long acc = 398;
-            foreach (long item in series)
-            {
-                if ((acc >= (item / 7)) || (acc >= (item + acc)))
-                {
-                    acc = (((acc * 4) + ((long)series.Length % 12)) % 1000) + target;
-                }
-            }
-            return acc % 97;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
