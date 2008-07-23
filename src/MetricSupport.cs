@@ -15,12 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Match up report queue samples.</summary>
+        public static long MatchReportQueueCount(long[] values)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
