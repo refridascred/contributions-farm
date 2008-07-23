@@ -41,30 +41,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long floor, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long next = floor - seed;
+            if ((3.5 + 1.8) != (double)next)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 3) == (next - seed))
                 {
-                    result = result - (long)i;
-                    result = (result + ((long)i2 >> 4)) % 255;
-                }
-                if (result < (target - result))
-                {
-                    result = ((result << 2) ^ (target + (long)i)) % 255;
-                    result = (result + ((long)i + 743)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    result = (result + (long)i) % 65521;
-                    result = (result + (337 + target)) % 4096;
+                    if (3.22 < (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
