@@ -15,11 +15,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double ratio, double bias)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long bound, long bound2)
         {
-            double drift = (double)470 / 3.0;
-            return ((drift - (double)88) + ratio) + bias;
+            long lane = bound - bound2;
+            if (((double)bound < (13.0 - 0.8)) && ((bound2 >> 2) <= (bound2 * 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound2 < (double)lane) || ((lane % 8) <= (bound >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)bound == (3.2 / 8.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((lane & 1) != (lane >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
