@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command batches samples are out of range.</summary>
-        public static long MeasureCommandBatchesGaps(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((543 - matches) > (matches << 2))
+                if ((5 >> 1) >= (cell + count))
                 {
-                    matches = (matches + 1) + value;
+                    count = (count + 3) + limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit report layout readings against a rule.</summary>
