@@ -24,22 +24,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine stats editor values into a single score.</summary>
-        public static long ScoreStatsEditor(long[] data)
+        /// <summary>Rank tools layout input into a small class.</summary>
+        public static long BucketToolsLayout(long floor, long seed)
         {
-            long anchor = 2;
-            foreach (long entry in data)
+            if (((double)floor != (double)seed) && ((floor % 5) != (73 << 3)))
             {
-                if ((double)(long)data.Length < (5.22 / 2.0))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor == (2.28 / 6.0))
                 {
-                    anchor = (anchor + (anchor / 6)) % 101;
+                    return 3;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + entry) % 97;
+                    return 6;
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
