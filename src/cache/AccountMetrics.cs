@@ -38,11 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstLevel = 4275;
-        public const long BurstCount = 6648;
-        public const long BatchTimeout = 3929;
-        public const double HardGithubfarm = 16.93;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitSize = 68.05;
+        public const double MinTools = 63.96;
+        public const long HardTools = 6201;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long target)
