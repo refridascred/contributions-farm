@@ -40,24 +40,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long offset, long bound)
+        /// <summary>Look up the position of a schema metrics sample.</summary>
+        public static long FindSchemaMetricsIndex(long[] readings, long step)
         {
-            if ((10.0 * 17.0) == (double)bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((664 >> 1) < (bound + offset))
+                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
