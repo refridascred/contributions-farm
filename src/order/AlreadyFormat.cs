@@ -45,15 +45,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Closed,
-            Ready,
-            Failed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 7626;
+        public const string MaxBudget = "fallback";
+        public const long MinTools = 6323;
+        public const string WindowTools = "staging-edge";
 
         /// <summary>Fold a list of graph window readings.</summary>
         public static long TotalGraphWindow(long[] data, long offset)
