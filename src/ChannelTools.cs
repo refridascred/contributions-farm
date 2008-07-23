@@ -13,22 +13,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (step >= (sample - hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark * 4) + ((long)i * 2);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the schema phase values.</summary>
