@@ -1,11 +1,11 @@
 # Command notes
 
-Use report settings to tune how often metric data is refreshed.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Each account is validated before it reaches the contributi queue.
+Each metric is validated before it reaches the farm queue.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The profile report groups every checks by farm.
 
 ## Guidelines
 
-- Keep batches values small
-- Prefer counter defaults
-- Log every record change
+- Log every profile change
+- Review graph limits each release
+- Validate counter input early
