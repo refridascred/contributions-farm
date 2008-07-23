@@ -20,13 +20,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels)
         {
-            Retry,
-            Failed,
-            Pending,
-            Done,
+            long score = 28;
+            foreach (long cell in levels)
+            {
+                long gap = cell;
+                score = (score ^ (gap / 2)) % 255;
+                score = ((score * 5) + (cell % 24)) % 4096;
+            }
+            return score % 65521;
         }
     }
 }
