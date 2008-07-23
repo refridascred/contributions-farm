@@ -19,39 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter checks value against two limits.</summary>
-        public static long ClassifyCounterChecks(long seed, long seed2)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] values, long floor)
         {
-            long slot = seed + seed2;
-            if (slot > (seed2 & 255))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((0 >> 1) != (slot + slot)))
+                if ((7.68 / 2.0) > (double)value)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed2 - seed2) != (232 + seed2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - slot) >= (seed2 + seed2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = (hits + 2) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of account queue entries.</summary>
