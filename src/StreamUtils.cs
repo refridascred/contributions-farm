@@ -29,20 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] values, long target)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((double)result < (9.38 * 8.1))
+                if (entry >= target)
                 {
-                    result = (result * 5) + (target - target);
+                    flag = false;
+                    break;
                 }
-                result = (result * 2) + (long)i;
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Digest a series of support buffer entries.</summary>
