@@ -43,31 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank schema command input into a small class.</summary>
-        public static long SortSchemaCommand(long seed, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data)
         {
-            if ((4.9 / 9.0) > (double)target)
+            long result = 350;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (5.7 >= (double)seed)
+                if (((result - sample) == (943 * 5)) || (result < (sample - sample)))
                 {
-                    return 3;
+                    result = (result - (968 + sample)) % 255;
                 }
-                else
-                {
-                    if (((target + seed) <= (seed & 255)) || ((seed + seed) == (target / 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                result = result - (sample - sample);
             }
+            return result % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
