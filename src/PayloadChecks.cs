@@ -20,18 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((19.0 / 4.0) != (double)sample)
+                if ((entry & 7) == (seen + entry))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
