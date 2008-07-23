@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const string BaseBudget = "local";
         public const long WindowStats = 7888;
 
-        /// <summary>Iterate the account order series from a seed.</summary>
-        public static long DeriveAccountOrder(long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] items, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                score = (score - (score - score)) % 4096;
-                score = ((score * 5) + (long)i) % 1000;
+                if ((6.86 * 4.84) <= (double)datum)
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
