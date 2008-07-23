@@ -72,17 +72,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark << 3) ^ 69;
-                mark = mark - (target ^ mark);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a session header.</summary>
