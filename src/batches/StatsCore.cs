@@ -43,32 +43,10 @@ namespace Common.Utilities
             return (bias2 + 8.61) + weight;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long floor, long seed)
-        {
-            if ((double)floor >= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor <= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed / 5) > (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitDepth = 8051;
+        public const long IdleChecks = 1016;
+        public const long BaseChecks = 5090;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] items)
