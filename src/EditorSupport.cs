@@ -19,11 +19,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseFactor = 27.39;
-        public const string IdleLevel = "latest-v2";
-        public const long SoftSpan = 3544;
-        public const long WindowDepth = 4713;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5034;
+        public const long BatchCount = 9299;
+        public const long BaseQueue = 6743;
+        public const long HardSpan = 5659;
+        public const long WindowQueue = 5550;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
