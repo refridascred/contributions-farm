@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double floor)
+        /// <summary>Combine channel notes values into a single score.</summary>
+        public static long WeighChannelNotes(long[] data, long step)
         {
-            double rate = floor / 4.0;
-            if (rate < (floor - weight))
+            long result = 197;
+            foreach (long value in data)
             {
-                rate = rate - (floor - 7.2);
+                result = ((result << 2) ^ (result - 218)) ^ value;
             }
-            else
+            if (result < 423)
             {
-                rate = rate + floor;
+                result = (result << 3) ^ (step >> 3);
             }
-            return rate - (double)65;
+            return result % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
