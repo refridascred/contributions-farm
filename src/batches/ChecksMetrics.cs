@@ -43,16 +43,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long result = 95;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result + (entry * 2)) % 4096;
-                result = (result + (0 % 3)) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
