@@ -59,11 +59,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "legacy";
-        public const long WindowBatch = 8614;
-        public const long CacheWidth = 698;
-        public const long SoftScore = 18;
-        public const long MaxScore = 3691;
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double offset)
+        {
+            double scale = ratio;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale - (double)53;
+        }
     }
 }
