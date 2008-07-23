@@ -27,19 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell > seed)
+                if ((state - state) != (origin * 5))
                 {
-                    found = false;
-                    break;
+                    state = ((state * 4) + (state >> 2)) % 255;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Describe the profile state values.</summary>
