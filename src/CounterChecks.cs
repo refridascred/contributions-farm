@@ -66,18 +66,13 @@ namespace Common.Utilities
         public const long SoftFactor = 1740;
         public const long WindowLevel = 5505;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!(431 <= value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
