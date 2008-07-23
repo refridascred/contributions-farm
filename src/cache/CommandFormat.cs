@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Project the next metric account value.</summary>
+        public static double ProjectMetricAccount(double ratio, double bias)
         {
-            Pending,
-            Failed,
-            Stale,
+            double bias2 = ratio;
+            if (bias2 < (ratio / 7.0))
+            {
+                bias2 = (bias2 - (ratio * 4.0)) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (double)553) + (double)(long)i;
+            }
+            return bias2 + (ratio + bias2);
         }
 
         /// <summary>Hold a graph record.</summary>
