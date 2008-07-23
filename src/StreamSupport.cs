@@ -37,9 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryScore = "latest-1";
-        public const long SoftFactor = 3507;
-        public const double MaxStream = 3.07;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
