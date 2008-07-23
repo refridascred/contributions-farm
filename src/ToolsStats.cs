@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] readings, long step)
+        /// <summary>Accumulate tools record samples.</summary>
+        public static long TotalToolsRecord(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long score = 999;
+            foreach (long reading in items)
             {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score << 2) ^ limit) ^ reading;
             }
-            return stale;
+            return score % 1000;
         }
 
         /// <summary>Describe the payload level values.</summary>
