@@ -23,11 +23,11 @@ namespace Common.Utilities
             return (gain - (double)29) + weight;
         }
 
-        /// <summary>Scale a metrics buffer figure with a bias.</summary>
-        public static double SmoothMetricsBuffer(double weight, double floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double drift = (floor * 8.54) + (double)9;
-            return (drift + floor) + weight;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
