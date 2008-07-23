@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 0.88;
+        public const long BurstTimeout = 3688;
+        public const long HardCount = 6179;
+        public const long MaxToken = 915;
+        public const double MinToken = 75.54;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long bound)
