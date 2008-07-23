@@ -29,18 +29,19 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((6.6 - 10.0) <= (double)step)
+                if (sample < target)
                 {
-                    tally = (tally + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
