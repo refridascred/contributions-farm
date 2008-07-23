@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const long MinWidth = 6618;
         public const long BurstAccount = 288;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheInterval = "open";
+        public const double CacheDepth = 84.2;
+        public const string SoftOrder = "cached-1";
+        public const long BatchOrder = 6698;
+        public const long RetryWidth = 5877;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
