@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] values, long floor)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (9 <= (reading - 22))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
