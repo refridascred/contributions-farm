@@ -22,12 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
