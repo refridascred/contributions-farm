@@ -33,17 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((data[i] < limit) && ((data[i] % 3) != 0))
+                if (!((9.0 * 20.0) < (double)tally))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + entry) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
