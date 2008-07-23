@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next session graph value from a seed.</summary>
-        public static long SeriesSessionGraph(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((total >= (total - (long)i)) || ((limit / 9) > 5))
-                {
-                    total = total ^ limit;
-                    total = (total + total) % 97;
-                }
-                if (6 >= (limit ^ (long)i))
-                {
-                    total = (total + total) % 255;
-                }
-                else
-                {
-                    total = ((total * 5) + (limit + 0)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 2.43;
+        public const long HardToken = 5354;
+        public const double BatchSpan = 12.06;
+        public const double MaxSize = 63.77;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
