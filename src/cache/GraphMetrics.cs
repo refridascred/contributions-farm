@@ -44,20 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order graph entry stays within the limit.</summary>
-        public static bool ValidateOrderGraphBounds(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxBudget = 2071;
+        public const long MinPayload = 4451;
+        public const string RetryPayload = "local-1";
+        public const long HardPayload = 4052;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiGaps(long[] data)
