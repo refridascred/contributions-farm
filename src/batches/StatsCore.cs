@@ -50,11 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double bias)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double bias2 = (bias / 9.0) + bias;
-            return (bias2 + 8.61) + weight;
+            Active,
+            Done,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the buffer class values.</summary>
