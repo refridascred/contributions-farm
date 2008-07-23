@@ -86,17 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] levels, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
