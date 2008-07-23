@@ -106,19 +106,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((state * 5) == (state + offset))
-                {
-                    state = (state * 2) + (720 + offset);
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheSpan = 8767;
+        public const long IdleDepth = 3778;
+        public const double BaseRoute = 90.38;
     }
 }
