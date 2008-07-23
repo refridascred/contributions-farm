@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double BatchSpan = 12.06;
         public const double MaxSize = 63.77;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            New,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
