@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] samples, long target)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long acc = 4;
+            foreach (long value in samples)
+            {
+                acc = (((acc << 2) ^ target) % 97) - value;
+            }
+            return acc;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
