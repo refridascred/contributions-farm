@@ -1,22 +1,24 @@
 # entry settings
-poll_retries_s:
-  - standard
-  - green
-  - blue
-  - standard
-githubfarm_retries:
-  verbose:
-    flush_ratio_ms: open
-    cache_limit: eu-west
-    cache_depth: 84.64
-    channel_capacity: latest
-    default_size_pct: 19
-    cache_retries_pct: 11
-  readonly: 64.17
-  poll_delay_count: 63.32
-hard_ratio_pct:
-  - 17
-  - 376
-  - 111
-cache_threshold_pct: 19
-notes_ratio: primary
+sync_interval:
+  batches_threshold:
+    poll_ratio:
+      - stable
+      - green
+      - fallback
+      - primary
+    min_window_ms:
+      - 314
+      - 61
+      - 379
+      - 473
+    profile_threshold: 60
+  sync_timeout_count:
+    enabled: fallback
+    max_limit_s: standard
+    hard_size: legacy
+    record_capacity: strict
+    sync_capacity_s: stable
+  idle_timeout: 44
+retry_retries_pct: open
+verbose: 250
+farm_capacity: standard
