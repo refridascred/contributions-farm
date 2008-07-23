@@ -1,18 +1,6 @@
 {
-  "enabled": "cached",
-  "soft_ratio_pct": "cached",
-  "sync_interval_pct": {
-    "record_delay": [274, 302, 453],
-    "batch_interval_ms": "legacy",
-    "soft_ratio": {
-      "idle_window_ms": "eu-west",
-      "channel_capacity": 91.75,
-      "already_timeout": 4100,
-      "retry_threshold": true,
-      "batch_interval_pct": 93.32,
-      "hard_ttl": false
-    },
-    "sync_interval_s": "open"
-  },
-  "editor_size": false
+  "burst_window": "edge",
+  "sync_ttl": 63.52,
+  "dry_run": 30,
+  "cache_capacity": 30
 }
