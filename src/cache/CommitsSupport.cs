@@ -48,19 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer record readings against a bound.</summary>
-        public static bool ValidateBufferRecordLimits(long[] values, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (cell < offset)
+                if ((3 << 1) > matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the route kind values.</summary>
