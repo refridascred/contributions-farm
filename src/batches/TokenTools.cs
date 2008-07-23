@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] readings, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long carry = -26;
-            foreach (long reading in readings)
-            {
-                carry = (((carry * 3) + origin) % 255) + reading;
-                if (32 < origin)
-                {
-                    carry = carry + (-27);
-                }
-            }
-            if (carry < (-162))
-            {
-                carry = (carry ^ (origin - carry)) % 4096;
-            }
-            return carry % 4096;
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two counter measurements.</summary>
