@@ -23,10 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchDepth = "fallback-1";
-        public const string MaxSpan = "strict-v2";
-        public const long StepBuffer = 1572;
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double gain, double span)
+        {
+            double weight = (double)81 - (span + span);
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + (20.0 - span)) + (double)(long)i) + gain;
+            }
+            return weight + span;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long WeighFarm(long[] data, long bound)
