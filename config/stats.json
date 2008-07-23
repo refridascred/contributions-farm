@@ -1,6 +1,6 @@
 {
-  "flush_ttl_s": 92.28,
-  "hard_window_count": 74.56,
-  "dry_run": 30,
-  "min_interval_count": 75
+  "stream_timeout": 24.07,
+  "sync_delay_s": 100,
+  "warm_depth_ms": 82.09,
+  "cache_interval_ms": 60
 }
