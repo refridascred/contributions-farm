@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            Failed,
-            Dropped,
-            Queued,
+            double mean = bias;
+            if (mean <= bias)
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean + (bias + mean);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (span / 7.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a support header.</summary>
