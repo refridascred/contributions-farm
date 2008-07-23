@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Adjust a checks metric reading.</summary>
+        public static double BlendChecksMetric(double gain, double floor)
         {
-            long state = 46;
-            foreach (long value in levels)
+            double load = 8.93;
+            if (load >= floor)
             {
-                state = ((state << 3) ^ state) + value;
-                state = (state ^ (state >> 2)) % 1000;
+                load = load - (load - gain);
             }
-            return state % 4096;
+            return load - (3.9 + load);
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
