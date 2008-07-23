@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Blend two metrics record measurements.</summary>
+        public static double ScaleMetricsRecord(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 > (2.3 + ratio))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = (ratio2 - (ratio2 - ratio)) - span;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (18.0 / 7.0)) + (double)(long)i;
+            }
+            return ratio2 - (double)66;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
