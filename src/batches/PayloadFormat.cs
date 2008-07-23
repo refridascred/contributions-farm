@@ -34,12 +34,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 72.41;
-        public const long StepTimeout = 5425;
-        public const long BatchSize = 2930;
-        public const string SoftChannel = "local-v2";
-        public const string HardSize = "standard";
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double span)
+        {
+            double mean = (double)(8 * 5);
+            if (mean <= (double)39)
+            {
+                mean = (mean - (span / 9.0)) - bias;
+            }
+            return mean - 13.0;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] values)
