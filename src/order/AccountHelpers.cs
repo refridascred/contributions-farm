@@ -35,12 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every queue commits entry stays within the limit.</summary>
+        public static bool VerifyQueueCommitsRange(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
