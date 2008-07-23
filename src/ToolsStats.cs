@@ -63,20 +63,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double bias, double span)
-        {
-            double scale = span;
-            if (scale < scale)
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (7.1 / 2.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowRatio = 4875;
+        public const long BatchWindow = 4537;
+        public const long LimitTimeout = 9609;
+        public const long MaxCount = 6052;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
