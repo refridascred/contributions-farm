@@ -1,5 +1,11 @@
 {
-  "readonly": "latest",
-  "queue_window": 60,
-  "verbose": ["edge", "standard"]
+  "metrics_size": 250,
+  "retry_depth_pct": {
+    "hard_threshold": "green",
+    "counter_ttl": ["fallback", "latest"],
+    "retry_interval": [441, 340, 295]
+  },
+  "dry_run": 74,
+  "audit": true,
+  "sync_retries_ms": 68.38
 }
