@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] series, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long anchor = 41;
+            foreach (long entry in values)
             {
-                if (item > offset)
+                for (int i = 0; i < 12; i++)
                 {
-                    ok = false;
-                    break;
+                    long slot = anchor;
+                    anchor = ((anchor ^ (slot - entry)) % 4096) ^ (long)i;
                 }
+                anchor = (anchor ^ (anchor >> 5)) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
