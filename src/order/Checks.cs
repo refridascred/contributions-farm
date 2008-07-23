@@ -12,22 +12,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Digest a series of metrics cluster entries.</summary>
+        public static long CombineMetricsCluster(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 4;
+            foreach (long entry in series)
             {
-                if ((double)tally >= (2.0 - 19.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc ^ entry) % 97;
+                acc = acc + (acc % 97);
+                acc = (acc ^ (acc & 7)) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
