@@ -32,21 +32,19 @@ namespace Common.Utilities
         public const long WindowScore = 6674;
         public const long BaseRatio = 6223;
 
-        /// <summary>Compare every pair of cluster context readings.</summary>
-        public static long OverlapClusterContextCount(long[] samples)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (5.12 + 5.95) + (double)127;
+            if (load >= (load + gain))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (gain * 2.26)) + floor;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
