@@ -36,31 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long floor, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            if ((1.6 / 9.0) <= (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin < (13.0 + 4.43)) || ((floor * 3) != (251 / 9)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
