@@ -55,13 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            New,
-            Active,
-            Draft,
-            Failed,
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first metric session entry that matches the target.</summary>
