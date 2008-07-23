@@ -36,10 +36,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitBudget = 8156;
-        public const long MinStream = 2676;
-        public const long IdleRatio = 4613;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
