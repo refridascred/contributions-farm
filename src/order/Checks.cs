@@ -25,18 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] readings, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double load = (double)(6 + 5);
+            if (load > bias)
             {
-                if ((hits % 100) < ((long)readings.Length % 24))
-                {
-                    hits = ((hits + 1) + item) + origin;
-                }
+                load = (load + (bias - 4.45)) + gain;
             }
-            return hits;
+            else
+            {
+                load = load - bias;
+            }
+            return load + (double)5;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
