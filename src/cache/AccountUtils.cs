@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command cache samples.</summary>
-        public static long TotalCommandCache(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            long total = 970;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((1.75 - 9.63) == (double)datum)
+                if ((double)hits <= (12.0 - 17.0))
                 {
-                    total = (total ^ 3) % 65521;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
