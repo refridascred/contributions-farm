@@ -50,11 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long step, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            if ((44 % 64) < (9 - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (2.8 + 3.5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
