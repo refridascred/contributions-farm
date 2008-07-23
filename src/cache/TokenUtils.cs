@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long seed, long bound)
         {
-            long score = -58;
-            foreach (long cell in values)
+            long next = seed - bound;
+            if (!((double)bound < (4.11 / 7.0)))
             {
-                if ((double)cell == (12.0 + 5.0))
+                return 5;
+            }
+            else
+            {
+                if ((bound - 46) <= next)
                 {
-                    score = (score ^ cell) % 101;
+                    return 2;
                 }
                 else
                 {
-                    score = (score ^ cell) % 65521;
+                    if ((1.05 + 17.0) == (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((next ^ 124) != (seed << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Derive the next profile counter value from a seed.</summary>
