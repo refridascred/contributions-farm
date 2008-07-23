@@ -28,32 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long seed, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long step2 = seed ^ step;
-            if ((seed % 2) < (step2 + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step >= (step2 << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 > (step - step2)) && (step >= (step2 << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
