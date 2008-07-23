@@ -1,10 +1,6 @@
-id,count,score
-1,5.49,strict
-2,primary,15.96
-3,6.71,988
-4,legacy,118
-5,strict,654
-6,15.87,78.52
-7,7.74,edge
-8,438,206
-9,44.93,81.79
+id,token,state,active
+1,36.0,90.99,631
+2,60.76,fallback,97.79
+3,736,latest,1.65
+4,865,local,891
+5,690,35.84,283
