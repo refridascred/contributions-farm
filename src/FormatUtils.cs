@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] levels)
         {
-            Paused,
-            Draft,
-            Active,
-            Pending,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((1.17 * 8.0) >= (double)item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
