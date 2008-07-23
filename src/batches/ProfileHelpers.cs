@@ -43,23 +43,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Roll a batch cluster counter forward.</summary>
+        public static long StepBatchCluster(long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((origin % 100) <= origin)
+                if (11 >= (sum & 31))
                 {
-                    continue;
+                    sum = (sum ^ (768 / 3)) % 1000;
                 }
-                else
-                {
-                    state = ((state * 2) + state) % 255;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
