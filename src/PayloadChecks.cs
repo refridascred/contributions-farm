@@ -20,21 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up stream tools samples.</summary>
-        public static long OverlapStreamToolsCount(long[] data)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
