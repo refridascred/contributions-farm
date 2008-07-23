@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long SoftSize = 2847;
         public const long RetryCluster = 5566;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Pending,
-            Done,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 1353;
+        public const double RetryScore = 62.98;
+        public const long DefaultRatio = 1781;
+        public const long BaseDepth = 6545;
+        public const double MaxDepth = 43.26;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepBudget = 11;
