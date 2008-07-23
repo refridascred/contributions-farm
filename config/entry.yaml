@@ -1,24 +1,4 @@
 # entry settings
-sync_interval:
-  batches_threshold:
-    poll_ratio:
-      - stable
-      - green
-      - fallback
-      - primary
-    min_window_ms:
-      - 314
-      - 61
-      - 379
-      - 473
-    profile_threshold: 60
-  sync_timeout_count:
-    enabled: fallback
-    max_limit_s: standard
-    hard_size: legacy
-    record_capacity: strict
-    sync_capacity_s: stable
-  idle_timeout: 44
-retry_retries_pct: open
-verbose: 250
-farm_capacity: standard
+flush_ttl: true
+commits_ttl: local
+base_ratio_ms: false
