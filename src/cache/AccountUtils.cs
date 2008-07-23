@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((count ^ entry) <= entry)
+                if (((-9) / 3) >= matches)
                 {
-                    count = count + 3;
+                    matches = ((matches + 3) + sample) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
