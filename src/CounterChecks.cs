@@ -62,12 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLevel = 4184;
-        public const double BaseCount = 94.55;
-        public const long RetrySize = 1942;
-        public const long SoftFactor = 1740;
-        public const long WindowLevel = 5505;
+        /// <summary>Check that every counter cache entry stays within the limit.</summary>
+        public static bool CheckCounterCacheRange(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
