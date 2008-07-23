@@ -40,17 +40,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a schema metrics sample.</summary>
-        public static long FindSchemaMetricsIndex(long[] readings, long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
