@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] items, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] readings)
         {
-            long total = 8;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                total = (((total << 2) ^ ((long)items.Length << 3)) % 101) - target;
-                total = ((total * 3) + (sample >> 5)) % 255;
+                if ((count << 2) > count)
+                {
+                    count = (count + 3) - value;
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Describe the notes status values.</summary>
