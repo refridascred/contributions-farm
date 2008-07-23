@@ -13,16 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data, long floor)
-        {
-            long result = 96;
-            foreach (long reading in data)
-            {
-                result = ((result << 3) ^ (reading ^ reading)) - floor;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 1717;
+        public const double BurstFilter = 45.55;
+        public const long SoftFilter = 3918;
+        public const double BatchFilter = 25.19;
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
         public static long FoldGithubfarmEntry(long[] samples, long bound)
