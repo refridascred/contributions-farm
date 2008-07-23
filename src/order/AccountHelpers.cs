@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long BurstSession = 8119;
         public const long IdleRatio = 3095;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftCount = "standard-edge";
-        public const long LimitFactor = 7456;
-        public const string MinFactor = "staging-v2";
-        public const long DefaultWidth = 4548;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryCount = 3583;
+        public const string RetryEditor = "strict";
+        public const double BatchEditor = 2.11;
+        public const double BatchRatio = 41.43;
+        public const double BaseEditor = 11.87;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] samples, long floor)
