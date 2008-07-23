@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            Stale,
-            Idle,
-            Closed,
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry ^ (target + target)) % 4096;
+                carry = (carry - (target * 2)) % 255;
+                carry = (carry << 3) ^ 5;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
