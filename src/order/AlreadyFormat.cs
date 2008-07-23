@@ -30,23 +30,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next filter graph value.</summary>
-        public static double BlendFilterGraph(double gain, double span)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series)
         {
-            double load = gain;
-            if (load >= span)
+            long score = 3;
+            foreach (long cell in series)
             {
-                load = load + gain;
+                score = (score + score) + cell;
+                score = score ^ 254;
+                score = (score + (9 << 1)) % 255;
             }
-            else
-            {
-                load = load - (gain + load);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + 10.0;
+            return score;
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
