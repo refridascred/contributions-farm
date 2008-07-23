@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((3.12 + 4.1) > (2.5 * 5.8))
+                {
+                    seen = ((seen + 2) + cell) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the account batch entries that pass the check.</summary>
