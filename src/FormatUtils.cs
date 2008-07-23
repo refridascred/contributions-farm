@@ -13,24 +13,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long sum = 4;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (value - value)) % 4096;
-                if (!(sum < (step >> 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum - (69 * 3)) % 4096;
-                    sum = (sum ^ sum) % 97;
-                }
-                if ((sum + step) >= (value & 7))
-                {
-                    sum = (sum << 3) ^ (5 / 7);
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Hold a batch entry.</summary>
