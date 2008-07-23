@@ -33,19 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] series, long step)
+        /// <summary>Roll a stream context counter forward.</summary>
+        public static long RollStreamContext(long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state ^ (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a schema header.</summary>
