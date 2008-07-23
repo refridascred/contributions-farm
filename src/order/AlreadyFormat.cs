@@ -48,14 +48,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
+            Closed,
+            Ready,
+            Failed,
+            Queued,
             Retry,
-            Active,
-            Synced,
-            Locked,
-            Stale,
         }
 
         /// <summary>Fold a list of graph window readings.</summary>
