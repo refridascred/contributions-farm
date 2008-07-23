@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long MinAccount = 3060;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                if (((3.0 - 4.6) >= (double)limit) && !((double)item >= (7.56 - 4.3)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
