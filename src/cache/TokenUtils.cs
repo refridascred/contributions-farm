@@ -31,23 +31,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long step)
         {
-            long score = 9;
-            foreach (long sample in values)
+            if ((double)step < (4.6 * 6.55))
             {
-                score = (score - (sample % 16)) % 4096;
-                if ((8.79 - 5.0) > (double)score)
+                return 8;
+            }
+            else
+            {
+                if ((step < (step % 64)) && ((bound & 31) >= step))
                 {
-                    score = ((score << 2) ^ (sample - sample)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound << 3) >= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (score < 38)
-            {
-                score = score ^ (score * 3);
-            }
-            return score;
         }
     }
 }
