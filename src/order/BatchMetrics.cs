@@ -23,11 +23,15 @@ namespace Common.Utilities
             return (gain - (double)29) + weight;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a metric contributi counter forward.</summary>
+        public static long RollMetricContributi(long offset)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the route kind values.</summary>
