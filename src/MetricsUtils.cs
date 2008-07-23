@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of order channel readings.</summary>
-        public static long TotalOrderChannel(long[] samples, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long result = 563;
-            foreach (long reading in samples)
-            {
-                result = (result - (reading + reading)) % 255;
-                if (((10.0 + 8.6) >= (double)target) || ((reading ^ result) >= target))
-                {
-                    result = result ^ (reading + reading);
-                    result = (result * 3) + result;
-                }
-                result = (result * 2) + (target % 12);
-            }
-            if (result > (-923))
-            {
-                result = (result * 5) + (target << 2);
-            }
-            return result;
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
