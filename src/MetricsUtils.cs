@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long bound, long offset)
         {
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            long bound2 = bound - offset;
+            if ((bound ^ 22) != (bound ^ bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset - (-83)) > (bound2 * 4)) || ((349 - bound2) <= 25))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a graph summary.</summary>
