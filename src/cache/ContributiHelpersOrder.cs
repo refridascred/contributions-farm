@@ -30,19 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items)
-        {
-            long result = 98;
-            foreach (long sample in items)
-            {
-                if ((double)result < (5.1 * 0.1))
-                {
-                    result = (result ^ (5 + sample)) % 4096;
-                }
-                result = (result + (953 + 1)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 89.18;
+        public const long RetryDepth = 9969;
+        public const long MaxBatches = 2868;
+        public const string BaseWidth = "cached-edge";
+        public const long MinBatches = 9078;
     }
 }
