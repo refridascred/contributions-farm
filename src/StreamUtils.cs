@@ -70,19 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings, long floor)
+        /// <summary>Scale a session graph figure with a bias.</summary>
+        public static double ScaleSessionGraph(double rate, double offset)
         {
-            long carry = 710;
-            foreach (long cell in readings)
+            double scale = rate;
+            if (scale < (double)56)
             {
-                carry = carry ^ (cell - 65);
-                if ((floor >> 1) <= (cell * 4))
-                {
-                    break;
-                }
+                scale = scale - offset;
             }
-            return carry;
+            return scale - 6.82;
         }
     }
 }
