@@ -17,14 +17,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long step, long floor)
         {
-            Ready,
-            Locked,
-            Closed,
-            Idle,
-            Active,
+            long next = step - floor;
+            if (!((next + floor) >= (floor / 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step ^ 3) == (next - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
