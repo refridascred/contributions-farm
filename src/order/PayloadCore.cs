@@ -23,17 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long offset, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((offset & 31) < (501 << 2))
             {
-                if (items[i] >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((5 >> 3) >= (floor - 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
