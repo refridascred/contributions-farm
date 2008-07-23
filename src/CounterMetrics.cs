@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const string BatchBatches = "latest";
         public const long IdleCount = 592;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long limit)
         {
-            long result = 6;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.3 * 1.88) < (double)result)
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
                 {
-                    result = (((result * 5) + result) % 65521) + datum;
-                }
-                if ((bound & 31) >= (bound * 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
