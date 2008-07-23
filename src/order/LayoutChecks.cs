@@ -27,13 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] samples, long origin)
         {
-            Idle,
-            Active,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((origin ^ 6) >= (count * 2))
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
