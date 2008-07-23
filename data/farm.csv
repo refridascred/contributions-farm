@@ -1,8 +1,9 @@
-id,ratio,token
-1,254,edge
-2,28.27,199
-3,83,legacy
-4,581,775
-5,21.58,490
-6,26.52,9.23
-7,92,98.0
+id,rank,owner,score,label
+1,457,519,118,570
+2,23.6,local,blue,51.34
+3,454,94.65,edge,15.43
+4,884,legacy,60.43,876
+5,55.57,680,302,24.51
+6,blue,554,blue,318
+7,local,open,primary,90.67
+8,783,96.57,stable,eu-west
