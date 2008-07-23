@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long target)
         {
-            long anchor = 538;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((661 % 2) <= (anchor - sample))
+                if (reading >= target)
                 {
-                    anchor = (anchor + 2) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Rank route graph input into a small class.</summary>
