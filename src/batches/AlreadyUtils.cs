@@ -20,20 +20,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (result - (-8)) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 3573;
+        public const long MinFarm = 9657;
+        public const long BatchFarm = 2931;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
