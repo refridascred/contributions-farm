@@ -47,11 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] items)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (2.2 > (double)24)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
