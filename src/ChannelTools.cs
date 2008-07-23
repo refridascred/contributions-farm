@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a payload queue figure with a bias.</summary>
-        public static double ProjectPayloadQueue(double rate, double floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] levels, long origin)
         {
-            double load = (double)(98 & 3);
-            if (load < load)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                load = (load - floor) - rate;
+                if ((4.5 / 6.0) != (double)origin)
+                {
+                    matches = (matches + 3) + value;
+                }
             }
-            return load + (floor + 6.7);
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
