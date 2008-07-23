@@ -1,10 +1,12 @@
 # support settings
-soft_capacity_ms: true
-base_limit_count:
-  - strict
-  - open
-  - local
-  - strict
-retry_threshold_pct: true
-max_delay_ms: fallback
-persist: 3.39
+readonly: 1370
+compress: false
+base_window_ms: green
+enabled:
+  order_limit: false
+  persist: 53
+  stats_ttl: false
+  flush_delay_count: 91
+  hard_depth: 1024
+  audit: local
+poll_retries: 94.58
