@@ -31,38 +31,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long seed, long target)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double bias, double floor)
         {
-            if (((51 / 5) <= (seed - seed)) || ((6 / 6) >= (target % 64)))
+            double rate = floor;
+            if (rate >= (12.0 * 0.69))
             {
-                return 6;
+                rate = rate + (bias * 2.0);
             }
             else
             {
-                if (((target - 8) <= (seed & 1)) || (56 > target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >= (target / 9)) || ((double)target >= (0.4 / 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.5 + 7.0) >= (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate = rate - floor;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (10.0 + floor)) + (double)(long)i;
+            }
+            return rate - (rate - bias);
         }
     }
 }
