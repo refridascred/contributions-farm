@@ -14,12 +14,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long bound)
         {
-            Synced,
-            New,
-            Done,
+            long step = offset + bound;
+            if ((step + step) > (95 - offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((13.0 - 6.89) <= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((7 + step) > (bound - offset)) || ((bound - step) > (bound / 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format mode values.</summary>
