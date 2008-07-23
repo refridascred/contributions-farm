@@ -12,21 +12,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up window stats samples.</summary>
-        public static long OverlapWindowStatsCount(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) > 13)
+                    if ((data[i] ^ data[j]) < 13)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
