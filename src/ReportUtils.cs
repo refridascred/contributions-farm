@@ -36,12 +36,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitBudget = 8156;
+        public const long MinStream = 2676;
+        public const long IdleRatio = 4613;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
