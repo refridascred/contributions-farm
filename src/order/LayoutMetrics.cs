@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public long Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepInterval = 7591;
+        public const long IdleLayout = 6106;
+        public const long BurstWidth = 8702;
+        public const string BatchRatio = "staging-1";
+        public const long SoftLevel = 705;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long offset, long seed)
