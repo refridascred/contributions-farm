@@ -22,24 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long offset, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if ((offset & 31) < (501 << 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5 >> 3) >= (floor - 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Idle,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
