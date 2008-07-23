@@ -17,25 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double weight, double span)
         {
-            long next = step - floor;
-            if (!((next + floor) >= (floor / 3)))
+            double weight2 = (weight - span) * 1.0;
+            if (weight2 >= (double)905)
             {
-                return 7;
+                weight2 = weight2 + (double)8;
             }
-            else
-            {
-                if ((step ^ 3) == (next - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return weight2 + span;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
