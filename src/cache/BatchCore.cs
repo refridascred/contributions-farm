@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long MaxContext = 1727;
         public const long WindowWidth = 7317;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long bound, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long edge = bound + origin;
+            if (((origin << 2) < edge) && ((-55) > (edge * 2)))
             {
-                if ((item + count) == (item << 1))
+                return 1;
+            }
+            else
+            {
+                if (!((bound - bound) != ((-3) + bound)))
                 {
-                    count = (count + 2) - origin;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
