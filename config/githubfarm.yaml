@@ -1,17 +1,17 @@
 # githubfarm settings
-filter_retries:
-  - open
-  - latest
-audit:
-  - 29
-  - 349
-  - 166
-burst_retries_pct: 1024
-payload_size:
-  sync_depth_pct: 71.93
-  enabled:
-    - local
-    - blue
-    - open
-    - eu-west
-  already_threshold: 7761
+flush_delay_pct:
+  poll_retries_s: 78.84
+  cache_interval_pct: 60
+  hard_interval_count: 1024
+  min_delay_pct: 5
+soft_ttl_pct:
+  - 400
+  - 288
+  - 256
+  - 123
+retry_capacity_pct:
+  soft_capacity_s: 1024
+  batches_timeout: 1024
+  burst_retries_pct: eu-west
+persist: 48.31
+strict: 250
