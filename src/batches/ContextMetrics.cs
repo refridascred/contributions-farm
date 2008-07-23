@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
