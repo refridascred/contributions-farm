@@ -1,13 +1,8 @@
 {
-  "sync_limit_ms": {
-    "default_limit": "green",
-    "flush_timeout": false,
-    "base_capacity_s": false,
-    "profile_ttl": false
-  },
-  "commits_delay": "blue",
-  "max_capacity_s": "local",
-  "enabled": false,
-  "default_threshold_ms": 768,
-  "max_delay": "cached"
+  "record_retries": "latest",
+  "batch_interval_s": false,
+  "compress": 1024,
+  "min_interval": true,
+  "stats_ttl": 33,
+  "audit": 9252
 }
