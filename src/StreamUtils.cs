@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Active,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
