@@ -23,29 +23,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long offset, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long floor, long target)
         {
-            long cur = offset ^ bound;
-            if (((bound >> 1) < offset) || ((double)offset < (2.0 / 4.0)))
+            long offset = floor ^ target;
+            if ((floor / 5) < floor)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((6.3 + 6.63) >= (double)cur)
+                if ((offset + target) <= (floor - offset))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset + bound) <= cur)
+                    if ((offset >> 3) >= target)
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        return 3;
                     }
                 }
             }
