@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally + tally) <= reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the route state values.</summary>
