@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Ready,
-            Idle,
-            Retry,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinTimeout = 97.36;
+        public const double StepTimeout = 29.43;
+        public const long SoftEditor = 4287;
+        public const double MinDepth = 0.96;
+        public const long BatchEditor = 9588;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinContributi = 8283;
