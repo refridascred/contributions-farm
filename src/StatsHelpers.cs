@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const long SoftEntry = 6014;
         public const long MaxLevel = 9519;
 
-        /// <summary>Measure how many tools metrics samples are out of range.</summary>
-        public static long TallyToolsMetricsOutliers(long[] samples, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((tally + 80) == (reading - (-5)))
+                if ((hits < (entry + hits)) && (64 > entry))
                 {
-                    tally = (tally + 3) + target;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
