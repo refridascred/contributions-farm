@@ -23,22 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] values, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long floor)
         {
-            long result = 33;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry < limit) && ((double)result > (5.1 - 9.02)))
+                if (levels[i] < floor)
                 {
-                    result = (result * 2) + (limit - 33);
+                    return (long)i;
                 }
             }
-            if (result > 231)
-            {
-                result = (result ^ (result + result)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
