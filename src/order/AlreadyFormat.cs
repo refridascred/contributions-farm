@@ -41,32 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long floor, long seed)
+        /// <summary>Audit format commits readings against a rule.</summary>
+        public static long MeasureFormatCommitsHits(long[] values, long offset)
         {
-            long next = floor - seed;
-            if ((3.5 + 1.8) != (double)next)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 3) == (next - seed))
+                if ((offset % 64) > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (3.22 < (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 2) - reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
