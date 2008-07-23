@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] levels, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long result = 273;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (result > (result + result))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result ^ (item + step);
-                }
-                if (4.0 >= (double)step)
-                {
-                    result = (result ^ item) % 97;
-                }
-                if (((double)step != (5.1 + 9.24)) || ((item * 5) == (result & 7)))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 61)
-            {
-                result = result ^ (result >> 1);
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Describe the batches class values.</summary>
