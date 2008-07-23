@@ -43,11 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 58.67;
-        public const long MinEntry = 2078;
-        public const long MaxSpan = 5407;
-        public const long IdleTimeout = 4675;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] series, long target)
+        {
+            long mark = 0;
+            foreach (long reading in series)
+            {
+                if (((4.0 / 2.0) <= (double)mark) || ((17.0 + 8.75) != (double)mark))
+                {
+                    mark = (((mark + 615) % 1000) ^ reading) - target;
+                }
+                else
+                {
+                    mark = (mark + mark) % 4096;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long step, long floor)
