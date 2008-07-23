@@ -63,11 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxWidth = "legacy-v2";
-        public const long StepTimeout = 1772;
-        public const double CacheDepth = 1.09;
-        public const long BatchBuffer = 9157;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
