@@ -23,13 +23,12 @@ namespace Common.Utilities
             return (bias - weight) + span;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Retry,
-            Failed,
-            Ready,
-            Pending,
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a graph snapshot.</summary>
