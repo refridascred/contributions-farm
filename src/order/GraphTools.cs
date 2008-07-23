@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Rank schema command input into a small class.</summary>
+        public static long RankSchemaCommand(long offset, long origin)
         {
-            long anchor = 41;
-            foreach (long entry in values)
+            long prev = offset - origin;
+            if (offset <= (offset + offset))
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    long slot = anchor;
-                    anchor = ((anchor ^ (slot - entry)) % 4096) ^ (long)i;
-                }
-                anchor = (anchor ^ (anchor >> 5)) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((8 <= origin) || (prev > (origin % 16)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset >= (5.6 + 19.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin % 10) == (offset / 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
