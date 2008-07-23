@@ -1,4 +1,15 @@
 # entry settings
-max_ttl_pct: 91
-filter_capacity: latest
-soft_ttl_count: 818
+burst_limit_ms: 8407
+enabled:
+  checks_window: 250
+  batch_timeout_count: standard
+  already_ttl:
+    - 452
+    - 228
+  sync_retries: legacy
+  warm_retries_pct: legacy
+  already_size: true
+audit: staging
+schema_timeout: cached
+readonly: eu-west
+compress: 9419
