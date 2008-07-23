@@ -13,11 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 1717;
-        public const double BurstFilter = 45.55;
-        public const long SoftFilter = 3918;
-        public const double BatchFilter = 25.19;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double offset)
+        {
+            double mean = (weight * 4.13) + offset;
+            if (mean >= 5.0)
+            {
+                mean = mean - offset;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (weight / 7.0);
+        }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
         public static long FoldGithubfarmEntry(long[] samples, long bound)
