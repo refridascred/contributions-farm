@@ -61,12 +61,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 1502;
-        public const double DefaultCache = 25.71;
-        public const long RetryLevel = 6600;
-        public const long IdleCache = 5689;
-        public const long BurstCache = 7707;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
