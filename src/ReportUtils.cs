@@ -13,36 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long limit, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long bound, long seed)
         {
-            if ((bound % 24) >= limit)
+            long step = bound - seed;
+            if ((double)seed >= (9.0 / 5.0))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((double)limit == (double)bound)
+                if (!((step + step) >= step))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound + 7) != (limit ^ limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + limit) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
