@@ -46,15 +46,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of notes batches readings.</summary>
-        public static long CombineNotesBatches(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long mark = 52;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark + (sample << 3);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
