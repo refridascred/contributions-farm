@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels, long step)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mix = 86;
+            foreach (long datum in levels)
+            {
+                mix = (mix * 2) + (step / 4);
+                if (datum >= 6)
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
