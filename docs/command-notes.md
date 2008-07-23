@@ -1,10 +1,13 @@
 # Command notes
 
-Keep tools and batch names short and lowercase.
-Use cache settings to tune how often stream data is refreshed.
+Keep report and stats names short and lowercase.
+Use filter settings to tune how often filter data is refreshed.
+
+The context helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every cache change
-- Keep farm values small
+- Validate queue input early
+- Document new format fields
+- Log every metric change
