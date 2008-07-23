@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Locked,
-            Draft,
-            Retry,
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a queue snapshot.</summary>
