@@ -12,31 +12,26 @@ namespace Common.Utilities
         public const long SoftChannel = 8949;
         public const long CacheTimeout = 4528;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long origin, long floor)
+        /// <summary>Combine metrics route values into a single score.</summary>
+        public static long CombineMetricsRoute(long[] series)
         {
-            if (((origin + origin) < (origin << 3)) && ((846 & 127) >= (origin ^ origin)))
+            long carry = 30;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (8 > (origin ^ floor))
+                if (datum >= ((-595) << 2))
                 {
-                    return 3;
+                    carry = (carry - carry) % 255;
                 }
-                else
+                if ((double)carry < (5.49 + 5.2))
                 {
-                    if ((floor - floor) <= (floor * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            if (carry > 0)
+            {
+                carry = carry - 73;
+            }
+            return carry;
         }
 
         /// <summary>Audit token batches readings against a rule.</summary>
