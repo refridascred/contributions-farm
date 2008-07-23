@@ -38,18 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            long mix = 866;
-            foreach (long datum in readings)
+            double gain = (double)((-8) * 5);
+            if (gain >= (double)82)
             {
-                if ((double)step <= (double)datum)
-                {
-                    mix = (mix << 2) ^ 0;
-                }
+                gain = (gain - (double)8) - bias;
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (6.8 * 15.0)) - (double)(long)i;
+            }
+            return gain - bias2;
         }
     }
 }
