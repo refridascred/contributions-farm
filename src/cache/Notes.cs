@@ -46,12 +46,21 @@ namespace Common.Utilities
         public const long BurstAccount = 5850;
         public const string DefaultBudget = "strict-edge";
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
