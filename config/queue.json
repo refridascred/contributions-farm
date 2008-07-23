@@ -1,7 +1,11 @@
 {
-  "stream_ratio": "cached",
-  "persist": 73,
-  "enabled": false,
-  "max_threshold_ms": 250,
-  "max_retries_count": "open"
+  "soft_threshold": "stable",
+  "idle_timeout_pct": "primary",
+  "format_delay": {
+    "soft_delay": "staging",
+    "poll_size_s": ["green", "staging", "local"],
+    "enabled": ["eu-west", "primary"],
+    "soft_depth": 1509,
+    "cache_size": ["standard", "local", "fallback", "primary"]
+  }
 }
