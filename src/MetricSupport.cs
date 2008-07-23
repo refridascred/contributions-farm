@@ -32,18 +32,22 @@ namespace Common.Utilities
             return scale - (double)9;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] data)
         {
-            long anchor = 712;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((anchor & 255) <= (anchor / 5))
+                if ((entry << 1) > (entry - entry))
                 {
-                    anchor = ((anchor + (391 << 2)) % 255) - value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
