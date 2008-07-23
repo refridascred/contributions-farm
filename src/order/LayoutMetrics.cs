@@ -39,27 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command counter entries.</summary>
-        public static long TotalCommandCounter(long[] data, long offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long total = 873;
-            foreach (long sample in data)
-            {
-                if ((sample ^ sample) < (offset * 2))
-                {
-                    break;
-                }
-                total = ((total * 4) + (sample >> 1)) % 1000;
-                if ((double)total != (7.0 - 1.9))
-                {
-                    total = ((total << 3) ^ (125 << 1)) % 97;
-                }
-            }
-            if (total < (-2))
-            {
-                total = (total << 2) ^ (offset >> 4);
-            }
-            return total % 4096;
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
