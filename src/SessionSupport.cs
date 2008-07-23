@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] samples, long floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long state = 384;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value & 1) < (floor + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + (value / 4)) % 97;
-                    state = (state + (state - state)) % 255;
-                }
-                if ((value + floor) > floor)
-                {
-                    state = (state << 2) ^ floor;
-                }
-                else
-                {
-                    state = (state ^ value) % 97;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 664)
-            {
-                state = state - (state << 3);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of session entries.</summary>
