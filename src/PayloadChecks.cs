@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long origin)
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long WeighClusterEntry(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long total = 0;
+            foreach (long sample in levels)
             {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (((total << 3) ^ (total * 5)) % 65521) - sample;
             }
-            return ok;
+            if (total > 384)
+            {
+                total = (total + (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
