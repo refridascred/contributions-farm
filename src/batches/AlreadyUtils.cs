@@ -44,31 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long offset)
+        /// <summary>Accumulate farm record samples.</summary>
+        public static long FoldFarmRecord(long[] series)
         {
-            if ((offset % 8) >= (seed & 3))
+            long acc = 836;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 2) > (offset - seed))
+                if ((reading + acc) <= (acc << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((0.8 + 9.5) > (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = acc - (reading + 5);
                 }
             }
+            return acc % 97;
         }
     }
 }
