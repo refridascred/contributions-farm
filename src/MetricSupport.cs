@@ -33,24 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command buffer input into a small class.</summary>
-        public static long RankCommandBuffer(long origin, long seed)
+        /// <summary>Derive the next batches metrics value from a seed.</summary>
+        public static long DeriveBatchesMetrics(long floor)
         {
-            if (seed >= (159 / 4))
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                result = result ^ (floor << 3);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed & 31) >= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the entry class values.</summary>
