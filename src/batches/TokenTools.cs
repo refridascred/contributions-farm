@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleWidth = 9636;
-        public const long BaseCommits = 4036;
-        public const long LimitCommits = 3333;
-        public const string CacheScore = "standard-edge";
-        public const long CacheCommits = 584;
+        /// <summary>Measure how many command batches samples are out of range.</summary>
+        public static long MeasureCommandBatchesGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((543 - matches) > (matches << 2))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] levels)
