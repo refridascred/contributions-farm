@@ -64,31 +64,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] readings, long origin)
         {
-            if ((double)floor > 1.79)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor > (floor + bound)) || ((bound % 3) <= (floor + bound)))
+                if ((10.0 + 4.69) == (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > (17.0 * 14.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 1) + origin;
                 }
             }
+            return tally;
         }
     }
 }
