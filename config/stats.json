@@ -1,6 +1,14 @@
 {
-  "poll_limit_pct": "cached",
-  "cache_threshold_count": 38.22,
-  "session_size": ["primary", "open", "blue"],
-  "cache_ratio_s": "edge"
+  "verbose": "standard",
+  "strict": 40,
+  "cache_ttl_pct": ["latest", "stable", "green", "legacy"],
+  "poll_capacity_count": "stable",
+  "entry_window": {
+    "metrics_retries": true,
+    "notes_retries": true,
+    "cache_retries_count": 9.85,
+    "enabled": 86.25,
+    "strict": 1024
+  },
+  "base_depth_count": true
 }
