@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate command cache readings against a bound.</summary>
+        public static bool VerifyCommandCacheRange(long[] values, long step)
         {
-            Ready,
-            Draft,
-            Done,
-            Locked,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
