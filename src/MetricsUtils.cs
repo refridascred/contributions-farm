@@ -72,22 +72,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = (mark * 3) + (long)i;
-                long delta = 338 + (mark >> 2);
-                if (mark <= delta)
-                {
-                    delta = delta - ((long)i % 24);
-                    mark = (mark - target) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Locked,
+            Failed,
+            Draft,
+            Done,
         }
     }
 }
