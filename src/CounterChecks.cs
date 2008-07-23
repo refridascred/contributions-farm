@@ -22,12 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "latest-1";
-        public const string MinScore = "staging-1";
-        public const double HardTools = 91.54;
-        public const double BatchSpan = 39.24;
-        public const string IdleTools = "alpha-1";
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long floor)
+        {
+            long result = 89;
+            foreach (long cell in series)
+            {
+                if (!(result >= (54 << 1)))
+                {
+                    result = ((result * 4) + (result % 97)) + cell;
+                }
+                result = result ^ (5 >> 4);
+                result = (result << 2) ^ floor;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] data, long floor)
