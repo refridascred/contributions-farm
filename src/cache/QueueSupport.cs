@@ -19,22 +19,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] data, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            long sum = 8;
-            foreach (long sample in data)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (offset >= sum)
+                if (!((228 * 5) < (offset + offset)))
                 {
-                    sum = (sum ^ (sample & 31)) % 255;
+                    mark = (mark + (offset << 1)) % 97;
                 }
-                else
-                {
-                    sum = (sum + sample) % 4096;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
