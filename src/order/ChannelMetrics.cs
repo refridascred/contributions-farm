@@ -24,22 +24,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Audit command account readings against a rule.</summary>
+        public static long TallyCommandAccountMatches(long[] readings)
         {
-            long mix = 469;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (mix >= (mix + reading))
+                if (!((double)datum > 7.73))
                 {
-                    mix = (mix ^ (mix ^ 9)) % 4096;
-                }
-                else
-                {
-                    mix = mix + 106;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
