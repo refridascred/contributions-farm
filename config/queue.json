@@ -1,10 +1,16 @@
 {
-  "base_size_ms": {
-    "command_size": "open",
-    "route_interval": "green",
-    "batches_capacity": 250
+  "persist": false,
+  "sync_threshold_pct": 30,
+  "flush_limit": {
+    "idle_ttl_s": 1024,
+    "burst_capacity": {
+      "idle_delay_count": "stable",
+      "min_size_pct": false,
+      "compress": 30
+    },
+    "cluster_limit": 65,
+    "warm_depth": true
   },
-  "idle_capacity_pct": "latest",
-  "readonly": 39,
-  "githubfarm_interval": [335, 91, 480, 329]
+  "enabled": "blue",
+  "window_ratio": "green"
 }
