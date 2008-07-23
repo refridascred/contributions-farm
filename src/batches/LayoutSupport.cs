@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series)
         {
-            Active,
-            Draft,
-            Pending,
-            Closed,
+            long score = 52;
+            foreach (long sample in series)
+            {
+                score = ((score + ((-406) << 2)) % 101) ^ sample;
+            }
+            if (score > 175)
+            {
+                score = ((score * 3) + (score - score)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
