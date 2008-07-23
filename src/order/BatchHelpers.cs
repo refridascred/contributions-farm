@@ -26,15 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double offset)
+        /// <summary>Iterate the counter batch series from a seed.</summary>
+        public static long IterateCounterBatch(long origin)
         {
-            double bias = (rate + rate) * 2.0;
-            if (bias <= (double)760)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                bias = (bias - rate) - offset;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return bias + (double)65;
+            return anchor;
         }
     }
 }
