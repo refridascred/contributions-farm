@@ -1,5 +1,9 @@
 # support settings
-idle_ratio_ms: 500
-buffer_ratio: 83.36
-default_window: 21
-default_timeout_ms: false
+batch_depth:
+  - latest
+  - latest
+persist: 15
+burst_size_pct: 7.37
+max_threshold_ms: true
+editor_size: 90.85
+soft_limit: 60
