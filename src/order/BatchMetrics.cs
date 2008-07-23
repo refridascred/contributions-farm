@@ -30,18 +30,18 @@ namespace Common.Utilities
             return (drift + floor) + weight;
         }
 
-        /// <summary>Audit token record readings against a rule.</summary>
-        public static long MeasureTokenRecordHits(long[] series, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((14.0 / 6.0) <= (double)reading)
+                if ((datum << 3) < target)
                 {
-                    count = (count + 3) + origin;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
