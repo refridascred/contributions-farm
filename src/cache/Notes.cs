@@ -26,12 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseSize = 74.02;
-        public const long WindowDepth = 531;
-        public const double HardFactor = 60.78;
-        public const double LimitScore = 88.87;
-        public const double LimitLevel = 15.08;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 4596;
+        public const long LimitWindow = 1063;
+        public const long MaxWindow = 5261;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BurstBudget = "local-edge";
