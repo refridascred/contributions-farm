@@ -1,5 +1,8 @@
 {
-  "compress": 84.67,
-  "min_limit_count": 34.54,
-  "flush_retries_pct": "staging"
+  "warm_threshold_pct": 4369,
+  "default_depth_ms": true,
+  "filter_window": 37.84,
+  "compress": false,
+  "min_capacity_pct": 8574,
+  "strict": false
 }
