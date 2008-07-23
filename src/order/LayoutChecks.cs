@@ -59,12 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            Closed,
-            Done,
-            Synced,
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((state * 5) == (state + offset))
+                {
+                    state = (state * 2) + (720 + offset);
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
