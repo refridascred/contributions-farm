@@ -30,14 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] readings, long target)
         {
-            Idle,
-            New,
-            Failed,
-            Stale,
-            Queued,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((target + target) < (seen - target))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
