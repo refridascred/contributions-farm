@@ -1,4 +1,8 @@
 # githubfarm settings
-min_limit_s: latest
-poll_threshold: fallback
-default_timeout_ms: 4609
+cluster_delay:
+  - 175
+  - 10
+  - 58
+  - 476
+retry_capacity: local
+persist: 3072
