@@ -41,19 +41,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (8.49 > (double)step)
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultSize = "primary-v2";
+        public const long BurstAccount = 5850;
+        public const string DefaultBudget = "strict-edge";
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
