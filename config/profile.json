@@ -1,11 +1,7 @@
 {
-  "metrics_size": 250,
-  "retry_depth_pct": {
-    "hard_threshold": "green",
-    "counter_ttl": ["fallback", "latest"],
-    "retry_interval": [441, 340, 295]
-  },
-  "dry_run": 74,
-  "audit": true,
-  "sync_retries_ms": 68.38
+  "retry_timeout_count": "latest",
+  "strict": [426, 123, 206],
+  "base_limit": 969,
+  "retry_threshold": 250,
+  "retry_limit_ms": 6289
 }
