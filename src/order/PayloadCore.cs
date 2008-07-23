@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] series, long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum & 255) <= (datum << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
