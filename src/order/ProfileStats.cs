@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long BatchAlready = 7852;
         public const long IdleSize = 3485;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] samples, long offset)
+        /// <summary>Roll a queue counter counter forward.</summary>
+        public static long RollQueueCounter(long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (value >= (4 + 27))
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
