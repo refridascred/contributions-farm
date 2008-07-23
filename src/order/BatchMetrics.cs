@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next farm cluster value from a seed.</summary>
-        public static long SeriesFarmCluster(long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
