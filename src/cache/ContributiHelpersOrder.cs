@@ -34,18 +34,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long floor, long origin)
         {
-            long result = -5;
-            foreach (long entry in levels)
+            if ((origin > floor) || (floor < (floor ^ floor)))
             {
-                if (!((entry + result) == (result + result)))
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) > (origin + (-24))) && ((floor - 2) >= 643))
                 {
-                    result = (result ^ (9 + entry)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return result % 1000;
         }
     }
 }
