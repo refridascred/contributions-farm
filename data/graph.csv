@@ -1,6 +1,7 @@
-id,level,ratio,weight,active
-1,legacy,575,local,95.01
-2,54.95,standard,183,primary
-3,573,legacy,98.76,32.51
-4,fallback,222,fallback,eu-west
-5,25.68,65.45,3.93,80.93
+id,owner,region
+1,19.14,606
+2,853,917
+3,fallback,13.69
+4,737,209
+5,strict,latest
+6,8.22,19.2
