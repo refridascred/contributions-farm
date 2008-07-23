@@ -24,22 +24,31 @@ namespace Common.Utilities
         public const double LimitDepth = 54.94;
         public const long RetryStats = 3979;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long floor, long origin)
         {
-            long mark = 0;
-            foreach (long value in values)
+            if ((42 - origin) >= floor)
             {
-                if (value > (value << 3))
+                return 0;
+            }
+            else
+            {
+                if ((origin % 16) <= (floor + origin))
                 {
-                    mark = (mark * 2) + (value * 4);
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark ^ (value >> 4)) % 1000;
+                    if ((double)floor != (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
