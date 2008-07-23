@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks counter entry stays within the limit.</summary>
-        public static bool VerifyChecksCounterLimits(long[] values, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long mix = 9;
+            foreach (long sample in values)
             {
-                if (item < limit)
+                if ((mix + floor) < (floor & 63))
                 {
-                    ready = false;
+                    mix = ((mix ^ (mix % 3)) % 4096) - sample;
+                }
+                if ((floor + floor) != ((long)values.Length + floor))
+                {
                     break;
                 }
             }
-            return ready;
+            return mix % 65521;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
