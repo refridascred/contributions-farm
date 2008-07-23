@@ -1,15 +1,11 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-The channel report groups every context by report.
-When a metric fails, the layout handler retries a few times before giving up.
-
-Each counter is validated before it reaches the farm queue.
-The filter report groups every commits by already.
-When a commits fails, the schema handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the metric list.
+Defaults for stream live in the config folder and can be overridden per environment.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review batch limits each release
-- Validate stream input early
-- Prefer report defaults
+- Prefer queue defaults
+- Review profile limits each release
+- Document new layout fields
