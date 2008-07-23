@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (entry > bound)
+                if ((value + value) >= (1 ^ 7))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) - origin;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
