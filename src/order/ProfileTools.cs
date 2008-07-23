@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
