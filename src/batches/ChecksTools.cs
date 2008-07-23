@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long target, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            if ((limit - target) < (target + 79))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (9.45 + 8.39))
+                if ((reading >> 3) > reading)
                 {
-                    return 6;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((limit * 3) > (limit & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
