@@ -43,13 +43,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            Queued,
+            Active,
+            Ready,
+            Locked,
         }
     }
 }
