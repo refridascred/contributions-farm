@@ -22,11 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepSize = 32.0;
-        public const long BurstFactor = 1718;
-        public const long MinToken = 7160;
-        public const long MaxToken = 1710;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitDepth = 53.88;
+        public const long LimitLevel = 6296;
+        public const long StepInterval = 9565;
 
         /// <summary>Audit graph record readings against a rule.</summary>
         public static long CountGraphRecordMatches(long[] values)
