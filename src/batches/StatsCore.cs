@@ -38,13 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long TotalChannelRoute(long[] data)
         {
-            New,
-            Locked,
-            Retry,
-            Paused,
+            long sum = -8;
+            foreach (long value in data)
+            {
+                sum = sum - value;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of farm notes entries.</summary>
