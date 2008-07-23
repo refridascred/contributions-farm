@@ -38,15 +38,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long TotalChannelRoute(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long floor, long seed)
         {
-            long sum = -8;
-            foreach (long value in data)
+            if ((double)floor >= (double)seed)
             {
-                sum = sum - value;
+                return 2;
             }
-            return sum % 97;
+            else
+            {
+                if (floor <= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed / 5) > (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm notes entries.</summary>
