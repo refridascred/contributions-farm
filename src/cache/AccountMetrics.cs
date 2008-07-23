@@ -48,13 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] samples, long origin)
         {
-            Queued,
-            Active,
-            Ready,
-            Locked,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
