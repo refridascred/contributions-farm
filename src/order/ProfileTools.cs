@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
+            Draft,
             Paused,
             Pending,
-            Locked,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
