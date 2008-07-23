@@ -40,18 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 2854;
+        public const string StepRatio = "fallback-edge";
+        public const long HardRecord = 6657;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BurstLevel = "local";
