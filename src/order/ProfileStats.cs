@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings, long seed)
+        /// <summary>Accumulate stats report samples.</summary>
+        public static long DigestStatsReport(long[] samples)
         {
-            long acc = 1;
-            foreach (long item in readings)
+            long carry = 415;
+            foreach (long datum in samples)
             {
-                if ((double)seed != (9.5 * 1.53))
+                if ((double)datum >= (1.23 / 5.0))
                 {
-                    acc = (acc ^ acc) ^ item;
+                    carry = (carry << 2) ^ (carry + 185);
+                    continue;
+                }
+                else
+                {
+                    carry = carry + (carry % 10);
+                }
+                if ((carry - datum) != (long)samples.Length)
+                {
+                    carry = ((carry * 5) + carry) % 65521;
                 }
             }
-            if (acc < 9)
-            {
-                acc = (acc + (acc - acc)) % 1000;
-            }
-            return acc % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
