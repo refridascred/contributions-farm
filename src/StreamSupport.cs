@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next record filter value from a seed.</summary>
-        public static long IterateRecordFilter(long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of context readings.</summary>
