@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const string MinFarm = "primary-v2";
         public const long SoftSize = 6541;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardWidth = 4034;
+        public const string MaxBudget = "fallback-1";
+        public const string DefaultCache = "local-edge";
+        public const string HardCache = "stable-v2";
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
