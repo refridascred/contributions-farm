@@ -25,15 +25,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double scale, double offset)
+        /// <summary>Combine profile commits values into a single score.</summary>
+        public static long TotalProfileCommits(long[] series)
         {
-            double bias = 5.25 * 5.7;
-            if (bias >= (offset - bias))
+            long anchor = 823;
+            foreach (long reading in series)
             {
-                bias = (bias + bias) - scale;
+                if (!(reading <= anchor))
+                {
+                    anchor = (anchor - 954) % 255;
+                }
             }
-            return bias + (15.0 + offset);
+            return anchor % 4096;
         }
 
         /// <summary>Describe the queue level values.</summary>
