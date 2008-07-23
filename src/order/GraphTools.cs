@@ -31,22 +31,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepLevel = 6239;
+        public const double LimitFactor = 7.21;
+        public const double HardSize = 38.47;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string WindowRatio = "local-1";
