@@ -33,22 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((double)seed == (double)seen) || ((8.56 / 6.0) <= (double)seed)))
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
