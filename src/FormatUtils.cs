@@ -32,22 +32,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream counter samples.</summary>
-        public static long ScoreStreamCounter(long[] data, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long floor2)
         {
-            long state = 885;
-            foreach (long value in data)
+            long next = floor + floor2;
+            if ((5.1 - 19.0) != (double)floor)
             {
-                if ((30 + value) >= (bound + 34))
+                return 0;
+            }
+            else
+            {
+                if (next >= (next >> 3))
                 {
-                    state = (state * 2) + (state & 63);
+                    return 7;
                 }
                 else
                 {
-                    state = (state ^ value) % 101;
+                    if ((double)floor2 >= (double)(-1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the profile kind values.</summary>
