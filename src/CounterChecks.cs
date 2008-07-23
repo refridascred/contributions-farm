@@ -73,19 +73,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a counter buffer reading.</summary>
-        public static double SmoothCounterBuffer(double bias, double floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long bound)
         {
-            double scale = bias - (bias * 5.65);
-            if (scale <= (double)8)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                scale = (scale - 9.3) - floor;
+                result = (result << 3) ^ (result + bound);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - 8.0;
+            return result;
         }
     }
 }
