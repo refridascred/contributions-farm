@@ -26,19 +26,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((origin * 4) >= seen) || ((seen % 10) < ((-622) - item)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 8050;
+        public const double LimitSize = 28.35;
+        public const long StepInterval = 6219;
+        public const string HardReport = "strict-1";
+        public const long DefaultReport = 6656;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
