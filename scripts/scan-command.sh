@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard primary local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-latest}"
+mode="${1:-primary}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
