@@ -42,21 +42,22 @@ namespace Common.Utilities
         public const long StepFilter = 8289;
         public const string BaseInterval = "fallback-1";
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 975;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (anchor > ((-54) % 100))
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor - (item ^ bound);
                 }
             }
-            return hits;
+            if (anchor > 153)
+            {
+                anchor = (anchor * 4) + 55;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
