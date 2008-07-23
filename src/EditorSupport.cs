@@ -40,18 +40,28 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] items)
+        /// <summary>Combine buffer metrics values into a single score.</summary>
+        public static long DigestBufferMetrics(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = 70;
+            foreach (long reading in data)
             {
-                if ((count + item) < (item - item))
+                long bound = (reading - reading) % 5;
+                if ((bound - total) <= reading)
                 {
-                    count = count + 3;
+                    long offset = total;
+                    bound = (bound + (offset - offset)) % 65521;
+                }
+                if ((679 + reading) <= reading)
+                {
+                    total = (total * 4) + (reading << 1);
+                }
+                if ((total + 219) >= (total & 1))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Grade a window schema value against two limits.</summary>
