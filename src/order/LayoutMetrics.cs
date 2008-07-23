@@ -40,10 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 2854;
-        public const string StepRatio = "fallback-edge";
-        public const long HardRecord = 6657;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((origin < (mix << 3)) || ((origin - mix) == (11 + 3)))
+                {
+                    mix = (mix + (43 + (long)i)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BurstLevel = "local";
