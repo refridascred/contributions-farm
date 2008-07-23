@@ -24,14 +24,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items)
         {
-            Done,
-            Paused,
-            Queued,
-            Draft,
-            Pending,
+            long anchor = 74;
+            foreach (long item in items)
+            {
+                anchor = ((anchor * 5) + item) % 255;
+                anchor = anchor - item;
+            }
+            return anchor;
         }
 
         /// <summary>Match up cluster samples.</summary>
