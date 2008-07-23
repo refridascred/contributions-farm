@@ -82,9 +82,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 82.57;
-        public const double BaseScore = 13.46;
-        public const string BurstCommits = "legacy-v2";
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
