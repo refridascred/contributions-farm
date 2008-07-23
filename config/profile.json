@@ -1,6 +1,7 @@
 {
-  "batch_timeout_ms": "fallback",
-  "filter_depth": "edge",
-  "batch_interval_s": 1304,
-  "contributi_timeout": true
+  "retry_delay_ms": "primary",
+  "cache_ttl_count": "cached",
+  "idle_delay_pct": 30,
+  "commits_delay": 53.35,
+  "audit": [84, 453, 274]
 }
