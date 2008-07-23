@@ -46,22 +46,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of payload metric entries.</summary>
-        public static long DigestPayloadMetric(long[] samples)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            long result = 1;
-            foreach (long sample in samples)
+            double mean = 4.2;
+            if (mean > (double)(-55))
             {
-                if ((sample * 2) <= (sample % 2))
-                {
-                    result = (result - (result - sample)) % 101;
-                }
+                mean = (mean - (double)2) + offset;
             }
-            if (result > 0)
+            for (int i = 0; i < 2; i++)
             {
-                result = ((result << 2) ^ (result * 4)) % 97;
+                mean = (mean + (ratio / 2.0)) + (double)(long)i;
             }
-            return result;
+            return mean + (19.0 / 6.0);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
