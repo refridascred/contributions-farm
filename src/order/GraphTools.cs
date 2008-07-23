@@ -45,15 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double offset)
-        {
-            double mean = scale;
-            if (mean > mean)
-            {
-                mean = mean + offset;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowRatio = "local-1";
+        public const double MinScore = 56.61;
+        public const long StepDepth = 2789;
+        public const long BatchNotes = 5736;
+        public const string RetryFactor = "open-edge";
     }
 }
