@@ -28,10 +28,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryRatio = "stable-edge";
-        public const long HardWidth = 5007;
-        public const string WindowCommits = "stable-v2";
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long TallyContributiBatchesOutliers(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) <= 475)
+                {
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
