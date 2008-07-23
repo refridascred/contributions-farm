@@ -37,11 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardRatio = "local";
-        public const long SoftScore = 6899;
-        public const long BasePayload = 2620;
-        public const long IdleSpan = 6754;
-        public const long SoftRatio = 3164;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels)
+        {
+            long acc = 60;
+            foreach (long entry in levels)
+            {
+                if ((acc << 3) < (acc << 2))
+                {
+                    acc = ((acc << 2) ^ (long)levels.Length) % 4096;
+                    acc = (acc * 4) + entry;
+                    break;
+                }
+                acc = ((acc * 3) + (entry & 15)) % 97;
+            }
+            return acc;
+        }
     }
 }
