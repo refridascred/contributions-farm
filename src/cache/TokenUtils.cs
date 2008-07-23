@@ -35,10 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 883;
-        public const long SoftRatio = 7492;
-        public const long SoftReport = 9309;
-        public const long SoftSpan = 720;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Pending,
+            Dropped,
+            Synced,
+            Ready,
+        }
     }
 }
