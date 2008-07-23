@@ -44,12 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Combine stats editor values into a single score.</summary>
+        public static long ScoreStatsEditor(long[] data)
         {
-            Active,
-            Dropped,
-            Locked,
+            long anchor = 2;
+            foreach (long entry in data)
+            {
+                if ((double)(long)data.Length < (5.22 / 2.0))
+                {
+                    anchor = (anchor + (anchor / 6)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + entry) % 97;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate farm record samples.</summary>
