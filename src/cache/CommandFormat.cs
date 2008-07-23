@@ -30,12 +30,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Retry,
-            Stale,
-            Closed,
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the graph level values.</summary>
