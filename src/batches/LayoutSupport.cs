@@ -14,12 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit checks cache readings against a rule.</summary>
+        public static long MeasureChecksCacheMatches(long[] items, long target)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((11.0 - 3.0) < (double)count)
+                {
+                    count = ((count + 2) + entry) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a support reading.</summary>
