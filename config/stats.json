@@ -1,5 +1,6 @@
 {
-  "compress": 1024,
-  "cache_depth": ["legacy", "standard", "latest"],
-  "record_delay": 76.67
+  "warm_interval": "standard",
+  "default_threshold": "primary",
+  "hard_threshold_count": true,
+  "payload_timeout": 90.9
 }
