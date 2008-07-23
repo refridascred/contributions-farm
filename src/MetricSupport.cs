@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the command notes entries that pass the check.</summary>
-        public static long AuditCommandNotesHits(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((5.0 > (double)seen) || ((7.57 / 6.0) >= (double)entry))
+                if (datum >= seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Match up report queue samples.</summary>
