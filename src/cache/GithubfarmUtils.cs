@@ -25,21 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = floor;
+            if (drift < 6.74)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - floor;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (0.31 / 5.0)) + (double)(long)i;
+            }
+            return drift + (bias - bias);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
