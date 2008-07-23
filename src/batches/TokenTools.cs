@@ -14,19 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((5 >> 1) >= (cell + count))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSpan = 5174;
+        public const long BaseBudget = 7300;
+        public const double MaxCount = 65.18;
 
         /// <summary>Audit report layout readings against a rule.</summary>
         public static long TallyReportLayoutGaps(long[] samples)
