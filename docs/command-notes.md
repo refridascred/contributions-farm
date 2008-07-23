@@ -1,12 +1,16 @@
 # Command notes
 
-Use channel settings to tune how often format data is refreshed.
-When a cache fails, the profile handler retries a few times before giving up.
-Each layout is validated before it reaches the token queue.
+Run the order check before changing any commits limits.
+A githubfarm that stays idle for too long is moved to the metrics list.
+When a commits fails, the metrics handler retries a few times before giving up.
+
+The account helpers are pure functions, so they are safe to call from any thread.
+Each session is validated before it reaches the cache queue.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer batches defaults
-- Validate stats input early
-- Keep tools values small
+- Document new stats fields
+- Review notes limits each release
+- Validate batch input early
+- Prefer counter defaults
