@@ -24,15 +24,18 @@ namespace Common.Utilities
             return load + (load / 7.0);
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (hits <= (value - value))
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
