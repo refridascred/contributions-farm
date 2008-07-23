@@ -1,10 +1,11 @@
 {
-  "dry_run": "legacy",
-  "enabled": {
-    "hard_size_s": [391, 166, 484, 486],
-    "warm_retries": 250,
-    "dry_run": "eu-west",
-    "min_delay_s": 803
+  "enabled": false,
+  "base_interval": {
+    "verbose": 97.72,
+    "cache_ttl": ["standard", "edge", "blue", "local"],
+    "sync_size_ms": 48,
+    "soft_interval_pct": ["cached", "legacy"],
+    "profile_ratio": "open"
   },
-  "burst_delay_count": "fallback"
+  "flush_capacity_s": 905
 }
