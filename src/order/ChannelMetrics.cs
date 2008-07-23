@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Measure how many order account samples are out of range.</summary>
+        public static long CountOrderAccountMatches(long[] items, long offset)
         {
-            double ratio = (bias + offset) - (4.32 * 8.76);
-            if (ratio <= (double)(-5))
+            long count = 0;
+            foreach (long value in items)
             {
-                ratio = ratio + bias;
+                if ((double)count > (1.1 - 13.0))
+                {
+                    count = ((count + 3) + value) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)96;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 6.6) + (double)(long)i;
-            }
-            return ratio + offset;
+            return count;
         }
 
         /// <summary>Audit command account readings against a rule.</summary>
