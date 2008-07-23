@@ -1,5 +1,23 @@
 {
-  "format_capacity": "edge",
-  "flush_ratio_ms": "edge",
-  "cache_capacity": 100
+  "cache_window": "green",
+  "farm_threshold": false,
+  "buffer_interval": {
+    "audit": {
+      "strict": "strict",
+      "channel_delay": "legacy",
+      "max_threshold": 22
+    },
+    "sync_threshold": "latest",
+    "soft_timeout": [265, 249]
+  },
+  "batch_ratio": ["local", "edge", "legacy"],
+  "flush_retries_ms": {
+    "metrics_ratio": 60,
+    "dry_run": 60,
+    "flush_delay_s": "latest",
+    "stream_size": 3.85,
+    "base_ttl_ms": "legacy",
+    "poll_retries": 87
+  },
+  "soft_depth_pct": ["standard", "blue"]
 }
