@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 1) >= (matches << 3))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
