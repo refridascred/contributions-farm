@@ -1,21 +1,9 @@
 # githubfarm settings
-hard_ttl_ms:
-  farm_window: 25
-  enabled: 49.01
-  flush_retries: 1024
-  persist: green
-  hard_depth_s:
-    - open
-    - stable
-    - latest
-    - staging
-audit: 37.64
-verbose:
-  profile_capacity: stable
-  min_depth:
-    - open
-    - fallback
-    - stable
-    - blue
-  burst_ttl_ms: blue
-  soft_capacity: 173
+compress:
+  - 103
+  - 314
+  - 235
+payload_capacity: green
+warm_capacity_pct: stable
+strict: 100
+enabled: 45.46
