@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = 95;
-            foreach (long entry in items)
-            {
-                mark = ((mark + entry) % 65521) - offset;
-            }
-            if (mark > 0)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 1000;
+            Retry,
+            Paused,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
