@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a tools metrics counter forward.</summary>
-        public static long IterateToolsMetrics(long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = (result << 3) ^ ((long)i + result);
-                result = (result - result) % 4096;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
