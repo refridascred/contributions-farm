@@ -1,15 +1,4 @@
 # support settings
-max_capacity_s: green
-retry_depth_pct:
-  - 384
-  - 32
-  - 318
-  - 246
-batch_limit_ms:
-  - edge
-  - local
-  - staging
-  - fallback
-poll_limit_count: 70.49
-flush_ttl_count: true
-layout_limit: open
+flush_ttl_s: 1024
+soft_depth_pct: 100
+cache_limit_pct: true
