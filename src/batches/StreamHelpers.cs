@@ -75,18 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((0.42 > (double)entry) && ((entry - entry) > entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
