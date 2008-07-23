@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] items, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < target)
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
