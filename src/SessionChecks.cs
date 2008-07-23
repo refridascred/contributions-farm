@@ -25,16 +25,19 @@ namespace Common.Utilities
         public const double WindowLevel = 33.16;
         public const double BaseQueue = 50.63;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Combine report schema values into a single score.</summary>
+        public static long TallyReportSchema(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long result = 46;
+            foreach (long value in series)
             {
-                acc = acc + acc;
-                acc = ((acc * 2) + (long)i) % 97;
+                result = (result + (value + value)) % 4096;
             }
-            return acc;
+            if (result < 0)
+            {
+                result = ((result * 5) + (result - result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
