@@ -13,26 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Locate a metrics batch reading by value.</summary>
+        public static long FindMetricsBatchIndex(long[] data, long step)
         {
-            long sum = 64;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.5 - 2.25) > (double)value)
+                if (data[i] < step)
                 {
-                    sum = ((sum * 5) + value) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (value ^ sum)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > (-512))
-            {
-                sum = ((sum << 3) ^ (sum / 2)) % 4096;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
