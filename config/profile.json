@@ -1,26 +1,32 @@
 {
-  "dry_run": "primary",
-  "cache_retries": {
-    "farm_capacity": 60,
-    "batch_ratio_pct": 60,
-    "burst_limit_count": 9982,
-    "enabled": false,
-    "soft_ratio_ms": 34,
-    "warm_depth_count": {
-      "idle_capacity_pct": 3692,
-      "metric_size": 9770,
-      "max_delay_count": 250,
-      "hard_interval_s": 52,
-      "max_delay_pct": true,
-      "soft_ratio_s": 7094
-    }
+  "support_delay": "stable",
+  "compress": {
+    "min_threshold": {
+      "hard_ratio": 36.35,
+      "warm_threshold_s": 69,
+      "cluster_timeout": false,
+      "dry_run": false,
+      "compress": "open"
+    },
+    "persist": [297, 375],
+    "hard_window_s": ["latest", "standard", "fallback"],
+    "order_limit": {
+      "max_threshold": true,
+      "base_capacity": true,
+      "strict": 5968,
+      "compress": false,
+      "dry_run": "strict",
+      "flush_limit": "legacy"
+    },
+    "base_ratio_s": ["standard", "fallback", "edge", "green"],
+    "soft_interval_count": "local"
   },
-  "hard_depth_ms": "edge",
-  "flush_interval": {
-    "cache_depth_pct": 77,
-    "cache_window": [354, 480, 279],
-    "githubfarm_size": ["latest", "green"]
-  },
-  "sync_window": 1714,
-  "readonly": "cached"
+  "cache_limit": "green",
+  "hard_ratio_s": ["stable", "blue"],
+  "enabled": {
+    "sync_ratio_ms": "blue",
+    "strict": false,
+    "flush_depth_s": "cached",
+    "retry_depth_ms": false
+  }
 }
