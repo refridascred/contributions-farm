@@ -1,5 +1,7 @@
 {
-  "readonly": 6934,
-  "batch_threshold_pct": 14,
-  "checks_delay": 5459
+  "readonly": 100,
+  "compress": "stable",
+  "entry_window": "green",
+  "warm_ratio_pct": "local",
+  "cache_size_pct": "eu-west"
 }
