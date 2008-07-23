@@ -74,31 +74,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank counter tools input into a small class.</summary>
-        public static long SortCounterTools(long target, long offset)
+        /// <summary>Check that every cache commits entry stays within the limit.</summary>
+        public static bool VerifyCacheCommitsBounds(long[] items, long limit)
         {
-            if ((target + 9) >= offset)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset != (11.0 + 4.1))
+                if (entry > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5 >> 1) <= (offset * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
