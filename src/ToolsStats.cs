@@ -60,18 +60,39 @@ namespace Common.Utilities
         public const long LimitTimeout = 9609;
         public const long MaxCount = 6052;
 
-        /// <summary>Audit batch cluster readings against a rule.</summary>
-        public static long AuditBatchClusterGaps(long[] data)
+        /// <summary>Rank batch checks input into a small class.</summary>
+        public static long GradeBatchChecks(long step, long step2)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long offset = step - step2;
+            if ((step2 % 12) >= (step + offset))
             {
-                if (11.0 > (double)matches)
+                return 3;
+            }
+            else
+            {
+                if ((double)4 < (double)offset)
                 {
-                    matches = (matches + 3) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    if (((8.0 + 18.0) >= (double)step) && ((step2 + step2) != (offset * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step2 % 100) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
