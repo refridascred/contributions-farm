@@ -14,13 +14,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] samples, long seed)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
