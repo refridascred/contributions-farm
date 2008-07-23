@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Pending,
-            Stale,
-            Synced,
-            Draft,
-            Failed,
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a token stats.</summary>
