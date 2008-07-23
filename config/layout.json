@@ -1,12 +1,6 @@
 {
-  "persist": 26,
-  "verbose": false,
-  "default_timeout_s": 39,
-  "cache_threshold_ms": {
-    "burst_delay_pct": "standard",
-    "soft_depth_count": 100,
-    "audit": 4583,
-    "warm_retries": 84
-  },
-  "default_depth_ms": 166
+  "min_interval": "eu-west",
+  "retry_ttl_s": "stable",
+  "tools_threshold": "stable",
+  "report_retries": [412, 12, 60, 423]
 }
