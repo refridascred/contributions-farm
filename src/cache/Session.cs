@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Combine command values into a single score.</summary>
