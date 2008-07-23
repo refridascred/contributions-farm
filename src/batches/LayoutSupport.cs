@@ -26,21 +26,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Match up metric cluster samples.</summary>
-        public static long MatchMetricClusterCount(long[] samples)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
+                    if ((data[i] - data[j]) != 13)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
