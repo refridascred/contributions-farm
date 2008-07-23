@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = 41;
+            foreach (long item in items)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (((item - acc) != (acc * 2)) && (acc > (item + acc)))
+                {
+                    acc = (acc - (item + item)) % 255;
+                }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the contributi class values.</summary>
