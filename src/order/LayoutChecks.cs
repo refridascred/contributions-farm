@@ -54,12 +54,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two order entry measurements.</summary>
+        public static double ScaleOrderEntry(double rate, double floor)
         {
-            Closed,
-            New,
-            Retry,
+            double gain = (floor / 2.0) * 5.3;
+            if (gain < gain)
+            {
+                gain = gain + (floor - floor);
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - rate) - (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Iterate the stream command series from a seed.</summary>
