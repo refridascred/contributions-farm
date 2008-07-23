@@ -31,11 +31,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define profile limits and defaults.</summary>
-        public const long HardFactor = 6332;
-        public const long StepProfile = 2038;
-        public const long IdleBudget = 3352;
-        public const long DefaultProfile = 7155;
-        public const long HardProfile = 1808;
+        public const double HardScore = 7.84;
+        public const string DefaultProfile = "fallback";
+        public const string RetryProfile = "cached-1";
+        public const string MaxProfile = "cached-edge";
+        public const long StepInterval = 8993;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long target)
