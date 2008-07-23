@@ -1,22 +1,13 @@
 {
-  "retry_capacity_ms": [96, 396, 231, 368],
-  "record_retries": true,
-  "enabled": {
-    "sync_ratio": {
-      "order_size": true,
-      "buffer_window": 61.36,
-      "batch_timeout_count": "blue",
-      "hard_size_ms": "stable"
-    },
-    "record_ttl": 63,
-    "soft_depth_pct": false,
-    "cache_window": "edge",
-    "farm_ratio": {
-      "min_timeout": 56.44,
-      "flush_depth_pct": 3163,
-      "batches_threshold": true,
-      "format_threshold": ["open", "green", "standard"]
-    },
-    "retry_ratio_s": 100
-  }
+  "sync_limit_ms": {
+    "default_limit": "green",
+    "flush_timeout": false,
+    "base_capacity_s": false,
+    "profile_ttl": false
+  },
+  "commits_delay": "blue",
+  "max_capacity_s": "local",
+  "enabled": false,
+  "default_threshold_ms": 768,
+  "max_delay": "cached"
 }
