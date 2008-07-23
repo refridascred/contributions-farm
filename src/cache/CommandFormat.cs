@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the record status values.</summary>
