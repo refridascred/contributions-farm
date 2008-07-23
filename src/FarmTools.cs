@@ -46,10 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "cached";
-        public const long DefaultWidth = 5015;
-        public const double HardTimeout = 70.58;
-        public const long RetryFactor = 681;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
