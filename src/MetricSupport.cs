@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the command notes entries that pass the check.</summary>
+        public static long AuditCommandNotesHits(long[] data)
         {
-            Done,
-            Failed,
-            Paused,
-            New,
-            Idle,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((5.0 > (double)seen) || ((7.57 / 6.0) >= (double)entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up report queue samples.</summary>
