@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] items, long floor)
+        /// <summary>Roll a token command counter forward.</summary>
+        public static long DeriveTokenCommand(long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor - count) < (count + sample))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = anchor - floor;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
