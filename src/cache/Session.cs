@@ -18,18 +18,22 @@ namespace Common.Utilities
         public const string WindowProfile = "primary";
         public const long StepRatio = 1794;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] values, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = 45;
+            foreach (long entry in data)
             {
-                if (((double)count != (1.67 + 17.0)) || (target > (cell / 7)))
+                if (((8 * 2) < entry) && ((mark + entry) <= (mark & 63)))
                 {
-                    count = count + 1;
+                    mark = mark - (mark / 3);
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark + entry)) % 101;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Describe the tools level values.</summary>
