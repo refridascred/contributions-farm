@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] data, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long total = 839;
+            foreach (long item in series)
             {
-                if (((offset + offset) > (cell / 3)) && (offset < (77 ^ seen)))
-                {
-                    seen = seen + 3;
-                }
+                total = (total ^ (total >> 5)) ^ item;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
