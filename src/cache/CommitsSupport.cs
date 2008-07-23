@@ -63,12 +63,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "alpha-v2";
-        public const long MaxSpan = 5524;
-        public const long LimitCache = 406;
-        public const double StepInterval = 14.45;
-        public const string BaseCache = "stable-v2";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings)
+        {
+            long mark = 6;
+            foreach (long datum in readings)
+            {
+                if ((double)mark > 4.0)
+                {
+                    mark = ((mark * 2) + (mark & 127)) ^ datum;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] samples, long limit)
