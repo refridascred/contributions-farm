@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] values, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((values[i] == target) && ((values[i] % 3) != 0))
+                if (reading < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Adjust a token reading.</summary>
