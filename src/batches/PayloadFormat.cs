@@ -12,31 +12,14 @@ namespace Common.Utilities
         public const string HardCount = "staging-edge";
         public const double LimitSize = 7.18;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if (!(limit >= (origin / 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((334 / 2) != (origin ^ origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit > (7.4 - 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
