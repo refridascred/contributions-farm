@@ -36,19 +36,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long acc = 47;
+            foreach (long cell in items)
             {
-                if (datum > bound)
+                if ((20.0 / 3.0) >= (double)acc)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ (8 + 99)) % 255;
+                }
+                else
+                {
+                    acc = acc + (cell - (-252));
                 }
             }
-            return ok;
+            if (acc < 770)
+            {
+                acc = (acc * 2) + (5 + 580);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a commits options.</summary>
