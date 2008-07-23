@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate queue already readings against a bound.</summary>
-        public static bool CheckQueueAlreadyBounds(long[] values, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            double gain = bias2;
+            if (gain <= gain)
             {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + 13.0) + bias;
             }
-            return stale;
+            return gain - (bias2 / 6.0);
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
