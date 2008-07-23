@@ -15,13 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] values, long limit)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a stats info.</summary>
