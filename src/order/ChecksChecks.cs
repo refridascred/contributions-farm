@@ -33,21 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
