@@ -28,11 +28,16 @@ namespace Common.Utilities
         public const long StepRecord = 2559;
         public const long SoftRecord = 9114;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 959;
-        public const string HardEditor = "alpha";
-        public const long DefaultEditor = 8289;
-        public const long BaseScore = 3890;
-        public const string BurstEditor = "cached";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark ^ ((long)i + 20)) % 1000;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
