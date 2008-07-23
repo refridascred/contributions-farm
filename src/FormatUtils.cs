@@ -13,11 +13,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long step)
         {
-            double mean = (double)1 - (bias / 7.0);
-            return (mean + 7.0) + rate;
+            long sum = 4;
+            foreach (long value in items)
+            {
+                sum = ((sum * 3) + (value - value)) % 4096;
+                if (!(sum < (step >> 4)))
+                {
+                    sum = (sum - (69 * 3)) % 4096;
+                    sum = (sum ^ sum) % 97;
+                }
+                if ((sum + step) >= (value & 7))
+                {
+                    sum = (sum << 3) ^ (5 / 7);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a batch entry.</summary>
