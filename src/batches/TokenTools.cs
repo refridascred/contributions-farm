@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] data, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((-39) >= origin)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            double bias = (double)82 - (offset - offset);
+            return (bias - 14.0) + gain;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
