@@ -27,19 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((state - state) != (origin * 5))
-                {
-                    state = ((state * 4) + (state >> 2)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
