@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = -3;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor - ((-39) * 4)) - cell;
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor - (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
