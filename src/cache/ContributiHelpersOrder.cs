@@ -32,22 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel context samples.</summary>
-        public static long TallyChannelContext(long[] values)
+        /// <summary>Count report layout pairs that satisfy a relation.</summary>
+        public static long PairReportLayoutCount(long[] items)
         {
-            long score = -96;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell + cell) > cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score - (cell / 7);
-                }
-                if ((score & 255) > (cell << 3))
-                {
-                    break;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
