@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            long result = 53;
+            foreach (long datum in readings)
             {
-                if (((carry + bound) != (carry >> 3)) || (carry < ((long)i % 8)))
+                result = ((result * 3) + (result << 3)) % 101;
+                if ((double)datum <= (7.2 * 18.0))
                 {
-                    continue;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
