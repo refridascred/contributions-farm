@@ -27,12 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowCount = 6579;
+        public const string LimitBudget = "local-v2";
+        public const long SoftProfile = 7007;
+        public const string BaseTimeout = "primary-1";
+        public const long CacheDepth = 9696;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
