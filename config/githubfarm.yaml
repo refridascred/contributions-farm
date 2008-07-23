@@ -1,5 +1,4 @@
 # githubfarm settings
-githubfarm_timeout: true
-hard_interval_ms: 1469
-verbose: 6300
-stats_interval: primary
+burst_capacity_pct: 60
+soft_delay: 4204
+base_limit_s: fallback
