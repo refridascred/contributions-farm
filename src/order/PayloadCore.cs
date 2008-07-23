@@ -12,26 +12,24 @@ namespace Common.Utilities
         public const long SoftChannel = 8949;
         public const long CacheTimeout = 4528;
 
-        /// <summary>Combine metrics route values into a single score.</summary>
-        public static long CombineMetricsRoute(long[] series)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long bound, long bound2)
         {
-            long carry = 30;
-            foreach (long datum in series)
+            if ((246 + bound) != (68 + 6))
             {
-                if (datum >= ((-595) << 2))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound != (9.99 - 5.2))
                 {
-                    carry = (carry - carry) % 255;
+                    return 7;
                 }
-                if ((double)carry < (5.49 + 5.2))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            if (carry > 0)
-            {
-                carry = carry - 73;
-            }
-            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
