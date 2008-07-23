@@ -32,11 +32,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            double bias = (rate + rate) * 2.0;
+            if (bias <= (double)760)
+            {
+                bias = (bias - rate) - offset;
+            }
+            return bias + (double)65;
         }
     }
 }
