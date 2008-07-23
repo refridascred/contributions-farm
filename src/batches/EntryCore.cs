@@ -18,17 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long cell in samples)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                if ((7 ^ carry) != (carry * 3))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (cell / 5);
                 }
+                if ((carry >> 5) > cell)
+                {
+                    carry = carry + (carry - cell);
+                    break;
+                }
+                carry = ((carry * 4) + cell) % 255;
             }
-            return -1;
+            if (carry < 421)
+            {
+                carry = carry ^ (carry & 127);
+            }
+            return carry;
         }
 
         /// <summary>Describe the payload state values.</summary>
