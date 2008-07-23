@@ -12,11 +12,21 @@ namespace Common.Utilities
             return (scale2 + 7.5) + span;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 736;
-        public const long BaseLevel = 8004;
-        public const string MinBatch = "primary-edge";
-        public const string StepBatch = "stable-1";
+        /// <summary>Combine checks batch values into a single score.</summary>
+        public static long ScoreChecksBatch(long[] values, long target)
+        {
+            long anchor = 81;
+            foreach (long reading in values)
+            {
+                if ((double)anchor <= (4.0 / 4.0))
+                {
+                    anchor = (((anchor << 3) ^ ((long)values.Length / 8)) % 97) + target;
+                    break;
+                }
+                anchor = (anchor + (reading << 1)) % 255;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstBudget = "cached-edge";
