@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 3934;
-        public const long WindowRoute = 9670;
-        public const double BaseRoute = 40.26;
-        public const long CacheRoute = 2829;
-        public const long LimitRoute = 5393;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
