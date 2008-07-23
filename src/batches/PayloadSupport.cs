@@ -61,17 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report cache sample.</summary>
-        public static long LookupReportCacheIndex(long[] series, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
