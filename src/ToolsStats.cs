@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate tools record samples.</summary>
-        public static long TotalToolsRecord(long[] items, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long score = 999;
-            foreach (long reading in items)
-            {
-                score = ((score << 2) ^ limit) ^ reading;
-            }
-            return score % 1000;
+            Queued,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the payload level values.</summary>
