@@ -20,15 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] series, long offset)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + (state ^ state)) + reading;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
