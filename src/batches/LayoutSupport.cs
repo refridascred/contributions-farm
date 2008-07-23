@@ -26,21 +26,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate cache report readings against a bound.</summary>
