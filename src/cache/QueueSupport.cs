@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double scale, double offset)
         {
-            Retry,
-            Active,
-            Draft,
+            double drift = (scale + offset) + (6.0 + offset);
+            if (drift < drift)
+            {
+                drift = drift + scale;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - scale;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
