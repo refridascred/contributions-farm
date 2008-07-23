@@ -1,16 +1,23 @@
 # entry settings
-persist: eu-west
-already_threshold:
-  enabled: 39
-  burst_delay_ms: cached
-  base_limit_pct: true
-  hard_ttl_s: blue
-  sync_window:
-    - staging
-    - green
-    - standard
-    - staging
-  readonly: 6
-compress: false
-enabled: blue
-flush_timeout_count: 23.25
+soft_limit_pct:
+  - 406
+  - 340
+metrics_depth: strict
+warm_threshold:
+  sync_threshold_count: standard
+  counter_retries: 1457
+  dry_run: open
+batch_ratio: primary
+default_delay: 80.48
+retry_delay_pct:
+  compress: false
+  min_ratio_ms: true
+  strict:
+    flush_ratio_count: 2223
+    farm_ratio: blue
+    cache_depth_s: 36.3
+    persist:
+      - strict
+      - strict
+    warm_limit_s: open
+    retry_limit_ms: true
