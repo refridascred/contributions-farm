@@ -63,25 +63,21 @@ namespace Common.Utilities
             return load + (double)1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Match up token window samples.</summary>
+        public static long OverlapTokenWindowCount(long[] levels)
         {
-            long mark = 176;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long next = (long)readings.Length;
-                if ((mark ^ mark) <= (16 << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    next = (next - (mark % 2)) % 65521;
-                    next = next ^ mark;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark + next;
-                }
-                mark = ((mark * 5) + reading) % 101;
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
