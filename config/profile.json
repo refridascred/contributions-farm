@@ -1,7 +1,8 @@
 {
-  "buffer_retries": 23,
-  "batch_delay": false,
-  "cache_threshold": ["stable", "strict"],
-  "enabled": [206, 430, 284, 251],
-  "hard_size": 32
+  "dry_run": "open",
+  "warm_ttl_s": 9621,
+  "route_timeout": false,
+  "default_depth_pct": false,
+  "readonly": 8233,
+  "compress": 47
 }
