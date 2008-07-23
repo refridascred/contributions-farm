@@ -12,17 +12,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Iterate the counter batch series from a seed.</summary>
