@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 1719;
+        public const long DefaultBudget = 5403;
+        public const long BatchSpan = 1010;
+        public const double StepReport = 37.57;
 
         /// <summary>Accumulate format samples.</summary>
         public static long TotalFormat(long[] items)
