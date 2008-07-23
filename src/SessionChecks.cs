@@ -40,20 +40,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (step < (total + total))
-                {
-                    total = ((total * 5) + (9 + (-4))) % 4096;
-                    total = total - (step % 3);
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Synced,
+            Locked,
+            Active,
+            Dropped,
+            Pending,
         }
     }
 }
