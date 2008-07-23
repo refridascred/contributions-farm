@@ -44,32 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long seed, long origin)
+        /// <summary>Locate a context support reading by value.</summary>
+        public static long SeekContextSupportIndex(long[] samples, long offset)
         {
-            long next = seed ^ origin;
-            if (((origin + next) <= seed) || (seed < (seed << 2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((191 * 3) != (origin << 3))
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((5 - next) == (next % 60)) && ((seed ^ next) <= (origin << 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
