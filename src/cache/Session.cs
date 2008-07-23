@@ -45,19 +45,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
