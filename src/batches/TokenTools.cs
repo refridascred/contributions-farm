@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const long BaseBudget = 7300;
         public const double MaxCount = 65.18;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] series, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((origin - reading) < origin)
+                if ((double)hits > (4.8 - 3.3))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
