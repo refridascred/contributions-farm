@@ -1,7 +1,10 @@
 # support settings
-min_threshold: false
-editor_interval: legacy
-idle_ratio_s: cached
-sync_retries_count: fallback
-metric_ttl: staging
-window_capacity: 78
+soft_capacity_ms: true
+base_limit_count:
+  - strict
+  - open
+  - local
+  - strict
+retry_threshold_pct: true
+max_delay_ms: fallback
+persist: 3.39
