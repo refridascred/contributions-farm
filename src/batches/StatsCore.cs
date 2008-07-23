@@ -25,20 +25,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Locate a tools stats reading by value.</summary>
+        public static long LocateToolsStatsIndex(long[] items, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)total != (0.81 + 9.9))
+                if (items[i] >= seed)
                 {
-                    total = (total + (415 - (long)i)) % 1000;
-                    total = total - total;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
