@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 83.18;
+        public const string BaseGithubfarm = "strict-v2";
+        public const double LimitCount = 50.16;
+        public const double MaxSpan = 19.62;
+        public const long SoftGithubfarm = 1323;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] samples)
