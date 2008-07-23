@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const string HardCount = "staging-edge";
         public const double LimitSize = 7.18;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Active,
-            Idle,
-            Ready,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 74.75;
+        public const long SoftToken = 1028;
+        public const long SoftSpan = 4116;
+        public const double BurstDepth = 43.23;
+        public const double MaxToken = 84.67;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long FoldProfile(long[] readings)
