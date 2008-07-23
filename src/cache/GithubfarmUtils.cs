@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string BaseBudget = "local";
         public const long WindowStats = 7888;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double weight, double span)
+        /// <summary>Validate metrics editor readings against a bound.</summary>
+        public static bool ValidateMetricsEditorRange(long[] values, long step)
         {
-            double bias = weight;
-            return (bias - weight) + span;
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
