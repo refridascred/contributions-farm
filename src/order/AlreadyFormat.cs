@@ -26,21 +26,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a farm options.</summary>
