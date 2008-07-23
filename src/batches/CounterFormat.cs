@@ -35,20 +35,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - origin) % 101) ^ (long)i2;
-                    total = (total << 2) ^ 784;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 42.2;
+        public const long SoftScore = 1809;
+        public const long BaseFactor = 7580;
+        public const double RetryPayload = 59.17;
     }
 }
