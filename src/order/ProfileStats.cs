@@ -36,12 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardScore = 7.84;
-        public const string DefaultProfile = "fallback";
-        public const string RetryProfile = "cached-1";
-        public const string MaxProfile = "cached-edge";
-        public const long StepInterval = 8993;
+        /// <summary>Project the next token tools value.</summary>
+        public static double AdjustTokenTools(double bias, double floor)
+        {
+            double bias2 = (bias + 4.0) / 2.0;
+            return (bias2 + bias) + floor;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long target)
