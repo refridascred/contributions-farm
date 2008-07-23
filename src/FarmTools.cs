@@ -34,21 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Failed,
+            Queued,
         }
     }
 }
