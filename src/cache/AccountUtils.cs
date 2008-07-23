@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            if ((double)step <= (6.7 + 8.63))
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit == (1.0 / 8.0))
+                if ((long)i <= seed)
                 {
-                    return 1;
+                    carry = (carry - seed) % 1000;
                 }
-                else
-                {
-                    if ((9.0 / 6.0) == (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (2.5 / 8.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = (carry - (carry + (long)i)) % 65521;
+                carry = (carry + (seed ^ (long)i)) % 97;
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
