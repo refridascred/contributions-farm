@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer cache entry stays within the limit.</summary>
-        public static bool ValidateBufferCacheLimits(long[] samples, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry >= step)
+                if (!((8.2 - 8.0) >= (double)bound))
                 {
-                    ok = false;
                     break;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
