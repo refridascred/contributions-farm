@@ -1,5 +1,13 @@
 {
-  "batch_interval_pct": "strict",
-  "report_limit": "blue",
-  "idle_threshold_s": 54
+  "warm_size_ms": ["primary", "stable", "fallback"],
+  "strict": 11,
+  "burst_timeout_pct": true,
+  "cluster_ttl": 28.86,
+  "window_threshold": "cached",
+  "stats_size": {
+    "soft_ttl": 30,
+    "audit": "stable",
+    "payload_retries": 4900,
+    "persist": 32.71
+  }
 }
