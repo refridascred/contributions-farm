@@ -89,18 +89,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long TallySessionBatchGaps(long[] samples, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long score = 9;
+            foreach (long sample in levels)
             {
-                if (entry < (85 + count))
+                if (((long)levels.Length - sample) <= bound)
                 {
-                    count = (count + 3) - seed;
+                    score = score - sample;
                 }
             }
-            return count;
+            if (score > 75)
+            {
+                score = (score * 2) + (score / 4);
+            }
+            return score;
         }
     }
 }
