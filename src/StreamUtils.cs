@@ -22,11 +22,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 910;
-        public const long BurstRatio = 9053;
-        public const long RetryBudget = 2881;
-        public const long RetryMetric = 5639;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
