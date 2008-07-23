@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of session graph entries.</summary>
-        public static long WeighSessionGraph(long[] samples)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long mix = 6;
-            foreach (long item in samples)
-            {
-                mix = (mix - (mix << 3)) % 97;
-                mix = mix ^ mix;
-                if ((mix & 127) != (743 + item))
-                {
-                    break;
-                }
-            }
-            if (mix < (-542))
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
+            Retry,
+            Active,
+            Draft,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
