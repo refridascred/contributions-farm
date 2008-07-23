@@ -30,28 +30,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series, long bound)
-        {
-            long mark = 20;
-            foreach (long cell in series)
-            {
-                mark = mark + (bound + bound);
-                if (mark > (bound - cell))
-                {
-                    mark = (mark + (cell % 100)) % 4096;
-                    mark = (mark ^ (bound * 5)) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (bound + 9);
-                }
-                if (!((mark + cell) != (bound - mark)))
-                {
-                    mark = ((mark * 5) + mark) % 65521;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 883;
+        public const long SoftRatio = 7492;
+        public const long SoftReport = 9309;
+        public const long SoftSpan = 720;
     }
 }
