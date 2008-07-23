@@ -27,11 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every order graph entry stays within the limit.</summary>
