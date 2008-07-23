@@ -40,11 +40,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long offset, long target)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long edge = offset + target;
+            if ((double)target != (double)edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6 - offset) >= (-637))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a counter metric pair into a bucket.</summary>
