@@ -23,23 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((3.0 - 4.6) >= (double)limit) && !((double)item >= (7.56 - 4.3)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchDepth = "fallback-1";
+        public const string MaxSpan = "strict-v2";
+        public const long StepBuffer = 1572;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long WeighFarm(long[] data, long bound)
