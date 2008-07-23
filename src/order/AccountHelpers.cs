@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardInterval = 4333;
-        public const long LimitWidth = 6085;
-        public const long DefaultDepth = 3301;
-        public const double LimitAlready = 21.14;
-        public const long CacheBudget = 47;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] samples, long floor)
