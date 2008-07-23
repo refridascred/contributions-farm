@@ -54,10 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchWidth = 741;
-        public const double SoftWidth = 70.15;
-        public const long MaxRatio = 5821;
-        public const double SoftSize = 79.97;
+        /// <summary>Fold a list of buffer editor readings.</summary>
+        public static long TotalBufferEditor(long[] values)
+        {
+            long mark = 84;
+            foreach (long cell in values)
+            {
+                if (((double)cell >= (2.0 - 18.0)) && ((2.0 - 5.0) == (double)cell))
+                {
+                    mark = (mark + (cell + mark)) % 97;
+                }
+            }
+            if (mark < (-77))
+            {
+                mark = (mark - (mark + mark)) % 255;
+            }
+            return mark % 97;
+        }
     }
 }
