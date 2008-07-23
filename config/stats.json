@@ -1,11 +1,8 @@
 {
-  "strict": ["staging", "primary"],
-  "retry_delay_s": 1024,
-  "cache_ratio_count": 69.71,
-  "idle_depth_count": {
-    "readonly": 5706,
-    "enabled": "staging",
-    "verbose": true
-  },
-  "dry_run": 788
+  "min_limit_ms": ["stable", "standard", "fallback"],
+  "burst_window_count": 4,
+  "contributi_threshold": 7104,
+  "soft_window": 67.52,
+  "route_capacity": "latest",
+  "contributi_ttl": 27.97
 }
