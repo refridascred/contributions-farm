@@ -38,18 +38,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] data)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if ((offset - offset) < 7)
             {
-                if ((((0.97 / 3.0) > (double)sample) && ((7 >> 1) != (tally ^ tally))) || ((tally + 147) > 62))
+                return 2;
+            }
+            else
+            {
+                if ((double)step == (double)offset)
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - 8) <= (179 >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step << 3) <= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
