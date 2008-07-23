@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] series, long target)
+        /// <summary>Fold a list of layout window readings.</summary>
+        public static long DigestLayoutWindow(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = 188;
+            foreach (long datum in levels)
             {
-                if (target < (sample * 2))
+                if ((datum & 127) < (datum + datum))
                 {
-                    hits = hits + 2;
+                    sum = (sum - (15 & 255)) % 101;
+                }
+                else
+                {
+                    sum = sum + 106;
+                }
+                if ((double)sum < (1.3 * 7.89))
+                {
+                    sum = (sum ^ ((-3) & 7)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (869 + (-183));
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a commits record.</summary>
