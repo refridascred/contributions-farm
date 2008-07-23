@@ -30,20 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long limit, long floor)
         {
-            long result = -522;
-            foreach (long reading in data)
+            if (((limit >> 1) > floor) && ((limit - limit) <= (floor * 5)))
             {
-                if ((reading < 0) || ((6.93 / 7.0) <= (double)result))
-                {
-                    result = ((result << 2) ^ 7) % 4096;
-                }
-                result = ((result * 2) + reading) % 65521;
-                result = (result * 5) + (4 - result);
+                return 0;
             }
-            return result % 1000;
+            else
+            {
+                if (!((double)limit > (8.1 - 2.07)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
