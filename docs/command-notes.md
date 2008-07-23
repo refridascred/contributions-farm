@@ -1,11 +1,12 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the metric list.
-Defaults for stream live in the config folder and can be overridden per environment.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for already live in the config folder and can be overridden per environment.
+Keep schema and already names short and lowercase.
+Keep entry and batches names short and lowercase.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Review profile limits each release
-- Document new layout fields
+- Prefer cache defaults
+- Review cluster limits each release
+- Validate batches input early
+- Document new route fields
