@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftLevel = 3078;
-        public const long CacheInterval = 529;
-        public const string LimitInterval = "strict-edge";
-        public const double BurstLevel = 65.36;
+        /// <summary>Audit token batches readings against a rule.</summary>
+        public static long MeasureTokenBatchesOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((6.2 - 3.8) != (double)hits) || ((2 + hits) < (hits ^ datum)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterMatches(long[] readings)
