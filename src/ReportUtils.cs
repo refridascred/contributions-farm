@@ -23,19 +23,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
