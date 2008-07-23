@@ -1,7 +1,7 @@
-id,active,label,state
-1,88.79,staging,29.96
-2,62.45,546,blue
-3,strict,stable,132
-4,fallback,44,staging
-5,951,47.86,97.6
-6,228,blue,76.16
+id,active,count
+1,primary,32.07
+2,408,80.45
+3,fallback,latest
+4,edge,94.78
+5,468,565
+6,fallback,fallback
