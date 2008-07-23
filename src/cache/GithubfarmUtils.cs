@@ -40,22 +40,19 @@ namespace Common.Utilities
             return drift + (bias - bias);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long total = 25;
+            foreach (long value in readings)
             {
-                if (datum < (tally >> 5))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ (total + total)) + value;
             }
-            return tally;
+            if (total > 6)
+            {
+                total = (total - (40 + total)) % 97;
+            }
+            return total % 4096;
         }
     }
 }
