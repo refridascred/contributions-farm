@@ -1,8 +1,6 @@
 {
-  "record_retries": "latest",
-  "batch_interval_s": false,
-  "compress": 1024,
-  "min_interval": true,
-  "stats_ttl": 33,
-  "audit": 9252
+  "checks_timeout": "legacy",
+  "sync_ratio_s": 100,
+  "soft_delay": 100,
+  "filter_retries": 1024
 }
