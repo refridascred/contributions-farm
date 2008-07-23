@@ -34,13 +34,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every order graph entry stays within the limit.</summary>
+        public static bool ValidateOrderGraphBounds(long[] items, long step)
         {
-            Closed,
-            Pending,
-            Retry,
-            Locked,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
