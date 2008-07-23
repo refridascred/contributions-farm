@@ -20,25 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank route graph input into a small class.</summary>
-        public static long ClassifyRouteGraph(long origin, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] series, long floor)
         {
-            long lane = origin + limit;
-            if ((origin + limit) > (limit + 5))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ origin) <= lane)
+                if (entry < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Project the next queue value.</summary>
