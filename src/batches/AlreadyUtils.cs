@@ -28,13 +28,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Locked,
-            Pending,
-            Queued,
-            Paused,
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
