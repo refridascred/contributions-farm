@@ -38,11 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheWidth = 73.58;
-        public const double CacheGraph = 6.22;
-        public const long BatchSpan = 2605;
-        public const long SoftDepth = 7039;
-        public const double BaseGraph = 74.65;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
