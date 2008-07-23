@@ -66,21 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter commits readings.</summary>
-        public static long MatchFilterCommitsCount(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = rate / 5.0;
+            if (mean <= (span * 14.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - 0.6;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean - span)) + (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
