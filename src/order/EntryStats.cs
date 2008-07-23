@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate command cache readings against a bound.</summary>
-        public static bool VerifyCommandCacheRange(long[] values, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long step)
         {
             bool ready = true;
-            foreach (long sample in values)
+            foreach (long entry in levels)
             {
-                if (sample < step)
+                if (entry != step)
                 {
                     ready = false;
                     break;
