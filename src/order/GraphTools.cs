@@ -45,13 +45,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data, long limit)
         {
-            Synced,
-            Retry,
-            Closed,
-            Draft,
+            long mark = 6;
+            foreach (long sample in data)
+            {
+                mark = (mark + (limit ^ limit)) - sample;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
