@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryBudget = "strict-1";
-        public const long BaseStats = 4194;
-        public const string BaseBudget = "local";
-        public const long WindowStats = 7888;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every buffer cache entry stays within the limit.</summary>
         public static bool ValidateBufferCacheLimits(long[] samples, long step)
