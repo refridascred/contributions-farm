@@ -38,26 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings, long step)
         {
-            long sum = 1;
-            foreach (long value in items)
+            long mix = 866;
+            foreach (long datum in readings)
             {
-                if ((97 / 7) < value)
+                if ((double)step <= (double)datum)
                 {
-                    sum = sum + (value / 9);
-                }
-                if ((value ^ value) >= 28)
-                {
-                    sum = ((sum * 2) + (value + sum)) % 4096;
-                }
-                if ((double)value < (9.5 / 7.0))
-                {
-                    break;
+                    mix = (mix << 2) ^ 0;
                 }
             }
-            return sum % 97;
+            return mix;
         }
     }
 }
