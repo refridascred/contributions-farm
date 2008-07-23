@@ -1,14 +1,5 @@
 # githubfarm settings
-persist:
-  - 195
-  - 386
-  - 478
-  - 339
-burst_capacity_ms: 24
-cache_depth_count: strict
-readonly:
-  - 226
-  - 56
-  - 129
-  - 451
-max_delay_s: standard
+farm_size: standard
+retry_retries_s: 77
+warm_limit_ms: standard
+editor_ratio: 407
