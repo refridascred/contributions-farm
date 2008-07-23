@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter buffer entries.</summary>
-        public static long CombineFilterBuffer(long[] items, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            long score = 35;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)items.Length + offset) > ((-8) >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + 6) - sample;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Rank tools layout input into a small class.</summary>
