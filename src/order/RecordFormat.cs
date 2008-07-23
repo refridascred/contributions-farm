@@ -63,21 +63,17 @@ namespace Common.Utilities
             return load + (double)1;
         }
 
-        /// <summary>Match up token window samples.</summary>
-        public static long OverlapTokenWindowCount(long[] levels)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] levels, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
