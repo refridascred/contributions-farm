@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MinAccount = 3060;
         public const string BaseWidth = "alpha-edge";
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long acc = 32;
-            foreach (long datum in values)
-            {
-                if (!((datum & 31) != (step + step)))
-                {
-                    acc = (acc ^ (acc - acc)) % 4096;
-                }
-            }
-            return acc;
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
