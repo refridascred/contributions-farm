@@ -85,32 +85,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long origin, long offset)
+        /// <summary>Audit graph cluster readings against a rule.</summary>
+        public static long CountGraphClusterHits(long[] items, long limit)
         {
-            long diff = origin ^ offset;
-            if ((offset - origin) == (origin - 72))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 2) > (diff & 7))
+                if ((((5.43 - 0.18) == (double)item) && ((double)item <= (3.7 - 20.0))) && ((item + seen) <= seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(((-410) + diff) < (offset >> 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 3) - limit;
                 }
             }
+            return seen;
         }
     }
 }
