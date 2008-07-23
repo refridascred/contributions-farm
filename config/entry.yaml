@@ -1,7 +1,8 @@
 # entry settings
-idle_threshold_count: 2222
-verbose: blue
-flush_window_ms: stable
-burst_window_s: stable
-burst_interval_s: latest
-soft_retries_s: stable
+max_delay_ms: green
+base_depth_count:
+  persist: 49
+  flush_interval_pct: latest
+  queue_depth: local
+  cache_timeout: 26.41
+default_interval_count: stable
