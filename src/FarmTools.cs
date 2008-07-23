@@ -20,21 +20,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < target)
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
