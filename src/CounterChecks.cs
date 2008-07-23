@@ -37,18 +37,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] data, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((91 % 8) < (count >> 1))
-                {
-                    count = ((count + 3) - cell) - target;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Roll a route counter forward.</summary>
