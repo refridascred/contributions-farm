@@ -33,14 +33,11 @@ namespace Common.Utilities
             return mean - 13.0;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Locked,
-            Done,
-            Draft,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "fallback-v2";
+        public const string HardFactor = "staging-v2";
+        public const long LimitLevel = 810;
+        public const string MaxCache = "strict";
+        public const double BaseSpan = 97.38;
     }
 }
