@@ -18,32 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm cluster input into a small class.</summary>
-        public static long RankGithubfarmCluster(long limit, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long step = limit - floor;
-            if ((step - 1) > (floor & 15))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.4 + 5.65) >= (2.0 / 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 5) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Closed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
