@@ -43,22 +43,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] data)
         {
-            long score = 27;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)cell > (4.78 / 3.0))
+                if ((double)reading < (double)848)
                 {
-                    score = (score + score) % 1000;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    score = ((score << 3) ^ (cell << 3)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return score % 65521;
+            return tally;
         }
     }
 }
