@@ -76,19 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Find the first filter entry entry that matches the target.</summary>
+        public static long LocateFilterEntryIndex(long[] levels, long target)
         {
-            double ratio = bias;
-            if (ratio > (bias2 * 1.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - 2.16;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (double)15;
+            return -1;
         }
 
         /// <summary>Hold a context record.</summary>
