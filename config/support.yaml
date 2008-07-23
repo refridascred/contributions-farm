@@ -1,21 +1,28 @@
 # support settings
-persist:
-  - 335
-  - 318
-  - 224
-cache_window: 19
-default_ratio_s: false
-dry_run:
-  soft_size: 500
-  commits_ttl:
-    checks_capacity: 21.11
-    hard_window: 76
-    audit: blue
-    burst_ratio_ms: 9701
-    report_depth: 92.45
-  warm_interval_s: 81.28
-  batch_ratio:
-    metric_limit: 48
-    cache_retries_count: false
-    schema_ttl: false
-    counter_ratio: stable
+report_threshold: 53.88
+hard_window: 93
+warm_limit_count:
+  persist:
+    verbose:
+      - eu-west
+      - primary
+    hard_capacity_ms:
+      - 104
+      - 259
+      - 166
+    enabled: 97.38
+    max_ttl_count: 90
+    tools_depth: stable
+    base_limit:
+      - green
+      - latest
+      - strict
+      - local
+  burst_capacity_pct:
+    - 467
+    - 431
+    - 278
+    - 396
+  min_limit_pct: 30
+idle_limit_pct: 4.1
+profile_size: true
