@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (offset > (datum % 16))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftSpan = 881;
+        public const long WindowCommand = 2911;
+        public const double IdleWidth = 34.76;
+        public const double BaseWidth = 41.3;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long SeekGraphIndex(long[] readings, long origin)
