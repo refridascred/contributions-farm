@@ -76,9 +76,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowSpan = "alpha-v2";
-        public const long DefaultBudget = 7324;
-        public const long BurstCount = 8435;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Failed,
+            Closed,
+            Active,
+            Stale,
+        }
     }
 }
