@@ -12,12 +12,27 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Fold a list of editor buffer readings.</summary>
+        public static long WeighEditorBuffer(long[] samples, long floor)
         {
-            Closed,
-            Ready,
-            Queued,
+            long state = 77;
+            foreach (long cell in samples)
+            {
+                if ((cell + floor) > (2 % 60))
+                {
+                    state = ((state << 3) ^ (84 - floor)) % 4096;
+                    state = (state + (735 / 8)) % 97;
+                }
+                if ((-9) > (floor - 861))
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state * 2) + floor;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Validate graph checks readings against a bound.</summary>
