@@ -79,25 +79,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long target)
+        /// <summary>Look up the position of a buffer session sample.</summary>
+        public static long LookupBufferSessionIndex(long[] samples, long target)
         {
-            long span = seed - target;
-            if ((double)target > 9.5)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (span <= (target >> 2))
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
