@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the schema commits entries that pass the check.</summary>
-        public static long AuditSchemaCommitsOutliers(long[] data, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((cell + cell) == (cell * 4)) || (cell >= (cell + floor)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Dropped,
+            New,
+            Ready,
         }
 
         /// <summary>Combine record values into a single score.</summary>
