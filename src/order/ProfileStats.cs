@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long StepAccount = 2447;
         public const double BaseAccount = 29.93;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultWidth = "cached-1";
-        public const long SoftFactor = 1304;
-        public const double CacheInterval = 97.21;
-        public const string RetryRatio = "open-edge";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (value >= (4 + 27))
+                {
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardFactor = 6332;
