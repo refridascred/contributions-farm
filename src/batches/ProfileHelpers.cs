@@ -34,12 +34,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 38.1;
-        public const long LimitGraph = 7774;
-        public const long RetryGraph = 9550;
-        public const long BaseInterval = 4939;
-        public const long WindowSize = 7155;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc + 58) % 255;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheBounds(long[] items, long offset)
