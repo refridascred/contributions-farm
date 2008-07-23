@@ -68,17 +68,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long floor)
+        /// <summary>Audit token record readings against a rule.</summary>
+        public static long MeasureTokenRecordHits(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (series[i] == floor)
+                if ((14.0 / 6.0) <= (double)reading)
                 {
-                    return (long)i;
+                    count = (count + 3) + origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
