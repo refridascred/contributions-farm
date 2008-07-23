@@ -1,13 +1,10 @@
 # githubfarm settings
-verbose:
-  entry_limit: 13.79
-  dry_run:
-    - 464
-    - 348
-  default_ratio: green
-audit:
-  readonly: latest
-  payload_delay: 1024
-  strict: fallback
-dry_run: true
-window_interval: fallback
+soft_capacity:
+  persist: blue
+  hard_ttl_s: 20.73
+  compress: strict
+  soft_size_pct: green
+cluster_size: 100
+readonly: 4036
+metric_ttl: 5196
+cache_depth_s: 60
