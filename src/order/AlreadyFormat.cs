@@ -46,21 +46,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstSize = 7509;
+        public const string SoftLevel = "primary-edge";
+        public const long DefaultBudget = 8522;
+        public const string MinDepth = "local-v2";
     }
 }
