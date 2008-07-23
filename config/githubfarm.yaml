@@ -1,9 +1,8 @@
 # githubfarm settings
-compress:
-  - 103
-  - 314
-  - 235
-payload_capacity: green
-warm_capacity_pct: stable
-strict: 100
-enabled: 45.46
+flush_timeout_ms: staging
+strict: 93.08
+burst_ratio_pct:
+  - 489
+  - 437
+dry_run: primary
+batch_interval_pct: 65
