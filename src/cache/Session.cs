@@ -35,14 +35,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Classify a counter metric pair into a bucket.</summary>
+        public static long GradeCounterMetric(long origin, long seed)
         {
-            Stale,
-            Synced,
-            Draft,
-            Idle,
-            Failed,
+            long edge = origin ^ seed;
+            if ((double)seed >= (4.23 + 12.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((954 + edge) >= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
