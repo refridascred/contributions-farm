@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long target, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long gap = target + bound;
+            if ((double)target >= (double)gap)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (2 <= (gap + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) == (target / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound < (target ^ bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
