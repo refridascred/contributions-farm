@@ -39,10 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public double Weight { get; set; }
             public long Region { get; set; }
         }
     }
