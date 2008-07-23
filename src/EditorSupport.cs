@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples)
-        {
-            long mix = 3;
-            foreach (long item in samples)
-            {
-                mix = ((mix * 2) + 11) % 1000;
-                mix = mix + item;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 2183;
+        public const long SoftChannel = 4694;
+        public const long WindowChannel = 6891;
+        public const long StepChannel = 4305;
+        public const double LimitChannel = 89.79;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BaseFactor = 27.39;
