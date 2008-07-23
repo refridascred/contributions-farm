@@ -34,13 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] data, long limit)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
