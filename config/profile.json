@@ -1,5 +1,8 @@
 {
-  "dry_run": "legacy",
-  "poll_ratio": ["green", "local"],
-  "warm_depth": "legacy"
+  "channel_limit": [326, 209],
+  "sync_ttl": "staging",
+  "batch_depth": ["strict", "blue", "standard", "strict"],
+  "hard_limit": "standard",
+  "persist": 500,
+  "readonly": 9415
 }
