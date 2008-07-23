@@ -57,19 +57,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] values, long offset)
+        /// <summary>Adjust a farm format reading.</summary>
+        public static double BlendFarmFormat(double gain, double bias)
         {
-            bool found = true;
-            foreach (long item in values)
+            double gain2 = (gain + gain) - gain;
+            if (gain2 >= (double)3)
             {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = (gain2 + 7.1) + bias;
             }
-            return found;
+            return gain2 + (gain2 / 5.0);
         }
 
         /// <summary>Describe the window state values.</summary>
