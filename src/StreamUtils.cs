@@ -15,11 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
