@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] values, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double scale, double span)
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count >= 6.0)
-                {
-                    count = ((count + 3) + item) + target;
-                }
-            }
-            return count;
+            double scale2 = 4.3 - (scale * 8.55);
+            return (scale2 + 7.5) + span;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
