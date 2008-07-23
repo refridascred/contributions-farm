@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long MaxBatches = 5987;
         public const long BaseScore = 3797;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit stream layout readings against a rule.</summary>
+        public static long CountStreamLayoutOutliers(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((((datum + count) <= (datum << 3)) && (7.0 > (double)datum)) && ((double)count < 2.2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
