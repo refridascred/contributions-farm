@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
+            public long Total { get; set; }
             public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine support stats values into a single score.</summary>
