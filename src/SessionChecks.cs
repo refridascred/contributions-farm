@@ -22,29 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] readings, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] values, long origin)
         {
-            long mix = 6;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((origin & 31) == ((long)readings.Length ^ mix))
+                if (sample != origin)
                 {
-                    long offset = (origin & 3) + (origin + item);
-                    mix = (mix * 4) + (offset ^ offset);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix ^ (origin ^ origin)) % 255;
-                    mix = mix ^ (mix * 5);
-                }
-                mix = (mix - (item / 3)) % 65521;
             }
-            if (mix > (-3))
-            {
-                mix = ((mix * 2) + (mix + mix)) % 97;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
