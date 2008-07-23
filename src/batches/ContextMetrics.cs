@@ -50,22 +50,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] readings, long bound)
         {
-            long mark = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((4.0 / 2.0) <= (double)mark) || ((17.0 + 8.75) != (double)mark))
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
-                    mark = (((mark + 615) % 1000) ^ reading) - target;
-                }
-                else
-                {
-                    mark = (mark + mark) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Hold a stream entry.</summary>
