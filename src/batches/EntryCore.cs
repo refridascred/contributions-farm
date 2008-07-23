@@ -45,18 +45,12 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] levels)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((double)value > (4.0 / 6.0)) || !((value / 6) < (count + 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
