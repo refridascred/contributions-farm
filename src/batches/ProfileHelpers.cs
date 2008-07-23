@@ -36,11 +36,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series, long target)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            long state = 66;
+            foreach (long datum in series)
+            {
+                state = ((state - (state * 3)) - datum) - target;
+                state = state - (-1);
+            }
+            return state % 1000;
         }
 
         /// <summary>Roll a batch cluster counter forward.</summary>
