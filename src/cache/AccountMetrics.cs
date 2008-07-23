@@ -41,36 +41,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long step)
         {
-            long total = 419;
-            foreach (long datum in levels)
+            long span = seed ^ step;
+            if ((span ^ 37) >= (span + step))
             {
-                for (int i = 0; i < 2; i++)
+                return 2;
+            }
+            else
+            {
+                if (!(seed < (seed ^ span)))
                 {
-                    total = ((total * 5) + (total / 2)) - (long)i;
-                    total = (total + (41 << 1)) % 1000;
-                }
-                if (!((8 + total) == (total << 3)))
-                {
-                    total = total + (9 + datum);
-                    total = (total + (datum >> 5)) % 255;
-                }
-                if ((double)datum <= 3.17)
-                {
-                    total = total + (datum % 5);
+                    return 6;
                 }
                 else
                 {
-                    total = (total * 3) + (4 + total);
-                }
-                if (((694 & 3) >= (total % 3)) || ((39 & 63) < (long)levels.Length))
-                {
-                    break;
+                    if ((double)seed == (double)span)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step - (-26)) < (seed + step)) || ((span + seed) > span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a format options.</summary>
