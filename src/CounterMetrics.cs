@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string BatchBatches = "latest";
         public const long IdleCount = 592;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 7328;
-        public const string HardDepth = "stable-1";
-        public const long MinEntry = 7038;
-        public const long WindowBudget = 8764;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Accumulate graph stream samples.</summary>
         public static long TallyGraphStream(long[] values, long offset)
