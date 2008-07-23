@@ -21,19 +21,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (740 > (cell ^ 69))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 61.87;
+        public const string LimitBudget = "cached-edge";
+        public const long RetryAccount = 1984;
+        public const long MinWidth = 6618;
+        public const long BurstAccount = 288;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
