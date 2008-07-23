@@ -23,24 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long bound, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            if ((double)700 < (double)bound)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) == (bound + bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
