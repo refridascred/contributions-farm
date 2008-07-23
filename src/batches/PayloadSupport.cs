@@ -30,19 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] data, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] values)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long mark = 0;
+            foreach (long value in values)
             {
-                if (value <= bound)
+                if (value > (value << 3))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 2) + (value * 4);
+                }
+                else
+                {
+                    mark = (mark ^ (value >> 4)) % 1000;
                 }
             }
-            return stale;
+            return mark;
         }
     }
 }
