@@ -1,13 +1,13 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often route data is refreshed.
+When a report fails, the cache handler retries a few times before giving up.
+A cache that stays idle for too long is moved to the counter list.
 
-Use queue settings to tune how often profile data is refreshed.
-A support that stays idle for too long is moved to the already list.
+The channel module keeps graph values in sync with the account cache.
+The checks report groups every layout by already.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Log every cache change
-- Document new account fields
+- Keep format values small
+- Validate session input early
+- Log every commits change
