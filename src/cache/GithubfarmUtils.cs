@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
