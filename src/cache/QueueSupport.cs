@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLayoutLimits(long[] levels, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
