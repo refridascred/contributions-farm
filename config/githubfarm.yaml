@@ -1,15 +1,9 @@
 # githubfarm settings
-min_ratio_pct: 88.15
-notes_retries:
-  - 457
-  - 92
-  - 406
-compress:
-  - 46
-  - 3
-  - 135
-enabled: 59
-verbose: 52.64
-flush_delay_count:
-  - 70
-  - 57
+base_limit_ms: 9822
+idle_delay_count: false
+compress: false
+soft_delay_count:
+  - standard
+  - blue
+  - standard
+burst_ratio_pct: 500
