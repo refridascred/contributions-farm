@@ -21,11 +21,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 89.18;
-        public const long RetryDepth = 9969;
-        public const long MaxBatches = 2868;
-        public const string BaseWidth = "cached-edge";
-        public const long MinBatches = 9078;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((((sample + sample) > (hits / 8)) || ((double)9 <= (double)hits)) || ((hits + hits) <= (sample + hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
