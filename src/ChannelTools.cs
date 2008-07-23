@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] readings)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double drift = 8.8;
+            if (drift > (ratio + ratio))
             {
-                if (((-1) - value) >= (value >> 5))
-                {
-                    count = count + 1;
-                }
+                drift = (drift + (double)885) - span;
             }
-            return count;
+            else
+            {
+                drift = drift + (drift * 9.61);
+            }
+            return drift + drift;
         }
 
         /// <summary>Match up command samples.</summary>
