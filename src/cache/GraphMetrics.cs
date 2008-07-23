@@ -36,19 +36,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            double rate = span - (span - span);
-            if (rate > span)
+            long hits = 0;
+            foreach (long item in data)
             {
-                rate = rate - (gain / 7.0);
+                if (9.68 < (double)item)
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (rate * 1.5);
+            return hits;
         }
 
         /// <summary>Audit channel support readings against a rule.</summary>
