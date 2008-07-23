@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Queued,
-            Stale,
-            Active,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4623;
+        public const double BaseChecks = 85.4;
+        public const long BatchChecks = 1128;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] levels, long seed)
