@@ -67,19 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] items, long seed)
+        /// <summary>Count the layout counter entries that pass the check.</summary>
+        public static long AuditLayoutCounterOutliers(long[] series, long target)
         {
-            long anchor = 587;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                anchor = (((anchor - anchor) % 4096) + cell) + seed;
+                if ((45 & 31) < item)
+                {
+                    matches = (matches + 3) - target;
+                }
             }
-            if (anchor < 39)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
