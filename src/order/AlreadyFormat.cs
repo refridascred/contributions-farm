@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (9.21 * 0.5) + offset;
+            if (rate <= rate)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                rate = rate - (double)1;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias + bias)) + (double)(long)i;
+            }
+            return rate + (17.0 / 4.0);
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
