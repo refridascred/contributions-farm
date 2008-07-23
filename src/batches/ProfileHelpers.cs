@@ -21,11 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "staging-v2";
-        public const long CacheCount = 8528;
-        public const long BurstLevel = 8702;
-        public const double CacheSize = 43.35;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
