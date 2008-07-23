@@ -13,22 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] values, long bound)
         {
-            long sum = 8;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (sum > (844 % 16))
+                if ((4 + 498) > item)
                 {
-                    sum = ((sum + (7 << 3)) % 97) + entry;
+                    tally = (tally + 3) - bound;
                 }
             }
-            if (sum > (-258))
-            {
-                sum = (sum << 2) ^ (sum >> 5);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
