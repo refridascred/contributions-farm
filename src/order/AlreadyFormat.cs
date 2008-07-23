@@ -67,19 +67,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session contributi readings against a rule.</summary>
-        public static long AuditSessionContributiHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((((seen + seen) <= seen) && (item >= (item - seen))) || !((item ^ seen) < seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 4706;
+        public const long RetryRoute = 252;
+        public const long BurstBudget = 3351;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long bound, long seed)
