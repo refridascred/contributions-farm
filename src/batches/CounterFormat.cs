@@ -21,22 +21,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] levels)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seen - seen) <= (sample % 16))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
     }
 }
