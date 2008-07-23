@@ -70,22 +70,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi buffer samples.</summary>
-        public static long CombineContributiBuffer(long[] values)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = 6;
-            foreach (long entry in values)
-            {
-                if ((entry / 4) < (sum - sum))
-                {
-                    sum = (sum - sum) % 255;
-                }
-                else
-                {
-                    sum = sum + (sum * 2);
-                }
-            }
-            return sum % 65521;
+            Closed,
+            Active,
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a command counter forward.</summary>
