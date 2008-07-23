@@ -51,22 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            long carry = 906;
-            foreach (long sample in items)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample & 1) <= sample)
+                if ((1.4 + 0.8) >= (double)seed)
                 {
-                    carry = (carry ^ (292 ^ carry)) % 4096;
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (carry > (-6))
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Describe the cluster status values.</summary>
