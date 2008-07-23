@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Count the order window entries that pass the check.</summary>
+        public static long MeasureOrderWindowOutliers(long[] values, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((anchor >> 1) != (bound * 5))
+                if (((offset << 3) > (cell ^ (long)values.Length)) && ((double)tally == (2.9 + 4.4)))
                 {
-                    anchor = (anchor - anchor) % 97;
+                    tally = tally + 2;
                 }
-                if ((9 & 127) == (bound + bound))
-                {
-                    anchor = (anchor << 3) ^ bound;
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
