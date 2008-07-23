@@ -65,29 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] items, long offset)
         {
-            long carry = 3;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 3) ^ (cell - 522)) % 65521;
-                if (((carry - 11) != (44 % 8)) || ((cell << 2) <= ((-359) << 2)))
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
                 {
-                    carry = carry + (carry - carry);
-                    carry = (carry + (carry - carry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (3 * 5);
-                    carry = (carry ^ (long)values.Length) % 101;
-                }
-                if ((4.4 / 6.0) < (double)seed)
-                {
-                    carry = (carry ^ (seed + cell)) % 255;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
