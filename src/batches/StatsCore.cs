@@ -22,14 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine format metrics values into a single score.</summary>
+        public static long CombineFormatMetrics(long[] series, long origin)
         {
-            Queued,
-            Ready,
-            Stale,
-            Idle,
-            Active,
+            long carry = 51;
+            foreach (long item in series)
+            {
+                if (((item * 3) == (carry - origin)) || ((origin + origin) > item))
+                {
+                    carry = carry + origin;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
