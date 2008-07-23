@@ -1,14 +1,14 @@
 {
-  "flush_depth_pct": "fallback",
-  "idle_timeout_s": 2383,
-  "sync_ratio_ms": 1402,
-  "sync_size_count": 4.63,
-  "verbose": {
-    "batch_window_count": true,
-    "max_retries": 31.56,
-    "session_timeout": 100,
-    "sync_size_s": false,
-    "hard_ttl_ms": true,
-    "min_depth": 81.22
+  "max_size_pct": "open",
+  "farm_interval": {
+    "metric_capacity": false,
+    "max_timeout_pct": 71.76,
+    "warm_depth_count": 26,
+    "base_limit": 20.86
+  },
+  "base_ratio": {
+    "channel_capacity": "staging",
+    "tools_threshold": "open",
+    "warm_depth_pct": 75.33
   }
 }
