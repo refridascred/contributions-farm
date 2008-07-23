@@ -43,10 +43,15 @@ namespace Common.Utilities
             return (bias2 + 8.61) + weight;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitDepth = 8051;
-        public const long IdleChecks = 1016;
-        public const long BaseChecks = 5090;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Paused,
+            Closed,
+            Done,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] items)
