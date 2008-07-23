@@ -68,21 +68,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)sample < (2.0 + 1.5))
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum + (bound % 7)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum << 2)) % 101;
+                }
+                if ((4.7 / 5.0) == (double)sum)
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
