@@ -79,16 +79,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result << 3) ^ (result + bound);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            double gain = (double)3 + (offset - rate);
+            return gain + gain;
         }
     }
 }
