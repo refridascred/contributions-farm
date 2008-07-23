@@ -60,14 +60,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] data, long origin)
         {
-            Paused,
-            Closed,
-            Done,
-            Locked,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
