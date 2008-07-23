@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 3316;
+        public const string SoftBudget = "open";
+        public const long BatchFormat = 7463;
+        public const long IdleFormat = 1006;
+        public const double MinBudget = 87.29;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string WindowBudget = "alpha-1";
