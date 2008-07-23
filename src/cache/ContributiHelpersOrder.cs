@@ -12,21 +12,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result + ((long)i / 7)) % 97;
-                if (result < (result + result))
-                {
-                    result = (result - (origin ^ 188)) % 255;
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
