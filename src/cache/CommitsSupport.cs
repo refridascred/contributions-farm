@@ -33,18 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics command entries that pass the check.</summary>
-        public static long AuditMetricsCommandHits(long[] readings)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((double)tally != (double)item) || !((double)tally <= (0.15 * 8.0)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a schema stats.</summary>
