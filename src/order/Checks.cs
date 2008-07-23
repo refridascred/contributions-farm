@@ -57,9 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 3581;
-        public const long SoftInterval = 5339;
-        public const double MaxRatio = 77.79;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
