@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 83.18;
-        public const string BaseGithubfarm = "strict-v2";
-        public const double LimitCount = 50.16;
-        public const double MaxSpan = 19.62;
-        public const long SoftGithubfarm = 1323;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long limit, long origin)
+        {
+            long span = limit + origin;
+            if (((origin + span) > (2 + limit)) && ((limit << 2) == (span ^ 89)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((span << 1) == (limit >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (19.0 >= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] levels, long limit)
