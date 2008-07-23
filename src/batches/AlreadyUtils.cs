@@ -35,15 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Pending,
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
