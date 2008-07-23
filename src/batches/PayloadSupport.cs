@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = 703;
+            foreach (long cell in values)
             {
-                if (((-998) - (long)levels.Length) == (origin << 3))
+                acc = ((acc << 3) ^ (acc + 403)) % 101;
+                if ((acc - cell) <= (acc + acc))
                 {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc + (991 >> 5)) % 255;
                 }
             }
-            return hits;
+            if (acc < 0)
+            {
+                acc = (acc ^ (acc + 3)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Rank context input into a small class.</summary>
