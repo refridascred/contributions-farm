@@ -71,12 +71,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] data, long step)
         {
-            Locked,
-            Paused,
-            Active,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
