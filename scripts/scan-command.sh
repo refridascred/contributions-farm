@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-primary}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in open local standard; do
+    log "checking ${item}"
+done
