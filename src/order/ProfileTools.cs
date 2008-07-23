@@ -13,17 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 8;
+            foreach (long entry in levels)
             {
-                if (levels[i] == target)
+                if (sum > (844 % 16))
                 {
-                    return (long)i;
+                    sum = ((sum + (7 << 3)) % 97) + entry;
                 }
             }
-            return -1;
+            if (sum > (-258))
+            {
+                sum = (sum << 2) ^ (sum >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Combine already values into a single score.</summary>
