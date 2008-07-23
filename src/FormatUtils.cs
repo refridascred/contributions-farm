@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            Paused,
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
