@@ -45,18 +45,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell / 2) >= (cell + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
