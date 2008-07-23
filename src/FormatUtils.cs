@@ -71,21 +71,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-16) - bound) == (17 + acc))
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc + acc)) % 97;
                 }
+                acc = acc - ((long)i + acc);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
