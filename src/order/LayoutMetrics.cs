@@ -21,13 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings, long step)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((6.6 - 10.0) <= (double)step)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
     }
 }
