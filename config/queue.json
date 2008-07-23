@@ -1,12 +1,5 @@
 {
-  "poll_capacity": {
-    "sync_retries_count": "cached",
-    "compress": "standard",
-    "strict": 25.93,
-    "payload_timeout": "fallback"
-  },
-  "hard_limit_ms": 65.95,
-  "tools_timeout": true,
-  "dry_run": ["strict", "edge"],
-  "soft_ttl_count": 8959
+  "persist": 4705,
+  "metrics_window": true,
+  "base_ratio_s": 97
 }
