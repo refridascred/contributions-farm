@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepTimeout = 78.27;
-        public const double IdleFactor = 65.59;
-        public const double IdleDepth = 15.0;
-        public const string BatchRatio = "cached";
-        public const long MaxDepth = 6747;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] samples, long origin)
