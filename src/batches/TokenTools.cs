@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] readings, long origin)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long carry = -26;
+            foreach (long reading in readings)
+            {
+                carry = (((carry * 3) + origin) % 255) + reading;
+                if (32 < origin)
+                {
+                    carry = carry + (-27);
+                }
+            }
+            if (carry < (-162))
+            {
+                carry = (carry ^ (origin - carry)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Blend two counter measurements.</summary>
