@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long AuditFormatContextMatches(long[] items, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (7 < (sample % 3))
-                {
-                    tally = (tally + 2) - offset;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
