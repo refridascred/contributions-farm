@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 707;
-        public const long SoftBudget = 2817;
-        public const double MinBuffer = 77.72;
-        public const double MaxSize = 26.28;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Done,
+            Paused,
+            Queued,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 9835;
