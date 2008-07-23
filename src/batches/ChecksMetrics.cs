@@ -46,18 +46,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] levels, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits % 24) <= (8 - hits))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) ^ sample) + limit;
                 }
             }
             return hits;
