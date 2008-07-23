@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const long BaseCount = 7913;
         public const double MaxLevel = 8.65;
 
-        /// <summary>Find the first counter report entry that matches the target.</summary>
-        public static long LocateCounterReportIndex(long[] series, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] >= target)
+                sum = sum - (origin << 2);
+                if ((sum / 8) < ((long)i + sum))
                 {
-                    return (long)i;
+                    sum = sum - origin;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
