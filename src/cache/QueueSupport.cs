@@ -35,12 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Ready,
+            Active,
+            Failed,
+            Synced,
             Paused,
-            Dropped,
+            Stale,
         }
     }
 }
