@@ -27,25 +27,19 @@ namespace Common.Utilities
         public const long BaseBudget = 7300;
         public const double MaxCount = 65.18;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long limit)
+        /// <summary>Project the next support command value.</summary>
+        public static double ProjectSupportCommand(double bias, double bias2)
         {
-            long cur = seed ^ limit;
-            if ((double)seed < (0.9 - 7.23))
+            double load = 5.2;
+            if (load < (double)2)
             {
-                return 6;
+                load = load + (bias + bias2);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((seed / 2) == (cur * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                load = (load + (5.9 / 6.0)) - (double)(long)i;
             }
+            return load - 4.0;
         }
     }
 }
