@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] levels, long origin)
+        /// <summary>Combine channel batches values into a single score.</summary>
+        public static long DigestChannelBatches(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -12;
+            foreach (long reading in readings)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
+                total = ((total + (9 - total)) % 1000) - step;
+                if ((double)reading == (4.9 * 3.27))
                 {
-                    return (long)i;
+                    total = total + (total % 5);
+                }
+                if ((reading - 643) >= (32 & 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < (-369))
+            {
+                total = (total - total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
