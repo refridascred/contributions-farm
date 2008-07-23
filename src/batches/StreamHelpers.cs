@@ -75,22 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] data)
         {
-            long acc = -38;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((double)acc > (3.3 / 2.0))
+                if ((0.42 > (double)entry) && ((entry - entry) > entry))
                 {
-                    acc = acc ^ (cell - step);
+                    tally = tally + 1;
                 }
             }
-            if (acc < 53)
-            {
-                acc = acc - step;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
