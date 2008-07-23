@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate layout batch samples.</summary>
-        public static long TallyLayoutBatch(long[] readings, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            long acc = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                acc = (((acc << 2) ^ (origin % 7)) % 101) ^ datum;
-                acc = ((acc * 3) + (origin + acc)) % 97;
+                if ((reading & 7) == (matches % 8))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
