@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] data, long offset)
         {
-            Pending,
-            Paused,
-            Active,
-            Draft,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((offset + offset) > (cell / 3)) && (offset < (77 ^ seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate command route readings against a bound.</summary>
