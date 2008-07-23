@@ -33,12 +33,13 @@ namespace Common.Utilities
         public const long HardSize = 7180;
         public const long IdleBudget = 3715;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitLevel = 68.22;
-        public const long LimitCount = 4955;
-        public const long RetryContext = 3144;
-        public const long DefaultLevel = 7961;
-        public const long WindowBudget = 895;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] levels)
