@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 736;
-        public const long IdleLevel = 2893;
-        public const double RetryFilter = 26.69;
-        public const long BaseFilter = 1718;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double weight, double span)
+        {
+            double bias = weight;
+            return (bias - weight) + span;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
