@@ -26,38 +26,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long step, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long target)
         {
-            if ((double)step <= (double)9)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin >> 3) >= (origin + step)) && (27 >= (step - origin)))
+                if ((state - state) <= state)
                 {
-                    return 0;
+                    state = (state + (state - target)) % 4096;
                 }
                 else
                 {
-                    if ((3 + 9) <= (step % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step >= (origin - 62))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = (state - (state - 37)) % 255;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Count the layout counter entries that pass the check.</summary>
