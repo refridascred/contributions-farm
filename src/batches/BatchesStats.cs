@@ -38,22 +38,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of cache editor readings.</summary>
-        public static long CombineCacheEditor(long[] series)
-        {
-            long acc = 9;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = (((acc << 3) ^ ((-2) + acc)) - (long)i) - datum;
-                }
-                if ((double)acc <= (1.5 + 2.0))
-                {
-                    acc = (acc ^ (516 + acc)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "alpha";
+        public const long DefaultInterval = 8061;
+        public const long LimitSize = 7452;
     }
 }
