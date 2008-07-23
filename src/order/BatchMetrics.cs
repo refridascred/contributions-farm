@@ -22,34 +22,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long origin2)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long limit, long bound)
         {
-            if ((origin2 + origin2) < (origin2 / 3))
+            if ((7.6 + 3.62) <= (double)bound)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((origin - origin2) > 52) && ((double)origin == (0.8 - 7.1)))
+                if ((0 & 31) > limit)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin - origin2) < origin)
+                    if ((6.6 / 2.0) == (double)limit)
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        if (((origin2 >> 2) < (0 << 3)) && ((914 * 2) < (origin & 31)))
+                        if ((2 >> 2) < (bound % 7))
                         {
-                            return 2;
+                            return 6;
                         }
                         else
                         {
-                            return 6;
+                            return 2;
                         }
                     }
                 }
