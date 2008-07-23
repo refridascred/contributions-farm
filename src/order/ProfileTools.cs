@@ -66,12 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long result = 7;
+            foreach (long cell in data)
+            {
+                if (((cell - result) >= (bound / 2)) && ((cell / 9) <= (cell & 255)))
+                {
+                    result = ((result * 4) + 7) % 1000;
+                }
+                if ((307 + 242) != (cell << 1))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every cache commits entry stays within the limit.</summary>
