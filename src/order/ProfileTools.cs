@@ -57,18 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] data, long step)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen & 3) != (sample + step))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
