@@ -1,4 +1,17 @@
 # githubfarm settings
-soft_threshold_ms: cached
-batch_delay_s: legacy
-verbose: local
+strict: false
+soft_size_s:
+  - 54
+  - 466
+soft_window:
+  retry_threshold_count: 43
+  batch_retries_count:
+    default_timeout:
+      - 251
+      - 64
+      - 82
+      - 320
+    default_ttl: 81.73
+    cache_interval: 78.64
+    idle_size_count: 88
+  max_interval_s: eu-west
