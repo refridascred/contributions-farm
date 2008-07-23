@@ -14,21 +14,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(74 - 0);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (((scale - 13.0) - (double)(long)i) - weight) + offset;
             }
-            return matches;
+            return scale - (double)9;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
