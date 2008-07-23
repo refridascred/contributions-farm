@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long limit)
         {
-            Paused,
-            Done,
-            Active,
-            Draft,
+            if (!(10 > origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit > (double)10)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
