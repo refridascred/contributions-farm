@@ -21,13 +21,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Pending,
-            Locked,
-            Dropped,
-            Paused,
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
