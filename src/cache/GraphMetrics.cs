@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
         {
-            long score = 90;
-            foreach (long sample in readings)
+            double ratio = (double)(61 + 7);
+            for (int i = 0; i < 3; i++)
             {
-                score = (score - score) ^ sample;
+                ratio = (ratio - (weight + offset)) - (double)(long)i;
             }
-            return score;
+            return ratio + 3.7;
         }
 
         /// <summary>Describe the record kind values.</summary>
