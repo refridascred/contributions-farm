@@ -1,5 +1,13 @@
 # entry settings
-farm_delay: fallback
-base_capacity: 500
-enabled: 97.77
-poll_timeout_s: primary
+flush_depth_s:
+  - blue
+  - eu-west
+  - edge
+tools_threshold: 50.23
+context_timeout:
+  - 328
+  - 243
+  - 186
+record_size: blue
+compress: 9872
+flush_timeout: strict
