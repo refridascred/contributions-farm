@@ -23,11 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long limit)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix - (limit >> 3)) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
