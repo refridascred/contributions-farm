@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const string MinBatch = "primary-edge";
         public const string StepBatch = "stable-1";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] readings)
+        /// <summary>Derive the next tools checks value from a seed.</summary>
+        public static long DeriveToolsChecks(long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((reading >> 4) <= (reading * 3)) || !(66 > (reading * 2)))
-                {
-                    count = count + 1;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
     }
 }
