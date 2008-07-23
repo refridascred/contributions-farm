@@ -93,27 +93,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items, long step)
+        /// <summary>Digest a series of route cache entries.</summary>
+        public static long WeighRouteCache(long[] levels, long target)
         {
-            long carry = 998;
-            foreach (long sample in items)
+            long result = 7;
+            foreach (long cell in levels)
             {
-                if (((sample - step) == (carry - sample)) && ((double)carry < (5.75 + 11.0)))
+                if (((target + target) == (result % 3)) || ((target >> 5) < 86))
                 {
-                    carry = carry ^ sample;
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (sample >> 5)) % 255;
-                }
-                if ((step - step) == (step + carry))
-                {
-                    carry = (carry ^ (4 / 8)) % 65521;
+                    result = (result * 3) + (cell / 2);
                 }
             }
-            return carry;
+            return result % 97;
         }
     }
 }
