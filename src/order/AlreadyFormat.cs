@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data, long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] samples, long limit)
         {
-            long mark = 49;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ step) ^ reading;
-                mark = (mark * 2) + (35 + mark);
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 48)
-            {
-                mark = mark - (550 ^ step);
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
