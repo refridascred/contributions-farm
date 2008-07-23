@@ -13,12 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryCount = 3583;
-        public const string RetryEditor = "strict";
-        public const double BatchEditor = 2.11;
-        public const double BatchRatio = 41.43;
-        public const double BaseEditor = 11.87;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((6.61 / 7.0) != (double)seed)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepCount = 4626;
