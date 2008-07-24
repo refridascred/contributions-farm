@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardDepth = "latest-1";
-        public const long IdleToken = 1173;
-        public const double CacheToken = 83.23;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 2.48;
+        public const string RetryPayload = "primary-edge";
+        public const long IdleWidth = 2818;
+        public const double MaxSpan = 86.45;
+        public const long BatchPayload = 4050;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksOutliers(long[] samples)
