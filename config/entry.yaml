@@ -1,5 +1,11 @@
 # entry settings
-flush_capacity_s: true
-farm_ttl: staging
-editor_delay: 250
-soft_retries: false
+default_ttl_count: true
+order_limit:
+  - 141
+  - 9
+cache_threshold_count:
+  metrics_retries: cached
+  poll_ttl: legacy
+  hard_capacity: standard
+  context_limit: open
+  base_delay_s: 60
