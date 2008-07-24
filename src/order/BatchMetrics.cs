@@ -54,24 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session notes series from a seed.</summary>
-        public static long DeriveSessionNotes(long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] series, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((double)(long)i < 9.6)
+                if (value <= target)
                 {
-                    mix = mix - (mix % 97);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ mix) % 65521;
-                    mix = mix ^ (long)i;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
