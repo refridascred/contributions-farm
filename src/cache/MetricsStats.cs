@@ -47,11 +47,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 9.0;
-        public const string BurstBudget = "standard";
-        public const double BurstChannel = 89.91;
-        public const long WindowRatio = 5254;
-        public const string CacheWidth = "legacy";
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
