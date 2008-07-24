@@ -65,12 +65,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            Locked,
-            Pending,
-            New,
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc << 3) ^ (-620)) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
