@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            long sum = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - entry) >= (7 ^ sum))
+                {
+                    sum = (sum - (sum / 5)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + sum)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a batches options.</summary>
