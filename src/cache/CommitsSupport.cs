@@ -20,11 +20,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxBudget = 1777;
-        public const long LimitAccount = 27;
-        public const long StepLevel = 8469;
-        public const long CacheCount = 3611;
+        /// <summary>Find the first stats buffer entry that matches the target.</summary>
+        public static long SeekStatsBufferIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long offset, long target)
