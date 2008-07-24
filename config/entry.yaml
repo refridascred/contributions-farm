@@ -1,20 +1,7 @@
 # entry settings
-hard_capacity_count: staging
-poll_threshold:
-  batch_limit_pct:
-    format_timeout: false
-    profile_size: 6419
-    flush_threshold_ms:
-      - 340
-      - 246
-      - 300
-      - 109
-    max_interval_ms:
-      - eu-west
-      - legacy
-      - latest
-      - green
-  account_depth: 70.6
-  warm_timeout_ms: 13
-batch_limit_s: 8.87
-persist: true
+soft_ttl_pct: 11.96
+record_ratio: 73
+burst_size_pct: 30
+readonly: 1451
+strict: true
+hard_delay_ms: green
