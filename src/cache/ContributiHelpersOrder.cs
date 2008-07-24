@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 1.79;
+        public const long BatchLevel = 2501;
+        public const double BurstRatio = 67.41;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] series, long bound)
