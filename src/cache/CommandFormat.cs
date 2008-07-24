@@ -14,27 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            long sum = 70;
-            foreach (long datum in values)
+            double rate2 = (double)57 / 6.0;
+            if (rate2 >= rate)
             {
-                if (((sum + sum) == (352 ^ sum)) || ((581 + datum) <= offset))
-                {
-                    sum = ((sum << 2) ^ (sum << 3)) % 4096;
-                    sum = ((sum << 2) ^ ((long)values.Length * 4)) % 4096;
-                }
-                if ((double)sum <= (9.87 + 5.0))
-                {
-                    sum = (sum + 240) % 101;
-                }
+                rate2 = rate2 - (double)26;
             }
-            if (sum < 97)
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum * 3) + (sum + 1);
+                rate2 = (rate2 + floor) + (double)(long)i;
             }
-            return sum;
+            return rate2 - (rate * 15.0);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
