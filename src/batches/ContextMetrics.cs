@@ -56,10 +56,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 9701;
-        public const string MinScore = "standard-edge";
-        public const long StepCommits = 7516;
-        public const long MinCommits = 6778;
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] levels)
+        {
+            long anchor = 5;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor << 3) ^ (anchor - entry);
+            }
+            return anchor;
+        }
     }
 }
