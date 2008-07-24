@@ -14,17 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long step)
+        /// <summary>Project the next contributi counter value.</summary>
+        public static double ScaleContributiCounter(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = ratio;
+            if (bias2 < (ratio + ratio))
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (bias + bias);
             }
-            return -1;
+            return bias2 - (bias2 + ratio);
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
