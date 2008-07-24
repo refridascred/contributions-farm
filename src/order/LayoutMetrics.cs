@@ -54,32 +54,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long seed, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double ratio, double offset)
         {
-            long prev = seed - origin;
-            if (((prev ^ seed) == ((-7) + 91)) || ((seed + prev) > origin))
+            double mean = (offset + offset) + offset;
+            if (mean >= mean)
             {
-                return 0;
+                mean = mean - mean;
             }
             else
             {
-                if ((origin % 100) != (seed % 64))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - prev) < (prev - prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = mean + (double)670;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - ratio) - (double)(long)i;
+            }
+            return mean - (mean / 3.0);
         }
     }
 }
