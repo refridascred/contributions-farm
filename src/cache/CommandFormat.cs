@@ -54,18 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] samples, long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + limit) <= (reading - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
