@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate tools window samples.</summary>
-        public static long WeighToolsWindow(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            long mix = 564;
-            foreach (long cell in levels)
+            long total = 2;
+            foreach (long cell in items)
             {
-                mix = ((mix + mix) % 65521) ^ cell;
+                total = ((total << 2) ^ 2) % 97;
+                if ((double)total != (7.6 / 6.0))
+                {
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = total ^ (cell + total);
+                }
             }
-            if (mix < 79)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
+            return total % 65521;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
