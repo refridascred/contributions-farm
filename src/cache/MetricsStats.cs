@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long limit)
+        /// <summary>Digest a series of stream metrics entries.</summary>
+        public static long FoldStreamMetrics(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long state = 753;
+            foreach (long value in levels)
             {
-                if (sample >= limit)
+                if ((18 << 1) > (value ^ value))
                 {
-                    valid = false;
-                    break;
+                    state = ((state * 4) + state) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ (offset / 7);
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Project the next layout filter value.</summary>
