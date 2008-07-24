@@ -25,23 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((((double)limit != (5.0 * 1.0)) && (88 <= (count & 1))) || ((count + count) > (1 << 2)))
-                {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 6800;
+        public const long LimitSize = 5963;
+        public const string DefaultTools = "cached-v2";
+        public const long HardCount = 653;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] data, long bound)
