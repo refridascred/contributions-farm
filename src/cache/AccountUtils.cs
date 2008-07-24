@@ -23,22 +23,38 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many token format samples are out of range.</summary>
-        public static long MeasureTokenFormatGaps(long[] readings, long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long step, long step2)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if ((double)step < 9.0)
             {
-                if ((floor + count) >= item)
+                return 6;
+            }
+            else
+            {
+                if (!((double)step2 == (double)step))
                 {
-                    count = count + 3;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((20.0 - 18.0) < (double)step2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step - 49) < step2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit entry route readings against a rule.</summary>
