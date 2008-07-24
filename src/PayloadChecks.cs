@@ -55,17 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
