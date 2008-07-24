@@ -1,6 +1,8 @@
 {
-  "min_limit_pct": true,
-  "sync_depth_pct": 6995,
-  "hard_retries": "cached",
-  "editor_delay": false
+  "burst_size_count": 9,
+  "batch_interval": "stable",
+  "hard_capacity_count": "eu-west",
+  "poll_retries_pct": "eu-west",
+  "support_depth": "stable",
+  "readonly": 1024
 }
