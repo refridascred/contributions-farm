@@ -69,15 +69,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Grade a notes channel value against two limits.</summary>
+        public static long RankNotesChannel(long step, long floor)
         {
-            double load = rate;
-            if (load <= offset)
+            if ((floor + step) >= (40 + 363))
             {
-                load = load - (5.0 + rate);
+                return 6;
             }
-            return load - (load - 5.0);
+            else
+            {
+                if ((floor - 24) < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step > (floor + step)) && ((floor & 7) > ((-66) >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
