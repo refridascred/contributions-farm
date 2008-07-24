@@ -46,18 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long total = 350;
-            foreach (long item in values)
-            {
-                if ((item + 77) == ((-5) >> 5))
-                {
-                    total = (total * 2) + (total >> 4);
-                }
-            }
-            return total;
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
