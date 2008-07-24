@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] series, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (series[i] <= floor)
+                if (49 < (sample + 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
