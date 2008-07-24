@@ -49,13 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long origin)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            long bound = target + origin;
+            if (bound > (bound ^ target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((target & 15) > target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin < (target - bound)) && ((double)target >= (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
