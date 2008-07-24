@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] readings)
         {
-            long sum = 202;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum * 4) + (sum % 60)) % 65521;
-                if (sum <= (reading - (-999)))
+                if ((count & 7) > (value % 7))
                 {
-                    sum = (sum + (target % 5)) % 101;
-                }
-                if (((double)target == (2.78 - 6.1)) && ((sum + 403) < ((long)values.Length - sum)))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
