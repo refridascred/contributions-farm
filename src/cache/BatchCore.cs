@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long cur = seed ^ bound;
+            if ((cur * 4) <= bound)
             {
-                if (entry > limit)
+                return 0;
+            }
+            else
+            {
+                if ((cur + bound) <= 786)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (bound >= (seed * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
