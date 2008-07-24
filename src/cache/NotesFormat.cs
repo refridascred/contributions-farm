@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] samples)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (double)tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
