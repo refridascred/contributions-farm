@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double BatchContributi = 15.78;
         public const long HardTimeout = 8139;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] data, long floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((floor >> 3) <= (tally >> 4))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
