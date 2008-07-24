@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] items, long bound)
         {
-            long score = -96;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((seed & 15) < item)
+                if (((double)tally != (4.24 - 2.4)) || ((tally + 9) != (43 >> 3)))
                 {
-                    score = (score - seed) % 101;
-                }
-                else
-                {
-                    score = ((score * 5) + (83 & 63)) % 97;
+                    tally = ((tally + 3) + item) + bound;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
