@@ -65,15 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session graph figure with a bias.</summary>
-        public static double ScaleSessionGraph(double rate, double offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double scale = rate;
-            if (scale < (double)56)
-            {
-                scale = scale - offset;
-            }
-            return scale - 6.82;
+            Locked,
+            Pending,
+            New,
         }
     }
 }
