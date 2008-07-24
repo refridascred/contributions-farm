@@ -33,10 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 146;
-        public const long MinInterval = 1959;
-        public const long MinRecord = 2870;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowRatio = 3.76;
+        public const double StepProfile = 1.62;
+        public const double BurstProfile = 95.65;
+        public const long BaseDepth = 7447;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
