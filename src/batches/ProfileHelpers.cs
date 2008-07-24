@@ -62,12 +62,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            public double Mode { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            double load = rate;
+            if (load <= offset)
+            {
+                load = load - (5.0 + rate);
+            }
+            return load - (load - 5.0);
         }
     }
 }
