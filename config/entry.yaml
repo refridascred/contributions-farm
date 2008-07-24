@@ -1,5 +1,19 @@
 # entry settings
-readonly: 78.73
-flush_delay: 27
-strict: 5336
-window_retries: false
+schema_interval:
+  strict: 4752
+  metrics_interval: stable
+  base_ttl_count: 94.78
+  poll_depth_count:
+    - 493
+    - 192
+  flush_ratio_count:
+    base_capacity: false
+    default_window_count: true
+    cache_capacity: 31.38
+    audit: eu-west
+    flush_threshold: 2
+    filter_depth: eu-west
+max_delay_s: green
+hard_depth_count: 6970
+compress: 45.51
+retry_size: 59.49
