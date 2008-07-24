@@ -43,19 +43,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((12.0 + 9.1) > (double)datum)
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 6899;
+        public const double BatchRatio = 14.5;
+        public const double BaseWidth = 70.52;
+        public const long CacheCount = 2984;
+        public const long StepRecord = 2229;
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
         public static long TallyContributiClusterMatches(long[] levels)
