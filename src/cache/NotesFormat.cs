@@ -38,31 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long origin, long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if ((33 + bound) >= (808 - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (15 >= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(origin >= (4 - 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
