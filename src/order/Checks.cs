@@ -35,11 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long LookupCommitsSchemaIndex(long[] data, long step)
         {
-            double weight = rate / 2.0;
-            return weight + floor;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many checks payload samples are out of range.</summary>
