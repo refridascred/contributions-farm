@@ -1,19 +1,17 @@
 # githubfarm settings
-warm_capacity_count: 3.8
-min_interval: staging
-entry_delay: 25.96
-enabled:
-  burst_delay_ms: 2431
-  base_limit_count: false
-  batch_ttl: true
-  support_size:
-    retry_retries: 73
-    flush_ttl_count: false
-    default_threshold_count: latest
-    commits_capacity:
-      - 303
-      - 115
-      - 85
-    default_interval: false
-flush_limit_count: 6402
-already_limit: 85.04
+flush_limit_count:
+  poll_ratio_pct:
+    - 294
+    - 30
+    - 316
+    - 324
+  tools_depth:
+    - latest
+    - edge
+    - eu-west
+    - green
+  cache_ttl_s: standard
+  min_limit: local
+  retry_threshold_count: edge
+cache_retries: green
+flush_interval_ms: 13.36
