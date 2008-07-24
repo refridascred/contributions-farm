@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 3092;
-        public const long WindowLayout = 2104;
-        public const long BaseLayout = 1555;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long bound, long limit)
+        {
+            if ((limit <= (4 << 1)) || ((limit + 48) < (limit % 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound * 4) != (11 >> 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3 + limit) >= (903 * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutMatches(long[] levels, long seed)
