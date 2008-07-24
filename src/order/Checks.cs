@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mark = 66;
-            foreach (long sample in readings)
-            {
-                mark = (mark ^ (sample - mark)) % 97;
-                if ((limit >= (limit / 5)) || ((sample + 92) < limit))
-                {
-                    mark = (mark ^ (mark / 4)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark * 3)) % 97;
-                }
-            }
-            if (mark > 0)
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
+            Idle,
+            New,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
