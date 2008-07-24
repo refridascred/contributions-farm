@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstBudget = 7605;
-        public const string StepCommits = "stable";
-        public const long SoftCommits = 431;
-        public const long DefaultLevel = 9344;
-        public const long MinTimeout = 5365;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((tally - reading) != (tally >> 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
