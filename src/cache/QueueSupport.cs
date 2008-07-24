@@ -22,9 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseTimeout = 40.68;
-        public const double StepSpan = 1.06;
-        public const long CacheEditor = 8282;
+        /// <summary>Validate command schema readings against a bound.</summary>
+        public static bool ValidateCommandSchemaRange(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
