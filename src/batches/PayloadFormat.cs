@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the queue metrics entries that pass the check.</summary>
-        public static long CountQueueMetricsGaps(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((4 >> 3) == (value * 2))
+                if ((0.65 + 2.56) >= (double)count)
                 {
-                    seen = seen + 2;
+                    count = (count + 1) - item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the metrics editor series from a seed.</summary>
