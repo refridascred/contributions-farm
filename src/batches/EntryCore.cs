@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((double)tally != (4.24 - 2.4)) || ((tally + 9) != (43 >> 3)))
-                {
-                    tally = ((tally + 3) + item) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardScore = 1620;
+        public const long StepLayout = 7452;
+        public const double HardLayout = 14.78;
+        public const long HardTimeout = 6828;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 4796;
