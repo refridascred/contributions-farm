@@ -14,19 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate account stream readings against a bound.</summary>
-        public static bool VerifyAccountStreamLimits(long[] levels, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
