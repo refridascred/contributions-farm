@@ -33,14 +33,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Retry,
-            Pending,
-            Stale,
-            New,
-            Dropped,
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
