@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long WindowLayout = 2104;
         public const long BaseLayout = 1555;
 
-        /// <summary>Scale a stream window figure with a bias.</summary>
-        public static double AdjustStreamWindow(double scale, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] levels, long seed)
         {
-            double ratio = (double)55 + scale;
-            return (ratio + scale) + floor;
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((-701) << 2) <= (datum + datum))
+                {
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
