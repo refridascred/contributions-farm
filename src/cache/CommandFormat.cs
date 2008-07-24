@@ -56,18 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] values, long origin)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = 5;
-            foreach (long value in values)
-            {
-                if ((double)value != (5.6 / 7.0))
-                {
-                    score = ((score << 3) ^ (value ^ value)) - origin;
-                }
-            }
-            return score % 4096;
+            Paused,
+            Locked,
+            Idle,
+            Ready,
+            Draft,
         }
     }
 }
