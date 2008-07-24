@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a payload support reading by value.</summary>
-        public static long FindPayloadSupportIndex(long[] values, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 9;
+            foreach (long entry in samples)
             {
-                if (values[i] < floor)
+                if (!(entry > (entry << 3)))
                 {
-                    return (long)i;
+                    sum = (sum + (543 / 3)) % 97;
+                }
+                if ((double)entry <= (16.0 + 4.0))
+                {
+                    sum = sum - (sum - entry);
+                }
+                else
+                {
+                    sum = sum ^ (sum * 4);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
