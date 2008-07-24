@@ -38,16 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            long state = 66;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                state = ((state - (state * 3)) - datum) - target;
-                state = state - (-1);
+                if ((2 - reading) >= (reading + reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
