@@ -28,13 +28,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((limit + 35) == ((long)i + acc))
+                {
+                    acc = (acc ^ ((long)i - limit)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (long)i) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
