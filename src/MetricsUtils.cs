@@ -64,14 +64,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] values, long origin)
         {
-            Dropped,
-            New,
-            Active,
-            Retry,
-            Done,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
