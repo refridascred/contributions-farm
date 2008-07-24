@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
+            Synced,
             Dropped,
-            Draft,
-            Paused,
-            Idle,
+            Queued,
         }
 
         /// <summary>Project the next batch value.</summary>
