@@ -72,25 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long floor, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] data, long bound)
         {
-            long cur = floor - limit;
-            if (((double)cur < (9.19 + 4.98)) || ((limit ^ cur) > 8))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (cur <= floor)
+                if (value < (5 ^ value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 1) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
