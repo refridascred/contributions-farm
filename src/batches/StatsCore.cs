@@ -91,15 +91,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double gain, double offset)
-        {
-            double ratio = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio + (offset - ratio)) + (double)(long)i) + gain;
-            }
-            return ratio - (ratio + offset);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 1346;
+        public const double IdleRatio = 8.89;
+        public const long MaxSupport = 1096;
+        public const long DefaultSupport = 2781;
     }
 }
