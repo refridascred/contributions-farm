@@ -34,22 +34,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data)
-        {
-            long score = 8;
-            foreach (long entry in data)
-            {
-                if (((-9) - entry) == (42 >> 1))
-                {
-                    score = ((score << 3) ^ (score / 2)) % 97;
-                }
-            }
-            if (score > 5)
-            {
-                score = score + (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 80.0;
+        public const string RetrySpan = "stable-edge";
+        public const string CacheTimeout = "open";
     }
 }
