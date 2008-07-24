@@ -36,21 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already window samples.</summary>
-        public static long CompareAlreadyWindowCount(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Closed,
+            Pending,
+            Paused,
+            Ready,
         }
     }
 }
