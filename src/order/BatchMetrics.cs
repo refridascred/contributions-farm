@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Accumulate entry counter samples.</summary>
+        public static long CombineEntryCounter(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 390;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = total - (offset % 100);
+                if ((double)cell < (8.43 + 14.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total - (7 * 2);
+                }
+                if (((double)total != (3.7 * 4.92)) || ((offset * 4) > cell))
+                {
+                    total = total ^ offset;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Combine farm counter values into a single score.</summary>
