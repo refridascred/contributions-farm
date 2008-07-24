@@ -25,18 +25,16 @@ namespace Common.Utilities
             return drift - 0.22;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] series, long limit)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((0.5 / 6.0) > (double)limit) && ((limit - limit) <= count))
-                {
-                    count = (count + 2) + entry;
-                }
+                result = ((result * 3) + result) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
