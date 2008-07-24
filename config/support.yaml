@@ -1,10 +1,10 @@
 # support settings
-record_ratio: fallback
-farm_size: 8899
-counter_timeout:
-  min_threshold_ms:
-    - staging
-    - primary
-  poll_depth_s: primary
-  batch_delay_s: 31.9
-  readonly: 90.63
+soft_threshold: 36.71
+filter_ratio: latest
+idle_timeout_ms:
+  compress: 22.32
+  flush_ttl: legacy
+  metrics_interval: 1841
+  audit: edge
+enabled: 62
+hard_capacity_s: 58.3
