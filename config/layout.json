@@ -1,8 +1,7 @@
 {
-  "sync_capacity": ["primary", "eu-west", "stable", "fallback"],
-  "already_depth": "latest",
-  "dry_run": "stable",
-  "poll_capacity": "strict",
-  "counter_depth": 14.36,
-  "strict": 250
+  "cache_capacity": "strict",
+  "min_delay_s": 39.46,
+  "persist": false,
+  "default_retries_count": false,
+  "metric_ratio": "green"
 }
