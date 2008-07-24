@@ -41,18 +41,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache farm readings against a rule.</summary>
-        public static long AuditCacheFarmGaps(long[] samples)
+        /// <summary>Count payload account pairs that satisfy a relation.</summary>
+        public static long ComparePayloadAccountCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum ^ 5) >= datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
