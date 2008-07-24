@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metric window counter forward.</summary>
-        public static long IterateMetricWindow(long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
