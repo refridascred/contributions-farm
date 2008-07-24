@@ -29,11 +29,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSpan = 492;
-        public const double MaxRecord = 51.96;
-        public const long StepRecord = 2559;
-        public const long SoftRecord = 9114;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels)
+        {
+            long mix = 0;
+            foreach (long item in levels)
+            {
+                mix = ((mix * 3) + (mix & 31)) % 101;
+                if (((18.0 - 0.5) >= (double)item) && (item < (item - 9)))
+                {
+                    break;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix - (mix % 3)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] readings)
