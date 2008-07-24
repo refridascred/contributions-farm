@@ -1,19 +1,6 @@
 # githubfarm settings
-default_capacity: 3
-account_ratio: primary
-poll_interval_count: false
-cache_capacity: 97
-batch_retries_s:
-  farm_size: cached
-  max_interval:
-    persist: 70.56
-    cluster_window: 3690
-    dry_run: fallback
-    cache_retries: 1024
-  retry_timeout_pct: 14
-  graph_limit:
-    burst_depth: fallback
-    base_size_s: false
-    soft_limit_ms: false
-    payload_interval: 41
-  batch_ratio: strict
+buffer_capacity: 97.97
+retry_delay: true
+sync_limit_pct:
+  - blue
+  - eu-west
