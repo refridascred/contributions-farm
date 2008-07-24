@@ -31,10 +31,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 80.33;
-        public const long IdleScore = 2119;
-        public const long SoftCount = 5529;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Draft,
+            Closed,
+            Active,
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
