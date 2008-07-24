@@ -42,11 +42,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Look up the position of a schema checks sample.</summary>
