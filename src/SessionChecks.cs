@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long bound)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double gain, double span)
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double mean = (double)9 * 4.0;
+            return ((mean - (double)42) + gain) + span;
         }
     }
 }
