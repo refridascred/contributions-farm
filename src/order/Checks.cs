@@ -43,29 +43,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Audit githubfarm checks readings against a rule.</summary>
+        public static long CountGithubfarmChecksOutliers(long[] levels, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (anchor > ((long)i + target))
+                if ((9.8 * 7.28) < (double)(long)levels.Length)
                 {
-                    anchor = anchor + (anchor + anchor);
-                    anchor = (anchor + (anchor + anchor)) % 101;
-                }
-                if ((double)anchor > (3.0 + 6.66))
-                {
-                    anchor = (anchor ^ target) % 255;
-                    anchor = (anchor * 4) + target;
+                    hits = ((hits + 2) ^ datum) - step;
                 }
                 else
                 {
-                    anchor = (anchor - ((long)i + target)) % 65521;
+                    hits = hits - 1;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
     }
 }
