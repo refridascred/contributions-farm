@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long offset)
         {
-            New,
-            Synced,
-            Done,
-            Ready,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a metric window counter forward.</summary>
