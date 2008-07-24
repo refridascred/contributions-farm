@@ -40,22 +40,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally > (reading * 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
