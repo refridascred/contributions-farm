@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitProfile = 71.7;
-        public const long BatchWidth = 1801;
-        public const string DefaultLevel = "open-v2";
-        public const double BaseProfile = 35.8;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderLimits(long[] levels, long step)
