@@ -48,16 +48,13 @@ namespace Common.Utilities
         public const long StepRecord = 2559;
         public const long SoftRecord = 9114;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ ((long)i + 20)) % 1000;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
