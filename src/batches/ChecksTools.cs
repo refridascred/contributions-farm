@@ -23,22 +23,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] readings)
         {
-            long total = 889;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((total - total) == (value % 7)))
+                if ((7 + hits) < (reading + hits))
                 {
-                    total = (total + (total + total)) % 101;
-                }
-                if ((value * 3) >= value)
-                {
-                    total = (total - total) % 101;
+                    hits = hits + 3;
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
