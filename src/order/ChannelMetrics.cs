@@ -20,18 +20,12 @@ namespace Common.Utilities
             return gain - (span * 5.9);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long carry = 1;
-            foreach (long entry in data)
-            {
-                if ((entry & 3) >= (1 * 3))
-                {
-                    carry = ((carry + (carry - entry)) % 4096) - origin;
-                }
-            }
-            return carry;
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a route stats.</summary>
