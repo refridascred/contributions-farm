@@ -40,21 +40,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Count the context queue entries that pass the check.</summary>
+        public static long MeasureContextQueueGaps(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)392 < (double)hits))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 1) ^ sample) - step;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
