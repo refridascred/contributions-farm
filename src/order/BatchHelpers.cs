@@ -36,18 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] items, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((2.6 - 6.12) > (18.0 * 9.96))
-                {
-                    tally = ((tally + 1) + reading) + bound;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
