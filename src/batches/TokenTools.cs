@@ -30,16 +30,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score ^ 3) % 101;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRatio = 43.22;
+        public const long BaseRecord = 981;
+        public const double SoftRecord = 73.16;
+        public const long MaxSpan = 7505;
+        public const long StepRecord = 3378;
     }
 }
