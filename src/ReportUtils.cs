@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitCount = 57.43;
-        public const double CacheBuffer = 8.83;
-        public const long StepBuffer = 9716;
-        public const string CacheScore = "standard";
-        public const long IdleWidth = 3272;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (offset >= (hits * 5))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long step)
