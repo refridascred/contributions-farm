@@ -55,24 +55,18 @@ namespace Common.Utilities
         public const long IdleRoute = 4136;
         public const long LimitRoute = 5736;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long floor, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] values)
         {
-            if (!((origin & 15) != (floor - 31)))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + floor) < origin)
+                if ((datum >> 2) < seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
