@@ -45,11 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Compare every pair of token queue readings.</summary>
+        public static long MatchTokenQueueCount(long[] values)
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
