@@ -26,25 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Count the editor counter entries that pass the check.</summary>
+        public static long TallyEditorCounterGaps(long[] samples, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                long tally = (step & 7) + 54;
-                if ((6.82 - 10.0) > (double)tally)
+                if (tally < (floor % 5))
                 {
-                    result = (result * 3) + (tally + result);
-                    result = ((result << 2) ^ (result - 66)) % 101;
+                    tally = (tally + 1) - item;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    tally = ((tally << 2) ^ ((long)i2 - (long)i2)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
