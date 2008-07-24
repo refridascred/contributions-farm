@@ -1,8 +1,17 @@
 # githubfarm settings
-channel_window:
-  - green
-  - green
-  - local
-  - green
-hard_capacity: false
-context_ttl: 93.03
+buffer_depth: latest
+persist: 500
+min_threshold: 99
+cluster_ttl:
+  batch_threshold_count: 98.64
+  strict: false
+  poll_threshold_s:
+    - 142
+    - 127
+    - 179
+  persist: 47.37
+  base_window:
+    - standard
+    - cached
+    - edge
+  enabled: 3130
