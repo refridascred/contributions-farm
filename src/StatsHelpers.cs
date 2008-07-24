@@ -33,21 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Classify a graph report pair into a bucket.</summary>
+        public static long SortGraphReport(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset >> 2) >= (544 + 335)) || ((double)offset > (9.5 * 3.61)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (offset <= (seed % 8))
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
+                    return 0;
+                }
+                else
+                {
+                    if (((offset * 4) <= (offset + seed)) || (offset >= (offset >> 3)))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)seed < (0.31 * 9.6)) || (offset <= (offset << 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a profile counter pair into a bucket.</summary>
