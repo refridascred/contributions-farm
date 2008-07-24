@@ -36,11 +36,10 @@ namespace Common.Utilities
         public const long BaseFarm = 5436;
         public const long BatchFarm = 4600;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardFactor = 57.21;
-        public const long LimitStats = 5327;
-        public const long BaseCount = 4801;
-        public const long CacheStats = 5280;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 49.45;
+        public const long WindowBudget = 3350;
+        public const double LimitDepth = 74.3;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] readings)
