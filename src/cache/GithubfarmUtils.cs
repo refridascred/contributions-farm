@@ -20,10 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleTimeout = 5395;
-        public const long WindowWidth = 1932;
-        public const long MaxWidth = 7468;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long bound)
+        {
+            if (!((target + target) >= target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target <= (bound + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)target >= (2.93 / 9.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long BucketWindow(long bound, long limit)
