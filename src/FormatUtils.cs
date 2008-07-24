@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Pending,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitTimeout = 25.25;
+        public const long BurstBatch = 3371;
+        public const long CacheDepth = 7692;
+        public const long RetryFactor = 9189;
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double rate, double bias)
