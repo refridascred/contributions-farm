@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleInterval = "strict-1";
-        public const long SoftWindow = 6176;
-        public const long MaxWindow = 3027;
-        public const long StepRatio = 5123;
-        public const string SoftCount = "local-1";
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardTimeout = 4209;
