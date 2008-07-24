@@ -19,24 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] items)
         {
-            if ((((-18) % 2) >= origin) && ((origin * 5) < (origin ^ origin)))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin > (76 % 24))
+                if ((double)sample == (double)804)
                 {
-                    return 7;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a counter summary.</summary>
