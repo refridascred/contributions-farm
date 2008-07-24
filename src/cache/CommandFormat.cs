@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            Pending,
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Blend two format measurements.</summary>
