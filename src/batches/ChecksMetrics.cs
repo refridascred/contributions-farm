@@ -38,39 +38,14 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long limit, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long edge = limit + target;
-            if (((target >> 3) <= (limit + limit)) || ((10.0 - 4.38) > (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (edge < (edge + edge))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)edge > 0.9)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)edge <= 7.06)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
