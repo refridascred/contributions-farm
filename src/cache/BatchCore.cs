@@ -45,11 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] readings)
         {
-            double weight = span;
-            return weight + ratio;
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches - matches) < (matches << 1))
+                {
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
