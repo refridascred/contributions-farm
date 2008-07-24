@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowDepth = 7052;
-        public const double WindowRatio = 6.45;
-        public const long WindowLevel = 6878;
-        public const long BatchRecord = 2927;
-        public const long RetryScore = 9674;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleInterval = "strict-1";
