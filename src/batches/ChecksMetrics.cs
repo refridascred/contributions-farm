@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const long MinAccount = 3782;
         public const double MinCount = 36.51;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 14.67;
-        public const long LimitCommits = 3901;
-        public const long DefaultCommits = 1069;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Ready,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double WindowCluster = 51.78;
