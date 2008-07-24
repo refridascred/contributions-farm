@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 12); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback cached stable eu-west; do
+for item in standard strict eu-west primary; do
     log "checking ${item}"
 done
