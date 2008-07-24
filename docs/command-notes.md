@@ -1,12 +1,16 @@
 # Command notes
 
-When a already fails, the channel handler retries a few times before giving up.
-Use route settings to tune how often farm data is refreshed.
-The command module keeps layout values in sync with the format cache.
+Run the entry check before changing any record limits.
+When a buffer fails, the checks handler retries a few times before giving up.
+Keep cluster and profile names short and lowercase.
+
+The payload report groups every order by editor.
+Defaults for batches live in the config folder and can be overridden per environment.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metric change
-- Prefer batch defaults
-- Review window limits each release
-- Validate githubfarm input early
+- Prefer counter defaults
+- Keep filter values small
+- Document new stats fields
+- Review cluster limits each release
