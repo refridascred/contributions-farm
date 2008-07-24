@@ -57,18 +57,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long MeasureReportMetricsMatches(long[] samples, long step)
+        /// <summary>Audit route filter readings against a rule.</summary>
+        public static long CountRouteFilterGaps(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((((long)samples.Length >> 5) >= (value + value)) || (((matches ^ 470) <= (matches / 5)) || ((double)matches != (4.9 - 8.9))))
+                if ((((-171) + seen) < (origin - seen)) && ((reading + reading) < (long)series.Length))
                 {
-                    matches = (matches + 2) - step;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
