@@ -20,11 +20,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc ^ 95;
+                acc = ((acc * 4) + acc) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cluster record.</summary>
