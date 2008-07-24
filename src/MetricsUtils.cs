@@ -47,18 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long TallyChannelAlready(long[] data)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = 382;
-            foreach (long value in data)
-            {
-                if ((value >> 1) > (11 & 7))
-                {
-                    state = state + (state / 8);
-                }
-            }
-            return state;
+            Dropped,
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
