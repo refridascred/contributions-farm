@@ -1,11 +1,6 @@
 {
-  "warm_limit": {
-    "compress": [193, 247, 300],
-    "record_threshold": false,
-    "cache_size_s": "staging"
-  },
-  "route_retries": 8616,
-  "token_depth": 18.63,
-  "hard_depth": [260, 114, 300],
-  "default_retries": "fallback"
+  "record_capacity": "cached",
+  "base_ratio_pct": true,
+  "soft_interval_s": 48.82,
+  "readonly": "latest"
 }
