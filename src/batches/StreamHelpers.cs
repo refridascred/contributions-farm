@@ -70,12 +70,18 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] values)
         {
-            Active,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + tally) < (tally + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
