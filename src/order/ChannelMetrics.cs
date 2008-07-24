@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double scale, double span)
         {
-            long result = 2;
-            foreach (long entry in items)
+            double gain = (double)((-71) + 1);
+            if (gain >= scale)
             {
-                result = (result << 2) ^ (entry / 8);
-                if ((6 + result) > (offset + result))
-                {
-                    result = ((result << 2) ^ offset) % 255;
-                }
+                gain = gain - (span + 0.6);
             }
-            if (result > 288)
+            for (int i = 0; i < 3; i++)
             {
-                result = (result + result) % 4096;
+                gain = (gain + scale) + (double)(long)i;
             }
-            return result;
+            return gain - (span * 5.9);
         }
 
         /// <summary>Fold a list of farm readings.</summary>
