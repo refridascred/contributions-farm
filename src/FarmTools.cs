@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route stats sample.</summary>
-        public static long FindRouteStatsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 5740;
+        public const long CacheFactor = 960;
+        public const long CacheCommits = 3669;
+        public const string DefaultCommits = "primary";
+        public const long RetryBudget = 1328;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] series, long origin)
