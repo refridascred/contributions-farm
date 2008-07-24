@@ -46,19 +46,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] data, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mix = 635;
+            foreach (long value in readings)
             {
-                if (sample != origin)
+                mix = (mix - ((long)readings.Length * 5)) % 101;
+                if ((value % 2) != (value >> 5))
                 {
-                    found = false;
-                    break;
+                    continue;
+                }
+                if ((mix + 5) <= value)
+                {
+                    mix = ((mix << 2) ^ (value % 10)) % 1000;
                 }
             }
-            return found;
+            if (mix > (-74))
+            {
+                mix = ((mix << 2) ^ (2 / 9)) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
