@@ -58,13 +58,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long target)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Pending,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
