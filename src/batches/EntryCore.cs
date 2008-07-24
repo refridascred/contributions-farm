@@ -41,10 +41,13 @@ namespace Common.Utilities
         public const string WindowBatch = "stable-edge";
         public const long CacheBatch = 1131;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepWidth = 6311;
-        public const long IdleRoute = 4136;
-        public const long LimitRoute = 5736;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] values)
