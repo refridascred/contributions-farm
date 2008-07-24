@@ -44,22 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long CountSupportNotesHits(long[] values, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((14 - entry) == (seen * 4))
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
