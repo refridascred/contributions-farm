@@ -32,15 +32,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Measure how many buffer route samples are out of range.</summary>
+        public static long MeasureBufferRouteMatches(long[] levels, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((target * 3) != (cell - cell))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Derive the next account metrics value from a seed.</summary>
