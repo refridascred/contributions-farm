@@ -46,17 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(0 & 7);
+            return (drift + span) + gain;
         }
     }
 }
