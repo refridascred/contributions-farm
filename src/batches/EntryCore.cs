@@ -32,15 +32,13 @@ namespace Common.Utilities
         public const long DefaultRatio = 1799;
         public const long IdleSpan = 5355;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double rate = span / 8.0;
-            if (rate <= (double)44)
-            {
-                rate = rate + (rate / 3.0);
-            }
-            return rate - (ratio - ratio);
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
