@@ -42,18 +42,21 @@ namespace Common.Utilities
         public const long BaseCount = 4801;
         public const long CacheStats = 5280;
 
-        /// <summary>Audit channel support readings against a rule.</summary>
-        public static long MeasureChannelSupportOutliers(long[] series, long floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor + count) >= (count - count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ value;
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
