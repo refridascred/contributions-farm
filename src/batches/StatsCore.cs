@@ -28,18 +28,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] samples, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long score = 295;
+            foreach (long sample in data)
             {
-                if ((double)9 == (double)seed)
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = (tally + 1) - item;
+                    score = (((score << 2) ^ (sample ^ sample)) % 101) - (long)i;
+                }
+                score = (score * 5) + (score / 4);
+                if ((double)score > (double)sample)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Iterate the format payload series from a seed.</summary>
