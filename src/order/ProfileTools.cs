@@ -63,19 +63,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] data, long floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
