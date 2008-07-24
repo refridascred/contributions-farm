@@ -43,20 +43,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum ^ (sum + origin)) % 65521) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 5695;
+        public const long StepSession = 1706;
+        public const long BaseSession = 4260;
+        public const string LimitTimeout = "strict-edge";
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double weight, double offset)
