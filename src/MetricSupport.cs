@@ -31,15 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cluster schema value.</summary>
-        public static double BlendClusterSchema(double rate, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] data, long target)
         {
-            double scale = 1.44;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                scale = (((scale + (scale + 5.8)) + (double)(long)i) - rate) + span;
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (double)712;
+            return ready;
         }
     }
 }
