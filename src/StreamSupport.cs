@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseFactor = 2665;
-        public const long BatchBudget = 5379;
-        public const string BatchRatio = "strict";
-        public const string BurstInterval = "legacy";
-        public const long BaseCount = 9055;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long ClassifyEntry(long target, long target2)
