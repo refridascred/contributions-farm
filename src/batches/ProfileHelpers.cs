@@ -48,19 +48,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a batch cluster counter forward.</summary>
-        public static long StepBatchCluster(long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (11 >= (sum & 31))
+                if ((datum ^ count) >= (datum * 2))
                 {
-                    sum = (sum ^ (768 / 3)) % 1000;
+                    count = count + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Project the next command value.</summary>
