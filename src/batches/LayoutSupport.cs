@@ -36,12 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series, long floor)
         {
-            Ready,
-            Locked,
-            Done,
+            long carry = -953;
+            foreach (long value in series)
+            {
+                if ((((-719) ^ 944) == (value ^ value)) || ((carry % 100) >= value))
+                {
+                    carry = (carry - (carry << 1)) % 4096;
+                }
+            }
+            if (carry > 24)
+            {
+                carry = ((carry * 3) + floor) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate window tools readings against a bound.</summary>
