@@ -57,22 +57,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit route filter readings against a rule.</summary>
-        public static long CountRouteFilterGaps(long[] series, long origin)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((((-171) + seen) < (origin - seen)) && ((reading + reading) < (long)series.Length))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
