@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] levels, long target)
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((3.37 * 7.95) == (double)tally)
+                {
+                    tally = ((tally + 2) - datum) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
