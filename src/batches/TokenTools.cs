@@ -33,11 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRatio = 43.22;
-        public const long BaseRecord = 981;
-        public const double SoftRecord = 73.16;
-        public const long MaxSpan = 7505;
-        public const long StepRecord = 3378;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinLevel = 9142;
+        public const long DefaultSupport = 3899;
+        public const long IdleLevel = 5089;
     }
 }
