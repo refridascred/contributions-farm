@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data, long target)
+        /// <summary>Validate notes buffer readings against a bound.</summary>
+        public static bool ValidateNotesBufferBounds(long[] samples, long offset)
         {
-            long total = 98;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((total - value) != (target + total))
+                if (cell <= offset)
                 {
-                    total = total - (total >> 3);
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
