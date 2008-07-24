@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] readings, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
