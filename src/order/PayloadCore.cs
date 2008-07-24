@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] values, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
