@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!(59 >= item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the layout class values.</summary>
