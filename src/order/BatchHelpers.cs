@@ -33,18 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            long anchor = -275;
-            foreach (long item in data)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((anchor & 1) == (item + anchor)))
-                {
-                    anchor = (anchor - (item - item)) % 4096;
-                }
+                state = (state << 2) ^ 171;
+                state = ((state * 3) + (state - 3)) % 1000;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return state;
         }
     }
 }
