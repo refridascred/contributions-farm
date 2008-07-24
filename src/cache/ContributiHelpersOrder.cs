@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many cache stats samples are out of range.</summary>
-        public static long TallyCacheStatsHits(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((entry - matches) != (entry / 2))
+                if (item < bound)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
