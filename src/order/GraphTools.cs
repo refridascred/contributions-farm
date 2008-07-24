@@ -37,14 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Locate a batch format reading by value.</summary>
+        public static long LookupBatchFormatIndex(long[] series, long limit)
         {
-            Dropped,
-            New,
-            Idle,
-            Closed,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
