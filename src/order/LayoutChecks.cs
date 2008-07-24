@@ -87,23 +87,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long origin)
         {
-            long score = 894;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                score = score + (score - floor);
-                if (9.6 <= (double)item)
+                if (((origin ^ hits) >= origin) || !((origin >> 3) != ((long)levels.Length - datum)))
                 {
-                    score = ((score * 4) + (item << 2)) % 1000;
+                    hits = hits + 1;
                 }
-                if ((double)score == (double)floor)
+                else
                 {
-                    score = (score << 2) ^ score;
+                    hits = hits - 1;
                 }
             }
-            return score % 65521;
+            return hits;
         }
     }
 }
