@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample + sample) <= tally)
-                {
-                    tally = tally + 3;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
