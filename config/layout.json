@@ -1,7 +1,14 @@
 {
-  "burst_depth": "staging",
-  "enabled": 3026,
-  "hard_delay": 60,
-  "cache_delay": "eu-west",
-  "dry_run": "cached"
+  "stats_threshold": {
+    "flush_depth_pct": "cached",
+    "sync_ratio_pct": false,
+    "poll_timeout_ms": 55,
+    "hard_size_count": 4699,
+    "buffer_depth": ["latest", "local", "latest"]
+  },
+  "persist": [202, 132],
+  "batch_limit_s": false,
+  "hard_ratio_count": 1024,
+  "flush_limit_ms": 30,
+  "sync_retries_count": ["cached", "local"]
 }
