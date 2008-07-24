@@ -41,19 +41,21 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double gain, double floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            double gain2 = (1.8 * 9.1) - (floor / 6.0);
-            if (gain2 < gain)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = gain2 - (gain2 * 14.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (double)3) + (double)(long)i;
-            }
-            return gain2 + (gain2 - gain2);
+            return count;
         }
 
         /// <summary>Hold a support info.</summary>
