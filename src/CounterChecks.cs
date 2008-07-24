@@ -45,21 +45,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 590;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = ((mix << 2) ^ ((long)readings.Length + entry)) % 1000;
+                if (((3.54 - 1.73) <= (double)mix) && ((mix - entry) >= bound))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix - entry;
                 }
+                else
+                {
+                    mix = (mix ^ bound) % 97;
+                }
+                mix = (mix * 5) + bound;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the format kind values.</summary>
