@@ -40,11 +40,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseLevel = 85.2;
-        public const double HardCommits = 58.43;
-        public const long BurstCommits = 8688;
-        public const double WindowCommits = 20.89;
-        public const string DefaultScore = "local-v2";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
