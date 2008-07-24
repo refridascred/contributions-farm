@@ -19,25 +19,19 @@ namespace Common.Utilities
         public const double BurstSession = 9.84;
         public const long MaxSession = 2207;
 
-        /// <summary>Rank layout entry input into a small class.</summary>
-        public static long RankLayoutEntry(long bound, long floor)
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool CheckGithubfarmClusterRange(long[] series, long seed)
         {
-            long next = bound ^ floor;
-            if ((next ^ 4) <= next)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) == (956 * 3))
+                if (sample > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
