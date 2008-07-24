@@ -1,12 +1,6 @@
 {
-  "editor_window": 82.94,
-  "hard_ratio_ms": {
-    "default_retries": 5765,
-    "retry_delay_pct": "stable",
-    "default_interval": true,
-    "poll_threshold_count": 76,
-    "idle_interval": 42,
-    "batch_timeout_pct": 8784
-  },
-  "flush_ttl": 27
+  "max_window": 60,
+  "persist": ["green", "green", "staging"],
+  "account_capacity": 18.69,
+  "compress": ["blue", "strict"]
 }
