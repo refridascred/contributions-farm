@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] levels, long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((((9 + floor) >= (item % 2)) && ((floor & 31) > (item / 7))) || (item >= 67))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the account class values.</summary>
