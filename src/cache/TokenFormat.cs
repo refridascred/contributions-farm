@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
