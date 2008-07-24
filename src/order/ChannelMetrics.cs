@@ -34,18 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] samples, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!((637 + hits) < (849 >> 4)))
-                {
-                    hits = ((hits + 1) + sample) + origin;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
