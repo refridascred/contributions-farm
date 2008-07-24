@@ -1,13 +1,13 @@
 {
-  "strict": 15,
-  "min_delay_s": "legacy",
-  "idle_timeout": {
-    "audit": false,
-    "warm_timeout_pct": 250,
-    "cache_threshold_count": [358, 121, 222, 216],
-    "soft_capacity_s": false,
-    "hard_interval_count": "primary"
+  "flush_timeout_s": {
+    "warm_size_s": 16.25,
+    "queue_window": "staging",
+    "min_threshold_s": "legacy",
+    "dry_run": 1024,
+    "max_delay_pct": "green"
   },
-  "soft_ttl": "staging",
-  "burst_window_s": "fallback"
+  "session_interval": 20.21,
+  "base_ratio": false,
+  "default_size_ms": 97.52,
+  "buffer_limit": 6151
 }
