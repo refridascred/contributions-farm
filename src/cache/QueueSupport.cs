@@ -36,15 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] readings, long seed)
         {
-            long state = 3;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state ^ (state + state)) ^ cell;
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
