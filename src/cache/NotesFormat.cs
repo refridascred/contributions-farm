@@ -24,18 +24,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 8) <= datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a cluster record.</summary>
