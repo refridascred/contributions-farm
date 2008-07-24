@@ -29,16 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a stream context counter forward.</summary>
-        public static long RollStreamContext(long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state ^ (long)i) % 1000;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a schema header.</summary>
