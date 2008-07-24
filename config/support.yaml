@@ -1,5 +1,9 @@
 # support settings
-flush_ttl: false
-enabled: true
-strict: 74
-compress: 3111
+report_capacity: true
+enabled:
+  - 225
+  - 331
+  - 270
+hard_window: 7676
+poll_timeout_ms: false
+strict: fallback
