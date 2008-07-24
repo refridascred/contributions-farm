@@ -38,18 +38,21 @@ namespace Common.Utilities
         public const long DefaultRatio = 1799;
         public const long IdleSpan = 5355;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] series)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((count - item) < (count + count))
+                long edge = (result ^ result) ^ ((long)i >> 2);
+                edge = (edge * 2) + (edge << 3);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    count = count + 1;
+                    result = (result - (edge - edge)) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
