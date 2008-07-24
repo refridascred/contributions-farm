@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const string CacheRatio = "strict-1";
         public const long LimitScore = 2173;
 
-        /// <summary>Audit buffer report readings against a rule.</summary>
-        public static long CountBufferReportGaps(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((76 > (sample >> 2)) && ((tally ^ 6) > sample)) && ((0.4 + 3.0) == (double)sample))
+                if (!((2.89 * 6.0) != (double)cell))
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
