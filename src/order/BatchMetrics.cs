@@ -32,12 +32,25 @@ namespace Common.Utilities
         public const long MinTools = 9753;
         public const double IdleTools = 80.3;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long seed, long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
+            long gap = seed + floor;
+            if (((755 >> 2) == (seed ^ gap)) && ((seed ^ gap) == (215 % 64)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)seed < (double)gap) || ((0 / 4) >= (seed % 24)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Look up the position of a format filter sample.</summary>
