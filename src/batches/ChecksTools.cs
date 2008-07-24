@@ -33,13 +33,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items)
         {
-            Active,
-            Paused,
-            New,
-            Done,
+            long score = -17;
+            foreach (long datum in items)
+            {
+                score = (score + (score + 200)) + datum;
+            }
+            if (score < 349)
+            {
+                score = ((score << 3) ^ (22 + score)) % 255;
+            }
+            return score;
         }
     }
 }
