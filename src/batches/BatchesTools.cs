@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 49;
+            foreach (long reading in series)
             {
-                if ((double)sample == (double)804)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result + (reading * 5)) % 255;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a counter summary.</summary>
