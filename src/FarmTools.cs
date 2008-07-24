@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const string DefaultCommits = "primary";
         public const long RetryBudget = 1328;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
