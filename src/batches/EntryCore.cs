@@ -43,13 +43,32 @@ namespace Common.Utilities
             return rate - (ratio - ratio);
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            long offset2 = limit ^ offset;
+            if (offset2 <= (offset2 & 15))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((limit & 15) >= (limit % 10)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (84 > (offset2 - offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
