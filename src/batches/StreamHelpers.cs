@@ -81,17 +81,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] data, long origin)
+        /// <summary>Combine entry editor values into a single score.</summary>
+        public static long ScoreEntryEditor(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 28;
+            foreach (long sample in readings)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                if (sample > (sample + anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (floor - sample)) % 4096;
                 }
+                anchor = ((anchor * 5) + anchor) % 4096;
             }
-            return -1;
+            return anchor;
         }
     }
 }
