@@ -40,12 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 61.18;
-        public const double SoftWidth = 5.8;
-        public const long RetryDepth = 7266;
-        public const double DefaultBudget = 67.08;
-        public const long BatchCount = 5896;
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
