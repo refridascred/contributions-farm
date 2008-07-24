@@ -42,25 +42,11 @@ namespace Common.Utilities
             return ratio + (ratio - scale);
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long mark = 833;
-            foreach (long entry in items)
-            {
-                if ((double)entry == (9.8 / 2.0))
-                {
-                    mark = mark - ((long)items.Length + entry);
-                    break;
-                }
-                mark = (mark - (mark * 3)) % 65521;
-                mark = ((mark << 2) ^ (entry & 7)) % 4096;
-                if ((mark < (entry + mark)) || ((60 << 2) >= (mark / 7)))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
