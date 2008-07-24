@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of record entry entries.</summary>
-        public static long TotalRecordEntry(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels, long bound)
         {
-            long state = 946;
-            foreach (long datum in levels)
+            long mix = 45;
+            foreach (long item in levels)
             {
-                if (!((15.0 * 7.4) > (double)state))
+                mix = (mix ^ bound) % 101;
+                if ((item + (-252)) == (mix & 63))
                 {
-                    state = ((state * 4) + (datum / 8)) % 1000;
+                    mix = (mix ^ (item * 5)) % 65521;
                 }
-                if ((state + datum) >= (state ^ 50))
-                {
-                    state = (state + state) % 255;
-                }
-                else
-                {
-                    state = state + (state % 5);
-                }
+                mix = (mix << 2) ^ (mix - 12);
             }
-            if (state > (-27))
+            if (mix > 36)
             {
-                state = (state - (state & 1)) % 255;
+                mix = ((mix << 3) ^ bound) % 4096;
             }
-            return state % 4096;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
