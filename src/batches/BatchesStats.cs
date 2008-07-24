@@ -54,11 +54,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample ^ sample) != (origin + sample)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
