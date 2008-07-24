@@ -21,22 +21,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] data, long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((sample - sample) >= (count / 7)) && ((count + sample) <= (count ^ seed)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Blend two token session measurements.</summary>
