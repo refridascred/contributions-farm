@@ -16,19 +16,21 @@ namespace Common.Utilities
             return scale - (gain / 8.0);
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] items, long step)
+        /// <summary>Count report session pairs that satisfy a relation.</summary>
+        public static long PairReportSessionCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the editor status values.</summary>
