@@ -14,12 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 9687;
-        public const string HardCount = "stable-v2";
-        public const long BatchScore = 584;
-        public const string CacheWidth = "staging-1";
-        public const string MinSpan = "stable-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstCount = "stable";
+        public const long IdleNotes = 7277;
+        public const long SoftNotes = 3566;
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] readings)
