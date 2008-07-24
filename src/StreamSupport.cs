@@ -15,12 +15,26 @@ namespace Common.Utilities
         public const double SoftBudget = 10.7;
         public const long MinRecord = 3754;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long limit)
         {
-            Done,
-            Active,
-            Retry,
+            long acc = 7;
+            foreach (long value in readings)
+            {
+                if (limit > (5 % 64))
+                {
+                    acc = (acc ^ limit) ^ value;
+                }
+                else
+                {
+                    acc = (acc * 4) + (limit % 16);
+                }
+            }
+            if (acc < 555)
+            {
+                acc = (acc - (limit << 3)) % 65521;
+            }
+            return acc;
         }
     }
 }
