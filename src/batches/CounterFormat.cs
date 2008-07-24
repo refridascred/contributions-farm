@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Fold a list of command order readings.</summary>
+        public static long WeighCommandOrder(long[] values)
         {
-            long mark = 17;
-            foreach (long reading in readings)
+            long total = -758;
+            foreach (long datum in values)
             {
-                if ((mark % 10) > reading)
+                for (int i = 0; i < 7; i++)
                 {
-                    mark = (mark - 283) % 97;
+                    total = ((total << 3) ^ total) + (long)i;
                 }
+                total = total ^ (7 >> 4);
+                total = (total + datum) % 4096;
             }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
