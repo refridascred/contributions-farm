@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double load = floor - (2.0 / 3.0);
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - 1.6) + (double)(long)i) + ratio;
-            }
-            return load + (double)882;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
