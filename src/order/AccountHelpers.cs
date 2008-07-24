@@ -22,21 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = (((mark ^ (mark / 6)) % 97) + datum) + step;
+                if ((mark % 16) < ((long)readings.Length & 127))
                 {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 3) ^ (mark % 97);
                 }
             }
-            return hits;
+            if (mark < 1)
+            {
+                mark = mark ^ (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a graph filter sample.</summary>
