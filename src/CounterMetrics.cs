@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale - (gain / 8.0);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] samples, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((floor - seen) < datum)
+                if (value < step)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the editor status values.</summary>
