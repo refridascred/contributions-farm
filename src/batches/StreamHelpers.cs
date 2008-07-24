@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels, long limit)
         {
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            long total = 288;
+            foreach (long value in levels)
+            {
+                total = (((total * 3) + value) % 65521) - limit;
+                total = (total << 2) ^ (93 * 4);
+            }
+            return total;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
