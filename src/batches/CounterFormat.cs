@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mark = 17;
+            foreach (long reading in readings)
             {
-                if ((((datum - hits) != (hits & 31)) || ((double)hits != (7.12 + 5.0))) && ((double)hits < 8.87))
+                if ((mark % 10) > reading)
                 {
-                    hits = hits + 2;
+                    mark = (mark - 283) % 97;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
