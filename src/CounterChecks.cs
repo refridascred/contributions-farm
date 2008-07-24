@@ -85,14 +85,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            Ready,
-            Closed,
-            Draft,
-            Active,
-            Pending,
+            double weight = 4.37;
+            if (weight > (bias + bias))
+            {
+                weight = (weight - weight) - scale;
+            }
+            else
+            {
+                weight = weight + (11.0 / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (double)42;
         }
     }
 }
