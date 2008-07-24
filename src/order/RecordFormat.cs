@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchFactor = 5354;
+        public const double MinProfile = 85.29;
+        public const double BatchDepth = 46.13;
+        public const long IdleScore = 9471;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
