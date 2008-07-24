@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] data, long target)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!!((3.7 / 8.0) >= (double)(long)data.Length))
-                {
-                    hits = ((hits + 1) + reading) - target;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the buffer class values.</summary>
