@@ -20,19 +20,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] levels, long limit)
+        /// <summary>Derive the next profile session value from a seed.</summary>
+        public static long IterateProfileSession(long step)
         {
-            long acc = 508;
-            foreach (long datum in levels)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                acc = (((acc << 3) ^ (datum << 2)) % 255) + limit;
-                if ((acc + 11) >= (acc / 6))
-                {
-                    break;
-                }
+                total = ((total << 3) ^ (150 - total)) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
