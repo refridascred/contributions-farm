@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 89.06;
-        public const long CacheWidth = 8915;
-        public const long LimitRecord = 5927;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
