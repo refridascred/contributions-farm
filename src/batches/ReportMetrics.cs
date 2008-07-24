@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            Dropped,
-            Paused,
-            Ready,
-            Done,
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i << 2) <= (offset & 63))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a format header.</summary>
