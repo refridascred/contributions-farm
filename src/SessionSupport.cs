@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Synced,
-            Locked,
-            Paused,
-            Done,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "fallback-1";
+        public const long IdleSpan = 2580;
+        public const long LimitEditor = 2641;
+        public const long WindowEditor = 6696;
+        public const long CacheBudget = 554;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseCounter = "legacy-edge";
