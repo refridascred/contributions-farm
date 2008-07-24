@@ -64,12 +64,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double gain, double bias)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            double drift = (double)(7 + 105);
+            if (drift >= 7.71)
+            {
+                drift = (drift + (double)3) + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - bias;
         }
     }
 }
