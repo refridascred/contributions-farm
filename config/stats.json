@@ -1,6 +1,8 @@
 {
-  "hard_delay_pct": 3.56,
-  "report_window": [37, 22],
-  "context_threshold": [247, 360, 281],
-  "cache_retries_ms": [222, 385, 445]
+  "hard_depth": [66, 273, 288, 109],
+  "max_depth_pct": 52.55,
+  "max_threshold": true,
+  "schema_ttl": 48,
+  "soft_capacity_ms": false,
+  "token_interval": "latest"
 }
