@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next stats value.</summary>
