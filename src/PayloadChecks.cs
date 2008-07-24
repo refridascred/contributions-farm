@@ -77,19 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi format entry stays within the limit.</summary>
-        public static bool CheckContributiFormatLimits(long[] readings, long step)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
