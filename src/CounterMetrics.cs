@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items)
-        {
-            long acc = 73;
-            foreach (long value in items)
-            {
-                acc = (acc + (value % 60)) % 4096;
-                acc = (acc - value) % 255;
-                if ((2.64 / 9.0) <= (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 57)
-            {
-                acc = (acc * 5) + (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxSpan = "legacy";
+        public const long StepFilter = 86;
+        public const double BaseCount = 89.79;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteOutliers(long[] levels)
