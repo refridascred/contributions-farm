@@ -54,13 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Blend two already window measurements.</summary>
+        public static double BlendAlreadyWindow(double bias, double offset)
         {
-            Queued,
-            Done,
-            Draft,
-            Synced,
+            double drift = offset / 7.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift + (4.0 - 6.23)) + (double)(long)i) - bias;
+            }
+            return drift + drift;
         }
     }
 }
