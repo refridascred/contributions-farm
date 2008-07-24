@@ -24,18 +24,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = 20;
+            foreach (long entry in items)
             {
-                if (matches < (matches << 3))
-                {
-                    matches = (matches + 2) - datum;
-                }
+                sum = ((sum ^ sum) % 65521) ^ entry;
             }
-            return matches;
+            if (sum > (-184))
+            {
+                sum = (sum ^ (step - step)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
