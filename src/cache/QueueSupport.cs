@@ -29,11 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardWidth = "strict";
-        public const long CacheCount = 5385;
-        public const double BaseCommits = 66.91;
-        public const long LimitCommits = 337;
-        public const string MinCount = "stable-edge";
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+        }
     }
 }
