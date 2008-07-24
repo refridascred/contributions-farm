@@ -30,13 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Project the next layout channel value.</summary>
+        public static double ProjectLayoutChannel(double weight, double bias)
         {
-            Failed,
-            Closed,
-            New,
-            Idle,
+            double bias2 = (double)(93 + (-8));
+            return (bias2 + (weight - 4.4)) + bias;
         }
     }
 }
