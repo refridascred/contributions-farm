@@ -38,13 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Paused,
-            Idle,
-            Locked,
-            Synced,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
