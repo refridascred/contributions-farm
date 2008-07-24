@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data, long origin)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long result = 382;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((((result * 5) + (datum - result)) % 4096) ^ (long)i) + origin;
+                }
+                if (result > (datum + datum))
+                {
+                    result = ((result * 4) + result) % 101;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
