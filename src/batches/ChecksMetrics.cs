@@ -53,19 +53,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seed <= (seed & 3))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftCount = 59.9;
+        public const long MaxPayload = 6831;
+        public const long HardBudget = 794;
+        public const string BaseSize = "open-v2";
+        public const double BaseBudget = 94.49;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long offset)
