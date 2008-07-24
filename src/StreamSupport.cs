@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit context stream readings against a rule.</summary>
-        public static long CountContextStreamHits(long[] levels)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + seen) > (entry % 64))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
