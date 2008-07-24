@@ -22,23 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] levels)
         {
-            long mark = 8;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                mark = (((mark ^ (mark / 6)) % 97) + datum) + step;
-                if ((mark % 16) < ((long)readings.Length & 127))
+                if ((sample / 4) <= (280 << 1))
                 {
-                    mark = (mark << 3) ^ (mark % 97);
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark < 1)
-            {
-                mark = mark ^ (mark >> 2);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Look up the position of a graph filter sample.</summary>
