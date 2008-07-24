@@ -1,8 +1,6 @@
 # githubfarm settings
-persist: 1024
-default_threshold_s:
-  - latest
-  - staging
-  - open
-warm_size: open
-retry_limit_ms: local
+counter_depth: eu-west
+burst_threshold_pct: false
+support_threshold: eu-west
+min_delay_s: 4
+audit: latest
