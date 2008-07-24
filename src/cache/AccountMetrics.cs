@@ -33,15 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Paused,
-            Failed,
-            Closed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultTimeout = 4911;
+        public const long HardSchema = 8053;
+        public const string StepSchema = "cached-1";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] levels, long target)
