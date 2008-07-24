@@ -48,15 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings)
-        {
-            long acc = 9;
-            foreach (long entry in readings)
-            {
-                acc = acc ^ (entry / 6);
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 6117;
+        public const string LimitDepth = "standard";
+        public const string BurstGithubfarm = "legacy-1";
+        public const long StepGithubfarm = 9413;
     }
 }
