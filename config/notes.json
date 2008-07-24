@@ -1,5 +1,5 @@
 {
-  "enabled": "legacy",
-  "soft_ttl": 78,
-  "sync_limit_s": 10.67
+  "already_interval": "strict",
+  "dry_run": ["open", "fallback", "stable", "blue"],
+  "strict": true
 }
