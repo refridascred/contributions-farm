@@ -37,12 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Active,
+            Paused,
+            New,
+            Done,
         }
     }
 }
