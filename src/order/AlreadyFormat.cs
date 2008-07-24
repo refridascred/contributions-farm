@@ -23,13 +23,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Failed,
-            Draft,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 9411;
+        public const long SoftScore = 8080;
+        public const double SoftAccount = 87.49;
+        public const double WindowInterval = 79.46;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MaxRatio = 13.79;
