@@ -1,9 +1,8 @@
 # entry settings
-enabled: false
-retry_capacity_pct: true
-dry_run: fallback
-compress: blue
-context_interval: true
-sync_threshold_s:
-  - 275
-  - 181
+default_delay_pct: true
+already_threshold:
+  - 63
+  - 69
+readonly: edge
+hard_ratio: 82.76
+base_depth_ms: false
