@@ -66,15 +66,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two payload stream measurements.</summary>
-        public static double AdjustPayloadStream(double rate, double span)
+        /// <summary>Validate notes channel readings against a bound.</summary>
+        public static bool ValidateNotesChannelLimits(long[] samples, long step)
         {
-            double load = rate;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                load = (load + span) + (double)(long)i;
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - (double)9;
+            return stale;
         }
     }
 }
