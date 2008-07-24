@@ -26,18 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 3372;
+        public const long DefaultContributi = 2167;
+        public const long WindowContributi = 6128;
+        public const long CacheContributi = 3730;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MaxReport = 81.95;
