@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryTimeout = "legacy";
-        public const string CacheLevel = "cached-edge";
-        public const long StepWindow = 6621;
-        public const long LimitWindow = 9061;
+        /// <summary>Find the first report support entry that matches the target.</summary>
+        public static long FindReportSupportIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a profile report pair into a bucket.</summary>
         public static long ClassifyProfileReport(long step, long origin)
