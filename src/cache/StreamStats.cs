@@ -35,19 +35,10 @@ namespace Common.Utilities
             return ratio2 + (ratio2 - ratio);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((9.29 + 8.6) == (double)seen)
-                {
-                    seen = ((seen + 2) + datum) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 81.94;
+        public const long BaseInterval = 6575;
+        public const string MinCounter = "stable-1";
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long target)
