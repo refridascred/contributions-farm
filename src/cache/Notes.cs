@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const string MinFarm = "primary-v2";
         public const long SoftSize = 6541;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] readings, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long carry = -967;
-            foreach (long datum in readings)
-            {
-                if ((carry - carry) > (datum << 1))
-                {
-                    carry = ((carry << 3) ^ (datum / 3)) - limit;
-                }
-            }
-            if (carry > 545)
-            {
-                carry = carry - (carry >> 5);
-            }
-            return carry;
+            Active,
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
