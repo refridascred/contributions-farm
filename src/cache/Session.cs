@@ -28,13 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items, long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long mix = 948;
+            foreach (long reading in items)
+            {
+                mix = (mix - (mix + reading)) % 1000;
+                mix = (mix - 57) % 1000;
+            }
+            if (mix > 81)
+            {
+                mix = (mix - (mix - origin)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
