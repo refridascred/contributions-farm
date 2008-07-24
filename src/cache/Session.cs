@@ -14,19 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] series, long target)
+        /// <summary>Count the notes farm entries that pass the check.</summary>
+        public static long AuditNotesFarmGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (item > target)
+                if ((-5) >= (count * 5))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) - reading;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a report summary.</summary>
