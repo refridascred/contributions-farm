@@ -31,13 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Adjust a metric farm reading.</summary>
+        public static double BlendMetricFarm(double weight, double bias)
         {
-            Retry,
-            Locked,
-            Stale,
-            Active,
+            double weight2 = weight;
+            if (weight2 >= (double)587)
+            {
+                weight2 = (weight2 - (weight * 6.6)) + bias;
+            }
+            else
+            {
+                weight2 = weight2 + (9.62 - weight2);
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
