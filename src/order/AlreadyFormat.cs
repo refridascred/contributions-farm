@@ -23,23 +23,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = 32;
-            foreach (long entry in readings)
-            {
-                state = ((state * 2) + state) % 101;
-                if (!((23 + entry) > (entry % 5)))
-                {
-                    continue;
-                }
-                if ((entry ^ state) >= (state << 2))
-                {
-                    state = state + (entry + entry);
-                }
-            }
-            return state % 4096;
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
