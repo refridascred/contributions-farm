@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long floor2)
-        {
-            if (floor <= (floor + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9 - floor) != (floor / 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseScore = 8585;
+        public const long RetryBudget = 4437;
+        public const long SoftSpan = 8124;
+        public const long BurstWindow = 6249;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] readings)
