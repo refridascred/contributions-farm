@@ -58,11 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            double bias = weight;
+            return bias - offset;
         }
 
         /// <summary>Describe the window level values.</summary>
