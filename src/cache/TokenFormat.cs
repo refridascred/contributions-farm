@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BurstFactor = 2085;
         public const long CacheFormat = 8522;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Pending,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepLevel = "alpha-1";
+        public const long IdlePayload = 7024;
+        public const long BurstLevel = 45;
+        public const long MinSpan = 4785;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool GuardCounterBounds(long[] readings, long limit)
