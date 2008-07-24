@@ -34,13 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
