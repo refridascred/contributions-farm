@@ -1,7 +1,9 @@
 # support settings
-default_size_pct: legacy
-audit: true
-default_timeout_count: true
-default_timeout_s: true
-strict: 1.72
-dry_run: cached
+batch_window: primary
+poll_depth:
+  dry_run:
+    - latest
+    - primary
+  flush_ttl_s: local
+  warm_depth_pct: primary
+enabled: 100
