@@ -76,16 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 88.41;
+        public const long BatchBuffer = 1593;
+        public const double LimitBuffer = 70.63;
+        public const string DefaultBuffer = "local-edge";
+        public const long CacheWidth = 5233;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardSchema = 3197;
