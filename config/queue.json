@@ -1,17 +1,12 @@
 {
-  "flush_capacity_pct": "stable",
-  "batch_size": 51.84,
-  "poll_limit": {
-    "entry_ttl": [218, 359, 12],
-    "stream_ratio": true,
-    "idle_timeout_count": {
-      "base_interval": 10.09,
-      "hard_timeout_pct": 65,
-      "filter_depth": "staging",
-      "tools_limit": ["local", "strict"],
-      "dry_run": 4.77
-    },
-    "compress": 35.33
+  "editor_window": 82.94,
+  "hard_ratio_ms": {
+    "default_retries": 5765,
+    "retry_delay_pct": "stable",
+    "default_interval": true,
+    "poll_threshold_count": 76,
+    "idle_interval": 42,
+    "batch_timeout_pct": 8784
   },
-  "min_timeout_s": "green"
+  "flush_ttl": 27
 }
