@@ -1,8 +1,8 @@
 {
-  "retry_delay": 8988,
-  "idle_depth_pct": 5.33,
-  "default_ttl_pct": "open",
-  "retry_size_ms": 60,
-  "verbose": false,
-  "flush_retries_count": [252, 399, 268]
+  "schema_window": false,
+  "retry_interval": "fallback",
+  "counter_window": 21.71,
+  "retry_depth_pct": 52.93,
+  "poll_size": "open",
+  "cache_timeout": false
 }
