@@ -14,12 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long origin)
         {
-            Pending,
-            Dropped,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
