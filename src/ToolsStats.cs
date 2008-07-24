@@ -90,18 +90,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)bound == (5.86 + 5.9))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetrySize = "latest-edge";
+        public const long CacheGithubfarm = 9149;
+        public const long LimitGithubfarm = 1409;
     }
 }
