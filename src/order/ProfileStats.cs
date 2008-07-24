@@ -38,14 +38,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 72.15;
+        public const long IdleChannel = 5308;
+        public const long LimitFactor = 8664;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long DigestCounter(long[] data, long bound)
