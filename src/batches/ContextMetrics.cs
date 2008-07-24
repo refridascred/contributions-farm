@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two farm measurements.</summary>
