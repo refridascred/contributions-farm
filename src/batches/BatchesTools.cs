@@ -30,12 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            Retry,
+            Stale,
+            Active,
         }
     }
 }
