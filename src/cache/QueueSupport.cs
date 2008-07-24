@@ -29,14 +29,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Active,
-            Closed,
-            Done,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitSize = 2687;
+        public const long WindowInterval = 4255;
+        public const long HardInterval = 391;
+        public const long BaseSize = 681;
     }
 }
