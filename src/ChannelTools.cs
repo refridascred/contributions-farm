@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
