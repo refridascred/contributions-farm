@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-blue}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -19,3 +15,9 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
