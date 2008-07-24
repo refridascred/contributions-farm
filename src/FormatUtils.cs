@@ -12,14 +12,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long seed)
         {
-            Active,
-            Failed,
-            Dropped,
-            Retry,
-            Idle,
+            long lane = origin + seed;
+            if ((7 & 63) == (origin + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((lane % 12) >= origin) || ((origin + 4) < seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)lane >= (2.0 / 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
