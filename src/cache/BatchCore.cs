@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the support already series from a seed.</summary>
-        public static long StepSupportAlready(long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            double bias2 = offset + (4.86 + 2.23);
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
             }
-            return carry;
+            return bias2 + 7.3;
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
