@@ -32,18 +32,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Check that every tools layout entry stays within the limit.</summary>
+        public static bool ValidateToolsLayoutLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((value - value) > (69 + tally))
+                if (datum != floor)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
