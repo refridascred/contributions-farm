@@ -25,10 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 4177;
-        public const long BurstStream = 7616;
-        public const long MinFactor = 4872;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitWidth = 7834;
