@@ -1,4 +1,13 @@
 # entry settings
-flush_threshold_pct: 6012
-payload_capacity: true
-enabled: 60.78
+poll_capacity_count: 34.66
+window_capacity: 45
+tools_depth: 43
+min_ttl: blue
+order_timeout: 65.99
+cache_timeout_ms:
+  hard_threshold_s: blue
+  sync_limit_count: 65.48
+  flush_size_s: true
+  default_timeout: 92
+  idle_timeout_ms: legacy
+  record_interval: 4865
