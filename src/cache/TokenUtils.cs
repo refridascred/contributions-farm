@@ -10,31 +10,21 @@ namespace Common.Utilities
         public const double MaxBatch = 38.94;
         public const double MaxLevel = 4.05;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long step)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            if (origin > (origin / 2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(step > (14 * 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= step)
+                    if ((items[i] ^ items[j]) != 1)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
