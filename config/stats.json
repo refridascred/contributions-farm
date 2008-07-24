@@ -1,14 +1,8 @@
 {
-  "hard_window_count": 60,
-  "githubfarm_interval": 10.9,
-  "sync_limit_s": "open",
-  "retry_window_count": true,
-  "sync_retries_count": {
-    "idle_ttl": true,
-    "account_window": "open",
-    "retry_retries": 31,
-    "verbose": ["edge", "latest", "strict", "fallback"],
-    "idle_interval_pct": 85.33,
-    "poll_capacity_ms": 41.3
-  }
+  "verbose": 51.58,
+  "strict": "blue",
+  "sync_retries": "latest",
+  "base_interval": "local",
+  "hard_interval": [284, 421, 450],
+  "audit": "fallback"
 }
