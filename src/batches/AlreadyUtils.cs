@@ -48,26 +48,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long state = 442;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (((((state * 4) + (37 << 1)) % 1000) + (long)i) + item) + bound;
-                }
-                if (state >= ((-795) >> 3))
-                {
-                    state = (state - state) % 255;
-                }
-            }
-            if (state > 1)
-            {
-                state = (state << 2) ^ (56 % 5);
-            }
-            return state % 4096;
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
