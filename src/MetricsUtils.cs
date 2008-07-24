@@ -68,18 +68,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many command editor samples are out of range.</summary>
-        public static long MeasureCommandEditorOutliers(long[] readings, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = 207;
+            foreach (long cell in items)
             {
-                if ((5.79 < (double)matches) || ((item - item) > floor))
+                acc = acc ^ (cell + cell);
+                if (!((acc + acc) == ((-7) % 100)))
                 {
-                    matches = matches + 2;
+                    acc = (acc + (cell * 2)) % 65521;
+                }
+                if (!((cell % 5) < cell))
+                {
+                    acc = acc - 2;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
