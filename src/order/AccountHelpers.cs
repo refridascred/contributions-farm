@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchBudget = 9911;
         public const long SoftWidth = 4261;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Measure how many editor buffer samples are out of range.</summary>
+        public static long CountEditorBufferOutliers(long[] series, long floor)
         {
-            long total = 144;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                total = (total - (total ^ total)) % 65521;
-                total = ((total * 2) + (total - reading)) % 65521;
-                total = total ^ reading;
+                if ((double)floor >= (double)matches)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
