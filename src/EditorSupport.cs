@@ -70,19 +70,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] samples, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
