@@ -1,5 +1,7 @@
 {
-  "verbose": 3927,
-  "audit": "stable",
-  "readonly": 86.81
+  "verbose": "blue",
+  "idle_window_s": [275, 226, 477],
+  "payload_interval": 60,
+  "min_size_ms": false,
+  "cluster_depth": 26.16
 }
