@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const string CacheScore = "standard";
         public const long IdleWidth = 3272;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (34 >= (count + item))
+                mix = (mix << 3) ^ ((long)i << 2);
+                if (28 < (step / 9))
                 {
-                    count = count + 3;
+                    mix = (mix - mix) % 65521;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Roll a stream context counter forward.</summary>
