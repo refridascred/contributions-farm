@@ -1,23 +1,12 @@
 # entry settings
-hard_timeout_pct:
-  notes_limit: 92
-  batches_threshold: 500
-  layout_ratio: eu-west
-  dry_run: 67.22
-  persist:
-    base_window_ms: cached
-    record_interval: false
-    warm_size_ms:
-      - 155
-      - 448
-      - 173
-    idle_window_ms:
-      - 286
-      - 442
-      - 46
-    dry_run: 60
-    order_delay: primary
-cluster_ratio: false
-context_timeout: false
-hard_timeout_s: 5
-flush_retries_s: 38.13
+default_capacity: 52
+strict: 500
+verbose: false
+window_window:
+  route_ratio: false
+  farm_timeout:
+    - edge
+    - standard
+    - edge
+    - eu-west
+  min_ratio_count: 48
