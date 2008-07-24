@@ -47,12 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 81.95;
-        public const double CacheWidth = 71.79;
-        public const string BurstReport = "alpha-edge";
-        public const long MinBudget = 9466;
-        public const long RetryDepth = 6285;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double scale, double floor)
