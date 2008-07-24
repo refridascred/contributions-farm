@@ -57,18 +57,22 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] levels, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = 50;
+            foreach (long datum in samples)
             {
-                if ((offset - offset) >= (entry & 31))
+                if ((datum ^ seed) <= ((-6) / 7))
                 {
-                    count = count + 1;
+                    sum = (sum + sum) % 101;
                 }
             }
-            return count;
+            if (sum < (-771))
+            {
+                sum = (sum << 3) ^ (seed - 22);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the payload mode values.</summary>
