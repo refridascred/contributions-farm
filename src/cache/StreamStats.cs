@@ -35,23 +35,18 @@ namespace Common.Utilities
             return ratio2 + (ratio2 - ratio);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] samples, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] readings, long origin)
         {
-            long total = 1;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                total = (total - ((-881) >> 5)) - limit;
-                if (total > (36 * 5))
+                if ((9.29 + 8.6) == (double)seen)
                 {
-                    total = total ^ (datum & 7);
+                    seen = ((seen + 2) + datum) + origin;
                 }
             }
-            if (total > 21)
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
