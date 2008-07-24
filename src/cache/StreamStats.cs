@@ -31,16 +31,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Grade a channel report value against two limits.</summary>
+        public static long BucketChannelReport(long target, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            if ((bound & 15) > target)
             {
-                result = (result ^ (748 & 15)) % 97;
-                result = ((result * 5) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((target << 2) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound * 4) >= (69 + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
