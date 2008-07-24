@@ -63,18 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] values)
+        /// <summary>Adjust a filter channel reading.</summary>
+        public static double AdjustFilterChannel(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double load = floor;
+            if (load <= gain)
             {
-                if ((datum + tally) < (tally + datum))
-                {
-                    tally = tally + 3;
-                }
+                load = load - (double)0;
             }
-            return tally;
+            else
+            {
+                load = load + (1.6 * 4.38);
+            }
+            return load - floor;
         }
     }
 }
