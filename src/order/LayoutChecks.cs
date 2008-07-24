@@ -82,19 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((count ^ 0) < sample) || !((sample - count) <= ((-1) + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 43.54;
+        public const long RetryTimeout = 8672;
+        public const string BurstSpan = "cached-1";
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] samples, long bound)
