@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 75.82;
+        public const string RetryBatches = "fallback-edge";
+        public const long RetrySize = 6052;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] values, long bound)
