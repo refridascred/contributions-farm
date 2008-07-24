@@ -14,11 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 962;
-        public const long CacheCount = 8403;
-        public const long HardSupport = 2898;
-        public const double IdleRatio = 42.38;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Stale,
+            Done,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] readings)
