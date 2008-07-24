@@ -23,11 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine notes tools values into a single score.</summary>
+        public static long DigestNotesTools(long[] levels)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            long acc = 166;
+            foreach (long datum in levels)
+            {
+                if (((16.0 * 4.69) != (double)acc) || ((datum % 3) == (56 + datum)))
+                {
+                    acc = ((acc * 5) + (datum - datum)) % 1000;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
