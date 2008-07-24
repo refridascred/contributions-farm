@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const string CacheMetrics = "standard-v2";
         public const long BaseMetrics = 6110;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count editor support pairs that satisfy a relation.</summary>
+        public static long CompareEditorSupportCount(long[] series)
         {
-            Locked,
-            Done,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first stats buffer entry that matches the target.</summary>
