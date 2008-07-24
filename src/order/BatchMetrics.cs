@@ -18,23 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry counter samples.</summary>
-        public static long CombineEntryCounter(long[] data, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long total = 390;
-            foreach (long cell in data)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                total = total - (offset % 100);
-                if ((double)cell < (8.43 + 14.0))
+                if ((acc >> 3) <= ((long)i - acc))
                 {
-                    total = total - (7 * 2);
+                    acc = ((acc << 2) ^ (5 % 64)) % 4096;
+                    continue;
                 }
-                if (((double)total != (3.7 * 4.92)) || ((offset * 4) > cell))
-                {
-                    total = total ^ offset;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Combine farm counter values into a single score.</summary>
