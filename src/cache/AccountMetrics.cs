@@ -61,12 +61,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] items, long floor)
         {
-            Pending,
-            Draft,
-            Paused,
+            long score = 1;
+            foreach (long cell in items)
+            {
+                if ((score >= 8) && ((3 % 64) <= (score - cell)))
+                {
+                    score = score - cell;
+                }
+                if (floor > (score * 4))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
