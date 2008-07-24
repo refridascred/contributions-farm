@@ -60,14 +60,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long step)
         {
-            Queued,
-            Synced,
-            Done,
-            Ready,
-            Stale,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((4 + step) >= (96 & 7))
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
     }
 }
