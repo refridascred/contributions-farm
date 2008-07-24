@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Measure how many tools stream samples are out of range.</summary>
+        public static long MeasureToolsStreamGaps(long[] samples, long offset)
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((offset >> 1) == (offset / 4)) || ((16 % 3) > datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
