@@ -1,25 +1,5 @@
 {
-  "verbose": ["stable", "blue"],
-  "audit": 30,
-  "max_ttl": {
-    "metric_ttl": 2,
-    "batches_interval": 1024,
-    "support_timeout": 86,
-    "poll_timeout": 30.32,
-    "cache_retries_s": "edge",
-    "compress": "strict"
-  },
-  "burst_delay_s": {
-    "report_limit": "green",
-    "support_ratio": {
-      "readonly": [255, 343, 176, 368],
-      "cache_size": 31.47,
-      "verbose": 42.28,
-      "schema_interval": "green"
-    },
-    "sync_ttl_count": "cached",
-    "verbose": true,
-    "retry_delay_s": true,
-    "readonly": true
-  }
+  "buffer_retries": true,
+  "default_limit_s": ["standard", "stable", "green", "cached"],
+  "strict": 500
 }
