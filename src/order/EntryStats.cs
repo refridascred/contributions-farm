@@ -33,18 +33,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] samples, long offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((-209) << 3) < (datum * 5))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
