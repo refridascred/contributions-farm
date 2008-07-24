@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long bound, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long floor)
         {
-            if ((limit <= (4 << 1)) || ((limit + 48) < (limit % 5)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound * 4) != (11 >> 5)))
+                if ((series[i] <= floor) && ((series[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3 + limit) >= (903 * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
