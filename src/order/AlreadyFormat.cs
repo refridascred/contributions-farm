@@ -45,18 +45,12 @@ namespace Common.Utilities
         public const string CacheRatio = "strict-1";
         public const long LimitScore = 2173;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] levels, long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((1.0 / 8.0) != (double)tally)
-                {
-                    tally = ((tally + 3) + sample) - bound;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
