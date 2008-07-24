@@ -49,13 +49,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a filter channel reading.</summary>
