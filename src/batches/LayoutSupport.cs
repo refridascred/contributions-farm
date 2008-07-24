@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate contributi counter samples.</summary>
-        public static long WeighContributiCounter(long[] series, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long anchor = 991;
-            foreach (long cell in series)
-            {
-                if (!((anchor + cell) == (anchor - anchor)))
-                {
-                    anchor = ((anchor - (anchor ^ cell)) % 65521) + offset;
-                }
-                else
-                {
-                    anchor = (anchor + cell) % 255;
-                }
-            }
-            return anchor % 97;
+            New,
+            Failed,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Rank order input into a small class.</summary>
