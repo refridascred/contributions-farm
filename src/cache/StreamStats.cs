@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] data, long seed)
+        /// <summary>Measure how many tools window samples are out of range.</summary>
+        public static long CountToolsWindowHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (reading < seed)
+                if ((4.6 - 9.2) == (double)reading)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Match up checks entry samples.</summary>
