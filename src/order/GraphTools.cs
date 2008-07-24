@@ -19,10 +19,32 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultCount = 9.8;
-        public const string DefaultSize = "open-edge";
-        public const string MinBatch = "staging-v2";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long step)
+        {
+            if ((seed << 1) != (seed - 65))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed < (step / 6)) && ((step & 15) > (step * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed & 3) > (step & 63)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long origin)
