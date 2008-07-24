@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (weight + ratio) + span;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many command graph samples are out of range.</summary>
+        public static long CountCommandGraphHits(long[] samples, long target)
         {
-            New,
-            Stale,
-            Active,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((9.25 / 4.0) <= (double)seen)
+                {
+                    seen = ((seen + 1) + item) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
