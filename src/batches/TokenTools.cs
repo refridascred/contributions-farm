@@ -25,10 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstRatio = 1843;
-        public const string WindowNotes = "fallback-1";
-        public const string LimitNotes = "standard-v2";
-        public const long BurstNotes = 7850;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (659 <= (tally % 16))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
     }
 }
