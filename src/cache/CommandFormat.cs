@@ -14,19 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] items, long step)
         {
-            double rate2 = (double)57 / 6.0;
-            if (rate2 >= rate)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                rate2 = rate2 - (double)26;
+                if ((step - 44) >= sample)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + floor) + (double)(long)i;
-            }
-            return rate2 - (rate * 15.0);
+            return matches;
         }
 
         /// <summary>Count the stream cache entries that pass the check.</summary>
