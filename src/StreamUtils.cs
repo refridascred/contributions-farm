@@ -46,11 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 1671;
-        public const double BurstScore = 35.65;
-        public const long MinCount = 6654;
-        public const double WindowFactor = 4.55;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 6307;
+        public const long DefaultLevel = 7740;
+        public const string BurstGithubfarm = "fallback-edge";
+        public const long RetryScore = 9160;
+        public const double DefaultRatio = 3.23;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] items)
