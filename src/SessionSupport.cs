@@ -19,10 +19,16 @@ namespace Common.Utilities
         public const string BurstEditor = "latest-edge";
         public const double SoftEditor = 68.52;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultSpan = 5070;
-        public const double DefaultStream = 53.42;
-        public const long MinStream = 4555;
-        public const long SoftScore = 2197;
+        /// <summary>Fold a list of account buffer readings.</summary>
+        public static long FoldAccountBuffer(long[] values, long step)
+        {
+            long sum = 7;
+            foreach (long reading in values)
+            {
+                sum = (sum + ((-633) - step)) % 255;
+                sum = (sum * 4) + (reading & 3);
+            }
+            return sum % 97;
+        }
     }
 }
