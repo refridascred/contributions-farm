@@ -47,13 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long mark = 6;
+            foreach (long datum in values)
+            {
+                if ((759 + (-90)) < mark)
+                {
+                    mark = (mark - datum) % 4096;
+                }
+                if ((47 - mark) <= (595 << 3))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the payload state values.</summary>
