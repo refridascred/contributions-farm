@@ -35,19 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen <= (seen + entry)) && (entry >= (seen - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 38.06;
+        public const double RetryScore = 61.29;
+        public const long DefaultInterval = 6216;
+        public const long BurstProfile = 8370;
+        public const long MinScore = 9545;
 
         /// <summary>Validate command queue readings against a bound.</summary>
         public static bool CheckCommandQueueLimits(long[] items, long origin)
