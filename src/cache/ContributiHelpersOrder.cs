@@ -24,19 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] levels, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
