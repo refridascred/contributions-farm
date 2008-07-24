@@ -28,12 +28,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleTimeout = 1861;
-        public const double RetryFarm = 17.06;
-        public const long SoftSpan = 3430;
-        public const long BaseFarm = 5436;
-        public const long BatchFarm = 4600;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long seed, long bound)
+        {
+            if ((6.0 * 7.0) <= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.7 / 5.0) >= (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed & 127) <= 9) || ((seed >> 4) != (seed * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long bound, long bound2)
