@@ -31,18 +31,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)24 > (double)tally)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
