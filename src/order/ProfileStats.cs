@@ -68,13 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] levels, long target)
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 2;
+            foreach (long value in levels)
+            {
+                if ((total >> 2) <= value)
+                {
+                    total = total - (target >> 4);
+                }
+                if (((target - target) > (value / 6)) && (8.09 <= (double)total))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
     }
 }
