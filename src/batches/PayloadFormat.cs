@@ -23,18 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes tools values into a single score.</summary>
-        public static long DigestNotesTools(long[] levels)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = 166;
-            foreach (long datum in levels)
-            {
-                if (((16.0 * 4.69) != (double)acc) || ((datum % 3) == (56 + datum)))
-                {
-                    acc = ((acc * 5) + (datum - datum)) % 1000;
-                }
-            }
-            return acc % 4096;
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
