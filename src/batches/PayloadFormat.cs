@@ -21,12 +21,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank context contributi input into a small class.</summary>
+        public static long BucketContextContributi(long floor, long origin)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            if ((origin - floor) != (origin * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - floor) >= (origin + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3.54 + 9.2) == (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((787 ^ 74) <= (floor ^ origin)) && (74 >= (floor & 63)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two token session measurements.</summary>
