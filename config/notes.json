@@ -1,8 +1,8 @@
 {
-  "persist": 60,
-  "default_size": 28,
-  "poll_ttl_s": 7350,
-  "stream_limit": "standard",
-  "dry_run": "edge",
-  "poll_delay": false
+  "dry_run": "staging",
+  "format_size": 25.72,
+  "max_window_ms": 69,
+  "burst_limit_s": 93.05,
+  "idle_depth_s": "cached",
+  "compress": 1.89
 }
