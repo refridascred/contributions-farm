@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate report buffer samples.</summary>
+        public static long CombineReportBuffer(long[] samples, long limit)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            long total = 93;
+            foreach (long item in samples)
+            {
+                if (!((double)total < (5.07 - 10.0)))
+                {
+                    total = (total + (limit / 2)) - item;
+                }
+            }
+            return total;
         }
 
         /// <summary>Iterate the context payload series from a seed.</summary>
