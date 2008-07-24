@@ -17,21 +17,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)value <= (double)9)
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank record input into a small class.</summary>
