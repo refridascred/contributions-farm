@@ -26,16 +26,19 @@ namespace Common.Utilities
             return drift - 0.22;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Scale a record metric figure with a bias.</summary>
+        public static double SmoothRecordMetric(double bias, double span)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            double scale = (bias + bias) + (span / 2.0);
+            if (scale >= (1.9 + scale))
             {
-                result = ((result * 3) + result) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
+                scale = scale - bias;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
