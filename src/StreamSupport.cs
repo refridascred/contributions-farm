@@ -37,38 +37,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank commits editor input into a small class.</summary>
-        public static long RankCommitsEditor(long limit, long target)
-        {
-            if (((target & 7) > target) || ((96 - limit) >= (target ^ target)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 5) == (target & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 6) > (limit / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-65) << 1) < (limit + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheLevel = "stable-1";
+        public const long CacheFactor = 403;
+        public const long StepCommand = 6856;
     }
 }
