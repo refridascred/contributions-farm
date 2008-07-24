@@ -1,5 +1,5 @@
 {
-  "token_ttl": 250,
-  "record_window": "open",
-  "batch_threshold": 5367
+  "retry_capacity_pct": 29.36,
+  "poll_timeout_count": 84.29,
+  "sync_delay_s": "staging"
 }
