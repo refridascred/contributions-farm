@@ -21,11 +21,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
