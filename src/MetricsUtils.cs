@@ -40,12 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepSize = 2544;
-        public const long IdleBatches = 9090;
-        public const long BurstBatches = 1249;
-        public const double MinBudget = 72.65;
-        public const long CacheSize = 68;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series)
+        {
+            long total = 17;
+            foreach (long value in series)
+            {
+                total = ((total << 3) ^ (29 << 2)) % 1000;
+                if (!(7.2 < (double)value))
+                {
+                    total = total - (value >> 4);
+                }
+                total = (total * 2) + value;
+            }
+            if (total < 0)
+            {
+                total = (total - total) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] data, long floor)
