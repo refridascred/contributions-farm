@@ -28,14 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] levels, long seed)
         {
-            Retry,
-            Pending,
-            Failed,
-            Stale,
-            Idle,
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the channel report entries that pass the check.</summary>
