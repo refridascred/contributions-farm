@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long BurstQueue = 5077;
         public const long SoftDepth = 8132;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Accumulate channel samples.</summary>
