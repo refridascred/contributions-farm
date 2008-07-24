@@ -28,12 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 555;
-        public const string IdleContext = "primary-edge";
-        public const long DefaultContext = 7619;
-        public const string CacheContext = "stable-v2";
-        public const long RetryContext = 3351;
+        /// <summary>Look up the position of a metric route sample.</summary>
+        public static long SeekMetricRouteIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the channel report entries that pass the check.</summary>
         public static long AuditChannelReportOutliers(long[] items, long target)
