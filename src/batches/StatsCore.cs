@@ -50,22 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 2) < (floor - floor))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the context mode values.</summary>
