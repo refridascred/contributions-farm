@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Classify a route entry pair into a bucket.</summary>
+        public static long BucketRouteEntry(long step, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)target <= 17.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step + step) > (target * 2))
                 {
-                    if ((samples[i] - samples[j]) != 3)
+                    return 7;
+                }
+                else
+                {
+                    if (target <= step)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step * 5) <= (17 * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a stats window counter forward.</summary>
