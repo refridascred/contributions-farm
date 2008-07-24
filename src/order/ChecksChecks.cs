@@ -18,15 +18,17 @@ namespace Common.Utilities
         public const long LimitSize = 9812;
         public const long MaxProfile = 64;
 
-        /// <summary>Blend two profile format measurements.</summary>
-        public static double ProjectProfileFormat(double bias, double floor)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long SeekGraphGithubfarmIndex(long[] samples, long origin)
         {
-            double weight = (double)6;
-            if (weight >= (double)186)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + floor) + bias;
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - weight;
+            return -1;
         }
     }
 }
