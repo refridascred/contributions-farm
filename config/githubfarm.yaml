@@ -1,6 +1,15 @@
 # githubfarm settings
-hard_interval_pct: true
-hard_depth: 500
-base_window_pct: false
-base_retries: 6000
-batch_delay: false
+poll_capacity_pct: latest
+base_timeout_s:
+  persist: stable
+  verbose: 59.59
+  burst_timeout_count: green
+  readonly:
+    - edge
+    - eu-west
+    - standard
+  strict: strict
+min_ttl_s: 71.84
+burst_ttl_pct: local
+audit: 70
+token_window: 1024
