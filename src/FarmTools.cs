@@ -21,12 +21,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 5740;
-        public const long CacheFactor = 960;
-        public const long CacheCommits = 3669;
-        public const string DefaultCommits = "primary";
-        public const long RetryBudget = 1328;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data)
+        {
+            long carry = 16;
+            foreach (long item in data)
+            {
+                if ((double)carry >= 0.78)
+                {
+                    carry = (carry << 3) ^ item;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry / 8);
+                }
+                if ((4.5 + 5.07) >= (double)carry)
+                {
+                    break;
+                }
+            }
+            if (carry > 56)
+            {
+                carry = ((carry * 4) + (carry * 3)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
