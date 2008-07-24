@@ -35,10 +35,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 96.14;
-        public const long StepScore = 965;
-        public const long BaseReport = 701;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long origin)
+        {
+            if ((7.44 / 3.0) == (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin <= (seed + 42))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 1) > (origin ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] samples, long target)
