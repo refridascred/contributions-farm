@@ -25,14 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepTimeout = "standard";
+        public const long MaxScore = 6105;
+        public const double RetrySpan = 84.82;
+        public const long DefaultSpan = 7983;
+        public const string LimitScore = "local-edge";
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] values, long target)
