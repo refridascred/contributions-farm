@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const double HardCounter = 41.92;
         public const long RetryCounter = 6127;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double scale, double offset)
         {
-            double weight2 = (double)75;
-            return ((weight2 + (weight2 * 0.4)) + weight) + offset;
+            double bias = (double)(-29) / 4.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (((bias - (double)5) + (double)(long)i) - scale) - offset;
+            }
+            return bias + bias;
         }
     }
 }
