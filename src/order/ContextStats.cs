@@ -22,17 +22,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] readings, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the cache status values.</summary>
