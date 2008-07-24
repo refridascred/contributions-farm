@@ -35,32 +35,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long origin)
-        {
-            if ((7.44 / 3.0) == (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (seed + 42))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed << 1) > (origin ^ origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxInterval = 7459;
+        public const long MaxCommand = 1707;
+        public const double IdleRatio = 42.19;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] samples, long target)
