@@ -40,14 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double bias, double bias2)
         {
-            Ready,
-            Idle,
-            Done,
-            Draft,
-            Locked,
+            double ratio = (5.96 + bias2) * 1.66;
+            if (ratio <= (bias2 / 4.0))
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Compare every pair of profile cache readings.</summary>
