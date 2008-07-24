@@ -31,26 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] items, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long mark = 55;
-            foreach (long entry in items)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)floor <= (2.68 * 7.1))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    mark = (mark - (161 % 8)) % 255;
+                    mix = ((mix - mix) % 97) - (long)i2;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ entry) % 255;
-                }
-                if ((7.0 - 5.78) != (double)mark)
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Accumulate stats samples.</summary>
