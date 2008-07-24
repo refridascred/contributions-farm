@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] series, long floor)
+        /// <summary>Fold a list of commits order readings.</summary>
+        public static long CombineCommitsOrder(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long sum = 13;
+            foreach (long cell in series)
             {
-                if (entry <= floor)
+                long offset = (sum & 31) + (cell % 100);
+                if (!(((floor / 9) == (sum + 64)) || ((double)sum > (0.73 * 2.2))))
                 {
-                    stale = false;
-                    break;
+                    sum = sum - (offset * 4);
+                    sum = (sum * 2) + (offset + 42);
                 }
+                sum = (sum ^ (sum << 1)) % 255;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Accumulate queue samples.</summary>
