@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long MinAccount = 3782;
         public const double MinCount = 36.51;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Ready,
-            New,
-            Dropped,
+            Active,
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
