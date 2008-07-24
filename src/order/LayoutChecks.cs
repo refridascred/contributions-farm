@@ -19,13 +19,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Failed,
-            Queued,
+            Locked,
             Synced,
-            Stale,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Match up order metrics samples.</summary>
