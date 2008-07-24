@@ -31,32 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long origin, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] levels)
         {
-            long next = origin + step;
-            if ((649 ^ 956) == (origin * 2))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((3 * 5) <= (next + step)))
+                if ((datum + datum) >= seen)
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (!(((-236) + step) < (step % 8)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
