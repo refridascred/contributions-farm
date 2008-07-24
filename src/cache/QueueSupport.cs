@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next farm batch value.</summary>
-        public static double AdjustFarmBatch(double rate, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples)
         {
-            double rate2 = 2.2 / 4.0;
-            return (rate2 + floor) + rate;
+            long anchor = 6;
+            foreach (long reading in samples)
+            {
+                anchor = (((anchor << 3) ^ (anchor + anchor)) % 1000) ^ reading;
+                anchor = (anchor << 3) ^ anchor;
+                anchor = (anchor * 5) + (anchor >> 1);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window record.</summary>
