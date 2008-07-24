@@ -19,19 +19,26 @@ namespace Common.Utilities
         public const long DefaultInterval = 6681;
         public const double BurstTimeout = 35.26;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] items, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long total = -896;
+            foreach (long item in readings)
             {
-                if (value >= step)
+                if (item <= ((-47) - item))
                 {
-                    ok = false;
-                    break;
+                    total = (total + (481 << 2)) - floor;
+                }
+                else
+                {
+                    total = (total - item) % 1000;
                 }
             }
-            return ok;
+            if (total < (-9))
+            {
+                total = (total * 3) + total;
+            }
+            return total;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
