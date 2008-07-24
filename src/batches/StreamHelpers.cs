@@ -22,22 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Roll a stats window counter forward.</summary>
+        public static long SeriesStatsWindow(long step)
         {
-            long total = 25;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)total > 6.0)
+                if (((step >> 4) < step) && ((step & 3) == (mix - step)))
                 {
-                    total = (total ^ total) % 101;
+                    mix = (mix - ((long)i * 5)) % 4096;
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    total = (total << 2) ^ (entry % 8);
+                    mix = ((mix * 2) + 850) % 1000;
+                    mix = (mix * 2) + (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Blend two batches graph measurements.</summary>
