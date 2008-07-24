@@ -67,10 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9548;
-        public const long RetryOrder = 5472;
-        public const double BurstRatio = 29.36;
-        public const double LimitScore = 49.74;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)(long)i == (3.4 + 15.0))
+                {
+                    acc = (acc ^ (acc / 5)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
