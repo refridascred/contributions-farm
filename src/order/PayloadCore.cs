@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] values, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
