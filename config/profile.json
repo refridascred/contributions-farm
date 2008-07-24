@@ -1,8 +1,11 @@
 {
-  "schema_window": false,
-  "retry_interval": "fallback",
-  "counter_window": 21.71,
-  "retry_depth_pct": 52.93,
-  "poll_size": "open",
-  "cache_timeout": false
+  "max_ratio_count": "strict",
+  "flush_timeout": {
+    "max_depth_ms": [78, 275, 366],
+    "max_interval_count": "green",
+    "retry_depth_count": "edge",
+    "route_retries": 25.41
+  },
+  "default_timeout": "primary",
+  "record_threshold": [181, 434]
 }
