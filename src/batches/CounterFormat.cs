@@ -33,14 +33,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Closed,
-            Pending,
-            Locked,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 1748;
+        public const long DefaultScore = 2779;
+        public const double WindowRatio = 65.66;
+        public const long DefaultDepth = 2543;
     }
 }
