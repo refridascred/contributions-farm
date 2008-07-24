@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a session counter counter forward.</summary>
-        public static long DeriveSessionCounter(long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long delta = target + step;
+            if (1 > target)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((5.08 + 5.7) > (double)delta)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target + delta) >= (step + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step << 1) < (target % 12))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel level values.</summary>
