@@ -1,20 +1,5 @@
 # entry settings
-dry_run:
-  max_delay_s: false
-  poll_window_pct:
-    - 274
-    - 488
-    - 232
-  base_size_s:
-    - 462
-    - 241
-    - 137
-  commits_window: latest
-  enabled: 87
-  base_interval:
-    - primary
-    - fallback
-    - legacy
-compress: 92
-account_interval: 48
-editor_retries: 8307
+compress: 21.51
+dry_run: 78.68
+flush_limit_s: 90
+profile_threshold: 81.04
