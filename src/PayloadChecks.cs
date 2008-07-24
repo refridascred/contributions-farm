@@ -43,18 +43,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the channel report entries that pass the check.</summary>
-        public static long AuditChannelReportOutliers(long[] items, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample - 648) < (seen % 10))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = (seen + 2) - target;
+                    sum = ((sum ^ (sum + origin)) % 65521) - (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a stats options.</summary>
