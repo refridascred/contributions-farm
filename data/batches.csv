@@ -1,6 +1,9 @@
-id,state,active
-1,467,31.16
-2,eu-west,72
-3,602,39.61
-4,eu-west,41.4
-5,171,21.99
+id,ratio,score,state
+1,open,182,404
+2,525,207,legacy
+3,878,32.95,local
+4,476,51.91,36.58
+5,204,11.12,legacy
+6,blue,32.38,602
+7,latest,153,40.39
+8,strict,strict,249
