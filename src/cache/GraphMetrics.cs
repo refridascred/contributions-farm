@@ -22,23 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Accumulate support checks samples.</summary>
+        public static long DigestSupportChecks(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long result = 91;
+            foreach (long item in samples)
             {
-                if ((limit + 35) == ((long)i + acc))
-                {
-                    acc = (acc ^ ((long)i - limit)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (long)i) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                result = (result << 3) ^ (item - item);
             }
-            return acc;
+            if (result > 24)
+            {
+                result = result + (result % 60);
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate already samples.</summary>
