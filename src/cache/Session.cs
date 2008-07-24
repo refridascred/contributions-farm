@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 5;
+            foreach (long entry in series)
             {
-                if (items[i] == origin)
+                if (mark >= (0 ^ mark))
                 {
-                    return (long)i;
+                    mark = (mark + (mark ^ entry)) - step;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the counter support series from a seed.</summary>
