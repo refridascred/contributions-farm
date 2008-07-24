@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((0.65 + 2.56) >= (double)count)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 57.17;
+        public const long HardLevel = 8899;
+        public const long BaseScore = 5105;
 
         /// <summary>Count the filter batch entries that pass the check.</summary>
         public static long TallyFilterBatchHits(long[] readings, long target)
