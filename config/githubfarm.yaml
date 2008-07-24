@@ -1,5 +1,10 @@
 # githubfarm settings
-schema_ratio: false
-stream_timeout: 1024
-batches_capacity: green
-sync_capacity_count: staging
+base_ratio_s: latest
+cache_delay_s:
+  - stable
+  - local
+  - open
+verbose: true
+format_window: true
+poll_limit_pct: 1024
+persist: 78.78
