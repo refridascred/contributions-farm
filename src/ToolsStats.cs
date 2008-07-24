@@ -37,21 +37,15 @@ namespace Common.Utilities
         public const string BurstBudget = "fallback-1";
         public const long BaseTools = 8067;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 4.5;
+            if (rate > weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + (double)39) - bias;
             }
-            return seen;
+            return rate - (double)6;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
