@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a report filter pair into a bucket.</summary>
-        public static long GradeReportFilter(long limit, long floor)
-        {
-            if ((limit + limit) == (floor + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((16.0 / 6.0) < (double)floor) && ((limit + limit) == (floor - limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "stable-v2";
+        public const long SoftWidth = 2795;
+        public const double StepEntry = 39.74;
+        public const long SoftScore = 3368;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionBounds(long[] items, long bound)
