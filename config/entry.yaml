@@ -1,15 +1,14 @@
 # entry settings
-verbose:
-  soft_capacity: 13.66
-  hard_size_pct: 100
-  context_window: open
-  retry_window_ms:
-    - local
-    - local
-    - legacy
-compress:
-  - cached
+stream_threshold:
   - latest
-enabled: true
-metrics_ttl: true
-retry_threshold_ms: latest
+  - open
+  - local
+  - blue
+record_size: 51.18
+flush_ttl: edge
+channel_size: 63
+sync_size: open
+notes_size:
+  - 313
+  - 276
+  - 158
