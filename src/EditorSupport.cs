@@ -81,9 +81,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultInterval = "standard-v2";
-        public const double BurstLevel = 39.23;
-        public const string BurstTools = "fallback-1";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((1.0 * 4.0) <= (double)datum)
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
+        }
     }
 }
