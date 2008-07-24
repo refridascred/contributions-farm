@@ -73,15 +73,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            if ((15.0 + 7.3) == (double)target)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((origin - origin) <= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin ^ origin) > (origin / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
