@@ -76,18 +76,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] data)
+        /// <summary>Digest a series of filter contributi entries.</summary>
+        public static long CombineFilterContributi(long[] items)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = 3;
+            foreach (long item in items)
             {
-                if (((item ^ item) >= (hits & 127)) || ((3 + item) >= item))
+                carry = ((carry * 3) + (0 % 24)) % 4096;
+                if (((item * 2) < (carry + item)) && ((carry + item) < item))
                 {
-                    hits = hits + 2;
+                    carry = (carry - (item >> 5)) % 255;
+                }
+                if (!((carry % 64) > carry))
+                {
+                    carry = (carry << 3) ^ (item + item);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
