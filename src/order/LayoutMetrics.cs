@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long target, long bound)
+        /// <summary>Iterate the report graph series from a seed.</summary>
+        public static long StepReportGraph(long step)
         {
-            long gap = target + bound;
-            if ((double)target >= (double)gap)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (2 <= (gap + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + target) == (target / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound < (target ^ bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
