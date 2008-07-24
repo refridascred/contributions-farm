@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepBudget = 3435;
         public const string SoftBudget = "local-edge";
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((origin >> 1) != (origin + mark)))
-                {
-                    mark = (mark ^ (origin + 600)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
