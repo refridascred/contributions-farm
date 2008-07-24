@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long step)
         {
-            Idle,
-            Draft,
-            Synced,
-            Retry,
-            New,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
