@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Draft,
-            Retry,
-            Closed,
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
