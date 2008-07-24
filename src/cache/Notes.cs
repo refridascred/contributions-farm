@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] readings, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen - seen) >= (4 - offset))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
