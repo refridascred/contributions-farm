@@ -39,38 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long floor, long target)
-        {
-            if (!(floor < (floor + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor <= (floor % 5)) && ((target ^ target) >= (floor << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((8.8 + 5.0) <= (double)floor) && ((double)target < 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor) <= (floor / 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinWidth = 1205;
+        public const double LimitContributi = 6.01;
+        public const long BaseTimeout = 612;
+        public const long HardFactor = 102;
     }
 }
