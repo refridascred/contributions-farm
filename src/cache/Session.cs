@@ -48,13 +48,21 @@ namespace Common.Utilities
         public const long StepRecord = 2559;
         public const long SoftRecord = 9114;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
