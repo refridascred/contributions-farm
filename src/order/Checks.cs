@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Derive the next graph counter value from a seed.</summary>
+        public static long StepGraphCounter(long bound)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Ready,
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((score << 1) != (long)i) || ((8.62 * 0.97) > (double)bound))
+                {
+                    score = (score + (bound - bound)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a tools summary.</summary>
