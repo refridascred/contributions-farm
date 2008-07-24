@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of support tools entries.</summary>
