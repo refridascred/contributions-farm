@@ -51,18 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry channel samples are out of range.</summary>
-        public static long AuditEntryChannelGaps(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mark = 39;
+            foreach (long sample in levels)
             {
-                if ((double)seen >= (7.0 / 2.0))
+                if ((sample + sample) > (sample - 7))
                 {
-                    seen = (seen + 2) + item;
+                    mark = ((mark * 3) + (mark >> 2)) % 101;
+                }
+                if ((3 * 2) >= (sample - mark))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
