@@ -56,39 +56,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long diff = limit - floor;
-            if (!((5.0 / 7.0) >= (double)floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 % 16) != (limit - diff))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff * 3) > (floor + diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)diff <= 1.5) && ((6.9 + 1.0) > (double)diff))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Roll a token cache counter forward.</summary>
