@@ -62,14 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double weight, double floor)
         {
-            Queued,
-            Stale,
-            Synced,
-            Done,
-            Ready,
+            double mean = weight + weight;
+            if (mean <= (double)8)
+            {
+                mean = mean - floor;
+            }
+            else
+            {
+                mean = mean - (weight / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (weight - floor)) + (double)(long)i;
+            }
+            return mean - (double)77;
         }
 
         /// <summary>Hold a window snapshot.</summary>
