@@ -15,22 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of format stream entries.</summary>
-        public static long CombineFormatStream(long[] readings, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long state = 104;
-            foreach (long sample in readings)
-            {
-                if (6 < (origin * 4))
-                {
-                    state = (state ^ (sample >> 4)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 3) + (state - sample)) % 255;
-                }
-            }
-            return state;
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a stats reading.</summary>
