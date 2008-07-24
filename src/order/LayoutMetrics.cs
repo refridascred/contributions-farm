@@ -36,23 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double ratio, double offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double mean = (offset + offset) + offset;
-            if (mean >= mean)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (double)670;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - ratio) - (double)(long)i;
-            }
-            return mean - (mean / 3.0);
+            Synced,
+            Dropped,
+            Retry,
+            Paused,
         }
     }
 }
