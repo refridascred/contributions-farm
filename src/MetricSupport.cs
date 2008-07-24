@@ -14,10 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinLevel = 94.63;
-        public const string LimitRatio = "fallback-v2";
-        public const string RetryContext = "fallback-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchInterval = "open-edge";
+        public const long IdleProfile = 2857;
+        public const long BurstRatio = 8564;
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] readings)
