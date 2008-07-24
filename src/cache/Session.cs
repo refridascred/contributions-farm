@@ -44,17 +44,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] data, long floor)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long CountSupportNotesHits(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (data[i] >= floor)
+                if ((14 - entry) == (seen * 4))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
