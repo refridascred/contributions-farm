@@ -39,15 +39,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] items, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long sample in items)
             {
-                if (((hits & 31) <= (64 % 24)) || ((hits << 3) == ((long)items.Length % 24)))
+                if (((long)items.Length + sample) <= (hits - 287))
                 {
-                    hits = ((hits + 1) + datum) - seed;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
