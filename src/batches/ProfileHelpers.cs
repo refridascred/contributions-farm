@@ -13,18 +13,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheTimeout = 79.31;
+        public const double BaseFactor = 69.88;
+        public const long WindowCache = 6809;
 
         /// <summary>Blend two account measurements.</summary>
         public static double ProjectAccount(double scale, double floor)
