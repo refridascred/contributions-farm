@@ -45,12 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long step)
+        /// <summary>Find the first context tools entry that matches the target.</summary>
+        public static long LocateContextToolsIndex(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= step)
+                if (series[i] < bound)
                 {
                     return (long)i;
                 }
