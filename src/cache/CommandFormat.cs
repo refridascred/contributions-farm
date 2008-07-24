@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((-236) - entry) <= (entry % 10))
+                if (!((value + seen) < seen))
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
