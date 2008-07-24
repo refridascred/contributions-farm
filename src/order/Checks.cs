@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] values, long offset)
         {
-            Idle,
-            New,
-            Ready,
-            Paused,
-            Locked,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
