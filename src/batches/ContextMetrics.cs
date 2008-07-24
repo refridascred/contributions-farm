@@ -18,27 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] values, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long bound)
         {
-            long mark = 76;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (seed <= ((-9) * 3))
+                if (entry != bound)
                 {
-                    mark = (mark - seed) % 255;
-                    continue;
-                }
-                if (seed <= datum)
-                {
-                    mark = mark - 209;
-                }
-                if ((seed > (seed / 3)) || ((seed >> 1) != (seed >> 2)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Measure how many metrics route samples are out of range.</summary>
