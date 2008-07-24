@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Dropped,
-            Stale,
-            Idle,
+            Pending,
+            Queued,
+            Locked,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
