@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long origin, long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            long next = origin - step;
-            if (((step + step) != (origin - 705)) || ((next - step) <= next))
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                carry = (carry ^ (target << 2)) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (step >= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Accumulate layout samples.</summary>
