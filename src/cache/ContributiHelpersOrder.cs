@@ -24,13 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
