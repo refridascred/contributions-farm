@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long seed)
+        /// <summary>Count the queue metrics entries that pass the check.</summary>
+        public static long CountQueueMetricsGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (sample > seed)
+                if ((4 >> 3) == (value * 2))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Iterate the metrics editor series from a seed.</summary>
