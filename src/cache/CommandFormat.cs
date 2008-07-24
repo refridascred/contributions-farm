@@ -46,18 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] samples, long bound)
+        /// <summary>Measure how many metric profile samples are out of range.</summary>
+        public static long TallyMetricProfileOutliers(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((bound + seen) < (bound - bound))
+                if (!(((288 ^ (long)levels.Length) >= hits) || (bound >= (hits - item))))
                 {
-                    seen = (seen + 2) + entry;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
