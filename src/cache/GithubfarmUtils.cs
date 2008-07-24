@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Validate context order readings against a bound.</summary>
+        public static bool ValidateContextOrderBounds(long[] items, long limit)
         {
-            long carry = 7;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 9; i++)
+                if (sample != limit)
                 {
-                    carry = (carry + (carry * 4)) + (long)i;
+                    stale = false;
+                    break;
                 }
-                carry = (carry ^ (datum / 7)) % 97;
             }
-            if (carry > 8)
-            {
-                carry = ((carry << 3) ^ (carry * 4)) % 4096;
-            }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
