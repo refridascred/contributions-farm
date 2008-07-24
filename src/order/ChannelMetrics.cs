@@ -28,22 +28,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((((reading + reading) < (867 / 5)) || ((35 & 3) == (reading - matches))) || (reading >= matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Queued,
         }
     }
 }
