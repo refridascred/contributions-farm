@@ -35,11 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 83.03;
-        public const long CacheCluster = 7802;
-        public const double RetryCluster = 60.96;
-        public const long DefaultCluster = 2693;
-        public const long BaseDepth = 8383;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Closed,
+            Pending,
+            Locked,
+            Retry,
+            Dropped,
+        }
     }
 }
