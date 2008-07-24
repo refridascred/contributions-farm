@@ -23,10 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 1.79;
-        public const long BatchLevel = 2501;
-        public const double BurstRatio = 67.41;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] data)
