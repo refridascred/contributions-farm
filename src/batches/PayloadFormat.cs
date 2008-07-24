@@ -20,13 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Iterate the metrics editor series from a seed.</summary>
+        public static long SeriesMetricsEditor(long offset)
         {
-            New,
-            Failed,
-            Closed,
-            Retry,
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (8.01 >= (double)(long)i)
+                {
+                    sum = sum - (sum ^ offset);
+                    sum = ((sum << 3) ^ ((long)i + (long)i)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a farm header.</summary>
