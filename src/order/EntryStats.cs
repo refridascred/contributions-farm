@@ -31,11 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 3372;
-        public const long DefaultContributi = 2167;
-        public const long WindowContributi = 6128;
-        public const long CacheContributi = 3730;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count - offset) > sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MaxReport = 81.95;
