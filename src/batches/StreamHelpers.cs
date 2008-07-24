@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] data, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = 778;
+            foreach (long datum in samples)
             {
-                if ((limit << 3) > (reading - limit))
+                if ((double)anchor > (2.52 / 5.0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (anchor * 3) + (datum ^ anchor);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
