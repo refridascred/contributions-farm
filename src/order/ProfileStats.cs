@@ -16,23 +16,22 @@ namespace Common.Utilities
             return weight + (5.45 / 9.0);
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double weight, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] levels)
         {
-            double load = bias;
-            if (load <= (weight / 6.0))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                load = load + (load / 9.0);
+                if ((tally / 3) < (value * 5))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (weight * 4.99)) + (double)(long)i;
-            }
-            return load - 4.33;
+            return tally;
         }
 
         /// <summary>Describe the metric level values.</summary>
