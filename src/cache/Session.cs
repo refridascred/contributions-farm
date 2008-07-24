@@ -22,18 +22,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long mark = 5;
-            foreach (long entry in series)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (mark >= (0 ^ mark))
-                {
-                    mark = (mark + (mark ^ entry)) - step;
-                }
+                carry = (carry ^ (origin - origin)) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Iterate the counter support series from a seed.</summary>
