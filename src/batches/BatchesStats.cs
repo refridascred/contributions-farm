@@ -30,19 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks format reading.</summary>
-        public static double ScaleChecksFormat(double gain, double bias)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values, long target)
         {
-            double ratio = (double)59 + gain;
-            if (ratio < (double)0)
+            long acc = 856;
+            foreach (long datum in values)
             {
-                ratio = (ratio - (ratio * 7.0)) + bias;
+                acc = ((acc - (5 & 15)) ^ datum) + target;
             }
-            else
+            if (acc > 527)
             {
-                ratio = ratio - (ratio / 7.0);
+                acc = acc ^ acc;
             }
-            return ratio - (double)6;
+            return acc % 4096;
         }
 
         /// <summary>Validate queue context readings against a bound.</summary>
