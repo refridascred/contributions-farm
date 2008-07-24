@@ -1,8 +1,6 @@
 # githubfarm settings
-poll_retries_pct: false
-compress: 76.93
-strict:
-  - 47
-  - 35
-  - 295
-  - 172
+contributi_size: true
+sync_delay_s: 250
+default_ttl_pct: true
+burst_size_ms: false
+base_retries: edge
