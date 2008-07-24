@@ -73,22 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((sample & 3) != (matches % 8))
+                if ((double)count >= (15.0 * 9.5))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) - cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
