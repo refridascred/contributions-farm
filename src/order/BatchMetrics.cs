@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const long MinTools = 9753;
         public const double IdleTools = 80.3;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRatio = 1359;
-        public const long StepRecord = 3917;
-        public const double LimitRecord = 39.64;
-        public const long MaxRecord = 7836;
-        public const double BaseRecord = 64.05;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Look up the position of a format filter sample.</summary>
         public static long LookupFormatFilterIndex(long[] data, long limit)
