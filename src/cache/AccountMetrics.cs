@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values, long bound)
+        /// <summary>Measure how many record order samples are out of range.</summary>
+        public static long TallyRecordOrderMatches(long[] levels, long limit)
         {
-            long sum = 96;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((bound % 10) == (reading + 52))
+                if (matches < (cell << 3))
                 {
-                    sum = (sum << 2) ^ (bound ^ bound);
-                }
-                else
-                {
-                    sum = sum + bound;
+                    matches = (matches + 2) - limit;
                 }
             }
-            if (sum > 5)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
