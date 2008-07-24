@@ -81,11 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            Pending,
+            Draft,
+            Paused,
         }
     }
 }
