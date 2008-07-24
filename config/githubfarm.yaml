@@ -1,15 +1,9 @@
 # githubfarm settings
-poll_capacity_pct: latest
-base_timeout_s:
-  persist: stable
-  verbose: 59.59
-  burst_timeout_count: green
-  readonly:
-    - edge
-    - eu-west
-    - standard
-  strict: strict
-min_ttl_s: 71.84
-burst_ttl_pct: local
-audit: 70
-token_window: 1024
+retry_delay_count: 52.75
+idle_limit: 32
+default_depth_ms: 30
+order_depth: 18
+context_ttl: stable
+idle_depth_ms:
+  - 435
+  - 31
