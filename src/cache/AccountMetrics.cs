@@ -43,10 +43,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 9657;
-        public const long HardReport = 3264;
-        public const long DefaultReport = 4375;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series)
+        {
+            long mix = 159;
+            foreach (long reading in series)
+            {
+                if ((8.0 - 8.7) > (double)reading)
+                {
+                    mix = (mix * 3) + (742 ^ reading);
+                }
+                mix = mix - (mix - reading);
+            }
+            return mix;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
