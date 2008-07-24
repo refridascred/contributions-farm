@@ -57,18 +57,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route order entries.</summary>
-        public static long TallyRouteOrder(long[] levels, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long bound, long origin)
         {
-            long state = 8;
-            foreach (long sample in levels)
+            if ((bound + origin) >= bound)
             {
-                if ((sample + state) < (sample - sample))
+                return 6;
+            }
+            else
+            {
+                if ((bound & 127) != (bound & 7))
                 {
-                    state = ((state ^ (684 - sample)) % 101) - target;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin / 9) <= (81 * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
