@@ -51,11 +51,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxWidth = "primary-v2";
-        public const string StepFarm = "open";
-        public const long BatchWidth = 5339;
-        public const double BatchDepth = 50.86;
-        public const long WindowFarm = 5048;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
