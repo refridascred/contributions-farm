@@ -16,15 +16,15 @@ namespace Common.Utilities
             return scale - (gain / 8.0);
         }
 
-        /// <summary>Audit metric counter readings against a rule.</summary>
-        public static long TallyMetricCounterGaps(long[] values, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] samples, long floor)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long datum in samples)
             {
-                if ((floor + 809) != (floor + floor))
+                if ((floor - seen) < datum)
                 {
-                    seen = (seen + 3) - value;
+                    seen = seen + 1;
                 }
             }
             return seen;
