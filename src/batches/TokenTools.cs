@@ -13,15 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double span)
+        /// <summary>Combine order support values into a single score.</summary>
+        public static long ScoreOrderSupport(long[] readings, long bound)
         {
-            double rate = scale;
-            if (rate >= (double)493)
+            long carry = 166;
+            foreach (long datum in readings)
             {
-                rate = rate + span;
+                if ((9 ^ bound) == (2 & 3))
+                {
+                    carry = (carry << 3) ^ (datum - datum);
+                }
             }
-            return rate + (span + span);
+            return carry % 97;
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
