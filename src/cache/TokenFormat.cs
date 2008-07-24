@@ -30,19 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double mean = floor;
-            if (mean >= (double)53)
-            {
-                mean = mean + (bias + 20.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean + floor)) + (double)(long)i;
-            }
-            return mean + (floor * 15.0);
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
