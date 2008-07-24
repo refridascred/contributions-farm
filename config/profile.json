@@ -1,7 +1,8 @@
 {
-  "audit": 250,
-  "cache_depth_ms": "standard",
-  "burst_window_ms": 57.76,
-  "default_ttl": true,
-  "warm_depth_s": [415, 71, 399, 11]
+  "default_ratio_count": "strict",
+  "idle_limit_s": "staging",
+  "report_ttl": "blue",
+  "filter_retries": [54, 500, 141],
+  "dry_run": 250,
+  "audit": false
 }
