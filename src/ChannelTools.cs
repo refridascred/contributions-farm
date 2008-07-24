@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state - (state - bound)) % 255;
+                if (!(((double)(long)i >= (double)1) && ((double)bound >= (7.1 + 6.0))))
+                {
+                    state = ((state * 4) + ((long)i - state)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a metric entry.</summary>
