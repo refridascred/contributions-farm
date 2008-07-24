@@ -14,13 +14,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            Paused,
-            Stale,
-            Done,
-            Queued,
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor << 2) ^ (315 + limit);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = (anchor ^ (anchor + limit)) - (long)i2;
+                }
+                if (limit >= 69)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
