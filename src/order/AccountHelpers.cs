@@ -51,14 +51,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            Draft,
-            Closed,
-            New,
-            Dropped,
-            Paused,
+            long score = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score + ((long)i + score);
+                if (!!((5 & 3) > offset))
+                {
+                    score = (score * 5) + score;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
