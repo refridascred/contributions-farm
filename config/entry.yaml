@@ -1,26 +1,18 @@
 # entry settings
-retry_capacity:
-  readonly:
-    - 350
-    - 139
-  batch_threshold:
-    sync_limit_s:
-      - strict
-      - eu-west
-    compress: 93.49
-    already_threshold:
-      - eu-west
-      - green
-      - stable
-    format_threshold: 8
-  command_size: 9388
-  idle_capacity_pct:
-    verbose: fallback
-    warm_size_count: cached
-    soft_window: 36.35
-    default_timeout_count: 56
-    idle_depth_pct: 13
-  verbose: 30
-readonly: edge
-batch_depth: fallback
-burst_size_ms: latest
+min_depth:
+  persist: primary
+  enabled: stable
+  burst_threshold_pct: true
+min_limit_count: 1290
+githubfarm_capacity: green
+warm_retries: 23.87
+batch_ratio:
+  idle_interval_count: primary
+  report_delay: staging
+  poll_threshold: standard
+  compress:
+    - stable
+    - open
+    - open
+    - fallback
+cache_limit: 14
