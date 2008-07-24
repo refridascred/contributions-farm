@@ -19,21 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue batches pairs that satisfy a relation.</summary>
-        public static long CompareQueueBatchesCount(long[] values)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
