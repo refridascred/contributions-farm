@@ -68,13 +68,9 @@ namespace Common.Utilities
         public const string WindowTimeout = "fallback-v2";
         public const long RetryOrder = 7012;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryWidth = 7839;
+        public const long MinCommits = 1792;
+        public const long BatchCommits = 9293;
     }
 }
