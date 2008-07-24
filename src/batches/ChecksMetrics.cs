@@ -67,19 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
-        public static bool CheckBatchContributiRange(long[] series, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell < floor)
+                if ((long)i != (4 + 883))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix * 5) + (long)i;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
