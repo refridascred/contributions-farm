@@ -42,32 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metrics farm input into a small class.</summary>
-        public static long GradeMetricsFarm(long seed, long floor)
-        {
-            long diff = seed + floor;
-            if (diff >= (222 % 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((diff / 6) != (floor + 10)) || ((floor + seed) == (diff - 35)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff % 64) == (seed % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultSpan = 5070;
+        public const double DefaultStream = 53.42;
+        public const long MinStream = 4555;
+        public const long SoftScore = 2197;
     }
 }
