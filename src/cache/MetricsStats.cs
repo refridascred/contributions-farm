@@ -31,38 +31,21 @@ namespace Common.Utilities
             return drift - 0.22;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long seed, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
-            if ((69 - seed) >= (seed >> 2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed - seed) == (222 % 100)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target >= 14.0)
+                    if ((readings[i] + readings[j]) < 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((8.1 + 11.0) != (double)seed) && ((double)seed != (5.0 - 8.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
