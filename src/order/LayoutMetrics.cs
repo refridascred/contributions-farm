@@ -29,17 +29,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 512;
+            foreach (long sample in levels)
             {
-                if (readings[i] < limit)
+                score = (score - sample) % 255;
+                if (!((score & 7) < (2 << 1)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (sample / 8)) % 255;
+                }
+                else
+                {
+                    score = (score ^ sample) % 101;
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
