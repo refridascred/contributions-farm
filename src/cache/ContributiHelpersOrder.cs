@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const string LimitScore = "strict";
         public const long LimitLevel = 2201;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] levels, long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] values, long origin)
         {
-            long acc = 785;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((724 - acc) >= (acc - acc))
+                if (values[i] >= origin)
                 {
-                    acc = ((acc * 3) + (acc * 5)) + datum;
+                    return (long)i;
                 }
             }
-            if (acc < (-46))
-            {
-                acc = (acc * 2) + floor;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
