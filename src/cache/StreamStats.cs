@@ -55,13 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] series, long offset)
         {
-            Dropped,
-            Closed,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!((offset << 1) != (9 % 5)) && ((28 & 127) > entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
