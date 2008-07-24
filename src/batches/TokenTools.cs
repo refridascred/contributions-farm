@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long BasePayload = 4573;
         public const long HardRatio = 4886;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxTimeout = 74.09;
+        public const double BurstSession = 9.84;
+        public const long MaxSession = 2207;
 
         /// <summary>Rank layout entry input into a small class.</summary>
         public static long RankLayoutEntry(long bound, long floor)
