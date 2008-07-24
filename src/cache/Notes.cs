@@ -28,22 +28,19 @@ namespace Common.Utilities
         public const double LimitWidth = 64.63;
         public const double BurstMetrics = 59.36;
 
-        /// <summary>Audit layout stream readings against a rule.</summary>
-        public static long CountLayoutStreamMatches(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (((17.0 - 7.5) < (double)seen) || ((datum + (-536)) < (datum - datum)))
+                if (sample > offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a farm summary.</summary>
