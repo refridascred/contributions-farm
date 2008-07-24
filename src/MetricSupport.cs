@@ -14,12 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double rate, double bias)
         {
-            Ready,
-            Dropped,
-            New,
+            double rate2 = bias;
+            if (rate2 >= (rate2 + rate2))
+            {
+                rate2 = rate2 - (6.8 + rate2);
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Project the next route value.</summary>
