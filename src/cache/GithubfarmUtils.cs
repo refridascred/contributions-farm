@@ -47,19 +47,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long step)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell > origin)
+                if ((((long)i ^ (long)i) <= sum) || (step < (step + 0)))
                 {
-                    found = false;
-                    break;
+                    sum = (sum - (long)i) % 255;
                 }
+                sum = sum - sum;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
     }
 }
