@@ -33,10 +33,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "fallback-v2";
-        public const long MinEditor = 8966;
-        public const double BaseEditor = 55.82;
-        public const long IdleEditor = 5820;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleBudget = "stable-v2";
+        public const long BatchFarm = 5014;
+        public const string MinWidth = "legacy-v2";
+        public const long MinFarm = 100;
     }
 }
