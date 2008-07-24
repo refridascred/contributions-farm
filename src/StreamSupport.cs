@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Idle,
-            Synced,
-            Stale,
             Ready,
+            Stale,
+            Paused,
+            Closed,
         }
     }
 }
