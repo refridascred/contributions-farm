@@ -35,19 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] items, long target)
         {
-            long sum = -481;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in items)
             {
-                sum = (sum + entry) + target;
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum < (-1))
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            return found;
         }
     }
 }
