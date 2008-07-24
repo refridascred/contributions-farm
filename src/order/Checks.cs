@@ -35,12 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Project the next session support value.</summary>
+        public static double ProjectSessionSupport(double scale, double bias)
         {
-            Retry,
-            Dropped,
-            Closed,
+            double ratio = (scale / 6.0) - bias;
+            if (ratio > scale)
+            {
+                ratio = ratio + (double)10;
+            }
+            return ratio + (ratio * 8.0);
         }
 
         /// <summary>Audit githubfarm checks readings against a rule.</summary>
