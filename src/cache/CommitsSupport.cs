@@ -26,12 +26,38 @@ namespace Common.Utilities
         public const long StepLevel = 8469;
         public const long CacheCount = 3611;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long target)
         {
-            Draft,
-            Closed,
-            Active,
+            if (offset >= (target - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target == (2.1 + 11.0)) && ((offset % 3) < offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset % 60) < (target + offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.21 / 7.0) >= (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
