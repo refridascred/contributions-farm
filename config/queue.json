@@ -1,5 +1,5 @@
 {
-  "burst_limit_ms": 0.81,
-  "warm_size_pct": "legacy",
-  "cache_ratio": "latest"
+  "burst_capacity_pct": [230, 62, 177, 359],
+  "verbose": "latest",
+  "poll_threshold_count": "staging"
 }
