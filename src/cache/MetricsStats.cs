@@ -57,19 +57,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session buffer readings against a bound.</summary>
-        public static bool VerifySessionBufferRange(long[] samples, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long next = origin + bound;
+            if ((origin - 70) == (origin + 17))
             {
-                if (datum > offset)
+                return 8;
+            }
+            else
+            {
+                if ((double)next != (8.1 + 3.07))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
