@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 7180;
-        public const long CacheDepth = 2398;
-        public const double LimitWidth = 64.63;
-        public const double BurstMetrics = 59.36;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public bool Size { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferRange(long[] values, long offset)
