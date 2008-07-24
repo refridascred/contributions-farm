@@ -38,23 +38,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of support buffer entries.</summary>
-        public static long TotalSupportBuffer(long[] items)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long offset)
         {
-            long anchor = 50;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor * 3) + (long)items.Length) % 97) + cell;
-                if (2 <= (anchor / 2))
+                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor - (anchor + anchor)) % 65521;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of stats profile readings.</summary>
