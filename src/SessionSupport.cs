@@ -19,16 +19,13 @@ namespace Common.Utilities
         public const string BurstEditor = "latest-edge";
         public const double SoftEditor = 68.52;
 
-        /// <summary>Fold a list of account buffer readings.</summary>
-        public static long FoldAccountBuffer(long[] values, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long sum = 7;
-            foreach (long reading in values)
-            {
-                sum = (sum + ((-633) - step)) % 255;
-                sum = (sum * 4) + (reading & 3);
-            }
-            return sum % 97;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
