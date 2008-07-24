@@ -28,23 +28,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] readings)
         {
-            long acc = 348;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 2) + (acc % 3)) + cell;
-                if ((acc + acc) >= 518)
+                if ((((reading + reading) < (867 / 5)) || ((35 & 3) == (reading - matches))) || (reading >= matches))
                 {
-                    acc = acc ^ (acc * 4);
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc > 22)
-            {
-                acc = (acc * 4) + ((long)samples.Length + acc);
-            }
-            return acc;
+            return matches;
         }
     }
 }
