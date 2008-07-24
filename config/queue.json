@@ -1,5 +1,21 @@
 {
-  "enabled": 9167,
-  "retry_limit_ms": 80,
-  "layout_ttl": 21
+  "poll_threshold": "standard",
+  "retry_interval_ms": 60,
+  "hard_limit_ms": {
+    "stats_interval": [83, 108, 498],
+    "default_ratio_ms": 26.66,
+    "readonly": "blue",
+    "dry_run": 250,
+    "poll_delay_s": {
+      "idle_size": "open",
+      "record_retries": false,
+      "context_ratio": 500,
+      "persist": 79.53,
+      "compress": 39.12
+    },
+    "compress": "local"
+  },
+  "audit": "staging",
+  "cache_delay_ms": 6993,
+  "counter_threshold": 18.19
 }
