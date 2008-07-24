@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((double)matches <= (14.0 * 0.2))
+                if (cell < step)
                 {
-                    matches = (matches + 3) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
