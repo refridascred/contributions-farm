@@ -1,7 +1,11 @@
 # support settings
-readonly: true
-editor_delay: false
-base_depth_pct: 1024
-flush_ttl: true
-verbose: primary
-min_window_pct: 27.0
+payload_depth: false
+retry_interval_count: false
+batch_ratio: true
+checks_ratio:
+  - 143
+  - 417
+  - 255
+  - 456
+default_limit_s: eu-west
+retry_retries_s: standard
