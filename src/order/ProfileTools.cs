@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long seed, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if (!(seed < (254 >> 2)))
             {
-                if ((count & 7) > (value % 7))
+                return 2;
+            }
+            else
+            {
+                if ((11.0 + 6.3) >= (double)seed)
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((7 + seed) >= (seed >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) != (origin / 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count queue batches pairs that satisfy a relation.</summary>
