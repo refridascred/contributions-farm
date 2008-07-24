@@ -54,21 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading + limit) <= (reading - seen))
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
