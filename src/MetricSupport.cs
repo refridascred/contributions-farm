@@ -25,12 +25,15 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Project the next cluster schema value.</summary>
+        public static double BlendClusterSchema(double rate, double span)
         {
-            Idle,
-            Closed,
-            Failed,
+            double scale = 1.44;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (((scale + (scale + 5.8)) + (double)(long)i) - rate) + span;
+            }
+            return scale + (double)712;
         }
     }
 }
