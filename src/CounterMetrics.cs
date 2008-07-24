@@ -49,18 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                if (19.0 > (double)count)
-                {
-                    count = (count + 2) ^ reading;
-                }
+                acc = acc ^ (entry / 6);
             }
-            return count;
+            return acc;
         }
     }
 }
