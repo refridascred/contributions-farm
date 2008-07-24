@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] levels, long target)
         {
-            long total = 8;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((5 & 7) != ((-1) + total))
+                if ((double)cell < 2.0)
                 {
-                    total = (total << 3) ^ (sample ^ total);
+                    count = (count + 2) - target;
                 }
             }
-            if (total < (-4))
-            {
-                total = (total ^ (total ^ total)) % 97;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Hold a profile stats.</summary>
