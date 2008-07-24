@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheCount = 4886;
+        public const long BurstLayout = 8142;
+        public const long MaxLayout = 526;
+        public const long IdleRatio = 5361;
+        public const double LimitLayout = 53.96;
 
         /// <summary>Scale a cluster contributi figure with a bias.</summary>
         public static double BlendClusterContributi(double weight, double offset)
