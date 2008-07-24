@@ -46,13 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            Queued,
-            Dropped,
-            New,
-            Closed,
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!!((double)acc <= (double)seed))
+                {
+                    acc = (acc ^ seed) % 4096;
+                    acc = (acc ^ ((long)i & 63)) % 65521;
+                }
+                acc = ((acc << 3) ^ acc) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
