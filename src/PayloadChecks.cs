@@ -62,24 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if (((7 / 5) < (bound - bound)) && ((bound % 24) > (bound * 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 1) < (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Dropped,
+            Synced,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a batches entry.</summary>
