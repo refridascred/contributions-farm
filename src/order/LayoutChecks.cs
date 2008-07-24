@@ -101,19 +101,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of token stream entries.</summary>
-        public static long DigestTokenStream(long[] levels, long step)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long state = 49;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state - (step >> 1);
-                if ((cell ^ cell) <= cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return seen;
         }
     }
 }
