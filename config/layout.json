@@ -1,19 +1,7 @@
 {
-  "metric_ratio": "blue",
-  "verbose": [485, 445],
-  "base_capacity": [312, 188],
-  "min_depth": 79,
-  "soft_ratio_s": {
-    "audit": {
-      "tools_timeout": [11, 339, 173, 482],
-      "sync_ttl_s": 250,
-      "readonly": 6571,
-      "batch_limit_s": false,
-      "farm_window": 824,
-      "sync_ttl_ms": "local"
-    },
-    "idle_capacity": 48.73,
-    "editor_depth": 345
-  },
-  "token_limit": 92.94
+  "burst_depth": "staging",
+  "enabled": 3026,
+  "hard_delay": 60,
+  "cache_delay": "eu-west",
+  "dry_run": "cached"
 }
