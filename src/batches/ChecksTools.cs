@@ -14,10 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitSpan = 5078;
-        public const long DefaultInterval = 6681;
-        public const double BurstTimeout = 35.26;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Classify a batches route pair into a bucket.</summary>
         public static long RankBatchesRoute(long floor, long limit)
