@@ -70,15 +70,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next record window value from a seed.</summary>
-        public static long SeriesRecordWindow(long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
