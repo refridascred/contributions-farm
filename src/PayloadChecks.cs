@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] items, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            long total = 8;
-            foreach (long item in items)
+            long state = -648;
+            foreach (long entry in samples)
             {
-                if (!((double)target <= (double)8))
+                if (((entry + 0) <= (entry ^ 80)) || ((entry - state) >= (entry % 5)))
                 {
-                    total = ((total << 3) ^ (total / 3)) ^ item;
-                    total = (total ^ (target % 2)) % 255;
-                }
-                if ((893 * 5) >= total)
-                {
-                    total = (total + (total & 127)) % 4096;
+                    state = state - (entry ^ entry);
                 }
             }
-            if (total > 787)
+            if (state < 7)
             {
-                total = (total * 2) + (target + total);
+                state = (state << 2) ^ (638 ^ (-9));
             }
-            return total;
+            return state;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
