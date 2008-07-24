@@ -43,21 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < target)
                 {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
