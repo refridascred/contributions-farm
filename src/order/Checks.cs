@@ -23,19 +23,30 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate farm notes readings against a bound.</summary>
-        public static bool ValidateFarmNotesBounds(long[] series, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mix = 824;
+            foreach (long value in items)
             {
-                if (reading >= target)
+                if (mix <= (mix + value))
                 {
-                    valid = false;
+                    mix = ((mix << 2) ^ (value * 4)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (value + 55);
+                }
+                if ((value % 100) > (value << 3))
+                {
                     break;
                 }
             }
-            return valid;
+            if (mix < 53)
+            {
+                mix = (mix - ((-342) % 24)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
