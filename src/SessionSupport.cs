@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Ready,
-            Synced,
-            Pending,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
