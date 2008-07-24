@@ -15,21 +15,39 @@ namespace Common.Utilities
         public const double SoftBudget = 10.7;
         public const long MinRecord = 3754;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = target ^ offset;
+            if ((target - offset) >= (target & 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (edge <= (target + offset))
                 {
-                    if ((series[i] ^ series[j]) < 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset << 2) > (edge ^ 30))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)edge > (3.0 / 2.0)) && ((771 >> 5) <= edge))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
