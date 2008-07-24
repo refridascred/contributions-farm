@@ -42,11 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSize = 3686;
-        public const long SoftInterval = 484;
-        public const long BaseSupport = 979;
-        public const string RetryRatio = "strict-1";
-        public const long DefaultSupport = 5388;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Draft,
+            Retry,
+            Queued,
+            Done,
+        }
     }
 }
