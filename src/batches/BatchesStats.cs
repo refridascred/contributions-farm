@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWidth = 2886;
-        public const long MinSize = 1387;
-        public const long CacheWindow = 9241;
-        public const long WindowDepth = 6186;
-        public const long SoftWindow = 1577;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] items, long floor)
