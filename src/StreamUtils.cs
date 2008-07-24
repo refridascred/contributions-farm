@@ -48,18 +48,21 @@ namespace Common.Utilities
         public const long CacheBuffer = 4521;
         public const long WindowBuffer = 2734;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item - tally) > item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a session graph figure with a bias.</summary>
