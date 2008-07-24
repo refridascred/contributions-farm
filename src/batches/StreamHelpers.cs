@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleInterval = 6031;
-        public const long IdleCount = 7310;
-        public const long CacheOrder = 3989;
-        public const long DefaultWidth = 3959;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
