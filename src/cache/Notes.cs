@@ -17,11 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
