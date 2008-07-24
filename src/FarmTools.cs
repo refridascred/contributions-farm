@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long MaxTools = 187;
         public const string SoftTools = "open-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 8419;
-        public const long BatchBudget = 5174;
-        public const double BaseWidth = 93.42;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values)
+        {
+            long sum = 496;
+            foreach (long reading in values)
+            {
+                if (((17.0 + 3.6) > (double)sum) && ((sum >> 5) >= (sum / 4)))
+                {
+                    sum = sum ^ (reading + sum);
+                }
+            }
+            if (sum > (-187))
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesGaps(long[] series, long target)
