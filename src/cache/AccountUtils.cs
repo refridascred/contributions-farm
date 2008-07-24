@@ -41,14 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Audit entry route readings against a rule.</summary>
+        public static long TallyEntryRouteMatches(long[] series)
         {
-            Active,
-            Closed,
-            Pending,
-            Paused,
-            Ready,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((((seen % 16) == (seen ^ seen)) || ((datum + seen) > (129 * 2))) || (seen < (7 - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
