@@ -1,11 +1,12 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The filter report groups every window by route.
+Run the token check before changing any entry limits.
+Run the graph check before changing any support limits.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every stats change
-- Keep account values small
-- Review channel limits each release
-- Prefer batches defaults
+- Log every session change
+- Validate token input early
+- Keep buffer values small
+- Prefer metrics defaults
