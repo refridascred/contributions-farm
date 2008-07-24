@@ -1,12 +1,7 @@
 {
-  "compress": false,
-  "graph_capacity": "legacy",
-  "min_delay_ms": "fallback",
-  "persist": false,
-  "warm_window_pct": {
-    "audit": "blue",
-    "route_delay": [355, 320, 85, 227],
-    "buffer_timeout": 8110,
-    "default_capacity": ["legacy", "fallback"]
-  }
+  "poll_retries": "eu-west",
+  "sync_retries_pct": false,
+  "compress": 8048,
+  "soft_depth_ms": false,
+  "soft_timeout_pct": [16, 50, 475]
 }
