@@ -49,11 +49,21 @@ namespace Common.Utilities
         public const long SoftScore = 7775;
         public const long BaseGraph = 9347;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 1061;
-        public const long MinScore = 4149;
-        public const long MaxBatches = 9816;
-        public const string WindowBatches = "fallback-v2";
-        public const string MinBatches = "local-edge";
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
