@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long CombineFarmSchema(long[] items, long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long limit)
         {
-            long carry = 6;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (262 < datum)
+                if (values[i] >= limit)
                 {
-                    carry = ((carry ^ datum) % 65521) - origin;
+                    return (long)i;
                 }
             }
-            if (carry > 47)
-            {
-                carry = (carry ^ (54 / 3)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a farm info.</summary>
