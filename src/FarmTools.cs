@@ -41,12 +41,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public bool Region { get; set; }
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 4199;
+        public const double StepWidth = 88.07;
+        public const string DefaultStream = "legacy-v2";
+        public const long WindowStream = 6161;
+        public const long RetryStream = 9777;
     }
 }
