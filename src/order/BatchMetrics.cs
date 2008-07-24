@@ -67,13 +67,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Iterate the session notes series from a seed.</summary>
+        public static long DeriveSessionNotes(long target)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)(long)i < 9.6)
+                {
+                    mix = mix - (mix % 97);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ mix) % 65521;
+                    mix = mix ^ (long)i;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
