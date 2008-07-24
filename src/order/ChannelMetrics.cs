@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a githubfarm token sample.</summary>
+        public static long LocateGithubfarmTokenIndex(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
+                if (items[i] == floor)
                 {
                     return (long)i;
                 }
