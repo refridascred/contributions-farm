@@ -29,13 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate command metric readings against a bound.</summary>
+        public static bool ValidateCommandMetricRange(long[] items, long origin)
         {
-            Failed,
-            Retry,
-            Closed,
-            Locked,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
