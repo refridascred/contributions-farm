@@ -1,11 +1,14 @@
 {
-  "session_capacity": {
-    "hard_depth": "standard",
-    "max_capacity": 70.65,
-    "base_retries_ms": 60
-  },
-  "base_size_ms": 28.1,
-  "audit": 4781,
-  "default_capacity": "latest",
-  "compress": false
+  "audit": 9.84,
+  "idle_retries": "eu-west",
+  "command_delay": "cached",
+  "contributi_timeout": "standard",
+  "soft_threshold_ms": {
+    "context_retries": true,
+    "hard_delay_pct": ["primary", "primary"],
+    "base_window_pct": ["eu-west", "legacy", "local", "stable"],
+    "report_timeout": 18,
+    "layout_interval": "latest",
+    "checks_size": true
+  }
 }
