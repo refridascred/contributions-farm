@@ -36,22 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] series, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!(seen > (reading + seen)) || ((8.0 * 1.0) < (double)reading))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
