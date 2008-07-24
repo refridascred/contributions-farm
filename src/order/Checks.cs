@@ -23,15 +23,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mix = 53;
-            foreach (long value in items)
-            {
-                mix = mix - (value ^ 34);
-            }
-            return mix % 97;
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
