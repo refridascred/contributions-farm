@@ -1,8 +1,5 @@
 {
-  "flush_ttl_s": 250,
-  "compress": 83.72,
-  "context_delay": 52.22,
-  "burst_delay_pct": [296, 229, 41, 500],
-  "burst_limit_ms": ["strict", "latest", "strict"],
-  "base_depth_count": "green"
+  "poll_retries": 250,
+  "support_ttl": 24.8,
+  "hard_ratio_s": "legacy"
 }
