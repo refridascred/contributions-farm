@@ -61,19 +61,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] readings, long target)
+        /// <summary>Classify a buffer notes pair into a bucket.</summary>
+        public static long GradeBufferNotes(long bound, long bound2)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long slot = bound + bound2;
+            if (!((double)bound2 == (4.2 * 9.93)))
             {
-                if (cell > target)
+                return 0;
+            }
+            else
+            {
+                if ((slot + bound) <= bound)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a route summary.</summary>
