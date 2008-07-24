@@ -44,18 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 1671;
+        public const double BurstScore = 35.65;
+        public const long MinCount = 6654;
+        public const double WindowFactor = 4.55;
 
         /// <summary>Digest a series of schema already entries.</summary>
         public static long ScoreSchemaAlready(long[] samples, long limit)
