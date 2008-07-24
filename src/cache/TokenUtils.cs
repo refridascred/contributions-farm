@@ -50,21 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already counter samples.</summary>
-        public static long CompareAlreadyCounterCount(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = step ^ bound;
+            if ((8.6 + 8.2) >= (double)bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(gap > (step ^ 388)))
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
