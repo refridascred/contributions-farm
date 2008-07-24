@@ -57,14 +57,20 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of payload contributi entries.</summary>
+        public static long ScorePayloadContributi(long[] values)
         {
-            Retry,
-            Closed,
-            Done,
-            Draft,
-            Locked,
+            long result = 1;
+            foreach (long entry in values)
+            {
+                result = (result + (result + result)) % 101;
+                result = (result - (entry - result)) % 255;
+            }
+            if (result < 171)
+            {
+                result = result ^ (result + 41);
+            }
+            return result % 4096;
         }
     }
 }
