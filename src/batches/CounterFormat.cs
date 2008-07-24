@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long sum = -67;
-            foreach (long cell in data)
+            long anchor = -527;
+            foreach (long sample in values)
             {
-                sum = ((((sum << 3) ^ (3 & 63)) % 255) - cell) - bound;
+                anchor = ((anchor * 4) + (sample + 59)) % 255;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a checks summary.</summary>
