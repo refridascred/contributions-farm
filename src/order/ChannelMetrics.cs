@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a farm metric pair into a bucket.</summary>
-        public static long GradeFarmMetric(long bound, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long prev = bound - target;
-            if ((bound ^ prev) >= target)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev ^ bound) != (target + prev))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + target) > (target << 3))
+                    if ((series[i] - series[j]) > 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
