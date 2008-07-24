@@ -70,15 +70,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double scale, double bias)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            double load = scale;
-            if (load > bias)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (5.11 * 16.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - load;
+            return tally;
         }
     }
 }
