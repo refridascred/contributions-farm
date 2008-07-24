@@ -40,18 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Match up report queue samples.</summary>
+        public static long CompareReportQueueCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count ^ 4) <= (datum / 7)) && (count < (77 + datum)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
