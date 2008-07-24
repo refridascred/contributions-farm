@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the order window entries that pass the check.</summary>
-        public static long MeasureOrderWindowOutliers(long[] values, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (((offset << 3) > (cell ^ (long)values.Length)) && ((double)tally == (2.9 + 4.4)))
+                if (sample != limit)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
