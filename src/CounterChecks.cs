@@ -55,15 +55,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double weight, double bias)
+        /// <summary>Match up order commits samples.</summary>
+        public static long PairOrderCommitsCount(long[] samples)
         {
-            double gain = (double)((-23) & 255);
-            if (gain < (double)426)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain + (weight + bias);
+            return hits;
         }
 
         /// <summary>Describe the format kind values.</summary>
