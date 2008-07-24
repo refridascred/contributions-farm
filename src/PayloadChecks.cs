@@ -13,15 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Dropped,
+            Idle,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a order record.</summary>
