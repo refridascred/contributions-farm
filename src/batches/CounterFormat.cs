@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "local-edge";
-        public const long DefaultQueue = 3738;
-        public const string IdleFactor = "fallback-v2";
-        public const string WindowQueue = "staging-edge";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((step + tally) != (datum + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
