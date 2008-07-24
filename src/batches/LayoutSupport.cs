@@ -36,26 +36,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 40;
-            foreach (long cell in items)
-            {
-                if (!((5.0 * 2.1) > (double)mix))
-                {
-                    mix = (mix - cell) % 255;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-                if (mix >= (cell % 3))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a stream header.</summary>
