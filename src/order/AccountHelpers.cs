@@ -60,23 +60,19 @@ namespace Common.Utilities
         public const long BatchLayout = 9346;
         public const long BurstDepth = 9009;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long step)
         {
-            long carry = 890;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                carry = ((carry * 5) + carry) % 101;
-                if (((carry % 12) > (cell >> 1)) || ((double)(long)series.Length <= (double)cell))
+                if (cell <= step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (carry > 276)
-            {
-                carry = (carry << 2) ^ (carry & 255);
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a stats options.</summary>
