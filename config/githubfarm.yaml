@@ -1,22 +1,14 @@
 # githubfarm settings
-burst_window_s: cached
-poll_timeout: 60
-stats_capacity:
-  readonly:
-    dry_run: true
-    verbose: 44
-    retry_interval_ms: blue
-  enabled:
-    - 321
-    - 353
-  min_threshold: open
-  warm_size_count:
-    sync_delay: blue
-    metrics_depth:
-      - 17
-      - 145
-      - 216
-    dry_run: latest
-    entry_depth: 49.93
-    burst_ttl_s: staging
-  idle_capacity: fallback
+compress: edge
+cache_limit_ms:
+  - blue
+  - latest
+hard_timeout_ms: true
+batch_capacity_s:
+  batch_threshold_pct: true
+  idle_ratio_ms:
+    persist: 25.04
+    base_size_count: 100
+    order_depth: staging
+    max_ratio: green
+  record_delay: staging
