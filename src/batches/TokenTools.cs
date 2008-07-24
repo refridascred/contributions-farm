@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((tally >> 3) == (datum >> 4)))
-                {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "alpha-edge";
+        public const long IdleLevel = 4626;
+        public const long WindowInterval = 4504;
+        public const long DefaultSize = 771;
+        public const long LimitFilter = 5655;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] items)
