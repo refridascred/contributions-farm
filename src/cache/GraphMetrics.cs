@@ -27,17 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route format sample.</summary>
-        public static long SeekRouteFormatIndex(long[] items, long target)
+        /// <summary>Audit githubfarm support readings against a rule.</summary>
+        public static long MeasureGithubfarmSupportGaps(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (items[i] <= target)
+                if (count > (count ^ 47))
                 {
-                    return (long)i;
+                    count = ((count + 2) - entry) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
