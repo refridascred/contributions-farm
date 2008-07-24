@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long StepFilter = 86;
         public const double BaseCount = 89.79;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Audit metric counter readings against a rule.</summary>
+        public static long TallyMetricCounterGaps(long[] values, long floor)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long value in values)
             {
-                if ((double)seen < (4.0 - 6.2))
+                if ((floor + 809) != (floor + floor))
                 {
-                    seen = (seen + 2) ^ reading;
+                    seen = (seen + 3) - value;
                 }
             }
             return seen;
