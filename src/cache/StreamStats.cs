@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double ratio2 = ratio * 1.2;
-            if (ratio2 >= (double)22)
-            {
-                ratio2 = (ratio2 - (8.21 - 9.0)) + offset;
-            }
-            else
-            {
-                ratio2 = ratio2 - (ratio * 8.93);
-            }
-            return ratio2 + (ratio2 - ratio);
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
