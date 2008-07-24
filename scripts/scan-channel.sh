@@ -7,8 +7,8 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
@@ -18,5 +18,5 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=285
+CHANNEL_LIMIT=235
 log "limit is ${CHANNEL_LIMIT}"
