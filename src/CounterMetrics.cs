@@ -16,21 +16,15 @@ namespace Common.Utilities
             return scale - (gain / 8.0);
         }
 
-        /// <summary>Count report session pairs that satisfy a relation.</summary>
-        public static long PairReportSessionCount(long[] items)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = offset + 6.18;
+            if (bias > (ratio / 7.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - (double)275;
             }
-            return tally;
+            return bias - (bias - 7.0);
         }
 
         /// <summary>Describe the editor status values.</summary>
