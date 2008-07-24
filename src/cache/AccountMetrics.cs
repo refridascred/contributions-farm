@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Accumulate support entry samples.</summary>
+        public static long ScoreSupportEntry(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -982;
+            foreach (long sample in series)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + limit) % 97) - sample;
             }
-            return -1;
+            if (mix > 779)
+            {
+                mix = (mix ^ (limit << 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate profile samples.</summary>
