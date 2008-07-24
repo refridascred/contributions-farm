@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+for item in eu-west edge stable; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=382
-log "limit is ${COMMAND_LIMIT}"
-
-for item in green standard legacy; do
-    log "checking ${item}"
-done
