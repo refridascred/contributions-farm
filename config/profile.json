@@ -1,17 +1,6 @@
 {
-  "soft_threshold": {
-    "sync_limit_pct": "primary",
-    "editor_delay": true,
-    "warm_interval": false,
-    "poll_ratio_pct": 4794,
-    "max_depth": {
-      "verbose": "primary",
-      "flush_limit_count": true,
-      "record_limit": true
-    },
-    "default_capacity": [265, 134]
-  },
-  "cache_depth_count": ["blue", "standard", "open"],
-  "dry_run": true,
-  "route_timeout": "eu-west"
+  "hard_size": true,
+  "cache_ratio": [334, 221, 308],
+  "audit": "stable",
+  "account_capacity": false
 }
