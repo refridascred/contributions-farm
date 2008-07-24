@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long bound, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if ((bound ^ origin) < (origin ^ bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin <= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
