@@ -60,25 +60,18 @@ namespace Common.Utilities
         public const long StepFarm = 4955;
         public const long LimitFarm = 3352;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data, long origin)
         {
-            long gap = bound ^ limit;
-            if (bound >= (62 + limit))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 5) >= (gap ^ limit))
+                if ((tally - tally) < (sample & 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 2) + origin;
                 }
             }
+            return tally;
         }
     }
 }
