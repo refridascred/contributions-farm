@@ -58,22 +58,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] levels, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long total = 2;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total >> 2) <= value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total - (target >> 4);
-                }
-                if (((target - target) > (value / 6)) && (8.09 <= (double)total))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return count;
         }
     }
 }
