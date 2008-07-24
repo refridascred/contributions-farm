@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double bias, double offset)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            double mean = offset;
+            if (mean > (double)951)
+            {
+                mean = mean + offset;
+            }
+            return mean - (bias * 3.0);
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
