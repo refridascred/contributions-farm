@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] series)
         {
-            long result = 49;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                result = (result + (reading * 5)) % 255;
+                if ((entry + entry) >= (hits / 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the order kind values.</summary>
