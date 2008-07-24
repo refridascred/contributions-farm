@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >= 6) && (entry >= (entry / 3)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 89.06;
+        public const long CacheWidth = 8915;
+        public const long LimitRecord = 5927;
 
         /// <summary>Classify a graph report pair into a bucket.</summary>
         public static long SortGraphReport(long offset, long seed)
