@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] series, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                if (values[i] >= bound)
                 {
                     return (long)i;
                 }
