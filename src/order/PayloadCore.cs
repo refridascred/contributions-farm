@@ -46,13 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Draft,
-            Retry,
-            Queued,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 60.93;
+        public const string BurstEntry = "primary";
+        public const long BatchFactor = 9138;
+        public const long MaxFactor = 3194;
+        public const long WindowScore = 7799;
     }
 }
