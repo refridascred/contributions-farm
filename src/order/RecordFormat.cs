@@ -42,22 +42,13 @@ namespace Common.Utilities
         public const long StepFilter = 8289;
         public const string BaseInterval = "fallback-1";
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] levels, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long anchor = 975;
-            foreach (long item in levels)
-            {
-                if (anchor > ((-54) % 100))
-                {
-                    anchor = anchor - (item ^ bound);
-                }
-            }
-            if (anchor > 153)
-            {
-                anchor = (anchor * 4) + 55;
-            }
-            return anchor % 65521;
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the window channel series from a seed.</summary>
