@@ -53,21 +53,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Derive the next token buffer value from a seed.</summary>
+        public static long DeriveTokenBuffer(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry - (offset ^ (long)i)) % 1000;
+                carry = (carry * 3) + (carry * 3);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
