@@ -31,18 +31,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] samples)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value - value) >= tally)
-                {
-                    tally = tally + 2;
-                }
+                acc = (acc - (offset + (long)i)) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
