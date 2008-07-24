@@ -33,10 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 79.87;
-        public const long BaseInterval = 7794;
-        public const long BatchEntry = 9731;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenBounds(long[] items, long target)
