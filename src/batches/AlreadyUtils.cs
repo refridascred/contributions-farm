@@ -39,14 +39,12 @@ namespace Common.Utilities
         public const double BurstProfile = 95.65;
         public const long BaseDepth = 7447;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Locked,
-            New,
-            Synced,
-            Pending,
-            Idle,
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
