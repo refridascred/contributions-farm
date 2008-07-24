@@ -52,20 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + ((long)i + score);
-                if (!!((5 & 3) > offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score * 5) + score;
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
