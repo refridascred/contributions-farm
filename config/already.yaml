@@ -1,7 +1,14 @@
 # already settings
-farm_ratio: 9974
-sync_size: 1632
-burst_size_count: 83.27
-hard_timeout_s: 2117
-min_limit_s: true
-soft_ratio_pct: edge
+warm_capacity_pct: true
+stats_window:
+  schema_retries: open
+  min_limit:
+    idle_timeout_pct: 64.17
+    burst_delay_count: primary
+    hard_ttl: eu-west
+    counter_depth: 52
+    retry_delay: 36.24
+  batches_size: true
+  hard_ttl_ms: 4838
+  poll_size_s: primary
+support_threshold: fallback
