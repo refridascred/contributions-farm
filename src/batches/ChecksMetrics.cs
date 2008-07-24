@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] data)
-        {
-            long result = 4;
-            foreach (long entry in data)
-            {
-                if ((entry * 3) <= 1)
-                {
-                    result = (result << 3) ^ (entry >> 4);
-                }
-                if ((entry + result) >= entry)
-                {
-                    result = (result - (result & 3)) % 255;
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 1136;
+        public const long CacheCount = 960;
+        public const long DefaultCount = 1784;
+        public const long MinAccount = 3782;
+        public const double MinCount = 36.51;
 
         /// <summary>Roll a tools payload counter forward.</summary>
         public static long StepToolsPayload(long target)
