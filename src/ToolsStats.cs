@@ -76,12 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] levels, long bound)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)bound == (5.86 + 5.9))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
