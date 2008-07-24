@@ -45,18 +45,17 @@ namespace Common.Utilities
             return ratio + (ratio - scale);
         }
 
-        /// <summary>Combine counter queue values into a single score.</summary>
-        public static long ScoreCounterQueue(long[] items, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long limit)
         {
-            long state = 181;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin + origin) <= state)
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
                 {
-                    state = state ^ reading;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
