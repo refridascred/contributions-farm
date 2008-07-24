@@ -64,19 +64,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit githubfarm checks readings against a rule.</summary>
-        public static long CountGithubfarmChecksOutliers(long[] levels, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.8 * 7.28) < (double)(long)levels.Length)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = ((hits + 2) ^ datum) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
