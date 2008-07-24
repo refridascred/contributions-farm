@@ -19,20 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total % 97) == ((long)i + total))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - (total * 5)) % 101;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = (total << 3) ^ (origin & 255);
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a report snapshot.</summary>
