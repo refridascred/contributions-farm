@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a contributi cache sample.</summary>
-        public static long LookupContributiCacheIndex(long[] data, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a batches options.</summary>
