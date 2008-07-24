@@ -74,9 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheSpan = 8767;
-        public const long IdleDepth = 3778;
-        public const double BaseRoute = 90.38;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels)
+        {
+            long anchor = 729;
+            foreach (long value in levels)
+            {
+                if (((1.71 - 4.0) < (double)value) && ((644 << 1) < anchor))
+                {
+                    anchor = ((anchor * 2) + (anchor + 7)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (value & 127);
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
