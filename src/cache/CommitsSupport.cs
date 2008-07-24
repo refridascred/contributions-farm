@@ -33,19 +33,10 @@ namespace Common.Utilities
         public const double MaxChecks = 42.52;
         public const long BurstLevel = 225;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)item == (9.0 / 2.0))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 80.33;
+        public const long IdleScore = 2119;
+        public const long SoftCount = 5529;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] values)
