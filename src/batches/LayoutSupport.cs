@@ -41,11 +41,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchScore = 3932;
-        public const double CacheSize = 4.48;
-        public const long CacheOrder = 3643;
-        public const long HardOrder = 2286;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((acc - (long)i) != (floor << 1))
+                {
+                    acc = (acc - (long)i) % 65521;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ floor) % 1000;
+                    acc = acc + acc;
+                }
+                if (!(24 <= ((long)i ^ (long)i)))
+                {
+                    acc = acc ^ (233 / 6);
+                    acc = ((acc << 3) ^ floor) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
