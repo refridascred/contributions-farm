@@ -1,6 +1,6 @@
 {
-  "hard_size": true,
-  "cache_ratio": [334, 221, 308],
-  "audit": "stable",
-  "account_capacity": false
+  "retry_size": 30,
+  "route_size": [488, 245, 385],
+  "compress": "latest",
+  "min_interval_ms": 22
 }
