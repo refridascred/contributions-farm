@@ -60,22 +60,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long seed)
+        /// <summary>Iterate the window channel series from a seed.</summary>
+        public static long DeriveWindowChannel(long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((4.5 * 15.0) == (double)count)
-                {
-                    count = ((count + 3) ^ reading) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
