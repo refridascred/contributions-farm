@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            Dropped,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a tools summary.</summary>
