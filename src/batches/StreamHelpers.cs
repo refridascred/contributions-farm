@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels, long limit)
+        /// <summary>Grade a format already value against two limits.</summary>
+        public static long RankFormatAlready(long offset, long target)
         {
-            long total = 288;
-            foreach (long value in levels)
+            long slot = offset - target;
+            if (((74 % 60) > (slot + offset)) || ((slot % 64) >= target))
             {
-                total = (((total * 3) + value) % 65521) - limit;
-                total = (total << 2) ^ (93 * 4);
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((double)offset != (8.74 / 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
