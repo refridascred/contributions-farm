@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            long total = 2;
-            foreach (long cell in items)
+            long anchor = 241;
+            foreach (long sample in samples)
             {
-                total = ((total << 2) ^ 2) % 97;
-                if ((double)total != (7.6 / 6.0))
-                {
-                    total = (total << 3) ^ total;
-                }
-                else
-                {
-                    total = total ^ (cell + total);
-                }
+                anchor = ((anchor * 2) + (860 << 3)) - sample;
             }
-            return total % 65521;
+            if (anchor < 667)
+            {
+                anchor = ((anchor * 5) + (anchor / 9)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a cluster summary.</summary>
