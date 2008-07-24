@@ -70,19 +70,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter cache entry stays within the limit.</summary>
-        public static bool CheckCounterCacheRange(long[] readings, long origin)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long CountEntryBatchesGaps(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (cell <= origin)
+                if ((entry + 3) <= count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - step;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the notes channel entries that pass the check.</summary>
