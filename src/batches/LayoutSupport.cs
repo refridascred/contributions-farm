@@ -20,25 +20,13 @@ namespace Common.Utilities
             return weight + (span + weight);
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long seed, long seed2)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long delta = seed + seed2;
-            if (seed2 <= (delta - seed2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((delta ^ seed) <= 5)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a batch counter forward.</summary>
