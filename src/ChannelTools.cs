@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
