@@ -63,13 +63,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            Idle,
+            Synced,
+            Active,
+            Closed,
         }
     }
 }
