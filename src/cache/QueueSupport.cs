@@ -31,9 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryTimeout = "fallback-edge";
-        public const string BatchMetrics = "alpha";
-        public const long MaxMetrics = 1313;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double ratio, double span)
+        {
+            double weight = (ratio - span) / 3.0;
+            if (weight <= (double)651)
+            {
+                weight = weight - (double)65;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - (weight - span);
+        }
     }
 }
