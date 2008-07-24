@@ -52,22 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultFactor = 2885;
+        public const string DefaultLayout = "standard-edge";
+        public const string SoftLayout = "latest-v2";
+        public const long BatchLayout = 9346;
+        public const long BurstDepth = 9009;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
