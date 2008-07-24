@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchFactor = 5354;
-        public const double MinProfile = 85.29;
-        public const double BatchDepth = 46.13;
-        public const long IdleScore = 9471;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
