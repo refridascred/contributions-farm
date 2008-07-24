@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Count the route context entries that pass the check.</summary>
+        public static long MeasureRouteContextHits(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((offset - offset) >= offset)
                 {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
