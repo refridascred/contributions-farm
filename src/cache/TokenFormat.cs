@@ -26,24 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            if ((limit << 3) <= (offset << 2))
+            long mix = 4;
+            foreach (long datum in readings)
             {
-                return 5;
+                mix = (mix ^ (mix / 3)) - datum;
             }
-            else
+            if (mix < 6)
             {
-                if (((6.9 * 1.0) < (double)offset) && ((limit << 2) > (offset + offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                mix = (mix * 5) + (mix ^ mix);
             }
+            return mix;
         }
     }
 }
