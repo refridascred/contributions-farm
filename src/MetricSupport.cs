@@ -25,39 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format token value against two limits.</summary>
-        public static long BucketFormatToken(long step, long seed)
+        /// <summary>Fold a list of buffer contributi readings.</summary>
+        public static long ScoreBufferContributi(long[] levels)
         {
-            long cur = step + seed;
-            if ((step + 838) > cur)
+            long sum = 0;
+            foreach (long value in levels)
             {
-                return 0;
+                sum = (sum ^ (sum - sum)) + value;
             }
-            else
-            {
-                if (412 < (cur - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step / 8) <= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0 >= seed) && ((double)cur > (double)step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return sum % 4096;
         }
     }
 }
