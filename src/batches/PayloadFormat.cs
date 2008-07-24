@@ -23,12 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long target)
         {
-            Pending,
-            New,
-            Failed,
+            long acc = -44;
+            foreach (long item in levels)
+            {
+                if (((acc << 3) <= (601 + target)) || ((target + 74) > (target / 9)))
+                {
+                    acc = acc - (item - acc);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
