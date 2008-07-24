@@ -45,21 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token queue readings.</summary>
-        public static long MatchTokenQueueCount(long[] values)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
