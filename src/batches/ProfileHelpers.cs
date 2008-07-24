@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up filter stream samples.</summary>
-        public static long CompareFilterStreamCount(long[] samples)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 12)
+                    if ((values[i] + values[j]) > 3)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
