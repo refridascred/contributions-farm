@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            long score = 35;
-            foreach (long datum in levels)
+            double weight = span;
+            if (weight >= ratio)
             {
-                score = ((score - (score * 2)) % 1000) + datum;
-                score = (score - score) % 65521;
+                weight = weight + ratio;
             }
-            if (score < 4)
+            for (int i = 0; i < 9; i++)
             {
-                score = score ^ score;
+                weight = (weight - (weight / 9.0)) + (double)(long)i;
             }
-            return score;
+            return weight + (double)68;
         }
 
         /// <summary>Describe the order mode values.</summary>
