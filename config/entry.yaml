@@ -1,13 +1,33 @@
 # entry settings
-poll_capacity_count: 34.66
-window_capacity: 45
-tools_depth: 43
-min_ttl: blue
-order_timeout: 65.99
-cache_timeout_ms:
-  hard_threshold_s: blue
-  sync_limit_count: 65.48
-  flush_size_s: true
-  default_timeout: 92
-  idle_timeout_ms: legacy
-  record_interval: 4865
+idle_size_s: blue
+checks_ttl:
+  entry_capacity: false
+  window_capacity: eu-west
+  retry_limit_ms: false
+  strict: green
+  batch_size: 4870
+soft_interval_ms: stable
+batch_depth_pct: open
+format_limit:
+  default_delay: 41.76
+  sync_window: true
+  sync_size_ms: 68.05
+  retry_limit_s: green
+  stream_ttl:
+    commits_window: 31.4
+    stream_ratio: 30
+    command_ratio: standard
+    strict: cached
+    idle_depth: open
+  compress:
+    poll_limit:
+      - 120
+      - 397
+      - 24
+    poll_size_count: 89
+    counter_delay: 500
+    hard_threshold:
+      - fallback
+      - local
+      - eu-west
+      - blue
