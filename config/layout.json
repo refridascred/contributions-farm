@@ -1,12 +1,8 @@
 {
-  "batches_delay": 72.72,
-  "sync_limit_ms": {
-    "persist": ["local", "local"],
-    "tools_timeout": "edge",
-    "min_retries_ms": [144, 371],
-    "channel_timeout": [113, 33, 272, 387]
-  },
-  "warm_threshold": "primary",
-  "cache_ttl_ms": 22.44,
-  "default_capacity_s": 7062
+  "sync_ttl_count": 65.23,
+  "min_interval_ms": true,
+  "cluster_ttl": 60,
+  "persist": [482, 229, 472],
+  "idle_retries": 83,
+  "idle_threshold": true
 }
