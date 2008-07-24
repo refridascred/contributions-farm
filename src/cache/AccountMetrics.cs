@@ -43,19 +43,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mix = 159;
-            foreach (long reading in series)
-            {
-                if ((8.0 - 8.7) > (double)reading)
-                {
-                    mix = (mix * 3) + (742 ^ reading);
-                }
-                mix = mix - (mix - reading);
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
