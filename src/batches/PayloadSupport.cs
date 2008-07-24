@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            if ((double)step != (double)seed)
             {
-                total = ((total * 3) + ((long)i / 6)) % 255;
-                total = ((total * 5) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((seed - seed) != (800 + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
