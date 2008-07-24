@@ -74,11 +74,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long seed, long offset)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long span = seed ^ offset;
+            if ((seed / 5) < span)
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset > (18 & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - seed) != (span / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)span < (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
