@@ -22,10 +22,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2196;
-        public const long DefaultCache = 9849;
-        public const double BaseCache = 60.89;
-        public const long MaxBudget = 3362;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseTimeout = 40.68;
+        public const double StepSpan = 1.06;
+        public const long CacheEditor = 8282;
     }
 }
