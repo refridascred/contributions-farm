@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Look up the position of a route stats sample.</summary>
+        public static long FindRouteStatsIndex(long[] samples, long origin)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
