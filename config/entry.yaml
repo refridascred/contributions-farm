@@ -1,18 +1,5 @@
 # entry settings
-enabled:
-  stats_ttl: 5246
-  schema_capacity: 87
-  hard_window:
-    - blue
-    - cached
-    - open
-    - legacy
-cache_ratio_ms:
-  - 483
-  - 30
-  - 16
-  - 79
-schema_size: 22
-persist:
-  - open
-  - staging
+flush_capacity_s: true
+farm_ttl: staging
+editor_delay: 250
+soft_retries: false
