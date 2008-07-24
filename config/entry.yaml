@@ -1,13 +1,8 @@
 # entry settings
-max_ttl_ms: 3346
-sync_ttl: 6.67
-hard_timeout_s:
-  - standard
-  - standard
-  - edge
-  - eu-west
-compress: local
-sync_depth_count: 88
-already_delay:
-  - green
-  - green
+soft_ttl_ms: 44
+context_interval: primary
+cache_delay: true
+sync_limit_ms:
+  - 115
+  - 264
+  - 286
