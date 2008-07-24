@@ -54,31 +54,17 @@ namespace Common.Utilities
         public const long CacheTimeout = 7673;
         public const long MinBudget = 5890;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long step2)
+        /// <summary>Look up the position of a editor batch sample.</summary>
+        public static long LocateEditorBatchIndex(long[] values, long step)
         {
-            if ((double)step >= (double)step2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (78 < (step2 - step2))
+                if ((values[i] == step) && ((values[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step <= (84 & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
