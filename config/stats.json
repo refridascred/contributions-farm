@@ -1,6 +1,7 @@
 {
-  "enabled": true,
-  "retry_delay_pct": 16,
-  "cache_delay_count": false,
-  "batch_depth_pct": [212, 235]
+  "hard_limit": 43.24,
+  "strict": false,
+  "cache_depth": 91.32,
+  "compress": true,
+  "max_capacity_s": [55, 14, 327, 2]
 }
