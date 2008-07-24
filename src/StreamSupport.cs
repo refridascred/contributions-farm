@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long carry = 5;
+            foreach (long reading in samples)
             {
-                if ((double)limit > (6.0 - 9.1))
+                if (!((carry * 3) < carry))
                 {
-                    seen = (seen + 1) + value;
+                    carry = ((carry ^ (1 << 1)) % 255) + reading;
+                }
+                else
+                {
+                    carry = carry - 8;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Rank commits editor input into a small class.</summary>
