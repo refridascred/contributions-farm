@@ -31,12 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long step)
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long next = origin + step;
+            if ((649 ^ 956) == (origin * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((3 * 5) <= (next + step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(((-236) + step) < (step % 8)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
