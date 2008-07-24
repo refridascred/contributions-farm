@@ -31,11 +31,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] levels, long floor)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((reading << 1) > floor) || ((271 << 2) > ((long)levels.Length + 6))) || ((floor >> 5) < (106 + 25)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
