@@ -1,8 +1,7 @@
 {
-  "batch_window_count": "standard",
-  "base_retries": "fallback",
-  "channel_limit": 88.39,
-  "idle_timeout_s": false,
-  "verbose": 72.97,
-  "warm_limit_s": 35.69
+  "batch_timeout_pct": "eu-west",
+  "sync_size": 250,
+  "hard_timeout_count": 81,
+  "batches_size": false,
+  "editor_threshold": 81
 }
