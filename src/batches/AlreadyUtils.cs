@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 3573;
-        public const long MinFarm = 9657;
-        public const long BatchFarm = 2931;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 146;
+        public const long MinInterval = 1959;
+        public const long MinRecord = 2870;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
