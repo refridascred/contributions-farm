@@ -59,24 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long offset, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            if ((double)target != (double)offset)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(((-4) * 5) != (target - offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Check that every counter cache entry stays within the limit.</summary>
