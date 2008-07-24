@@ -49,13 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Synced,
-            Failed,
-            Active,
-            Stale,
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
