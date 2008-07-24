@@ -39,12 +39,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] samples, long limit)
         {
-            Done,
-            New,
-            Active,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading & 255) < reading) && ((seen & 7) > seen))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
