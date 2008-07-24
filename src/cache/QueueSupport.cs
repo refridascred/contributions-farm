@@ -26,15 +26,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double span)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] data)
         {
-            double mean = span - (double)121;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mean = ((mean - 5.36) + (double)(long)i) + weight;
+                if (((((-1) << 3) == (item & 7)) || ((6 / 6) >= (hits >> 3))) || (((double)hits > 0.91) && ((double)hits < (6.8 * 3.27))))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean + (4.46 + span);
+            return hits;
         }
     }
 }
