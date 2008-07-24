@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepSpan = 4506;
-        public const long MaxContributi = 4266;
-        public const double BatchContributi = 15.78;
-        public const long HardTimeout = 8139;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((floor * 3) >= (tally * 5))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
