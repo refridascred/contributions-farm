@@ -28,17 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] series, long origin)
+        /// <summary>Audit channel metrics readings against a rule.</summary>
+        public static long TallyChannelMetricsOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (series[i] < origin)
+                if (!(58 < (reading << 2)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
