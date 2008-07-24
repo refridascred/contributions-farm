@@ -14,24 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double gain, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            double scale = gain;
+            if (scale > (double)391)
             {
-                if (4 <= (seed % 10))
-                {
-                    mark = ((mark << 3) ^ (mark / 5)) % 1000;
-                }
-                mark = (mark ^ mark) % 4096;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = ((mark - (seed - seed)) % 97) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                scale = scale + (gain * 0.5);
             }
-            return mark;
+            else
+            {
+                scale = scale - (scale * 5.0);
+            }
+            return scale + (bias / 2.0);
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
