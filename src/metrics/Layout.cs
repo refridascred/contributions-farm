@@ -48,21 +48,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Look up the position of a format route sample.</summary>
+        public static long LocateFormatRouteIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
