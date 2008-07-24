@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Match up channel samples.</summary>
