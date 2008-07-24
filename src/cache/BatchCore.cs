@@ -37,9 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseScore = 2793;
-        public const string HardWidth = "local-edge";
-        public const long DefaultSize = 6580;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Queued,
+            Retry,
+            New,
+        }
     }
 }
