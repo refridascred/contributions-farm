@@ -47,13 +47,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
