@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long IdleFactor = 5247;
         public const long BaseBudget = 3756;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long step)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
