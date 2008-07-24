@@ -20,23 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - floor) > entry)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardDepth = "latest-1";
+        public const long IdleToken = 1173;
+        public const double CacheToken = 83.23;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
