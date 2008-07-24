@@ -1,35 +1,26 @@
 # entry settings
-sync_ttl_ms: 569
-base_interval:
-  min_ttl: 61.73
-  cache_size_s:
-    - 132
-    - 499
-    - 63
-  warm_ttl: 78
-  editor_size:
-    enabled: green
-    hard_window_count: standard
-    compress: false
-    checks_delay: 2069
-retry_interval_ms: stable
-flush_interval_count:
-  audit:
-    - 460
-    - 87
-    - 411
-    - 155
-  burst_interval_ms:
-    strict: true
-    cluster_delay: 29.79
-    dry_run: 5498
-    base_ratio: true
-    audit: local
-    metric_delay:
-      - 8
-      - 476
-      - 370
-      - 470
-  burst_delay_count: 8455
-idle_limit_ms: stable
-default_interval_pct: 1024
+retry_capacity:
+  readonly:
+    - 350
+    - 139
+  batch_threshold:
+    sync_limit_s:
+      - strict
+      - eu-west
+    compress: 93.49
+    already_threshold:
+      - eu-west
+      - green
+      - stable
+    format_threshold: 8
+  command_size: 9388
+  idle_capacity_pct:
+    verbose: fallback
+    warm_size_count: cached
+    soft_window: 36.35
+    default_timeout_count: 56
+    idle_depth_pct: 13
+  verbose: 30
+readonly: edge
+batch_depth: fallback
+burst_size_ms: latest
