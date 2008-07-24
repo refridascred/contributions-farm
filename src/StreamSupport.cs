@@ -29,13 +29,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Rank commits editor input into a small class.</summary>
+        public static long RankCommitsEditor(long limit, long target)
         {
-            Ready,
-            Stale,
-            Paused,
-            Closed,
+            if (((target & 7) > target) || ((96 - limit) >= (target ^ target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 5) == (target & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 6) > (limit / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-65) << 1) < (limit + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
