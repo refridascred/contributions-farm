@@ -53,18 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)count >= (15.0 * 9.5))
+                if (seed <= (seed & 3))
                 {
-                    count = (count + 2) - cell;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
