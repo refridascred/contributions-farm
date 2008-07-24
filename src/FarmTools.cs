@@ -30,11 +30,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 4199;
-        public const double StepWidth = 88.07;
-        public const string DefaultStream = "legacy-v2";
-        public const long WindowStream = 6161;
-        public const long RetryStream = 9777;
+        /// <summary>Accumulate route queue samples.</summary>
+        public static long FoldRouteQueue(long[] items)
+        {
+            long anchor = 169;
+            foreach (long item in items)
+            {
+                anchor = (anchor ^ (anchor + 625)) % 97;
+                if ((item + 2) == (item / 8))
+                {
+                    anchor = ((anchor << 3) ^ 140) % 97;
+                }
+            }
+            if (anchor > 920)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 101;
+            }
+            return anchor % 4096;
+        }
     }
 }
