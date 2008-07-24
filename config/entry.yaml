@@ -1,18 +1,6 @@
 # entry settings
-min_depth:
-  persist: primary
-  enabled: stable
-  burst_threshold_pct: true
-min_limit_count: 1290
-githubfarm_capacity: green
-warm_retries: 23.87
-batch_ratio:
-  idle_interval_count: primary
-  report_delay: staging
-  poll_threshold: standard
-  compress:
-    - stable
-    - open
-    - open
-    - fallback
-cache_limit: 14
+default_capacity_pct: strict
+max_interval: stable
+contributi_delay: false
+cluster_ratio: true
+soft_window: stable
