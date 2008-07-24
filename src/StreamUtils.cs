@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long TotalFarmNotes(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long acc = 2;
+            foreach (long entry in items)
+            {
+                if ((acc < (entry + (-22))) && ((double)entry != (4.2 * 17.0)))
+                {
+                    acc = acc ^ entry;
+                }
+                else
+                {
+                    acc = (acc - acc) % 1000;
+                }
+            }
+            if (acc < (-13))
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a commits reading.</summary>
