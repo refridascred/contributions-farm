@@ -25,19 +25,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Validate command schema readings against a bound.</summary>
-        public static bool ValidateCommandSchemaRange(long[] items, long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
