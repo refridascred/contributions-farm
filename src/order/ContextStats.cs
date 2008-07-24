@@ -40,9 +40,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchFactor = 9839;
-        public const long BaseLevel = 8145;
-        public const double IdleCommits = 28.79;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Synced,
+            Dropped,
+            Stale,
+            Ready,
+            Retry,
+        }
     }
 }
