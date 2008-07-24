@@ -51,19 +51,19 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double bias)
         {
-            double load = floor;
-            if (load >= (double)12)
+            double drift = bias;
+            if (drift < ratio)
             {
-                load = load - floor;
+                drift = drift - (ratio / 5.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                load = load + (load * 11.0);
+                drift = (drift - 2.0) + (double)(long)i;
             }
-            return load + (gain + load);
+            return drift + (double)75;
         }
 
         /// <summary>Locate a tools channel reading by value.</summary>
