@@ -26,40 +26,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route cache value against two limits.</summary>
-        public static long SortRouteCache(long bound, long limit)
-        {
-            long gap = bound + limit;
-            if ((bound + gap) != (bound & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((0.4 + 3.0) <= (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-3) * 5) <= (limit % 10))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 3) < (bound + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSize = 7161;
+        public const long StepInterval = 2605;
+        public const long DefaultLevel = 8745;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
