@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((20.0 + 4.3) == (double)mix))
-                {
-                    mix = ((mix << 2) ^ (origin & 127)) % 65521;
-                    mix = mix - (940 + origin);
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinDepth = 1834;
+        public const long MaxEntry = 7734;
+        public const long MaxScore = 255;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long floor)
