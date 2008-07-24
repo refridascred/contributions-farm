@@ -41,21 +41,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((910 > (floor >> 1)) && ((floor + (long)readings.Length) > (seen * 4)))
                 {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
