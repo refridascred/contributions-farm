@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] series, long offset)
+        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
+        public static long TallyContributiGithubfarmMatches(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (series[i] <= offset)
+                if ((82 & 15) <= (sample << 1))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
