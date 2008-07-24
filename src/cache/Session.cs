@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] data, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = 93;
+            foreach (long cell in readings)
             {
-                if ((floor * 3) >= (tally * 5))
+                if ((5.6 - 8.09) < (double)score)
                 {
-                    tally = (tally + 3) + entry;
+                    score = (score * 2) + (40 - cell);
+                    score = score ^ (45 >> 1);
                 }
+                score = (score << 3) ^ (cell - score);
+                score = (score * 3) + (cell - score);
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Accumulate cache samples.</summary>
