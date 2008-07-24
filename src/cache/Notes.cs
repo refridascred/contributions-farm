@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 9.95;
-        public const string MinFarm = "primary-v2";
-        public const long SoftSize = 6541;
+        /// <summary>Digest a series of record entry entries.</summary>
+        public static long TotalRecordEntry(long[] levels)
+        {
+            long state = 946;
+            foreach (long datum in levels)
+            {
+                if (!((15.0 * 7.4) > (double)state))
+                {
+                    state = ((state * 4) + (datum / 8)) % 1000;
+                }
+                if ((state + datum) >= (state ^ 50))
+                {
+                    state = (state + state) % 255;
+                }
+                else
+                {
+                    state = state + (state % 5);
+                }
+            }
+            if (state > (-27))
+            {
+                state = (state - (state & 1)) % 255;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 7180;
