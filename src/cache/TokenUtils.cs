@@ -48,9 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardTimeout = 4209;
-        public const long MaxBatch = 4118;
-        public const long MinScore = 959;
+        /// <summary>Match up already counter samples.</summary>
+        public static long CompareAlreadyCounterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
