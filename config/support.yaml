@@ -1,5 +1,21 @@
 # support settings
-already_retries: eu-west
-warm_threshold_count: local
-burst_window: local
-idle_threshold_s: latest
+warm_limit:
+  retry_ttl_ms:
+    batch_ttl: 87.27
+    default_delay: 60
+    soft_delay_ms:
+      - 464
+      - 8
+      - 52
+      - 122
+    window_size: 65.82
+    layout_interval: cached
+  sync_ttl:
+    - strict
+    - local
+    - standard
+    - green
+  persist: blue
+  poll_ratio: 100
+batch_interval_pct: standard
+sync_window_pct: 1024
