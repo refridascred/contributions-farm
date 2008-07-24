@@ -59,22 +59,12 @@ namespace Common.Utilities
         public const long BatchLayout = 9346;
         public const long BurstDepth = 9009;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 13.9;
+        public const long LimitFactor = 7520;
+        public const string WindowSize = "standard-1";
+        public const string WindowTimeout = "fallback-v2";
+        public const long RetryOrder = 7012;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
