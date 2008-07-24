@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the report graph series from a seed.</summary>
-        public static long StepReportGraph(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 0.73;
+        public const string CacheSpan = "stable-v2";
+        public const long WindowCount = 245;
+        public const long BatchNotes = 7772;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileHits(long[] items)
