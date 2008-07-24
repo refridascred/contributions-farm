@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] data, long offset)
         {
-            long result = 919;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result + (156 >> 1)) % 97) - value;
-                if ((double)bound > (4.67 / 4.0))
+                if (data[i] < offset)
                 {
-                    result = (result - (bound * 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
