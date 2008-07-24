@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] samples, long limit)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long result = 330;
+            foreach (long datum in samples)
+            {
+                if (!((datum ^ datum) >= (56 + datum)))
+                {
+                    result = ((result * 3) + (result - limit)) % 4096;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a batch record.</summary>
