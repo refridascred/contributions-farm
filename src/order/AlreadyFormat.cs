@@ -28,11 +28,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 9411;
-        public const long SoftScore = 8080;
-        public const double SoftAccount = 87.49;
-        public const double WindowInterval = 79.46;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a editor notes pair into a bucket.</summary>
         public static long ClassifyEditorNotes(long origin, long target)
