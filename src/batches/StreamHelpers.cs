@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long TallyContextGraphMatches(long[] series)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((matches % 12) <= value) && ((7 - 818) == (matches & 63))) || (matches >= (value + 5)))
+                if (levels[i] == seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two batches graph measurements.</summary>
