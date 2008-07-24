@@ -32,13 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
+            Locked,
             Synced,
-            Stale,
-            Closed,
-            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
