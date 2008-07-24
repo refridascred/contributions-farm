@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 6459;
-        public const long WindowLevel = 6148;
-        public const string IdleBatch = "fallback-v2";
-        public const double MinBatch = 56.43;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
         public static long MeasurePayloadStatsMatches(long[] data)
