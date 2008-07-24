@@ -76,13 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Stale,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 1561;
+        public const long SoftEditor = 8318;
+        public const long BurstEditor = 4387;
+        public const double BaseFactor = 95.85;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] items)
