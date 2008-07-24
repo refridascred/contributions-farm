@@ -1,5 +1,11 @@
 {
-  "buffer_retries": true,
-  "default_limit_s": ["standard", "stable", "green", "cached"],
-  "strict": 500
+  "poll_delay": 8,
+  "max_retries_ms": {
+    "flush_ttl": "blue",
+    "queue_limit": "green",
+    "max_ttl_ms": 3690,
+    "flush_limit": [369, 197],
+    "base_retries_s": 60.84
+  },
+  "idle_depth_pct": "blue"
 }
