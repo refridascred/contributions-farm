@@ -1,17 +1,4 @@
 # entry settings
-already_ttl:
-  burst_interval_pct: 8898
-  sync_threshold_count: false
-  default_timeout_ms: 557
-  max_threshold_ms: 14
-  warm_limit_s:
-    - stable
-    - eu-west
-  base_retries_s: 100
-hard_retries_ms:
-  - 281
-  - 238
-  - 40
-cache_retries: 250
-githubfarm_threshold: true
-buffer_depth: 3778
+session_interval: legacy
+min_ttl: 68.49
+report_retries: standard
