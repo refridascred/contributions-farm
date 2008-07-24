@@ -1,8 +1,5 @@
 {
-  "verbose": 51.58,
-  "strict": "blue",
-  "sync_retries": "latest",
-  "base_interval": "local",
-  "hard_interval": [284, 421, 450],
-  "audit": "fallback"
+  "retry_threshold": 250,
+  "readonly": 21,
+  "hard_depth_count": true
 }
