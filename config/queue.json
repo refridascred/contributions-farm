@@ -1,6 +1,12 @@
 {
-  "persist": 3263,
-  "enabled": 3.51,
-  "sync_size_s": "fallback",
-  "buffer_depth": ["staging", "green", "green"]
+  "cache_size": "open",
+  "idle_threshold_s": 82,
+  "default_ratio_s": ["stable", "eu-west"],
+  "soft_ttl_s": {
+    "sync_ttl": "fallback",
+    "min_delay_pct": false,
+    "farm_window": 82,
+    "enabled": 44.48,
+    "cache_interval_s": "fallback"
+  }
 }
