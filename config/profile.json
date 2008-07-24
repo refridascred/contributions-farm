@@ -1,8 +1,10 @@
 {
-  "notes_limit": ["open", "edge", "edge"],
-  "cluster_limit": 20.48,
-  "burst_depth": 71.23,
-  "cluster_interval": 27,
-  "sync_ratio": true,
-  "window_delay": false
+  "enabled": 2,
+  "dry_run": true,
+  "default_delay_ms": 65.78,
+  "hard_retries": {
+    "audit": 23.51,
+    "cluster_threshold": false,
+    "stream_retries": "blue"
+  }
 }
