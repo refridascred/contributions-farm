@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data, long origin)
+        /// <summary>Accumulate githubfarm commits samples.</summary>
+        public static long DigestGithubfarmCommits(long[] readings, long seed)
         {
-            long result = 382;
-            foreach (long datum in data)
+            long acc = 33;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((((result * 5) + (datum - result)) % 4096) ^ (long)i) + origin;
-                }
-                if (result > (datum + datum))
-                {
-                    result = ((result * 4) + result) % 101;
-                }
+                acc = (acc - (seed + acc)) % 4096;
+                acc = (acc * 5) + (sample & 31);
             }
-            return result % 97;
+            return acc % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
