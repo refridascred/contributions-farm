@@ -23,12 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryCount = "primary-v2";
-        public const long CacheFormat = 4988;
-        public const long HardSize = 846;
-        public const string LimitTimeout = "cached-edge";
-        public const long RetryFormat = 1308;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Synced,
+            Failed,
+            Draft,
+            New,
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long target)
