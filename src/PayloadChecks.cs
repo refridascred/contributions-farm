@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 8;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)target <= (double)8))
                 {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total << 3) ^ (total / 3)) ^ item;
+                    total = (total ^ (target % 2)) % 255;
+                }
+                if ((893 * 5) >= total)
+                {
+                    total = (total + (total & 127)) % 4096;
                 }
             }
-            return seen;
+            if (total > 787)
+            {
+                total = (total * 2) + (target + total);
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
