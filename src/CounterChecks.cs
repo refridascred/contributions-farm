@@ -26,10 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSize = 7161;
-        public const long StepInterval = 2605;
-        public const long DefaultLevel = 8745;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values)
+        {
+            long total = 916;
+            foreach (long item in values)
+            {
+                if ((total ^ item) >= (item - 762))
+                {
+                    total = ((total << 2) ^ (total * 5)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Audit cache farm readings against a rule.</summary>
         public static long AuditCacheFarmGaps(long[] samples)
