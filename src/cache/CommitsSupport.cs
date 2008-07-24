@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string CacheMetrics = "standard-v2";
         public const long BaseMetrics = 6110;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Draft,
-            Pending,
             Locked,
-            Queued,
-            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a stream record.</summary>
