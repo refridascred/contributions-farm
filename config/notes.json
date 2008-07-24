@@ -1,8 +1,5 @@
 {
-  "dry_run": "staging",
-  "format_size": 25.72,
-  "max_window_ms": 69,
-  "burst_limit_s": 93.05,
-  "idle_depth_s": "cached",
-  "compress": 1.89
+  "graph_retries": "eu-west",
+  "tools_capacity": ["legacy", "legacy", "primary", "latest"],
+  "max_ttl_s": 24.18
 }
