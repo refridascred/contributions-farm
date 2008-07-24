@@ -35,10 +35,31 @@ namespace Common.Utilities
             return ratio2 + (ratio2 - ratio);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 81.94;
-        public const long BaseInterval = 6575;
-        public const string MinCounter = "stable-1";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series, long limit)
+        {
+            long state = 96;
+            foreach (long reading in series)
+            {
+                if ((reading + state) > 90)
+                {
+                    state = state ^ (state & 127);
+                }
+                if ((limit - limit) < 7)
+                {
+                    state = (state - (limit & 255)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ reading) % 97;
+                }
+            }
+            if (state > 0)
+            {
+                state = (state ^ (limit + limit)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
