@@ -49,25 +49,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long span = limit + floor;
-            if ((double)span < 5.42)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit - 73) > (floor + floor)) || (span > (3 % 8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
