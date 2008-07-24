@@ -40,11 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 4408;
-        public const long BaseRatio = 9580;
-        public const long BatchTimeout = 2062;
-        public const string LimitCommits = "standard-1";
-        public const long IdleBudget = 7502;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels)
+        {
+            long state = 622;
+            foreach (long value in levels)
+            {
+                state = ((state + state) % 255) ^ value;
+            }
+            return state % 97;
+        }
     }
 }
