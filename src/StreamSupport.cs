@@ -15,26 +15,21 @@ namespace Common.Utilities
         public const double SoftBudget = 10.7;
         public const long MinRecord = 3754;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long limit)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long acc = 7;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit > (5 % 64))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ limit) ^ value;
-                }
-                else
-                {
-                    acc = (acc * 4) + (limit % 16);
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 555)
-            {
-                acc = (acc - (limit << 3)) % 65521;
-            }
-            return acc;
+            return hits;
         }
     }
 }
