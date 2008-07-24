@@ -43,11 +43,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 5695;
-        public const long StepSession = 1706;
-        public const long BaseSession = 4260;
-        public const string LimitTimeout = "strict-edge";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Paused,
+            Draft,
+            Active,
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double weight, double offset)
