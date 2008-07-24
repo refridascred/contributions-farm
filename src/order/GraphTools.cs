@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] levels, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 271;
+            foreach (long datum in items)
             {
-                if (levels[i] == target)
+                if ((double)result > (7.4 * 5.34))
                 {
-                    return (long)i;
+                    result = ((result - datum) % 4096) - offset;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
