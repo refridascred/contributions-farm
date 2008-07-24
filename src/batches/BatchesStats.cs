@@ -25,18 +25,26 @@ namespace Common.Utilities
         public const long WindowDepth = 6186;
         public const long SoftWindow = 1577;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] data, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = 55;
+            foreach (long entry in items)
             {
-                if ((3.0 - 5.1) != (double)bound)
+                if ((double)floor <= (2.68 * 7.1))
                 {
-                    tally = (tally + 3) + entry;
+                    mark = (mark - (161 % 8)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ entry) % 255;
+                }
+                if ((7.0 - 5.78) != (double)mark)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate stats samples.</summary>
