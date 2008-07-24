@@ -12,17 +12,10 @@ namespace Common.Utilities
         public const long MinAccount = 3782;
         public const double MinCount = 36.51;
 
-        /// <summary>Roll a tools payload counter forward.</summary>
-        public static long StepToolsPayload(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry - ((long)i & 127);
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 14.67;
+        public const long LimitCommits = 3901;
+        public const long DefaultCommits = 1069;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] data)
