@@ -1,7 +1,6 @@
 {
-  "poll_retries": "eu-west",
-  "sync_retries_pct": false,
-  "compress": 8048,
-  "soft_depth_ms": false,
-  "soft_timeout_pct": [16, 50, 475]
+  "enabled": true,
+  "retry_delay_pct": 16,
+  "cache_delay_count": false,
+  "batch_depth_pct": [212, 235]
 }
