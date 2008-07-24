@@ -69,21 +69,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count record channel pairs that satisfy a relation.</summary>
-        public static long CompareRecordChannelCount(long[] values)
+        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
+        public static long CountGithubfarmBufferGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value + 572) < 8)
                 {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
