@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Locate a token schema reading by value.</summary>
+        public static long SeekTokenSchemaIndex(long[] items, long seed)
         {
-            long anchor = 6;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (anchor + anchor)) % 1000) ^ reading;
-                anchor = (anchor << 3) ^ anchor;
-                anchor = (anchor * 5) + (anchor >> 1);
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
