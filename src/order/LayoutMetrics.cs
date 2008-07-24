@@ -29,22 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 24;
+            foreach (long value in readings)
             {
-                if ((2.5 - 9.4) > (double)seen)
+                if ((value + (-379)) > (0 - 15))
                 {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = (carry + ((-89) - (-2))) % 4096;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
     }
 }
