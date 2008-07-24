@@ -36,11 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitScore = 4118;
-        public const long IdleCommand = 7384;
-        public const string BatchInterval = "standard-edge";
-        public const double MinScore = 36.83;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value - value) >= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] readings, long offset)
