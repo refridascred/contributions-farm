@@ -22,25 +22,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] readings, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (state / 6)) % 255;
-                if (((long)i - 0) == (seed ^ state))
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    state = state - (seed % 10);
-                    state = ((state * 3) + (seed * 2)) % 65521;
+                    return (long)i;
                 }
-                if (5.2 > (double)state)
-                {
-                    state = ((state << 3) ^ (seed + seed)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
