@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long StepRatio = 5123;
         public const string SoftCount = "local-1";
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] readings, long bound)
+        /// <summary>Count channel commits pairs that satisfy a relation.</summary>
+        public static long PairChannelCommitsCount(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((double)hits > (8.1 - 5.7)) || ((hits ^ (long)readings.Length) >= (hits << 2))) && ((8.0 * 14.0) <= (double)bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
