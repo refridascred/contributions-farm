@@ -1,7 +1,12 @@
 # entry settings
-checks_threshold: false
-base_limit_ms: blue
-poll_ratio_s: 16
-support_timeout:
-  - local
-  - green
+checks_depth: 95.45
+dry_run: cached
+cache_capacity:
+  window_delay: 30
+  readonly: false
+  idle_size:
+    - 29
+    - 247
+  dry_run: 24.52
+  warm_delay: 62
+batches_interval: fallback
