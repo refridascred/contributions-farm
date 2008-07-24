@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] samples, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long result = 330;
+            foreach (long entry in data)
             {
-                if (value <= floor)
+                if ((entry < ((long)data.Length - result)) && (2.91 > (double)entry))
                 {
-                    found = false;
-                    break;
+                    result = ((result << 3) ^ entry) % 4096;
                 }
             }
-            return found;
+            if (result > 0)
+            {
+                result = result - (3 % 100);
+            }
+            return result;
         }
 
         /// <summary>Hold a metrics options.</summary>
