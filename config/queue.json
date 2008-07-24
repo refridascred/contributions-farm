@@ -1,8 +1,8 @@
 {
-  "batch_retries_pct": 8,
-  "retry_window": false,
-  "min_ratio_count": 53,
-  "layout_retries": "standard",
-  "dry_run": "edge",
-  "audit": 82.65
+  "audit": ["legacy", "legacy"],
+  "poll_threshold": false,
+  "hard_delay_s": "fallback",
+  "batch_depth": "local",
+  "readonly": "eu-west",
+  "cache_ratio": 2
 }
