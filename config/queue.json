@@ -1,20 +1,6 @@
 {
-  "poll_depth": {
-    "retry_limit_count": "green",
-    "burst_limit_count": [305, 399],
-    "graph_ttl": {
-      "verbose": 68,
-      "persist": "eu-west",
-      "batch_threshold_count": true,
-      "cache_limit_ms": ["eu-west", "green", "stable"]
-    },
-    "retry_size_s": "primary"
-  },
-  "filter_threshold": "staging",
-  "min_interval": {
-    "checks_threshold": 40.3,
-    "readonly": "open",
-    "default_window_ms": 1281
-  },
-  "verbose": true
+  "enabled": 9.39,
+  "graph_ttl": 41,
+  "layout_threshold": ["fallback", "strict"],
+  "readonly": "edge"
 }
