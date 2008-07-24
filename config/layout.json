@@ -1,9 +1,5 @@
 {
-  "cache_interval": "open",
-  "format_retries": false,
-  "idle_delay": {
-    "verbose": 81.5,
-    "default_ttl_count": true,
-    "persist": 1024
-  }
+  "session_ratio": 43.6,
+  "hard_timeout": "eu-west",
+  "idle_depth_s": true
 }
