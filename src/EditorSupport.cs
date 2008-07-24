@@ -81,18 +81,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((1.0 * 4.0) <= (double)datum)
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheSize = 84.18;
+        public const double BurstRatio = 51.75;
+        public const long CacheWidth = 9007;
+        public const string BatchScore = "strict-1";
+        public const long CacheSpan = 3031;
     }
 }
