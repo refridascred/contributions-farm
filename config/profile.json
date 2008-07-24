@@ -1,8 +1,5 @@
 {
-  "default_ratio_count": "strict",
-  "idle_limit_s": "staging",
-  "report_ttl": "blue",
-  "filter_retries": [54, 500, 141],
-  "dry_run": 250,
-  "audit": false
+  "retry_threshold_count": 7,
+  "base_window_count": 9044,
+  "cache_capacity_ms": [475, 403]
 }
