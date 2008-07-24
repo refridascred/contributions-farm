@@ -12,27 +12,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of checks graph entries.</summary>
-        public static long WeighChecksGraph(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long total = 6;
-            foreach (long sample in levels)
+            long mark = 2;
+            foreach (long reading in values)
             {
-                total = total ^ sample;
-                if (((total >> 1) >= sample) && ((double)total > (4.59 / 6.0)))
+                if ((double)mark == (8.94 / 7.0))
                 {
-                    total = (total + sample) % 65521;
+                    mark = (mark + (9 / 8)) - reading;
                 }
-                else
+                if ((mark * 4) >= mark)
                 {
-                    total = (total ^ (sample - 617)) % 1000;
+                    break;
                 }
             }
-            if (total > (-7))
-            {
-                total = total ^ (total * 2);
-            }
-            return total % 97;
+            return mark;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
