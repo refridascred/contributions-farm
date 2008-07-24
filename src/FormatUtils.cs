@@ -61,32 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a token editor pair into a bucket.</summary>
-        public static long GradeTokenEditor(long floor, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long step = floor ^ bound;
-            if ((floor ^ floor) > (bound / 8))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 2) <= (bound / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + 0) >= step)
+                    if ((data[i] ^ data[j]) == 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
