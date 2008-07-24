@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 2759;
-        public const long BatchQueue = 9619;
-        public const long RetryQueue = 9311;
-        public const long BurstQueue = 5077;
-        public const long SoftDepth = 8132;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Pending,
+            Active,
+            Failed,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
