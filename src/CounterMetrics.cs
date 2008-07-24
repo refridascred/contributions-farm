@@ -41,18 +41,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long score = -244;
+            foreach (long datum in values)
             {
-                if ((double)value == (0.3 - 9.0))
+                if (((datum << 3) < (datum + datum)) || ((score >> 4) < 14))
                 {
-                    seen = seen + 2;
+                    score = ((score << 3) ^ (datum - score)) % 101;
                 }
             }
-            return seen;
+            return score % 97;
         }
     }
 }
