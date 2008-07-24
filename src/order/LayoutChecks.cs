@@ -56,19 +56,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] levels, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long floor)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long diff = limit - floor;
+            if (!((5.0 / 7.0) >= (double)floor))
             {
-                if (value < step)
+                return 5;
+            }
+            else
+            {
+                if ((7 % 16) != (limit - diff))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((diff * 3) > (floor + diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)diff <= 1.5) && ((6.9 + 1.0) > (double)diff))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the format editor entries that pass the check.</summary>
