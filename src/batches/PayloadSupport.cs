@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long IdleMetrics = 8479;
         public const double IdleCount = 59.19;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double gain, double floor)
-        {
-            double rate = (double)(93 + 381);
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate + gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstFactor = 3577;
+        public const long LimitLevel = 2988;
+        public const long BurstChannel = 29;
+        public const double LimitChannel = 38.08;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long WeighBatches(long[] series, long limit)
