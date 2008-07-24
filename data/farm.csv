@@ -1,6 +1,8 @@
-id,state,count
-1,632,latest
-2,standard,60.45
-3,186,6.76
-4,76.51,83.83
-5,55,560
+id,ratio,score,rank
+1,eu-west,743,465
+2,74.09,813,cached
+3,standard,eu-west,primary
+4,green,44.64,177
+5,primary,515,fallback
+6,535,288,825
+7,staging,standard,937
