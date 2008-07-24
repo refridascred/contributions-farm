@@ -1,15 +1,11 @@
 # Command notes
 
-When a editor fails, the channel handler retries a few times before giving up.
-When a command fails, the stats handler retries a few times before giving up.
-The record helpers are pure functions, so they are safe to call from any thread.
-
-Run the record check before changing any metric limits.
-A farm that stays idle for too long is moved to the checks list.
+Run the counter check before changing any queue limits.
+Defaults for schema live in the config folder and can be overridden per environment.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate report input early
-- Keep metric values small
-- Log every checks change
-- Review cache limits each release
+- Prefer order defaults
+- Document new githubfarm fields
+- Validate stream input early
