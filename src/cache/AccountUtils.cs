@@ -57,18 +57,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] series, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = 25;
+            foreach (long sample in values)
             {
-                if ((244 * 5) > (datum % 2))
+                if ((sample + (-842)) > (anchor ^ 468))
                 {
-                    hits = (hits + 2) + limit;
+                    anchor = ((anchor * 4) + (anchor * 3)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (seed - sample);
                 }
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = (anchor * 4) + (anchor + seed);
+            }
+            return anchor % 4096;
         }
     }
 }
