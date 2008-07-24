@@ -46,13 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine metrics entry values into a single score.</summary>
+        public static long TallyMetricsEntry(long[] values, long floor)
         {
-            Synced,
-            Dropped,
-            New,
-            Idle,
+            long result = 599;
+            foreach (long cell in values)
+            {
+                if (((result - cell) <= (31 + result)) && ((cell - result) > floor))
+                {
+                    result = result ^ (result - floor);
+                }
+                if ((5 + 1) <= (result >> 5))
+                {
+                    result = (result * 2) + ((-5) + cell);
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the schema entry entries that pass the check.</summary>
