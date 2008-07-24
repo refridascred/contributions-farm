@@ -28,13 +28,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            long acc = 348;
+            foreach (long cell in samples)
+            {
+                acc = ((acc * 2) + (acc % 3)) + cell;
+                if ((acc + acc) >= 518)
+                {
+                    acc = acc ^ (acc * 4);
+                }
+            }
+            if (acc > 22)
+            {
+                acc = (acc * 4) + ((long)samples.Length + acc);
+            }
+            return acc;
         }
     }
 }
