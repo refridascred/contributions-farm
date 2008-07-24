@@ -21,15 +21,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
