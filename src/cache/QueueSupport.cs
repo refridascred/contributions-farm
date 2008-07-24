@@ -14,15 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double bias, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] values, long seed)
         {
-            double bias2 = (9.5 + bias) - bias;
-            if (bias2 < bias)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                bias2 = (bias2 - (bias / 5.0)) - offset;
+                if ((seed >> 1) >= (sample & 31))
+                {
+                    matches = matches + 3;
+                }
             }
-            return bias2 - bias;
+            return matches;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
