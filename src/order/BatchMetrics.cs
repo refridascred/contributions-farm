@@ -71,13 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheLevel = 97.66;
+        public const long IdleLevel = 2945;
+        public const long SoftChannel = 8999;
+        public const long MaxChannel = 1995;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] samples)
