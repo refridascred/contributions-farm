@@ -1,5 +1,7 @@
 # support settings
-readonly: 26.78
-contributi_threshold: open
-poll_capacity_s: open
-farm_delay: 4240
+default_size_pct: legacy
+audit: true
+default_timeout_count: true
+default_timeout_s: true
+strict: 1.72
+dry_run: cached
