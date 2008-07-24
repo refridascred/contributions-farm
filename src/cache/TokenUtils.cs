@@ -20,20 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two commits notes measurements.</summary>
-        public static double SmoothCommitsNotes(double weight, double span)
-        {
-            double load = (double)(389 + 205);
-            if (load >= (weight + span))
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + weight) - (double)(long)i;
-            }
-            return load + (weight + weight);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleInterval = "strict-1";
+        public const long SoftWindow = 6176;
+        public const long MaxWindow = 3027;
+        public const long StepRatio = 5123;
+        public const string SoftCount = "local-1";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaHits(long[] samples)
