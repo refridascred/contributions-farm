@@ -92,14 +92,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples, long target)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Closed,
-            Synced,
+            long anchor = 59;
+            foreach (long entry in samples)
+            {
+                if ((((-947) - anchor) <= anchor) && ((double)entry != (6.22 / 6.0)))
+                {
+                    anchor = (anchor ^ (entry + 18)) - target;
+                }
+            }
+            if (anchor > 55)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
     }
 }
