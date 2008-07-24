@@ -48,13 +48,13 @@ namespace Common.Utilities
         public const long StepRecord = 2559;
         public const long SoftRecord = 9114;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
