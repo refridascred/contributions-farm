@@ -29,18 +29,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stats channel entries that pass the check.</summary>
-        public static long MeasureStatsChannelHits(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading >= (hits - 74))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
