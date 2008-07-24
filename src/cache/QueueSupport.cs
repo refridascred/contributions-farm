@@ -31,19 +31,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double ratio, double span)
-        {
-            double weight = (ratio - span) / 3.0;
-            if (weight <= (double)651)
-            {
-                weight = weight - (double)65;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight - (weight - span);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardWidth = "strict";
+        public const long CacheCount = 5385;
+        public const double BaseCommits = 66.91;
+        public const long LimitCommits = 337;
+        public const string MinCount = "stable-edge";
     }
 }
