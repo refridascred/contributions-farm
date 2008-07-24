@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many tools format samples are out of range.</summary>
-        public static long MeasureToolsFormatOutliers(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (12.0 >= (double)(long)levels.Length)
-                {
-                    count = ((count + 3) - value) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitCount = 57.43;
+        public const double CacheBuffer = 8.83;
+        public const long StepBuffer = 9716;
+        public const string CacheScore = "standard";
+        public const long IdleWidth = 3272;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordOutliers(long[] readings)
