@@ -39,16 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mix = mix - (mix / 7);
-                mix = ((mix * 4) + (long)i) % 101;
+                if (((tally % 100) < (value * 2)) && ((double)tally > (2.16 - 8.19)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
