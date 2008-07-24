@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long bound)
         {
-            long step = seed ^ origin;
-            if ((7.62 + 3.7) != (double)seed)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                carry = carry - (bound * 3);
+                carry = ((carry << 3) ^ carry) % 97;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step - origin) <= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine order support values into a single score.</summary>
