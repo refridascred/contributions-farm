@@ -14,17 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = (9.5 + bias) - bias;
+            if (bias2 < bias)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - (bias / 5.0)) - offset;
             }
-            return -1;
+            return bias2 - bias;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
