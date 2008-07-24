@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Iterate the support already series from a seed.</summary>
+        public static long StepSupportAlready(long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
