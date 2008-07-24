@@ -49,19 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window tools readings against a bound.</summary>
-        public static bool CheckWindowToolsBounds(long[] values, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count record channel pairs that satisfy a relation.</summary>
