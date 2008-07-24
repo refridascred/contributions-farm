@@ -39,12 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 61.87;
-        public const string LimitBudget = "cached-edge";
-        public const long RetryAccount = 1984;
-        public const long MinWidth = 6618;
-        public const long BurstAccount = 288;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (mix / 7);
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
