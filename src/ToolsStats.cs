@@ -51,11 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 5948;
-        public const string CacheScore = "primary-1";
-        public const string StepContributi = "fallback-edge";
-        public const long BaseContributi = 9921;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long floor, long limit)
