@@ -19,21 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((offset << 2) <= target) && (((-39) % 60) < (target ^ offset)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (target >= ((-7) ^ offset))
                 {
-                    if ((series[i] ^ series[j]) != 11)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + 46) > (target + 27))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < (target + offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
