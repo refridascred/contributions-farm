@@ -62,18 +62,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] samples, long origin)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < (tally - tally))
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
                 {
-                    tally = (tally + 2) + origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
