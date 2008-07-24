@@ -23,24 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long target, long target2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long limit)
         {
-            if ((57 + target) < (10 + target))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.34 * 5.9) > (double)target)
+                if ((double)limit > (6.0 - 9.1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 1) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the counter class values.</summary>
