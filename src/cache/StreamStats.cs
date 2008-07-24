@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks entry samples.</summary>
-        public static long CompareChecksEntryCount(long[] samples)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double load = ratio;
+            return (load + load) + floor;
         }
 
         /// <summary>Fold a list of report readings.</summary>
