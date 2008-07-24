@@ -1,13 +1,13 @@
 # Command notes
 
-Use metrics settings to tune how often layout data is refreshed.
-Run the route check before changing any record limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
 
-Each profile is validated before it reaches the command queue.
-The batches report groups every profile by account.
+The metrics module keeps stats values in sync with the commits cache.
+Use command settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Review layout limits each release
-- Log every graph change
-- Keep batch values small
+- Review token limits each release
+- Keep notes values small
+- Log every session change
