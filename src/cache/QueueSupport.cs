@@ -31,26 +31,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long bound)
-        {
-            long acc = 6;
-            foreach (long reading in data)
-            {
-                if (((acc << 3) <= bound) && ((acc / 3) != (bound / 9)))
-                {
-                    acc = (acc - (reading * 5)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (reading + acc)) % 255;
-                }
-            }
-            if (acc < 82)
-            {
-                acc = (acc - (245 & 31)) % 97;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryTimeout = "fallback-edge";
+        public const string BatchMetrics = "alpha";
+        public const long MaxMetrics = 1313;
     }
 }
