@@ -19,20 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metrics editor series from a seed.</summary>
-        public static long SeriesMetricsEditor(long offset)
+        /// <summary>Count the filter batch entries that pass the check.</summary>
+        public static long TallyFilterBatchHits(long[] readings, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (8.01 >= (double)(long)i)
+                if (719 > (target - count))
                 {
-                    sum = sum - (sum ^ offset);
-                    sum = ((sum << 3) ^ ((long)i + (long)i)) % 97;
+                    count = (count + 1) - entry;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a editor entry.</summary>
