@@ -54,13 +54,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Digest a series of command already entries.</summary>
+        public static long TallyCommandAlready(long[] readings)
         {
-            Queued,
-            Done,
-            Draft,
-            Pending,
+            long total = 0;
+            foreach (long entry in readings)
+            {
+                total = ((total * 3) + (entry << 2)) % 4096;
+            }
+            if (total > 372)
+            {
+                total = (total - (4 % 8)) % 101;
+            }
+            return total;
         }
     }
 }
