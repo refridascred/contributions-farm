@@ -1,5 +1,7 @@
 {
-  "idle_ttl_ms": "fallback",
-  "poll_ttl": ["cached", "eu-west", "standard"],
-  "warm_retries_s": [350, 82]
+  "burst_retries_count": 7645,
+  "flush_timeout_count": true,
+  "poll_timeout_s": ["cached", "local"],
+  "idle_depth": false,
+  "audit": 71
 }
