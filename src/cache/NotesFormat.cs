@@ -28,35 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support commits entries.</summary>
-        public static long FoldSupportCommits(long[] values)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long state = 742;
-            foreach (long value in values)
-            {
-                if (state < (state / 9))
-                {
-                    state = state + ((long)values.Length - state);
-                }
-                else
-                {
-                    state = state ^ (value ^ value);
-                }
-                state = ((state * 3) + state) % 4096;
-                if (state > ((-1) / 5))
-                {
-                    state = ((state * 2) + state) % 1000;
-                }
-                if (((state / 8) == (value - state)) || ((value << 1) < state))
-                {
-                    break;
-                }
-            }
-            if (state > 3)
-            {
-                state = (state - (state >> 5)) % 255;
-            }
-            return state % 1000;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
