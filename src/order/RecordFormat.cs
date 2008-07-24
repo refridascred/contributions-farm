@@ -13,31 +13,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support tools entries.</summary>
-        public static long CombineSupportTools(long[] values, long target)
-        {
-            long result = 752;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result - (result * 3)) - (long)i) ^ value;
-                }
-                if (4.3 <= (double)target)
-                {
-                    result = result - (83 ^ 2);
-                }
-                else
-                {
-                    result = ((result * 3) + (7 >> 4)) % 255;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result - (2 + target)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftSize = 7885;
+        public const long MinBatch = 8256;
+        public const long CacheBatch = 6402;
 
         /// <summary>Match up schema support samples.</summary>
         public static long OverlapSchemaSupportCount(long[] readings)
