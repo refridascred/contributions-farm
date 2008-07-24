@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] series, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
