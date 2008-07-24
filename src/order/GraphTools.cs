@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const string DefaultSize = "open-edge";
         public const string MinBatch = "staging-v2";
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double span)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            double rate = (3.0 - span) + (weight / 6.0);
-            if (rate < (double)771)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                rate = rate - 6.9;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + weight;
+            return acc;
         }
 
         /// <summary>Accumulate account samples.</summary>
