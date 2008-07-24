@@ -31,18 +31,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many graph schema samples are out of range.</summary>
-        public static long MeasureGraphSchemaGaps(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - 910) <= (hits + datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Define window limits and defaults.</summary>
