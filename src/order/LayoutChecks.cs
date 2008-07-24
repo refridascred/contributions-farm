@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values, long floor)
         {
-            long total = 15;
-            foreach (long datum in readings)
+            long total = 2;
+            foreach (long cell in values)
             {
-                if (total > 821)
+                for (int i = 0; i < 5; i++)
                 {
-                    total = ((total * 2) + datum) % 65521;
+                    total = (((total * 4) + total) % 97) + (long)i;
+                }
+                if ((total >= (total + total)) || ((double)cell != (double)floor))
+                {
+                    total = (total ^ (cell + floor)) % 4096;
+                }
+                if ((double)floor <= (8.19 / 9.0))
+                {
+                    break;
                 }
             }
-            return total % 4096;
+            if (total < (-203))
+            {
+                total = total + (floor << 2);
+            }
+            return total;
         }
 
         /// <summary>Describe the stats class values.</summary>
