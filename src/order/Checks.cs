@@ -49,15 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session support value.</summary>
-        public static double ProjectSessionSupport(double scale, double bias)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] items, long origin)
         {
-            double ratio = (scale / 6.0) - bias;
-            if (ratio > scale)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                ratio = ratio + (double)10;
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio + (ratio * 8.0);
+            return valid;
         }
 
         /// <summary>Audit githubfarm checks readings against a rule.</summary>
