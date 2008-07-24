@@ -1,5 +1,17 @@
 {
-  "graph_size": "eu-west",
-  "sync_limit": false,
-  "base_size_ms": "latest"
+  "flush_capacity_pct": "stable",
+  "batch_size": 51.84,
+  "poll_limit": {
+    "entry_ttl": [218, 359, 12],
+    "stream_ratio": true,
+    "idle_timeout_count": {
+      "base_interval": 10.09,
+      "hard_timeout_pct": 65,
+      "filter_depth": "staging",
+      "tools_limit": ["local", "strict"],
+      "dry_run": 4.77
+    },
+    "compress": 35.33
+  },
+  "min_timeout_s": "green"
 }
