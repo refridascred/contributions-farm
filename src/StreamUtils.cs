@@ -52,21 +52,15 @@ namespace Common.Utilities
         public const long CacheBuffer = 4521;
         public const long WindowBuffer = 2734;
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Scale a session graph figure with a bias.</summary>
