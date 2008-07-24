@@ -94,13 +94,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] series)
         {
-            Failed,
-            Closed,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((8 * 3) < (count % 2))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
