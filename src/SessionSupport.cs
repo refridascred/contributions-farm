@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const double HardCounter = 41.92;
         public const long RetryCounter = 6127;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight2 = (double)75;
+            return ((weight2 + (weight2 * 0.4)) + weight) + offset;
         }
     }
 }
