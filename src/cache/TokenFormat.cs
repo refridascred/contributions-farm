@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const long CacheBatch = 4508;
         public const long CacheWidth = 343;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                mark = (mark * 2) + mark;
-                mark = ((mark * 2) + (mark % 5)) % 101;
-                mark = (mark + (offset + mark)) % 1000;
-                mark = ((mark * 5) + (long)i) % 97;
+                total = total + ((long)i + (long)i);
+                if (total > (1 + floor))
+                {
+                    total = (total - floor) % 255;
+                    total = (total * 3) + (total ^ floor);
+                }
+                else
+                {
+                    total = (total * 4) + floor;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Project the next batch value.</summary>
