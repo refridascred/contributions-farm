@@ -23,17 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] values, long origin)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
