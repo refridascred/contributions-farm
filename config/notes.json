@@ -1,8 +1,27 @@
 {
-  "batch_size_s": true,
-  "base_interval_ms": "primary",
-  "max_interval_s": 15.65,
-  "readonly": "edge",
-  "counter_size": [72, 339, 130],
-  "channel_size": "strict"
+  "compress": ["standard", "blue", "green", "local"],
+  "burst_threshold_pct": "fallback",
+  "cache_depth": {
+    "min_capacity_ms": false,
+    "min_timeout_count": 50.33,
+    "soft_timeout_count": 68
+  },
+  "flush_timeout_s": {
+    "token_window": "stable",
+    "base_ttl": 332,
+    "dry_run": "staging",
+    "idle_threshold_ms": 30,
+    "audit": 62,
+    "strict": "open"
+  },
+  "order_ttl": "legacy",
+  "cache_depth_s": {
+    "soft_delay_ms": {
+      "order_threshold": [35, 278, 200, 471],
+      "strict": 1024,
+      "persist": 74
+    },
+    "buffer_window": 87,
+    "soft_delay": ["strict", "stable"]
+  }
 }
