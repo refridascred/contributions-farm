@@ -46,12 +46,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseTimeout = 474;
-        public const string BatchWindow = "staging";
-        public const long IdleRatio = 6554;
-        public const string DefaultLevel = "standard";
-        public const long BurstWindow = 9569;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Stale,
+            Queued,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
