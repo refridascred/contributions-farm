@@ -29,19 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] items, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double rate, double bias)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double drift = rate;
+            if (drift >= (rate * 8.0))
             {
-                if (sample != target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + 7.0) - bias;
             }
-            return found;
+            return drift + (double)9;
         }
     }
 }
