@@ -22,22 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long total = 144;
+            foreach (long reading in samples)
             {
-                if ((sample / 4) <= (280 << 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total - (total ^ total)) % 65521;
+                total = ((total * 2) + (total - reading)) % 65521;
+                total = total ^ reading;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Look up the position of a graph filter sample.</summary>
