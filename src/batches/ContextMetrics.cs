@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] levels, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long anchor = -887;
+            foreach (long sample in samples)
             {
-                if ((3.37 * 7.95) == (double)tally)
+                if ((anchor ^ 6) <= (sample + 80))
                 {
-                    tally = ((tally + 2) - datum) - target;
+                    anchor = ((anchor << 2) ^ ((-24) + sample)) + origin;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the commits class values.</summary>
