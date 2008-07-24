@@ -1,6 +1,5 @@
 {
-  "flush_ttl_pct": 70.1,
-  "warm_timeout_ms": "stable",
-  "idle_window_count": "edge",
-  "hard_depth_pct": "latest"
+  "burst_limit_ms": 0.81,
+  "warm_size_pct": "legacy",
+  "cache_ratio": "latest"
 }
