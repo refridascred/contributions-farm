@@ -33,17 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (values[i] >= seed)
+                if ((value % 12) > (tally / 4))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
