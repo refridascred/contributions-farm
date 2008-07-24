@@ -36,18 +36,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] data)
+        /// <summary>Derive the next buffer entry value from a seed.</summary>
+        public static long IterateBufferEntry(long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (tally > (entry >> 4))
-                {
-                    tally = tally + 2;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate stats samples.</summary>
