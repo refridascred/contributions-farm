@@ -37,40 +37,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 314;
         public const long CacheCount = 27;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long bound)
-        {
-            long lane = target - bound;
-            if (target > (target + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) > (target % 64))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane - lane) <= (lane ^ (-9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target < (8.0 - 7.8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "staging-edge";
+        public const double WindowTimeout = 70.98;
+        public const long BurstNotes = 2795;
+        public const long BatchNotes = 9043;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MaxEditor = 43.54;
