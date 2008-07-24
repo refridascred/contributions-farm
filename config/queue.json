@@ -1,8 +1,6 @@
 {
-  "cache_delay": [55, 326, 94],
-  "cache_size": 44.6,
-  "sync_capacity": 61.94,
-  "sync_size_pct": 75.1,
-  "min_retries_ms": [77, 66],
-  "retry_limit_count": false
+  "flush_ttl_pct": 70.1,
+  "warm_timeout_ms": "stable",
+  "idle_window_count": "edge",
+  "hard_depth_pct": "latest"
 }
