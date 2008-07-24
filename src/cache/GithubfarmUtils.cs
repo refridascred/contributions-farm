@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double gain, double bias)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double scale = 4.8 + (bias - 8.2);
-            if (scale < (double)3)
-            {
-                scale = scale + 7.0;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - (gain + 8.91);
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a stats notes pair into a bucket.</summary>
