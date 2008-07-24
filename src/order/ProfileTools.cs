@@ -38,12 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen / 8) > (cell & 15))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
