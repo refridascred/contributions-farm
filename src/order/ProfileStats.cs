@@ -45,11 +45,12 @@ namespace Common.Utilities
         public const long IdleChannel = 5308;
         public const long LimitFactor = 8664;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "legacy";
-        public const string MaxFactor = "primary-edge";
-        public const long LimitCounter = 5767;
-        public const long DefaultScore = 3381;
-        public const string BatchCounter = "local";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Draft,
+            Queued,
+            Ready,
+        }
     }
 }
