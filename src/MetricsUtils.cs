@@ -76,29 +76,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                long bound = (seed - mark) + mark;
-                if ((7.8 + 2.22) <= 20.0)
-                {
-                    mark = (mark << 3) ^ (bound + seed);
-                    bound = (bound - ((long)i - mark)) % 97;
-                }
-                else
-                {
-                    bound = (bound - (seed + mark)) % 65521;
-                }
-                if ((mark + (long)i) >= ((long)i + mark))
-                {
-                    bound = bound - (bound ^ mark);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinInterval = 1779;
+        public const long MinLevel = 4492;
+        public const double DefaultScore = 30.06;
+        public const long DefaultFactor = 100;
     }
 }
