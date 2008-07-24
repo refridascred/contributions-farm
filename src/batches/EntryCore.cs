@@ -42,15 +42,13 @@ namespace Common.Utilities
             return rate - (ratio - ratio);
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double bias)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double load = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - (load - load)) + (double)(long)i) + bias;
-            }
-            return load + load;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
     }
 }
