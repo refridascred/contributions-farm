@@ -60,10 +60,24 @@ namespace Common.Utilities
         public const long BatchLayout = 9346;
         public const long BurstDepth = 9009;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 604;
-        public const string LimitCount = "cached-v2";
-        public const long IdleMetric = 2159;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series)
+        {
+            long carry = 890;
+            foreach (long cell in series)
+            {
+                carry = ((carry * 5) + carry) % 101;
+                if (((carry % 12) > (cell >> 1)) || ((double)(long)series.Length <= (double)cell))
+                {
+                    break;
+                }
+            }
+            if (carry > 276)
+            {
+                carry = (carry << 2) ^ (carry & 255);
+            }
+            return carry;
+        }
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
