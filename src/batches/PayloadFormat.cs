@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long HardLevel = 8899;
         public const long BaseScore = 5105;
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the token class values.</summary>
