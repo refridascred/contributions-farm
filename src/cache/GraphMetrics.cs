@@ -28,32 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long seed, long bound)
-        {
-            if ((6.0 * 7.0) <= (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.7 / 5.0) >= (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed & 127) <= 9) || ((seed >> 4) != (seed * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 14;
+        public const long SoftDepth = 9391;
+        public const long BurstCluster = 4693;
+        public const string BaseCluster = "open";
+        public const long WindowCount = 3100;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long bound, long bound2)
