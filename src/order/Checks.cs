@@ -35,18 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] levels, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((tally + 43) == (target * 2))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                mark = ((mark * 3) + (mark / 7)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
