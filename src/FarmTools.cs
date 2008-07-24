@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long seed2)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long next = seed - seed2;
-            if (((seed2 + seed) <= (seed * 2)) && ((next & 63) >= next))
+            long result = 51;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 * 3) != (next % 8))
+                if ((double)result > (double)value)
                 {
-                    return 1;
+                    result = result - result;
                 }
                 else
                 {
-                    if ((3.77 - 8.5) >= (double)seed2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = (result - (value >> 3)) % 1000;
                 }
             }
+            return result;
         }
 
         /// <summary>Roll a metric metrics counter forward.</summary>
