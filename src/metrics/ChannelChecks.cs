@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Locate a report counter reading by value.</summary>
-        public static long FindReportCounterIndex(long[] items, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (items[i] == limit)
+                if (!((double)seen < (1.49 / 3.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
