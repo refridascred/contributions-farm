@@ -29,18 +29,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long limit)
         {
-            long carry = 24;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value + (-379)) > (0 - 15))
+                if (readings[i] < limit)
                 {
-                    carry = (carry + ((-89) - (-2))) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
