@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many contributi schema samples are out of range.</summary>
+        public static long CountContributiSchemaHits(long[] samples)
         {
-            Failed,
-            Done,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((0.4 - 11.0) < (double)(long)samples.Length) || ((entry + entry) == (tally * 4)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
