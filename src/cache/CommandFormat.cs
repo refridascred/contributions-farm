@@ -51,18 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph editor readings against a rule.</summary>
-        public static long MeasureGraphEditorHits(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((double)matches > (15.0 - 6.72))
+                if ((((-72) + count) <= (cell & 1)) || (((-3) + floor) <= cell))
                 {
-                    matches = (matches + 1) + entry;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
