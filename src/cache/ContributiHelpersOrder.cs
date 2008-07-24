@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] values, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (cell < step)
+                if (item > seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
