@@ -26,19 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] values, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)seen == (double)50)
                 {
-                    result = ((result + 3) % 101) ^ (long)i2;
+                    seen = ((seen + 1) + item) + offset;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
     }
 }
