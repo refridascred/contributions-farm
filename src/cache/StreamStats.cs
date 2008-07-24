@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double ratio, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] samples, long origin)
         {
-            double load = ratio;
-            return (load + load) + floor;
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((origin - 57) >= (origin % 100))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
