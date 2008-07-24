@@ -63,17 +63,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] values, long offset)
+        /// <summary>Digest a series of schema already entries.</summary>
+        public static long ScoreSchemaAlready(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 3;
+            foreach (long entry in samples)
             {
-                if (values[i] == offset)
+                if (limit > 30)
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (limit << 1);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((-201) % 5)) % 4096;
+                }
+                mix = mix - (mix << 2);
+                if (!((double)mix <= (12.0 * 1.06)))
+                {
+                    mix = ((mix << 2) ^ (entry << 3)) % 255;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Scale a session graph figure with a bias.</summary>
