@@ -1,6 +1,4 @@
 # entry settings
-default_capacity_pct: strict
-max_interval: stable
-contributi_delay: false
-cluster_ratio: true
-soft_window: stable
+cache_threshold_pct: 29.14
+burst_timeout_ms: true
+poll_interval: true
