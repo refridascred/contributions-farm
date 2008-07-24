@@ -20,11 +20,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchTimeout = "primary-v2";
-        public const double IdleLayout = 75.79;
-        public const long BurstFactor = 7119;
-        public const long RetryFactor = 9745;
-        public const long DefaultLayout = 3442;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double bias2)
+        {
+            double drift = (double)9;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - 0.7) + (double)(long)i) - bias;
+            }
+            return drift + (7.46 + bias2);
+        }
     }
 }
