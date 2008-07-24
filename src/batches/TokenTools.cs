@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] readings, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (entry >= offset)
+                if (!((tally >> 3) == (datum >> 4)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
