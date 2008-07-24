@@ -43,11 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseSpan = 5923;
-        public const double BatchCounter = 72.88;
-        public const long LimitCounter = 6345;
-        public const string RetrySpan = "staging";
-        public const long BaseFactor = 641;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
