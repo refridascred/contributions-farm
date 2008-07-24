@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Blend two metric payload measurements.</summary>
+        public static double AdjustMetricPayload(double gain, double bias)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            double scale = 6.3 - gain;
+            if (scale < 6.7)
+            {
+                scale = scale + bias;
+            }
+            return scale - (gain / 8.0);
         }
 
         /// <summary>Audit metric counter readings against a rule.</summary>
