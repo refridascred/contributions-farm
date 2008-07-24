@@ -44,12 +44,31 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Rank command profile input into a small class.</summary>
+        public static long GradeCommandProfile(long step, long bound)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
+            if ((bound - step) >= (0 / 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step + 67) > step) || ((double)bound < (1.4 * 4.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((32 < (step + step)) && ((double)bound >= (16.0 - 2.54)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
