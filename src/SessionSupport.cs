@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "fallback-1";
-        public const long IdleSpan = 2580;
-        public const long LimitEditor = 2641;
-        public const long WindowEditor = 6696;
-        public const long CacheBudget = 554;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) <= tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseCounter = "legacy-edge";
