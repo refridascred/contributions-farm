@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of order editor entries.</summary>
+        public static long WeighOrderEditor(long[] data, long floor)
         {
-            New,
-            Paused,
-            Closed,
+            long state = 759;
+            foreach (long value in data)
+            {
+                state = (((state << 2) ^ (floor - 6)) % 101) + value;
+            }
+            return state;
         }
 
         /// <summary>Accumulate editor samples.</summary>
