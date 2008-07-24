@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSize = 9047;
+        public const long HardMetrics = 8864;
+        public const string LimitScore = "strict";
+        public const long LimitLevel = 2201;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] levels, long floor)
