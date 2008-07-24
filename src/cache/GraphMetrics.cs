@@ -22,19 +22,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate support checks samples.</summary>
-        public static long DigestSupportChecks(long[] samples)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            long result = 91;
-            foreach (long item in samples)
+            double bias2 = rate * 14.0;
+            if (bias2 > (bias / 5.0))
             {
-                result = (result << 3) ^ (item - item);
+                bias2 = bias2 - bias;
             }
-            if (result > 24)
-            {
-                result = result + (result % 60);
-            }
-            return result % 4096;
+            return bias2 + (bias2 - bias);
         }
 
         /// <summary>Accumulate already samples.</summary>
