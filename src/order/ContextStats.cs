@@ -44,11 +44,31 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long origin, long origin2)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            if (origin <= (origin2 >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.4 + 0.3) < (double)origin2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin2 < (14.0 / 5.0)) || ((origin / 6) <= (origin2 & 127)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
