@@ -38,18 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long total = 199;
-            foreach (long datum in items)
-            {
-                if (!((double)datum > (20.0 - 3.54)))
-                {
-                    total = ((total * 3) + (datum + 8)) - limit;
-                }
-            }
-            return total % 65521;
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
