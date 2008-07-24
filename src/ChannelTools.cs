@@ -20,18 +20,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Measure how many cache window samples are out of range.</summary>
+        public static long MeasureCacheWindowOutliers(long[] data)
         {
-            long total = -749;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((total <= (datum + total)) || ((datum % 12) >= datum))
+                if (hits > sample)
                 {
-                    total = (total << 2) ^ (total << 1);
+                    hits = hits + 3;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
