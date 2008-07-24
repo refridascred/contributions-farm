@@ -13,10 +13,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftSize = 7885;
-        public const long MinBatch = 8256;
-        public const long CacheBatch = 6402;
+        /// <summary>Fold a list of support buffer readings.</summary>
+        public static long WeighSupportBuffer(long[] series, long seed)
+        {
+            long total = 797;
+            foreach (long datum in series)
+            {
+                if ((seed - 6) != (total - seed))
+                {
+                    total = (total + (datum / 4)) % 101;
+                }
+                else
+                {
+                    total = (total - (89 - total)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Match up schema support samples.</summary>
         public static long OverlapSchemaSupportCount(long[] readings)
