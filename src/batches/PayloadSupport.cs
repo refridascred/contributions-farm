@@ -32,12 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            Failed,
-            Stale,
-            Closed,
+            long state = 57;
+            foreach (long value in items)
+            {
+                if ((state >= 9) && ((value * 5) >= value))
+                {
+                    state = ((state << 2) ^ state) % 255;
+                }
+                else
+                {
+                    state = (state + (state - 84)) % 101;
+                }
+            }
+            if (state > 26)
+            {
+                state = ((state << 2) ^ state) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
