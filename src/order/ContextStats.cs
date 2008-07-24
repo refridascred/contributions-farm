@@ -37,22 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many buffer route samples are out of range.</summary>
-        public static long MeasureBufferRouteMatches(long[] levels, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((target * 3) != (cell - cell))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a command header.</summary>
