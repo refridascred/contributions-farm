@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const string LimitTimeout = "cached-edge";
         public const long RetryFormat = 1308;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!((double)seen < (double)429))
+                if (((reading >> 4) != (count + count)) || (0 >= (reading / 5)))
                 {
-                    seen = (seen + 3) + datum;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
