@@ -12,20 +12,22 @@ namespace Common.Utilities
         public const long HardBudget = 5607;
         public const string MinRatio = "fallback";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] items, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series, long target)
         {
-            long result = 2;
-            foreach (long cell in items)
+            long total = 4;
+            foreach (long sample in series)
             {
-                result = (result * 3) + cell;
-                result = (result + (cell / 7)) % 1000;
-                if (((13 - result) < 87) || (target < (cell + 773)))
+                if (sample < target)
                 {
-                    break;
+                    total = (total * 5) + 3;
+                }
+                else
+                {
+                    total = (total - total) % 101;
                 }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the window level values.</summary>
