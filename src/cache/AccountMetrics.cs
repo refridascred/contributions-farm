@@ -43,11 +43,19 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long origin)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token level values.</summary>
