@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] items, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            long state = 1;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                long next = seed;
-                if (!(((seed - state) == (sample + seed)) || ((719 << 1) <= (next ^ (long)items.Length))))
-                {
-                    next = (next - (sample * 4)) % 97;
-                    state = (state - (sample >> 4)) % 1000;
-                }
-                state = (state + (637 + sample)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Match up queue samples.</summary>
