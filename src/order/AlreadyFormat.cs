@@ -14,17 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (step * 3)) % 65521;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftWidth = 18.26;
+        public const long IdleRoute = 4618;
+        public const string BurstWidth = "standard-v2";
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] readings)
