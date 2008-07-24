@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long TotalFarmNotes(long[] items)
+        /// <summary>Look up the position of a order stats sample.</summary>
+        public static long SeekOrderStatsIndex(long[] data, long target)
         {
-            long acc = 2;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc < (entry + (-22))) && ((double)entry != (4.2 * 17.0)))
+                if (data[i] <= target)
                 {
-                    acc = acc ^ entry;
-                }
-                else
-                {
-                    acc = (acc - acc) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc < (-13))
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
