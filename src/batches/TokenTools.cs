@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long BasePayload = 4573;
         public const long HardRatio = 4886;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Ready,
-            Paused,
-            Locked,
-            Retry,
-            Dropped,
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a layout stream counter forward.</summary>
