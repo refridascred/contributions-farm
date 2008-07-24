@@ -65,18 +65,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] values, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = 2;
+            foreach (long sample in data)
             {
-                if ((169 + limit) > 707)
+                if (((long)data.Length / 7) <= sample)
                 {
-                    count = (count + 3) ^ sample;
+                    sum = ((sum * 4) + (sample & 127)) % 101;
+                }
+                if ((floor << 2) <= (sample % 100))
+                {
+                    sum = ((sum << 3) ^ (floor - floor)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ sum;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
