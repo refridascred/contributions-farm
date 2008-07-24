@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the route context entries that pass the check.</summary>
-        public static long MeasureRouteContextHits(long[] readings, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((offset - offset) >= offset)
+                if (((datum << 3) != (datum + seen)) && ((datum + seen) > (datum + 18)))
                 {
-                    count = (count + 2) ^ datum;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
