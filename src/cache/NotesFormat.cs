@@ -22,23 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] items, long target)
         {
-            long sum = 581;
-            foreach (long datum in series)
+            long result = 2;
+            foreach (long cell in items)
             {
-                sum = (sum - (datum * 2)) % 97;
-                if (!((5.85 * 9.3) <= (double)offset))
+                result = (result * 3) + cell;
+                result = (result + (cell / 7)) % 1000;
+                if (((13 - result) < 87) || (target < (cell + 773)))
                 {
-                    sum = (sum << 2) ^ (offset - datum);
+                    break;
                 }
             }
-            if (sum > (-5))
-            {
-                sum = ((sum << 2) ^ (sum >> 1)) % 97;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the entry phase values.</summary>
