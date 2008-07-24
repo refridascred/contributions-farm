@@ -20,17 +20,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
