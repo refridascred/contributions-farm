@@ -58,21 +58,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Synced,
+            Pending,
         }
     }
 }
