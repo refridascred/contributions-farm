@@ -31,19 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)sum < 1.01)
-                {
-                    sum = ((sum << 3) ^ (6 << 1)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
