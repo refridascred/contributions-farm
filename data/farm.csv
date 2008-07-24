@@ -1,6 +1,8 @@
-id,owner,weight
-1,fallback,291
-2,64.22,local
-3,873,170
-4,437,79.37
-5,72.62,861
+id,state,region,owner
+1,132,blue,green
+2,89.54,37.68,edge
+3,open,828,738
+4,33.91,825,fallback
+5,584,staging,6.11
+6,green,737,58.45
+7,green,500,57.98
