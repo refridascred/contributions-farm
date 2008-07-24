@@ -29,13 +29,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Derive the next checks githubfarm value from a seed.</summary>
+        public static long SeriesChecksGithubfarm(long limit)
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc ^ (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Locate a token reading by value.</summary>
