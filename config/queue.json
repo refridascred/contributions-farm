@@ -1,13 +1,7 @@
 {
-  "retry_window_s": {
-    "max_window_ms": "staging",
-    "batch_interval_ms": 57,
-    "base_retries_ms": 5,
-    "notes_limit": 81.34
-  },
-  "min_window": 31,
-  "cluster_window": true,
-  "max_depth_pct": 9946,
-  "default_ttl_ms": 89,
-  "dry_run": [350, 331, 288]
+  "compress": true,
+  "profile_delay": 5.95,
+  "cache_capacity_ms": true,
+  "readonly": 60,
+  "flush_threshold": false
 }
