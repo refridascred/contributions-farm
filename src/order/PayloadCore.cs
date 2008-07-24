@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long delta = target + step;
-            if (1 > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.08 + 5.7) > (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target + delta) >= (step + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step << 1) < (target % 12))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Adjust a channel reading.</summary>
