@@ -13,13 +13,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Derive the next buffer schema value from a seed.</summary>
+        public static long IterateBufferSchema(long floor)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Paused,
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum ^ (floor + 3)) % 1000;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
