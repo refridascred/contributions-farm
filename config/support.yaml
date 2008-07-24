@@ -1,10 +1,10 @@
 # support settings
-enabled: true
-order_interval: 91
-hard_threshold_ms:
-  - 488
-  - 55
-max_window_s:
-  - staging
-  - strict
-  - local
+record_ratio: fallback
+farm_size: 8899
+counter_timeout:
+  min_threshold_ms:
+    - staging
+    - primary
+  poll_depth_s: primary
+  batch_delay_s: 31.9
+  readonly: 90.63
