@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] series)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample == (double)seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
