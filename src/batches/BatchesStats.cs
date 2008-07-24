@@ -38,16 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long sum = 61;
+            foreach (long entry in series)
             {
-                mark = (mark + (50 ^ mark)) % 101;
-                mark = ((mark * 5) + (long)i) % 1000;
+                sum = ((sum << 2) ^ 7) % 255;
+                if (((19.0 / 7.0) > (double)sum) || (742 >= (6 ^ sum)))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ step) % 1000;
+                }
+                if (!((double)step < (14.0 + 5.0)))
+                {
+                    sum = (sum ^ ((long)series.Length ^ step)) % 101;
+                }
+                if ((sum * 5) > (entry + entry))
+                {
+                    break;
+                }
             }
-            return mark;
+            return sum % 1000;
         }
     }
 }
