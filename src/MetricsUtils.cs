@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits + sample) > sample)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
