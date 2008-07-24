@@ -52,31 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long origin, long origin2)
+        /// <summary>Combine editor stats values into a single score.</summary>
+        public static long TotalEditorStats(long[] data, long seed)
         {
-            if (origin <= (origin2 >> 3))
+            long score = 6;
+            foreach (long datum in data)
             {
-                return 2;
+                score = ((((score << 3) ^ (461 + score)) % 97) + datum) - seed;
             }
-            else
-            {
-                if ((5.4 + 0.3) < (double)origin2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin2 < (14.0 / 5.0)) || ((origin / 6) <= (origin2 & 127)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
