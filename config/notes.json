@@ -1,8 +1,5 @@
 {
-  "report_ratio": 100,
-  "compress": 4317,
-  "batch_timeout_s": "standard",
-  "format_window": "green",
-  "farm_depth": 55.08,
-  "base_window": "open"
+  "batch_capacity_pct": "latest",
+  "cluster_timeout": 49.46,
+  "default_window": false
 }
