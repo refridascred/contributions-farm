@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 4886;
-        public const long BatchInterval = 8003;
-        public const long HardWindow = 8641;
-        public const long StepBudget = 3435;
-        public const string SoftBudget = "local-edge";
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] levels, long step)
