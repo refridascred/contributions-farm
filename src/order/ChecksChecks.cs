@@ -36,18 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report already entries that pass the check.</summary>
-        public static long TallyReportAlreadyOutliers(long[] readings, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((0.11 * 4.0) <= (double)reading)
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
