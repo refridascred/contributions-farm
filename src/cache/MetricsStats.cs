@@ -62,12 +62,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 2473;
-        public const double BatchScore = 62.83;
-        public const long LimitCounter = 3714;
-        public const double LimitCount = 50.74;
-        public const string WindowWidth = "local-1";
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long offset, long offset2)
+        {
+            long cur = offset ^ offset2;
+            if ((offset << 2) > (offset >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (7 >= (cur + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] series, long bound)
