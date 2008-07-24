@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] samples, long limit)
         {
-            New,
-            Closed,
-            Locked,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
