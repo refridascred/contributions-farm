@@ -54,22 +54,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mark = -75;
-            foreach (long datum in data)
-            {
-                if ((176 + datum) < datum)
-                {
-                    mark = (mark - (bound / 5)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - 968)) % 65521;
-                }
-            }
-            return mark % 4096;
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Describe the contributi state values.</summary>
