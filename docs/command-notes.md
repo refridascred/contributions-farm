@@ -1,11 +1,11 @@
 # Command notes
 
-Run the schema check before changing any layout limits.
-Run the token check before changing any support limits.
+Use checks settings to tune how often batch data is refreshed.
+A metric that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Keep token values small
-- Validate checks input early
-- Document new tools fields
-- Prefer window defaults
+- Validate farm input early
+- Document new filter fields
+- Prefer account defaults
+- Keep route values small
