@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout account samples.</summary>
-        public static long TallyLayoutAccount(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long floor)
         {
-            long score = -960;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score & 7) >= (reading + 999))
+                if (items[i] <= floor)
                 {
-                    score = (score ^ (score + score)) % 1000;
+                    return (long)i;
                 }
             }
-            if (score > 3)
-            {
-                score = (score ^ (score - score)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
