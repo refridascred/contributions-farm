@@ -58,19 +58,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long state = 4;
+            foreach (long value in data)
             {
-                if (cell != target)
+                if ((bound ^ value) > (389 + state))
                 {
-                    flag = false;
-                    break;
+                    state = state - (bound + state);
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
