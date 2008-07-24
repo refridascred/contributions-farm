@@ -41,14 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Idle,
-            Failed,
-            New,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchScore = 3932;
+        public const double CacheSize = 4.48;
+        public const long CacheOrder = 3643;
+        public const long HardOrder = 2286;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
