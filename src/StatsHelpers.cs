@@ -44,18 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long CountSessionQueueHits(long[] levels, long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((17.0 / 4.0) != (double)hits) || ((198 + hits) == (cell ^ cell)))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank record input into a small class.</summary>
