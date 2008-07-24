@@ -22,32 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long seed)
+        /// <summary>Scale a cluster contributi figure with a bias.</summary>
+        public static double BlendClusterContributi(double weight, double offset)
         {
-            long lane = origin + seed;
-            if ((7 & 63) == (origin + seed))
+            double bias = offset + 9.2;
+            for (int i = 0; i < 3; i++)
             {
-                return 1;
+                bias = (bias - weight) + (double)(long)i;
             }
-            else
-            {
-                if (((lane % 12) >= origin) || ((origin + 4) < seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)lane >= (2.0 / 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return bias - 7.05;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
