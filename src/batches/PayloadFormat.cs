@@ -40,18 +40,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((reading << 1) > floor) || ((271 << 2) > ((long)levels.Length + 6))) || ((floor >> 5) < (106 + 25)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseLevel = 85.2;
+        public const double HardCommits = 58.43;
+        public const long BurstCommits = 8688;
+        public const double WindowCommits = 20.89;
+        public const string DefaultScore = "local-v2";
     }
 }
