@@ -12,22 +12,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count editor support pairs that satisfy a relation.</summary>
-        public static long CompareEditorSupportCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryScore = "strict";
+        public const string HardQueue = "open";
+        public const long BaseWidth = 854;
 
         /// <summary>Find the first stats buffer entry that matches the target.</summary>
         public static long SeekStatsBufferIndex(long[] levels, long step)
