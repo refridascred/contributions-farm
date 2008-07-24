@@ -59,12 +59,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
