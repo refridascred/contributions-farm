@@ -91,18 +91,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter editor entries that pass the check.</summary>
-        public static long AuditCounterEditorGaps(long[] series)
+        /// <summary>Roll a token cache counter forward.</summary>
+        public static long StepTokenCache(long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((-393) + hits) != (value * 5))
+                if (limit <= score)
                 {
-                    hits = hits + 1;
+                    score = (score ^ ((long)i - limit)) % 4096;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
