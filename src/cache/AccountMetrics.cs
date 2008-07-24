@@ -59,19 +59,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings, long bound)
+        /// <summary>Derive the next batches report value from a seed.</summary>
+        public static long RollBatchesReport(long bound)
         {
-            long mark = 53;
-            foreach (long cell in readings)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (((mark * 5) + (mark % 2)) % 1000) - cell;
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (mark < 354)
-            {
-                mark = ((mark << 3) ^ ((-271) + bound)) % 65521;
-            }
-            return mark % 4096;
+            return result;
         }
 
         /// <summary>Blend two farm report measurements.</summary>
