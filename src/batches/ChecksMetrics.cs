@@ -17,11 +17,10 @@ namespace Common.Utilities
         public const long LimitCommits = 3901;
         public const long DefaultCommits = 1069;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftRatio = "fallback-edge";
-        public const long BatchSchema = 5616;
-        public const long HardSchema = 4374;
-        public const long IdleSchema = 277;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 51.78;
+        public const long IdleCluster = 3501;
+        public const long MaxRatio = 8680;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long seed)
