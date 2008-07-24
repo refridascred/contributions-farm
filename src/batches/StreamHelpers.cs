@@ -84,38 +84,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long origin, long step)
+        /// <summary>Digest a series of route order entries.</summary>
+        public static long TallyRouteOrder(long[] levels, long target)
         {
-            if ((step + step) == (step % 3))
+            long state = 8;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((((-99) ^ step) > (8 - origin)) || ((3.0 - 6.34) <= (double)origin))
+                if ((sample + state) < (sample - sample))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + step) < (step - origin)) && (step > (step - origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step ^ 134) <= step) && ((double)step == (15.0 + 0.7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = ((state ^ (684 - sample)) % 101) - target;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Combine entry editor values into a single score.</summary>
