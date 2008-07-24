@@ -36,14 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings, long target)
         {
-            New,
-            Draft,
-            Dropped,
-            Synced,
-            Paused,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((6.5 <= (double)matches) || ((matches & 3) > (-14))) || (((2.82 / 8.0) == (double)entry) && ((4.0 + 1.0) == (double)entry)))
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
