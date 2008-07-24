@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next buffer token value from a seed.</summary>
-        public static long DeriveBufferToken(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((offset - (long)i) != (result ^ result)) && ((offset ^ result) == (offset / 4)))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result - offset) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepSpan = 4506;
+        public const long MaxContributi = 4266;
+        public const double BatchContributi = 15.78;
+        public const long HardTimeout = 8139;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] data, long floor)
