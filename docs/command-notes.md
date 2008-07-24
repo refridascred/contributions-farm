@@ -1,12 +1,11 @@
 # Command notes
 
-Run the token check before changing any entry limits.
-Run the graph check before changing any support limits.
-Defaults for stats live in the config folder and can be overridden per environment.
+Each support is validated before it reaches the contributi queue.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every session change
-- Validate token input early
-- Keep buffer values small
-- Prefer metrics defaults
+- Keep layout values small
+- Log every queue change
+- Review githubfarm limits each release
+- Document new graph fields
