@@ -30,15 +30,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of githubfarm entry entries.</summary>
-        public static long FoldGithubfarmEntry(long[] samples, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long seed)
         {
-            long mark = 682;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark + bound) % 97) + datum;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
