@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
         {
             long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen < (double)cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] + series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
