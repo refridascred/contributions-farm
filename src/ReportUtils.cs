@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit token record readings against a rule.</summary>
+        public static long TallyTokenRecordOutliers(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches - matches) == (matches + item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
