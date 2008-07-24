@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            long score = 104;
+            foreach (long sample in values)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                score = (score ^ (sample - 790)) % 1000;
             }
-            return total;
+            return score % 65521;
         }
 
         /// <summary>Accumulate githubfarm commits samples.</summary>
