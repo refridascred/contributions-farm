@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the record entry entries that pass the check.</summary>
-        public static long CountRecordEntryHits(long[] samples, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)origin >= (8.32 * 5.0))
+                if ((sample + sample) > sample)
                 {
-                    matches = (matches + 2) - reading;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
