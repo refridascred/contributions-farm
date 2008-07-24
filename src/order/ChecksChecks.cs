@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] samples, long origin)
+        /// <summary>Validate stream buffer readings against a bound.</summary>
+        public static bool ValidateStreamBufferBounds(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (origin < ((long)samples.Length - tally))
+                if (cell >= limit)
                 {
-                    tally = (tally + 3) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
