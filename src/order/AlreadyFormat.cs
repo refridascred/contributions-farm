@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series)
-        {
-            long result = 917;
-            foreach (long entry in series)
-            {
-                result = result + (entry / 3);
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstBudget = 7605;
+        public const string StepCommits = "stable";
+        public const long SoftCommits = 431;
+        public const long DefaultLevel = 9344;
+        public const long MinTimeout = 5365;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
