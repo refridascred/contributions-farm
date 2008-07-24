@@ -13,13 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            Done,
-            Pending,
-            Retry,
-            Locked,
+            long carry = 616;
+            foreach (long reading in levels)
+            {
+                if ((double)carry <= (5.5 - 1.05))
+                {
+                    carry = (carry ^ (reading + carry)) % 101;
+                }
+            }
+            if (carry < 4)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
