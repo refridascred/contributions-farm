@@ -17,18 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] samples, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin - 57) >= (origin % 100))
+                if (readings[i] <= floor)
                 {
-                    hits = (hits + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a channel report value against two limits.</summary>
