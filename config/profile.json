@@ -1,8 +1,19 @@
 {
-  "burst_size_count": 9,
-  "batch_interval": "stable",
-  "hard_capacity_count": "eu-west",
-  "poll_retries_pct": "eu-west",
-  "support_depth": "stable",
-  "readonly": 1024
+  "already_depth": {
+    "min_timeout": {
+      "enabled": 60,
+      "route_depth": "stable",
+      "warm_ttl_s": "local"
+    },
+    "retry_window_count": 500,
+    "persist": 30,
+    "flush_depth_pct": 1002,
+    "compress": false,
+    "cache_ratio_ms": 85.08
+  },
+  "readonly": false,
+  "contributi_delay": 11.2,
+  "poll_depth_s": [126, 121, 421, 125],
+  "flush_timeout_s": 1024,
+  "contributi_threshold": false
 }
