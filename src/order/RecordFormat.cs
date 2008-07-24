@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] values, long offset)
         {
-            Paused,
-            New,
-            Queued,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches * 5) < offset)
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of support tools entries.</summary>
