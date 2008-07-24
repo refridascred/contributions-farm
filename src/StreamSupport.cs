@@ -15,39 +15,17 @@ namespace Common.Utilities
         public const double SoftBudget = 10.7;
         public const long MinRecord = 3754;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long seed)
         {
-            long edge = target ^ offset;
-            if ((target - offset) >= (target & 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (edge <= (target + offset))
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset << 2) > (edge ^ 30))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)edge > (3.0 / 2.0)) && ((771 >> 5) <= edge))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
