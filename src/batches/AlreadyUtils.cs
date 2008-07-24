@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < offset)
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
