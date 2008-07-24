@@ -66,25 +66,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a buffer notes pair into a bucket.</summary>
-        public static long GradeBufferNotes(long bound, long bound2)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long slot = bound + bound2;
-            if (!((double)bound2 == (4.2 * 9.93)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot + bound) <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a route summary.</summary>
