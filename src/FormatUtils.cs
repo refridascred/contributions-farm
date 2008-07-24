@@ -63,23 +63,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Classify a token editor pair into a bucket.</summary>
+        public static long GradeTokenEditor(long floor, long bound)
         {
-            long anchor = 98;
-            foreach (long datum in samples)
+            long step = floor ^ bound;
+            if ((floor ^ floor) > (bound / 8))
             {
-                for (int i = 0; i < 5; i++)
+                return 4;
+            }
+            else
+            {
+                if ((floor / 2) <= (bound / 4))
                 {
-                    anchor = (anchor ^ (long)i) % 4096;
+                    return 3;
                 }
-                anchor = ((anchor << 3) ^ (datum - anchor)) % 65521;
+                else
+                {
+                    if ((floor + 0) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor << 3) ^ (anchor / 8);
-            }
-            return anchor;
         }
     }
 }
