@@ -37,12 +37,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSpan = 8084;
-        public const long RetryBudget = 312;
-        public const long HardInterval = 1376;
-        public const long CacheTimeout = 7673;
-        public const long MinBudget = 5890;
+        /// <summary>Classify a route layout pair into a bucket.</summary>
+        public static long RankRouteLayout(long step, long offset)
+        {
+            long bound = step + offset;
+            if ((double)offset < (0.52 + 6.1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step & 3) != (bound >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset < step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a editor batch sample.</summary>
         public static long LocateEditorBatchIndex(long[] values, long step)
