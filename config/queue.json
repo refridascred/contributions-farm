@@ -1,19 +1,8 @@
 {
-  "verbose": 6611,
-  "route_timeout": {
-    "batches_retries": true,
-    "queue_ratio": false,
-    "min_threshold_count": 500,
-    "compress": 37.74,
-    "strict": "strict",
-    "schema_size": {
-      "max_timeout": ["staging", "edge", "legacy", "stable"],
-      "poll_limit_pct": true,
-      "cache_delay": "strict",
-      "compress": 4221,
-      "queue_interval": 74.43
-    }
-  },
-  "session_threshold": 9638,
-  "min_depth_pct": true
+  "graph_delay": "fallback",
+  "order_capacity": true,
+  "hard_ttl": "fallback",
+  "default_ttl": 250,
+  "compress": true,
+  "cache_interval": "legacy"
 }
