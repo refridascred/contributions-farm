@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "local-edge";
+        public const long DefaultQueue = 3738;
+        public const string IdleFactor = "fallback-v2";
+        public const string WindowQueue = "staging-edge";
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
