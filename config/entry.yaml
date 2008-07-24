@@ -1,12 +1,15 @@
 # entry settings
-default_capacity: 52
-strict: 500
-verbose: false
-window_window:
-  route_ratio: false
-  farm_timeout:
-    - edge
-    - standard
-    - edge
-    - eu-west
-  min_ratio_count: 48
+verbose: 64
+min_timeout: fallback
+soft_delay_pct: false
+strict:
+  cache_threshold: 8756
+  idle_interval_pct: false
+  strict: false
+  persist:
+    format_delay: 94.51
+    flush_limit_s: 500
+    burst_capacity_pct: 303
+    burst_capacity: true
+  default_depth: 100
+  cluster_size: 1024
