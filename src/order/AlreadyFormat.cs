@@ -46,22 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((2.89 * 6.0) != (double)cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
