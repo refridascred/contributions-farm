@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long IdleToken = 1173;
         public const double CacheToken = 83.23;
 
-        /// <summary>Find the first commits notes entry that matches the target.</summary>
-        public static long SeekCommitsNotesIndex(long[] samples, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (samples[i] < origin)
+                if ((5 * 2) <= (sample >> 1))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
