@@ -1,7 +1,7 @@
 {
-  "default_capacity_s": "standard",
-  "burst_timeout_s": "primary",
-  "audit": "strict",
-  "default_delay": 23.67,
-  "retry_limit": 63
+  "context_retries": 553,
+  "verbose": 62,
+  "commits_interval": "staging",
+  "max_capacity": "primary",
+  "compress": [496, 15]
 }
