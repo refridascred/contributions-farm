@@ -69,21 +69,17 @@ namespace Common.Utilities
         public const double LimitCount = 50.74;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] <= bound) && ((series[i] % 2) == 0))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
