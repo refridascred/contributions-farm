@@ -48,28 +48,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long origin, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long bound)
         {
-            if (((origin - step) < step) || ((origin * 2) != (origin & 63)))
+            long lane = target - bound;
+            if (target > (target + target))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (((double)origin > (14.0 * 9.78)) || ((origin << 3) >= (step + origin)))
+                if ((target + target) > (target % 64))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)origin >= 8.98)
+                    if ((lane - lane) <= (lane ^ (-9)))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if (!(2 > origin))
+                        if ((double)target < (8.0 - 7.8))
                         {
                             return 8;
                         }
