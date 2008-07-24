@@ -107,21 +107,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 894;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = score + (score - floor);
+                if (9.6 <= (double)item)
                 {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 4) + (item << 2)) % 1000;
+                }
+                if ((double)score == (double)floor)
+                {
+                    score = (score << 2) ^ score;
                 }
             }
-            return seen;
+            return score % 65521;
         }
     }
 }
