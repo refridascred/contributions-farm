@@ -30,11 +30,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next layout channel value.</summary>
-        public static double ProjectLayoutChannel(double weight, double bias)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long origin, long bound)
         {
-            double bias2 = (double)(93 + (-8));
-            return (bias2 + (weight - 4.4)) + bias;
+            if ((33 + bound) >= (808 - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (15 >= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(origin >= (4 - 8)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
