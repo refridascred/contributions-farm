@@ -23,17 +23,16 @@ namespace Common.Utilities
         public const long HardSchema = 4374;
         public const long IdleSchema = 277;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc + 7;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
