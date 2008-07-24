@@ -33,13 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Synced,
-            New,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 4577;
+        public const long BurstChannel = 3904;
+        public const long HardChannel = 5189;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] values)
