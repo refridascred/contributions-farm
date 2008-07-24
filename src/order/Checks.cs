@@ -20,13 +20,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            double weight = (double)(97 * 2);
+            if (weight > (ratio / 2.0))
+            {
+                weight = (weight - (double)3) - offset;
+            }
+            else
+            {
+                weight = weight - (weight / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (ratio + weight)) + (double)(long)i;
+            }
+            return weight + (9.41 / 9.0);
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
