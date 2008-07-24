@@ -36,11 +36,17 @@ namespace Common.Utilities
             return (scale - (weight * 12.0)) + floor;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue class values.</summary>
