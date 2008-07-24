@@ -29,18 +29,18 @@ namespace Common.Utilities
             return rate2 - (rate * 15.0);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((3 * 2) == (seen - step)))
+                if ((7.1 + 8.04) >= (double)item)
                 {
-                    seen = (seen + 1) + entry;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
