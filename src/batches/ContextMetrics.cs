@@ -25,13 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            Retry,
-            Failed,
-            Active,
-            Done,
+            long result = 631;
+            foreach (long cell in levels)
+            {
+                if ((cell * 4) < (cell - result))
+                {
+                    result = result - cell;
+                }
+            }
+            if (result < (-305))
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
