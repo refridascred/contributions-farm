@@ -1,6 +1,19 @@
 {
-  "default_timeout_pct": "staging",
-  "flush_delay_count": true,
-  "strict": false,
-  "dry_run": ["latest", "green", "latest"]
+  "cache_interval_s": {
+    "counter_delay": "legacy",
+    "buffer_size": 30,
+    "hard_ratio_s": ["local", "fallback", "eu-west"],
+    "verbose": {
+      "verbose": 65.42,
+      "flush_size": 100,
+      "poll_depth_pct": 500,
+      "idle_delay_ms": 21
+    },
+    "readonly": 30,
+    "base_delay_ms": true
+  },
+  "compress": [434, 207, 497, 104],
+  "persist": 2315,
+  "graph_timeout": false,
+  "sync_limit_ms": [273, 50]
 }
