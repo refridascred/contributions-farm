@@ -39,11 +39,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 3647;
-        public const long CacheBatch = 3904;
-        public const double BatchTimeout = 34.64;
-        public const double HardSize = 16.14;
-        public const string RetryBudget = "staging-edge";
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples, long bound)
+        {
+            long total = 516;
+            foreach (long reading in samples)
+            {
+                if ((bound << 3) > (9 - (-600)))
+                {
+                    total = (total * 5) + (reading << 1);
+                }
+            }
+            if (total < 7)
+            {
+                total = ((total * 5) + 97) % 97;
+            }
+            return total;
+        }
     }
 }
