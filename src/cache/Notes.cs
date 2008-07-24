@@ -54,19 +54,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of command already entries.</summary>
-        public static long TallyCommandAlready(long[] readings)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] samples, long seed)
         {
-            long total = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 3) + (entry << 2)) % 4096;
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 372)
-            {
-                total = (total - (4 % 8)) % 101;
-            }
-            return total;
+            return -1;
         }
     }
 }
