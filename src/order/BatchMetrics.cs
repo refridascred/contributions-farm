@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            double gain = offset;
-            return (gain - (double)29) + weight;
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a metric contributi counter forward.</summary>
