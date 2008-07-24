@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "latest-edge";
-        public const double LimitCount = 62.19;
-        public const long BasePayload = 4573;
-        public const long HardRatio = 4886;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long bound, long origin)
+        {
+            if ((bound ^ origin) < (origin ^ bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin <= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double MaxTimeout = 74.09;
