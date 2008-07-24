@@ -54,12 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Validate session buffer readings against a bound.</summary>
+        public static bool VerifySessionBufferRange(long[] samples, long offset)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
