@@ -59,22 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] series, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items, long limit)
         {
-            long state = 34;
-            foreach (long reading in series)
+            long state = 63;
+            foreach (long item in items)
             {
-                if ((403 & 31) < (state & 1))
+                if ((item + limit) >= (34 ^ item))
                 {
-                    state = (((state * 5) + 5) ^ reading) + floor;
-                }
-                else
-                {
-                    state = (state + (972 % 100)) % 97;
+                    state = ((state << 2) ^ item) % 65521;
                 }
             }
-            return state % 65521;
+            if (state > (-376))
+            {
+                state = (state << 3) ^ (512 / 9);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a route options.</summary>
