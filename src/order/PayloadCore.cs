@@ -26,12 +26,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 8050;
-        public const double LimitSize = 28.35;
-        public const long StepInterval = 6219;
-        public const string HardReport = "strict-1";
-        public const long DefaultReport = 6656;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)offset >= (18.0 / 5.0))
+                {
+                    mix = (mix + 148) % 65521;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
