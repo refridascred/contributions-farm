@@ -12,24 +12,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a stats window counter forward.</summary>
-        public static long SeriesStatsWindow(long step)
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long TallyContextGraphMatches(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((step >> 4) < step) && ((step & 3) == (mix - step)))
+                if ((((matches % 12) <= value) && ((7 - 818) == (matches & 63))) || (matches >= (value + 5)))
                 {
-                    mix = (mix - ((long)i * 5)) % 4096;
+                    matches = matches + 1;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = ((mix * 2) + 850) % 1000;
-                    mix = (mix * 2) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Blend two batches graph measurements.</summary>
