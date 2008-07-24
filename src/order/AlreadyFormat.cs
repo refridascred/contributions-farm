@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
