@@ -45,11 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepFactor = "stable-v2";
-        public const long MaxCommand = 7240;
-        public const long DefaultCommand = 6097;
-        public const long CacheCommand = 9664;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Failed,
+            Done,
+            Paused,
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long WeighSchema(long[] items)
