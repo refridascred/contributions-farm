@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Pending,
-            Queued,
-            Locked,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
