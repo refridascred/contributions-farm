@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Done,
-            Failed,
-            Idle,
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
