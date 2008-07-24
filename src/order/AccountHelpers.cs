@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 9674;
+        public const long MaxSpan = 6663;
+        public const long IdleNotes = 8787;
+        public const long BatchBudget = 9911;
+        public const long SoftWidth = 4261;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long CombineCommits(long[] samples)
