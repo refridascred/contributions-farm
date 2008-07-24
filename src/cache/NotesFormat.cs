@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstSpan = 91.72;
-        public const long BaseDepth = 5756;
-        public const long IdleSize = 4226;
-        public const long SoftCluster = 4472;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((924 * 3) == ((long)i << 1))
+                {
+                    total = (total + (seed + seed)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
