@@ -33,11 +33,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            Paused,
+            New,
+            Ready,
+            Retry,
         }
     }
 }
