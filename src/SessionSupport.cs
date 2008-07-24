@@ -36,22 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
-        {
-            long score = 570;
-            foreach (long sample in values)
-            {
-                if (sample <= (score >> 2))
-                {
-                    score = (score ^ (score & 31)) % 101;
-                }
-                if ((score / 5) < (score * 5))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchInterval = 5339;
+        public const long BatchBudget = 4615;
+        public const long SoftCommand = 2682;
+        public const long CacheInterval = 3659;
     }
 }
