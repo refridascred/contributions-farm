@@ -1,7 +1,20 @@
 {
-  "batch_timeout_pct": "eu-west",
-  "sync_size": 250,
-  "hard_timeout_count": 81,
-  "batches_size": false,
-  "editor_threshold": 81
+  "strict": "local",
+  "idle_size_count": "open",
+  "record_interval": 100,
+  "burst_timeout": {
+    "enabled": ["staging", "open"],
+    "persist": {
+      "audit": "standard",
+      "hard_depth_ms": "stable",
+      "soft_interval_ms": [119, 376],
+      "soft_depth_pct": "primary",
+      "strict": "fallback"
+    },
+    "payload_timeout": 59.32,
+    "poll_delay": "blue",
+    "audit": 19.89,
+    "burst_depth_ms": 9.79
+  },
+  "idle_retries_ms": 99
 }
