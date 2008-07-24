@@ -90,9 +90,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetrySize = "latest-edge";
-        public const long CacheGithubfarm = 9149;
-        public const long LimitGithubfarm = 1409;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
