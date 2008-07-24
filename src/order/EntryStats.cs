@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long anchor = 7;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor ^ (reading << 3)) % 101;
-            }
-            if (anchor < 76)
-            {
-                anchor = anchor - (anchor << 3);
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
