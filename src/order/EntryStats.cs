@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many metric command samples are out of range.</summary>
+        public static long TallyMetricCommandMatches(long[] data, long seed)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((sample + 7) <= (seed << 3)) || ((45 - sample) == (sample << 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
