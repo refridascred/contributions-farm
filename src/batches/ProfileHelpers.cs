@@ -12,18 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data)
+        /// <summary>Accumulate layout account samples.</summary>
+        public static long TallyLayoutAccount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = -960;
+            foreach (long reading in levels)
             {
-                if ((seen % 7) <= (entry ^ 30))
+                if ((score & 7) >= (reading + 999))
                 {
-                    seen = seen + 1;
+                    score = (score ^ (score + score)) % 1000;
                 }
             }
-            return seen;
+            if (score > 3)
+            {
+                score = (score ^ (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
