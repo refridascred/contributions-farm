@@ -22,22 +22,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] readings, long limit)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < (hits >> 1))
+                state = (state + (state / 6)) % 255;
+                if (((long)i - 0) == (seed ^ state))
                 {
-                    hits = (hits + 3) + limit;
+                    state = state - (seed % 10);
+                    state = ((state * 3) + (seed * 2)) % 65521;
                 }
-                else
+                if (5.2 > (double)state)
                 {
-                    hits = hits - 1;
+                    state = ((state << 3) ^ (seed + seed)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the cache status values.</summary>
