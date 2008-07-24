@@ -40,18 +40,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the context queue entries that pass the check.</summary>
-        public static long MeasureContextQueueGaps(long[] readings, long step)
+        /// <summary>Grade a format token value against two limits.</summary>
+        public static long BucketFormatToken(long step, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long cur = step + seed;
+            if ((step + 838) > cur)
             {
-                if (!((double)392 < (double)hits))
+                return 0;
+            }
+            else
+            {
+                if (412 < (cur - step))
                 {
-                    hits = ((hits + 1) ^ sample) - step;
+                    return 6;
+                }
+                else
+                {
+                    if ((step / 8) <= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0 >= seed) && ((double)cur > (double)step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
