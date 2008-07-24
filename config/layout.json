@@ -1,5 +1,8 @@
 {
-  "max_ratio": "staging",
-  "warm_threshold_s": "local",
-  "command_interval": 66
+  "poll_capacity": "edge",
+  "format_ttl": 4307,
+  "batch_ttl_s": 98.91,
+  "base_interval": 92.13,
+  "base_capacity_pct": 7764,
+  "batch_depth": 60
 }
