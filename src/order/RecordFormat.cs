@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const double BatchDepth = 46.13;
         public const long IdleScore = 9471;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
