@@ -34,16 +34,38 @@ namespace Common.Utilities
         public const double SoftAccount = 87.49;
         public const double WindowInterval = 79.46;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] data, long bound)
+        /// <summary>Classify a editor notes pair into a bucket.</summary>
+        public static long ClassifyEditorNotes(long origin, long target)
         {
-            long state = 53;
-            foreach (long item in data)
+            if (target <= (6 - origin))
             {
-                state = state + (915 + item);
-                state = (state - (bound << 1)) % 255;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((16 < (target - target)) || ((origin >> 1) < origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target >= (6.91 + 8.4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + 2) > target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
