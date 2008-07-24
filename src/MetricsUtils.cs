@@ -66,23 +66,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] items, long origin)
         {
-            long acc = 207;
+            long matches = 0;
             foreach (long cell in items)
             {
-                acc = acc ^ (cell + cell);
-                if (!((acc + acc) == ((-7) % 100)))
+                if ((6.0 - 5.9) == (double)origin)
                 {
-                    acc = (acc + (cell * 2)) % 65521;
+                    matches = (matches + 3) - cell;
                 }
-                if (!((cell % 5) < cell))
+                else
                 {
-                    acc = acc - 2;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
