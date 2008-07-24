@@ -33,10 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultWidth = 36.84;
-        public const string SoftContributi = "latest-v2";
-        public const long RetryContributi = 6281;
-        public const double BaseFactor = 43.08;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 3647;
+        public const long CacheBatch = 3904;
+        public const double BatchTimeout = 34.64;
+        public const double HardSize = 16.14;
+        public const string RetryBudget = "staging-edge";
     }
 }
