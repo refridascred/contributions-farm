@@ -34,14 +34,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            Closed,
-            Ready,
-            Synced,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value - value) > (69 + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
