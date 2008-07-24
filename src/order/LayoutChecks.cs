@@ -56,11 +56,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Roll a report batch counter forward.</summary>
+        public static long SeriesReportBatch(long bound)
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!!((double)(long)i >= 15.0))
+                {
+                    mix = ((mix * 2) + ((long)i + bound)) % 101;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (mix + (bound - mix)) ^ (long)i2;
+                    mix = ((mix << 3) ^ (bound + mix)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Roll a token cache counter forward.</summary>
