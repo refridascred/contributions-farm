@@ -21,13 +21,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Synced,
-            Active,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 73.52;
+        public const long HardTools = 7992;
+        public const long LimitWidth = 3190;
+        public const long DefaultSize = 9090;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseChecks = 32.48;
