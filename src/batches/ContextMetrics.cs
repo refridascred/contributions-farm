@@ -25,23 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels)
-        {
-            long result = 631;
-            foreach (long cell in levels)
-            {
-                if ((cell * 4) < (cell - result))
-                {
-                    result = result - cell;
-                }
-            }
-            if (result < (-305))
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 4177;
+        public const long BurstStream = 7616;
+        public const long MinFactor = 4872;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitWidth = 7834;
