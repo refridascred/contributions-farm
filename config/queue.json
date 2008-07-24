@@ -1,6 +1,11 @@
 {
-  "enabled": 9.39,
-  "graph_ttl": 41,
-  "layout_threshold": ["fallback", "strict"],
-  "readonly": "edge"
+  "warm_retries": 1024,
+  "default_ttl": 6.49,
+  "retry_interval_count": 126,
+  "burst_window_ms": 1024,
+  "metric_retries": {
+    "idle_delay_ms": "legacy",
+    "compress": "legacy",
+    "cache_timeout_s": 2
+  }
 }
