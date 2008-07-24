@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] levels, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] levels, long origin)
         {
-            long matches = 0;
+            bool stale = true;
             foreach (long reading in levels)
             {
-                if ((matches / 5) < (matches + reading))
+                if (reading != origin)
                 {
-                    matches = (matches + 1) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Digest a series of graph context entries.</summary>
