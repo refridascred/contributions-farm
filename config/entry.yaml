@@ -1,25 +1,35 @@
 # entry settings
-base_window: true
-persist:
-  - strict
-  - eu-west
-  - staging
-poll_retries_pct: staging
-soft_window_count:
-  order_depth:
-    burst_delay: 5147
-    layout_window:
-      - stable
-      - eu-west
-      - legacy
-      - eu-west
-    warm_threshold: staging
-    burst_ratio: 16
-    idle_delay_count: 94
-  batch_limit_s:
-    burst_timeout: 96
-    sync_depth_ms: blue
-    base_threshold_ms: 41.26
-    max_ratio_s: primary
-  base_size_ms: 9666
-retry_capacity_s: true
+sync_ttl_ms: 569
+base_interval:
+  min_ttl: 61.73
+  cache_size_s:
+    - 132
+    - 499
+    - 63
+  warm_ttl: 78
+  editor_size:
+    enabled: green
+    hard_window_count: standard
+    compress: false
+    checks_delay: 2069
+retry_interval_ms: stable
+flush_interval_count:
+  audit:
+    - 460
+    - 87
+    - 411
+    - 155
+  burst_interval_ms:
+    strict: true
+    cluster_delay: 29.79
+    dry_run: 5498
+    base_ratio: true
+    audit: local
+    metric_delay:
+      - 8
+      - 476
+      - 370
+      - 470
+  burst_delay_count: 8455
+idle_limit_ms: stable
+default_interval_pct: 1024
