@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double offset)
-        {
-            double bias2 = offset + (4.86 + 2.23);
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
-            }
-            return bias2 + 7.3;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 6459;
+        public const long WindowLevel = 6148;
+        public const string IdleBatch = "fallback-v2";
+        public const double MinBatch = 56.43;
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
         public static long MeasurePayloadStatsMatches(long[] data)
