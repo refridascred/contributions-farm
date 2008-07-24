@@ -35,21 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
