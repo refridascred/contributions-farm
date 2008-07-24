@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowTimeout = 76.72;
-        public const double SoftFormat = 73.2;
-        public const long DefaultInterval = 1825;
-        public const long BurstFactor = 2085;
-        public const long CacheFormat = 8522;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepLevel = "alpha-1";
