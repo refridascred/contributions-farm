@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            long state = 74;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell + state) > (state - state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + (state + (long)data.Length)) % 97;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state >> 3);
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 44)
-            {
-                state = ((state * 4) + state) % 65521;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
