@@ -19,16 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 2) + (anchor + (long)i)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
