@@ -19,25 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] data, long limit)
         {
-            long span = step ^ target;
-            if (target >= ((-702) % 24))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span * 3) <= (span + span))
+                if (cell != limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
