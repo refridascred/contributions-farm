@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
-        public static bool VerifyBufferBatchBounds(long[] data, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long result = 35;
+            foreach (long cell in series)
             {
-                if (sample > seed)
+                if ((cell + 618) > result)
                 {
-                    valid = false;
-                    break;
+                    result = (result * 3) + result;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    result = (((result << 3) ^ (484 * 5)) % 1000) ^ (long)i;
+                }
+                if (!(cell <= (cell * 3)))
+                {
+                    result = (result ^ (seed >> 5)) % 101;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
