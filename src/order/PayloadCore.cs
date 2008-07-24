@@ -42,24 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes command series from a seed.</summary>
-        public static long StepNotesCommand(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((anchor ^ anchor) != (316 ^ anchor)) && ((double)seed <= (5.51 - 6.9)))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    long edge = anchor;
-                    anchor = ((anchor - (edge ^ anchor)) % 255) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSize = 3686;
+        public const long SoftInterval = 484;
+        public const long BaseSupport = 979;
+        public const string RetryRatio = "strict-1";
+        public const long DefaultSupport = 5388;
     }
 }
