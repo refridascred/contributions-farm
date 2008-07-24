@@ -46,26 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] values, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long anchor = 25;
-            foreach (long sample in values)
-            {
-                if ((sample + (-842)) > (anchor ^ 468))
-                {
-                    anchor = ((anchor * 4) + (anchor * 3)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (seed - sample);
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor * 4) + (anchor + seed);
-            }
-            return anchor % 4096;
+            Paused,
+            Retry,
+            Failed,
+            Idle,
         }
     }
 }
