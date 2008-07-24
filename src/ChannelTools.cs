@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state - (state - bound)) % 255;
-                if (!(((double)(long)i >= (double)1) && ((double)bound >= (7.1 + 6.0))))
-                {
-                    state = ((state * 4) + ((long)i - state)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstInterval = 9300;
+        public const long BaseProfile = 7525;
+        public const double LimitDepth = 52.72;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
