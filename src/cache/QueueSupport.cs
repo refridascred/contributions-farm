@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] values, long seed)
+        /// <summary>Measure how many entry queue samples are out of range.</summary>
+        public static long CountEntryQueueMatches(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((seed >> 1) >= (sample & 31))
+                if ((7.6 <= (double)bound) && ((322 / 9) > (datum / 9)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
