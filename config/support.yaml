@@ -1,4 +1,7 @@
 # support settings
-command_threshold: 30
-batch_threshold: blue
-verbose: standard
+default_threshold: 80
+farm_interval: 68.95
+compress: 79.3
+cache_depth_count: 60
+buffer_retries: 100
+persist: true
