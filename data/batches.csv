@@ -1,8 +1,9 @@
-id,label,level,weight
-1,667,staging,15.23
-2,13.53,769,32
-3,strict,open,693
-4,51.33,35.88,primary
-5,green,54.02,565
-6,local,staging,eu-west
-7,open,93.03,859
+id,label,weight,owner,active
+1,245,671,102,492
+2,latest,292,546,231
+3,green,cached,443,edge
+4,local,62.95,881,latest
+5,572,stable,open,primary
+6,458,open,48.3,531
+7,71.09,green,308,26.12
+8,green,57.21,994,404
