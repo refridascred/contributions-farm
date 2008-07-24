@@ -1,12 +1,11 @@
 {
-  "min_depth_s": 30,
-  "poll_interval": {
-    "tools_retries": 1987,
-    "burst_timeout": "eu-west",
-    "burst_delay": ["open", "strict", "fallback", "staging"],
-    "dry_run": 5029,
-    "strict": true,
-    "hard_depth_pct": "blue"
+  "hard_threshold": 1024,
+  "stats_ttl": 1024,
+  "burst_delay": {
+    "persist": ["fallback", "standard", "cached", "staging"],
+    "min_depth_s": 100,
+    "verbose": 63
   },
-  "enabled": 1311
+  "layout_limit": 49.56,
+  "batches_threshold": false
 }
