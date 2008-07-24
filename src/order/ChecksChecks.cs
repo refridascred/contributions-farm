@@ -13,20 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long sum = 8;
-            foreach (long reading in samples)
-            {
-                sum = (sum * 5) + (reading >> 2);
-                sum = (sum + (sum >> 1)) % 1000;
-            }
-            if (sum > 0)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum;
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
