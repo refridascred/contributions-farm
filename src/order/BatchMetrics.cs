@@ -53,17 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format filter sample.</summary>
-        public static long LookupFormatFilterIndex(long[] data, long limit)
+        /// <summary>Measure how many queue checks samples are out of range.</summary>
+        public static long CountQueueChecksGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((data[i] > limit) && ((data[i] % 3) != 0))
+                if (entry > (entry / 5))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a editor record.</summary>
