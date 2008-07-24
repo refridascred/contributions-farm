@@ -28,15 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values, long seed)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mix = 7;
-            foreach (long value in values)
-            {
-                mix = ((mix - (mix & 3)) - value) - seed;
-            }
-            return mix;
+            Failed,
+            Closed,
+            New,
+            Idle,
         }
     }
 }
