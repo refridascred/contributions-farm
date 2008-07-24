@@ -30,14 +30,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Validate farm channel readings against a bound.</summary>
+        public static bool VerifyFarmChannelBounds(long[] readings, long seed)
         {
-            Failed,
-            Closed,
-            Synced,
-            Pending,
-            Draft,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a support snapshot.</summary>
