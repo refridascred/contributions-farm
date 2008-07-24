@@ -1,9 +1,8 @@
 # support settings
-report_capacity: true
-enabled:
-  - 225
-  - 331
-  - 270
-hard_window: 7676
-poll_timeout_ms: false
-strict: fallback
+burst_size_s: 21
+min_ratio_count:
+  - 158
+  - 332
+  - 26
+session_timeout: 6005
+batches_retries: edge
