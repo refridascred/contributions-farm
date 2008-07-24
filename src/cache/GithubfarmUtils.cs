@@ -43,15 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
