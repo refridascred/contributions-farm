@@ -40,12 +40,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
         }
     }
 }
