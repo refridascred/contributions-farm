@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long HardLevel = 8899;
         public const long BaseScore = 5105;
 
-        /// <summary>Count the filter batch entries that pass the check.</summary>
-        public static long TallyFilterBatchHits(long[] readings, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (719 > (target - count))
+                if (samples[i] >= bound)
                 {
-                    count = (count + 1) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
