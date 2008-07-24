@@ -56,15 +56,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next batches report value from a seed.</summary>
-        public static long RollBatchesReport(long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long origin, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long offset = origin - limit;
+            if (((0 - limit) > (limit % 2)) || ((offset - 231) >= (limit >> 4)))
             {
-                result = ((result * 2) + (long)i) % 101;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (((11 + offset) <= 6) && ((double)limit < (8.3 + 7.13)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((16.0 * 5.0) < (2.18 * 15.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two farm report measurements.</summary>
