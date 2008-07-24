@@ -1,5 +1,5 @@
 {
-  "retry_capacity_pct": 29.36,
-  "poll_timeout_count": 84.29,
-  "sync_delay_s": "staging"
+  "route_window": false,
+  "max_size_s": 82.63,
+  "batch_window_s": true
 }
