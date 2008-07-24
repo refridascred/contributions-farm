@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long sum = 549;
-            foreach (long cell in levels)
+            long acc = 73;
+            foreach (long value in items)
             {
-                if ((double)sum >= (5.8 - 0.6))
+                acc = (acc + (value % 60)) % 4096;
+                acc = (acc - value) % 255;
+                if ((2.64 / 9.0) <= (double)acc)
                 {
-                    sum = (((sum * 3) + offset) % 65521) - cell;
-                }
-                else
-                {
-                    sum = (sum - (sum & 31)) % 255;
+                    break;
                 }
             }
-            return sum % 97;
+            if (acc > 57)
+            {
+                acc = (acc * 5) + (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
