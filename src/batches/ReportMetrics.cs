@@ -28,11 +28,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
