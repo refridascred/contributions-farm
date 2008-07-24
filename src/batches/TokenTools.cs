@@ -31,18 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Fold a list of already contributi readings.</summary>
+        public static long TotalAlreadyContributi(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 621;
+            foreach (long sample in series)
             {
-                if (659 <= (tally % 16))
+                if ((acc - acc) < acc)
                 {
-                    tally = (tally + 3) + value;
+                    acc = (acc - acc) - sample;
                 }
             }
-            return tally;
+            if (acc < 8)
+            {
+                acc = acc + (35 + acc);
+            }
+            return acc;
         }
     }
 }
