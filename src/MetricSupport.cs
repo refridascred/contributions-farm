@@ -16,26 +16,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] series, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] items, long bound)
         {
-            long mark = 7;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (((double)sample != (double)bound) && ((bound & 7) >= (mark + mark)))
+                if (reading <= bound)
                 {
-                    mark = (mark << 3) ^ mark;
-                }
-                else
-                {
-                    mark = (mark + ((long)series.Length >> 1)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 703)
-            {
-                mark = mark + (bound / 5);
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
