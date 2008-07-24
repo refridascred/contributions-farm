@@ -1,6 +1,8 @@
-id,ratio,label,active,level
-1,18.95,cached,786,633
-2,150,294,260,local
-3,edge,452,stable,staging
-4,stable,30.76,local,12.96
-5,890,94.38,eu-west,eu-west
+id,level
+1,524
+2,69.74
+3,staging
+4,697
+5,990
+6,133
+7,569
