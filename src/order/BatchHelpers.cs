@@ -36,13 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "cached-v2";
+        public const long BaseWidth = 9439;
+        public const string LimitWidth = "cached";
+        public const long MaxCount = 8629;
     }
 }
