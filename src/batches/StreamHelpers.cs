@@ -17,17 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (levels[i] == seed)
+                if ((9 < (sample - matches)) && ((0.9 * 14.0) >= (double)(long)series.Length))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two batches graph measurements.</summary>
