@@ -44,22 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] readings, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double rate = scale;
+            if (rate >= scale)
             {
-                if ((910 > (floor >> 1)) && ((floor + (long)readings.Length) > (seen * 4)))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate - (double)95) + floor;
             }
-            return seen;
+            return rate - scale;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
