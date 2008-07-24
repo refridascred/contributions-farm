@@ -22,12 +22,23 @@ namespace Common.Utilities
         public const double HardLayout = 14.78;
         public const long HardTimeout = 6828;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 4796;
-        public const double SoftBatch = 57.43;
-        public const long BaseBatch = 5445;
-        public const string WindowBatch = "stable-edge";
-        public const long CacheBatch = 1131;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values)
+        {
+            long result = -83;
+            foreach (long reading in values)
+            {
+                if ((result & 127) >= (result - (-5)))
+                {
+                    result = result ^ result;
+                }
+                if ((reading * 5) < reading)
+                {
+                    result = (result - (result >> 4)) % 97;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
