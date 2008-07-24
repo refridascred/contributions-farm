@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((0.29 + 2.8) <= (double)item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "alpha-1";
+        public const long LimitTools = 3196;
+        public const long MaxTools = 187;
+        public const string SoftTools = "open-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseGraph = 8419;
