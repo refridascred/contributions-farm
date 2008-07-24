@@ -1,9 +1,15 @@
 # githubfarm settings
-retry_delay_count: 52.75
-idle_limit: 32
-default_depth_ms: 30
-order_depth: 18
-context_ttl: stable
-idle_depth_ms:
-  - 435
-  - 31
+strict: 100
+warm_retries: legacy
+layout_capacity: 11.08
+hard_ttl_pct: standard
+entry_delay:
+  warm_depth_ms: primary
+  soft_ratio_count: false
+  cache_threshold_pct: cached
+  compress:
+    - edge
+    - strict
+    - strict
+    - edge
+idle_depth_count: 6637
