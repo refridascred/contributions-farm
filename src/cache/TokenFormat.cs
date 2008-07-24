@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long limit)
         {
-            if ((step - step) == (target & 3))
+            long delta = step + limit;
+            if (((limit + delta) <= (delta / 6)) && ((delta >> 1) < limit))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((77 > (step + step)) && ((target << 3) < step))
+                if ((67 % 100) > (step - step))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((target - target) == (step + 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + 640) == (step + 690))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
