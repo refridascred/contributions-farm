@@ -23,19 +23,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Classify a schema layout pair into a bucket.</summary>
+        public static long RankSchemaLayout(long origin, long floor)
         {
-            long carry = 55;
-            foreach (long value in values)
+            long span = origin + floor;
+            if ((origin - span) >= (span / 3))
             {
-                if ((value + carry) <= (carry + 70))
-                {
-                    carry = carry ^ carry;
-                }
-                carry = (carry - value) % 4096;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((double)origin >= (6.39 * 3.31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (56 > (floor << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (span >= (6 - floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next channel batch value from a seed.</summary>
