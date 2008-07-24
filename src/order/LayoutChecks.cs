@@ -32,21 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already route entries.</summary>
-        public static long TotalAlreadyRoute(long[] items, long offset)
-        {
-            long anchor = 1;
-            foreach (long item in items)
-            {
-                anchor = (anchor ^ 23) % 1000;
-                anchor = anchor - item;
-                if (!((double)anchor >= 0.1))
-                {
-                    anchor = (anchor - (offset + 546)) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepScore = 30.13;
+        public const long CacheTimeout = 314;
+        public const long CacheCount = 27;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long target, long bound)
