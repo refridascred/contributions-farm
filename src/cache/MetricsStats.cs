@@ -45,14 +45,19 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double gain, double floor)
         {
-            Locked,
-            Closed,
-            Failed,
-            Retry,
-            Dropped,
+            double gain2 = (1.8 * 9.1) - (floor / 6.0);
+            if (gain2 < gain)
+            {
+                gain2 = gain2 - (gain2 * 14.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (double)3) + (double)(long)i;
+            }
+            return gain2 + (gain2 - gain2);
         }
 
         /// <summary>Hold a support info.</summary>
