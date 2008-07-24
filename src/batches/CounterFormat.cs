@@ -15,11 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long seed)
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
