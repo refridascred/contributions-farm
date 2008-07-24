@@ -47,17 +47,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first metric account entry that matches the target.</summary>
-        public static long LocateMetricAccountIndex(long[] data, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
