@@ -67,22 +67,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] items, long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.0 - 5.9) == (double)origin)
+                if (samples[i] > floor)
                 {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
