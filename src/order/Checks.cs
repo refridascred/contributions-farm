@@ -23,30 +23,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items)
         {
-            long mix = 824;
+            long mix = 53;
             foreach (long value in items)
             {
-                if (mix <= (mix + value))
-                {
-                    mix = ((mix << 2) ^ (value * 4)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (value + 55);
-                }
-                if ((value % 100) > (value << 3))
-                {
-                    break;
-                }
+                mix = mix - (value ^ 34);
             }
-            if (mix < 53)
-            {
-                mix = (mix - ((-342) % 24)) % 255;
-            }
-            return mix;
+            return mix % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
