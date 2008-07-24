@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the token profile entries that pass the check.</summary>
-        public static long TallyTokenProfileMatches(long[] samples, long offset)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + offset) > entry)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
