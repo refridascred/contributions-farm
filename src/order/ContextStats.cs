@@ -33,11 +33,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchFactor = 9839;
+        public const long BaseLevel = 8145;
+        public const double IdleCommits = 28.79;
     }
 }
