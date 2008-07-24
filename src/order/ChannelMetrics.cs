@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "local-1";
-        public const long BatchSupport = 5831;
-        public const long HardTimeout = 8678;
+        /// <summary>Classify a farm metric pair into a bucket.</summary>
+        public static long GradeFarmMetric(long bound, long target)
+        {
+            long prev = bound - target;
+            if ((bound ^ prev) >= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev ^ bound) != (target + prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + target) > (target << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesMatches(long[] samples)
