@@ -39,26 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items, long offset)
         {
-            long result = 2;
-            foreach (long value in samples)
+            long sum = 17;
+            foreach (long reading in items)
             {
-                if ((11.0 - 4.6) >= (double)result)
+                if ((double)sum >= (1.0 / 4.0))
                 {
-                    result = ((result + result) ^ value) + limit;
-                }
-                else
-                {
-                    result = (result * 5) + result;
+                    sum = ((((sum * 2) + 35) % 65521) ^ reading) + offset;
                 }
             }
-            if (result < 68)
+            if (sum < 8)
             {
-                result = (result - (result & 255)) % 65521;
+                sum = (sum - (sum * 4)) % 255;
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
