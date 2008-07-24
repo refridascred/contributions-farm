@@ -79,18 +79,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((4 + step) >= (96 & 7))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
