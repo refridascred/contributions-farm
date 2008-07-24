@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items, long limit)
         {
-            Idle,
-            Draft,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ limit) == (limit % 16))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
