@@ -64,22 +64,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((datum ^ count) >= (datum * 2))
+                if (reading > limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
