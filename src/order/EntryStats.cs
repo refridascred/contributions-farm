@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long MinBudget = 9466;
         public const long RetryDepth = 6285;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item >= (716 & 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
