@@ -20,13 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result + 3) % 101) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
