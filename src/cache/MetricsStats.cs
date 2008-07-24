@@ -37,25 +37,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long offset, long offset2)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long cur = offset ^ offset2;
-            if ((offset << 2) > (offset >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (7 >= (cur + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Closed,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
