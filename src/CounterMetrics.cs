@@ -16,21 +16,19 @@ namespace Common.Utilities
             return scale - (gain / 8.0);
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 204;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix + (entry % 100)) % 101) - seed;
             }
-            return count;
+            if (mix > 9)
+            {
+                mix = (mix - (469 >> 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
