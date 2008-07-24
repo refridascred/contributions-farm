@@ -27,15 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long seed)
         {
-            long score = -62;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (entry ^ 16)) % 101;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
