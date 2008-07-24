@@ -45,18 +45,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] items, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((target + hits) > (target * 3))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a filter channel reading.</summary>
