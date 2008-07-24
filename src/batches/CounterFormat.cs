@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of command order readings.</summary>
-        public static long WeighCommandOrder(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            long total = -758;
-            foreach (long datum in values)
+            long total = 952;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    total = ((total << 3) ^ total) + (long)i;
-                }
-                total = total ^ (7 >> 4);
-                total = (total + datum) % 4096;
+                total = (total + (entry - (-958))) % 1000;
             }
-            return total % 4096;
+            return total % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
