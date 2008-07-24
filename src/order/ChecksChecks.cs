@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item != offset)
                 {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
