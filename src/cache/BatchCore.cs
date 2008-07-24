@@ -14,19 +14,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every route farm entry stays within the limit.</summary>
-        public static bool VerifyRouteFarmBounds(long[] series, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Done,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
