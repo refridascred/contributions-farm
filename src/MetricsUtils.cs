@@ -47,13 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Dropped,
-            Stale,
             Closed,
-            Paused,
+            Ready,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
