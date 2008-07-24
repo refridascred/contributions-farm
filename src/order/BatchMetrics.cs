@@ -50,22 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue checks samples are out of range.</summary>
-        public static long CountQueueChecksGaps(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long total = -6;
+            foreach (long entry in values)
             {
-                if (entry > (entry / 5))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total - offset) % 1000) ^ entry;
+                total = (total << 2) ^ 10;
             }
-            return matches;
+            if (total < 971)
+            {
+                total = ((total * 4) + (86 ^ total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
