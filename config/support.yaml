@@ -1,17 +1,7 @@
 # support settings
-flush_ttl_pct:
-  batch_interval: primary
-  hard_depth_pct: 30
-  idle_limit_ms:
-    burst_limit: true
-    default_window_ms: true
-    compress: 100
-cluster_depth: true
-sync_size_count:
-  - 350
-  - 208
-  - 357
-  - 407
-flush_interval_ms:
-  - primary
-  - legacy
+readonly: true
+editor_delay: false
+base_depth_pct: 1024
+flush_ttl: true
+verbose: primary
+min_window_pct: 27.0
