@@ -67,18 +67,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Blend two farm report measurements.</summary>
+        public static double AdjustFarmReport(double rate, double span)
         {
-            long anchor = 8;
-            foreach (long cell in levels)
+            double bias = (rate + 1.06) + span;
+            if (bias < (double)305)
             {
-                if (anchor >= (cell + anchor))
-                {
-                    anchor = ((anchor << 3) ^ cell) % 65521;
-                }
+                bias = bias - (bias - span);
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (rate * 5.66)) - (double)(long)i;
+            }
+            return bias + (rate / 5.0);
         }
     }
 }
