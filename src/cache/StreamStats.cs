@@ -40,19 +40,20 @@ namespace Common.Utilities
         public const long BaseInterval = 6575;
         public const string MinCounter = "stable-1";
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mix = 9;
+            foreach (long sample in series)
             {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix + (sample & 3)) % 4096) - seed;
+                mix = ((mix << 3) ^ (sample ^ mix)) % 4096;
             }
-            return valid;
+            if (mix > 1)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix % 65521;
         }
     }
 }
