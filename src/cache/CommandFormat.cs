@@ -20,21 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 508;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (((acc << 3) ^ (datum << 2)) % 255) + limit;
+                if ((acc + 11) >= (acc / 6))
                 {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
