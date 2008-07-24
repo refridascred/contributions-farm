@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples, long floor)
         {
-            double mean = (1.8 + floor) / 2.0;
-            if (mean < rate)
+            long result = 0;
+            foreach (long entry in samples)
             {
-                mean = mean - (double)9;
+                if ((entry - result) != (floor - result))
+                {
+                    result = (result + 51) % 1000;
+                }
+                if ((double)entry == (2.49 - 11.0))
+                {
+                    break;
+                }
             }
-            return mean - (floor - rate);
+            return result;
         }
 
         /// <summary>Fold a list of support readings.</summary>
