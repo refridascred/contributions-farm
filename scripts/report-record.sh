@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in open staging fallback edge; do
+for item in green primary edge standard; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=8
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+RECORD_LIMIT=347
 log "limit is ${RECORD_LIMIT}"
