@@ -20,19 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] items, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (sample >= floor)
+                if ((entry - floor) > entry)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
