@@ -1,13 +1,13 @@
 {
-  "flush_timeout_s": {
-    "warm_size_s": 16.25,
-    "queue_window": "staging",
-    "min_threshold_s": "legacy",
-    "dry_run": 1024,
-    "max_delay_pct": "green"
+  "base_retries_ms": "latest",
+  "poll_delay_count": 93.35,
+  "min_interval": {
+    "tools_retries": ["eu-west", "green", "blue", "primary"],
+    "counter_delay": 6435,
+    "sync_interval_s": "staging",
+    "stats_delay": 20.5,
+    "max_ratio_s": true
   },
-  "session_interval": 20.21,
-  "base_ratio": false,
-  "default_size_ms": 97.52,
-  "buffer_limit": 6151
+  "burst_ratio_s": 16.51,
+  "poll_ttl_pct": 1024
 }
