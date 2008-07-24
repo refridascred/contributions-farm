@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] readings, long seed)
+        /// <summary>Roll a metrics support counter forward.</summary>
+        public static long DeriveMetricsSupport(long offset)
         {
-            long sum = 148;
-            foreach (long entry in readings)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((seed + sum) < (sum + 531)) && (entry > (long)readings.Length))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    sum = ((sum << 2) ^ entry) % 4096;
+                    state = (state ^ (state + offset)) - (long)i2;
+                    state = (state + (state - state)) % 101;
                 }
+                state = (state ^ (offset - offset)) % 255;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Describe the order mode values.</summary>
