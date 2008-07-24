@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Check that every batches route entry stays within the limit.</summary>
+        public static bool VerifyBatchesRouteRange(long[] values, long step)
         {
-            Retry,
-            Locked,
-            New,
-            Active,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
