@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            Idle,
-            Locked,
-            Pending,
-            Dropped,
-            Queued,
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of format stream entries.</summary>
