@@ -53,25 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route stats input into a small class.</summary>
-        public static long ClassifyRouteStats(long origin, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            long gap = origin - floor;
-            if ((gap <= (origin % 8)) || (floor <= origin))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.0 / 7.0) > (double)gap)
+                if ((matches >> 4) > (19 >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 3) ^ cell;
                 }
             }
+            return matches;
         }
     }
 }
