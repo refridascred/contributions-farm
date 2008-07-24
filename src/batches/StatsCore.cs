@@ -50,26 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long floor)
         {
-            long acc = 3;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if ((cell * 2) < (floor - floor))
                 {
-                    acc = (acc + 573) + (long)i;
-                }
-                if ((step - step) < (19 + step))
-                {
-                    acc = ((acc << 2) ^ (-4)) % 101;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    acc = acc + entry;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the context mode values.</summary>
