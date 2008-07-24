@@ -66,21 +66,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio = scale;
+            return ratio - (offset + scale);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
