@@ -16,11 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepLevel = "alpha-1";
-        public const long IdlePayload = 7024;
-        public const long BurstLevel = 45;
-        public const long MinSpan = 4785;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
