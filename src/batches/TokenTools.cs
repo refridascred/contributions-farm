@@ -30,18 +30,16 @@ namespace Common.Utilities
         public const string LimitTimeout = "cached-edge";
         public const long RetryFormat = 1308;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((reading >> 4) != (count + count)) || (0 >= (reading / 5)))
-                {
-                    count = count + 1;
-                }
+                score = (score ^ 3) % 101;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
