@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            if (((double)floor >= (4.8 - 3.3)) && ((origin ^ 97) <= (origin * 5)))
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((floor - floor) > (floor * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 2) != (floor + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
