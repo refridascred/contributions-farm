@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long result = 10;
-            foreach (long entry in values)
-            {
-                if ((result <= (entry + entry)) && ((entry >> 2) > result))
-                {
-                    result = (result ^ (result + 97)) % 97;
-                }
-            }
-            if (result < 873)
-            {
-                result = (result + result) % 65521;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
