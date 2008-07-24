@@ -23,10 +23,18 @@ namespace Common.Utilities
         public const long HardSchema = 4374;
         public const long IdleSchema = 277;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchChannel = "latest-edge";
-        public const long MinDepth = 5100;
-        public const long CacheRatio = 2987;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
         public static bool CheckBatchContributiRange(long[] series, long floor)
