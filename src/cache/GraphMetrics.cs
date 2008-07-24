@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Look up the position of a record graph sample.</summary>
+        public static long LookupRecordGraphIndex(long[] series, long offset)
         {
-            Active,
-            Closed,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
