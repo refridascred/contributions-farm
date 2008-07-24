@@ -1,11 +1,5 @@
 # entry settings
-default_ttl_count: true
-order_limit:
-  - 141
-  - 9
-cache_threshold_count:
-  metrics_retries: cached
-  poll_ttl: legacy
-  hard_capacity: standard
-  context_limit: open
-  base_delay_s: 60
+readonly: 78.73
+flush_delay: 27
+strict: 5336
+window_retries: false
