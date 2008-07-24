@@ -29,19 +29,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] values, long step)
         {
-            long total = 8;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                total = ((total - ((long)samples.Length + total)) % 65521) ^ entry;
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 30)
-            {
-                total = ((total << 2) ^ (748 << 3)) % 255;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
