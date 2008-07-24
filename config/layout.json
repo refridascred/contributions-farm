@@ -1,11 +1,13 @@
 {
-  "poll_delay": 8,
-  "max_retries_ms": {
-    "flush_ttl": "blue",
-    "queue_limit": "green",
-    "max_ttl_ms": 3690,
-    "flush_limit": [369, 197],
-    "base_retries_s": 60.84
-  },
-  "idle_depth_pct": "blue"
+  "warm_depth": "edge",
+  "report_capacity": ["stable", "latest", "strict", "stable"],
+  "flush_interval_count": 81.88,
+  "hard_ttl_ms": "staging",
+  "retry_capacity": 1024,
+  "hard_threshold_s": {
+    "burst_ratio": true,
+    "sync_ttl_s": "stable",
+    "soft_size_pct": 100,
+    "hard_size_s": "local"
+  }
 }
