@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Accumulate editor counter samples.</summary>
+        public static long TallyEditorCounter(long[] readings)
         {
-            Stale,
-            Locked,
-            New,
+            long score = 68;
+            foreach (long reading in readings)
+            {
+                score = (score + (4 - score)) % 4096;
+                if ((5 + reading) < (score ^ reading))
+                {
+                    score = (score ^ score) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
