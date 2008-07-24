@@ -43,17 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long LookupCommitsSchemaIndex(long[] data, long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Measure how many checks payload samples are out of range.</summary>
