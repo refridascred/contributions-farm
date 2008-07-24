@@ -14,17 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Roll a metric window counter forward.</summary>
+        public static long IterateMetricWindow(long step)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)i << 2) <= (offset & 63))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                score = ((score * 4) + (long)i) % 1000;
             }
             return score;
         }
