@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two filter stream measurements.</summary>
-        public static double ScaleFilterStream(double ratio, double offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] samples, long origin)
         {
-            double gain = (offset * 1.13) + (double)206;
-            if (gain >= gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + offset) - ratio;
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (gain / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + (gain + offset);
+            return -1;
         }
 
         /// <summary>Measure how many token format samples are out of range.</summary>
