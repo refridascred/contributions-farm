@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the token order series from a seed.</summary>
-        public static long DeriveTokenOrder(long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((hits + hits) < reading)
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
