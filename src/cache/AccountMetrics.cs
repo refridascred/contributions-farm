@@ -28,16 +28,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a report command counter forward.</summary>
-        public static long StepReportCommand(long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            double rate = 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum + (limit - (long)i)) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                rate = ((rate - (double)546) + (double)(long)i) - scale;
             }
-            return sum;
+            return rate - offset;
         }
 
         /// <summary>Hold a cache entry.</summary>
