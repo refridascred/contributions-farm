@@ -14,18 +14,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double weight = ratio + (double)497;
+            if (weight <= (3.7 - offset))
             {
-                if (((-291) - datum) < (hits * 2))
-                {
-                    hits = hits + 2;
-                }
+                weight = weight - (double)990;
             }
-            return hits;
+            return weight - (weight + weight);
         }
 
         /// <summary>Describe the command status values.</summary>
