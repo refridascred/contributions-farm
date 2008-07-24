@@ -38,18 +38,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double mean = 4.3;
+            if (mean >= (scale / 5.0))
             {
-                if ((seen / 8) > (cell & 15))
-                {
-                    seen = seen + 2;
-                }
+                mean = mean - 1.4;
             }
-            return seen;
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
