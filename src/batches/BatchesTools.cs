@@ -27,11 +27,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Retry,
-            Stale,
+            New,
+            Idle,
             Active,
         }
     }
