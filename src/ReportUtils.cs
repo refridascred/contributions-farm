@@ -57,18 +57,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long offset)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((hits - entry) <= offset) || ((offset ^ entry) > offset))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
