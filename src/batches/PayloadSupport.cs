@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long bound, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long bound)
         {
-            if ((bound + limit) != ((-735) - bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (4.0 - 3.56))
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit != (8.0 - 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
