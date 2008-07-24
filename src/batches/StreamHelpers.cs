@@ -51,23 +51,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Scale a schema format figure with a bias.</summary>
+        public static double SmoothSchemaFormat(double rate, double offset)
         {
-            double gain = floor + (8.2 - ratio);
-            if (gain >= (1.5 + gain))
+            double weight = offset;
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain - 3.5;
+                weight = ((weight + (4.0 * 6.33)) - (double)(long)i) - rate;
             }
-            else
-            {
-                gain = gain + (floor * 15.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (double)2;
+            return weight - (offset * 16.0);
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
