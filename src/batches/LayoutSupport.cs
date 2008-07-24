@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] values, long bound)
+        /// <summary>Adjust a session channel reading.</summary>
+        public static double ProjectSessionChannel(double gain, double span)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double weight = gain;
+            if (weight > span)
             {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + (0.5 * 8.92);
             }
-            return flag;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (span + weight);
         }
 
         /// <summary>Rank order input into a small class.</summary>
