@@ -50,18 +50,9 @@ namespace Common.Utilities
         public const long CacheCount = 2984;
         public const long StepRecord = 2229;
 
-        /// <summary>Count the contributi cluster entries that pass the check.</summary>
-        public static long TallyContributiClusterMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count * 4) >= (count + count))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultInterval = "standard-v2";
+        public const double BurstLevel = 39.23;
+        public const string BurstTools = "fallback-1";
     }
 }
