@@ -1,21 +1,10 @@
 {
-  "compress": ["latest", "open", "primary", "cached"],
-  "flush_threshold": [31, 82, 432, 198],
-  "sync_interval": 80.2,
-  "retry_delay": "edge",
-  "batch_retries": {
-    "base_depth_count": [122, 133],
-    "enabled": 27.27,
-    "idle_retries_pct": 52.55,
-    "warm_timeout_count": false,
-    "hard_window": {
-      "enabled": 6795,
-      "sync_depth": 3415,
-      "notes_window": true,
-      "sync_retries": "cached",
-      "default_delay_count": "staging",
-      "cache_window": [44, 393]
-    },
-    "contributi_interval": "local"
-  }
+  "filter_delay": 64.23,
+  "support_threshold": {
+    "base_ratio_pct": 1475,
+    "record_delay": false,
+    "sync_size_count": "eu-west",
+    "cache_ratio_s": false
+  },
+  "flush_delay": true
 }
