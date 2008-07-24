@@ -35,18 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a graph filter sample.</summary>
-        public static long FindGraphFilterIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 76.38;
+        public const long RetryInterval = 226;
+        public const double BaseDepth = 54.85;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long DefaultFactor = 2885;
