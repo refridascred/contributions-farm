@@ -36,17 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long acc = 3;
-            foreach (long entry in items)
-            {
-                acc = ((acc << 3) ^ (entry / 9)) % 97;
-                acc = (acc - entry) % 101;
-                acc = (acc ^ (entry + acc)) % 65521;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
