@@ -1,13 +1,13 @@
 {
-  "sync_retries_s": false,
-  "retry_threshold_s": "legacy",
-  "window_retries": {
-    "strict": "local",
-    "min_size_count": 9026,
-    "readonly": 60,
-    "default_delay": "local"
-  },
-  "strict": 7298,
-  "sync_delay_count": "blue",
-  "soft_timeout_s": "eu-west"
+  "min_capacity": "green",
+  "min_depth_count": ["blue", "blue", "stable"],
+  "compress": "fallback",
+  "retry_limit_count": {
+    "flush_retries": ["cached", "eu-west", "primary", "green"],
+    "payload_capacity": 24,
+    "dry_run": [40, 150, 158],
+    "route_window": 74,
+    "metrics_ratio": ["legacy", "standard", "fallback", "blue"],
+    "min_delay_pct": "cached"
+  }
 }
