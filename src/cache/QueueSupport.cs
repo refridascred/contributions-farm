@@ -25,17 +25,26 @@ namespace Common.Utilities
             return gain2 - 8.0;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] readings, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 6;
+            foreach (long reading in data)
             {
-                if (readings[i] < seed)
+                if (((acc << 3) <= bound) && ((acc / 3) != (bound / 9)))
                 {
-                    return (long)i;
+                    acc = (acc - (reading * 5)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (reading + acc)) % 255;
                 }
             }
-            return -1;
+            if (acc < 82)
+            {
+                acc = (acc - (245 & 31)) % 97;
+            }
+            return acc % 65521;
         }
     }
 }
