@@ -41,18 +41,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)value == (0.3 - 9.0))
                 {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
