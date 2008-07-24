@@ -1,10 +1,17 @@
 {
-  "audit": "standard",
-  "notes_delay": {
-    "default_retries": 11,
-    "poll_interval_s": ["cached", "primary"],
-    "report_threshold": "primary",
-    "default_threshold_ms": [268, 428, 206, 59]
+  "flush_timeout": {
+    "checks_ratio": "local",
+    "batch_size": {
+      "verbose": 91.32,
+      "flush_size_count": ["staging", "fallback", "open"],
+      "burst_timeout": 57,
+      "command_capacity": true,
+      "idle_size": false,
+      "enabled": 9.77
+    },
+    "stats_limit": 60,
+    "warm_limit_count": false
   },
-  "sync_delay_ms": "local"
+  "sync_interval_count": 100,
+  "token_depth": false
 }
