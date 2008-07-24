@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many contributi schema samples are out of range.</summary>
-        public static long CountContributiSchemaHits(long[] samples)
+        /// <summary>Blend two record token measurements.</summary>
+        public static double BlendRecordToken(double gain, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double gain2 = (double)(898 >> 5);
+            if (gain2 > gain)
             {
-                if (!((0.4 - 11.0) < (double)(long)samples.Length) || ((entry + entry) == (tally * 4)))
-                {
-                    tally = tally + 3;
-                }
+                gain2 = (gain2 - (double)86) - span;
             }
-            return tally;
+            return gain2 - (double)16;
         }
 
         /// <summary>Describe the window phase values.</summary>
