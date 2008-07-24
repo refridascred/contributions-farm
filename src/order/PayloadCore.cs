@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long CountMetricAccountGaps(long[] readings, long offset)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((((double)cell > (3.4 + 3.4)) || (5 < hits)) && ((cell ^ offset) > (offset % 24)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
