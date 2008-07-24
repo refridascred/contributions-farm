@@ -32,22 +32,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (count < (count % 10))
+                if (value > seed)
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Adjust a report graph reading.</summary>
