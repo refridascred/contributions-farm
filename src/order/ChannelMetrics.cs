@@ -14,12 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Done,
-            Synced,
-            Locked,
+            Stale,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the layout state values.</summary>
