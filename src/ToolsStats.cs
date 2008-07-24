@@ -25,17 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 1;
+            foreach (long sample in items)
             {
-                if (values[i] <= target)
+                long next = seed;
+                if (!(((seed - state) == (sample + seed)) || ((719 << 1) <= (next ^ (long)items.Length))))
                 {
-                    return (long)i;
+                    next = (next - (sample * 4)) % 97;
+                    state = (state - (sample >> 4)) % 1000;
                 }
+                state = (state + (637 + sample)) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up queue samples.</summary>
