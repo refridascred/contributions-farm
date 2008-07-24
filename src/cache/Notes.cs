@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            long mix = 45;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ bound) % 101;
-                if ((item + (-252)) == (mix & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (item * 5)) % 65521;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix << 2) ^ (mix - 12);
             }
-            if (mix > 36)
-            {
-                mix = ((mix << 3) ^ bound) % 4096;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
