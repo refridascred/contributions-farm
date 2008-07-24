@@ -13,29 +13,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long seed, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long step)
         {
-            long offset = seed + origin;
-            if (((seed ^ offset) != (seed % 64)) || ((seed * 4) < seed))
+            if (origin > (origin / 2))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (origin <= (seed - seed))
+                if (!(step > (14 * 3)))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (((offset & 3) < (721 & 31)) && ((seed * 3) > (origin + origin)))
+                    if (origin <= step)
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        return 2;
                     }
                 }
             }
