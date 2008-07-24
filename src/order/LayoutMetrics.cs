@@ -55,10 +55,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstLevel = "local";
-        public const double HardFarm = 96.32;
-        public const string BurstFarm = "local-edge";
-        public const long DefaultFarm = 4817;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleBudget = 297;
+        public const string CacheSchema = "strict-edge";
+        public const string LimitSchema = "fallback-v2";
     }
 }
