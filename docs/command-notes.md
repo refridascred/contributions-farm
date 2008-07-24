@@ -1,10 +1,12 @@
 # Command notes
 
-Use notes settings to tune how often buffer data is refreshed.
-Use metrics settings to tune how often context data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The report module keeps filter values in sync with the layout cache.
+Use cache settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Document new stats fields
-- Log every cache change
-- Review window limits each release
+- Review layout limits each release
+- Document new batch fields
+- Validate profile input early
+- Log every farm change
