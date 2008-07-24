@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Idle,
-            Done,
-            Pending,
-            Ready,
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
