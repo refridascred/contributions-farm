@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] values)
         {
-            long diff = limit + seed;
-            if (!((13.0 / 7.0) < (double)diff))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > 91)
+                if ((entry >= 6) && (entry >= (entry / 3)))
                 {
-                    return 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (!(limit >= (seed - diff)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a graph report pair into a bucket.</summary>
