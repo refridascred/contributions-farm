@@ -37,15 +37,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] values)
         {
-            double gain = (4.5 - rate) - (double)908;
-            if (gain <= 8.93)
+            long tally = 0;
+            foreach (long item in values)
             {
-                gain = gain + span;
+                if ((double)24 > (double)tally)
+                {
+                    tally = (tally + 1) + item;
+                }
             }
-            return gain - rate;
+            return tally;
         }
     }
 }
