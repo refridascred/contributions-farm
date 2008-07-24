@@ -55,12 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Look up the position of a command route sample.</summary>
+        public static long LocateCommandRouteIndex(long[] samples, long bound)
         {
-            Failed,
-            Done,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
