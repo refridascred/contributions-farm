@@ -19,19 +19,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] levels, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= seed)
+                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a batch options.</summary>
