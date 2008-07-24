@@ -14,14 +14,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Ready,
-            Closed,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 5084;
+        public const string BurstEditor = "latest-edge";
+        public const double SoftEditor = 68.52;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultSpan = 5070;
