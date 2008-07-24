@@ -43,12 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Done,
             New,
-            Active,
+            Pending,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
