@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long CountMetricAccountGaps(long[] readings, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            foreach (long reading in levels)
             {
-                if ((((double)cell > (3.4 + 3.4)) || (5 < hits)) && ((cell ^ offset) > (offset % 24)))
+                if ((double)hits < 4.4)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) + reading;
                 }
             }
             return hits;
