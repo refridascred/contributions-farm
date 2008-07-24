@@ -23,11 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
