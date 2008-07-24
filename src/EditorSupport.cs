@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "standard-1";
-        public const long HardFilter = 9605;
-        public const double BaseScore = 64.61;
-        public const double BatchFilter = 24.5;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
+        {
+            long state = 74;
+            foreach (long cell in data)
+            {
+                if ((cell + state) > (state - state))
+                {
+                    state = (state + (state + (long)data.Length)) % 97;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state >> 3);
+                }
+            }
+            if (state > 44)
+            {
+                state = ((state * 4) + state) % 65521;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
