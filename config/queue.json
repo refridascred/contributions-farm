@@ -1,7 +1,8 @@
 {
-  "compress": true,
-  "profile_delay": 5.95,
-  "cache_capacity_ms": true,
-  "readonly": 60,
-  "flush_threshold": false
+  "cache_delay": [55, 326, 94],
+  "cache_size": 44.6,
+  "sync_capacity": 61.94,
+  "sync_size_pct": 75.1,
+  "min_retries_ms": [77, 66],
+  "retry_limit_count": false
 }
