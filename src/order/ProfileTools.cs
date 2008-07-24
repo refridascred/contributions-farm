@@ -19,17 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long seed)
+        /// <summary>Count queue batches pairs that satisfy a relation.</summary>
+        public static long CompareQueueBatchesCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
