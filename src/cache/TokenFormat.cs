@@ -29,13 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double floor)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            double mean = floor;
+            if (mean >= (double)53)
+            {
+                mean = mean + (bias + 20.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean + floor)) + (double)(long)i;
+            }
+            return mean + (floor * 15.0);
         }
     }
 }
