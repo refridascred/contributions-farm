@@ -61,22 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] items, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (!((origin <= entry) && ((627 + entry) < (origin << 3))))
+                if (((hits - entry) <= offset) || ((offset ^ entry) > offset))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
