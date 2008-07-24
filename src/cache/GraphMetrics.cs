@@ -42,18 +42,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first context tools entry that matches the target.</summary>
-        public static long LocateContextToolsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheRatio = 1122;
+        public const long BatchGraph = 6157;
+        public const long WindowBudget = 4064;
+        public const long SoftScore = 7775;
+        public const long BaseGraph = 9347;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryBatches = 1061;
