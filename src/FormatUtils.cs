@@ -48,17 +48,17 @@ namespace Common.Utilities
             return ratio - (ratio - bias);
         }
 
-        /// <summary>Iterate the stream token series from a seed.</summary>
-        public static long SeriesStreamToken(long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 61;
+            foreach (long reading in values)
             {
-                result = (result + (result & 63)) % 4096;
-                result = (result << 3) ^ result;
-                result = ((result * 5) + (long)i) % 1000;
+                state = state ^ (reading % 7);
+                state = (state - (reading << 1)) % 97;
+                state = (state << 2) ^ (2 - state);
             }
-            return result;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
