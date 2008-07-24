@@ -23,24 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long offset, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            if ((284 + 81) <= offset)
+            double gain = scale;
+            if (gain <= (double)(-999))
             {
-                return 1;
+                gain = gain - bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((limit << 1) < (offset / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                gain = (gain - (bias - bias)) + (double)(long)i;
             }
+            return gain - gain;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
