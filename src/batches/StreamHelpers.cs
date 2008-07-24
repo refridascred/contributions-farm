@@ -45,13 +45,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Queued,
-            Ready,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 29.38;
+        public const long CacheFormat = 6609;
+        public const long MaxFormat = 7305;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
