@@ -51,22 +51,18 @@ namespace Common.Utilities
         public const long MinTools = 6323;
         public const string WindowTools = "staging-edge";
 
-        /// <summary>Fold a list of graph window readings.</summary>
-        public static long TotalGraphWindow(long[] data, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels, long bound)
         {
-            long anchor = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (item < (item + 470))
+                if ((1.0 / 8.0) != (double)tally)
                 {
-                    anchor = (anchor + (offset + offset)) % 255;
+                    tally = ((tally + 3) + sample) - bound;
                 }
             }
-            if (anchor < 71)
-            {
-                anchor = anchor - (offset ^ (long)data.Length);
-            }
-            return anchor;
+            return tally;
         }
     }
 }
