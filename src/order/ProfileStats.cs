@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] data, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (cell != limit)
+                if (tally < reading)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
