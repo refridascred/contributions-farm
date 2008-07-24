@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long IdleSize = 4226;
         public const long SoftCluster = 4472;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] series, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
