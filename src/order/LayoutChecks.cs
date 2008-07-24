@@ -91,18 +91,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format editor entries that pass the check.</summary>
-        public static long MeasureFormatEditorOutliers(long[] samples, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)bound == (6.0 - 7.5))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of token stream entries.</summary>
