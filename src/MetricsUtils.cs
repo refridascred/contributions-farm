@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long offset, long offset2)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
         {
-            if (offset >= (offset % 16))
+            long result = 10;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset + offset) >= (offset2 + offset2)) || ((offset * 4) == (offset / 2)))
+                if ((result <= (entry + entry)) && ((entry >> 2) > result))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    result = (result ^ (result + 97)) % 97;
                 }
             }
+            if (result < 873)
+            {
+                result = (result + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a queue header.</summary>
