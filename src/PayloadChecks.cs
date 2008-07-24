@@ -23,20 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 91;
+        public const double LimitWidth = 95.62;
+        public const double BatchFactor = 48.56;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
