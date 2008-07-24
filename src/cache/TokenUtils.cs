@@ -20,20 +20,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 2864;
+        public const double RetryTimeout = 0.3;
+        public const long DefaultCluster = 5026;
+        public const string MaxScore = "primary-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardTimeout = 4209;
