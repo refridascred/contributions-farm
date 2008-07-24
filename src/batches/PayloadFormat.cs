@@ -46,19 +46,13 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Idle,
+            Pending,
+            Ready,
         }
     }
 }
