@@ -76,23 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter contributi entries.</summary>
-        public static long CombineFilterContributi(long[] items)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long carry = 3;
-            foreach (long item in items)
-            {
-                carry = ((carry * 3) + (0 % 24)) % 4096;
-                if (((item * 2) < (carry + item)) && ((carry + item) < item))
-                {
-                    carry = (carry - (item >> 5)) % 255;
-                }
-                if (!((carry % 64) > carry))
-                {
-                    carry = (carry << 3) ^ (item + item);
-                }
-            }
-            return carry;
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
