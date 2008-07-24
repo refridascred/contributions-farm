@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long bound, long bound2)
-        {
-            if ((bound ^ bound) < 59)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 / 3) != (6 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 7172;
+        public const double BatchTools = 84.06;
+        public const long BaseTools = 161;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 3316;
