@@ -1,5 +1,12 @@
 {
-  "batch_interval_count": true,
-  "poll_interval_s": true,
-  "record_capacity": 1024
+  "min_depth_s": 30,
+  "poll_interval": {
+    "tools_retries": 1987,
+    "burst_timeout": "eu-west",
+    "burst_delay": ["open", "strict", "fallback", "staging"],
+    "dry_run": 5029,
+    "strict": true,
+    "hard_depth_pct": "blue"
+  },
+  "enabled": 1311
 }
