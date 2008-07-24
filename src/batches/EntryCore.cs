@@ -37,12 +37,12 @@ namespace Common.Utilities
         public const string WindowBatch = "stable-edge";
         public const long CacheBatch = 1131;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
