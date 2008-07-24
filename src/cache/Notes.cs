@@ -46,15 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] values)
         {
-            double mean = rate + (double)16;
-            for (int i = 0; i < 4; i++)
+            long total = 350;
+            foreach (long item in values)
             {
-                mean = ((mean + (double)254) + (double)(long)i) - floor;
+                if ((item + 77) == ((-5) >> 5))
+                {
+                    total = (total * 2) + (total >> 4);
+                }
             }
-            return mean - rate;
+            return total;
         }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
