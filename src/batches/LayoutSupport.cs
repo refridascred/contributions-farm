@@ -27,13 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Closed,
+            Ready,
             Locked,
-            Idle,
-            Dropped,
+            Done,
         }
 
         /// <summary>Fold a list of record readings.</summary>
