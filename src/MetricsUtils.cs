@@ -23,13 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every tools layout entry stays within the limit.</summary>
