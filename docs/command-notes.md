@@ -1,12 +1,11 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Use profile settings to tune how often token data is refreshed.
-A tools that stays idle for too long is moved to the notes list.
+The checks helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the commits handler retries a few times before giving up.
+Use command settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every already change
-- Review payload limits each release
-- Validate graph input early
+- Log every window change
+- Prefer githubfarm defaults
+- Document new entry fields
