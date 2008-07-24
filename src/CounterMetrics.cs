@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const long BurstChannel = 3904;
         public const long HardChannel = 5189;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] data, long seed)
         {
-            long score = -244;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (((datum << 3) < (datum + datum)) || ((score >> 4) < 14))
+                if (datum < seed)
                 {
-                    score = ((score << 3) ^ (datum - score)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ok;
         }
     }
 }
