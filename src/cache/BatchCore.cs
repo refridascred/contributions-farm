@@ -14,22 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long MeasurePayloadStatsMatches(long[] data)
+        /// <summary>Check that every route farm entry stays within the limit.</summary>
+        public static bool VerifyRouteFarmBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((seen / 2) == (value - seen))
+                if (item != offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
