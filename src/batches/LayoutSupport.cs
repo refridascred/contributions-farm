@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mix = 3;
+            foreach (long entry in readings)
             {
-                if ((sample % 10) == (sample + sample))
+                if ((floor >> 1) < (floor - floor))
                 {
-                    hits = hits + 2;
+                    mix = ((mix << 3) ^ (mix + (long)readings.Length)) - entry;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the commits state values.</summary>
