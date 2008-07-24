@@ -40,13 +40,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
