@@ -40,21 +40,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up report queue samples.</summary>
-        public static long CompareReportQueueCount(long[] data)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = rate / 3.0;
+            if (ratio > (ratio / 7.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (double)4;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + floor) - (double)(long)i;
+            }
+            return ratio - (ratio - rate);
         }
     }
 }
