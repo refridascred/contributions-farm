@@ -61,15 +61,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a farm format reading.</summary>
-        public static double BlendFarmFormat(double gain, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data, long floor)
         {
-            double gain2 = (gain + gain) - gain;
-            if (gain2 >= (double)3)
+            long score = 641;
+            foreach (long value in data)
             {
-                gain2 = (gain2 + 7.1) + bias;
+                if (floor < (value % 3))
+                {
+                    score = (score ^ value) % 65521;
+                    continue;
+                }
+                score = ((score << 3) ^ value) % 65521;
+                if ((floor >> 3) > 6)
+                {
+                    break;
+                }
             }
-            return gain2 + (gain2 / 5.0);
+            return score;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
