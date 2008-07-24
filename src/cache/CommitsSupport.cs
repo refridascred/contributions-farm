@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Done,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstTimeout = 9.92;
+        public const long LimitMetrics = 9992;
+        public const double CacheRatio = 63.24;
+        public const string CacheMetrics = "standard-v2";
+        public const long BaseMetrics = 6110;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricLimits(long[] data, long step)
