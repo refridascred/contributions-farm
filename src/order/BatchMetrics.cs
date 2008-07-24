@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((acc >> 3) <= ((long)i - acc))
-                {
-                    acc = ((acc << 2) ^ (5 % 64)) % 4096;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 4188;
+        public const double SoftRatio = 18.85;
+        public const long SoftCount = 1584;
+        public const long MinTools = 9753;
+        public const double IdleTools = 80.3;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRatio = 1359;
