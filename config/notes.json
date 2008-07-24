@@ -1,11 +1,6 @@
 {
-  "dry_run": 25.22,
-  "retry_timeout_pct": {
-    "base_depth": false,
-    "hard_threshold_pct": "blue",
-    "profile_ttl": 50,
-    "farm_delay": 1016,
-    "dry_run": 6618
-  },
-  "enabled": "eu-west"
+  "max_delay": 2215,
+  "default_interval_count": "eu-west",
+  "min_interval_count": 100,
+  "dry_run": 33.78
 }
