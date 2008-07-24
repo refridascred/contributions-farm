@@ -31,12 +31,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
+            Paused,
             Idle,
-            Active,
-            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
