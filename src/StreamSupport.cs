@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings)
-        {
-            long sum = 232;
-            foreach (long value in readings)
-            {
-                if (64 >= (sum / 6))
-                {
-                    sum = (sum + (sum + value)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 5) + 58;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseFactor = 2665;
+        public const long BatchBudget = 5379;
+        public const string BatchRatio = "strict";
+        public const string BurstInterval = "legacy";
+        public const long BaseCount = 9055;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long ClassifyEntry(long target, long target2)
