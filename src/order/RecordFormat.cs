@@ -45,22 +45,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long sum = 17;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sum >= (1.0 / 4.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((((sum * 2) + 35) % 65521) ^ reading) + offset;
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = (sum - (sum * 4)) % 255;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Describe the report phase values.</summary>
