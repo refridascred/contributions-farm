@@ -16,23 +16,12 @@ namespace Common.Utilities
             return weight + (5.45 / 9.0);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally / 3) < (value * 5))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchFactor = 4717;
+        public const double DefaultStream = 62.73;
+        public const double BurstBudget = 55.01;
+        public const long MinStream = 655;
+        public const long MinFactor = 7764;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long limit, long floor)
