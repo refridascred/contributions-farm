@@ -45,18 +45,19 @@ namespace Common.Utilities
             return ratio - (double)6;
         }
 
-        /// <summary>Audit schema entry readings against a rule.</summary>
-        public static long AuditSchemaEntryOutliers(long[] levels, long step)
+        /// <summary>Validate queue context readings against a bound.</summary>
+        public static bool ValidateQueueContextRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (15.0 < (double)value)
+                if (reading != step)
                 {
-                    hits = (hits + 1) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
