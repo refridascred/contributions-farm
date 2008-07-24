@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit token record readings against a rule.</summary>
-        public static long TallyTokenRecordOutliers(long[] values)
+        /// <summary>Count the token profile entries that pass the check.</summary>
+        public static long TallyTokenProfileMatches(long[] samples, long offset)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long entry in samples)
             {
-                if ((matches - matches) == (matches + item))
+                if ((matches + offset) > entry)
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
