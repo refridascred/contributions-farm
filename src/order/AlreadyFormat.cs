@@ -38,11 +38,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7626;
-        public const string MaxBudget = "fallback";
-        public const long MinTools = 6323;
-        public const string WindowTools = "staging-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxRatio = 13.79;
+        public const double CacheLevel = 97.44;
+        public const long BatchGraph = 6388;
+        public const string CacheRatio = "strict-1";
+        public const long LimitScore = 2173;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphOutliers(long[] levels, long bound)
