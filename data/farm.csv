@@ -1,8 +1,7 @@
-id,ratio,score,rank
-1,eu-west,743,465
-2,74.09,813,cached
-3,standard,eu-west,primary
-4,green,44.64,177
-5,primary,515,fallback
-6,535,288,825
-7,staging,standard,937
+id,token,region,weight
+1,16.23,977,58.88
+2,729,fallback,25.25
+3,415,16.78,563
+4,12.6,148,94.01
+5,eu-west,416,cached
+6,701,27.19,33.53
