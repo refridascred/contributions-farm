@@ -29,15 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Validate account checks readings against a bound.</summary>
+        public static bool GuardAccountChecksRange(long[] data, long limit)
         {
-            double drift = rate;
-            if (drift >= (rate * 8.0))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                drift = (drift + 7.0) - bias;
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + (double)9;
+            return ok;
         }
     }
 }
