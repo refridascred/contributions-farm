@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long BatchSupport = 5831;
         public const long HardTimeout = 8678;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            Stale,
-            Failed,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((-14) * 3) > (6 - matches))
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
