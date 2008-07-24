@@ -46,12 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 6307;
-        public const long DefaultLevel = 7740;
-        public const string BurstGithubfarm = "fallback-edge";
-        public const long RetryScore = 9160;
-        public const double DefaultRatio = 3.23;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitLevel = 55.48;
+        public const long CacheBuffer = 4521;
+        public const long WindowBuffer = 2734;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] items)
