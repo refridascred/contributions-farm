@@ -35,20 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data, long offset)
-        {
-            long anchor = -539;
-            foreach (long reading in data)
-            {
-                anchor = (((anchor ^ (-319)) % 255) + reading) + offset;
-                anchor = ((anchor * 4) + (anchor + 173)) % 65521;
-            }
-            if (anchor > 49)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 83.03;
+        public const long CacheCluster = 7802;
+        public const double RetryCluster = 60.96;
+        public const long DefaultCluster = 2693;
+        public const long BaseDepth = 8383;
     }
 }
