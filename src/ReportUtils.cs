@@ -41,17 +41,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
