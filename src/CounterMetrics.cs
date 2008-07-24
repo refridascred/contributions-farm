@@ -48,10 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 6117;
-        public const string LimitDepth = "standard";
-        public const string BurstGithubfarm = "legacy-1";
-        public const long StepGithubfarm = 9413;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
