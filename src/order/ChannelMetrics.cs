@@ -24,19 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] readings, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long carry = 1;
+            foreach (long entry in data)
             {
-                if (datum <= floor)
+                if ((entry & 3) >= (1 * 3))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry + (carry - entry)) % 4096) - origin;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
