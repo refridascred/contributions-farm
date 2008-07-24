@@ -1,6 +1,9 @@
 # githubfarm settings
-contributi_size: true
-sync_delay_s: 250
-default_ttl_pct: true
-burst_size_ms: false
-base_retries: edge
+payload_ttl: primary
+audit: 95.23
+compress:
+  - fallback
+  - open
+flush_timeout: latest
+githubfarm_ttl: 49.71
+tools_threshold: staging
