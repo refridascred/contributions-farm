@@ -38,14 +38,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double rate, double span)
         {
-            Queued,
-            Failed,
-            New,
-            Paused,
-            Locked,
+            double ratio = (double)((-95) / 6);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
