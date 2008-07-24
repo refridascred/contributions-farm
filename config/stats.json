@@ -1,9 +1,5 @@
 {
-  "dry_run": [39, 303, 54],
-  "batch_capacity_ms": {
-    "warm_timeout": "fallback",
-    "checks_interval": "latest",
-    "idle_interval_pct": "open"
-  },
-  "max_ttl_pct": true
+  "retry_limit": 4749,
+  "flush_limit": "strict",
+  "payload_size": ["legacy", "stable"]
 }
