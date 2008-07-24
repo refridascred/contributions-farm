@@ -39,12 +39,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstInterval = 16.13;
+        public const long BaseBatch = 4171;
+        public const double IdleBatch = 14.61;
 
         /// <summary>Digest a series of payload contributi entries.</summary>
         public static long ScorePayloadContributi(long[] values)
