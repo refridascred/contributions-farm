@@ -72,17 +72,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] data, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the filter state values.</summary>
