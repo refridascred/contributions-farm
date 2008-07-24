@@ -32,13 +32,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Done,
-            New,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchChannel = "latest-edge";
+        public const long MinDepth = 5100;
+        public const long CacheRatio = 2987;
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
         public static bool CheckBatchContributiRange(long[] series, long floor)
