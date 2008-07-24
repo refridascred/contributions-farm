@@ -24,19 +24,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] values, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (sample > offset)
+                if (matches < (matches << 3))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
