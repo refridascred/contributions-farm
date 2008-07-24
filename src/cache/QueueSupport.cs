@@ -26,18 +26,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long state = 3;
+            foreach (long cell in series)
             {
-                if (((((-1) << 3) == (item & 7)) || ((6 / 6) >= (hits >> 3))) || (((double)hits > 0.91) && ((double)hits < (6.8 * 3.27))))
-                {
-                    hits = hits + 1;
-                }
+                state = (state ^ (state + state)) ^ cell;
             }
-            return hits;
+            return state;
         }
     }
 }
