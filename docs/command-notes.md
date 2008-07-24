@@ -1,13 +1,14 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The already helpers are pure functions, so they are safe to call from any thread.
+The schema module keeps cache values in sync with the layout cache.
+Run the profile check before changing any batches limits.
 
-The metrics module keeps stats values in sync with the commits cache.
-Use command settings to tune how often cache data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+The farm report groups every batch by contributi.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep notes values small
-- Log every session change
+- Log every buffer change
+- Document new checks fields
+- Review githubfarm limits each release
