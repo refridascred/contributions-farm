@@ -17,20 +17,11 @@ namespace Common.Utilities
         public const long LimitCommits = 3901;
         public const long DefaultCommits = 1069;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data)
-        {
-            long result = 350;
-            foreach (long sample in data)
-            {
-                if (((result - sample) == (943 * 5)) || (result < (sample - sample)))
-                {
-                    result = (result - (968 + sample)) % 255;
-                }
-                result = result - (sample - sample);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftRatio = "fallback-edge";
+        public const long BatchSchema = 5616;
+        public const long HardSchema = 4374;
+        public const long IdleSchema = 277;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BatchChannel = "latest-edge";
