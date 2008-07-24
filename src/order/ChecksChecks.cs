@@ -34,12 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long bound)
         {
-            Stale,
-            Done,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
