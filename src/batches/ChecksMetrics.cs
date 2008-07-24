@@ -49,11 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 7504;
-        public const long BurstSize = 2352;
-        public const string HardDepth = "stable-edge";
-        public const long BaseContext = 9952;
-        public const long WindowContext = 3345;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
