@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 8441;
-        public const string BaseRatio = "cached-1";
-        public const long MaxWidth = 2482;
-        public const long StepGithubfarm = 508;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Dropped,
+            Synced,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleTimeout = 1861;
