@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate context order readings against a bound.</summary>
-        public static bool ValidateContextOrderBounds(long[] items, long limit)
+        /// <summary>Derive the next account batches value from a seed.</summary>
+        public static long IterateAccountBatches(long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
