@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const string BurstEditor = "latest-edge";
         public const double SoftEditor = 68.52;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long score = 570;
+            foreach (long sample in values)
+            {
+                if (sample <= (score >> 2))
+                {
+                    score = (score ^ (score & 31)) % 101;
+                }
+                if ((score / 5) < (score * 5))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
     }
 }
