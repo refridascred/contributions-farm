@@ -40,12 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 5575;
-        public const long CacheInterval = 8313;
-        public const long IdleTimeout = 3243;
-        public const long StepProfile = 5849;
-        public const long IdleProfile = 7142;
+        /// <summary>Project the next layout stats value.</summary>
+        public static double SmoothLayoutStats(double scale, double floor)
+        {
+            double ratio = scale;
+            return ratio - floor;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
