@@ -84,21 +84,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph counter samples.</summary>
-        public static long OverlapGraphCounterCount(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)98 * 4.6;
+            if (scale > (ratio * 4.5))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - 0.7;
             }
-            return matches;
+            else
+            {
+                scale = scale - (ratio / 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (offset * 3.2)) + (double)(long)i;
+            }
+            return scale + (ratio * 3.0);
         }
     }
 }
