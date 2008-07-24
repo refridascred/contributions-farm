@@ -50,13 +50,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Ready,
-            Active,
-            Draft,
-            Synced,
+            Queued,
+            Idle,
+            Closed,
+            Stale,
         }
     }
 }
