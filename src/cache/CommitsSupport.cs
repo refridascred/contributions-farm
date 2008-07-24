@@ -39,12 +39,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the entry status values.</summary>
