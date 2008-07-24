@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] values, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 77;
+            foreach (long value in samples)
             {
-                if (values[i] <= step)
+                if ((value < 99) || ((value * 4) != (value ^ 0)))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (anchor % 100);
                 }
             }
-            return -1;
+            if (anchor < 0)
+            {
+                anchor = (anchor + (7 << 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate layout account samples.</summary>
