@@ -1,15 +1,15 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the token list.
-Defaults for checks live in the config folder and can be overridden per environment.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The format module keeps record values in sync with the filter cache.
+The layout report groups every metric by payload.
+Keep record and payload names short and lowercase.
 
-The batch report groups every editor by stats.
-Run the report check before changing any entry limits.
+Defaults for editor live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the record list.
+When a tools fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Log every tools change
-- Document new buffer fields
-- Validate already input early
+- Log every already change
+- Keep channel values small
+- Validate session input early
