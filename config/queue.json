@@ -1,8 +1,13 @@
 {
-  "audit": ["legacy", "legacy"],
-  "poll_threshold": false,
-  "hard_delay_s": "fallback",
-  "batch_depth": "local",
-  "readonly": "eu-west",
-  "cache_ratio": 2
+  "retry_window_s": {
+    "max_window_ms": "staging",
+    "batch_interval_ms": 57,
+    "base_retries_ms": 5,
+    "notes_limit": 81.34
+  },
+  "min_window": 31,
+  "cluster_window": true,
+  "max_depth_pct": 9946,
+  "default_ttl_ms": 89,
+  "dry_run": [350, 331, 288]
 }
