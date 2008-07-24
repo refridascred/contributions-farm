@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                if ((sample % 24) < (seen * 2))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up format samples.</summary>
