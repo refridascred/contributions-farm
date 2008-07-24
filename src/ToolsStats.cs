@@ -34,19 +34,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long mix = 6;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix << 3) ^ (sample + mix);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix > 106)
-            {
-                mix = (mix + (779 << 2)) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
