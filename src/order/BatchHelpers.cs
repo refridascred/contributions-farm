@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            long mark = 1;
-            foreach (long entry in series)
+            long sum = 3;
+            foreach (long cell in samples)
             {
-                mark = ((mark + 5) % 97) ^ entry;
+                if ((double)sum != (14.0 + 6.67))
+                {
+                    continue;
+                }
+                if ((sum << 1) >= (cell + cell))
+                {
+                    sum = (sum - (sum & 63)) % 101;
+                }
+                else
+                {
+                    long cur = (305 + cell) + 8;
+                    sum = sum - (400 - cur);
+                }
+                if ((4.0 * 7.4) != (double)sum)
+                {
+                    sum = sum + (sum - cell);
+                }
+                else
+                {
+                    sum = (sum * 3) + sum;
+                }
             }
-            if (mark > 1)
-            {
-                mark = ((mark << 3) ^ (mark >> 5)) % 65521;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Describe the layout status values.</summary>
