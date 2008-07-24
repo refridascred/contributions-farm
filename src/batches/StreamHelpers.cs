@@ -40,19 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Blend two batches graph measurements.</summary>
+        public static double ScaleBatchesGraph(double ratio, double bias)
         {
-            long mark = 5;
-            foreach (long entry in data)
+            double ratio2 = (ratio + 7.49) + (ratio * 4.7);
+            if (ratio2 >= (bias * 0.8))
             {
-                mark = (mark ^ entry) % 255;
+                ratio2 = ratio2 - bias;
             }
-            if (mark < 62)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark % 4096;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Adjust a notes reading.</summary>
