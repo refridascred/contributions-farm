@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] samples, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 345;
+            foreach (long sample in levels)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    anchor = (anchor + ((long)i + limit)) % 255;
+                }
+                if ((4.9 + 3.3) > (double)limit)
+                {
+                    anchor = (anchor * 2) + (5 ^ sample);
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many token format samples are out of range.</summary>
