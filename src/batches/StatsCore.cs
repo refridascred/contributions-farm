@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] series, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long carry = 2;
+            foreach (long value in readings)
             {
-                if (((double)offset < (3.37 / 7.0)) || (cell >= (offset + offset)))
+                if ((value / 3) >= (8 - value))
                 {
-                    tally = tally + 3;
+                    carry = (carry + (carry << 2)) % 4096;
                 }
             }
-            return tally;
+            if (carry > 498)
+            {
+                carry = (carry - (carry + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of commits order readings.</summary>
