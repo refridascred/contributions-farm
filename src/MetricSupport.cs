@@ -23,10 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchInterval = "open-edge";
-        public const long IdleProfile = 2857;
-        public const long BurstRatio = 8564;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] readings)
