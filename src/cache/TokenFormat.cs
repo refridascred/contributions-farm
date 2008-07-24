@@ -30,13 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long offset)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            if ((limit << 3) <= (offset << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((6.9 * 1.0) < (double)offset) && ((limit << 2) > (offset + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
