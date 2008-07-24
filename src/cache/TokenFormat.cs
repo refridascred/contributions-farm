@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long CacheBatch = 4508;
         public const long CacheWidth = 343;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] readings, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + mark;
+                mark = ((mark * 2) + (mark % 5)) % 101;
+                mark = (mark + (offset + mark)) % 1000;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
