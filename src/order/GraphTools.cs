@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long carry = 889;
-            foreach (long datum in values)
-            {
-                carry = ((carry << 3) ^ (datum - carry)) % 65521;
-            }
-            if (carry < 1)
-            {
-                carry = ((carry << 3) ^ carry) % 1000;
-            }
-            return carry % 97;
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Blend two command measurements.</summary>
