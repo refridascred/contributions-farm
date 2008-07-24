@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Look up the position of a contributi cache sample.</summary>
+        public static long LookupContributiCacheIndex(long[] data, long seed)
         {
-            long sum = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - entry) >= (7 ^ sum))
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
                 {
-                    sum = (sum - (sum / 5)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + sum)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
