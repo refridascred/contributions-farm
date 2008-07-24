@@ -28,10 +28,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "fallback";
-        public const double MaxChecks = 42.52;
-        public const long BurstLevel = 225;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double DefaultQueue = 80.33;
