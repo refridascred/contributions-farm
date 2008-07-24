@@ -19,17 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 78;
+            foreach (long datum in data)
             {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state << 2) ^ (state << 1)) % 255) - datum;
+                state = ((state * 2) + 2) % 97;
             }
-            return -1;
+            if (state > 721)
+            {
+                state = (state << 3) ^ (state + step);
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next notes value.</summary>
