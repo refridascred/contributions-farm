@@ -1,6 +1,4 @@
 # githubfarm settings
-metric_timeout: 2832
-min_capacity_ms: false
-persist: strict
-cache_delay_count: 94
-strict: 87
+warm_size_s: false
+retry_retries_count: true
+warm_retries_ms: 6.57
