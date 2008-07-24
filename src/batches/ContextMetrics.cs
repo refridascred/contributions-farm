@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long floor)
         {
-            if (!((double)bound <= 3.58))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((99 / 9) >= bound)
+                if (entry < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many metrics route samples are out of range.</summary>
