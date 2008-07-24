@@ -40,20 +40,13 @@ namespace Common.Utilities
         public const long BaseInterval = 6575;
         public const string MinCounter = "stable-1";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mix = 9;
-            foreach (long sample in series)
-            {
-                mix = ((mix + (sample & 3)) % 4096) - seed;
-                mix = ((mix << 3) ^ (sample ^ mix)) % 4096;
-            }
-            if (mix > 1)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix % 65521;
+            Dropped,
+            Closed,
+            Paused,
+            Queued,
         }
     }
 }
