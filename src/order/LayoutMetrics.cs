@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseDepth = 3561;
+        public const double RetryNotes = 40.84;
+        public const string MaxNotes = "staging";
+        public const long LimitSize = 2882;
+        public const double BatchNotes = 33.73;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
