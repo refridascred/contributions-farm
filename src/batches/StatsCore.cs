@@ -91,26 +91,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            long result = 9;
-            foreach (long sample in data)
+            double ratio = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (((result - (sample / 5)) % 65521) ^ (long)i) - offset;
-                }
-                if ((sample + result) >= 846)
-                {
-                    result = (result - (result ^ 56)) % 101;
-                }
+                ratio = ((ratio + (offset - ratio)) + (double)(long)i) + gain;
             }
-            if (result > 792)
-            {
-                result = (result ^ (result ^ 9)) % 1000;
-            }
-            return result;
+            return ratio - (ratio + offset);
         }
     }
 }
