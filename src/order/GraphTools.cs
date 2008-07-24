@@ -53,14 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Dropped,
-            Pending,
-            Done,
-            Draft,
-            Synced,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
