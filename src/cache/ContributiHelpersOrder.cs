@@ -28,18 +28,22 @@ namespace Common.Utilities
         public const long BatchLevel = 2501;
         public const double BurstRatio = 67.41;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long sum = 300;
-            foreach (long reading in series)
+            long score = 8;
+            foreach (long entry in data)
             {
-                if (bound > (bound - 476))
+                if (((-9) - entry) == (42 >> 1))
                 {
-                    sum = (sum - bound) + reading;
+                    score = ((score << 3) ^ (score / 2)) % 97;
                 }
             }
-            return sum;
+            if (score > 5)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
     }
 }
