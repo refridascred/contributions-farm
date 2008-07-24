@@ -14,26 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long mark = 45;
-            foreach (long value in data)
-            {
-                if (((mark * 2) >= ((long)data.Length % 12)) && ((mark + target) < (value / 3)))
-                {
-                    mark = (mark - (88 + value)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 2) + mark;
-                }
-                if ((target % 60) >= (target + mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
