@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry * 5) + limit;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Retry,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
