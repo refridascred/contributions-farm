@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double scale, double bias)
+        /// <summary>Validate session payload readings against a bound.</summary>
+        public static bool ValidateSessionPayloadLimits(long[] data, long bound)
         {
-            double bias2 = (bias + scale) * 9.7;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                bias2 = (bias2 - 17.0) + (double)(long)i;
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias2 - scale;
+            return found;
         }
 
         /// <summary>Hold a notes stats.</summary>
