@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long bound)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long cur = seed ^ bound;
-            if ((cur * 4) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((cur + bound) <= 786)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound >= (seed * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
