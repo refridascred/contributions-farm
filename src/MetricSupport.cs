@@ -38,12 +38,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] levels, long bound)
         {
-            Ready,
-            Draft,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
