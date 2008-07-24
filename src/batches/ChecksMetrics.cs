@@ -60,19 +60,25 @@ namespace Common.Utilities
         public const string BaseSize = "open-v2";
         public const double BaseBudget = 94.49;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long step, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long lane = step + origin;
+            if ((lane << 2) == (step - lane))
             {
-                if ((long)i != (4 + 883))
-                {
-                    mix = (mix * 5) + (long)i;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (!((origin + lane) > (origin * 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
