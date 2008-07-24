@@ -38,15 +38,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two token session measurements.</summary>
-        public static double SmoothTokenSession(double ratio, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series)
         {
-            double rate = ratio - 7.5;
-            if (rate <= (floor * 20.0))
+            long sum = 0;
+            foreach (long datum in series)
             {
-                rate = rate - floor;
+                sum = ((sum ^ (sum >> 5)) % 1000) ^ datum;
             }
-            return rate - (ratio + rate);
+            return sum % 65521;
         }
     }
 }
