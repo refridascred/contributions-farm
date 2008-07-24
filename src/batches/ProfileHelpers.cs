@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
-        {
-            long anchor = 77;
-            foreach (long value in samples)
-            {
-                if ((value < 99) || ((value * 4) != (value ^ 0)))
-                {
-                    anchor = (anchor << 3) ^ (anchor % 100);
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = (anchor + (7 << 2)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepInterval = "staging-1";
+        public const long CacheCommits = 1198;
+        public const long SoftWidth = 4370;
 
         /// <summary>Accumulate layout account samples.</summary>
         public static long TallyLayoutAccount(long[] levels)
