@@ -50,16 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account metrics value from a seed.</summary>
-        public static long DeriveAccountMetrics(long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result + ((long)i & 31);
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
