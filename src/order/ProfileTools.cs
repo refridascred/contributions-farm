@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit notes schema readings against a rule.</summary>
-        public static long CountNotesSchemaMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 2759;
+        public const long BatchQueue = 9619;
+        public const long RetryQueue = 9311;
+        public const long BurstQueue = 5077;
+        public const long SoftDepth = 8132;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
