@@ -52,19 +52,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] series, long seed)
+        /// <summary>Look up the position of a format filter sample.</summary>
+        public static long LookupFormatFilterIndex(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= seed)
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Iterate the session notes series from a seed.</summary>
