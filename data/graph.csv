@@ -1,9 +1,8 @@
-id,score,count,token
-1,996,61,5.24
-2,stable,443,287
-3,43.88,stable,532
-4,blue,337,fallback
-5,fallback,67.36,cached
-6,72.3,1.39,standard
-7,403,24.57,blue
-8,8.69,standard,457
+id,owner,count,score
+1,staging,43.62,standard
+2,534,stable,85.87
+3,163,open,83.71
+4,legacy,42.67,524
+5,edge,primary,edge
+6,blue,62.38,237
+7,80.38,23.94,14.19
