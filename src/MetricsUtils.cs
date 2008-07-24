@@ -64,17 +64,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = origin ^ origin2;
+            if (6.28 > (double)origin2)
             {
-                if (samples[i] > floor)
+                return 4;
+            }
+            else
+            {
+                if (bound > (bound - 76))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (911 >= (origin2 * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
