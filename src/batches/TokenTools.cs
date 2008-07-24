@@ -14,15 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next contributi counter value.</summary>
-        public static double ScaleContributiCounter(double ratio, double bias)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] readings, long seed)
         {
-            double bias2 = ratio;
-            if (bias2 < (ratio + ratio))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                bias2 = bias2 - (bias + bias);
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias2 - (bias2 + ratio);
+            return stale;
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
