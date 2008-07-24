@@ -19,18 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long CountSessionCommitsOutliers(long[] items, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long span = step ^ target;
+            if (target >= ((-702) % 24))
             {
-                if ((entry - matches) > (entry - offset))
+                return 7;
+            }
+            else
+            {
+                if ((span * 3) <= (span + span))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
