@@ -53,32 +53,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long origin, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long offset = origin - limit;
-            if (((0 - limit) > (limit % 2)) || ((offset - 231) >= (limit >> 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((11 + offset) <= 6) && ((double)limit < (8.3 + 7.13)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((16.0 * 5.0) < (2.18 * 15.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the entry kind values.</summary>
