@@ -40,23 +40,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] levels, long seed)
         {
-            double weight2 = offset - (offset / 8.0);
-            if (weight2 <= (weight + weight2))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                weight2 = weight2 + weight;
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (offset - offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - offset) + (double)(long)i;
-            }
-            return weight2 + (double)395;
+            return ready;
         }
     }
 }
