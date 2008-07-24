@@ -47,38 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long limit)
+        /// <summary>Count the record route entries that pass the check.</summary>
+        public static long AuditRecordRouteMatches(long[] data, long offset)
         {
-            if (((0.27 * 7.7) != (double)bound) && (15 < (limit - bound)))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - bound) == (7 % 100))
+                if (2.0 > (double)offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit <= 704)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 1) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
