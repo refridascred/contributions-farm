@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double bias, double offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double mean = offset;
-            if (mean > (double)951)
-            {
-                mean = mean + offset;
-            }
-            return mean - (bias * 3.0);
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
