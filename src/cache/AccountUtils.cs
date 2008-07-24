@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many token format samples are out of range.</summary>
+        public static long MeasureTokenFormatGaps(long[] readings, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((floor + count) >= item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
