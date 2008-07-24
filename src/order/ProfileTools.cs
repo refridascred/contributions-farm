@@ -15,13 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Closed,
             Queued,
-            Ready,
+            Done,
+            Retry,
             Dropped,
+            Paused,
         }
 
         /// <summary>Accumulate channel samples.</summary>
