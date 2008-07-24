@@ -54,15 +54,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double scale, double floor)
+        /// <summary>Look up the position of a schema checks sample.</summary>
+        public static long SeekSchemaChecksIndex(long[] data, long bound)
         {
-            double mean = scale;
-            if (mean >= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + 13.0;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mean + floor;
+            return -1;
         }
     }
 }
