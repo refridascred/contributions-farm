@@ -1,6 +1,10 @@
 {
-  "sync_size_count": 96,
-  "dry_run": 9414,
-  "cache_capacity_ms": 72,
-  "soft_depth_ms": "fallback"
+  "enabled": "latest",
+  "dry_run": {
+    "enabled": 2.13,
+    "retry_window_s": ["primary", "staging", "open"],
+    "min_ttl_s": ["strict", "cached", "open", "local"]
+  },
+  "metrics_capacity": 100,
+  "session_depth": 60
 }
