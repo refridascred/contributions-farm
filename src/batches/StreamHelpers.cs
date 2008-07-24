@@ -38,13 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
