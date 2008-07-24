@@ -29,16 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next checks githubfarm value from a seed.</summary>
-        public static long SeriesChecksGithubfarm(long limit)
+        /// <summary>Count the stats channel entries that pass the check.</summary>
+        public static long MeasureStatsChannelHits(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                acc = (acc ^ (long)i) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (reading >= (hits - 74))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
