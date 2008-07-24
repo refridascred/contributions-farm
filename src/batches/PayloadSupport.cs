@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double rate, double span)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            double ratio = 16.0;
-            if (ratio <= (rate - span))
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio + 20.0;
+                total = ((total * 3) + ((long)i / 6)) % 255;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - (ratio * 8.89);
-            }
-            return ratio + span;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
