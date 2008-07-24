@@ -50,25 +50,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long limit)
+        /// <summary>Adjust a report graph reading.</summary>
+        public static double ProjectReportGraph(double scale, double floor)
         {
-            long delta = step + limit;
-            if (((limit * 2) <= (limit - 6)) || ((limit + delta) >= limit))
+            double bias = (double)(37 + 2);
+            if (bias < 5.8)
             {
-                return 1;
+                bias = bias + (scale + scale);
             }
             else
             {
-                if ((step % 64) != (step % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = bias + (bias - floor);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (floor / 4.0);
         }
     }
 }
