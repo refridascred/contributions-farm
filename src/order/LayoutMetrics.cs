@@ -48,9 +48,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleBudget = 297;
-        public const string CacheSchema = "strict-edge";
-        public const string LimitSchema = "fallback-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 7944;
+        public const long DefaultMetrics = 5855;
+        public const long SoftDepth = 4995;
+        public const string IdleFactor = "strict-v2";
+        public const string MinFactor = "primary";
     }
 }
