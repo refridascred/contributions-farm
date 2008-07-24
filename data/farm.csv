@@ -1,7 +1,8 @@
-id,token,region,weight
-1,16.23,977,58.88
-2,729,fallback,25.25
-3,415,16.78,563
-4,12.6,148,94.01
-5,eu-west,416,cached
-6,701,27.19,33.53
+id,region,active
+1,stable,fallback
+2,656,blue
+3,138,fallback
+4,909,893
+5,626,stable
+6,0.96,latest
+7,91.19,local
