@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long lane = origin ^ step;
-            if ((2 ^ lane) != (step & 15))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((24 - step) == ((-9) >> 5)) || ((origin & 15) < step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (99 - step))
+                    if ((readings[i] + readings[j]) < 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
