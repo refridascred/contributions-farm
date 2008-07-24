@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((value + seen) < seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate editor samples.</summary>
