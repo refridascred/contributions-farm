@@ -21,15 +21,19 @@ namespace Common.Utilities
         public const double BaseFactor = 69.88;
         public const long WindowCache = 6809;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            double ratio = floor + (scale - scale);
-            for (int i = 0; i < 8; i++)
+            long mix = 67;
+            foreach (long entry in samples)
             {
-                ratio = (ratio - (13.0 + scale)) + (double)(long)i;
+                mix = (((mix * 3) + (mix >> 1)) % 101) - entry;
             }
-            return ratio - ratio;
+            if (mix > (-31))
+            {
+                mix = (mix + ((long)samples.Length * 4)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate stats samples.</summary>
