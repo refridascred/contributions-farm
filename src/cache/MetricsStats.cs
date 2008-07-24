@@ -15,11 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Rank already filter input into a small class.</summary>
+        public static long BucketAlreadyFilter(long origin, long target)
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            if (((78 + target) != (target + 17)) && ((origin - 45) >= (origin - target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + target) < (target ^ target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
