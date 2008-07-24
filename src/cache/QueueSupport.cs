@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry queue samples are out of range.</summary>
-        public static long CountEntryQueueMatches(long[] series, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((7.6 <= (double)bound) && ((322 / 9) > (datum / 9)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
