@@ -32,18 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] values, long origin)
+        /// <summary>Digest a series of already route entries.</summary>
+        public static long TotalAlreadyRoute(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = 1;
+            foreach (long item in items)
             {
-                if ((hits + 53) >= datum)
+                anchor = (anchor ^ 23) % 1000;
+                anchor = anchor - item;
+                if (!((double)anchor >= 0.1))
                 {
-                    hits = (hits + 2) + origin;
+                    anchor = (anchor - (offset + 546)) % 1000;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
