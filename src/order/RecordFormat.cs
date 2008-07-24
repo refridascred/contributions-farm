@@ -39,10 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryScore = 2722;
-        public const long StepFilter = 8289;
-        public const string BaseInterval = "fallback-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3079;
+        public const long MinGraph = 9293;
+        public const double LimitRatio = 72.86;
+        public const string RetryScore = "strict-1";
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
