@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepTimeout = "standard";
-        public const long MaxScore = 6105;
-        public const double RetrySpan = 84.82;
-        public const long DefaultSpan = 7983;
-        public const string LimitScore = "local-edge";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!((152 << 1) > hits))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] values, long target)
