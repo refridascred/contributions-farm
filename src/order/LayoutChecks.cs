@@ -24,11 +24,22 @@ namespace Common.Utilities
         public const long CacheTimeout = 314;
         public const long CacheCount = 27;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "staging-edge";
-        public const double WindowTimeout = 70.98;
-        public const long BurstNotes = 2795;
-        public const long BatchNotes = 9043;
+        /// <summary>Match up order metrics samples.</summary>
+        public static long OverlapOrderMetricsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first session command entry that matches the target.</summary>
         public static long FindSessionCommandIndex(long[] samples, long origin)
