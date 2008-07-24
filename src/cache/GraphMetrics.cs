@@ -28,12 +28,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 14;
-        public const long SoftDepth = 9391;
-        public const long BurstCluster = 4693;
-        public const string BaseCluster = "open";
-        public const long WindowCount = 3100;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long bound, long bound2)
