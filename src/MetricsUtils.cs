@@ -81,18 +81,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)i + mark) > 86)
+                long bound = (seed - mark) + mark;
+                if ((7.8 + 2.22) <= 20.0)
                 {
-                    mark = ((mark << 3) ^ (offset >> 2)) % 1000;
+                    mark = (mark << 3) ^ (bound + seed);
+                    bound = (bound - ((long)i - mark)) % 97;
                 }
-                mark = ((mark << 2) ^ (offset >> 5)) % 1000;
-                mark = ((mark * 4) + (long)i) % 4093;
+                else
+                {
+                    bound = (bound - (seed + mark)) % 65521;
+                }
+                if ((mark + (long)i) >= ((long)i + mark))
+                {
+                    bound = bound - (bound ^ mark);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
             return mark;
         }
