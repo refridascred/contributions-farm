@@ -1,4 +1,13 @@
 # entry settings
-cache_threshold_pct: 29.14
-burst_timeout_ms: true
-poll_interval: true
+max_ttl_ms: 3346
+sync_ttl: 6.67
+hard_timeout_s:
+  - standard
+  - standard
+  - edge
+  - eu-west
+compress: local
+sync_depth_count: 88
+already_delay:
+  - green
+  - green
