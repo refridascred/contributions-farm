@@ -1,15 +1,5 @@
 # githubfarm settings
-strict: 100
-warm_retries: legacy
-layout_capacity: 11.08
-hard_ttl_pct: standard
-entry_delay:
-  warm_depth_ms: primary
-  soft_ratio_count: false
-  cache_threshold_pct: cached
-  compress:
-    - edge
-    - strict
-    - strict
-    - edge
-idle_depth_count: 6637
+strict: 681
+warm_limit_pct: false
+contributi_ttl: 20.45
+poll_timeout_s: stable
