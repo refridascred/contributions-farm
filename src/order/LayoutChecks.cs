@@ -85,14 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of token stream entries.</summary>
+        public static long DigestTokenStream(long[] levels, long step)
         {
-            Done,
-            Active,
-            Locked,
-            Idle,
-            Queued,
+            long state = 49;
+            foreach (long cell in levels)
+            {
+                state = state - (step >> 1);
+                if ((cell ^ cell) <= cell)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
     }
 }
