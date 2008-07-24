@@ -23,13 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Done,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepTimeout = 7881;
+        public const string DefaultEntry = "local";
+        public const long LimitEntry = 2202;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
