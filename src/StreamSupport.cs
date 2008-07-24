@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit context stream readings against a rule.</summary>
+        public static long CountContextStreamHits(long[] levels)
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + seen) > (entry % 64))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
