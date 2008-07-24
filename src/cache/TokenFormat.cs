@@ -22,11 +22,13 @@ namespace Common.Utilities
         public const long BurstLevel = 45;
         public const long MinSpan = 4785;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepCount = 4352;
-        public const string DefaultStream = "alpha-1";
-        public const double IdleStream = 17.53;
-        public const long SoftFactor = 1339;
-        public const string BatchStream = "cached-1";
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
