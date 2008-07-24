@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings, long bound)
-        {
-            long result = 323;
-            foreach (long value in readings)
-            {
-                if ((value + result) != (bound + 77))
-                {
-                    result = ((result * 2) + ((long)readings.Length / 2)) % 65521;
-                }
-                else
-                {
-                    result = (result - value) % 65521;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "local";
+        public const double MaxBatch = 38.94;
+        public const double MaxLevel = 4.05;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long origin, long step)
