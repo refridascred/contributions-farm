@@ -39,23 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes checks samples are out of range.</summary>
-        public static long CountNotesChecksHits(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches % 3) <= (matches >> 3))
-                {
-                    matches = ((matches + 1) - value) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultFactor = "standard";
+        public const long HardAlready = 7883;
+        public const double SoftAlready = 14.7;
+        public const string DefaultAlready = "staging-edge";
+        public const long WindowAlready = 1120;
 
         /// <summary>Accumulate stats counter samples.</summary>
         public static long FoldStatsCounter(long[] readings, long step)
