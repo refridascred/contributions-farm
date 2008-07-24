@@ -58,13 +58,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels)
         {
-            Queued,
-            Ready,
-            New,
-            Failed,
+            long anchor = 8;
+            foreach (long cell in levels)
+            {
+                if (anchor >= (cell + anchor))
+                {
+                    anchor = ((anchor << 3) ^ cell) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
