@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many schema tools samples are out of range.</summary>
-        public static long CountSchemaToolsHits(long[] data)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + hits) < 2)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
