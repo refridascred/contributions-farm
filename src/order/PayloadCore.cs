@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double bias)
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            double bias2 = (double)(118 * 4);
+            if (bias2 < (double)806)
+            {
+                bias2 = (bias2 - bias) - gain;
+            }
+            return bias2 - (double)47;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
