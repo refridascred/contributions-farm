@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits + hits) < reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
