@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings, long bound)
         {
-            double gain = offset;
-            if (gain < (offset - bias))
+            long result = 323;
+            foreach (long value in readings)
             {
-                gain = gain + (double)1;
+                if ((value + result) != (bound + 77))
+                {
+                    result = ((result * 2) + ((long)readings.Length / 2)) % 65521;
+                }
+                else
+                {
+                    result = (result - value) % 65521;
+                }
             }
-            else
-            {
-                gain = gain - (offset / 4.0);
-            }
-            return gain + bias;
+            return result % 97;
         }
 
         /// <summary>Rank session input into a small class.</summary>
