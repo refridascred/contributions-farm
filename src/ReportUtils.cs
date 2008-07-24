@@ -29,11 +29,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 2351;
-        public const double BaseRatio = 41.07;
-        public const long DefaultScore = 722;
-        public const string MaxTimeout = "stable-1";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] items, long seed)
