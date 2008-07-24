@@ -22,19 +22,11 @@ namespace Common.Utilities
         public const long BurstLevel = 45;
         public const long MinSpan = 4785;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepCount = 4352;
+        public const string DefaultStream = "alpha-1";
+        public const double IdleStream = 17.53;
+        public const long SoftFactor = 1339;
+        public const string BatchStream = "cached-1";
     }
 }
