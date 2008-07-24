@@ -33,12 +33,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 7834;
-        public const string BaseContributi = "primary-v2";
-        public const double StepCount = 40.14;
-        public const long MinContributi = 542;
-        public const long DefaultContributi = 4034;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Retry,
+            Pending,
+            Stale,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double CacheStream = 74.98;
