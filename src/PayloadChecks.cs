@@ -58,13 +58,18 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] items, long seed)
         {
-            New,
-            Queued,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((hits & 31) <= (64 % 24)) || ((hits << 3) == ((long)items.Length % 24)))
+                {
+                    hits = ((hits + 1) + datum) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
