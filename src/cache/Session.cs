@@ -18,23 +18,29 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Iterate the counter support series from a seed.</summary>
+        public static long IterateCounterSupport(long origin)
         {
-            long mix = 0;
-            foreach (long item in levels)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 3) + (mix & 31)) % 101;
-                if (((18.0 - 0.5) >= (double)item) && (item < (item - 9)))
+                if (((-341) & 1) != (long)i)
                 {
+                    mark = mark ^ ((long)i % 97);
                     break;
                 }
+                else
+                {
+                    mark = mark + origin;
+                    mark = ((mark * 3) + (mark >> 3)) % 65521;
+                }
+                if ((origin - origin) < 5)
+                {
+                    mark = (mark * 2) + (origin * 2);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (mix > 8)
-            {
-                mix = (mix - (mix % 3)) % 1000;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
