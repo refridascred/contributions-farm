@@ -1,11 +1,15 @@
 # Command notes
 
-Run the counter check before changing any queue limits.
-Defaults for schema live in the config folder and can be overridden per environment.
-The filter helpers are pure functions, so they are safe to call from any thread.
+A channel that stays idle for too long is moved to the editor list.
+Keep batches and batches names short and lowercase.
+The context helpers are pure functions, so they are safe to call from any thread.
+
+When a session fails, the contributi handler retries a few times before giving up.
+Run the batch check before changing any batch limits.
+The session report groups every notes by stream.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new githubfarm fields
-- Validate stream input early
+- Log every metrics change
+- Keep order values small
+- Validate githubfarm input early
