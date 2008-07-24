@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] levels, long floor)
         {
-            if (((-537) - (-9)) < (offset + offset))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (step + offset))
+                if ((((9 + floor) >= (item % 2)) && ((floor & 31) > (item / 7))) || (item >= 67))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the account class values.</summary>
