@@ -1,19 +1,18 @@
 # githubfarm settings
-graph_ttl: 73.18
-flush_window_count:
-  - 99
-  - 3
-  - 463
-  - 194
-channel_ttl:
-  idle_limit_count: stable
-  default_interval:
-    - primary
-    - edge
+audit:
+  - open
+  - local
+  - standard
+  - primary
+poll_ratio_pct: 6641
+compress:
+  strict:
+    - strict
+    - strict
     - stable
-  readonly: cached
-  soft_delay: 8384
-  min_ttl: blue
-sync_interval: 9.12
-poll_delay_s: local
-hard_window_count: primary
+    - eu-west
+  compress: 500
+  route_interval: false
+  flush_size_pct: 11.13
+  burst_limit: 33.3
+  retry_capacity: 94.01
