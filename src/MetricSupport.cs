@@ -14,20 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data)
-        {
-            long anchor = -4;
-            foreach (long cell in data)
-            {
-                anchor = (anchor ^ (anchor << 3)) - cell;
-            }
-            if (anchor > 741)
-            {
-                anchor = (anchor - (anchor + anchor)) % 1000;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinLevel = 94.63;
+        public const string LimitRatio = "fallback-v2";
+        public const string RetryContext = "fallback-v2";
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] readings)
