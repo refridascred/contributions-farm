@@ -57,21 +57,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] < target) && ((samples[i] % 5) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
