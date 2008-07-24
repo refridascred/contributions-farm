@@ -1,5 +1,7 @@
 {
-  "burst_capacity_pct": [230, 62, 177, 359],
-  "verbose": "latest",
-  "poll_threshold_count": "staging"
+  "already_ttl": [449, 493, 353, 100],
+  "strict": 25.04,
+  "cache_size": true,
+  "min_depth_ms": true,
+  "enabled": 830
 }
