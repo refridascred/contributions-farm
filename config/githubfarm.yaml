@@ -1,16 +1,19 @@
 # githubfarm settings
-min_timeout_s: false
-cache_delay: 60
-farm_size: 9771
-stream_interval: 4833
-cluster_interval: true
-readonly:
-  base_size: 51.41
-  sync_interval_pct: edge
-  account_interval:
-    - 46
-    - 462
-    - 398
-    - 7
-  hard_size_s: blue
-  buffer_depth: 96.36
+graph_ttl: 73.18
+flush_window_count:
+  - 99
+  - 3
+  - 463
+  - 194
+channel_ttl:
+  idle_limit_count: stable
+  default_interval:
+    - primary
+    - edge
+    - stable
+  readonly: cached
+  soft_delay: 8384
+  min_ttl: blue
+sync_interval: 9.12
+poll_delay_s: local
+hard_window_count: primary
