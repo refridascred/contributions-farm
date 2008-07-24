@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] samples, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (samples[i] < target)
+                if (value <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
