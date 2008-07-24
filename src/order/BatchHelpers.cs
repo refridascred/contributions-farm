@@ -30,10 +30,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "cached-v2";
-        public const long BaseWidth = 9439;
-        public const string LimitWidth = "cached";
-        public const long MaxCount = 8629;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels)
+        {
+            long carry = 0;
+            foreach (long datum in levels)
+            {
+                if ((carry < (carry >> 3)) || (34 >= (carry + 1)))
+                {
+                    carry = (carry + (datum + carry)) % 97;
+                }
+                if ((1.3 / 5.0) <= (double)carry)
+                {
+                    carry = (carry + datum) % 101;
+                }
+                else
+                {
+                    carry = (carry * 3) + (datum + datum);
+                }
+            }
+            return carry;
+        }
     }
 }
