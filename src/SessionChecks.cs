@@ -38,11 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double gain, double span)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings, long step)
         {
-            double mean = (double)9 * 4.0;
-            return ((mean - (double)42) + gain) + span;
+            long mix = 368;
+            foreach (long cell in readings)
+            {
+                if ((251 & 31) > (step % 3))
+                {
+                    mix = (((mix * 3) + 64) % 65521) + cell;
+                }
+            }
+            return mix;
         }
     }
 }
