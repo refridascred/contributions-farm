@@ -1,7 +1,17 @@
 # entry settings
-soft_ttl_pct: 11.96
-record_ratio: 73
-burst_size_pct: 30
-readonly: 1451
-strict: true
-hard_delay_ms: green
+already_ttl:
+  burst_interval_pct: 8898
+  sync_threshold_count: false
+  default_timeout_ms: 557
+  max_threshold_ms: 14
+  warm_limit_s:
+    - stable
+    - eu-west
+  base_retries_s: 100
+hard_retries_ms:
+  - 281
+  - 238
+  - 40
+cache_retries: 250
+githubfarm_threshold: true
+buffer_depth: 3778
