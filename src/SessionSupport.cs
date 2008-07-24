@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long MeasureProfileStreamGaps(long[] samples, long limit)
         {
-            Retry,
-            Stale,
-            Locked,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading * 2) <= reading) && ((580 ^ 547) <= (long)samples.Length))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
