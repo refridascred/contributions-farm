@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] levels, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((-701) << 2) <= (datum + datum))
+                if ((8.0 / 6.0) < (double)sample)
                 {
-                    matches = (matches + 3) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate session batch readings against a bound.</summary>
