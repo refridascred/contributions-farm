@@ -69,12 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] series, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) == 0))
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
