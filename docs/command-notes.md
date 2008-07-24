@@ -1,11 +1,15 @@
 # Command notes
 
-Each order is validated before it reaches the filter queue.
-Keep cache and metric names short and lowercase.
-Each already is validated before it reaches the route queue.
+A payload that stays idle for too long is moved to the token list.
+Defaults for checks live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
+
+The batch report groups every editor by stats.
+Run the report check before changing any entry limits.
 
 ## Guidelines
 
-- Validate order input early
-- Prefer support defaults
-- Keep buffer values small
+- Prefer layout defaults
+- Log every tools change
+- Document new buffer fields
+- Validate already input early
