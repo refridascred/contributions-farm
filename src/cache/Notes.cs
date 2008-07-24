@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const string MinFarm = "primary-v2";
         public const long SoftSize = 6541;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Active,
-            Dropped,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 7180;
+        public const long CacheDepth = 2398;
+        public const double LimitWidth = 64.63;
+        public const double BurstMetrics = 59.36;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsGaps(long[] values, long target)
