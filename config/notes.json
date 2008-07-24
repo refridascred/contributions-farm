@@ -1,6 +1,5 @@
 {
-  "record_capacity": "cached",
-  "base_ratio_pct": true,
-  "soft_interval_s": 48.82,
-  "readonly": "latest"
+  "githubfarm_limit": "blue",
+  "batch_timeout_ms": 4635,
+  "readonly": "open"
 }
