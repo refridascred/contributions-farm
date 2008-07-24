@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "open-v2";
+        public const long StepBatch = 5084;
+        public const long IdleBatch = 8720;
+        public const double SoftScore = 4.7;
+        public const string MaxTimeout = "local-edge";
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
