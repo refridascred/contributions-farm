@@ -51,15 +51,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next buffer entry value from a seed.</summary>
-        public static long IterateBufferEntry(long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            double ratio = floor + (scale - scale);
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                ratio = (ratio - (13.0 + scale)) + (double)(long)i;
             }
-            return anchor;
+            return ratio - ratio;
         }
 
         /// <summary>Accumulate stats samples.</summary>
