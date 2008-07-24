@@ -83,22 +83,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series, long step)
+        /// <summary>Fold a list of profile cluster readings.</summary>
+        public static long CombineProfileCluster(long[] data, long origin)
         {
-            long result = -389;
-            foreach (long cell in series)
+            long mark = 68;
+            foreach (long reading in data)
             {
-                if ((52 % 2) < (cell >> 3))
+                mark = ((mark * 4) + (mark >> 5)) + reading;
+                if ((origin + 24) < (3 >> 4))
                 {
-                    result = (result + (cell - step)) % 97;
+                    mark = (mark * 3) + (33 >> 3);
                 }
             }
-            if (result < 530)
-            {
-                result = (result * 3) + (result + step);
-            }
-            return result;
+            return mark % 65521;
         }
     }
 }
