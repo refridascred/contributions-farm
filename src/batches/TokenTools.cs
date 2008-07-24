@@ -14,10 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxTimeout = 74.09;
-        public const double BurstSession = 9.84;
-        public const long MaxSession = 2207;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
         public static bool CheckGithubfarmClusterRange(long[] series, long seed)
