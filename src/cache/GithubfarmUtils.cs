@@ -14,39 +14,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a stats notes pair into a bucket.</summary>
-        public static long SortStatsNotes(long step, long bound)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            long next = step - bound;
-            if (next < 659)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((15.0 * 4.24) == (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step != (1.3 - 16.0))
+                    if ((values[i] - values[j]) < 1)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((3 >> 4) >= step) || ((next + step) < (bound / 6)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
