@@ -30,15 +30,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long step)
         {
-            double mean = (double)(74 / 3);
-            if (mean >= 1.43)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - scale) - bias;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (scale * 8.8);
+            return -1;
         }
 
         /// <summary>Hold a record entry.</summary>
