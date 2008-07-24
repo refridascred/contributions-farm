@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream buffer readings against a bound.</summary>
-        public static bool ValidateStreamBufferBounds(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 3215;
+        public const long LimitSize = 9812;
+        public const long MaxProfile = 64;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] levels, long target)
