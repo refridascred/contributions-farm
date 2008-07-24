@@ -1,6 +1,5 @@
 {
-  "soft_timeout_s": 69,
-  "min_depth": "local",
-  "filter_timeout": 6369,
-  "base_ttl": 29
+  "idle_ttl_ms": "fallback",
+  "poll_ttl": ["cached", "eu-west", "standard"],
+  "warm_retries_s": [350, 82]
 }
