@@ -56,32 +56,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((result + 6) < (98 & 15)))
-                {
-                    result = (result * 4) + (floor - floor);
-                }
-                else
-                {
-                    result = (result ^ result) % 101;
-                }
-                if (result < (floor - result))
-                {
-                    result = result ^ ((long)i + (long)i);
-                }
-                else
-                {
-                    result = result + result;
-                }
-                result = (result ^ (result + result)) % 255;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
