@@ -1,7 +1,5 @@
 {
-  "warm_window": false,
-  "report_timeout": 3165,
-  "verbose": 60,
-  "already_limit": 250,
-  "sync_capacity": 82.32
+  "notes_retries": "legacy",
+  "warm_depth": 411,
+  "enabled": "cached"
 }
