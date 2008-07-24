@@ -1,14 +1,12 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the support list.
-Defaults for editor live in the config folder and can be overridden per environment.
-
-Defaults for token live in the config folder and can be overridden per environment.
-The entry report groups every batches by commits.
-When a profile fails, the commits handler retries a few times before giving up.
+Keep token and tools names short and lowercase.
+The checks module keeps account values in sync with the layout cache.
+The support report groups every batches by stream.
 
 ## Guidelines
 
-- Keep metrics values small
-- Log every tools change
-- Prefer channel defaults
+- Review stream limits each release
+- Keep batches values small
+- Prefer commits defaults
+- Log every support change
