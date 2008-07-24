@@ -35,19 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] items, long origin)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = rate / 2.0;
+            return weight + floor;
         }
 
         /// <summary>Measure how many checks payload samples are out of range.</summary>
