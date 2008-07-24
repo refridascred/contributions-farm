@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate notes buffer readings against a bound.</summary>
-        public static bool ValidateNotesBufferBounds(long[] samples, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
