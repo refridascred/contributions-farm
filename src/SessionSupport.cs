@@ -16,11 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "legacy-edge";
-        public const string StepSpan = "latest-edge";
-        public const double HardCounter = 41.92;
-        public const long RetryCounter = 6127;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double BlendWindow(double scale, double offset)
