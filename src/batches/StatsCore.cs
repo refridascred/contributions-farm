@@ -33,26 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = 4;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((state * 2) + (110 + state)) ^ (long)i;
-                }
-                if (((-2) <= (state << 2)) && ((value - state) < value))
-                {
-                    state = (state - (value + value)) % 1000;
-                }
-            }
-            if (state > 1)
-            {
-                state = (state + state) % 97;
-            }
-            return state % 65521;
+            Synced,
+            Stale,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a buffer options.</summary>
