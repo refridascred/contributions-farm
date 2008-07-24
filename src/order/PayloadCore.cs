@@ -29,22 +29,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of profile cache readings.</summary>
-        public static long MatchProfileCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "open-v2";
+        public const long MaxWidth = 1823;
+        public const long SoftOrder = 8395;
+        public const long MinScore = 4492;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double StepEntry = 60.93;
