@@ -14,10 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "latest";
-        public const long DefaultEditor = 1478;
-        public const string SoftFactor = "fallback";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 9687;
+        public const string HardCount = "stable-v2";
+        public const long BatchScore = 584;
+        public const string CacheWidth = "staging-1";
+        public const string MinSpan = "stable-v2";
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] readings)
