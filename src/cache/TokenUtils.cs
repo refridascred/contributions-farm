@@ -27,19 +27,15 @@ namespace Common.Utilities
         public const long StepRatio = 5123;
         public const string SoftCount = "local-1";
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] readings, long bound)
         {
             long hits = 0;
-            foreach (long value in samples)
+            foreach (long cell in readings)
             {
-                if ((value - hits) > (value ^ hits))
+                if ((((double)hits > (8.1 - 5.7)) || ((hits ^ (long)readings.Length) >= (hits << 2))) && ((8.0 * 14.0) <= (double)bound))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) ^ cell;
                 }
             }
             return hits;
