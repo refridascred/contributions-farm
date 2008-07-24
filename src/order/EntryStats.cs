@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long anchor = 7;
+            foreach (long reading in readings)
             {
-                if (sample <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor ^ (reading << 3)) % 101;
             }
-            return ready;
+            if (anchor < 76)
+            {
+                anchor = anchor - (anchor << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics options.</summary>
