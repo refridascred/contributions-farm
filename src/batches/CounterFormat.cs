@@ -34,10 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 1748;
-        public const long DefaultScore = 2779;
-        public const double WindowRatio = 65.66;
-        public const long DefaultDepth = 2543;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((count ^ 4) <= (datum / 7)) && (count < (77 + datum)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
