@@ -65,31 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((15.0 + 7.3) == (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin - origin) <= origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin ^ origin) > (origin / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
     }
 }
