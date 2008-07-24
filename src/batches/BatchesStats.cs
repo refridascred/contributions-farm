@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
