@@ -42,13 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Match up already window samples.</summary>
+        public static long CompareAlreadyWindowCount(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
