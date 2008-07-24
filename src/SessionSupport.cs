@@ -16,17 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] series, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Adjust a window reading.</summary>
