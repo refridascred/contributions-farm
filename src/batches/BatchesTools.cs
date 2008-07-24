@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = 68;
+            foreach (long datum in series)
             {
-                if ((matches + 898) < (entry + entry))
+                if ((datum + limit) <= (53 - datum))
                 {
-                    matches = matches + 2;
+                    acc = (acc - datum) % 65521;
                 }
             }
-            return matches;
+            if (acc > 3)
+            {
+                acc = (acc + (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the support phase values.</summary>
