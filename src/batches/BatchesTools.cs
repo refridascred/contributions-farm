@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long limit)
         {
-            long state = 3;
-            foreach (long cell in samples)
+            if ((((-18) % 2) >= origin) && ((origin * 5) < (origin ^ origin)))
             {
-                state = ((state * 2) + (state / 9)) ^ cell;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (origin > (76 % 24))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Project the next notes value.</summary>
