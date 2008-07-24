@@ -48,13 +48,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Look up the position of a queue commits sample.</summary>
+        public static long LocateQueueCommitsIndex(long[] values, long limit)
         {
-            Queued,
-            Idle,
-            Closed,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
