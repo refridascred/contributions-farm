@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Draft,
             Retry,
             Stale,
+            Locked,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
