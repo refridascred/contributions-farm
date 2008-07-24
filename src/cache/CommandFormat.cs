@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] samples)
+        /// <summary>Fold a list of checks session readings.</summary>
+        public static long ScoreChecksSession(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = 977;
+            foreach (long datum in samples)
             {
-                if ((item >> 3) <= (item << 3))
+                if ((datum - 81) <= (8 * 4))
                 {
-                    tally = tally + 2;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor ^ (anchor - 890)) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
