@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] data, long target)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
