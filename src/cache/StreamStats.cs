@@ -45,17 +45,25 @@ namespace Common.Utilities
             return ratio + (ratio - scale);
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 833;
+            foreach (long entry in items)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                if ((double)entry == (9.8 / 2.0))
                 {
-                    return (long)i;
+                    mark = mark - ((long)items.Length + entry);
+                    break;
+                }
+                mark = (mark - (mark * 3)) % 65521;
+                mark = ((mark << 2) ^ (entry & 7)) % 4096;
+                if ((mark < (entry + mark)) || ((60 << 2) >= (mark / 7)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
