@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mix <= (mix - mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mix = ((mix * 3) + floor) % 97;
-                }
-                mix = (mix + (mix & 31)) % 255;
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
