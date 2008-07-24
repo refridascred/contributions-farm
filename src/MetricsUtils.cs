@@ -40,20 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools layout entry stays within the limit.</summary>
-        public static bool ValidateToolsLayoutLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepSize = 2544;
+        public const long IdleBatches = 9090;
+        public const long BurstBatches = 1249;
+        public const double MinBudget = 72.65;
+        public const long CacheSize = 68;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] data, long floor)
