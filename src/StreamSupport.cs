@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Iterate the token order series from a seed.</summary>
+        public static long DeriveTokenOrder(long offset)
         {
-            Done,
-            Idle,
-            Synced,
-            Stale,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
