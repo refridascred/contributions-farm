@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] items, long limit)
+        /// <summary>Match up route schema samples.</summary>
+        public static long MatchRouteSchemaCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
