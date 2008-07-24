@@ -77,31 +77,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if ((origin + bound) >= (bound >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin << 2) >= (bound ^ bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(origin >= (origin ^ bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
