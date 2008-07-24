@@ -27,12 +27,9 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 6110;
+        public const double MaxRatio = 40.1;
+        public const long MinCommand = 7943;
     }
 }
