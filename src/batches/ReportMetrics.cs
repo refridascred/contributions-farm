@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of graph context entries.</summary>
-        public static long CombineGraphContext(long[] series)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long result = 1;
-            foreach (long sample in series)
-            {
-                if (result <= (result >> 3))
-                {
-                    result = ((result * 2) + sample) % 1000;
-                }
-            }
-            return result % 97;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
