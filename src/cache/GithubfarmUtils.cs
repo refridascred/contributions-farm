@@ -24,23 +24,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] values, long target)
-        {
-            long score = -25;
-            foreach (long entry in values)
-            {
-                if (target <= (717 & 255))
-                {
-                    score = (((score * 4) + (531 & 7)) % 1000) ^ entry;
-                }
-            }
-            if (score < 279)
-            {
-                score = score + ((-1) ^ score);
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleTimeout = 5395;
+        public const long WindowWidth = 1932;
+        public const long MaxWidth = 7468;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] items, long limit)
