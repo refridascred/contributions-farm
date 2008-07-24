@@ -29,19 +29,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] data, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
