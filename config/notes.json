@@ -1,5 +1,13 @@
 {
-  "batch_capacity_pct": "latest",
-  "cluster_timeout": 49.46,
-  "default_window": false
+  "strict": 15,
+  "min_delay_s": "legacy",
+  "idle_timeout": {
+    "audit": false,
+    "warm_timeout_pct": 250,
+    "cache_threshold_count": [358, 121, 222, 216],
+    "soft_capacity_s": false,
+    "hard_interval_count": "primary"
+  },
+  "soft_ttl": "staging",
+  "burst_window_s": "fallback"
 }
