@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseDepth = 3561;
-        public const double RetryNotes = 40.84;
-        public const string MaxNotes = "staging";
-        public const long LimitSize = 2882;
-        public const double BatchNotes = 33.73;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Retry,
+            Dropped,
+            New,
+            Queued,
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] items)
