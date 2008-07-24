@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long AuditSupportCommandOutliers(long[] samples, long origin)
         {
-            long result = 330;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((entry < ((long)data.Length - result)) && (2.91 > (double)entry))
+                if ((double)(long)samples.Length >= (double)datum)
                 {
-                    result = ((result << 3) ^ entry) % 4096;
+                    tally = (tally + 1) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result > 0)
-            {
-                result = result - (3 % 100);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
