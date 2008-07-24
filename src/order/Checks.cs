@@ -38,16 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (mark / 7)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
