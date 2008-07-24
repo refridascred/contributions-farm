@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = 445;
-            foreach (long cell in values)
-            {
-                if ((double)result > (4.16 * 1.96))
-                {
-                    result = ((result << 2) ^ (result & 127)) - cell;
-                }
-            }
-            return result;
+            Failed,
+            Dropped,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
