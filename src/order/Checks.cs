@@ -20,11 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 15.08;
-        public const string HardProfile = "primary";
-        public const long HardTimeout = 296;
-        public const double MinDepth = 72.28;
+        /// <summary>Validate farm notes readings against a bound.</summary>
+        public static bool ValidateFarmNotesBounds(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterHits(long[] levels, long target)
