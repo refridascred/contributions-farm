@@ -73,19 +73,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (sample <= limit)
+                if (cell > target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Derive the next record window value from a seed.</summary>
