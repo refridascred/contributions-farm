@@ -50,24 +50,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long seed, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] levels, long step)
         {
-            if (((step - step) == (seed * 2)) && ((48 ^ step) <= (step << 1)))
+            long acc = 84;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((6.7 - 6.0) > (double)step) || ((seed - seed) >= (616 / 4)))
+                if ((step < (datum >> 3)) && (6.2 < (double)acc))
                 {
-                    return 1;
+                    acc = (acc + datum) % 97;
                 }
-                else
+                acc = (acc + step) % 1000;
+                if ((50 >> 3) <= (step & 7))
                 {
-                    return 8;
+                    acc = acc ^ (8 / 3);
                 }
             }
+            if (acc > 2)
+            {
+                acc = (acc * 3) + (acc % 12);
+            }
+            return acc % 97;
         }
     }
 }
