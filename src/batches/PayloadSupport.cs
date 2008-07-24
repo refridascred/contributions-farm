@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const double SoftScore = 4.7;
         public const string MaxTimeout = "local-edge";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleBudget = 7280;
-        public const string IdleRatio = "stable";
-        public const double LimitWindow = 19.16;
-        public const long BatchTimeout = 9092;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
