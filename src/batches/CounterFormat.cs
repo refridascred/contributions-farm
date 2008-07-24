@@ -22,10 +22,13 @@ namespace Common.Utilities
         public const long LimitWidth = 3190;
         public const long DefaultSize = 9090;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 32.48;
-        public const double BurstChecks = 25.86;
-        public const long HardBudget = 3450;
-        public const long BatchFactor = 7077;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
