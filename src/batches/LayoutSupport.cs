@@ -39,30 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] readings, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((acc - (long)i) != (floor << 1))
+                if ((double)target > (double)hits)
                 {
-                    acc = (acc - (long)i) % 65521;
-                    continue;
+                    hits = (hits + 1) + cell;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ floor) % 1000;
-                    acc = acc + acc;
-                }
-                if (!(24 <= ((long)i ^ (long)i)))
-                {
-                    acc = acc ^ (233 / 6);
-                    acc = ((acc << 3) ^ floor) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the metric state values.</summary>
