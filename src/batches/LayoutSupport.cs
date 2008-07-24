@@ -23,21 +23,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of schema command readings.</summary>
-        public static long MatchSchemaCommandCount(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed + seed2;
+            if (seed2 <= (delta - seed2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((delta ^ seed) <= 5)
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
