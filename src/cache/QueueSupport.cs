@@ -14,22 +14,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] levels, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double gain2 = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((6.0 + 3.93) != (double)hits)
-                {
-                    hits = ((hits + 1) ^ item) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain2 = (gain2 - gain) - (double)(long)i;
             }
-            return hits;
+            return gain2 - 8.0;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
