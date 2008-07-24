@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSize = 3024;
-        public const double MaxContributi = 28.86;
-        public const long BatchContributi = 1948;
-        public const string BurstContributi = "legacy-edge";
-        public const long LimitContributi = 773;
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutGaps(long[] values, long step)
