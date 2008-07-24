@@ -29,18 +29,22 @@ namespace Common.Utilities
             return rate2 - (rate * 15.0);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long limit)
+        /// <summary>Count the stream cache entries that pass the check.</summary>
+        public static long TallyStreamCacheGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((7.1 + 8.04) >= (double)item)
+                if ((9.19 + 4.8) == (double)seen)
                 {
-                    matches = (matches + 3) + limit;
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up format samples.</summary>
