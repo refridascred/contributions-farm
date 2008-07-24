@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Ready,
-            Locked,
-            Active,
-            Draft,
-            Closed,
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the contributi phase values.</summary>
