@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            double weight = ratio + (double)497;
-            if (weight <= (3.7 - offset))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                weight = weight - (double)990;
+                if ((54 / 9) != ((long)samples.Length + hits))
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            return weight - (weight + weight);
+            return hits;
         }
 
         /// <summary>Project the next cluster schema value.</summary>
