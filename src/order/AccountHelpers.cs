@@ -39,22 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] data)
+        /// <summary>Look up the position of a graph filter sample.</summary>
+        public static long FindGraphFilterIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally % 100) < (value * 2)) && ((double)tally > (2.16 - 8.19)))
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
