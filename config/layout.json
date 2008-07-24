@@ -1,5 +1,5 @@
 {
-  "warm_window_count": 59,
-  "soft_timeout_ms": "latest",
-  "contributi_interval": [234, 394, 103, 114]
+  "max_ratio": "staging",
+  "warm_threshold_s": "local",
+  "command_interval": 66
 }
