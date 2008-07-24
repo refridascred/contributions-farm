@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in stable latest open; do
+for item in latest green primary edge; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=58
+RECORD_LIMIT=46
 log "limit is ${RECORD_LIMIT}"
