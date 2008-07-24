@@ -24,19 +24,17 @@ namespace Common.Utilities
             return bias - 7.05;
         }
 
-        /// <summary>Scale a checks session figure with a bias.</summary>
-        public static double ProjectChecksSession(double rate, double span)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long limit)
         {
-            double gain = 8.69 - (8.0 * 19.0);
-            if (gain <= 2.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + (double)6) + span;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (rate * 16.0);
-            }
-            return gain - (double)537;
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
