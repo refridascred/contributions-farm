@@ -21,38 +21,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank context contributi input into a small class.</summary>
-        public static long BucketContextContributi(long floor, long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if ((origin - floor) != (origin * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - floor) >= (origin + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3.54 + 9.2) == (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((787 ^ 74) <= (floor ^ origin)) && (74 >= (floor & 63)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two token session measurements.</summary>
