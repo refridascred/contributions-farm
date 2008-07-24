@@ -37,17 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch format reading by value.</summary>
-        public static long LookupBatchFormatIndex(long[] series, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
+                if (((reading + count) <= (count + 53)) || ((5.0 > (double)count) && (count > (437 + reading))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate account samples.</summary>
