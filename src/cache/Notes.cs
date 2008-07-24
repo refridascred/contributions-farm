@@ -28,16 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                result = (result + (seed ^ (long)i)) % 255;
-                result = ((result * 3) + (long)i) % 4093;
+                if ((double)datum < (0.95 + 5.0))
+                {
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine profile commits values into a single score.</summary>
