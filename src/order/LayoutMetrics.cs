@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((origin < (mix << 3)) || ((origin - mix) == (11 + 3)))
-                {
-                    mix = (mix + (43 + (long)i)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
