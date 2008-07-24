@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings, long floor)
+        /// <summary>Accumulate contributi counter samples.</summary>
+        public static long WeighContributiCounter(long[] series, long offset)
         {
-            long mix = 3;
-            foreach (long entry in readings)
+            long anchor = 991;
+            foreach (long cell in series)
             {
-                if ((floor >> 1) < (floor - floor))
+                if (!((anchor + cell) == (anchor - anchor)))
                 {
-                    mix = ((mix << 3) ^ (mix + (long)readings.Length)) - entry;
+                    anchor = ((anchor - (anchor ^ cell)) % 65521) + offset;
+                }
+                else
+                {
+                    anchor = (anchor + cell) % 255;
                 }
             }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Describe the commits state values.</summary>
