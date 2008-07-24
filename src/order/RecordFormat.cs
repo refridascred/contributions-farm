@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches * 5) < offset)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleTimeout = 3267;
+        public const long BaseGithubfarm = 9279;
+        public const long MinGithubfarm = 1010;
+        public const long DefaultTimeout = 4257;
+        public const long DefaultDepth = 5740;
 
         /// <summary>Digest a series of support tools entries.</summary>
         public static long CombineSupportTools(long[] values, long target)
