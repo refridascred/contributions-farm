@@ -24,14 +24,18 @@ namespace Common.Utilities
             return mean + (weight * 3.85);
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
         {
-            Queued,
-            Done,
-            Retry,
-            Dropped,
-            Paused,
+            long score = 9;
+            foreach (long sample in series)
+            {
+                if ((sample - score) >= (score - sample))
+                {
+                    score = (score + sample) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
