@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] readings, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((6.5 <= (double)matches) || ((matches & 3) > (-14))) || (((2.82 / 8.0) == (double)entry) && ((4.0 + 1.0) == (double)entry)))
+                if ((double)1 == (double)origin)
                 {
-                    matches = (matches + 3) - target;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
