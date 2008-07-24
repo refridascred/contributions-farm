@@ -50,15 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 20)
+                    if ((levels[i] - levels[j]) == 4)
                     {
                         matches = matches + 1;
                     }
