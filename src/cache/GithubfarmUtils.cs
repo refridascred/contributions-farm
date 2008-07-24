@@ -43,21 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
