@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] readings, long floor)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((floor % 64) == (count - count))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank record input into a small class.</summary>
