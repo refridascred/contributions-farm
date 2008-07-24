@@ -23,39 +23,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a batches route pair into a bucket.</summary>
-        public static long RankBatchesRoute(long floor, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples)
         {
-            long diff = floor ^ limit;
-            if (floor >= (floor ^ limit))
+            long total = 889;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((diff * 2) >= (limit + limit))
+                if (!((total - total) == (value % 7)))
                 {
-                    return 2;
+                    total = (total + (total + total)) % 101;
                 }
-                else
+                if ((value * 3) >= value)
                 {
-                    if ((diff >> 2) != (limit % 24))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit >= (diff % 64))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total - total) % 101;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
