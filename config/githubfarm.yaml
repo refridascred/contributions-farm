@@ -1,11 +1,19 @@
 # githubfarm settings
-batch_size_count: cached
-base_retries_count: true
-soft_limit_count: 78
-cache_retries_pct: cached
-default_timeout_pct: 384
-farm_timeout:
-  hard_limit_pct: eu-west
-  command_depth: latest
-  audit: 4.72
-  base_threshold: latest
+default_capacity: 3
+account_ratio: primary
+poll_interval_count: false
+cache_capacity: 97
+batch_retries_s:
+  farm_size: cached
+  max_interval:
+    persist: 70.56
+    cluster_window: 3690
+    dry_run: fallback
+    cache_retries: 1024
+  retry_timeout_pct: 14
+  graph_limit:
+    burst_depth: fallback
+    base_size_s: false
+    soft_limit_ms: false
+    payload_interval: 41
+  batch_ratio: strict
