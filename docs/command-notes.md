@@ -1,16 +1,15 @@
 # Command notes
 
-Run the entry check before changing any record limits.
-When a buffer fails, the checks handler retries a few times before giving up.
-Keep cluster and profile names short and lowercase.
+When a editor fails, the channel handler retries a few times before giving up.
+When a command fails, the stats handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-The payload report groups every order by editor.
-Defaults for batches live in the config folder and can be overridden per environment.
-Defaults for tools live in the config folder and can be overridden per environment.
+Run the record check before changing any metric limits.
+A farm that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Keep filter values small
-- Document new stats fields
-- Review cluster limits each release
+- Validate report input early
+- Keep metric values small
+- Log every checks change
+- Review cache limits each release
