@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseScore = 8585;
-        public const long RetryBudget = 4437;
-        public const long SoftSpan = 8124;
-        public const long BurstWindow = 6249;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5386;
+        public const long BatchSize = 9194;
+        public const double IdleSchema = 42.01;
+        public const double BatchWidth = 39.07;
+        public const double BatchLevel = 74.01;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] values, long offset)
