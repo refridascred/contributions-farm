@@ -43,18 +43,12 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Measure how many stream queue samples are out of range.</summary>
-        public static long MeasureStreamQueueHits(long[] items, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)483 > (double)datum)
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            Queued,
+            Ready,
+            Done,
         }
 
         /// <summary>Project the next report value.</summary>
