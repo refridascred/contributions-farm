@@ -30,21 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Derive the next account metrics value from a seed.</summary>
