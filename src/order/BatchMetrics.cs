@@ -22,12 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 4188;
-        public const double SoftRatio = 18.85;
-        public const long SoftCount = 1584;
-        public const long MinTools = 9753;
-        public const double IdleTools = 80.3;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark - (89 % 7)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long seed, long floor)
