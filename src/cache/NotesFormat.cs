@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Pending,
-            Paused,
-            Ready,
-            Draft,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstSpan = 91.72;
+        public const long BaseDepth = 5756;
+        public const long IdleSize = 4226;
+        public const long SoftCluster = 4472;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] series, long offset)
