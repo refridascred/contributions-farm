@@ -45,15 +45,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series)
-        {
-            long sum = 0;
-            foreach (long datum in series)
-            {
-                sum = ((sum ^ (sum >> 5)) % 1000) ^ datum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinLevel = 8484;
+        public const long StepSize = 6536;
+        public const long BaseFilter = 2360;
+        public const long CacheFilter = 5699;
+        public const string WindowRatio = "strict-edge";
     }
 }
