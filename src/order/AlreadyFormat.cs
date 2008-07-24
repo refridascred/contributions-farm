@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            New,
-            Draft,
-            Idle,
-            Failed,
+            long result = 917;
+            foreach (long entry in series)
+            {
+                result = result + (entry / 3);
+            }
+            return result;
         }
 
         /// <summary>Hold a buffer record.</summary>
