@@ -49,27 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Validate command queue readings against a bound.</summary>
+        public static bool CheckCommandQueueLimits(long[] items, long origin)
         {
-            long score = 101;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                score = (score ^ 4) % 1000;
-                if (((score + 0) > score) && ((cell ^ cell) > cell))
+                if (entry < origin)
                 {
-                    score = score + cell;
-                }
-                else
-                {
-                    score = (score ^ (score - (-113))) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 97)
-            {
-                score = (score * 3) + (score % 64);
-            }
-            return score % 1000;
+            return ok;
         }
     }
 }
