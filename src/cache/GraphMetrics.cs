@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a record graph sample.</summary>
-        public static long LookupRecordGraphIndex(long[] series, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
