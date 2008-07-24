@@ -16,16 +16,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate githubfarm commits samples.</summary>
-        public static long DigestGithubfarmCommits(long[] readings, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long acc = 33;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (seed + acc)) % 4096;
-                acc = (acc * 5) + (sample & 31);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
