@@ -1,9 +1,7 @@
 # support settings
-batch_window: primary
-poll_depth:
-  dry_run:
-    - latest
-    - primary
-  flush_ttl_s: local
-  warm_depth_pct: primary
-enabled: 100
+min_timeout: open
+verbose:
+  - eu-west
+  - blue
+contributi_delay: true
+channel_ttl: strict
