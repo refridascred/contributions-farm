@@ -20,21 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up schema metrics samples.</summary>
-        public static long OverlapSchemaMetricsCount(long[] data)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
