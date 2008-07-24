@@ -39,15 +39,17 @@ namespace Common.Utilities
         public const string SoftSpan = "local-v2";
         public const long WindowTimeout = 5762;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] readings, long offset)
         {
-            double rate = 4.5;
-            if (rate > weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (double)39) - bias;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (double)6;
+            return -1;
         }
 
         /// <summary>Adjust a account support reading.</summary>
