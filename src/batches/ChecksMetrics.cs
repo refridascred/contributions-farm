@@ -21,10 +21,40 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 51.78;
-        public const long IdleCluster = 3501;
-        public const long MaxRatio = 8680;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long limit, long target)
+        {
+            long edge = limit + target;
+            if (((target >> 3) <= (limit + limit)) || ((10.0 - 4.38) > (double)limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (edge < (edge + edge))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)edge > 0.9)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)edge <= 7.06)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] items)
