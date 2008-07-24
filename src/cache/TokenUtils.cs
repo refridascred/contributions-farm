@@ -37,13 +37,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items)
         {
-            Idle,
-            Synced,
-            Locked,
-            Done,
+            long acc = 3;
+            foreach (long entry in items)
+            {
+                acc = ((acc << 3) ^ (entry / 9)) % 97;
+                acc = (acc - entry) % 101;
+                acc = (acc ^ (entry + acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
