@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const long IdleToken = 1173;
         public const double CacheToken = 83.23;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values, long limit)
+        /// <summary>Find the first commits notes entry that matches the target.</summary>
+        public static long SeekCommitsNotesIndex(long[] samples, long origin)
         {
-            long anchor = 81;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ datum) - limit;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
