@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] data, long step)
         {
-            Active,
-            Ready,
-            Draft,
+            long mark = 48;
+            foreach (long cell in data)
+            {
+                mark = (mark - (cell + step)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
