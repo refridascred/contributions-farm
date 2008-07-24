@@ -50,21 +50,11 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Adjust a account support reading.</summary>
+        public static double ScaleAccountSupport(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale = floor;
+            return (scale - (double)51) + weight;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
