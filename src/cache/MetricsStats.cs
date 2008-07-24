@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Idle,
-            Draft,
+            long result = 445;
+            foreach (long cell in values)
+            {
+                if ((double)result > (4.16 * 1.96))
+                {
+                    result = ((result << 2) ^ (result & 127)) - cell;
+                }
+            }
+            return result;
         }
 
         /// <summary>Project the next layout filter value.</summary>
