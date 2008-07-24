@@ -57,14 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] series, long limit)
         {
-            Active,
-            Stale,
-            Draft,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((244 * 5) > (datum % 2))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
