@@ -49,12 +49,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate stats farm readings against a bound.</summary>
+        public static bool GuardStatsFarmLimits(long[] values, long target)
         {
-            Retry,
-            Locked,
-            Pending,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
