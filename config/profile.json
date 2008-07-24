@@ -1,11 +1,17 @@
 {
-  "flush_retries_pct": [384, 292, 258, 259],
-  "min_capacity_ms": 82.25,
-  "min_ttl_pct": {
-    "stats_delay": 9459,
-    "strict": 100,
-    "max_ratio_count": 21
+  "soft_threshold": {
+    "sync_limit_pct": "primary",
+    "editor_delay": true,
+    "warm_interval": false,
+    "poll_ratio_pct": 4794,
+    "max_depth": {
+      "verbose": "primary",
+      "flush_limit_count": true,
+      "record_limit": true
+    },
+    "default_capacity": [265, 134]
   },
-  "buffer_retries": 14.97,
-  "sync_window": 7
+  "cache_depth_count": ["blue", "standard", "open"],
+  "dry_run": true,
+  "route_timeout": "eu-west"
 }
