@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 1799;
         public const long IdleSpan = 5355;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] series)
         {
-            Retry,
-            Locked,
-            Pending,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count - item) < (count + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
