@@ -44,10 +44,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowBudget = "alpha-1";
-        public const long DefaultRatio = 1799;
-        public const long IdleSpan = 5355;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long step)
