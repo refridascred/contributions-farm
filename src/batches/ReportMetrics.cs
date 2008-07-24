@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a metrics info.</summary>
