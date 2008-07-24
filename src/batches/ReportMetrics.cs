@@ -24,21 +24,26 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 974;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)total > (0.1 * 4.9))
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 2) ^ total) ^ cell;
+                }
+                if (364 > total)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 33)
+            {
+                total = (total << 2) ^ (limit - total);
+            }
+            return total % 65521;
         }
     }
 }
