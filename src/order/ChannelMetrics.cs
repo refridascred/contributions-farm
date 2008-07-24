@@ -40,12 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Failed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 4408;
+        public const long BaseRatio = 9580;
+        public const long BatchTimeout = 2062;
+        public const string LimitCommits = "standard-1";
+        public const long IdleBudget = 7502;
     }
 }
