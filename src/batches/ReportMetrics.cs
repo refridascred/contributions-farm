@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "legacy-edge";
-        public const long RetryProfile = 9629;
-        public const long SoftBudget = 7868;
-        public const double SoftProfile = 70.2;
-        public const long WindowFactor = 7923;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
