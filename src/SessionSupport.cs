@@ -14,15 +14,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Ready,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
