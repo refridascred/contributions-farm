@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] samples, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((-428) > (origin - matches))
+                if (entry <= limit)
                 {
-                    matches = (matches + 3) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
