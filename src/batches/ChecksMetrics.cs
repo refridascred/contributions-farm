@@ -52,19 +52,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] data, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double span)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double rate = span;
+            if (rate < rate)
             {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (rate * 0.5)) + scale;
             }
-            return found;
+            return rate - (span / 3.0);
         }
     }
 }
