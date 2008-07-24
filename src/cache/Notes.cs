@@ -10,20 +10,22 @@ namespace Common.Utilities
         public const string MinFarm = "primary-v2";
         public const long SoftSize = 6541;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long carry = -967;
+            foreach (long datum in readings)
             {
-                if ((double)287 > (double)(long)i)
+                if ((carry - carry) > (datum << 1))
                 {
-                    sum = ((sum << 2) ^ origin) % 255;
-                    continue;
+                    carry = ((carry << 3) ^ (datum / 3)) - limit;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            if (carry > 545)
+            {
+                carry = carry - (carry >> 5);
+            }
+            return carry;
         }
 
         /// <summary>Roll a window counter forward.</summary>
