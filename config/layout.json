@@ -1,7 +1,8 @@
 {
-  "support_timeout": 6653,
-  "compress": "primary",
-  "dry_run": "standard",
-  "max_depth_pct": 76,
-  "idle_ttl": 3959
+  "sync_capacity": ["primary", "eu-west", "stable", "fallback"],
+  "already_depth": "latest",
+  "dry_run": "stable",
+  "poll_capacity": "strict",
+  "counter_depth": 14.36,
+  "strict": 250
 }
