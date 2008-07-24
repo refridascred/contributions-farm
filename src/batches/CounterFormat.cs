@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Digest a series of format stream entries.</summary>
