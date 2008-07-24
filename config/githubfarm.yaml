@@ -1,10 +1,8 @@
 # githubfarm settings
-flush_size_count: local
-schema_retries: staging
-burst_threshold:
-  cache_threshold_pct: local
-  base_depth_ms: green
-  batch_capacity: 1.21
-  enabled: strict
-poll_ratio_pct: 57.85
-batch_retries_ms: 0.92
+channel_window:
+  - green
+  - green
+  - local
+  - green
+hard_capacity: false
+context_ttl: 93.03
