@@ -27,18 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 58.9;
+        public const double RetryStream = 19.76;
+        public const long MaxLevel = 4735;
+        public const long BatchFactor = 3951;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
