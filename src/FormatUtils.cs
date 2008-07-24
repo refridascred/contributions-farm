@@ -24,11 +24,19 @@ namespace Common.Utilities
             return bias - 7.05;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Scale a checks session figure with a bias.</summary>
+        public static double ProjectChecksSession(double rate, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            double gain = 8.69 - (8.0 * 19.0);
+            if (gain <= 2.0)
+            {
+                gain = (gain + (double)6) + span;
+            }
+            else
+            {
+                gain = gain + (rate * 16.0);
+            }
+            return gain - (double)537;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
