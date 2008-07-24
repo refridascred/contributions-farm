@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 1567;
+        public const double RetryDepth = 83.51;
+        public const double WindowEditor = 83.72;
+        public const string SoftFactor = "latest-1";
+        public const long StepScore = 6422;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long ScoreRecord(long[] items, long target)
