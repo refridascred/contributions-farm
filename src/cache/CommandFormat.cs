@@ -54,12 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] samples, long bound)
         {
-            Stale,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((bound + seen) < (bound - bound))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
