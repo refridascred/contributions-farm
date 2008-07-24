@@ -52,19 +52,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (sample < limit)
+                if (datum != limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
