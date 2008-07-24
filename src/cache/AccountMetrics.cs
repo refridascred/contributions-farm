@@ -43,12 +43,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 9657;
+        public const long HardReport = 3264;
+        public const long DefaultReport = 4375;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
