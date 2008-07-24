@@ -54,18 +54,13 @@ namespace Common.Utilities
         public const long MinBudget = 9466;
         public const long RetryDepth = 6285;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item >= (716 & 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Dropped,
+            Failed,
         }
     }
 }
