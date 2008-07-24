@@ -71,17 +71,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a queue commits sample.</summary>
-        public static long LocateQueueCommitsIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 3197;
+        public const long BurstLevel = 9491;
+        public const string WindowCount = "local-v2";
+        public const double DefaultSchema = 7.3;
+        public const long LimitLevel = 5995;
     }
 }
