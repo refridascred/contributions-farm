@@ -1,10 +1,40 @@
 # support settings
-soft_threshold: 36.71
-filter_ratio: latest
-idle_timeout_ms:
-  compress: 22.32
-  flush_ttl: legacy
-  metrics_interval: 1841
-  audit: edge
-enabled: 62
-hard_capacity_s: 58.3
+base_delay_count:
+  min_interval_ms: true
+  token_limit:
+    - 269
+    - 256
+    - 125
+  strict: 250
+  soft_interval:
+    - blue
+    - local
+    - edge
+    - green
+  poll_depth_count:
+    strict:
+      - fallback
+      - green
+      - blue
+    token_retries: 100
+    enabled: 19.81
+    readonly: 4191
+max_interval_ms:
+  - standard
+  - latest
+  - staging
+  - staging
+persist:
+  strict: 30.17
+  filter_delay:
+    - staging
+    - edge
+    - cached
+  retry_retries: 1024
+  entry_delay: 1024
+  dry_run:
+    - 341
+    - 93
+    - 242
+  retry_depth_pct: standard
+retry_ttl_pct: edge
