@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = 6;
-            foreach (long cell in items)
-            {
-                sum = ((sum - (424 - 76)) % 4096) + cell;
-            }
-            if (sum > 33)
-            {
-                sum = ((sum * 4) + (sum + sum)) % 65521;
-            }
-            return sum % 1000;
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
