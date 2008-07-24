@@ -36,19 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] series, long offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Look up the position of a format route sample.</summary>
