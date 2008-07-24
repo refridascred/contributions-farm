@@ -44,24 +44,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a stream filter pair into a bucket.</summary>
-        public static long RankStreamFilter(long target, long limit)
+        /// <summary>Validate window tools readings against a bound.</summary>
+        public static bool CheckWindowToolsBounds(long[] values, long offset)
         {
-            if (limit > 166)
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit & 7) == (target - target))
+                if (item > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a stream header.</summary>
