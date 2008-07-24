@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] data)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally > (entry >> 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stats samples.</summary>
