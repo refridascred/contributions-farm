@@ -1,10 +1,14 @@
 # Command notes
 
-Each session is validated before it reaches the record queue.
-When a notes fails, the entry handler retries a few times before giving up.
+A stream that stays idle for too long is moved to the support list.
+Defaults for editor live in the config folder and can be overridden per environment.
+
+Defaults for token live in the config folder and can be overridden per environment.
+The entry report groups every batches by commits.
+When a profile fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep schema values small
-- Log every queue change
-- Review format limits each release
+- Keep metrics values small
+- Log every tools change
+- Prefer channel defaults
