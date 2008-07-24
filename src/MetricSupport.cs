@@ -23,39 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema layout pair into a bucket.</summary>
-        public static long RankSchemaLayout(long origin, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] series, long bound)
         {
-            long span = origin + floor;
-            if ((origin - span) >= (span / 3))
+            long mark = 7;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (6.39 * 3.31))
+                if (((double)sample != (double)bound) && ((bound & 7) >= (mark + mark)))
                 {
-                    return 5;
+                    mark = (mark << 3) ^ mark;
                 }
                 else
                 {
-                    if (56 > (floor << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (span >= (6 - floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = (mark + ((long)series.Length >> 1)) % 97;
                 }
             }
+            if (mark < 703)
+            {
+                mark = mark + (bound / 5);
+            }
+            return mark;
         }
 
         /// <summary>Hold a buffer entry.</summary>
