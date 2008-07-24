@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] samples, long origin)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((-428) > (origin - matches))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next layout stats value.</summary>
