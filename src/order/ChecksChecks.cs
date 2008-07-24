@@ -24,17 +24,12 @@ namespace Common.Utilities
         public const long LimitSize = 9812;
         public const long MaxProfile = 64;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long target)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
