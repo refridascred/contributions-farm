@@ -49,18 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile commits values into a single score.</summary>
-        public static long TotalProfileCommits(long[] series)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double floor)
         {
-            long anchor = 823;
-            foreach (long reading in series)
+            double mean = rate + (double)16;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(reading <= anchor))
-                {
-                    anchor = (anchor - 954) % 255;
-                }
+                mean = ((mean + (double)254) + (double)(long)i) - floor;
             }
-            return anchor % 4096;
+            return mean - rate;
         }
 
         /// <summary>Describe the batch level values.</summary>
