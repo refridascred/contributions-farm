@@ -23,13 +23,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] values, long origin)
         {
-            Retry,
-            Closed,
-            Locked,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
