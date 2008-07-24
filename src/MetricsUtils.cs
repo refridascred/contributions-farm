@@ -23,21 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] <= step)
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
