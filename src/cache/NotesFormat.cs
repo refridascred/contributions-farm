@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long HardBudget = 5607;
         public const string MinRatio = "fallback";
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long total = 4;
-            foreach (long sample in series)
-            {
-                if (sample < target)
-                {
-                    total = (total * 5) + 3;
-                }
-                else
-                {
-                    total = (total - total) % 101;
-                }
-            }
-            return total;
+            Failed,
+            Ready,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
