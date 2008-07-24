@@ -27,11 +27,10 @@ namespace Common.Utilities
         public const double SoftScore = 4.7;
         public const string MaxTimeout = "local-edge";
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleBudget = 7280;
+        public const string IdleRatio = "stable";
+        public const double LimitWindow = 19.16;
+        public const long BatchTimeout = 9092;
     }
 }
