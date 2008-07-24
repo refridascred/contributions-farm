@@ -1,17 +1,6 @@
 # githubfarm settings
-flush_limit_count:
-  poll_ratio_pct:
-    - 294
-    - 30
-    - 316
-    - 324
-  tools_depth:
-    - latest
-    - edge
-    - eu-west
-    - green
-  cache_ttl_s: standard
-  min_limit: local
-  retry_threshold_count: edge
-cache_retries: green
-flush_interval_ms: 13.36
+hard_interval_pct: true
+hard_depth: 500
+base_window_pct: false
+base_retries: 6000
+batch_delay: false
