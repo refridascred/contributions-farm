@@ -22,16 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] items, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                carry = (carry ^ (origin - origin)) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((9.71 / 6.0) > (double)(long)items.Length)
+                {
+                    hits = ((hits + 2) ^ value) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Iterate the counter support series from a seed.</summary>
