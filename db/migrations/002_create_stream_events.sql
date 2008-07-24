@@ -1,13 +1,9 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    weight REAL,
+    region TEXT,
     rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
-
-INSERT INTO stream_events (weight, rank, count) VALUES (25.72, 1, 20);
-INSERT INTO stream_events (weight, rank, count) VALUES (20.63, 80, 73);
-INSERT INTO stream_events (weight, rank, count) VALUES (14.67, 44, 21);
+CREATE INDEX IF NOT EXISTS idx_stream_events_region ON stream_events (region);
