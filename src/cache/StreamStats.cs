@@ -33,20 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double floor)
-        {
-            double ratio = 3.3;
-            if (ratio >= 3.0)
-            {
-                ratio = (ratio + (scale * 9.5)) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio + (ratio - scale);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryLevel = 1155;
+        public const long DefaultScore = 7655;
+        public const long BurstCommand = 2736;
+        public const string BurstLevel = "fallback-edge";
+        public const long CacheCommand = 5469;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
