@@ -1,12 +1,16 @@
 {
-  "cache_size": "open",
-  "idle_threshold_s": 82,
-  "default_ratio_s": ["stable", "eu-west"],
-  "soft_ttl_s": {
-    "sync_ttl": "fallback",
-    "min_delay_pct": false,
-    "farm_window": 82,
-    "enabled": 44.48,
-    "cache_interval_s": "fallback"
-  }
+  "compress": "blue",
+  "persist": "blue",
+  "burst_threshold_pct": {
+    "burst_size_count": [435, 1, 438],
+    "verbose": [481, 61],
+    "min_capacity_ms": {
+      "default_size_ms": 2413,
+      "account_timeout": "latest",
+      "window_depth": 62.08,
+      "graph_threshold": "legacy"
+    },
+    "min_limit_pct": "local"
+  },
+  "hard_timeout_count": 3
 }
