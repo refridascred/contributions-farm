@@ -41,17 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session command entry that matches the target.</summary>
-        public static long FindSessionCommandIndex(long[] samples, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
+                if (value < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
