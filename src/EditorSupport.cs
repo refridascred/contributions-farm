@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] levels, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (cell <= target)
+                if (reading != floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the cluster state values.</summary>
