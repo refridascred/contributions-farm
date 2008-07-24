@@ -20,23 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double ratio, double offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] items, long floor)
         {
-            double weight = (double)(97 * 2);
-            if (weight > (ratio / 2.0))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                weight = (weight - (double)3) - offset;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (weight / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (ratio + weight)) + (double)(long)i;
-            }
-            return weight + (9.41 / 9.0);
+            return stale;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
