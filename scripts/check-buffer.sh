@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict local legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=209
+log "limit is ${BUFFER_LIMIT}"
