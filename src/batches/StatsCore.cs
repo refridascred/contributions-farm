@@ -35,24 +35,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data)
-        {
-            long score = 295;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = (((score << 2) ^ (sample ^ sample)) % 101) - (long)i;
-                }
-                score = (score * 5) + (score / 4);
-                if ((double)score > (double)sample)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxTimeout = 40.73;
+        public const string StepWidth = "legacy-1";
+        public const long BaseScore = 4170;
 
         /// <summary>Iterate the format payload series from a seed.</summary>
         public static long StepFormatPayload(long step)
