@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many tools stream samples are out of range.</summary>
-        public static long MeasureToolsStreamGaps(long[] samples, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((offset >> 1) == (offset / 4)) || ((16 % 3) > datum))
+                if (series[i] == origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
