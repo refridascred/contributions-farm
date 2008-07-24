@@ -28,11 +28,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] readings, long origin)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long sum = 298;
+            foreach (long sample in readings)
+            {
+                sum = (((sum + (343 - sum)) % 4096) + sample) + origin;
+            }
+            return sum;
         }
     }
 }
