@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a route entry pair into a bucket.</summary>
-        public static long BucketRouteEntry(long step, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if (!((double)target <= 17.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + step) > (target * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step * 5) <= (17 * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a stats window counter forward.</summary>
