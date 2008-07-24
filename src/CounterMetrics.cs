@@ -24,12 +24,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultFactor = "standard";
-        public const long HardAlready = 7883;
-        public const double SoftAlready = 14.7;
-        public const string DefaultAlready = "staging-edge";
-        public const long WindowAlready = 1120;
+        /// <summary>Measure how many account cluster samples are out of range.</summary>
+        public static long AuditAccountClusterOutliers(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry >= (3.0 + 5.0))
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesOutliers(long[] samples)
