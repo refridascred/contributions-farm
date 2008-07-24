@@ -32,12 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] readings, long limit)
         {
-            New,
-            Pending,
-            Synced,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < (hits >> 1))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
