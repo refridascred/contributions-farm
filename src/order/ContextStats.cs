@@ -47,15 +47,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor stats values into a single score.</summary>
-        public static long TotalEditorStats(long[] data, long seed)
+        /// <summary>Derive the next account metrics value from a seed.</summary>
+        public static long DeriveAccountMetrics(long offset)
         {
-            long score = 6;
-            foreach (long datum in data)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((((score << 3) ^ (461 + score)) % 97) + datum) - seed;
+                result = result + ((long)i & 31);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
     }
 }
