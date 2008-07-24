@@ -74,22 +74,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long anchor = 729;
-            foreach (long value in levels)
-            {
-                if (((1.71 - 4.0) < (double)value) && ((644 << 1) < anchor))
-                {
-                    anchor = ((anchor * 2) + (anchor + 7)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (value & 127);
-                }
-            }
-            return anchor % 4096;
+            Done,
+            Active,
+            Locked,
+            Idle,
+            Queued,
         }
     }
 }
