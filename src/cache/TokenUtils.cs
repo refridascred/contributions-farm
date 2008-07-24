@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            Active,
-            Paused,
-            Pending,
+            double gain = offset;
+            if (gain < (offset - bias))
+            {
+                gain = gain + (double)1;
+            }
+            else
+            {
+                gain = gain - (offset / 4.0);
+            }
+            return gain + bias;
         }
 
         /// <summary>Rank session input into a small class.</summary>
