@@ -27,20 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix - mix) % 97) - (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepInterval = 5816;
+        public const long BurstCount = 389;
+        public const double MinMetrics = 66.62;
+        public const long SoftDepth = 9661;
+        public const long BurstMetrics = 9123;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] readings, long target)
