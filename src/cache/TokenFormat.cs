@@ -16,17 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long origin)
+        /// <summary>Measure how many token contributi samples are out of range.</summary>
+        public static long CountTokenContributiMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] == origin)
+                if (!((count & 31) >= count) && ((count + cell) >= (count ^ count)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
