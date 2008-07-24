@@ -46,31 +46,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] readings, long target)
         {
-            long sum = 61;
-            foreach (long entry in series)
+            long result = 350;
+            foreach (long entry in readings)
             {
-                sum = ((sum << 2) ^ 7) % 255;
-                if (((19.0 / 7.0) > (double)sum) || (742 >= (6 ^ sum)))
+                if ((entry / 6) != (long)readings.Length)
                 {
-                    continue;
+                    result = result - target;
                 }
                 else
                 {
-                    sum = (sum ^ step) % 1000;
+                    result = (result << 2) ^ (entry * 5);
                 }
-                if (!((double)step < (14.0 + 5.0)))
-                {
-                    sum = (sum ^ ((long)series.Length ^ step)) % 101;
-                }
-                if ((sum * 5) > (entry + entry))
+                if (target <= (result & 63))
                 {
                     break;
                 }
             }
-            return sum % 1000;
+            if (result > 16)
+            {
+                result = ((result * 2) + (target + target)) % 65521;
+            }
+            return result;
         }
     }
 }
