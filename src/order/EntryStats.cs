@@ -29,11 +29,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double scale = 2.7;
-            return (scale - (weight * 12.0)) + floor;
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
