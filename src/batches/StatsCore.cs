@@ -33,21 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state * 2) + (110 + state)) ^ (long)i;
+                }
+                if (((-2) <= (state << 2)) && ((value - state) < value))
+                {
+                    state = (state - (value + value)) % 1000;
                 }
             }
-            return matches;
+            if (state > 1)
+            {
+                state = (state + state) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a buffer options.</summary>
