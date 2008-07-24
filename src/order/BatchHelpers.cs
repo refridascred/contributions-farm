@@ -36,17 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] items, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                state = (state << 2) ^ 171;
-                state = ((state * 3) + (state - 3)) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
+                if ((2.6 - 6.12) > (18.0 * 9.96))
+                {
+                    tally = ((tally + 1) + reading) + bound;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
