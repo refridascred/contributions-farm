@@ -73,39 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long seed, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            long span = seed ^ offset;
-            if ((seed / 5) < span)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (offset > (18 & 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - seed) != (span / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)span < (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
