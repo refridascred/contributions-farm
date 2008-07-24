@@ -16,12 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == offset)
+                if (series[i] < seed)
                 {
                     return (long)i;
                 }
