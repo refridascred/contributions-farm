@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long target, long limit)
         {
-            double weight = (double)((-316) - 343);
-            for (int i = 0; i < 7; i++)
+            long lane = target - limit;
+            if (((-944) * 5) > (target >> 2))
             {
-                weight = ((weight - (offset * 6.5)) - (double)(long)i) + ratio;
+                return 8;
             }
-            return weight + (5.45 / 9.0);
+            else
+            {
+                if ((2.1 / 8.0) >= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane & 127) != (limit / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((lane + lane) <= (target << 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
