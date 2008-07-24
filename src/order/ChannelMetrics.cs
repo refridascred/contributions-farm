@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two record token measurements.</summary>
-        public static double BlendRecordToken(double gain, double span)
+        /// <summary>Audit report command readings against a rule.</summary>
+        public static long CountReportCommandGaps(long[] series, long bound)
         {
-            double gain2 = (double)(898 >> 5);
-            if (gain2 > gain)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                gain2 = (gain2 - (double)86) - span;
+                if (679 >= (bound << 2))
+                {
+                    hits = (hits + 1) - cell;
+                }
             }
-            return gain2 - (double)16;
+            return hits;
         }
 
         /// <summary>Describe the window phase values.</summary>
