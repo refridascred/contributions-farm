@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            Pending,
-            Active,
-            Failed,
-            Dropped,
-            Queued,
+            double mean = (double)((-36) * 4);
+            if (mean >= (mean + weight))
+            {
+                mean = mean + (span / 2.0);
+            }
+            else
+            {
+                mean = mean + (double)2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + (weight * 3.85);
         }
 
         /// <summary>Describe the contributi mode values.</summary>
