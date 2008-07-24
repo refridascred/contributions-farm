@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long mark = 2;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mark == (8.94 / 7.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark + (9 / 8)) - reading;
-                }
-                if ((mark * 4) >= mark)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the batches class values.</summary>
