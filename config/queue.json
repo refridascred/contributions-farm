@@ -1,8 +1,7 @@
 {
-  "graph_delay": "fallback",
-  "order_capacity": true,
-  "hard_ttl": "fallback",
-  "default_ttl": 250,
-  "compress": true,
-  "cache_interval": "legacy"
+  "persist": "latest",
+  "dry_run": 100,
+  "audit": 9397,
+  "max_size": false,
+  "strict": 6421
 }
