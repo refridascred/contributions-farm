@@ -23,13 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long offset, long limit)
         {
-            Active,
-            Draft,
-            Queued,
-            Idle,
+            if ((284 + 81) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit << 1) < (offset / 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
