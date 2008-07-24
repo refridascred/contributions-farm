@@ -25,19 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate account checks readings against a bound.</summary>
-        public static bool GuardAccountChecksRange(long[] data, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long target)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < limit)
+                if ((double)sum < 1.01)
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 3) ^ (6 << 1)) % 101;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
     }
 }
