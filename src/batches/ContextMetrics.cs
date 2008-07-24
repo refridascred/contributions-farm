@@ -26,18 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long AuditFormatBatchHits(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (seen > (sample % 60))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
