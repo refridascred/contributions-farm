@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] samples, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long total = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Accumulate githubfarm commits samples.</summary>
