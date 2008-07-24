@@ -1,15 +1,21 @@
 # support settings
-base_size: 7.05
-queue_capacity:
-  - cached
-  - latest
-token_timeout: 49
-compress:
-  batch_size_s: 1024
-  graph_ratio: 250
-  farm_depth: legacy
-  order_depth: 33.18
-  audit:
-    - 16
-    - 72
-    - 391
+min_window_ms:
+  batch_delay_pct: cached
+  githubfarm_depth:
+    idle_threshold_ms: cached
+    max_threshold_count: false
+    strict: strict
+    cache_capacity: green
+    soft_delay_s: local
+    burst_timeout_s: true
+  audit: 45
+  readonly: 42.45
+  channel_retries: 9946
+  contributi_retries: stable
+idle_interval_count: green
+audit:
+  cache_delay: eu-west
+  idle_capacity_count: 4024
+  default_window_pct: fallback
+retry_ratio_count: 1024
+cache_retries_s: edge
