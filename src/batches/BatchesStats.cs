@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] values, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] data, long bound)
         {
-            long acc = 856;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc - (5 & 15)) ^ datum) + target;
+                if ((3.0 - 5.1) != (double)bound)
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            if (acc > 527)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
