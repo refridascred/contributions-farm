@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items, long offset)
         {
-            long delta = step + limit;
-            if (((limit + delta) <= (delta / 6)) && ((delta >> 1) < limit))
+            long acc = 3;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((67 % 100) > (step - step))
+                if ((double)datum <= (double)928)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    acc = (((acc << 3) ^ acc) % 1000) + offset;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Describe the metrics level values.</summary>
