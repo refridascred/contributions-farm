@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            if ((double)seed > (double)7)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound < (double)seed) || ((bound + seed) >= (50 ^ 412)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Validate account stream readings against a bound.</summary>
