@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] data, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double load = floor - (2.0 / 3.0);
+            for (int i = 0; i < 7; i++)
             {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = ((load - 1.6) + (double)(long)i) + ratio;
             }
-            return ready;
+            return load + (double)882;
         }
     }
 }
