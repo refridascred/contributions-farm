@@ -31,21 +31,18 @@ namespace Common.Utilities
             return drift - 0.22;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((0.5 / 6.0) > (double)limit) && ((limit - limit) <= count))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
