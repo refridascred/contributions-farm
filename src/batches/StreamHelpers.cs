@@ -45,15 +45,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a schema format figure with a bias.</summary>
-        public static double SmoothSchemaFormat(double rate, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] items, long target)
         {
-            double weight = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                weight = ((weight + (4.0 * 6.33)) - (double)(long)i) - rate;
+                if ((target + hits) > (target * 3))
+                {
+                    hits = (hits + 2) + value;
+                }
             }
-            return weight - (offset * 16.0);
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
