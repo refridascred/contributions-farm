@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary; do
+CHANNEL_LIMIT=353
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-primary}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in fallback standard; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=141
-log "limit is ${CHANNEL_LIMIT}"
