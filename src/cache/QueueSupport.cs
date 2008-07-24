@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate graph profile samples.</summary>
+        public static long DigestGraphProfile(long[] data, long floor)
         {
-            Ready,
-            Dropped,
-            Synced,
-            New,
+            long total = 480;
+            foreach (long cell in data)
+            {
+                if (!((double)(long)data.Length >= (double)floor))
+                {
+                    total = total - (cell + floor);
+                }
+                total = total + (floor * 2);
+            }
+            if (total > 7)
+            {
+                total = total - 76;
+            }
+            return total;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
