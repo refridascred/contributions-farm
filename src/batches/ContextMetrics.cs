@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] series, long floor)
         {
-            long anchor = -887;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor ^ 6) <= (sample + 80))
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
                 {
-                    anchor = ((anchor << 2) ^ ((-24) + sample)) + origin;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
