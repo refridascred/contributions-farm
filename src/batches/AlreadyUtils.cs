@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels, long step)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long mix = 86;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix * 2) + (step / 4);
-                if (datum >= 6)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
