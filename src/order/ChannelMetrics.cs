@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long floor)
         {
-            long state = 9;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state + state) % 255) ^ reading;
+                if (((long)i % 7) <= floor)
+                {
+                    acc = acc - (2 >> 3);
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
