@@ -51,22 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long origin)
         {
-            long mark = 39;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((sample + sample) > (sample - 7))
+                if (sample != origin)
                 {
-                    mark = ((mark * 3) + (mark >> 2)) % 101;
-                }
-                if ((3 * 2) >= (sample - mark))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
