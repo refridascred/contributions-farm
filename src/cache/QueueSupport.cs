@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
-        public static long TallyContributiGithubfarmMatches(long[] series, long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((82 & 15) <= (sample << 1))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
