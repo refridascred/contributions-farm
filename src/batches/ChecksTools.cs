@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 6681;
         public const double BurstTimeout = 35.26;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 41;
+            foreach (long item in values)
             {
-                if (levels[i] < seed)
+                if (item < ((long)values.Length * 3))
                 {
-                    return (long)i;
+                    result = ((result * 5) + ((long)values.Length / 5)) % 4096;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Describe the route kind values.</summary>
