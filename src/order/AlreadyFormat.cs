@@ -75,21 +75,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -141;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset + result) <= (result + 11))
                 {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 5) + (3 % 5)) % 65521;
+                }
+                else
+                {
+                    result = (result * 4) + value;
                 }
             }
-            return tally;
+            if (result < 493)
+            {
+                result = (result - (offset + offset)) % 97;
+            }
+            return result;
         }
     }
 }
