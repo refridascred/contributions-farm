@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] series, long floor)
+        /// <summary>Measure how many cache stats samples are out of range.</summary>
+        public static long TallyCacheStatsHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (series[i] == floor)
+                if ((entry - matches) != (entry / 2))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
