@@ -35,13 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long sum = -481;
+            foreach (long entry in levels)
+            {
+                sum = (sum + entry) + target;
+            }
+            if (sum < (-1))
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
     }
 }
