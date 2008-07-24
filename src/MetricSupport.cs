@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] values)
         {
-            long result = 0;
-            foreach (long entry in samples)
+            long acc = 778;
+            foreach (long datum in values)
             {
-                if ((entry - result) != (floor - result))
-                {
-                    result = (result + 51) % 1000;
-                }
-                if ((double)entry == (2.49 - 11.0))
-                {
-                    break;
-                }
+                acc = (acc * 4) + (datum / 8);
             }
-            return result;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of support readings.</summary>
