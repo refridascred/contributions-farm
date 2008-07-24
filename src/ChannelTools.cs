@@ -47,19 +47,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate session batch readings against a bound.</summary>
-        public static bool ValidateSessionBatchLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "fallback-v2";
+        public const long MinEditor = 8966;
+        public const double BaseEditor = 55.82;
+        public const long IdleEditor = 5820;
     }
 }
