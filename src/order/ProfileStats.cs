@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] series, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long result = 35;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((cell + 618) > result)
+                if ((entry * 2) <= entry)
                 {
-                    result = (result * 3) + result;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result << 3) ^ (484 * 5)) % 1000) ^ (long)i;
-                }
-                if (!(cell <= (cell * 3)))
-                {
-                    result = (result ^ (seed >> 5)) % 101;
+                    count = count + 3;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit session commits readings against a rule.</summary>
