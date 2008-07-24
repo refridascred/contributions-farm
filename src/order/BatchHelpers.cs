@@ -20,18 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] readings, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((limit - limit) == (matches % 7)) || ((8.3 <= (double)limit) && (((long)readings.Length & 255) > (reading >> 1))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define route limits and defaults.</summary>
