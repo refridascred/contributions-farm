@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] samples, long floor)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally < reading)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + floor;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
