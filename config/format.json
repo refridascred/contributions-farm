@@ -1,20 +1,5 @@
 {
-  "filter_size": 100,
-  "sync_timeout": {
-    "compress": "cached",
-    "persist": false,
-    "hard_capacity": 6414,
-    "dry_run": {
-      "enabled": [133, 419, 209],
-      "verbose": [21, 285, 449],
-      "filter_timeout": true,
-      "persist": 35.3,
-      "min_retries": "blue",
-      "min_interval": true
-    },
-    "flush_retries_count": "stable"
-  },
-  "cache_limit_s": 7302,
-  "order_depth": false,
-  "payload_threshold": [367, 130]
+  "compress": "blue",
+  "soft_ratio_s": false,
+  "batch_window": 40.09
 }
