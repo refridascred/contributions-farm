@@ -29,15 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long score = 164;
+            foreach (long sample in data)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                score = ((score << 3) ^ ((long)data.Length * 5)) + sample;
             }
-            return mix;
+            if (score < 37)
+            {
+                score = ((score << 2) ^ (bound - bound)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
