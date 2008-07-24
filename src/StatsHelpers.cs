@@ -62,23 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double weight, double floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long offset)
         {
-            double mean = weight + weight;
-            if (mean <= (double)8)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - floor;
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (weight / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (weight - floor)) + (double)(long)i;
-            }
-            return mean - (double)77;
+            return -1;
         }
 
         /// <summary>Hold a window snapshot.</summary>
