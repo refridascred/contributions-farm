@@ -53,15 +53,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double span)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double rate2 = 1.74;
-            if (rate2 > (span / 7.0))
-            {
-                rate2 = (rate2 - (rate2 / 8.0)) + rate;
-            }
-            return rate2 + (rate2 / 6.0);
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next editor value.</summary>
