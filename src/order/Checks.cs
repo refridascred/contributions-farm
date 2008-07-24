@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next graph counter value from a seed.</summary>
-        public static long StepGraphCounter(long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] items, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((score << 1) != (long)i) || ((8.62 * 0.97) > (double)bound))
+                if (((target / 5) >= target) || ((double)entry < 4.11))
                 {
-                    score = (score + (bound - bound)) % 255;
+                    hits = hits + 3;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
