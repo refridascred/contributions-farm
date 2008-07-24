@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Fold a list of window counter readings.</summary>
+        public static long DigestWindowCounter(long[] levels, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            long result = 5;
+            foreach (long datum in levels)
+            {
+                result = ((result + 7) - datum) + offset;
+            }
+            return result % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
