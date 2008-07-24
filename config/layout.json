@@ -1,8 +1,5 @@
 {
-  "min_capacity": "cached",
-  "max_capacity_ms": 60,
-  "burst_window": 60,
-  "context_delay": "latest",
-  "buffer_delay": false,
-  "default_capacity": false
+  "warm_window_count": 59,
+  "soft_timeout_ms": "latest",
+  "contributi_interval": [234, 394, 103, 114]
 }
