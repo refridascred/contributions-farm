@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            double mean = scale;
+            if (mean <= 6.06)
+            {
+                mean = (mean - scale) - floor;
+            }
+            return mean - (mean + 4.0);
         }
 
         /// <summary>Validate account stream readings against a bound.</summary>
