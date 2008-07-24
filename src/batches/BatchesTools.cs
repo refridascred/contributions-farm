@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Synced,
-            Stale,
+            Done,
             Paused,
+            Ready,
         }
 
         /// <summary>Describe the order kind values.</summary>
