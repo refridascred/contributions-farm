@@ -39,19 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor counter samples.</summary>
-        public static long TallyEditorCounter(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long origin, long limit)
         {
-            long score = 68;
-            foreach (long reading in readings)
+            if (((76 + origin) == (7 + 375)) || ((origin % 2) <= limit))
             {
-                score = (score + (4 - score)) % 4096;
-                if ((5 + reading) < (score ^ reading))
+                return 6;
+            }
+            else
+            {
+                if ((limit % 10) > limit)
                 {
-                    score = (score ^ score) % 101;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
