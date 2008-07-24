@@ -27,24 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long total = 17;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 3) ^ (29 << 2)) % 1000;
-                if (!(7.2 < (double)value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total - (value >> 4);
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = (total * 2) + value;
             }
-            if (total < 0)
-            {
-                total = (total - total) % 101;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
