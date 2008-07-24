@@ -29,15 +29,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            double load = (1.9 + 9.08) / 6.0;
-            if (load < bias)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (double)429) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - load;
+            return matches;
         }
     }
 }
