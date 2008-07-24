@@ -29,20 +29,11 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitScore = 4118;
+        public const long IdleCommand = 7384;
+        public const string BatchInterval = "standard-edge";
+        public const double MinScore = 36.83;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] readings, long offset)
