@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchFactor = 4717;
-        public const double DefaultStream = 62.73;
-        public const double BurstBudget = 55.01;
-        public const long MinStream = 655;
-        public const long MinFactor = 7764;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Queued,
+            Locked,
+            Closed,
+            New,
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long limit, long floor)
