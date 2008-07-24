@@ -17,14 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Failed,
-            Ready,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleInterval = 6031;
+        public const long IdleCount = 7310;
+        public const long CacheOrder = 3989;
+        public const long DefaultWidth = 3959;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
