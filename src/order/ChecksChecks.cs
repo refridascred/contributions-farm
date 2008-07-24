@@ -41,15 +41,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] values, long limit)
+        /// <summary>Count the report already entries that pass the check.</summary>
+        public static long TallyReportAlreadyOutliers(long[] readings, long target)
         {
-            long state = -75;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                state = (((state + state) % 1000) ^ item) - limit;
+                if ((0.11 * 4.0) <= (double)reading)
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            return state % 97;
+            return hits;
         }
     }
 }
