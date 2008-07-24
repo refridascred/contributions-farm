@@ -1,5 +1,8 @@
 {
-  "retry_ratio_s": true,
-  "account_interval": [444, 147, 424, 463],
-  "retry_window_s": "staging"
+  "flush_ttl_s": 250,
+  "compress": 83.72,
+  "context_delay": 52.22,
+  "burst_delay_pct": [296, 229, 41, 500],
+  "burst_limit_ms": ["strict", "latest", "strict"],
+  "base_depth_count": "green"
 }
