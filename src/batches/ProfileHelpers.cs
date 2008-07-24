@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepInterval = "staging-1";
-        public const long CacheCommits = 1198;
-        public const long SoftWidth = 4370;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long seed)
+        {
+            long delta = bound + seed;
+            if (((seed & 255) > (bound << 1)) && ((7 >> 3) <= (bound + bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed > delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - bound) >= delta)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate layout account samples.</summary>
         public static long TallyLayoutAccount(long[] levels)
