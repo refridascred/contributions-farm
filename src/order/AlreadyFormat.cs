@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const double SoftAccount = 87.49;
         public const double WindowInterval = 79.46;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxRatio = 13.79;
-        public const double CacheLevel = 97.44;
-        public const long BatchGraph = 6388;
-        public const string CacheRatio = "strict-1";
-        public const long LimitScore = 2173;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] data, long bound)
+        {
+            long state = 53;
+            foreach (long item in data)
+            {
+                state = state + (915 + item);
+                state = (state - (bound << 1)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphHits(long[] levels)
