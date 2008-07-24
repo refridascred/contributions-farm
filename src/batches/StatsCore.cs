@@ -68,13 +68,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long limit)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Idle,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
