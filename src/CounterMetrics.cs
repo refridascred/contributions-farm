@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const string DefaultAlready = "staging-edge";
         public const long WindowAlready = 1120;
 
-        /// <summary>Accumulate stats counter samples.</summary>
-        public static long FoldStatsCounter(long[] readings, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] samples)
         {
-            long sum = 663;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (sum > (step & 255))
+                if (19.0 > (double)count)
                 {
-                    sum = sum + (reading & 255);
+                    count = (count + 2) ^ reading;
                 }
             }
-            return sum % 97;
+            return count;
         }
     }
 }
