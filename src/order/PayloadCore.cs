@@ -14,15 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double bias, double bias2)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data, long seed)
         {
-            double ratio = (5.96 + bias2) * 1.66;
-            if (ratio <= (bias2 / 4.0))
+            long result = -46;
+            foreach (long datum in data)
             {
-                ratio = ratio - bias;
+                if ((double)seed <= (19.0 - 0.78))
+                {
+                    result = ((result << 2) ^ (result % 60)) + datum;
+                }
+                result = ((result * 5) + (result + seed)) % 97;
             }
-            return ratio + (bias + ratio);
+            return result % 97;
         }
 
         /// <summary>Compare every pair of profile cache readings.</summary>
