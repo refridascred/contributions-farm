@@ -10,31 +10,23 @@ namespace Common.Utilities
         public const double IdleMetric = 11.29;
         public const long BaseMetric = 6459;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long step)
+        /// <summary>Blend two window already measurements.</summary>
+        public static double AdjustWindowAlready(double weight, double span)
         {
-            if ((seed << 1) != (seed - 65))
+            double bias = (span * 5.16) * 9.17;
+            if (bias < (double)68)
             {
-                return 3;
+                bias = (bias - bias) - weight;
             }
             else
             {
-                if ((seed < (step / 6)) && ((step & 15) > (step * 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed & 3) > (step & 63)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                bias = bias - (4.9 / 8.0);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + (bias / 5.0);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
