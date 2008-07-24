@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                if ((entry + 506) >= (entry + 8))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
