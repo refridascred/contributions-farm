@@ -1,5 +1,17 @@
 {
-  "notes_retries": "legacy",
-  "warm_depth": 411,
-  "enabled": "cached"
+  "strict": {
+    "dry_run": "staging",
+    "max_depth_ms": {
+      "warm_size": [13, 210, 159, 117],
+      "dry_run": [452, 137, 55, 324],
+      "poll_interval": 47.04,
+      "batch_timeout": "staging",
+      "audit": 57
+    },
+    "entry_size": 57.34,
+    "already_size": 250
+  },
+  "hard_retries": 27.96,
+  "batch_ratio": "cached",
+  "soft_window": "green"
 }
