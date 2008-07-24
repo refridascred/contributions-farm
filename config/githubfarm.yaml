@@ -1,16 +1,11 @@
 # githubfarm settings
-warm_delay_pct: 72.58
-profile_interval:
-  editor_timeout: 3208
-  enabled: 92.97
-  warm_capacity: 500
-  soft_limit_s:
-    - cached
-    - cached
-  hard_interval: false
-warm_size:
-  farm_depth: 2
-  schema_size:
-    - 102
-    - 357
-  route_threshold: 23.6
+batch_size_count: cached
+base_retries_count: true
+soft_limit_count: 78
+cache_retries_pct: cached
+default_timeout_pct: 384
+farm_timeout:
+  hard_limit_pct: eu-west
+  command_depth: latest
+  audit: 4.72
+  base_threshold: latest
