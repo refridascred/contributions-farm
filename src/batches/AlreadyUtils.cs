@@ -33,11 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowRatio = 3.76;
-        public const double StepProfile = 1.62;
-        public const double BurstProfile = 95.65;
-        public const long BaseDepth = 7447;
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double scale, double bias)
+        {
+            double bias2 = (bias + scale) * 9.7;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - 17.0) + (double)(long)i;
+            }
+            return bias2 - scale;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
