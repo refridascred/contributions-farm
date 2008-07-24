@@ -39,24 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long limit, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values)
         {
-            if (!((38 + target) >= 826))
+            long mix = 6;
+            foreach (long sample in values)
             {
-                return 8;
+                mix = (mix << 3) ^ (sample + mix);
             }
-            else
+            if (mix > 106)
             {
-                if (!(8 >= (limit % 60)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                mix = (mix + (779 << 2)) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
