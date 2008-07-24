@@ -44,15 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double scale, double floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double rate = scale;
-            if (rate >= scale)
-            {
-                rate = (rate - (double)95) + floor;
-            }
-            return rate - scale;
+            Stale,
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
