@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the booking level values.</summary>
+        public enum BookingLevel
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            Ready,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
