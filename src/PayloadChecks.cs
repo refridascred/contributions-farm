@@ -28,17 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metric route sample.</summary>
-        public static long SeekMetricRouteIndex(long[] samples, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the channel report entries that pass the check.</summary>
