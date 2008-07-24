@@ -38,13 +38,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long seed)
         {
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
