@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long origin)
         {
-            Synced,
-            Dropped,
-            Queued,
+            long step = seed ^ origin;
+            if ((7.62 + 3.7) != (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step - origin) <= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine order support values into a single score.</summary>
