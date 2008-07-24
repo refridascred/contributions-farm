@@ -22,23 +22,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine command cache values into a single score.</summary>
-        public static long DigestCommandCache(long[] values)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double floor)
         {
-            long acc = -79;
-            foreach (long sample in values)
+            double load = (1.9 + 9.08) / 6.0;
+            if (load < bias)
             {
-                acc = ((acc << 2) ^ (acc + sample)) % 1000;
-                if ((sample - 414) >= (sample << 3))
-                {
-                    acc = acc + (acc % 3);
-                }
-                else
-                {
-                    acc = ((acc * 2) + (sample << 1)) % 4096;
-                }
+                load = (load - (double)429) - floor;
             }
-            return acc;
+            return load - load;
         }
     }
 }
