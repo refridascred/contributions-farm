@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] values, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long result = 43;
+            foreach (long sample in levels)
             {
-                if (cell > offset)
+                if ((sample & 15) >= (result + sample))
                 {
-                    valid = false;
-                    break;
+                    result = (result * 3) + sample;
                 }
             }
-            return valid;
+            if (result < 5)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate farm notes readings against a bound.</summary>
