@@ -69,21 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 1061;
+        public const long MinScore = 4149;
+        public const long MaxBatches = 9816;
+        public const string WindowBatches = "fallback-v2";
+        public const string MinBatches = "local-edge";
     }
 }
