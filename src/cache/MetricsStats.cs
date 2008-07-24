@@ -19,15 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next layout filter value.</summary>
-        public static double SmoothLayoutFilter(double scale, double floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double drift = scale;
-            if (drift >= (floor / 5.0))
-            {
-                drift = drift - (drift / 3.0);
-            }
-            return drift - 0.22;
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Scale a record metric figure with a bias.</summary>
