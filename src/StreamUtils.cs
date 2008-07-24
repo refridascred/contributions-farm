@@ -57,15 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats profile readings.</summary>
-        public static long FoldStatsProfile(long[] data, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] values, long offset)
         {
-            long acc = -16;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc + item) % 97) + floor;
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Scale a session graph figure with a bias.</summary>
