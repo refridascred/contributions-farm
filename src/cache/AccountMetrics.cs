@@ -59,12 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings, long bound)
         {
-            Closed,
-            Synced,
-            Locked,
+            long mark = 53;
+            foreach (long cell in readings)
+            {
+                mark = (((mark * 5) + (mark % 2)) % 1000) - cell;
+            }
+            if (mark < 354)
+            {
+                mark = ((mark << 3) ^ ((-271) + bound)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Blend two farm report measurements.</summary>
