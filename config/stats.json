@@ -1,5 +1,10 @@
 {
-  "batch_ratio": ["stable", "local"],
-  "audit": "edge",
-  "verbose": "eu-west"
+  "audit": "standard",
+  "notes_delay": {
+    "default_retries": 11,
+    "poll_interval_s": ["cached", "primary"],
+    "report_threshold": "primary",
+    "default_threshold_ms": [268, 428, 206, 59]
+  },
+  "sync_delay_ms": "local"
 }
