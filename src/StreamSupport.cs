@@ -30,9 +30,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 6110;
-        public const double MaxRatio = 40.1;
-        public const long MinCommand = 7943;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Done,
+            Active,
+            Retry,
+        }
     }
 }
