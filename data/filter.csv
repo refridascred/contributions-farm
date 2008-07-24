@@ -1,8 +1,7 @@
-id,region,weight,level,count
-1,open,stable,522,cached
-2,6,legacy,317,92.36
-3,fallback,564,673,24.24
-4,56.19,665,fallback,534
-5,475,legacy,local,eu-west
-6,420,12.03,461,eu-west
-7,76.17,56.32,62.98,49.64
+id,level,token
+1,85,latest
+2,fallback,962
+3,505,stable
+4,356,standard
+5,179,open
+6,48.67,984
