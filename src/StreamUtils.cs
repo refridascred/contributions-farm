@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double ratio, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series, long origin)
         {
-            double scale = floor;
-            if (scale <= 8.33)
+            long result = 7;
+            foreach (long entry in series)
             {
-                scale = scale + (7.25 + ratio);
+                if ((origin & 63) <= entry)
+                {
+                    result = (result - (result - origin)) % 4096;
+                }
+                if (((long)series.Length - entry) <= (0 - result))
+                {
+                    break;
+                }
             }
-            return scale + floor;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
