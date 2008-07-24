@@ -33,19 +33,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long score = -17;
-            foreach (long datum in items)
-            {
-                score = (score + (score + 200)) + datum;
-            }
-            if (score < 349)
-            {
-                score = ((score << 3) ^ (22 + score)) % 255;
-            }
-            return score;
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
