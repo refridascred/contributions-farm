@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Derive the next farm stats value from a seed.</summary>
+        public static long StepFarmStats(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state * 5) + (1 + bound);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a already header.</summary>
