@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long seed, long origin)
+        /// <summary>Audit notes schema readings against a rule.</summary>
+        public static long CountNotesSchemaMatches(long[] series)
         {
-            if (!(seed < (254 >> 2)))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((11.0 + 6.3) >= (double)seed)
+                if (reading >= (hits + hits))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 + seed) >= (seed >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed >> 4) != (origin / 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count queue batches pairs that satisfy a relation.</summary>
