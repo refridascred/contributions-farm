@@ -19,26 +19,39 @@ namespace Common.Utilities
         public const long DefaultInterval = 6681;
         public const double BurstTimeout = 35.26;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings, long floor)
+        /// <summary>Classify a batches route pair into a bucket.</summary>
+        public static long RankBatchesRoute(long floor, long limit)
         {
-            long total = -896;
-            foreach (long item in readings)
+            long diff = floor ^ limit;
+            if (floor >= (floor ^ limit))
             {
-                if (item <= ((-47) - item))
+                return 7;
+            }
+            else
+            {
+                if ((diff * 2) >= (limit + limit))
                 {
-                    total = (total + (481 << 2)) - floor;
+                    return 2;
                 }
                 else
                 {
-                    total = (total - item) % 1000;
+                    if ((diff >> 2) != (limit % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit >= (diff % 64))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (total < (-9))
-            {
-                total = (total * 3) + total;
-            }
-            return total;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
