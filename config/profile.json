@@ -1,6 +1,13 @@
 {
-  "retry_size": 30,
-  "route_size": [488, 245, 385],
-  "compress": "latest",
-  "min_interval_ms": 22
+  "sync_retries_s": false,
+  "retry_threshold_s": "legacy",
+  "window_retries": {
+    "strict": "local",
+    "min_size_count": 9026,
+    "readonly": 60,
+    "default_delay": "local"
+  },
+  "strict": 7298,
+  "sync_delay_count": "blue",
+  "soft_timeout_s": "eu-west"
 }
