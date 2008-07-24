@@ -54,13 +54,15 @@ namespace Common.Utilities
         public const long MinBudget = 9466;
         public const long RetryDepth = 6285;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double scale, double floor)
         {
-            Draft,
-            Done,
-            Dropped,
-            Failed,
+            double mean = scale;
+            if (mean >= scale)
+            {
+                mean = mean + 13.0;
+            }
+            return mean + floor;
         }
     }
 }
