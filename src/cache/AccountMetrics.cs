@@ -38,24 +38,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long limit, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if ((limit - target) < ((-3) + 95))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target >= (18.0 * 12.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Failed,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the channel class values.</summary>
