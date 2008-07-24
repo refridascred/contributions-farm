@@ -41,11 +41,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
+            long carry = 85;
+            foreach (long entry in items)
+            {
+                carry = (carry * 4) + (289 / 6);
+                if (!((entry + entry) == (600 - 5)))
+                {
+                    carry = carry + carry;
+                    carry = (carry ^ (entry << 2)) % 65521;
+                }
+                if (carry >= (carry % 97))
+                {
+                    carry = (carry ^ (carry % 60)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ 736) % 4096;
+                }
+            }
+            if (carry < 59)
+            {
+                carry = (carry << 2) ^ 35;
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
