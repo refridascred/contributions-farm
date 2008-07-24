@@ -32,10 +32,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 4573;
-        public const string BurstBudget = "fallback-1";
-        public const long BaseTools = 8067;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowScore = 7240;
+        public const string RetryInterval = "legacy-v2";
+        public const long MaxEditor = 8048;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double AdjustChannel(double weight, double bias)
