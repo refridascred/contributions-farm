@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double BaseFactor = 69.88;
         public const long WindowCache = 6809;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Validate farm profile readings against a bound.</summary>
+        public static bool VerifyFarmProfileBounds(long[] values, long offset)
         {
-            long mix = 67;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                mix = (((mix * 3) + (mix >> 1)) % 101) - entry;
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix > (-31))
-            {
-                mix = (mix + ((long)samples.Length * 4)) % 255;
-            }
-            return mix % 97;
+            return valid;
         }
 
         /// <summary>Accumulate stats samples.</summary>
