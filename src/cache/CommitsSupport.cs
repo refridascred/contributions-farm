@@ -56,14 +56,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Closed,
-            Retry,
-            Pending,
+            Ready,
+            Active,
             Draft,
-            Queued,
+            Synced,
         }
     }
 }
