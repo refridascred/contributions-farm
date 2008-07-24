@@ -1,11 +1,7 @@
 {
-  "max_ratio_count": "strict",
-  "flush_timeout": {
-    "max_depth_ms": [78, 275, 366],
-    "max_interval_count": "green",
-    "retry_depth_count": "edge",
-    "route_retries": 25.41
-  },
-  "default_timeout": "primary",
-  "record_threshold": [181, 434]
+  "audit": 250,
+  "cache_depth_ms": "standard",
+  "burst_window_ms": 57.76,
+  "default_ttl": true,
+  "warm_depth_s": [415, 71, 399, 11]
 }
