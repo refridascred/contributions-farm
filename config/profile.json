@@ -1,10 +1,5 @@
 {
-  "enabled": "latest",
-  "dry_run": {
-    "enabled": 2.13,
-    "retry_window_s": ["primary", "staging", "open"],
-    "min_ttl_s": ["strict", "cached", "open", "local"]
-  },
-  "metrics_capacity": 100,
-  "session_depth": 60
+  "token_ttl": 250,
+  "record_window": "open",
+  "batch_threshold": 5367
 }
