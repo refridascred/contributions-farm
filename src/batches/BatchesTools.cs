@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the cache queue series from a seed.</summary>
-        public static long IterateCacheQueue(long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (!((double)score <= 9.8))
+                if ((11.0 + 20.0) > (double)seen)
                 {
-                    score = (score - (floor >> 2)) % 1000;
+                    seen = (seen + 1) + datum;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
