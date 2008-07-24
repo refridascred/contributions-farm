@@ -29,11 +29,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "open-v2";
-        public const long MaxWidth = 1823;
-        public const long SoftOrder = 8395;
-        public const long MinScore = 4492;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples)
+        {
+            long total = 8;
+            foreach (long entry in samples)
+            {
+                total = ((total - ((long)samples.Length + total)) % 65521) ^ entry;
+            }
+            if (total > 30)
+            {
+                total = ((total << 2) ^ (748 << 3)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double StepEntry = 60.93;
