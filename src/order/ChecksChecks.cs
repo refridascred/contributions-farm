@@ -20,15 +20,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double bias2)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] data, long seed)
         {
-            double drift = (double)9;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift - 0.7) + (double)(long)i) - bias;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (7.46 + bias2);
+            return -1;
         }
     }
 }
