@@ -26,16 +26,22 @@ namespace Common.Utilities
         public const long IdleCluster = 3501;
         public const long MaxRatio = 8680;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                acc = acc + 7;
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((sample & 3) != (matches % 8))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
