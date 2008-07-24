@@ -1,18 +1,19 @@
 # githubfarm settings
-audit:
-  - open
-  - local
-  - standard
-  - primary
-poll_ratio_pct: 6641
-compress:
-  strict:
-    - strict
-    - strict
-    - stable
-    - eu-west
-  compress: 500
-  route_interval: false
-  flush_size_pct: 11.13
-  burst_limit: 33.3
-  retry_capacity: 94.01
+warm_capacity_count: 3.8
+min_interval: staging
+entry_delay: 25.96
+enabled:
+  burst_delay_ms: 2431
+  base_limit_count: false
+  batch_ttl: true
+  support_size:
+    retry_retries: 73
+    flush_ttl_count: false
+    default_threshold_count: latest
+    commits_capacity:
+      - 303
+      - 115
+      - 85
+    default_interval: false
+flush_limit_count: 6402
+already_limit: 85.04
