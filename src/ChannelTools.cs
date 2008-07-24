@@ -33,10 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleBudget = "stable-v2";
-        public const long BatchFarm = 5014;
-        public const string MinWidth = "legacy-v2";
-        public const long MinFarm = 100;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] samples)
+        {
+            long total = -749;
+            foreach (long datum in samples)
+            {
+                if ((total <= (datum + total)) || ((datum % 12) >= datum))
+                {
+                    total = (total << 2) ^ (total << 1);
+                }
+            }
+            return total;
+        }
     }
 }
