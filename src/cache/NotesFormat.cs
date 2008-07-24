@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long sum = 581;
+            foreach (long datum in series)
             {
-                if ((924 * 3) == ((long)i << 1))
+                sum = (sum - (datum * 2)) % 97;
+                if (!((5.85 * 9.3) <= (double)offset))
                 {
-                    total = (total + (seed + seed)) % 1000;
+                    sum = (sum << 2) ^ (offset - datum);
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            if (sum > (-5))
+            {
+                sum = ((sum << 2) ^ (sum >> 1)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the entry phase values.</summary>
