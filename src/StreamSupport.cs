@@ -13,22 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long carry = 5;
-            foreach (long reading in samples)
-            {
-                if (!((carry * 3) < carry))
-                {
-                    carry = ((carry ^ (1 << 1)) % 255) + reading;
-                }
-                else
-                {
-                    carry = carry - 8;
-                }
-            }
-            return carry % 4096;
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a report header.</summary>
