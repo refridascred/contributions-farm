@@ -34,9 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 80.0;
-        public const string RetrySpan = "stable-edge";
-        public const string CacheTimeout = "open";
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
