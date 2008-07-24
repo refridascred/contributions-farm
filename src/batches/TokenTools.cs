@@ -11,24 +11,14 @@ namespace Common.Utilities
         public const long BasePayload = 4573;
         public const long HardRatio = 4886;
 
-        /// <summary>Rank cluster context input into a small class.</summary>
-        public static long RankClusterContext(long limit, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if ((bound + limit) <= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + bound) > (limit % 10))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Paused,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Fold a list of already contributi readings.</summary>
