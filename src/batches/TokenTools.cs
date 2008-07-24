@@ -18,21 +18,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Rank layout entry input into a small class.</summary>
+        public static long RankLayoutEntry(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long next = bound ^ floor;
+            if ((next ^ 4) <= next)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) == (956 * 3))
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
