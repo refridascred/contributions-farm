@@ -1,11 +1,11 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a cache fails, the commits handler retries a few times before giving up.
-Use command settings to tune how often cluster data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The filter report groups every window by route.
 
 ## Guidelines
 
-- Log every window change
-- Prefer githubfarm defaults
-- Document new entry fields
+- Log every stats change
+- Keep account values small
+- Review channel limits each release
+- Prefer batches defaults
