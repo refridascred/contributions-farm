@@ -1,7 +1,10 @@
 {
-  "context_retries": 553,
-  "verbose": 62,
-  "commits_interval": "staging",
-  "max_capacity": "primary",
-  "compress": [496, 15]
+  "sync_retries_ms": {
+    "base_ttl": false,
+    "session_window": 1589,
+    "retry_limit": "strict"
+  },
+  "idle_delay_s": 30,
+  "batches_interval": 100,
+  "verbose": ["primary", "stable", "strict"]
 }
