@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] items, long bound)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
