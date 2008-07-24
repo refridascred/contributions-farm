@@ -34,20 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 4796;
+        public const double SoftBatch = 57.43;
+        public const long BaseBatch = 5445;
+        public const string WindowBatch = "stable-edge";
+        public const long CacheBatch = 1131;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepWidth = 6311;
