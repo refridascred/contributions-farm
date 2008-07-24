@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((double)datum < (1.96 - 2.4))
+                if (!!((3.7 / 8.0) >= (double)(long)data.Length))
                 {
-                    count = (count + 1) - step;
+                    hits = ((hits + 1) + reading) - target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
