@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long limit)
-        {
-            if (!(10 > origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit > (double)10)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "fallback-edge";
+        public const long StepRecord = 2930;
+        public const long BurstFactor = 8070;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] series)
