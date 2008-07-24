@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double weight = (double)(-9) / 2.0;
+            if (weight >= (weight / 4.0))
             {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = ((weight + (3.7 / 9.0)) + scale) - floor;
             }
-            return stale;
+            return weight + (double)61;
         }
 
         /// <summary>Measure how many metrics route samples are out of range.</summary>
