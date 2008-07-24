@@ -34,12 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Paused,
-            Draft,
-            Active,
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of command counter readings.</summary>
