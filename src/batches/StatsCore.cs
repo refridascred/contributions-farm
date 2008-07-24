@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Synced,
-            Stale,
-            Failed,
+            Retry,
+            Draft,
+            New,
+            Done,
             Locked,
-            Idle,
         }
 
         /// <summary>Hold a buffer options.</summary>
