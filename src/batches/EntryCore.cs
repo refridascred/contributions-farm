@@ -37,13 +37,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 1799;
         public const long IdleSpan = 5355;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double floor)
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            double drift = (double)(53 - 8);
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (floor + ratio);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
