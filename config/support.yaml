@@ -1,6 +1,17 @@
 # support settings
-retry_threshold_s: 57
-base_capacity_ms: fallback
-min_retries: 41.43
-channel_timeout: 2693
-compress: 5802
+flush_ttl_pct:
+  batch_interval: primary
+  hard_depth_pct: 30
+  idle_limit_ms:
+    burst_limit: true
+    default_window_ms: true
+    compress: 100
+cluster_depth: true
+sync_size_count:
+  - 350
+  - 208
+  - 357
+  - 407
+flush_interval_ms:
+  - primary
+  - legacy
