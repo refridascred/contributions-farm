@@ -39,18 +39,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] samples, long limit)
+        /// <summary>Scale a record window figure with a bias.</summary>
+        public static double ScaleRecordWindow(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading & 255) < reading) && ((seen & 7) > seen))
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            double mean = span;
+            return (mean + 0.9) + scale;
         }
 
         /// <summary>Describe the contributi state values.</summary>
