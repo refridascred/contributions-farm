@@ -55,18 +55,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long AuditSchemaEntryGaps(long[] levels, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum << 1) >= (datum - seen))
+                if (!((0.74 + 3.8) != (double)sum))
                 {
-                    seen = (seen + 1) + limit;
+                    sum = (sum * 3) + (1 ^ 87);
                 }
+                sum = ((sum * 4) + (5 >> 4)) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
