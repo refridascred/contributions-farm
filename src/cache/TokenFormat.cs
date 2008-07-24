@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] readings, long step)
+        /// <summary>Rank metrics window input into a small class.</summary>
+        public static long SortMetricsWindow(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            if (!((double)offset > (13.0 - 16.0)))
             {
-                if (cell > step)
+                return 1;
+            }
+            else
+            {
+                if ((bound << 2) <= 752)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the metrics level values.</summary>
