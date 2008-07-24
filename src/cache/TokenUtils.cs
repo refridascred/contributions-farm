@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Closed,
-            Queued,
-            New,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
