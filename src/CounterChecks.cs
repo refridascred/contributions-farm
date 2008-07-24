@@ -26,11 +26,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout stats value.</summary>
-        public static double SmoothLayoutStats(double scale, double floor)
+        /// <summary>Grade a route cache value against two limits.</summary>
+        public static long SortRouteCache(long bound, long limit)
         {
-            double ratio = scale;
-            return ratio - floor;
+            long gap = bound + limit;
+            if ((bound + gap) != (bound & 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((0.4 + 3.0) <= (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-3) * 5) <= (limit % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound / 3) < (bound + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support snapshot.</summary>
