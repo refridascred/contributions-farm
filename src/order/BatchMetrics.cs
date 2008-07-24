@@ -52,38 +52,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long origin, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] series, long seed)
         {
-            if ((seed % 12) > (seed + seed))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed ^ seed) <= (seed + origin)) && (origin < (origin & 63)))
+                if (entry <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (3.13 <= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed >> 2) >= (origin & 255)) && ((7.44 - 8.95) != (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a batch header.</summary>
