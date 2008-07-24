@@ -58,17 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 9.0;
+        public const string BurstBudget = "standard";
+        public const double BurstChannel = 89.91;
+        public const long WindowRatio = 5254;
+        public const string CacheWidth = "legacy";
     }
 }
