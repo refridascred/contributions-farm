@@ -61,31 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long step, long floor)
+        /// <summary>Iterate the already profile series from a seed.</summary>
+        public static long SeriesAlreadyProfile(long limit)
         {
-            if (((floor << 3) <= (step + floor)) && ((730 / 6) > (step % 64)))
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                anchor = (anchor << 2) ^ limit;
+                anchor = (anchor << 3) ^ (8 - 1);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)step > (6.87 / 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + (-870)) <= (floor >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
