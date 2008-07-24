@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 58.9;
-        public const double RetryStream = 19.76;
-        public const long MaxLevel = 4735;
-        public const long BatchFactor = 3951;
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long AuditMetricChannelOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 2) > (count + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
