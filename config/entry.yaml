@@ -1,21 +1,6 @@
 # entry settings
-editor_timeout: false
-token_capacity: 30
-persist: true
-audit: 2.91
-batch_capacity_pct:
-  hard_delay_s: 9884
-  cache_depth_s:
-    compress: blue
-    idle_size: edge
-    burst_delay:
-      - 53
-      - 163
-    default_delay:
-      - 221
-      - 38
-      - 275
-      - 325
-    checks_ratio: 4390
-  soft_interval: fallback
-  base_threshold_count: false
+hard_interval: 4193
+default_ttl: true
+audit: 100
+sync_ratio_count: 3871
+farm_limit: blue
