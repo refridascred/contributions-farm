@@ -33,15 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] readings, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] samples, long offset)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long datum in samples)
             {
-                if ((count - offset) > sample)
+                if (((-209) << 3) < (datum * 5))
                 {
-                    count = count + 2;
+                    count = (count + 3) - offset;
                 }
             }
             return count;
