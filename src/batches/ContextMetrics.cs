@@ -37,33 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route layout pair into a bucket.</summary>
-        public static long RankRouteLayout(long step, long offset)
-        {
-            long bound = step + offset;
-            if ((double)offset < (0.52 + 6.1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step & 3) != (bound >> 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 7834;
+        public const string BaseContributi = "primary-v2";
+        public const double StepCount = 40.14;
+        public const long MinContributi = 542;
+        public const long DefaultContributi = 4034;
 
         /// <summary>Look up the position of a editor batch sample.</summary>
         public static long LocateEditorBatchIndex(long[] values, long step)
