@@ -89,19 +89,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double mean = 4.2;
-            if (mean > (double)(-55))
-            {
-                mean = (mean - (double)2) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (ratio / 2.0)) + (double)(long)i;
-            }
-            return mean + (19.0 / 6.0);
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
