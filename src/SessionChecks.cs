@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryTimeout = "legacy";
+        public const string CacheLevel = "cached-edge";
+        public const long StepWindow = 6621;
+        public const long LimitWindow = 9061;
 
         /// <summary>Classify a profile report pair into a bucket.</summary>
         public static long ClassifyProfileReport(long step, long origin)
