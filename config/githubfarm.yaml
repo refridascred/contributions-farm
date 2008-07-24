@@ -1,7 +1,16 @@
 # githubfarm settings
-dry_run: green
-context_interval: true
-already_size: 68.51
-readonly: 9917
-sync_size_pct: true
-audit: edge
+min_timeout_s: false
+cache_delay: 60
+farm_size: 9771
+stream_interval: 4833
+cluster_interval: true
+readonly:
+  base_size: 51.41
+  sync_interval_pct: edge
+  account_interval:
+    - 46
+    - 462
+    - 398
+    - 7
+  hard_size_s: blue
+  buffer_depth: 96.36
