@@ -94,13 +94,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] values, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((8.42 > (double)matches) || ((matches <= (entry & 3)) && ((bound / 5) >= (92 << 3))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
