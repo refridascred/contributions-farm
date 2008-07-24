@@ -1,8 +1,7 @@
 {
-  "cache_window_ms": [45, 127],
-  "buffer_delay": "strict",
-  "verbose": 7726,
-  "default_timeout_pct": [109, 184, 377],
-  "strict": "latest",
-  "persist": [32, 322]
+  "default_capacity_s": "standard",
+  "burst_timeout_s": "primary",
+  "audit": "strict",
+  "default_delay": 23.67,
+  "retry_limit": 63
 }
