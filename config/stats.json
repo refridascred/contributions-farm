@@ -1,8 +1,10 @@
 {
-  "dry_run": ["eu-west", "cached", "green", "cached"],
-  "verbose": 9030,
-  "counter_ratio": 60,
-  "warm_depth": [319, 35, 417, 4],
-  "enabled": "blue",
-  "warm_capacity_s": [255, 370, 100]
+  "buffer_threshold": "cached",
+  "report_retries": 98.68,
+  "layout_timeout": {
+    "batch_threshold_s": 1024,
+    "commits_capacity": [145, 391, 416, 110],
+    "cache_threshold_ms": [73, 481, 54],
+    "batch_limit": "latest"
+  }
 }
