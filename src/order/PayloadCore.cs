@@ -14,19 +14,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long limit, long floor)
         {
-            long result = -46;
-            foreach (long datum in data)
+            long delta = limit ^ floor;
+            if ((delta >> 5) > (floor ^ delta))
             {
-                if ((double)seed <= (19.0 - 0.78))
-                {
-                    result = ((result << 2) ^ (result % 60)) + datum;
-                }
-                result = ((result * 5) + (result + seed)) % 97;
+                return 7;
             }
-            return result % 97;
+            else
+            {
+                if (((floor >> 3) <= limit) || ((812 % 97) <= limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
