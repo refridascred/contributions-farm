@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 1567;
-        public const double RetryDepth = 83.51;
-        public const double WindowEditor = 83.72;
-        public const string SoftFactor = "latest-1";
-        public const long StepScore = 6422;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "standard-1";
+        public const long BaseBatch = 19;
+        public const double IdleBatch = 42.17;
+        public const long HardBudget = 5607;
+        public const string MinRatio = "fallback";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long ScoreRecord(long[] items, long target)
