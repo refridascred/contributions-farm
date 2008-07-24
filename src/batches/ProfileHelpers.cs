@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheTimeout = 79.31;
-        public const double BaseFactor = 69.88;
-        public const long WindowCache = 6809;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine buffer editor values into a single score.</summary>
         public static long FoldBufferEditor(long[] series)
