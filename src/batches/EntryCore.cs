@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7172;
-        public const double BatchTools = 84.06;
-        public const long BaseTools = 161;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long origin, long step)
+        {
+            long next = origin - step;
+            if (((step + step) != (origin - 705)) || ((next - step) <= next))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step >= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitFormat = 3316;
