@@ -1,13 +1,7 @@
 {
-  "warm_depth": "edge",
-  "report_capacity": ["stable", "latest", "strict", "stable"],
-  "flush_interval_count": 81.88,
-  "hard_ttl_ms": "staging",
-  "retry_capacity": 1024,
-  "hard_threshold_s": {
-    "burst_ratio": true,
-    "sync_ttl_s": "stable",
-    "soft_size_pct": 100,
-    "hard_size_s": "local"
-  }
+  "flush_window": 30,
+  "persist": 60,
+  "window_interval": ["strict", "primary", "eu-west", "strict"],
+  "base_window": 53.15,
+  "base_retries_s": true
 }
