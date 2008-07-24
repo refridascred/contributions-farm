@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double StepEntry = 39.74;
         public const long SoftScore = 3368;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] items, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (reading <= bound)
+                if (((-291) - datum) < (hits * 2))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Grade a format token value against two limits.</summary>
