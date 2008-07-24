@@ -29,10 +29,39 @@ namespace Common.Utilities
         public const long WindowWidth = 1932;
         public const long MaxWidth = 7468;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleScore = 75.96;
-        public const long BaseBatch = 7553;
-        public const double StepLevel = 52.24;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long limit)
+        {
+            if (((0.27 * 7.7) != (double)bound) && (15 < (limit - bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit - bound) == (7 % 100))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit != (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit <= 704)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long step, long floor)
