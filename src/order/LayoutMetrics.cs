@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (count < (sample + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
