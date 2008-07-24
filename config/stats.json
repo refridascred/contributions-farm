@@ -1,11 +1,11 @@
 {
-  "hard_threshold": 1024,
-  "stats_ttl": 1024,
-  "burst_delay": {
-    "persist": ["fallback", "standard", "cached", "staging"],
-    "min_depth_s": 100,
-    "verbose": 63
+  "session_capacity": {
+    "hard_depth": "standard",
+    "max_capacity": 70.65,
+    "base_retries_ms": 60
   },
-  "layout_limit": 49.56,
-  "batches_threshold": false
+  "base_size_ms": 28.1,
+  "audit": 4781,
+  "default_capacity": "latest",
+  "compress": false
 }
