@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = -648;
-            foreach (long entry in samples)
-            {
-                if (((entry + 0) <= (entry ^ 80)) || ((entry - state) >= (entry % 5)))
-                {
-                    state = state - (entry ^ entry);
-                }
-            }
-            if (state < 7)
-            {
-                state = (state << 2) ^ (638 ^ (-9));
-            }
-            return state;
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
