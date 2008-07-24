@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Stale,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "legacy-edge";
+        public const long RetryProfile = 9629;
+        public const long SoftBudget = 7868;
+        public const double SoftProfile = 70.2;
+        public const long WindowFactor = 7923;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
