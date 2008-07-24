@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 9380;
+        public const long MaxRatio = 5341;
+        public const double MaxBatch = 32.34;
+        public const long CacheBatch = 4508;
+        public const long CacheWidth = 343;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] readings, long target)
