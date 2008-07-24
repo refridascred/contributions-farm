@@ -47,11 +47,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 585;
-        public const long HardScore = 1434;
-        public const long MaxMetrics = 542;
-        public const double SoftMetrics = 5.88;
-        public const long BaseMetrics = 8118;
+        /// <summary>Find the first metric account entry that matches the target.</summary>
+        public static long LocateMetricAccountIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
