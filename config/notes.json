@@ -1,6 +1,8 @@
 {
-  "payload_timeout": 59,
-  "schema_size": 100,
-  "burst_retries": "staging",
-  "poll_timeout_pct": 100
+  "persist": 60,
+  "default_size": 28,
+  "poll_ttl_s": 7350,
+  "stream_limit": "standard",
+  "dry_run": "edge",
+  "poll_delay": false
 }
