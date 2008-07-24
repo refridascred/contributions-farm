@@ -47,13 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values)
         {
-            New,
-            Stale,
-            Active,
-            Queued,
+            long score = 13;
+            foreach (long reading in values)
+            {
+                score = ((score + score) % 255) + reading;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate window samples.</summary>
