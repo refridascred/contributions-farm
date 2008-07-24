@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long MaxTools = 187;
         public const string SoftTools = "open-v2";
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] levels, long limit)
         {
-            long sum = 496;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((17.0 + 3.6) > (double)sum) && ((sum >> 5) >= (sum / 4)))
+                if ((limit / 8) < (datum + datum))
                 {
-                    sum = sum ^ (reading + sum);
+                    tally = tally + 1;
                 }
             }
-            if (sum > (-187))
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
