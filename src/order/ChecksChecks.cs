@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const long LimitSize = 9812;
         public const long MaxProfile = 64;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Blend two profile format measurements.</summary>
+        public static double ProjectProfileFormat(double bias, double floor)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            double weight = (double)6;
+            if (weight >= (double)186)
+            {
+                weight = (weight + floor) + bias;
+            }
+            return weight - weight;
         }
     }
 }
