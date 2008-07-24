@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long score = 35;
+            foreach (long datum in levels)
+            {
+                score = ((score - (score * 2)) % 1000) + datum;
+                score = (score - score) % 65521;
+            }
+            if (score < 4)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Describe the order mode values.</summary>
