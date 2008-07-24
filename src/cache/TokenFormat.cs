@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the batches phase values.</summary>
