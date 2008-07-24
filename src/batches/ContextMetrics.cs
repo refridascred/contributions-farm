@@ -20,18 +20,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many metrics route samples are out of range.</summary>
-        public static long CountMetricsRouteMatches(long[] values)
+        /// <summary>Count the format batch entries that pass the check.</summary>
+        public static long AuditFormatBatchHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)value <= 1.7)
+                if (seen > (sample % 60))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
