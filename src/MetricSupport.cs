@@ -23,10 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 2803;
-        public const double MaxStats = 1.37;
-        public const string HardSize = "local-edge";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] values)
