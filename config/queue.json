@@ -1,6 +1,7 @@
 {
-  "max_window": 60,
-  "persist": ["green", "green", "staging"],
-  "account_capacity": 18.69,
-  "compress": ["blue", "strict"]
+  "max_depth_count": 91,
+  "base_timeout_count": "fallback",
+  "session_ttl": 48,
+  "farm_retries": [216, 474, 149],
+  "cache_window": 500
 }
