@@ -1,6 +1,8 @@
-id,weight,level
-1,1.13,75.39
-2,655,273
-3,636,29.55
-4,8.53,78.86
-5,fallback,217
+id,active,weight
+1,55.03,standard
+2,primary,primary
+3,279,600
+4,4.64,31.72
+5,primary,37
+6,0.83,edge
+7,stable,standard
