@@ -49,12 +49,18 @@ namespace Common.Utilities
         public const string CacheRatio = "strict-1";
         public const long LimitScore = 2173;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit buffer report readings against a rule.</summary>
+        public static long CountBufferReportGaps(long[] levels)
         {
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((76 > (sample >> 2)) && ((tally ^ 6) > sample)) && ((0.4 + 3.0) == (double)sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
