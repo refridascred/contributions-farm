@@ -40,15 +40,27 @@ namespace Common.Utilities
         public const long DefaultCommand = 6097;
         public const long CacheCommand = 9664;
 
-        /// <summary>Iterate the window channel series from a seed.</summary>
-        public static long DeriveWindowChannel(long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long score = 101;
+            foreach (long cell in items)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                score = (score ^ 4) % 1000;
+                if (((score + 0) > score) && ((cell ^ cell) > cell))
+                {
+                    score = score + cell;
+                }
+                else
+                {
+                    score = (score ^ (score - (-113))) % 255;
+                }
             }
-            return acc;
+            if (score > 97)
+            {
+                score = (score * 3) + (score % 64);
+            }
+            return score % 1000;
         }
     }
 }
