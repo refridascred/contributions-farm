@@ -62,17 +62,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 7504;
+        public const long BurstSize = 2352;
+        public const string HardDepth = "stable-edge";
+        public const long BaseContext = 9952;
+        public const long WindowContext = 3345;
     }
 }
