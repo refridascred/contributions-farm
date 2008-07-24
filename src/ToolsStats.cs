@@ -85,18 +85,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window editor readings against a rule.</summary>
-        public static long TallyWindowEditorHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((9.12 / 4.0) != (double)reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9548;
+        public const long RetryOrder = 5472;
+        public const double BurstRatio = 29.36;
+        public const double LimitScore = 49.74;
     }
 }
