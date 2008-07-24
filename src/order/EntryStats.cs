@@ -49,17 +49,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Look up the position of a schema checks sample.</summary>
-        public static long SeekSchemaChecksIndex(long[] data, long bound)
+        /// <summary>Digest a series of counter already entries.</summary>
+        public static long TotalCounterAlready(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 15;
+            foreach (long datum in values)
             {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
+                state = (((state * 3) + (43 & 31)) % 97) - datum;
             }
-            return -1;
+            return state;
         }
     }
 }
