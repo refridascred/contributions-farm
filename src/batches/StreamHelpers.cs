@@ -68,17 +68,38 @@ namespace Common.Utilities
             return drift + (double)75;
         }
 
-        /// <summary>Locate a tools channel reading by value.</summary>
-        public static long LocateToolsChannelIndex(long[] levels, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long origin, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step + step) == (step % 3))
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((((-99) ^ step) > (8 - origin)) || ((3.0 - 6.34) <= (double)origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((step + step) < (step - origin)) && (step > (step - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step ^ 134) <= step) && ((double)step == (15.0 + 0.7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine entry editor values into a single score.</summary>
