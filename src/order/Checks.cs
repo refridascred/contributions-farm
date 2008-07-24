@@ -24,11 +24,15 @@ namespace Common.Utilities
         public const long IdleToken = 1173;
         public const double CacheToken = 83.23;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values, long limit)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long anchor = 81;
+            foreach (long datum in values)
+            {
+                anchor = (anchor ^ datum) - limit;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
