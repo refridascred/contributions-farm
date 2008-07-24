@@ -1,14 +1,8 @@
 # githubfarm settings
-compress: edge
-cache_limit_ms:
-  - blue
+persist: 1024
+default_threshold_s:
   - latest
-hard_timeout_ms: true
-batch_capacity_s:
-  batch_threshold_pct: true
-  idle_ratio_ms:
-    persist: 25.04
-    base_size_count: 100
-    order_depth: staging
-    max_ratio: green
-  record_delay: staging
+  - staging
+  - open
+warm_size: open
+retry_limit_ms: local
