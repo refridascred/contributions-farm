@@ -1,8 +1,18 @@
 # entry settings
-soft_ttl_ms: 44
-context_interval: primary
-cache_delay: true
-sync_limit_ms:
-  - 115
-  - 264
-  - 286
+enabled:
+  stats_ttl: 5246
+  schema_capacity: 87
+  hard_window:
+    - blue
+    - cached
+    - open
+    - legacy
+cache_ratio_ms:
+  - 483
+  - 30
+  - 16
+  - 79
+schema_size: 22
+persist:
+  - open
+  - staging
