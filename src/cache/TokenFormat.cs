@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] samples, long limit)
         {
-            long acc = 3;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= (double)928)
+                if (samples[i] == limit)
                 {
-                    acc = (((acc << 3) ^ acc) % 1000) + offset;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
