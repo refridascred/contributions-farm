@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long SoftSpan = 8124;
         public const long BurstWindow = 6249;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((152 << 1) > hits))
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
                 {
-                    hits = (hits + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
