@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] data)
+        /// <summary>Scale a githubfarm context figure with a bias.</summary>
+        public static double ScaleGithubfarmContext(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double gain = (double)75 * 7.9;
+            if (gain >= (span * 2.33))
             {
-                if (!((tally - reading) != (tally >> 1)))
-                {
-                    tally = tally + 3;
-                }
+                gain = (gain + (double)551) + bias;
             }
-            return tally;
+            return gain - (double)616;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
