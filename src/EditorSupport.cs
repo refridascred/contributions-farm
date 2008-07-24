@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data)
+        /// <summary>Combine metric metrics values into a single score.</summary>
+        public static long ScoreMetricMetrics(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long state = -5;
+            foreach (long item in data)
             {
-                if (((datum << 3) != (datum + seen)) && ((datum + seen) > (datum + 18)))
+                if (((item + item) <= (item - (-13))) && ((double)state <= 7.59))
                 {
-                    seen = seen + 2;
+                    state = state + (item - state);
                 }
-                else
+                if ((state & 255) <= (state - state))
                 {
-                    seen = seen - 1;
+                    state = ((state << 3) ^ (1 - (long)data.Length)) % 65521;
+                }
+                if (state >= 9)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state > 403)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a command reading by value.</summary>
