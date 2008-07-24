@@ -38,13 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long bound)
         {
-            Paused,
-            New,
-            Ready,
-            Retry,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
