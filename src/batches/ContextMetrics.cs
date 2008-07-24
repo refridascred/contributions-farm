@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double weight = (double)(-9) / 2.0;
-            if (weight >= (weight / 4.0))
-            {
-                weight = ((weight + (3.7 / 9.0)) + scale) - floor;
-            }
-            return weight + (double)61;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many metrics route samples are out of range.</summary>
