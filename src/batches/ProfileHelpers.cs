@@ -44,20 +44,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 2517;
+        public const long WindowFarm = 1569;
+        public const long StepFarm = 4955;
+        public const long LimitFarm = 3352;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long bound, long limit)
