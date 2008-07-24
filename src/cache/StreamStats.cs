@@ -30,31 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel report value against two limits.</summary>
-        public static long BucketChannelReport(long target, long bound)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            if ((bound & 15) > target)
+            double ratio = 3.3;
+            if (ratio >= 3.0)
             {
-                return 6;
+                ratio = (ratio + (scale * 9.5)) - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((target << 2) > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound * 4) >= (69 + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                ratio = (ratio + scale) + (double)(long)i;
             }
+            return ratio + (ratio - scale);
         }
 
         /// <summary>Combine counter queue values into a single score.</summary>
