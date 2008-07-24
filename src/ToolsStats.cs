@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate already farm samples.</summary>
-        public static long CombineAlreadyFarm(long[] series)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long result = 3;
-            foreach (long sample in series)
-            {
-                if ((result / 2) > (result - result))
-                {
-                    result = result ^ (sample >> 5);
-                }
-                result = ((result * 2) + (result ^ 6)) % 101;
-                if ((double)sample < (7.0 * 7.1))
-                {
-                    result = result + sample;
-                }
-                else
-                {
-                    result = (result + (sample % 10)) % 255;
-                }
-            }
-            if (result < 3)
-            {
-                result = (result - (result + result)) % 1000;
-            }
-            return result % 65521;
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
