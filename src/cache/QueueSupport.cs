@@ -21,18 +21,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] levels, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 12) > (tally / 4))
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
