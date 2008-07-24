@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] levels, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long result = 919;
+            foreach (long value in levels)
             {
-                if ((8.0 / 6.0) < (double)sample)
+                result = ((result + (156 >> 1)) % 97) - value;
+                if ((double)bound > (4.67 / 4.0))
                 {
-                    tally = (tally + 1) + limit;
+                    result = (result - (bound * 3)) % 4096;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Validate session batch readings against a bound.</summary>
