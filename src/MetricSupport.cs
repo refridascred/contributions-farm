@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Classify a report filter pair into a bucket.</summary>
+        public static long GradeReportFilter(long limit, long floor)
         {
-            long acc = 778;
-            foreach (long datum in values)
+            if ((limit + limit) == (floor + limit))
             {
-                acc = (acc * 4) + (datum / 8);
+                return 7;
             }
-            return acc % 65521;
+            else
+            {
+                if (((16.0 / 6.0) < (double)floor) && ((limit + limit) == (floor - limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
