@@ -58,19 +58,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long limit, long origin)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            if ((limit & 7) >= (origin >> 1))
             {
-                if (sample <= limit)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin == (5.77 * 8.48))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 1) == (504 - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.3 / 5.0) > (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the layout phase values.</summary>
