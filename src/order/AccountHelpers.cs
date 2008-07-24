@@ -23,10 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 76.38;
-        public const long RetryInterval = 226;
-        public const double BaseDepth = 54.85;
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double bias)
+        {
+            double mean = (double)(7 + (-460));
+            if (mean > bias)
+            {
+                mean = mean + (bias + mean);
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (rate + mean)) + (double)(long)i;
+            }
+            return mean - rate;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long DefaultFactor = 2885;
