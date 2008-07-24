@@ -22,32 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload cache pair into a bucket.</summary>
-        public static long SortPayloadCache(long seed, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long bound = seed - limit;
-            if ((double)seed == (9.03 - 9.19))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((64 << 2) < seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 8) <= ((-706) % 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            New,
+            Done,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
