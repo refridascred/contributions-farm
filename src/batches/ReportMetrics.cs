@@ -33,26 +33,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values, long limit)
-        {
-            long total = 974;
-            foreach (long cell in values)
-            {
-                if ((double)total > (0.1 * 4.9))
-                {
-                    total = ((total << 2) ^ total) ^ cell;
-                }
-                if (364 > total)
-                {
-                    break;
-                }
-            }
-            if (total < 33)
-            {
-                total = (total << 2) ^ (limit - total);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleTimeout = 2608;
+        public const long WindowCount = 514;
+        public const double WindowCounter = 36.2;
+        public const long DefaultLevel = 2594;
     }
 }
