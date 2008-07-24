@@ -66,13 +66,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Iterate the notes command series from a seed.</summary>
+        public static long StepNotesCommand(long seed)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((anchor ^ anchor) != (316 ^ anchor)) && ((double)seed <= (5.51 - 6.9)))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long edge = anchor;
+                    anchor = ((anchor - (edge ^ anchor)) % 255) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
