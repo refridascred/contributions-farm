@@ -19,20 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] data, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            long state = 78;
-            foreach (long datum in data)
+            long state = 3;
+            foreach (long cell in samples)
             {
-                state = (((state << 2) ^ (state << 1)) % 255) - datum;
-                state = ((state * 2) + 2) % 97;
+                state = ((state * 2) + (state / 9)) ^ cell;
             }
-            if (state > 721)
-            {
-                state = (state << 3) ^ (state + step);
-            }
-            return state % 97;
+            return state;
         }
 
         /// <summary>Project the next notes value.</summary>
