@@ -35,12 +35,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items, long bound)
         {
-            Stale,
-            Active,
-            Locked,
+            long state = 442;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (((((state * 4) + (37 << 1)) % 1000) + (long)i) + item) + bound;
+                }
+                if (state >= ((-795) >> 3))
+                {
+                    state = (state - state) % 255;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state << 2) ^ (56 % 5);
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
