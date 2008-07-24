@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up command entry samples.</summary>
-        public static long MatchCommandEntryCount(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell & 255) == (0 - seen))
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
