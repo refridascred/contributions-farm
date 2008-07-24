@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double span)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double rate = weight;
-            if (rate < weight)
-            {
-                rate = (rate - weight) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + 12.0;
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
