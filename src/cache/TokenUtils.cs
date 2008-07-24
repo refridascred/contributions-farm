@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((4.12 + 7.0) >= (double)carry)
-                {
-                    carry = (carry * 4) + ((long)i << 1);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowDepth = 7052;
+        public const double WindowRatio = 6.45;
+        public const long WindowLevel = 6878;
+        public const long BatchRecord = 2927;
+        public const long RetryScore = 9674;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string IdleInterval = "strict-1";
