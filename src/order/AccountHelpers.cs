@@ -76,10 +76,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinSpan = 3259;
-        public const double MinStats = 82.45;
-        public const double CacheDepth = 1.69;
-        public const long RetryStats = 6565;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
