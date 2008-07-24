@@ -58,15 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel batch value from a seed.</summary>
-        public static long StepChannelBatch(long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
