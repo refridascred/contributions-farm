@@ -27,22 +27,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] samples, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            long acc = 6;
-            foreach (long sample in samples)
+            double mean = (double)(74 / 3);
+            if (mean >= 1.43)
             {
-                if ((50 + sample) > (acc * 4))
-                {
-                    acc = acc + sample;
-                }
+                mean = (mean - scale) - bias;
             }
-            if (acc > 6)
-            {
-                acc = (acc - (offset + 408)) % 255;
-            }
-            return acc;
+            return mean - (scale * 8.8);
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
