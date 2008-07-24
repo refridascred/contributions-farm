@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardScore = 1510;
+        public const double IdleMetric = 11.29;
+        public const long BaseMetric = 6459;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long seed, long step)
