@@ -1,20 +1,7 @@
 {
-  "verbose": 3766,
-  "min_delay": {
-    "soft_delay_pct": 4736,
-    "base_timeout_pct": 250,
-    "hard_window": 1171,
-    "queue_limit": true,
-    "warm_depth_pct": {
-      "cache_capacity_s": true,
-      "warm_delay_pct": true,
-      "metrics_limit": "edge",
-      "buffer_ttl": 6470
-    },
-    "sync_limit": 40.43
-  },
-  "warm_window": false,
-  "poll_capacity": 30,
-  "dry_run": 71.78,
-  "batch_depth": 5621
+  "readonly": "cached",
+  "base_ratio_count": 67.63,
+  "flush_ratio_ms": 100,
+  "soft_limit": "local",
+  "report_delay": "blue"
 }
