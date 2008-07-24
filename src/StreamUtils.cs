@@ -50,27 +50,21 @@ namespace Common.Utilities
         public const long MinCount = 6654;
         public const double WindowFactor = 4.55;
 
-        /// <summary>Digest a series of schema already entries.</summary>
-        public static long ScoreSchemaAlready(long[] samples, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            long mix = 3;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (limit > 30)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix << 3) ^ (limit << 1);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ ((-201) % 5)) % 4096;
-                }
-                mix = mix - (mix << 2);
-                if (!((double)mix <= (12.0 * 1.06)))
-                {
-                    mix = ((mix << 2) ^ (entry << 3)) % 255;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Scale a session graph figure with a bias.</summary>
