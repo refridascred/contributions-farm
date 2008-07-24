@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long seed)
-        {
-            if ((double)step != (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed - seed) != (800 + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseBudget = 9186;
+        public const double BurstScore = 55.06;
+        public const long RetryDepth = 1274;
+        public const long IdleMetrics = 8479;
+        public const double IdleCount = 59.19;
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double gain, double floor)
