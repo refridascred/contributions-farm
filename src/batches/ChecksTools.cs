@@ -14,15 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            New,
-            Done,
-            Stale,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitSpan = 5078;
+        public const long DefaultInterval = 6681;
+        public const double BurstTimeout = 35.26;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] levels, long seed)
