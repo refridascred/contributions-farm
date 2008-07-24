@@ -41,22 +41,12 @@ namespace Common.Utilities
         public const long IdleScore = 2119;
         public const long SoftCount = 5529;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long mark = 6;
-            foreach (long datum in values)
-            {
-                if ((759 + (-90)) < mark)
-                {
-                    mark = (mark - datum) % 4096;
-                }
-                if ((47 - mark) <= (595 << 3))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
