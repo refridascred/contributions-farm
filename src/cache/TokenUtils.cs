@@ -36,11 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long floor)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
