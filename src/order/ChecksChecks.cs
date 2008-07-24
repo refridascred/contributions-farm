@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long StepBudget = 3435;
         public const string SoftBudget = "local-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepTimeout = "standard-edge";
-        public const long DefaultLevel = 1284;
-        public const string WindowWidth = "cached-edge";
-        public const long RetryLevel = 8441;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((origin >> 1) != (origin + mark)))
+                {
+                    mark = (mark ^ (origin + 600)) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] data, long seed)
