@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] values)
         {
-            Failed,
-            Retry,
-            Idle,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((((datum - hits) != (hits & 31)) || ((double)hits != (7.12 + 5.0))) && ((double)hits < 8.87))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
