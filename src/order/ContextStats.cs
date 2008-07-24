@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Idle,
-            Queued,
-            Failed,
-            Paused,
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
