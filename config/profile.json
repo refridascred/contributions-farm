@@ -1,5 +1,8 @@
 {
-  "retry_threshold_count": 7,
-  "base_window_count": 9044,
-  "cache_capacity_ms": [475, 403]
+  "warm_limit": false,
+  "cache_retries": 21.6,
+  "compress": ["green", "edge"],
+  "counter_threshold": "standard",
+  "max_interval_pct": true,
+  "account_retries": 60
 }
