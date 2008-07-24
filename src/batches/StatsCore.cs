@@ -83,19 +83,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of profile cluster readings.</summary>
-        public static long CombineProfileCluster(long[] data, long origin)
+        /// <summary>Derive the next record window value from a seed.</summary>
+        public static long SeriesRecordWindow(long bound)
         {
-            long mark = 68;
-            foreach (long reading in data)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark * 4) + (mark >> 5)) + reading;
-                if ((origin + 24) < (3 >> 4))
-                {
-                    mark = (mark * 3) + (33 >> 3);
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return mark % 65521;
+            return sum;
         }
     }
 }
