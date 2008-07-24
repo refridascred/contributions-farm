@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] data, long seed)
         {
-            long result = 7;
-            foreach (long entry in series)
+            long anchor = 8;
+            foreach (long cell in data)
             {
-                if ((origin & 63) <= entry)
+                if ((10 + seed) == (seed * 5))
                 {
-                    result = (result - (result - origin)) % 4096;
-                }
-                if (((long)series.Length - entry) <= (0 - result))
-                {
-                    break;
+                    anchor = ((anchor + 9) % 255) ^ cell;
                 }
             }
-            return result;
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (seed - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
