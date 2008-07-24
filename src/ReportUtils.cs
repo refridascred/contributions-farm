@@ -51,17 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] levels, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (levels[i] == step)
+                if (!((origin <= entry) && ((627 + entry) < (origin << 3))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
