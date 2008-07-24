@@ -5,35 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long floor2)
         {
-            long sum = 3;
-            foreach (long cell in samples)
+            if ((2.8 + 6.26) != (double)floor)
             {
-                if ((double)sum != (14.0 + 6.67))
+                return 6;
+            }
+            else
+            {
+                if ((floor % 7) <= floor)
                 {
-                    continue;
-                }
-                if ((sum << 1) >= (cell + cell))
-                {
-                    sum = (sum - (sum & 63)) % 101;
-                }
-                else
-                {
-                    long cur = (305 + cell) + 8;
-                    sum = sum - (400 - cur);
-                }
-                if ((4.0 * 7.4) != (double)sum)
-                {
-                    sum = sum + (sum - cell);
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum * 3) + sum;
+                    return 1;
                 }
             }
-            return sum;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
