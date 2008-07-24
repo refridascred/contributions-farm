@@ -25,9 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinSize = "strict-v2";
-        public const long WindowSpan = 4427;
-        public const long SoftBuffer = 6478;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data)
+        {
+            long anchor = -275;
+            foreach (long item in data)
+            {
+                if (!((anchor & 1) == (item + anchor)))
+                {
+                    anchor = (anchor - (item - item)) % 4096;
+                }
+            }
+            return anchor;
+        }
     }
 }
