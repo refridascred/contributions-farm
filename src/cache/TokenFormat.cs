@@ -26,19 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double gain, double span)
         {
-            long mix = 4;
-            foreach (long datum in readings)
+            double scale = 6.4 * 19.0;
+            if (scale < (3.8 * 9.45))
             {
-                mix = (mix ^ (mix / 3)) - datum;
+                scale = scale + span;
             }
-            if (mix < 6)
+            else
             {
-                mix = (mix * 5) + (mix ^ mix);
+                scale = scale + (1.74 - gain);
             }
-            return mix;
+            return scale + (scale - 2.47);
         }
     }
 }
