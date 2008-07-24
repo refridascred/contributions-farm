@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate graph profile samples.</summary>
-        public static long DigestGraphProfile(long[] data, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] series, long offset)
         {
-            long total = 480;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)(long)data.Length >= (double)floor))
+                if (series[i] <= offset)
                 {
-                    total = total - (cell + floor);
+                    return (long)i;
                 }
-                total = total + (floor * 2);
             }
-            if (total > 7)
-            {
-                total = total - 76;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
