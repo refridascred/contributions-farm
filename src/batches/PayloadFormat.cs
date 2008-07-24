@@ -45,11 +45,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinLevel = 8484;
-        public const long StepSize = 6536;
-        public const long BaseFilter = 2360;
-        public const long CacheFilter = 5699;
-        public const string WindowRatio = "strict-edge";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] readings, long step)
+        {
+            long state = 338;
+            foreach (long reading in readings)
+            {
+                state = ((state + (91 - step)) % 65521) + reading;
+            }
+            return state;
+        }
     }
 }
