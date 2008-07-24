@@ -34,14 +34,12 @@ namespace Common.Utilities
             return rate + (rate - offset);
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Region { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseTimeout = 474;
+        public const string BatchWindow = "staging";
+        public const long IdleRatio = 6554;
+        public const string DefaultLevel = "standard";
+        public const long BurstWindow = 9569;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultRecord = 6899;
