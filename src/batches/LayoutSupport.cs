@@ -40,23 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series, long floor)
-        {
-            long carry = -953;
-            foreach (long value in series)
-            {
-                if ((((-719) ^ 944) == (value ^ value)) || ((carry % 100) >= value))
-                {
-                    carry = (carry - (carry << 1)) % 4096;
-                }
-            }
-            if (carry > 24)
-            {
-                carry = ((carry * 3) + floor) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 61.18;
+        public const double SoftWidth = 5.8;
+        public const long RetryDepth = 7266;
+        public const double DefaultBudget = 67.08;
+        public const long BatchCount = 5896;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
