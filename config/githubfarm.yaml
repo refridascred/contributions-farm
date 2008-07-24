@@ -1,6 +1,7 @@
 # githubfarm settings
-counter_depth: eu-west
-burst_threshold_pct: false
-support_threshold: eu-west
-min_delay_s: 4
-audit: latest
+dry_run: green
+context_interval: true
+already_size: 68.51
+readonly: 9917
+sync_size_pct: true
+audit: edge
