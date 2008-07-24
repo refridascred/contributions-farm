@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinDepth = 1834;
-        public const long MaxEntry = 7734;
-        public const long MaxScore = 255;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((0.29 + 2.8) <= (double)item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long floor)
