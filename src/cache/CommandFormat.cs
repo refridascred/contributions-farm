@@ -50,14 +50,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Rank route stats input into a small class.</summary>
+        public static long ClassifyRouteStats(long origin, long floor)
         {
-            Paused,
-            Locked,
-            Idle,
-            Ready,
-            Draft,
+            long gap = origin - floor;
+            if ((gap <= (origin % 8)) || (floor <= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.0 / 7.0) > (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
