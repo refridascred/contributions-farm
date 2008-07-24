@@ -31,38 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long limit, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] values, long offset)
         {
-            if ((limit & 7) >= (origin >> 1))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin == (5.77 * 8.48))
+                if (((4 - offset) == (7 % 16)) && ((value * 3) != (offset - tally)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 1) == (504 - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.3 / 5.0) > (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
