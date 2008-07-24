@@ -33,20 +33,11 @@ namespace Common.Utilities
             return bias - 7.05;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] samples)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long total = 11;
-            foreach (long entry in samples)
-            {
-                long prev = (entry + total) + (entry << 3);
-                total = total - (prev * 3);
-                if ((5.36 / 8.0) >= (double)total)
-                {
-                    total = total - (4 << 3);
-                }
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a farm header.</summary>
