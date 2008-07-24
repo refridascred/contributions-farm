@@ -70,31 +70,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes channel value against two limits.</summary>
-        public static long RankNotesChannel(long step, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            if ((floor + step) >= (40 + 363))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - 24) < step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step > (floor + step)) && ((floor & 7) > ((-66) >> 3)))
+                    if ((values[i] + values[j]) != 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
