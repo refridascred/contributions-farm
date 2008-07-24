@@ -1,7 +1,6 @@
 {
-  "base_ttl": 450,
-  "min_interval": 60,
-  "retry_delay_ms": 250,
-  "cache_interval_ms": true,
-  "strict": ["blue", "legacy", "blue"]
+  "persist": 3295,
+  "metrics_threshold": true,
+  "default_depth_pct": [66, 4],
+  "batch_interval_pct": "stable"
 }
