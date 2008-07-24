@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] levels, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (reading != origin)
+                if (item != step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a editor record.</summary>
