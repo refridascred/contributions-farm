@@ -26,21 +26,26 @@ namespace Common.Utilities
         public const double StepInterval = 53.27;
         public const long HardCount = 3850;
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 68;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)result >= (0.6 / 6.0)) && ((floor - result) >= (value / 6)))
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (long)readings.Length) % 1000;
+                }
+                else
+                {
+                    result = (result + (value - floor)) % 101;
+                }
+                if ((floor >> 4) <= (long)readings.Length)
+                {
+                    break;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Hold a queue info.</summary>
