@@ -36,13 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
