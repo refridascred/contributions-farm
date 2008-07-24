@@ -24,21 +24,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -25;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (target <= (717 & 255))
                 {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score * 4) + (531 & 7)) % 1000) ^ entry;
                 }
             }
-            return hits;
+            if (score < 279)
+            {
+                score = score + ((-1) ^ score);
+            }
+            return score;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
