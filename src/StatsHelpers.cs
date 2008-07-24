@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = limit + seed;
+            if (!((13.0 / 7.0) < (double)diff))
             {
-                if (series[i] < offset)
+                return 4;
+            }
+            else
+            {
+                if (limit > 91)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(limit >= (seed - diff)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric class values.</summary>
