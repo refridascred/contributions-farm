@@ -1,6 +1,8 @@
 # entry settings
-hard_interval: 4193
-default_ttl: true
-audit: 100
-sync_ratio_count: 3871
-farm_limit: blue
+compress: 77.41
+strict: 67
+context_interval: 3710
+warm_timeout_s: true
+soft_limit_count:
+  - 483
+  - 177
