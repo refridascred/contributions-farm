@@ -1,5 +1,19 @@
 {
-  "session_ratio": 43.6,
-  "hard_timeout": "eu-west",
-  "idle_depth_s": true
+  "poll_ratio": 14.79,
+  "retry_ttl_pct": 70,
+  "verbose": {
+    "min_threshold_count": 71.89,
+    "sync_ratio_s": 250,
+    "batch_threshold_count": 10,
+    "hard_interval_pct": "staging",
+    "batch_timeout": "edge",
+    "channel_ratio": {
+      "max_timeout_ms": true,
+      "dry_run": 9.42,
+      "poll_ttl_pct": false,
+      "githubfarm_delay": ["standard", "latest", "edge"],
+      "window_window": 88,
+      "batch_threshold": [358, 473, 37, 323]
+    }
+  }
 }
