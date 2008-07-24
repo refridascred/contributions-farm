@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 24.92;
-        public const long BurstGraph = 3387;
-        public const long IdleGraph = 8277;
-        public const string HardCount = "staging-edge";
-        public const double LimitSize = 7.18;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
