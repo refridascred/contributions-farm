@@ -39,23 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate route queue samples.</summary>
-        public static long FoldRouteQueue(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] series, long target)
         {
-            long anchor = 169;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                anchor = (anchor ^ (anchor + 625)) % 97;
-                if ((item + 2) == (item / 8))
+                if ((seen & 31) >= ((long)series.Length + target))
                 {
-                    anchor = ((anchor << 3) ^ 140) % 97;
+                    seen = (seen + 3) + sample;
                 }
             }
-            if (anchor > 920)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 101;
-            }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
