@@ -1,7 +1,10 @@
 # support settings
-min_timeout: open
-verbose:
-  - eu-west
-  - blue
-contributi_delay: true
-channel_ttl: strict
+enabled: true
+order_interval: 91
+hard_threshold_ms:
+  - 488
+  - 55
+max_window_s:
+  - staging
+  - strict
+  - local
