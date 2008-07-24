@@ -33,17 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long bound)
+        /// <summary>Roll a metric metrics counter forward.</summary>
+        public static long StepMetricMetrics(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (floor + floor)) % 255;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
