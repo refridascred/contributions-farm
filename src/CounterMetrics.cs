@@ -30,22 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account cluster samples are out of range.</summary>
-        public static long AuditAccountClusterOutliers(long[] readings, long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry >= (3.0 + 5.0))
-                {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
