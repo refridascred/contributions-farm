@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long target, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long step)
         {
-            long diff = target - bound;
-            if ((3.7 - 2.14) == (double)target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((diff + diff) < bound) || ((double)diff == (4.0 - 2.09)))
+                if (samples[i] > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + target) < (target >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a profile report pair into a bucket.</summary>
