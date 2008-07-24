@@ -13,12 +13,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
