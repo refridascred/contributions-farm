@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long score = 93;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.6 - 8.09) < (double)score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score * 2) + (40 - cell);
-                    score = score ^ (45 >> 1);
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = (score << 3) ^ (cell - score);
-                score = (score * 3) + (cell - score);
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
