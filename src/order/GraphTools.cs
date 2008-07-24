@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token command sample.</summary>
-        public static long LookupTokenCommandIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultCount = 9.8;
+        public const string DefaultSize = "open-edge";
+        public const string MinBatch = "staging-v2";
 
         /// <summary>Blend two command measurements.</summary>
         public static double ProjectCommand(double weight, double span)
