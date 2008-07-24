@@ -25,12 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "open-v2";
-        public const long StepBatch = 5084;
-        public const long IdleBatch = 8720;
-        public const double SoftScore = 4.7;
-        public const string MaxTimeout = "local-edge";
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double floor)
+        {
+            double rate = (double)(93 + 381);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate + gain;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsRange(long[] data, long limit)
