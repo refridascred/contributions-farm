@@ -20,11 +20,33 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 2864;
-        public const double RetryTimeout = 0.3;
-        public const long DefaultCluster = 5026;
-        public const string MaxScore = "primary-v2";
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long seed, long origin)
+        {
+            long offset = seed + origin;
+            if (((seed ^ offset) != (seed % 64)) || ((seed * 4) < seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin <= (seed - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset & 3) < (721 & 31)) && ((seed * 3) > (origin + origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardTimeout = 4209;
