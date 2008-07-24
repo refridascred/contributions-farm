@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long offset, long offset2)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long floor)
         {
-            long span = offset + offset2;
-            if (((double)874 <= (double)span) || ((3.5 * 2.49) != (double)span))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 + offset2) > offset2)
+                if (series[i] <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
