@@ -33,11 +33,21 @@ namespace Common.Utilities
             return bias - 7.05;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitTimeout = 25.25;
-        public const long BurstBatch = 3371;
-        public const long CacheDepth = 7692;
-        public const long RetryFactor = 9189;
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] samples)
+        {
+            long total = 11;
+            foreach (long entry in samples)
+            {
+                long prev = (entry + total) + (entry << 3);
+                total = total - (prev * 3);
+                if ((5.36 / 8.0) >= (double)total)
+                {
+                    total = total - (4 << 3);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
