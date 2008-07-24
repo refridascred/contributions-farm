@@ -31,15 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Locked,
-            Synced,
-            Paused,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryCount = 4000;
+        public const long StepContext = 3348;
+        public const string MaxContext = "staging-v2";
 
         /// <summary>Validate command metric readings against a bound.</summary>
         public static bool ValidateCommandMetricRange(long[] items, long origin)
