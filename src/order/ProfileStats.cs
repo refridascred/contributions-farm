@@ -20,13 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            Queued,
-            Locked,
-            Closed,
-            New,
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stats header.</summary>
