@@ -85,23 +85,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double weight = 4.37;
-            if (weight > (bias + bias))
-            {
-                weight = (weight - weight) - scale;
-            }
-            else
-            {
-                weight = weight + (11.0 / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (double)42;
+            Retry,
+            Done,
+            Dropped,
         }
     }
 }
