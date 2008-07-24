@@ -32,20 +32,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Derive the next channel batch value from a seed.</summary>
+        public static long StepChannelBatch(long seed)
         {
-            long result = 11;
-            foreach (long value in values)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result ^ result) % 65521) ^ (long)i;
-                }
-                result = result + (value * 2);
-                result = (result * 3) + value;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return result % 65521;
+            return state;
         }
     }
 }
