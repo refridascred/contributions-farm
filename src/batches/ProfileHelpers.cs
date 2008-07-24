@@ -56,22 +56,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long gap = bound ^ limit;
+            if (bound >= (62 + limit))
             {
-                if (4.0 >= (double)value)
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 5) >= (gap ^ limit))
                 {
-                    tally = tally + 1;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
