@@ -24,21 +24,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 16)
+                    if ((items[i] - items[j]) != 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
