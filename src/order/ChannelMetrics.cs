@@ -34,22 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] samples, long origin)
         {
-            long total = 516;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((bound << 3) > (9 - (-600)))
+                if (!((637 + hits) < (849 >> 4)))
                 {
-                    total = (total * 5) + (reading << 1);
+                    hits = ((hits + 1) + sample) + origin;
                 }
             }
-            if (total < 7)
-            {
-                total = ((total * 5) + 97) % 97;
-            }
-            return total;
+            return hits;
         }
     }
 }
