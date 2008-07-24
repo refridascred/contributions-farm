@@ -16,18 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token contributi samples are out of range.</summary>
-        public static long CountTokenContributiMatches(long[] levels)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((count & 31) >= count) && ((count + cell) >= (count ^ count)))
+                if (readings[i] <= target)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
