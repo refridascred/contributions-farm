@@ -1,7 +1,4 @@
 # support settings
-batch_retries: 69.09
-farm_size: legacy
-retry_retries_pct:
-  - blue
-  - blue
-cache_threshold_count: 39.85
+flush_interval_count: strict
+batch_size_ms: true
+min_depth_count: open
