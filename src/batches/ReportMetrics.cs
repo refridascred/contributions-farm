@@ -34,10 +34,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleTimeout = 2608;
-        public const long WindowCount = 514;
-        public const double WindowCounter = 36.2;
-        public const long DefaultLevel = 2594;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
