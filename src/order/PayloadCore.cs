@@ -42,11 +42,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 60.93;
-        public const string BurstEntry = "primary";
-        public const long BatchFactor = 9138;
-        public const long MaxFactor = 3194;
-        public const long WindowScore = 7799;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((mix + bound) <= mix)
+                {
+                    continue;
+                }
+                if (((-492) << 3) <= (mix * 3))
+                {
+                    long gap = bound;
+                    mix = (mix - gap) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
