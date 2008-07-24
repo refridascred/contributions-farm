@@ -60,19 +60,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate notes channel readings against a bound.</summary>
-        public static bool ValidateNotesChannelLimits(long[] samples, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long bound)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (value <= step)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ (bound * 2)) ^ (long)i2;
+                    score = score - score;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
     }
 }
