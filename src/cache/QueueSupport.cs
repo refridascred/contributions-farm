@@ -25,13 +25,15 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
+            long score = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
