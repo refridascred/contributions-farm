@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 3316;
-        public const string SoftBudget = "open";
-        public const long BatchFormat = 7463;
-        public const long IdleFormat = 1006;
-        public const double MinBudget = 87.29;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values, long seed)
+        {
+            long score = -96;
+            foreach (long item in values)
+            {
+                if ((seed & 15) < item)
+                {
+                    score = (score - seed) % 101;
+                }
+                else
+                {
+                    score = ((score * 5) + (83 & 63)) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string WindowBudget = "alpha-1";
