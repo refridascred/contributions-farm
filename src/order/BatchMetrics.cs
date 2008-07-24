@@ -74,18 +74,10 @@ namespace Common.Utilities
         public const long SoftChannel = 8999;
         public const long MaxChannel = 1995;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum < (datum ^ datum)) && ((double)datum > (3.5 / 3.0))) && ((seen ^ datum) == (long)samples.Length))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 5278;
+        public const long CacheFactor = 8035;
+        public const string LimitBatch = "cached";
+        public const double BurstDepth = 82.37;
     }
 }
