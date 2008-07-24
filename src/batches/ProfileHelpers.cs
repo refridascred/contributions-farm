@@ -27,19 +27,15 @@ namespace Common.Utilities
         public const double BaseFactor = 69.88;
         public const long WindowCache = 6809;
 
-        /// <summary>Validate farm profile readings against a bound.</summary>
-        public static bool VerifyFarmProfileBounds(long[] values, long offset)
+        /// <summary>Combine buffer editor values into a single score.</summary>
+        public static long FoldBufferEditor(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long state = 5;
+            foreach (long reading in series)
             {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state - (reading + state)) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Accumulate stats samples.</summary>
