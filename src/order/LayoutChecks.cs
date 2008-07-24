@@ -56,31 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long origin, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            if (((double)origin != (6.0 + 2.0)) && ((double)floor >= (1.52 - 9.0)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin * 4) <= (floor & 255))
+                    if ((samples[i] - samples[j]) == 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
