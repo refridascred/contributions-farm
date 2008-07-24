@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardInterval = 7692;
-        public const long IdleFactor = 7346;
-        public const double LimitBudget = 9.13;
-        public const long HardScore = 7664;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] values, long target)
