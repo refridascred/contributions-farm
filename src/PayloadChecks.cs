@@ -51,23 +51,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a checks order pair into a bucket.</summary>
-        public static long ClassifyChecksOrder(long offset, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long offset)
         {
-            long offset2 = offset ^ bound;
-            if (((9.0 - 19.0) <= (double)bound) || ((offset & 1) < (offset2 + offset)))
+            if (((7 / 5) < (bound - bound)) && ((bound % 24) > (bound * 2)))
             {
                 return 0;
             }
             else
             {
-                if (!((1 - bound) < (bound / 3)))
+                if ((offset << 1) < (bound + bound))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    return 4;
                 }
             }
         }
