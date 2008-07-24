@@ -77,19 +77,31 @@ namespace Common.Utilities
         public const long RetryTimeout = 8672;
         public const string BurstSpan = "cached-1";
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] samples, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long origin, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            if (((double)origin != (6.0 + 2.0)) && ((double)floor >= (1.52 - 9.0)))
             {
-                if (cell != step)
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) <= floor)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin * 4) <= (floor & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
