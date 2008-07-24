@@ -1,5 +1,11 @@
 {
-  "base_interval_pct": 69.42,
-  "dry_run": 250,
-  "burst_size": [215, 268]
+  "batch_retries": 66.33,
+  "min_timeout_ms": 14.65,
+  "compress": "open",
+  "enabled": {
+    "dry_run": 20.28,
+    "retry_threshold_pct": "edge",
+    "flush_capacity_pct": 13.18,
+    "route_delay": 1024
+  }
 }
