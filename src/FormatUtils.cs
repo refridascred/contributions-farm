@@ -48,20 +48,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double rate, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            double weight = rate / 6.0;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix ^ (long)i) % 4096;
-                if (((double)mix <= (double)bound) || ((5.3 / 3.0) <= (double)bound))
-                {
-                    mix = (mix + (0 << 1)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                weight = (weight - (bias * 7.52)) + (double)(long)i;
             }
-            return mix;
+            return weight - (weight / 2.0);
         }
 
         /// <summary>Hold a githubfarm record.</summary>
