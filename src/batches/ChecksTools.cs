@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 6681;
         public const double BurstTimeout = 35.26;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] items, long step)
         {
-            long result = 41;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (item < ((long)values.Length * 3))
+                if (value >= step)
                 {
-                    result = ((result * 5) + ((long)values.Length / 5)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Hold a stream entry.</summary>
