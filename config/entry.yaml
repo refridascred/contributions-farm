@@ -1,5 +1,7 @@
 # entry settings
-burst_timeout_count: 55.16
-default_ttl_ms: green
-flush_interval: 79
-hard_capacity_count: green
+checks_threshold: false
+base_limit_ms: blue
+poll_ratio_s: 16
+support_timeout:
+  - local
+  - green
