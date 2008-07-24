@@ -50,20 +50,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Compare every pair of profile cache readings.</summary>
+        public static long MatchProfileCacheCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset >= (18.0 / 5.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + 148) % 65521;
-                    break;
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Iterate the notes command series from a seed.</summary>
