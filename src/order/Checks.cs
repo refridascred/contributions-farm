@@ -51,18 +51,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks payload samples are out of range.</summary>
-        public static long CountChecksPayloadOutliers(long[] series)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + count) <= (count / 6))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
