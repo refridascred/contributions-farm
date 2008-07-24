@@ -52,15 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] levels, long offset)
         {
-            long mark = 24;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mark = (((mark << 3) ^ (mark + 980)) % 65521) + datum;
+                if ((offset - offset) >= (entry & 31))
+                {
+                    count = count + 1;
+                }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Describe the payload mode values.</summary>
