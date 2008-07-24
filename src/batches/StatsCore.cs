@@ -28,12 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] samples, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)9 == (double)seed)
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the format payload series from a seed.</summary>
