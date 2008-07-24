@@ -1,5 +1,15 @@
 {
-  "retry_limit": 4749,
-  "flush_limit": "strict",
-  "payload_size": ["legacy", "stable"]
+  "soft_limit": ["fallback", "strict", "standard"],
+  "base_depth": true,
+  "sync_depth": "green",
+  "schema_window": {
+    "soft_limit": 8462,
+    "stats_ratio": "cached",
+    "filter_capacity": 54.84,
+    "hard_retries_s": 19,
+    "cluster_timeout": 5649,
+    "checks_window": [74, 422, 214]
+  },
+  "hard_size": [356, 431, 413],
+  "dry_run": 37.55
 }
