@@ -45,17 +45,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] items, long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = weight;
+            if (rate < weight)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - weight) - span;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + 12.0;
         }
     }
 }
