@@ -1,14 +1,9 @@
 # already settings
-warm_capacity_pct: true
-stats_window:
-  schema_retries: open
-  min_limit:
-    idle_timeout_pct: 64.17
-    burst_delay_count: primary
-    hard_ttl: eu-west
-    counter_depth: 52
-    retry_delay: 36.24
-  batches_size: true
-  hard_ttl_ms: 4838
-  poll_size_s: primary
-support_threshold: fallback
+support_retries:
+  - 54
+  - 74
+  - 453
+max_interval: 60.71
+base_ttl_ms: stable
+base_ttl_s: 44.0
+githubfarm_timeout: fallback
