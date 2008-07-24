@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            long result = 51;
-            foreach (long value in items)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)result > (double)value)
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result - (value >> 3)) % 1000;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Roll a metric metrics counter forward.</summary>
