@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values)
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            long carry = 7;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = (carry + (carry * 4)) + (long)i;
+                }
+                carry = (carry ^ (datum / 7)) % 97;
+            }
+            if (carry > 8)
+            {
+                carry = ((carry << 3) ^ (carry * 4)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
