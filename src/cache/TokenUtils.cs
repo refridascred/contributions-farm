@@ -29,24 +29,9 @@ namespace Common.Utilities
         public const long StepRatio = 5123;
         public const string SoftCount = "local-1";
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((state - state) < target)
-                {
-                    state = (state - (target + state)) % 65521;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (((state * 4) + (state + state)) % 101) - (long)i2;
-                    state = (state - (state * 2)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 4209;
+        public const long MaxBatch = 4118;
+        public const long MinScore = 959;
     }
 }
