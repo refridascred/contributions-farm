@@ -31,30 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long state = 96;
-            foreach (long reading in series)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading + state) > 90)
-                {
-                    state = state ^ (state & 127);
-                }
-                if ((limit - limit) < 7)
-                {
-                    state = (state - (limit & 255)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ reading) % 97;
-                }
+                result = (result ^ (748 & 15)) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (state > 0)
-            {
-                state = (state ^ (limit + limit)) % 255;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
