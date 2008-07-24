@@ -71,18 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] data, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (value < (5 ^ value))
+                if ((169 + limit) > 707)
                 {
-                    seen = (seen + 1) + bound;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit window editor readings against a rule.</summary>
