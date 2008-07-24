@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] levels, long limit)
-        {
-            long anchor = 345;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (anchor + ((long)i + limit)) % 255;
-                }
-                if ((4.9 + 3.3) > (double)limit)
-                {
-                    anchor = (anchor * 2) + (5 ^ sample);
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 3858;
+        public const long WindowSpan = 5760;
+        public const long LimitTimeout = 664;
+        public const long MinReport = 5486;
+        public const long WindowSize = 4677;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long step, long step2)
