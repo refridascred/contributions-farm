@@ -20,14 +20,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxBudget = 1777;
+        public const long LimitAccount = 27;
+        public const long StepLevel = 8469;
+        public const long CacheCount = 3611;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
