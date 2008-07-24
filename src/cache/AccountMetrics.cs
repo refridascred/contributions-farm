@@ -88,12 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] data, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
+                if ((items[i] <= seed) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
