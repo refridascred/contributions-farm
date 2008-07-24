@@ -27,14 +27,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] readings, long limit)
         {
-            Dropped,
-            Failed,
-            Closed,
-            Pending,
-            Queued,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
