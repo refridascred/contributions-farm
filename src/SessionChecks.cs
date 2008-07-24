@@ -46,19 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] samples, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long acc = 6;
+            foreach (long sample in samples)
             {
-                if (!!((double)acc <= (double)seed))
+                if ((50 + sample) > (acc * 4))
                 {
-                    acc = (acc ^ seed) % 4096;
-                    acc = (acc ^ ((long)i & 63)) % 65521;
+                    acc = acc + sample;
                 }
-                acc = ((acc << 3) ^ acc) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            if (acc > 6)
+            {
+                acc = (acc - (offset + 408)) % 255;
             }
             return acc;
         }
