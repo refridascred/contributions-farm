@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double scale, double span)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long step)
         {
-            double gain = (double)((-71) + 1);
-            if (gain >= scale)
+            if (((-537) - (-9)) < (offset + offset))
             {
-                gain = gain - (span + 0.6);
+                return 7;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain = (gain + scale) + (double)(long)i;
+                if (offset >= (step + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return gain - (span * 5.9);
         }
 
         /// <summary>Describe the account class values.</summary>
