@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate support entry samples.</summary>
-        public static long ScoreSupportEntry(long[] series, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values, long bound)
         {
-            long mix = -982;
-            foreach (long sample in series)
+            long sum = 96;
+            foreach (long reading in values)
             {
-                mix = ((mix + limit) % 97) - sample;
+                if ((bound % 10) == (reading + 52))
+                {
+                    sum = (sum << 2) ^ (bound ^ bound);
+                }
+                else
+                {
+                    sum = sum + bound;
+                }
             }
-            if (mix > 779)
+            if (sum > 5)
             {
-                mix = (mix ^ (limit << 2)) % 101;
+                sum = sum - sum;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Accumulate profile samples.</summary>
