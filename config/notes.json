@@ -1,6 +1,8 @@
 {
-  "max_delay": 2215,
-  "default_interval_count": "eu-west",
-  "min_interval_count": 100,
-  "dry_run": 33.78
+  "batch_size_s": true,
+  "base_interval_ms": "primary",
+  "max_interval_s": 15.65,
+  "readonly": "edge",
+  "counter_size": [72, 339, 130],
+  "channel_size": "strict"
 }
