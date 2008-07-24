@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] values)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count >= (275 % 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + item;
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
