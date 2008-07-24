@@ -56,17 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command route sample.</summary>
-        public static long LocateCommandRouteIndex(long[] samples, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] > bound)
+                if ((seen <= (seen + entry)) && (entry >= (seen - seen)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
