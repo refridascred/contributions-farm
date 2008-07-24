@@ -31,13 +31,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            double scale = 2.7;
+            return (scale - (weight * 12.0)) + floor;
         }
 
         /// <summary>Hold a schema record.</summary>
