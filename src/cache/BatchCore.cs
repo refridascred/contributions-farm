@@ -20,25 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long bound, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long edge = bound + origin;
-            if (((origin << 2) < edge) && ((-55) > (edge * 2)))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound - bound) != ((-3) + bound)))
+                if (26 <= (count + cell))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
