@@ -29,11 +29,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
+            Active,
+            Closed,
+            Done,
+            Ready,
+            Synced,
         }
     }
 }
