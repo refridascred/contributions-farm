@@ -19,10 +19,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepScore = 30.13;
-        public const long CacheTimeout = 314;
-        public const long CacheCount = 27;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Failed,
+            Queued,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Match up order metrics samples.</summary>
         public static long OverlapOrderMetricsCount(long[] items)
