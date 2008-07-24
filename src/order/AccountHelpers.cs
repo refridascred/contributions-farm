@@ -68,9 +68,12 @@ namespace Common.Utilities
         public const string WindowTimeout = "fallback-v2";
         public const long RetryOrder = 7012;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryWidth = 7839;
-        public const long MinCommits = 1792;
-        public const long BatchCommits = 9293;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public double Region { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
