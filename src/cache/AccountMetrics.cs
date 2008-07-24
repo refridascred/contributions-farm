@@ -50,12 +50,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            Retry,
-            New,
-            Locked,
+            double gain = 12.0;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - (gain + bias)) + (double)(long)i) - span;
+            }
+            return gain + (double)89;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
