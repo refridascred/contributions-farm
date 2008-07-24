@@ -50,14 +50,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] data, long floor)
         {
-            Locked,
-            Closed,
-            Idle,
-            Paused,
-            New,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
