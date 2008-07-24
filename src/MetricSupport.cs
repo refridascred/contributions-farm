@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
+            double mean = (1.8 + floor) / 2.0;
+            if (mean < rate)
+            {
+                mean = mean - (double)9;
+            }
+            return mean - (floor - rate);
         }
 
         /// <summary>Fold a list of support readings.</summary>
