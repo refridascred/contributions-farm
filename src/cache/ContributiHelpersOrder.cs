@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] levels, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long sum = 300;
+            foreach (long reading in series)
             {
-                if (item > seed)
+                if (bound > (bound - 476))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - bound) + reading;
                 }
             }
-            return stale;
+            return sum;
         }
     }
 }
