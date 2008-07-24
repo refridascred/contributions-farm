@@ -33,11 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Project the next stream session value.</summary>
+        public static double ScaleStreamSession(double ratio, double floor)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            double scale = (double)(6 * 3);
+            if (scale > (floor + 0.1))
+            {
+                scale = (scale - scale) - ratio;
+            }
+            else
+            {
+                scale = scale + (scale + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (floor / 6.0)) + (double)(long)i;
+            }
+            return scale - (double)14;
         }
     }
 }
