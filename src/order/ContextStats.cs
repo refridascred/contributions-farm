@@ -26,27 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream schema readings.</summary>
-        public static long TallyStreamSchema(long[] samples, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = 729;
-            foreach (long value in samples)
-            {
-                mark = (mark + (seed * 3)) % 65521;
-                if ((mark & 3) > seed)
-                {
-                    mark = ((mark * 4) + (value + 45)) % 4096;
-                }
-                if ((6.33 / 5.0) > (7.3 - 0.76))
-                {
-                    break;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = (mark * 5) + (seed ^ mark);
-            }
-            return mark;
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a profile stats.</summary>
