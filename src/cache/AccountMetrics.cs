@@ -43,15 +43,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            double gain = 12.0;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = ((gain - (gain + bias)) + (double)(long)i) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain + (double)89;
+            return tally;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
