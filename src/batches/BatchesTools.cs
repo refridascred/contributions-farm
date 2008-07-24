@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((11.0 + 20.0) > (double)seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftCount = 7311;
+        public const long HardSpan = 2945;
+        public const double BaseChecks = 20.44;
+        public const long IdleTimeout = 2992;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long floor)
