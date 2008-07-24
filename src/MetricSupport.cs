@@ -28,15 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer contributi readings.</summary>
-        public static long ScoreBufferContributi(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long sum = 0;
-            foreach (long value in levels)
-            {
-                sum = (sum ^ (sum - sum)) + value;
-            }
-            return sum % 4096;
+            Idle,
+            Closed,
+            Failed,
         }
     }
 }
