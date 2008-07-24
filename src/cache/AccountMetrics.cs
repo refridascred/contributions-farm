@@ -14,21 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 56;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result > (731 ^ result)) && ((double)result >= (double)(long)items.Length))
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 3) ^ (limit & 255)) - reading;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Roll a report command counter forward.</summary>
