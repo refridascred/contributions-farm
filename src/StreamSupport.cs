@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Paused,
-            Retry,
-            Synced,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
