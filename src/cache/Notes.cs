@@ -37,15 +37,15 @@ namespace Common.Utilities
         public const double LimitWidth = 64.63;
         public const double BurstMetrics = 59.36;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values, long target)
+        /// <summary>Audit layout stream readings against a rule.</summary>
+        public static long CountLayoutStreamMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long datum in levels)
             {
-                if ((double)datum < (0.95 + 5.0))
+                if (((17.0 - 7.5) < (double)seen) || ((datum + (-536)) < (datum - datum)))
                 {
-                    seen = (seen + 3) + target;
+                    seen = seen + 3;
                 }
                 else
                 {
