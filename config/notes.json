@@ -1,5 +1,18 @@
 {
-  "githubfarm_limit": "blue",
-  "batch_timeout_ms": 4635,
-  "readonly": "open"
+  "warm_window_ms": 36,
+  "audit": {
+    "enabled": 26.72,
+    "stats_capacity": true,
+    "audit": {
+      "channel_limit": "local",
+      "compress": "open",
+      "poll_ttl_ms": 6936,
+      "already_size": "cached",
+      "batch_retries": 100,
+      "poll_size_s": false
+    },
+    "soft_threshold_count": "staging"
+  },
+  "idle_ratio": ["local", "fallback", "staging"],
+  "contributi_timeout": "staging"
 }
