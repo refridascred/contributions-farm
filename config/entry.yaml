@@ -1,21 +1,4 @@
 # entry settings
-poll_timeout: 1.61
-poll_limit_count: 78
-retry_ttl_pct:
-  verbose: strict
-  burst_retries_count: 30
-  route_retries: false
-  stream_interval: false
-  audit:
-    - latest
-    - edge
-batches_retries:
-  warm_limit_pct: 66.82
-  verbose: 92
-  warm_ttl_count: 18.69
-  hard_depth_s: true
-sync_ttl:
-  - 186
-  - 357
-  - 73
-  - 246
+flush_threshold_pct: 6012
+payload_capacity: true
+enabled: 60.78
