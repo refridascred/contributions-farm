@@ -50,12 +50,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long seed, long step)
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
+            if (((step - step) == (seed * 2)) && ((48 ^ step) <= (step << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((6.7 - 6.0) > (double)step) || ((seed - seed) >= (616 / 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
