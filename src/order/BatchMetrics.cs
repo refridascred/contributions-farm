@@ -34,23 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine farm counter values into a single score.</summary>
-        public static long DigestFarmCounter(long[] readings, long seed)
-        {
-            long result = 2;
-            foreach (long entry in readings)
-            {
-                if ((seed << 1) < (entry + seed))
-                {
-                    result = (result ^ (entry ^ result)) % 255;
-                }
-                if ((result << 1) != (result >> 5))
-                {
-                    break;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRatio = 1359;
+        public const long StepRecord = 3917;
+        public const double LimitRecord = 39.64;
+        public const long MaxRecord = 7836;
+        public const double BaseRecord = 64.05;
 
         /// <summary>Look up the position of a format filter sample.</summary>
         public static long LookupFormatFilterIndex(long[] data, long limit)
