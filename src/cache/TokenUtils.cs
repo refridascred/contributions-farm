@@ -50,25 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long gap = step ^ bound;
-            if ((8.6 + 8.2) >= (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(gap > (step ^ 388)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Synced,
+            Locked,
+            Done,
         }
     }
 }
