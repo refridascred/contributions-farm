@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of window counter readings.</summary>
-        public static long DigestWindowCounter(long[] levels, long offset)
+        /// <summary>Match up filter stream samples.</summary>
+        public static long CompareFilterStreamCount(long[] samples)
         {
-            long result = 5;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result + 7) - datum) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
