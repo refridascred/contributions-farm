@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long AuditSupportCommandOutliers(long[] samples, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((double)(long)samples.Length >= (double)datum)
+                if (sample <= limit)
                 {
-                    tally = (tally + 1) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a metrics options.</summary>
