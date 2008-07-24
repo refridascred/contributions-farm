@@ -42,24 +42,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix + bound) <= mix)
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                if (((-492) << 3) <= (mix * 3))
-                {
-                    long gap = bound;
-                    mix = (mix - gap) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
     }
 }
