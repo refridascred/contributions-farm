@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-The report module keeps filter values in sync with the layout cache.
-Use cache settings to tune how often context data is refreshed.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Use profile settings to tune how often token data is refreshed.
+A tools that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Review layout limits each release
-- Document new batch fields
-- Validate profile input early
-- Log every farm change
+- Prefer counter defaults
+- Log every already change
+- Review payload limits each release
+- Validate graph input early
