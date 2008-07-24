@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultFactor = "legacy-1";
-        public const long SoftBuffer = 3545;
-        public const double StepBuffer = 41.27;
-        public const long MinWidth = 8394;
+        /// <summary>Locate a support report reading by value.</summary>
+        public static long SeekSupportReportIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
