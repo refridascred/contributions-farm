@@ -1,6 +1,36 @@
 # githubfarm settings
-buffer_capacity: 97.97
-retry_delay: true
-sync_limit_pct:
-  - blue
-  - eu-west
+support_depth:
+  - 434
+  - 144
+  - 294
+  - 349
+max_interval_pct: 2690
+min_delay:
+  audit: 6
+  cache_retries: primary
+  enabled: 30
+  strict:
+    max_limit_count:
+      - 81
+      - 500
+      - 201
+    sync_capacity_count: 30
+    poll_delay_ms: open
+    farm_ttl: green
+    account_depth: green
+  burst_capacity:
+    - 280
+    - 315
+    - 435
+  cluster_timeout:
+    - 54
+    - 487
+    - 293
+    - 269
+max_ratio_ms: green
+poll_threshold_ms:
+  - primary
+  - staging
+batch_depth:
+  - 435
+  - 425
