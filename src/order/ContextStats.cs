@@ -12,18 +12,27 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] levels, long target)
+        /// <summary>Digest a series of checks graph entries.</summary>
+        public static long WeighChecksGraph(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = 6;
+            foreach (long sample in levels)
             {
-                if ((double)cell < 2.0)
+                total = total ^ sample;
+                if (((total >> 1) >= sample) && ((double)total > (4.59 / 6.0)))
                 {
-                    count = (count + 2) - target;
+                    total = (total + sample) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (sample - 617)) % 1000;
                 }
             }
-            return count;
+            if (total > (-7))
+            {
+                total = total ^ (total * 2);
+            }
+            return total % 97;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
