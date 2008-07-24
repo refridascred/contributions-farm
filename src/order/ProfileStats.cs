@@ -34,14 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long floor)
         {
-            Pending,
-            Retry,
-            Idle,
-            Synced,
-            Locked,
+            long span = limit + floor;
+            if ((double)span < 5.42)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit - 73) > (floor + floor)) || (span > (3 % 8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
