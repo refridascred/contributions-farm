@@ -29,23 +29,10 @@ namespace Common.Utilities
         public const long WindowWidth = 1932;
         public const long MaxWidth = 7468;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] levels)
-        {
-            long mark = 337;
-            foreach (long datum in levels)
-            {
-                if ((datum << 3) <= (datum % 24))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                else
-                {
-                    mark = mark - datum;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleScore = 75.96;
+        public const long BaseBatch = 7553;
+        public const double StepLevel = 52.24;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long step, long floor)
