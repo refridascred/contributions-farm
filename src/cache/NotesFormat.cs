@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheRatio = "staging-edge";
-        public const long CacheCluster = 1238;
-        public const long IdleCluster = 116;
-        public const long BatchCluster = 142;
-        public const long MinCluster = 4133;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Pending,
+            Paused,
+            Ready,
+            Draft,
+            New,
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] series, long offset)
