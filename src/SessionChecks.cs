@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Queued,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "cached-v2";
+        public const long IdleFactor = 5247;
+        public const long BaseBudget = 3756;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
