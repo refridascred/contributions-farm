@@ -1,8 +1,7 @@
 {
-  "poll_capacity": "edge",
-  "format_ttl": 4307,
-  "batch_ttl_s": 98.91,
-  "base_interval": 92.13,
-  "base_capacity_pct": 7764,
-  "batch_depth": 60
+  "warm_window": false,
+  "report_timeout": 3165,
+  "verbose": 60,
+  "already_limit": 250,
+  "sync_capacity": 82.32
 }
