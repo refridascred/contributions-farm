@@ -20,13 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Match up checks entry samples.</summary>
+        public static long CompareChecksEntryCount(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
