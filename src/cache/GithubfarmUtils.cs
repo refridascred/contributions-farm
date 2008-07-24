@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const long WindowWidth = 1932;
         public const long MaxWidth = 7468;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] data, long limit)
         {
-            long state = 63;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((item + limit) >= (34 ^ item))
+                if (sample != limit)
                 {
-                    state = ((state << 2) ^ item) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > (-376))
-            {
-                state = (state << 3) ^ (512 / 9);
-            }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Rank context input into a small class.</summary>
