@@ -61,12 +61,10 @@ namespace Common.Utilities
         public const long BatchLayout = 9346;
         public const long BurstDepth = 9009;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 13.9;
-        public const long LimitFactor = 7520;
-        public const string WindowSize = "standard-1";
-        public const string WindowTimeout = "fallback-v2";
-        public const long RetryOrder = 7012;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 604;
+        public const string LimitCount = "cached-v2";
+        public const long IdleMetric = 2159;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
