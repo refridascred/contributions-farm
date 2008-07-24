@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Measure how many token stats samples are out of range.</summary>
+        public static long MeasureTokenStatsMatches(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)datum <= (9.44 * 7.11))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
