@@ -44,38 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile counter pair into a bucket.</summary>
-        public static long BucketProfileCounter(long seed, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items)
         {
-            if ((seed <= floor) || ((seed ^ seed) == (floor * 3)))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 2) <= (seed + floor))
+                if (((item + item) <= (seen + seen)) && (item >= seen))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor < (floor / 8)) || (floor < (221 - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.68 / 8.0) == (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
