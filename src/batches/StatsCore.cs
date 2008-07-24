@@ -50,12 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Draft,
-            Ready,
-            Dropped,
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the context mode values.</summary>
