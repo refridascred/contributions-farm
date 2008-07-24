@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] samples, long origin)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (origin < ((long)samples.Length - tally))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the report already entries that pass the check.</summary>
