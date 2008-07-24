@@ -1,12 +1,6 @@
 {
-  "max_timeout": 75.89,
-  "warm_threshold_pct": 250,
-  "token_limit": ["cached", "local", "legacy"],
-  "dry_run": true,
-  "readonly": 32.57,
-  "verbose": {
-    "hard_capacity_ms": "standard",
-    "session_retries": "latest",
-    "strict": "fallback"
-  }
+  "persist": 3263,
+  "enabled": 3.51,
+  "sync_size_s": "fallback",
+  "buffer_depth": ["staging", "green", "green"]
 }
