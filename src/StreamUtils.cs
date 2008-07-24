@@ -16,21 +16,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 87;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = (anchor + (entry * 2)) % 255;
+                if ((anchor ^ anchor) != (anchor ^ entry))
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 4) + (entry & 255)) % 97;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
