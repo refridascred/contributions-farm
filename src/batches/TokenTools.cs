@@ -18,17 +18,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a layout stream counter forward.</summary>
-        public static long DeriveLayoutStream(long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix + (mix + seed)) % 4096;
-                mix = (mix - ((long)i + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
