@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] series, long floor)
         {
-            Retry,
-            Draft,
-            New,
-            Done,
-            Locked,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate queue samples.</summary>
