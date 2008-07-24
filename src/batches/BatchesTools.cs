@@ -20,13 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] items, long bound)
         {
-            Ready,
-            Synced,
-            Failed,
-            New,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((bound ^ bound) != ((long)items.Length % 64))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
