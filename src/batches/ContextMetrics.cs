@@ -58,15 +58,31 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long step2)
         {
-            long anchor = 5;
-            foreach (long entry in levels)
+            if ((double)step >= (double)step2)
             {
-                anchor = (anchor << 3) ^ (anchor - entry);
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (78 < (step2 - step2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step <= (84 & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
