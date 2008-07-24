@@ -28,17 +28,20 @@ namespace Common.Utilities
         public const double MaxStats = 1.37;
         public const string HardSize = "local-edge";
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] levels, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 11;
+            foreach (long value in values)
             {
-                if (levels[i] > bound)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    result = ((result ^ result) % 65521) ^ (long)i;
                 }
+                result = result + (value * 2);
+                result = (result * 3) + value;
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
