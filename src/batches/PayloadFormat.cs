@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 57.17;
-        public const long HardLevel = 8899;
-        public const long BaseScore = 5105;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long target)
