@@ -45,24 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] readings, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double weight, double bias)
         {
-            long mix = 590;
-            foreach (long entry in readings)
+            double gain = (double)((-23) & 255);
+            if (gain < (double)426)
             {
-                mix = ((mix << 2) ^ ((long)readings.Length + entry)) % 1000;
-                if (((3.54 - 1.73) <= (double)mix) && ((mix - entry) >= bound))
-                {
-                    mix = mix - entry;
-                }
-                else
-                {
-                    mix = (mix ^ bound) % 97;
-                }
-                mix = (mix * 5) + bound;
+                gain = gain - weight;
             }
-            return mix;
+            return gain + (weight + bias);
         }
 
         /// <summary>Describe the format kind values.</summary>
