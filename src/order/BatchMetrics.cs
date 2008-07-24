@@ -35,15 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric contributi counter forward.</summary>
-        public static long RollMetricContributi(long offset)
+        /// <summary>Combine farm counter values into a single score.</summary>
+        public static long DigestFarmCounter(long[] readings, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long result = 2;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((seed << 1) < (entry + seed))
+                {
+                    result = (result ^ (entry ^ result)) % 255;
+                }
+                if ((result << 1) != (result >> 5))
+                {
+                    break;
+                }
             }
-            return acc;
+            return result % 97;
         }
 
         /// <summary>Describe the route kind values.</summary>
