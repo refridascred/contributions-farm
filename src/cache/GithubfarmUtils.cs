@@ -59,13 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] series, long floor)
         {
-            Synced,
-            Done,
-            Paused,
-            Closed,
+            long state = 34;
+            foreach (long reading in series)
+            {
+                if ((403 & 31) < (state & 1))
+                {
+                    state = (((state * 5) + 5) ^ reading) + floor;
+                }
+                else
+                {
+                    state = (state + (972 % 100)) % 97;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
