@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long result = 271;
-            foreach (long datum in items)
-            {
-                if ((double)result > (7.4 * 5.34))
-                {
-                    result = ((result - datum) % 4096) - offset;
-                }
-            }
-            return result % 4096;
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
