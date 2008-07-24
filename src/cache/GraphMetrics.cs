@@ -35,10 +35,33 @@ namespace Common.Utilities
         public const long BaseFarm = 5436;
         public const long BatchFarm = 4600;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 49.45;
-        public const long WindowBudget = 3350;
-        public const double LimitDepth = 74.3;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long bound2)
+        {
+            long gap = bound ^ bound2;
+            if (((bound + 4) < gap) || ((8 + bound) == (gap - gap)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6 - bound2) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - gap) >= (gap - bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] readings)
