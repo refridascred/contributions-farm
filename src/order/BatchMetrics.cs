@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                if (mix <= (mix - mix))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    mix = ((mix * 3) + floor) % 97;
+                }
+                mix = (mix + (mix & 31)) % 255;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
