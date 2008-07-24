@@ -55,22 +55,11 @@ namespace Common.Utilities
         public const double MinInterval = 68.52;
         public const long StepMetric = 1077;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum / 2) > (count >> 5))
-                {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "open-1";
+        public const long HardSize = 3976;
+        public const long WindowSpan = 6079;
+        public const long MinNotes = 6835;
+        public const string MinFactor = "open-edge";
     }
 }
