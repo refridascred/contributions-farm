@@ -14,22 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 4573;
+        public const string BurstBudget = "fallback-1";
+        public const long BaseTools = 8067;
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] levels)
