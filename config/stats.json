@@ -1,12 +1,7 @@
 {
-  "readonly": true,
-  "default_window_s": ["strict", "edge", "open"],
-  "retry_threshold_s": {
-    "farm_interval": 100,
-    "poll_window_pct": "stable",
-    "default_limit_s": "blue"
-  },
-  "buffer_ratio": false,
-  "base_timeout_s": 45.16,
-  "layout_ttl": 10
+  "warm_size_ms": true,
+  "strict": "eu-west",
+  "readonly": "strict",
+  "cache_timeout_ms": 75,
+  "token_retries": "strict"
 }
