@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] values, long bound)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample % 24) < (seen * 2))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Digest a series of format stream entries.</summary>
