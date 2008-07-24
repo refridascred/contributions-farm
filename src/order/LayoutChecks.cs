@@ -43,10 +43,18 @@ namespace Common.Utilities
         public const long BurstNotes = 2795;
         public const long BatchNotes = 9043;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 43.54;
-        public const long RetryTimeout = 8672;
-        public const string BurstSpan = "cached-1";
+        /// <summary>Find the first session command entry that matches the target.</summary>
+        public static long FindSessionCommandIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long origin, long floor)
