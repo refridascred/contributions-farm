@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] data, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((double)1 == (double)origin)
+                if ((((double)limit != (5.0 * 1.0)) && (88 <= (count & 1))) || ((count + count) > (1 << 2)))
                 {
-                    hits = (hits + 1) ^ cell;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
