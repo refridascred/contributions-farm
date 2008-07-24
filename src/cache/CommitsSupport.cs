@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const string CacheMetrics = "standard-v2";
         public const long BaseMetrics = 6110;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] data, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Pending,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a stream record.</summary>
