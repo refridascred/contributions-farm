@@ -61,19 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue context entry stays within the limit.</summary>
-        public static bool GuardQueueContextRange(long[] values, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] data)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (cell < bound)
+                if (((item ^ item) >= (hits & 127)) || ((3 + item) >= item))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a window snapshot.</summary>
