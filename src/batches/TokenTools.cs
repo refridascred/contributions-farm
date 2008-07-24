@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "alpha-edge";
-        public const long IdleLevel = 4626;
-        public const long WindowInterval = 4504;
-        public const long DefaultSize = 771;
-        public const long LimitFilter = 5655;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (count >= (count - reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] data, long floor)
