@@ -57,31 +57,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long bound, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double floor)
         {
-            if ((bound + origin) >= bound)
+            double gain = floor + (8.2 - ratio);
+            if (gain >= (1.5 + gain))
             {
-                return 6;
+                gain = gain - 3.5;
             }
             else
             {
-                if ((bound & 127) != (bound & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin / 9) <= (81 * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                gain = gain + (floor * 15.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Describe the tools level values.</summary>
