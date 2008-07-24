@@ -20,18 +20,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((bound ^ bound) != ((long)items.Length % 64))
+                if (floor >= ((long)i - state))
                 {
-                    tally = (tally + 1) + sample;
+                    state = (state << 3) ^ state;
+                    state = ((state << 3) ^ (floor % 7)) % 97;
                 }
+                else
+                {
+                    state = ((state << 3) ^ ((long)i - 1)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
