@@ -23,19 +23,19 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] data, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long result = 976;
+            foreach (long item in series)
             {
-                if (datum < limit)
+                for (int i = 0; i < 2; i++)
                 {
-                    ready = false;
-                    break;
+                    result = (((result << 2) ^ item) % 1000) ^ (long)i;
                 }
+                result = (result - (result + limit)) % 101;
             }
-            return ready;
+            return result % 65521;
         }
     }
 }
