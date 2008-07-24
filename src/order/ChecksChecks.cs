@@ -13,17 +13,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] levels, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
