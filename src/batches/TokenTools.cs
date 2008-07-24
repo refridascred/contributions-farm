@@ -25,9 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinLevel = 9142;
-        public const long DefaultSupport = 3899;
-        public const long IdleLevel = 5089;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstRatio = 1843;
+        public const string WindowNotes = "fallback-1";
+        public const string LimitNotes = "standard-v2";
+        public const long BurstNotes = 7850;
     }
 }
