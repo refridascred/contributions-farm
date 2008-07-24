@@ -18,32 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile report pair into a bucket.</summary>
-        public static long ClassifyProfileReport(long step, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long cur = step ^ origin;
-            if (cur > step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur == (9.0 / 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.36 - 13.0) != (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
