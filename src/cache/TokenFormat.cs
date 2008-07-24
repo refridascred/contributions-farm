@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank metrics window input into a small class.</summary>
-        public static long SortMetricsWindow(long offset, long bound)
-        {
-            if (!((double)offset > (13.0 - 16.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 2) <= 752)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowTimeout = 76.72;
+        public const double SoftFormat = 73.2;
+        public const long DefaultInterval = 1825;
+        public const long BurstFactor = 2085;
+        public const long CacheFormat = 8522;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
