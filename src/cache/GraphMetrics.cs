@@ -13,16 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next buffer schema value from a seed.</summary>
-        public static long IterateBufferSchema(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                sum = (sum ^ (floor + 3)) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((20.0 / 7.0) == (double)reading)
+                {
+                    matches = (matches + 2) + offset;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Look up the position of a route format sample.</summary>
