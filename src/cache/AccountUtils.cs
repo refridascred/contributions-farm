@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double load = (double)((-41) / 6);
-            if (load > (9.7 / 6.0))
-            {
-                load = (load + offset) - gain;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + (double)9;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
