@@ -33,24 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Classify a profile report pair into a bucket.</summary>
+        public static long ClassifyProfileReport(long step, long origin)
         {
-            long score = 990;
-            foreach (long sample in items)
+            long cur = step ^ origin;
+            if (cur > step)
             {
-                score = (score - (score << 3)) % 65521;
-                score = score + (sample ^ sample);
-                if (score >= (29 % 24))
+                return 7;
+            }
+            else
+            {
+                if ((double)cur == (9.0 / 7.0))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.36 - 13.0) != (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score < 67)
-            {
-                score = ((score << 2) ^ (score - 0)) % 255;
-            }
-            return score % 97;
         }
 
         /// <summary>Describe the farm class values.</summary>
