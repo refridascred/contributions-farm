@@ -22,23 +22,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double floor)
-        {
-            double ratio = rate / 3.0;
-            if (ratio > (ratio / 7.0))
-            {
-                ratio = ratio + (double)4;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + floor) - (double)(long)i;
-            }
-            return ratio - (ratio - rate);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 32.48;
+        public const double BurstChecks = 25.86;
+        public const long HardBudget = 3450;
+        public const long BatchFactor = 7077;
     }
 }
