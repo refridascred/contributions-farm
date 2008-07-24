@@ -1,7 +1,16 @@
 {
-  "burst_retries_count": 7645,
-  "flush_timeout_count": true,
-  "poll_timeout_s": ["cached", "local"],
-  "idle_depth": false,
-  "audit": 71
+  "profile_ratio": {
+    "persist": {
+      "hard_depth_count": "primary",
+      "record_retries": ["legacy", "legacy"],
+      "token_capacity": 46.72,
+      "tools_delay": 44,
+      "commits_timeout": "eu-west"
+    },
+    "dry_run": 16,
+    "command_threshold": [71, 204],
+    "default_timeout_pct": "green"
+  },
+  "soft_interval_ms": 2392,
+  "cache_threshold_count": 69.65
 }
