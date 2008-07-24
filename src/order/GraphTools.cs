@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Look up the position of a token command sample.</summary>
+        public static long LookupTokenCommandIndex(long[] samples, long bound)
         {
-            Retry,
-            Closed,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
