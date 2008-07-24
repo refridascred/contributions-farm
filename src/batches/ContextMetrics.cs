@@ -42,17 +42,11 @@ namespace Common.Utilities
         public const long MinContributi = 542;
         public const long DefaultContributi = 4034;
 
-        /// <summary>Look up the position of a editor batch sample.</summary>
-        public static long LocateEditorBatchIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 74.98;
+        public const double IdleStream = 94.91;
+        public const double WindowCount = 33.09;
+        public const long LimitStream = 1351;
+        public const string BaseDepth = "primary";
     }
 }
