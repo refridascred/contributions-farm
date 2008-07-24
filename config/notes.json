@@ -1,6 +1,11 @@
 {
-  "flush_depth": 97,
-  "warm_limit": 250,
-  "session_retries": "staging",
-  "commits_ratio": false
+  "warm_limit": {
+    "compress": [193, 247, 300],
+    "record_threshold": false,
+    "cache_size_s": "staging"
+  },
+  "route_retries": 8616,
+  "token_depth": 18.63,
+  "hard_depth": [260, 114, 300],
+  "default_retries": "fallback"
 }
