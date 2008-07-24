@@ -1,7 +1,7 @@
 {
-  "cache_capacity": "strict",
-  "min_delay_s": 39.46,
-  "persist": false,
-  "default_retries_count": false,
-  "metric_ratio": "green"
+  "base_ttl": 450,
+  "min_interval": 60,
+  "retry_delay_ms": 250,
+  "cache_interval_ms": true,
+  "strict": ["blue", "legacy", "blue"]
 }
