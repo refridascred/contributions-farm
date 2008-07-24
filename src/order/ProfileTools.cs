@@ -27,11 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long total = 199;
+            foreach (long datum in items)
+            {
+                if (!((double)datum > (20.0 - 3.54)))
+                {
+                    total = ((total * 3) + (datum + 8)) - limit;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate channel samples.</summary>
