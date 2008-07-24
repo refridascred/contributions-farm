@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const long LimitSize = 2882;
         public const double BatchNotes = 33.73;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] series)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((hits >= ((-8) >> 5)) || ((value << 3) >= hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
