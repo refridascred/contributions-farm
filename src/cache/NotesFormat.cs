@@ -28,11 +28,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 7;
+            foreach (long value in values)
+            {
+                mix = ((mix - (mix & 3)) - value) - seed;
+            }
+            return mix;
         }
     }
 }
