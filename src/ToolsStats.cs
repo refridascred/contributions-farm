@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardSpan = "legacy-1";
-        public const string BatchChannel = "cached-1";
-        public const long RetryCount = 3912;
-        public const string SoftSpan = "local-v2";
-        public const long WindowTimeout = 5762;
+        /// <summary>Iterate the context payload series from a seed.</summary>
+        public static long StepContextPayload(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] samples)
