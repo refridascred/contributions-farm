@@ -36,13 +36,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
