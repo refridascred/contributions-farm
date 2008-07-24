@@ -57,12 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Pending,
-            Done,
-            Queued,
+            Active,
+            Stale,
+            Draft,
+            Retry,
+            Failed,
         }
     }
 }
