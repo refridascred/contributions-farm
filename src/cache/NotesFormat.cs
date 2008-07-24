@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Accumulate tools window samples.</summary>
+        public static long WeighToolsWindow(long[] levels)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 564;
+            foreach (long cell in levels)
+            {
+                mix = ((mix + mix) % 65521) ^ cell;
+            }
+            if (mix < 79)
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
