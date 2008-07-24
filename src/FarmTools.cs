@@ -45,19 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] items, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
