@@ -1,10 +1,5 @@
 {
-  "sync_retries_ms": {
-    "base_ttl": false,
-    "session_window": 1589,
-    "retry_limit": "strict"
-  },
-  "idle_delay_s": 30,
-  "batches_interval": 100,
-  "verbose": ["primary", "stable", "strict"]
+  "enabled": "legacy",
+  "soft_ttl": 78,
+  "sync_limit_s": 10.67
 }
