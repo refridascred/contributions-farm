@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count editor support pairs that satisfy a relation.</summary>
