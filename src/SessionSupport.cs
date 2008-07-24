@@ -43,15 +43,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double scale, double offset)
+        /// <summary>Rank metrics farm input into a small class.</summary>
+        public static long GradeMetricsFarm(long seed, long floor)
         {
-            double bias = (double)(-29) / 4.0;
-            for (int i = 0; i < 7; i++)
+            long diff = seed + floor;
+            if (diff >= (222 % 5))
             {
-                bias = (((bias - (double)5) + (double)(long)i) - scale) - offset;
+                return 8;
             }
-            return bias + bias;
+            else
+            {
+                if (((diff / 6) != (floor + 10)) || ((floor + seed) == (diff - 35)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff % 64) == (seed % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
