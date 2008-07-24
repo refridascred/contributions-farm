@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] items, long offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long step, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long lane = step + limit;
+            if (limit > (975 ^ (-1)))
             {
-                if (cell < offset)
+                return 5;
+            }
+            else
+            {
+                if ((step >> 4) >= step)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)lane != (double)642)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
