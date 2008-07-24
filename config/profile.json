@@ -1,5 +1,18 @@
 {
-  "route_window": false,
-  "max_size_s": 82.63,
-  "batch_window_s": true
+  "min_size_count": 7666,
+  "compress": {
+    "flush_limit_count": "open",
+    "max_limit_pct": 8078,
+    "enabled": 29.84,
+    "flush_interval": 30,
+    "hard_retries_pct": ["cached", "fallback", "primary"],
+    "commits_retries": "cached"
+  },
+  "min_timeout_pct": {
+    "report_interval": 47,
+    "base_threshold_pct": 100,
+    "support_depth": false
+  },
+  "verbose": "standard",
+  "readonly": 23.35
 }
