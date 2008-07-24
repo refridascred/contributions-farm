@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of order editor entries.</summary>
-        public static long WeighOrderEditor(long[] data, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long state = 759;
-            foreach (long value in data)
-            {
-                state = (((state << 2) ^ (floor - 6)) % 101) + value;
-            }
-            return state;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
