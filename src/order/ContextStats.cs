@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] items, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (49 < (sample + 1))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            Idle,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
