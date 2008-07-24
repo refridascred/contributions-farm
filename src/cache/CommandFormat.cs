@@ -43,15 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] items, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] series)
         {
             long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((-72) + count) <= (cell & 1)) || (((-3) + floor) <= cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
