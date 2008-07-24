@@ -56,18 +56,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long MeasureFormatEditorOutliers(long[] samples, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)bound == (6.0 - 7.5))
                 {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) ^ entry;
                 }
             }
             return seen;
