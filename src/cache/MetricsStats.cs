@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Project the next layout filter value.</summary>
+        public static double SmoothLayoutFilter(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = scale;
+            if (drift >= (floor / 5.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (drift / 3.0);
             }
-            return hits;
+            return drift - 0.22;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
