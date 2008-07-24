@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] levels, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((item >> 2) != (item << 3)))
-                {
-                    hits = (hits + 3) - origin;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the support state values.</summary>
