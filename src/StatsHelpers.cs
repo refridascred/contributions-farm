@@ -61,17 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long offset)
+        /// <summary>Check that every queue context entry stays within the limit.</summary>
+        public static bool GuardQueueContextRange(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (levels[i] == offset)
+                if (cell < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a window snapshot.</summary>
