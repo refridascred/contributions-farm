@@ -31,11 +31,18 @@ namespace Common.Utilities
         public const long StepInterval = 2605;
         public const long DefaultLevel = 8745;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit cache farm readings against a rule.</summary>
+        public static long AuditCacheFarmGaps(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum ^ 5) >= datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
