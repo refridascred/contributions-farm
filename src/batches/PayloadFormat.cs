@@ -42,15 +42,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long state = 338;
-            foreach (long reading in readings)
-            {
-                state = ((state + (91 - step)) % 65521) + reading;
-            }
-            return state;
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
