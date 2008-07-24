@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 26.68;
-        public const long WindowInterval = 4647;
-        public const long MaxContext = 1727;
-        public const long WindowWidth = 7317;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long ClassifyRecord(long bound, long origin)
