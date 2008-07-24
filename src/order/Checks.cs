@@ -51,13 +51,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long limit)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long delta = step + limit;
+            if (((limit * 2) <= (limit - 6)) || ((limit + delta) >= limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step % 64) != (step % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
