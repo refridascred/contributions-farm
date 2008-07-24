@@ -31,12 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] values)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)matches <= (14.0 * 0.2))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
