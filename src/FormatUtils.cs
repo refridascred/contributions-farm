@@ -40,11 +40,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double bias2)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            double ratio = bias2;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (9.0 / 6.0)) + (double)(long)i;
+            }
+            return ratio - (ratio - bias);
         }
 
         /// <summary>Iterate the stream token series from a seed.</summary>
