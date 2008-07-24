@@ -1,7 +1,9 @@
 {
-  "flush_window": 30,
-  "persist": 60,
-  "window_interval": ["strict", "primary", "eu-west", "strict"],
-  "base_window": 53.15,
-  "base_retries_s": true
+  "cache_interval": "open",
+  "format_retries": false,
+  "idle_delay": {
+    "verbose": 81.5,
+    "default_ttl_count": true,
+    "persist": 1024
+  }
 }
