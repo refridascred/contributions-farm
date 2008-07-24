@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings)
         {
-            if ((double)limit > 3.0)
+            long total = 15;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)612 <= (double)limit)
+                if (total > 821)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 3) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = ((total * 2) + datum) % 65521;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
