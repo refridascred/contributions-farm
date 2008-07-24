@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double bias)
+        /// <summary>Validate account stream readings against a bound.</summary>
+        public static bool VerifyAccountStreamLimits(long[] levels, long bound)
         {
-            double gain2 = bias;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                gain2 = (gain2 - gain) - (double)(long)i;
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain2 - 8.0;
+            return ok;
         }
 
         /// <summary>Accumulate graph samples.</summary>
