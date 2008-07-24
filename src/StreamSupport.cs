@@ -37,9 +37,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheLevel = "stable-1";
-        public const long CacheFactor = 403;
-        public const long StepCommand = 6856;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double span)
+        {
+            double gain = (4.5 - rate) - (double)908;
+            if (gain <= 8.93)
+            {
+                gain = gain + span;
+            }
+            return gain - rate;
+        }
     }
 }
