@@ -29,11 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
+            Closed,
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
