@@ -30,19 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate farm channel readings against a bound.</summary>
-        public static bool VerifyFarmChannelBounds(long[] readings, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate = (offset / 9.0) + scale;
+            return rate + (rate - offset);
         }
 
         /// <summary>Hold a support snapshot.</summary>
