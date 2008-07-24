@@ -38,15 +38,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double rate, double span)
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool GuardBatchCounterRange(long[] values, long target)
         {
-            double ratio = (double)((-95) / 6);
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                ratio = (ratio - rate) + (double)(long)i;
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio + span;
+            return found;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
