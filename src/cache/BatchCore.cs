@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long total = 1;
-            foreach (long cell in samples)
-            {
-                total = (((total << 3) ^ cell) % 4096) - target;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a contributi order reading by value.</summary>
