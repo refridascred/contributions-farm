@@ -47,18 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record route entries that pass the check.</summary>
-        public static long AuditRecordRouteMatches(long[] data, long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (2.0 > (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) - datum;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the already profile series from a seed.</summary>
