@@ -48,15 +48,18 @@ namespace Common.Utilities
         public const long CacheBuffer = 4521;
         public const long WindowBuffer = 2734;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((item - tally) > item)
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Scale a session graph figure with a bias.</summary>
