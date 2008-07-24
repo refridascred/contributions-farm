@@ -26,15 +26,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two batches graph measurements.</summary>
-        public static double ScaleBatchesGraph(double ratio, double bias)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double ratio2 = (ratio + 7.49) + (ratio * 4.7);
-            if (ratio2 >= (bias * 0.8))
-            {
-                ratio2 = ratio2 - bias;
-            }
-            return ratio2 + ratio2;
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the stats class values.</summary>
