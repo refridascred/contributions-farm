@@ -56,10 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 5051;
-        public const double WindowReport = 94.65;
-        public const long BatchReport = 3197;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] data, long bound)
