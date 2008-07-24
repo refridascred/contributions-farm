@@ -1,16 +1,14 @@
 {
-  "profile_ratio": {
-    "persist": {
-      "hard_depth_count": "primary",
-      "record_retries": ["legacy", "legacy"],
-      "token_capacity": 46.72,
-      "tools_delay": 44,
-      "commits_timeout": "eu-west"
-    },
-    "dry_run": 16,
-    "command_threshold": [71, 204],
-    "default_timeout_pct": "green"
+  "flush_ratio_count": 16.86,
+  "base_threshold_ms": 60,
+  "warm_timeout": {
+    "readonly": 100,
+    "cache_threshold": "strict",
+    "hard_size_s": "open",
+    "poll_depth_count": 4,
+    "editor_depth": 22.97
   },
-  "soft_interval_ms": 2392,
-  "cache_threshold_count": 69.65
+  "burst_window_s": [498, 57],
+  "batch_window_pct": 6,
+  "entry_delay": "open"
 }
