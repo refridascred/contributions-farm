@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] items, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if ((bound ^ bound) < 59)
             {
-                if (sample != limit)
+                return 4;
+            }
+            else
+            {
+                if ((bound2 / 3) != (6 << 3))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
