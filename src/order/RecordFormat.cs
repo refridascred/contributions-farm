@@ -34,14 +34,11 @@ namespace Common.Utilities
         public const double LimitRatio = 72.86;
         public const string RetryScore = "strict-1";
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepFactor = "stable-v2";
+        public const long MaxCommand = 7240;
+        public const long DefaultCommand = 6097;
+        public const long CacheCommand = 9664;
 
         /// <summary>Iterate the window channel series from a seed.</summary>
         public static long DeriveWindowChannel(long target)
