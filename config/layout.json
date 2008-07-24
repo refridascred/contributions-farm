@@ -1,25 +1,7 @@
 {
-  "base_delay": 50,
-  "max_threshold": 47.28,
-  "strict": false,
-  "dry_run": {
-    "soft_timeout_s": "eu-west",
-    "base_threshold": {
-      "default_size": 2.44,
-      "record_limit": "latest",
-      "farm_limit": ["green", "stable", "stable"],
-      "soft_delay": "stable",
-      "burst_retries_pct": false
-    },
-    "base_size_s": 8393,
-    "dry_run": 250
-  },
-  "format_ttl": 1024,
-  "hard_depth": {
-    "min_size_pct": false,
-    "token_retries": 2881,
-    "idle_limit_count": 26,
-    "hard_size": "standard",
-    "base_size_ms": [374, 270, 102, 40]
-  }
+  "flush_ttl_s": ["strict", "fallback", "cached", "eu-west"],
+  "hard_ttl": true,
+  "hard_capacity_ms": [373, 115, 219, 420],
+  "sync_depth": [140, 451, 471, 147],
+  "session_ratio": 4413
 }
