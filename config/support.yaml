@@ -1,15 +1,29 @@
 # support settings
-base_delay: primary
-hard_size_ms:
-  audit: 12.28
-  idle_delay: 5615
-  min_ratio_count: false
-  max_ttl: false
-  farm_interval: false
-verbose:
-  - fallback
-  - legacy
-metric_window:
-  - local
-  - fallback
-  - edge
+warm_size_ms: local
+flush_size: 6481
+session_ttl: legacy
+enabled:
+  support_capacity:
+    min_delay_ms: true
+    layout_ttl:
+      - 249
+      - 205
+      - 10
+    verbose: 4
+    idle_threshold:
+      - cached
+      - open
+      - standard
+    burst_delay_pct: 100
+  readonly: true
+  strict: strict
+  payload_ratio:
+    - 433
+    - 305
+    - 423
+    - 269
+  cluster_ttl: true
+  idle_ttl_ms:
+    - eu-west
+    - staging
+    - staging
