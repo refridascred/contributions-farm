@@ -29,15 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data, long limit)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long cell in data)
             {
-                if ((tally + 0) >= (limit << 3))
+                if ((cell % 8) > (limit - tally))
                 {
-                    tally = (tally + 3) + entry;
+                    tally = tally + 2;
                 }
             }
             return tally;
