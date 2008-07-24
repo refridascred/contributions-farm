@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "stable-v2";
-        public const long SoftWidth = 2795;
-        public const double StepEntry = 39.74;
-        public const long SoftScore = 3368;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterGaps(long[] series)
