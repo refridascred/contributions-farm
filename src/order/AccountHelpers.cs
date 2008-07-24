@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BatchBudget = 9911;
         public const long SoftWidth = 4261;
 
-        /// <summary>Measure how many editor buffer samples are out of range.</summary>
-        public static long CountEditorBufferOutliers(long[] series, long floor)
+        /// <summary>Fold a list of report githubfarm readings.</summary>
+        public static long TallyReportGithubfarm(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mix = 1;
+            foreach (long item in data)
             {
-                if ((double)floor >= (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
+                mix = ((mix - bound) % 4096) + item;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
