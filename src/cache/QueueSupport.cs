@@ -29,10 +29,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitSize = 2687;
-        public const long WindowInterval = 4255;
-        public const long HardInterval = 391;
-        public const long BaseSize = 681;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2196;
+        public const long DefaultCache = 9849;
+        public const double BaseCache = 60.89;
+        public const long MaxBudget = 3362;
     }
 }
