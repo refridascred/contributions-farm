@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long floor2)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            if (floor <= (floor + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 - floor) != (floor / 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
