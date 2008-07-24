@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] data, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long anchor = 8;
-            foreach (long cell in data)
-            {
-                if ((10 + seed) == (seed * 5))
-                {
-                    anchor = ((anchor + 9) % 255) ^ cell;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (seed - anchor)) % 65521;
-            }
-            return anchor;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
