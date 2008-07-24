@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const long IdleChannel = 5308;
         public const long LimitFactor = 8664;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long limit)
         {
-            Draft,
-            Queued,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
