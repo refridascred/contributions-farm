@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a command token reading by value.</summary>
-        public static long LookupCommandTokenIndex(long[] values, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
