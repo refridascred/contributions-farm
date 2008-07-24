@@ -32,10 +32,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowScore = 7240;
-        public const string RetryInterval = "legacy-v2";
-        public const long MaxEditor = 8048;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardSpan = "legacy-1";
+        public const string BatchChannel = "cached-1";
+        public const long RetryCount = 3912;
+        public const string SoftSpan = "local-v2";
+        public const long WindowTimeout = 5762;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double AdjustChannel(double weight, double bias)
