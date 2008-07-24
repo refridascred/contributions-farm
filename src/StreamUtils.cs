@@ -57,17 +57,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] values, long floor)
+        /// <summary>Fold a list of stats profile readings.</summary>
+        public static long FoldStatsProfile(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -16;
+            foreach (long item in data)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + item) % 97) + floor;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Scale a session graph figure with a bias.</summary>
