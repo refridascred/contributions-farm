@@ -63,11 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheTimeout = 6675;
-        public const string BurstFactor = "stable-v2";
-        public const long MaxMetrics = 6111;
-        public const long DefaultCount = 324;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((12.0 + 9.1) > (double)datum)
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the contributi cluster entries that pass the check.</summary>
         public static long TallyContributiClusterMatches(long[] levels)
