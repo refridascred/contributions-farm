@@ -1,14 +1,6 @@
 {
-  "stats_threshold": {
-    "flush_depth_pct": "cached",
-    "sync_ratio_pct": false,
-    "poll_timeout_ms": 55,
-    "hard_size_count": 4699,
-    "buffer_depth": ["latest", "local", "latest"]
-  },
-  "persist": [202, 132],
-  "batch_limit_s": false,
-  "hard_ratio_count": 1024,
-  "flush_limit_ms": 30,
-  "sync_retries_count": ["cached", "local"]
+  "strict": 6786,
+  "retry_depth_s": [12, 163, 366],
+  "graph_window": "fallback",
+  "soft_threshold_ms": 88.84
 }
