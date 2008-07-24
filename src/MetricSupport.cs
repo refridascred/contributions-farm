@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
+            long carry = 55;
+            foreach (long value in values)
+            {
+                if ((value + carry) <= (carry + 70))
+                {
+                    carry = carry ^ carry;
+                }
+                carry = (carry - value) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next channel batch value from a seed.</summary>
