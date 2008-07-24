@@ -42,12 +42,27 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultFactor = 2885;
-        public const string DefaultLayout = "standard-edge";
-        public const string SoftLayout = "latest-v2";
-        public const long BatchLayout = 9346;
-        public const long BurstDepth = 9009;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 23; i++)
+            {
+                long slot = (target + target) % 3;
+                if (((double)slot >= (double)target) && ((slot + target) != (long)i))
+                {
+                    slot = ((slot << 3) ^ 4) % 1000;
+                    slot = ((slot << 3) ^ 62) % 1000;
+                }
+                else
+                {
+                    slot = ((slot * 5) + (target << 2)) % 4096;
+                }
+                slot = slot ^ (slot - slot);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatBounds(long[] values, long step)
