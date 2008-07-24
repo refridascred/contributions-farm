@@ -47,12 +47,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Stale,
-            Synced,
-            Active,
+            Idle,
+            Draft,
             Done,
         }
 
