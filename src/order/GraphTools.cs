@@ -56,13 +56,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
+            Queued,
+            Synced,
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
