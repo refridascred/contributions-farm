@@ -54,15 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already window measurements.</summary>
-        public static double BlendAlreadyWindow(double bias, double offset)
+        /// <summary>Measure how many entry channel samples are out of range.</summary>
+        public static long AuditEntryChannelGaps(long[] values)
         {
-            double drift = offset / 7.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                drift = ((drift + (4.0 - 6.23)) + (double)(long)i) - bias;
+                if ((double)seen >= (7.0 / 2.0))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return drift + drift;
+            return seen;
         }
     }
 }
