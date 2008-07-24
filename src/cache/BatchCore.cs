@@ -29,18 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor counter entries that pass the check.</summary>
-        public static long TallyEditorCounterGaps(long[] samples, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = 0;
+            foreach (long item in series)
             {
-                if (tally < (floor % 5))
+                sum = ((sum * 5) + item) % 255;
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = (tally + 1) - item;
+                    sum = sum - ((long)i - item);
                 }
+                sum = sum ^ (item & 31);
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
