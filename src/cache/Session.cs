@@ -38,19 +38,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate stats farm readings against a bound.</summary>
-        public static bool GuardStatsFarmLimits(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepTimeout = 3471;
+        public const string CacheWidth = "primary-edge";
+        public const long HardWidth = 6086;
+        public const long DefaultQueue = 8865;
+        public const long MinQueue = 2592;
     }
 }
