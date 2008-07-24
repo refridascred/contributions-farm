@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] items, long floor)
         {
-            if (((double)limit >= (double)floor) || (limit > (72 + 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit & 127) == (floor % 12))
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((852 - limit) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many token format samples are out of range.</summary>
