@@ -98,19 +98,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine entry editor values into a single score.</summary>
-        public static long ScoreEntryEditor(long[] readings, long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long anchor = 28;
-            foreach (long sample in readings)
-            {
-                if (sample > (sample + anchor))
-                {
-                    anchor = (anchor ^ (floor - sample)) % 4096;
-                }
-                anchor = ((anchor * 5) + anchor) % 4096;
-            }
-            return anchor;
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
