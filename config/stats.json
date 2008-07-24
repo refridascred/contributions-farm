@@ -1,10 +1,5 @@
 {
-  "buffer_threshold": "cached",
-  "report_retries": 98.68,
-  "layout_timeout": {
-    "batch_threshold_s": 1024,
-    "commits_capacity": [145, 391, 416, 110],
-    "cache_threshold_ms": [73, 481, 54],
-    "batch_limit": "latest"
-  }
+  "batch_interval_count": true,
+  "poll_interval_s": true,
+  "record_capacity": 1024
 }
