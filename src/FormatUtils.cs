@@ -66,20 +66,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Blend two payload stream measurements.</summary>
+        public static double AdjustPayloadStream(double rate, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            double load = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (((-16) - bound) == (17 + acc))
-                {
-                    acc = ((acc << 3) ^ (acc + acc)) % 97;
-                }
-                acc = acc - ((long)i + acc);
-                acc = ((acc * 5) + (long)i) % 1000;
+                load = (load + span) + (double)(long)i;
             }
-            return acc;
+            return load - (double)9;
         }
     }
 }
