@@ -1,8 +1,5 @@
 # support settings
-burst_size_s: 21
-min_ratio_count:
-  - 158
-  - 332
-  - 26
-session_timeout: 6005
-batches_retries: edge
+readonly: 26.78
+contributi_threshold: open
+poll_capacity_s: open
+farm_delay: 4240
