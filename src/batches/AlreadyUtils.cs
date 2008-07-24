@@ -58,11 +58,12 @@ namespace Common.Utilities
         public const double MinInterval = 68.52;
         public const long StepMetric = 1077;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "open-1";
-        public const long HardSize = 3976;
-        public const long WindowSpan = 6079;
-        public const long MinNotes = 6835;
-        public const string MinFactor = "open-edge";
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
