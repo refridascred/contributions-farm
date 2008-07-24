@@ -77,10 +77,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 1346;
-        public const double IdleRatio = 8.89;
-        public const long MaxSupport = 1096;
-        public const long DefaultSupport = 2781;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series, long step)
+        {
+            long result = -389;
+            foreach (long cell in series)
+            {
+                if ((52 % 2) < (cell >> 3))
+                {
+                    result = (result + (cell - step)) % 97;
+                }
+            }
+            if (result < 530)
+            {
+                result = (result * 3) + (result + step);
+            }
+            return result;
+        }
     }
 }
