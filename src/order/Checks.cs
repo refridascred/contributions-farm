@@ -64,21 +64,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Measure how many checks payload samples are out of range.</summary>
+        public static long CountChecksPayloadOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample + count) <= (count / 6))
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
