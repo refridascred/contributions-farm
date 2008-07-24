@@ -1,12 +1,11 @@
 # Command notes
 
-Run the notes check before changing any payload limits.
-Use editor settings to tune how often channel data is refreshed.
-The filter report groups every batch by format.
+Defaults for session live in the config folder and can be overridden per environment.
+When a editor fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer support defaults
-- Document new counter fields
-- Review graph limits each release
-- Log every tools change
+- Document new cluster fields
+- Prefer stream defaults
+- Keep editor values small
+- Validate batch input early
