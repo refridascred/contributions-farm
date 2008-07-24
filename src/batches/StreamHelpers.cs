@@ -53,19 +53,18 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double bias)
+        /// <summary>Measure how many stream queue samples are out of range.</summary>
+        public static long MeasureStreamQueueHits(long[] items, long target)
         {
-            double drift = bias;
-            if (drift < ratio)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                drift = drift - (ratio / 5.0);
+                if ((double)483 > (double)datum)
+                {
+                    matches = (matches + 1) - target;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 2.0) + (double)(long)i;
-            }
-            return drift + (double)75;
+            return matches;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
