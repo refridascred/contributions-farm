@@ -40,29 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter support series from a seed.</summary>
-        public static long IterateCounterSupport(long origin)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((-341) & 1) != (long)i)
-                {
-                    mark = mark ^ ((long)i % 97);
-                    break;
-                }
-                else
-                {
-                    mark = mark + origin;
-                    mark = ((mark * 3) + (mark >> 3)) % 65521;
-                }
-                if ((origin - origin) < 5)
-                {
-                    mark = (mark * 2) + (origin * 2);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
