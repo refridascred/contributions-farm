@@ -32,15 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] readings, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long origin)
         {
-            long sum = 298;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum + (343 - sum)) % 4096) + sample) + origin;
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
