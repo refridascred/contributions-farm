@@ -55,30 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long floor, long origin)
         {
-            long offset2 = limit ^ offset;
-            if (offset2 <= (offset2 & 15))
+            if (!((origin & 15) != (floor - 31)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (!((limit & 15) >= (limit % 10)))
+                if ((origin + floor) < origin)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (84 > (offset2 - offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 2;
                 }
             }
         }
