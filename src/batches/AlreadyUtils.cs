@@ -39,14 +39,14 @@ namespace Common.Utilities
         public const double BurstProfile = 95.65;
         public const long BaseDepth = 7447;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Failed,
+            Locked,
+            New,
+            Synced,
             Pending,
-            Ready,
-            Draft,
-            Active,
+            Idle,
         }
 
         /// <summary>Describe the contributi state values.</summary>
