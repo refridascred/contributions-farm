@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (values[i] > bound)
+                if ((sample % 10) == (sample + sample))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the commits state values.</summary>
