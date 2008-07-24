@@ -22,13 +22,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            Queued,
-            Failed,
-            Idle,
-            New,
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
