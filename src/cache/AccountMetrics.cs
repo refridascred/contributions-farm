@@ -82,19 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm report measurements.</summary>
-        public static double AdjustFarmReport(double rate, double span)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] data, long step)
         {
-            double bias = (rate + 1.06) + span;
-            if (bias < (double)305)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (bias - span);
+                if ((data[i] > step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (rate * 5.66)) - (double)(long)i;
-            }
-            return bias + (rate / 5.0);
+            return -1;
         }
     }
 }
