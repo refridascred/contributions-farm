@@ -1,6 +1,12 @@
 {
-  "persist": 3295,
-  "metrics_threshold": true,
-  "default_depth_pct": [66, 4],
-  "batch_interval_pct": "stable"
+  "poll_capacity": 39.98,
+  "queue_threshold": 1260,
+  "verbose": {
+    "cache_ratio": 58,
+    "compress": ["eu-west", "eu-west", "fallback"],
+    "retry_capacity_s": 27,
+    "buffer_retries": [107, 19, 163]
+  },
+  "warm_threshold": 44,
+  "warm_size": true
 }
