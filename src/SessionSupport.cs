@@ -16,17 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a window reading.</summary>
