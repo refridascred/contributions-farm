@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Find the first report order entry that matches the target.</summary>
+        public static long FindReportOrderIndex(long[] data, long origin)
         {
-            Locked,
-            Draft,
-            Closed,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
