@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] series)
         {
-            long total = 952;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                total = (total + (entry - (-958))) % 1000;
+                if (item >= hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
