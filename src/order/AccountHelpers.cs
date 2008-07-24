@@ -73,13 +73,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Pending,
-            New,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinSpan = 3259;
+        public const double MinStats = 82.45;
+        public const double CacheDepth = 1.69;
+        public const long RetryStats = 6565;
     }
 }
