@@ -1,6 +1,5 @@
 {
-  "audit": 1024,
-  "verbose": 5857,
-  "max_interval": ["fallback", "blue", "open"],
-  "sync_ttl_ms": 60
+  "contributi_interval": false,
+  "default_capacity_count": "cached",
+  "readonly": 29
 }
