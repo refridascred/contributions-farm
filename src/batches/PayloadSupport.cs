@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] values, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double rate, double span)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double ratio = 16.0;
+            if (ratio <= (rate - span))
             {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio + 20.0;
             }
-            return flag;
+            else
+            {
+                ratio = ratio - (ratio * 8.89);
+            }
+            return ratio + span;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
