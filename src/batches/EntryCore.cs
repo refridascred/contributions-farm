@@ -37,15 +37,12 @@ namespace Common.Utilities
         public const long DefaultRatio = 1799;
         public const long IdleSpan = 5355;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double drift = (double)(53 - 8);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (floor + ratio);
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
