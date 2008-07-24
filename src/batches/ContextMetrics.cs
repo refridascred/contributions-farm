@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if (!((double)bound <= 3.58))
             {
-                if (entry != bound)
+                return 8;
+            }
+            else
+            {
+                if ((99 / 9) >= bound)
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many metrics route samples are out of range.</summary>
