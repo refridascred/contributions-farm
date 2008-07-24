@@ -28,11 +28,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 3079;
-        public const long MinGraph = 9293;
-        public const double LimitRatio = 72.86;
-        public const string RetryScore = "strict-1";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long limit)
+        {
+            long result = 2;
+            foreach (long value in samples)
+            {
+                if ((11.0 - 4.6) >= (double)result)
+                {
+                    result = ((result + result) ^ value) + limit;
+                }
+                else
+                {
+                    result = (result * 5) + result;
+                }
+            }
+            if (result < 68)
+            {
+                result = (result - (result & 255)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepFactor = "stable-v2";
