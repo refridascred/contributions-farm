@@ -16,15 +16,21 @@ namespace Common.Utilities
             return scale - (gain / 8.0);
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            double bias = offset + 6.18;
-            if (bias > (ratio / 7.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (double)275;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias - (bias - 7.0);
+            return count;
         }
 
         /// <summary>Describe the editor status values.</summary>
