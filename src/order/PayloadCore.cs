@@ -20,25 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long limit, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long seed)
         {
-            long delta = limit ^ floor;
-            if ((delta >> 5) > (floor ^ delta))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor >> 3) <= limit) || ((812 % 97) <= limit))
+                if (samples[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
