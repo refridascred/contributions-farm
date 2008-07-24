@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples)
+        /// <summary>Measure how many schema tools samples are out of range.</summary>
+        public static long CountSchemaToolsHits(long[] data)
         {
-            long sum = 9;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (!(entry > (entry << 3)))
+                if ((datum + hits) < 2)
                 {
-                    sum = (sum + (543 / 3)) % 97;
-                }
-                if ((double)entry <= (16.0 + 4.0))
-                {
-                    sum = sum - (sum - entry);
-                }
-                else
-                {
-                    sum = sum ^ (sum * 4);
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
