@@ -19,26 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long state = 57;
-            foreach (long value in items)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((state >= 9) && ((value * 5) >= value))
+                if ((total % 97) == ((long)i + total))
                 {
-                    state = ((state << 2) ^ state) % 255;
+                    total = (total - (total * 5)) % 101;
                 }
-                else
-                {
-                    state = (state + (state - 84)) % 101;
-                }
+                total = (total << 3) ^ (origin & 255);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (state > 26)
-            {
-                state = ((state << 2) ^ state) % 65521;
-            }
-            return state % 65521;
+            return total;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
