@@ -10,38 +10,11 @@ namespace Common.Utilities
         public const long CacheWidth = 8915;
         public const long LimitRecord = 5927;
 
-        /// <summary>Classify a graph report pair into a bucket.</summary>
-        public static long SortGraphReport(long offset, long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            if (((offset >> 2) >= (544 + 335)) || ((double)offset > (9.5 * 3.61)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (seed % 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset * 4) <= (offset + seed)) || (offset >= (offset >> 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)seed < (0.31 * 9.6)) || (offset <= (offset << 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
