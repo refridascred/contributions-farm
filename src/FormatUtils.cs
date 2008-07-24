@@ -46,15 +46,11 @@ namespace Common.Utilities
         public const long CacheDepth = 7692;
         public const long RetryFactor = 9189;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double weight = rate / 6.0;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (bias * 7.52)) + (double)(long)i;
-            }
-            return weight - (weight / 2.0);
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
