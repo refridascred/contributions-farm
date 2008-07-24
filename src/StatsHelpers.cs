@@ -31,18 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] values, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((4 - offset) == (7 % 16)) && ((value * 3) != (offset - tally)))
+                if (reading != step)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
