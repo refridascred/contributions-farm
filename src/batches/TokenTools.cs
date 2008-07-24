@@ -21,22 +21,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of already contributi readings.</summary>
-        public static long TotalAlreadyContributi(long[] series)
+        /// <summary>Roll a layout stream counter forward.</summary>
+        public static long DeriveLayoutStream(long seed)
         {
-            long acc = 621;
-            foreach (long sample in series)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((acc - acc) < acc)
-                {
-                    acc = (acc - acc) - sample;
-                }
+                mix = (mix + (mix + seed)) % 4096;
+                mix = (mix - ((long)i + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (acc < 8)
-            {
-                acc = acc + (35 + acc);
-            }
-            return acc;
+            return mix;
         }
     }
 }
