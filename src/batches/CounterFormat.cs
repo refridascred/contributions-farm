@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] samples, long step)
+        /// <summary>Digest a series of format stream entries.</summary>
+        public static long CombineFormatStream(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long state = 104;
+            foreach (long sample in readings)
             {
-                if ((step + tally) != (datum + tally))
+                if (6 < (origin * 4))
                 {
-                    tally = tally + 3;
+                    state = (state ^ (sample >> 4)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 3) + (state - sample)) % 255;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the filter mode values.</summary>
