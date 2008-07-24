@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry ^ (target << 2)) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Accumulate layout samples.</summary>
