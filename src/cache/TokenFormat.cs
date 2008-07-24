@@ -47,11 +47,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 1652;
-        public const long DefaultSize = 3044;
-        public const long SoftFactor = 9384;
-        public const long BatchSession = 3578;
-        public const long BaseBudget = 463;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
