@@ -46,13 +46,12 @@ namespace Common.Utilities
         public const long CacheFormat = 6609;
         public const long MaxFormat = 7305;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Adjust a filter channel reading.</summary>
