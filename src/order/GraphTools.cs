@@ -33,11 +33,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 49.81;
-        public const long RetryEntry = 279;
-        public const double StepInterval = 53.27;
-        public const long HardCount = 3850;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double span)
+        {
+            double rate = (3.0 - span) + (weight / 6.0);
+            if (rate < (double)771)
+            {
+                rate = rate - 6.9;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + weight;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] readings, long floor)
