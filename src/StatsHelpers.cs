@@ -44,18 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items)
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long CountSessionQueueHits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((item + item) <= (seen + seen)) && (item >= seen))
+                if (((17.0 / 4.0) != (double)hits) || ((198 + hits) == (cell ^ cell)))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) + step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
