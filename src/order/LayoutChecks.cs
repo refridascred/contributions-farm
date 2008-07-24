@@ -87,26 +87,19 @@ namespace Common.Utilities
         public const long RetryTimeout = 8672;
         public const string BurstSpan = "cached-1";
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] samples, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] samples, long step)
         {
-            long sum = -4;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((double)sample < (2.0 + 1.5))
+                if (cell != step)
                 {
-                    sum = (sum + (bound % 7)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum << 2)) % 101;
-                }
-                if ((4.7 / 5.0) == (double)sum)
-                {
+                    found = false;
                     break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
