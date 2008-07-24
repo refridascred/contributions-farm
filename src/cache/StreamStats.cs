@@ -54,13 +54,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] items, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long target)
         {
             bool valid = true;
-            foreach (long item in items)
+            foreach (long reading in values)
             {
-                if (item <= seed)
+                if (reading < target)
                 {
                     valid = false;
                     break;
