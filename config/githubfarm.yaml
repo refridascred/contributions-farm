@@ -1,17 +1,8 @@
 # githubfarm settings
-buffer_depth: latest
-persist: 500
-min_threshold: 99
-cluster_ttl:
-  batch_threshold_count: 98.64
-  strict: false
-  poll_threshold_s:
-    - 142
-    - 127
-    - 179
-  persist: 47.37
-  base_window:
-    - standard
-    - cached
-    - edge
-  enabled: 3130
+poll_retries_pct: false
+compress: 76.93
+strict:
+  - 47
+  - 35
+  - 295
+  - 172
