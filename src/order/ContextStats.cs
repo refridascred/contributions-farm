@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
             public bool Total { get; set; }
-            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
