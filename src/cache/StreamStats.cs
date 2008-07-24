@@ -58,21 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Combine counter queue values into a single score.</summary>
+        public static long ScoreCounterQueue(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 181;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin + origin) <= state)
                 {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ reading;
                 }
             }
-            return tally;
+            return state % 97;
         }
     }
 }
