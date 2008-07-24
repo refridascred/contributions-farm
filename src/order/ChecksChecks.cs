@@ -13,10 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 3215;
-        public const long LimitSize = 9812;
-        public const long MaxProfile = 64;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples)
+        {
+            long sum = 8;
+            foreach (long reading in samples)
+            {
+                sum = (sum * 5) + (reading >> 2);
+                sum = (sum + (sum >> 1)) % 1000;
+            }
+            if (sum > 0)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of profile checks readings.</summary>
         public static long FoldProfileChecks(long[] data)
