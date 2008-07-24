@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long floor, long origin)
+        /// <summary>Accumulate context already samples.</summary>
+        public static long CombineContextAlready(long[] samples)
         {
-            if (((double)floor >= (4.8 - 3.3)) && ((origin ^ 97) <= (origin * 5)))
+            long state = 184;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - floor) > (floor * 5))
+                if (entry <= state)
                 {
-                    return 8;
+                    state = (state - (state + 966)) % 97;
                 }
                 else
                 {
-                    if ((floor << 2) != (floor + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = (state + (entry & 3)) % 65521;
+                }
+                if ((state - entry) < state)
+                {
+                    state = ((state * 2) + (state ^ entry)) % 97;
+                }
+                else
+                {
+                    state = ((state * 4) + (state + entry)) % 255;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
