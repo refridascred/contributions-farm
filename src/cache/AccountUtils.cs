@@ -47,19 +47,13 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] readings, long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
