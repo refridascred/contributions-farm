@@ -28,18 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel metrics readings against a rule.</summary>
-        public static long TallyChannelMetricsOutliers(long[] items, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!(58 < (reading << 2)))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Stale,
+            New,
+            Done,
         }
     }
 }
