@@ -16,16 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a metric metrics counter forward.</summary>
-        public static long StepMetricMetrics(long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state << 2) ^ (floor + floor)) % 255;
-                state = ((state * 5) + (long)i) % 97;
+                anchor = ((anchor * 2) + (anchor + (long)i)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a contributi header.</summary>
