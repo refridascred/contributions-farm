@@ -26,13 +26,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long seed)
         {
-            Paused,
-            Ready,
-            Stale,
-            Synced,
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result + (seed ^ (long)i)) % 255;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Combine profile commits values into a single score.</summary>
