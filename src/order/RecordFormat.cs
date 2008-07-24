@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data, long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long state = 26;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state << 2) ^ (bound ^ state)) % 4096) - reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state > (-37))
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
