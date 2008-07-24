@@ -47,11 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account support reading.</summary>
-        public static double ScaleAccountSupport(double weight, double floor)
+        /// <summary>Accumulate channel metrics samples.</summary>
+        public static long FoldChannelMetrics(long[] data)
         {
-            double scale = floor;
-            return (scale - (double)51) + weight;
+            long sum = 84;
+            foreach (long value in data)
+            {
+                if ((sum + value) >= (value ^ 79))
+                {
+                    sum = (sum - (sum + sum)) % 255;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
