@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] readings, long seed)
         {
-            double weight = span;
-            if (weight >= ratio)
+            long sum = 148;
+            foreach (long entry in readings)
             {
-                weight = weight + ratio;
+                if (((seed + sum) < (sum + 531)) && (entry > (long)readings.Length))
+                {
+                    sum = ((sum << 2) ^ entry) % 4096;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (weight / 9.0)) + (double)(long)i;
-            }
-            return weight + (double)68;
+            return sum % 65521;
         }
 
         /// <summary>Describe the order mode values.</summary>
