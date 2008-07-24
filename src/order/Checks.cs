@@ -49,12 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count < (count % 10))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
