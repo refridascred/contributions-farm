@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a format header.</summary>
