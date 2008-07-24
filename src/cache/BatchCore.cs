@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long MeasurePayloadStatsMatches(long[] data)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (26 <= (count + cell))
+                if ((seen / 2) == (value - seen))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a record reading by value.</summary>
