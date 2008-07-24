@@ -1,23 +1,15 @@
 # support settings
-payload_depth: 500
-dry_run:
-  - 318
-  - 177
-hard_size: 100
-min_ratio_pct: standard
-compress: 85
-sync_delay:
-  soft_window_pct:
-    max_timeout: 60
-    githubfarm_retries: true
-    batch_timeout: true
-    cache_retries_pct: 250
-    window_ratio: stable
-    queue_interval: 17.09
-  compress: 6188
-  support_depth:
-    record_ttl: 24.81
-    cache_threshold_pct: eu-west
-    entry_depth: 50
-    base_interval_pct: standard
-  batch_depth_ms: 4341
+base_delay: primary
+hard_size_ms:
+  audit: 12.28
+  idle_delay: 5615
+  min_ratio_count: false
+  max_ttl: false
+  farm_interval: false
+verbose:
+  - fallback
+  - legacy
+metric_window:
+  - local
+  - fallback
+  - edge
