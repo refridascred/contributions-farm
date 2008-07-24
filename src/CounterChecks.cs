@@ -47,15 +47,11 @@ namespace Common.Utilities
         public const long StepProfile = 5849;
         public const long IdleProfile = 7142;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit entry batches readings against a rule.</summary>
