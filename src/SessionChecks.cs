@@ -53,13 +53,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Project the next editor value.</summary>
