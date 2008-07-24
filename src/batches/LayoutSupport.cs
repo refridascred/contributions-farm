@@ -20,13 +20,24 @@ namespace Common.Utilities
             return weight + (span + weight);
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i + total) <= (long)i)
+                {
+                    total = ((total << 3) ^ (step + step)) % 97;
+                    total = (total - (step << 3)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ step) % 97;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
