@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] readings, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long score = -62;
+            foreach (long entry in samples)
             {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 5) + (entry ^ 16)) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
