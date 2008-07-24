@@ -78,11 +78,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 1561;
-        public const long SoftEditor = 8318;
-        public const long BurstEditor = 4387;
-        public const double BaseFactor = 95.85;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
