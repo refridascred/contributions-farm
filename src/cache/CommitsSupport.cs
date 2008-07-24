@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstTimeout = 9.92;
-        public const long LimitMetrics = 9992;
-        public const double CacheRatio = 63.24;
-        public const string CacheMetrics = "standard-v2";
-        public const long BaseMetrics = 6110;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count editor support pairs that satisfy a relation.</summary>
         public static long CompareEditorSupportCount(long[] series)
