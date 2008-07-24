@@ -25,15 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Look up the position of a route format sample.</summary>
+        public static long SeekRouteFormatIndex(long[] items, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
