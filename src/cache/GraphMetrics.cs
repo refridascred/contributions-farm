@@ -27,22 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm support readings against a rule.</summary>
-        public static long MeasureGithubfarmSupportGaps(long[] series, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (count > (count ^ 47))
+                if (datum < target)
                 {
-                    count = ((count + 2) - entry) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Find the first context tools entry that matches the target.</summary>
