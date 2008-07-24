@@ -20,16 +20,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next profile session value from a seed.</summary>
-        public static long IterateProfileSession(long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] values, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long sum = 70;
+            foreach (long datum in values)
             {
-                total = ((total << 3) ^ (150 - total)) % 65521;
-                total = ((total * 2) + (long)i) % 1000;
+                if (((sum + sum) == (352 ^ sum)) || ((581 + datum) <= offset))
+                {
+                    sum = ((sum << 2) ^ (sum << 3)) % 4096;
+                    sum = ((sum << 2) ^ ((long)values.Length * 4)) % 4096;
+                }
+                if ((double)sum <= (9.87 + 5.0))
+                {
+                    sum = (sum + 240) % 101;
+                }
             }
-            return total;
+            if (sum < 97)
+            {
+                sum = (sum * 3) + (sum + 1);
+            }
+            return sum;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
