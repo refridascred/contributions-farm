@@ -33,15 +33,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double scale, double offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long limit, long target)
         {
-            double rate = 2.0;
-            for (int i = 0; i < 6; i++)
+            if ((limit - target) < ((-3) + 95))
             {
-                rate = ((rate - (double)546) + (double)(long)i) - scale;
+                return 5;
             }
-            return rate - offset;
+            else
+            {
+                if ((double)target >= (18.0 * 12.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
