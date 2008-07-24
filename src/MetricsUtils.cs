@@ -47,17 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Fold a list of channel already readings.</summary>
+        public static long TallyChannelAlready(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 382;
+            foreach (long value in data)
             {
-                if (values[i] > origin)
+                if ((value >> 1) > (11 & 7))
                 {
-                    return (long)i;
+                    state = state + (state / 8);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Adjust a farm format reading.</summary>
