@@ -23,20 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 2803;
+        public const double MaxStats = 1.37;
+        public const string HardSize = "local-edge";
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] levels, long bound)
