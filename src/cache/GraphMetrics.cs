@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the queue channel entries that pass the check.</summary>
-        public static long MeasureQueueChannelGaps(long[] series, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (cell < (cell & 255))
+                if (!((item >> 2) != (item << 3)))
                 {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
