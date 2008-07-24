@@ -72,18 +72,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long MeasureNotesChannelGaps(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= (8.59 / 2.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Draft,
+            Active,
+            Pending,
         }
     }
 }
