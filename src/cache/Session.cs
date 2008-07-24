@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] items, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((9.71 / 6.0) > (double)(long)items.Length)
+                if (item > target)
                 {
-                    hits = ((hits + 2) ^ value) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a report summary.</summary>
