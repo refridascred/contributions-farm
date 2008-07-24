@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 7692;
+        public const long IdleFactor = 7346;
+        public const double LimitBudget = 9.13;
+        public const long HardScore = 7664;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] values, long target)
