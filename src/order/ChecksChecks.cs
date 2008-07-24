@@ -29,31 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of profile checks readings.</summary>
-        public static long FoldProfileChecks(long[] data)
-        {
-            long anchor = 318;
-            foreach (long reading in data)
-            {
-                if ((reading + (-414)) < reading)
-                {
-                    anchor = anchor + (reading << 2);
-                }
-                if ((anchor + anchor) >= (reading / 9))
-                {
-                    anchor = ((anchor << 3) ^ reading) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + reading);
-                }
-                anchor = (anchor + (reading % 3)) % 65521;
-            }
-            if (anchor < 2)
-            {
-                anchor = (anchor + (anchor + anchor)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchTimeout = "primary-v2";
+        public const double IdleLayout = 75.79;
+        public const long BurstFactor = 7119;
+        public const long RetryFactor = 9745;
+        public const long DefaultLayout = 3442;
     }
 }
