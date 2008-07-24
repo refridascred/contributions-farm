@@ -53,11 +53,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
