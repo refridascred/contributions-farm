@@ -31,23 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + datum) >= seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 5575;
+        public const long CacheInterval = 8313;
+        public const long IdleTimeout = 3243;
+        public const long StepProfile = 5849;
+        public const long IdleProfile = 7142;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long StepCluster(long limit)
