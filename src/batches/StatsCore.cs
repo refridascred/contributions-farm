@@ -94,22 +94,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = 9;
+            foreach (long sample in data)
             {
-                if ((8 * 3) < (count % 2))
+                for (int i = 0; i < 4; i++)
                 {
-                    count = (count + 2) ^ sample;
+                    result = (((result - (sample / 5)) % 65521) ^ (long)i) - offset;
                 }
-                else
+                if ((sample + result) >= 846)
                 {
-                    count = count - 1;
+                    result = (result - (result ^ 56)) % 101;
                 }
             }
-            return count;
+            if (result > 792)
+            {
+                result = (result ^ (result ^ 9)) % 1000;
+            }
+            return result;
         }
     }
 }
