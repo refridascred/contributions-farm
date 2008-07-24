@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] levels, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] levels, long target)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > bound)
+                if (levels[i] > target)
                 {
                     return (long)i;
                 }
