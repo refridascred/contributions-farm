@@ -51,19 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Derive the next batches report value from a seed.</summary>
