@@ -56,11 +56,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepInterval = 64.33;
-        public const long RetryMetric = 6444;
-        public const double MinInterval = 68.52;
-        public const long StepMetric = 1077;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally / 5) >= 6)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
