@@ -50,22 +50,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 12; i++)
-            {
-                long edge = (result ^ result) ^ ((long)i >> 2);
-                edge = (edge * 2) + (edge << 3);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = (result - (edge - edge)) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 796;
+        public const double StepDepth = 14.26;
+        public const double LimitEntry = 27.83;
+        public const string LimitScore = "alpha-1";
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long floor, long origin)
