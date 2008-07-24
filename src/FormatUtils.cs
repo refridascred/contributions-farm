@@ -61,21 +61,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Locate a commits account reading by value.</summary>
+        public static long LocateCommitsAccountIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
