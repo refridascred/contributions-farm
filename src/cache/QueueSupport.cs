@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] levels, long step)
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((6.0 + 3.93) != (double)hits)
+                {
+                    hits = ((hits + 1) ^ item) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
