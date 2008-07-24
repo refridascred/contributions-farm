@@ -14,10 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftWidth = 18.26;
-        public const long IdleRoute = 4618;
-        public const string BurstWidth = "standard-v2";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "latest";
+        public const long DefaultEditor = 1478;
+        public const string SoftFactor = "fallback";
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] readings)
