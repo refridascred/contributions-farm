@@ -1,27 +1,6 @@
 {
-  "compress": ["standard", "blue", "green", "local"],
-  "burst_threshold_pct": "fallback",
-  "cache_depth": {
-    "min_capacity_ms": false,
-    "min_timeout_count": 50.33,
-    "soft_timeout_count": 68
-  },
-  "flush_timeout_s": {
-    "token_window": "stable",
-    "base_ttl": 332,
-    "dry_run": "staging",
-    "idle_threshold_ms": 30,
-    "audit": 62,
-    "strict": "open"
-  },
-  "order_ttl": "legacy",
-  "cache_depth_s": {
-    "soft_delay_ms": {
-      "order_threshold": [35, 278, 200, 471],
-      "strict": 1024,
-      "persist": 74
-    },
-    "buffer_window": 87,
-    "soft_delay": ["strict", "stable"]
-  }
+  "flush_depth": 97,
+  "warm_limit": 250,
+  "session_retries": "staging",
+  "commits_ratio": false
 }
