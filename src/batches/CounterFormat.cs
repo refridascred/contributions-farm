@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 73.52;
-        public const long HardTools = 7992;
-        public const long LimitWidth = 3190;
-        public const long DefaultSize = 9090;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] data, long bound)
+        {
+            long sum = -67;
+            foreach (long cell in data)
+            {
+                sum = ((((sum << 3) ^ (3 & 63)) % 255) - cell) - bound;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
