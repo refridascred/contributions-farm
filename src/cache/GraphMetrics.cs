@@ -33,32 +33,12 @@ namespace Common.Utilities
             return bias2 + (bias2 - bias);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = 85;
-            foreach (long entry in items)
-            {
-                carry = (carry * 4) + (289 / 6);
-                if (!((entry + entry) == (600 - 5)))
-                {
-                    carry = carry + carry;
-                    carry = (carry ^ (entry << 2)) % 65521;
-                }
-                if (carry >= (carry % 97))
-                {
-                    carry = (carry ^ (carry % 60)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ 736) % 4096;
-                }
-            }
-            if (carry < 59)
-            {
-                carry = (carry << 2) ^ 35;
-            }
-            return carry;
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
