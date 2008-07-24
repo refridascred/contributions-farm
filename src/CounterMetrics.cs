@@ -31,10 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 4577;
-        public const long BurstChannel = 3904;
-        public const long HardChannel = 5189;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchLimits(long[] data, long seed)
