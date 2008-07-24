@@ -50,11 +50,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 796;
-        public const double StepDepth = 14.26;
-        public const double LimitEntry = 27.83;
-        public const string LimitScore = "alpha-1";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (11.0 >= (double)datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long floor, long origin)
