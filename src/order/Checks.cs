@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long result = 43;
-            foreach (long sample in levels)
-            {
-                if ((sample & 15) >= (result + sample))
-                {
-                    result = (result * 3) + sample;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 65521;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
