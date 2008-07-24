@@ -40,13 +40,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] data, long step)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
