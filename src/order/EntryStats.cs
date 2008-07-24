@@ -53,15 +53,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of counter already entries.</summary>
-        public static long TotalCounterAlready(long[] values)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = 15;
-            foreach (long datum in values)
-            {
-                state = (((state * 3) + (43 & 31)) % 97) - datum;
-            }
-            return state;
+            Synced,
+            Failed,
+            Active,
+            Stale,
         }
     }
 }
