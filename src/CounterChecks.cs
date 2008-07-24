@@ -94,22 +94,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] values, long bound)
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long MeasureNotesChannelGaps(long[] values)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long entry in values)
             {
-                if ((8.42 > (double)matches) || ((matches <= (entry & 3)) && ((bound / 5) >= (92 << 3))))
+                if ((double)entry >= (8.59 / 2.0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
