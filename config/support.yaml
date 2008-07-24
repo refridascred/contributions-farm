@@ -1,11 +1,22 @@
 # support settings
-payload_depth: false
-retry_interval_count: false
-batch_ratio: true
-checks_ratio:
-  - 143
-  - 417
-  - 255
-  - 456
-default_limit_s: eu-west
-retry_retries_s: standard
+audit: false
+burst_capacity_pct:
+  retry_delay_count: strict
+  max_capacity_pct: true
+  buffer_retries:
+    cache_window_count: true
+    idle_limit_pct:
+      - 402
+      - 275
+      - 364
+      - 421
+    retry_delay:
+      - standard
+      - fallback
+    counter_delay: local
+    default_ratio_s: false
+    compress: true
+  retry_ratio: edge
+  session_retries: 1024
+idle_size_s: eu-west
+poll_size_s: cached
