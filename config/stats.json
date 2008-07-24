@@ -1,8 +1,8 @@
 {
-  "hard_depth": [66, 273, 288, 109],
-  "max_depth_pct": 52.55,
-  "max_threshold": true,
-  "schema_ttl": 48,
-  "soft_capacity_ms": false,
-  "token_interval": "latest"
+  "batch_window_count": "standard",
+  "base_retries": "fallback",
+  "channel_limit": 88.39,
+  "idle_timeout_s": false,
+  "verbose": 72.97,
+  "warm_limit_s": 35.69
 }
