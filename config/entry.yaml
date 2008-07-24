@@ -1,13 +1,21 @@
 # entry settings
-cache_ttl_ms: 50.56
-enabled:
-  sync_window_s: true
-  hard_size: latest
-  retry_capacity_pct: 22
-poll_interval_s:
-  - staging
-  - edge
-  - staging
-  - primary
-burst_depth_pct: 5749
-persist: true
+poll_timeout: 1.61
+poll_limit_count: 78
+retry_ttl_pct:
+  verbose: strict
+  burst_retries_count: 30
+  route_retries: false
+  stream_interval: false
+  audit:
+    - latest
+    - edge
+batches_retries:
+  warm_limit_pct: 66.82
+  verbose: 92
+  warm_ttl_count: 18.69
+  hard_depth_s: true
+sync_ttl:
+  - 186
+  - 357
+  - 73
+  - 246
