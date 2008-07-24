@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a record editor reading by value.</summary>
-        public static long FindRecordEditorIndex(long[] values, long floor)
+        /// <summary>Count the record entry entries that pass the check.</summary>
+        public static long CountRecordEntryHits(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                if ((double)origin >= (8.32 * 5.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
