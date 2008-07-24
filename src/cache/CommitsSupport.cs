@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 8;
+            foreach (long cell in values)
+            {
+                carry = carry ^ 652;
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (carry * 2) + ((long)i << 1);
+                }
+                if (((cell + cell) < carry) && ((cell << 2) != (91 / 5)))
+                {
+                    carry = ((carry * 2) + (cell >> 2)) % 101;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = ((carry << 2) ^ (offset / 6)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
