@@ -23,12 +23,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Compare every pair of schema command readings.</summary>
+        public static long MatchSchemaCommandCount(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
