@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next farm stats value from a seed.</summary>
-        public static long StepFarmStats(long bound)
+        /// <summary>Find the first checks support entry that matches the target.</summary>
+        public static long FindChecksSupportIndex(long[] data, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state * 5) + (1 + bound);
-                state = ((state * 4) + (long)i) % 65521;
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
