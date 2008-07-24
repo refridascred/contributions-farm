@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of stream metrics entries.</summary>
-        public static long FoldStreamMetrics(long[] levels, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = 753;
-            foreach (long value in levels)
-            {
-                if ((18 << 1) > (value ^ value))
-                {
-                    state = ((state * 4) + state) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ (offset / 7);
-                }
-            }
-            return state;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next layout filter value.</summary>
