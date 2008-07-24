@@ -22,15 +22,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double bias2 = rate * 14.0;
-            if (bias2 > (bias / 5.0))
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (bias2 - bias);
+            Queued,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a channel stats.</summary>
