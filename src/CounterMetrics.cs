@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxSpan = "legacy";
-        public const long StepFilter = 86;
-        public const double BaseCount = 89.79;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score + score) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Audit metric counter readings against a rule.</summary>
         public static long TallyMetricCounterGaps(long[] values, long floor)
