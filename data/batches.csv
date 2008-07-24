@@ -1,10 +1,6 @@
-id,label,level,active
-1,staging,stable,46.91
-2,675,404,912
-3,654,green,629
-4,6.23,90.04,921
-5,legacy,59.07,791
-6,strict,366,legacy
-7,green,457,913
-8,open,118,207
-9,406,48.72,638
+id,weight,level
+1,1.13,75.39
+2,655,273
+3,636,29.55
+4,8.53,78.86
+5,fallback,217
