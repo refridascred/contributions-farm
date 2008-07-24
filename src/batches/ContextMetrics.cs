@@ -47,16 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] values)
-        {
-            long score = 13;
-            foreach (long reading in values)
-            {
-                score = ((score + score) % 255) + reading;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSpan = 8084;
+        public const long RetryBudget = 312;
+        public const long HardInterval = 1376;
+        public const long CacheTimeout = 7673;
+        public const long MinBudget = 5890;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long step, long step2)
