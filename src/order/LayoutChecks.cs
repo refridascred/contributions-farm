@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up session payload samples.</summary>
-        public static long CompareSessionPayloadCount(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)limit > 3.0)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)612 <= (double)limit)
                 {
-                    if ((items[i] ^ items[j]) < 13)
+                    return 0;
+                }
+                else
+                {
+                    if ((limit / 3) > limit)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
