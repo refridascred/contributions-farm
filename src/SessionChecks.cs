@@ -55,21 +55,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long AuditSchemaEntryGaps(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum << 1) >= (datum - seen))
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + limit;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
