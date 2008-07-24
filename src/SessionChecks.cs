@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long IdleFactor = 5247;
         public const long BaseBudget = 3756;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            double drift = ratio;
+            if (drift >= (ratio + ratio))
             {
-                total = ((total * 3) + (long)i) % 101;
+                drift = drift + floor;
             }
-            return total;
+            else
+            {
+                drift = drift - floor;
+            }
+            return drift + (double)213;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
