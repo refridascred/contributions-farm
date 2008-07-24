@@ -64,17 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already profile series from a seed.</summary>
-        public static long SeriesAlreadyProfile(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor << 2) ^ limit;
-                anchor = (anchor << 3) ^ (8 - 1);
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxWidth = "primary-v2";
+        public const string StepFarm = "open";
+        public const long BatchWidth = 5339;
+        public const double BatchDepth = 50.86;
+        public const long WindowFarm = 5048;
     }
 }
