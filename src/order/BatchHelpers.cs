@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowFactor = 68.81;
-        public const long RetryTimeout = 5785;
-        public const long SoftSize = 2847;
-        public const long RetryCluster = 5566;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (count >= (275 % 2))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] readings, long limit)
