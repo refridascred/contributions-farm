@@ -1,4 +1,5 @@
 # entry settings
-burst_interval_pct: 7557
-notes_delay: strict
-audit: open
+burst_timeout_count: 55.16
+default_ttl_ms: green
+flush_interval: 79
+hard_capacity_count: green
