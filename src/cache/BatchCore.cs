@@ -13,14 +13,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a contributi order reading by value.</summary>
+        public static long LocateContributiOrderIndex(long[] levels, long target)
         {
-            Active,
-            Done,
-            Dropped,
-            Stale,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
