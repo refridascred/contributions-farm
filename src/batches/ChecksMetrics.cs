@@ -78,15 +78,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double span)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
         {
-            double rate = span;
-            if (rate < rate)
+            double rate = scale;
+            for (int i = 0; i < 3; i++)
             {
-                rate = (rate + (rate * 0.5)) + scale;
+                rate = ((rate - rate) + (double)(long)i) - floor;
             }
-            return rate - (span / 3.0);
+            return rate + (6.0 + scale);
         }
     }
 }
