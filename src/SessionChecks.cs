@@ -53,12 +53,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
