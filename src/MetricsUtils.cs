@@ -68,19 +68,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] values, long origin)
+        /// <summary>Measure how many command editor samples are out of range.</summary>
+        public static long MeasureCommandEditorOutliers(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (reading < origin)
+                if ((5.79 < (double)matches) || ((item - item) > floor))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
