@@ -49,13 +49,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Dropped,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepInterval = 64.33;
+        public const long RetryMetric = 6444;
+        public const double MinInterval = 68.52;
+        public const long StepMetric = 1077;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderMatches(long[] data, long offset)
