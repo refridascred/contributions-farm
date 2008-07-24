@@ -38,22 +38,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            long result = 7;
-            foreach (long cell in data)
+            long mark = 24;
+            foreach (long datum in readings)
             {
-                if (((cell - result) >= (bound / 2)) && ((cell / 9) <= (cell & 255)))
-                {
-                    result = ((result * 4) + 7) % 1000;
-                }
-                if ((307 + 242) != (cell << 1))
-                {
-                    break;
-                }
+                mark = (((mark << 3) ^ (mark + 980)) % 65521) + datum;
             }
-            return result;
+            return mark % 4096;
         }
 
         /// <summary>Describe the channel status values.</summary>
