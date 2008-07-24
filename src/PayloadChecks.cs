@@ -64,14 +64,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
+            New,
+            Queued,
             Dropped,
-            Synced,
-            Draft,
             Active,
-            Idle,
         }
 
         /// <summary>Hold a batches entry.</summary>
