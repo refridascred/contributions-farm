@@ -56,18 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric profile samples are out of range.</summary>
-        public static long TallyMetricProfileOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long score = 5;
+            foreach (long value in values)
             {
-                if (!(((288 ^ (long)levels.Length) >= hits) || (bound >= (hits - item))))
+                if ((double)value != (5.6 / 7.0))
                 {
-                    hits = hits + 1;
+                    score = ((score << 3) ^ (value ^ value)) - origin;
                 }
             }
-            return hits;
+            return score % 4096;
         }
     }
 }
