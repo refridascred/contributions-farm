@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 98;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total - value) != (target + total))
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    total = total - (total >> 3);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
