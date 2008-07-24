@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((54 / 9) != ((long)samples.Length + hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) ^ item;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next cluster schema value.</summary>
