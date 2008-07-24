@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] data, long step)
-        {
-            long mark = 48;
-            foreach (long cell in data)
-            {
-                mark = (mark - (cell + step)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 3995;
+        public const long MaxCount = 8613;
+        public const double StepDepth = 2.1;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstTimeout = 7857;
