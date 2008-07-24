@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const long WindowWidth = 1932;
         public const long MaxWidth = 7468;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] data, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long mark = 337;
+            foreach (long datum in levels)
             {
-                if (sample != limit)
+                if ((datum << 3) <= (datum % 24))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 2) ^ mark;
+                }
+                else
+                {
+                    mark = mark - datum;
                 }
             }
-            return ok;
+            return mark % 4096;
         }
 
         /// <summary>Rank context input into a small class.</summary>
