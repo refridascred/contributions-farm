@@ -27,11 +27,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double offset)
+        /// <summary>Measure how many graph schema samples are out of range.</summary>
+        public static long MeasureGraphSchemaGaps(long[] series)
         {
-            double rate = (offset / 9.0) + scale;
-            return rate + (rate - offset);
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - 910) <= (hits + datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
