@@ -76,12 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 88.41;
-        public const long BatchBuffer = 1593;
-        public const double LimitBuffer = 70.63;
-        public const string DefaultBuffer = "local-edge";
-        public const long CacheWidth = 5233;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardSchema = 3197;
