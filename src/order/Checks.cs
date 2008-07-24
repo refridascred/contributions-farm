@@ -43,14 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            New,
-            Pending,
-            Idle,
-            Stale,
-            Failed,
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
