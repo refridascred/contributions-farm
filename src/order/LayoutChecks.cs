@@ -91,14 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the counter editor entries that pass the check.</summary>
+        public static long AuditCounterEditorGaps(long[] series)
         {
-            Stale,
-            Ready,
-            New,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((-393) + hits) != (value * 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
