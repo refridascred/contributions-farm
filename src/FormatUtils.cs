@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheCount = 4886;
-        public const long BurstLayout = 8142;
-        public const long MaxLayout = 526;
-        public const long IdleRatio = 5361;
-        public const double LimitLayout = 53.96;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Stale,
+            New,
+            Queued,
+        }
 
         /// <summary>Scale a cluster contributi figure with a bias.</summary>
         public static double BlendClusterContributi(double weight, double offset)
