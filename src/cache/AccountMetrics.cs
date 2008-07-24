@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] items, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] readings, long bound)
         {
-            long result = 56;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((result > (731 ^ result)) && ((double)result >= (double)(long)items.Length))
+                if (reading <= bound)
                 {
-                    result = ((result << 3) ^ (limit & 255)) - reading;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Project the next counter value.</summary>
