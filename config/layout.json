@@ -1,8 +1,5 @@
 {
-  "editor_ratio": 7,
-  "verbose": 51.47,
-  "hard_ttl_ms": "fallback",
-  "warm_window": "staging",
-  "buffer_threshold": 30,
-  "poll_retries_s": 30
+  "base_interval_pct": 69.42,
+  "dry_run": 250,
+  "burst_size": [215, 268]
 }
