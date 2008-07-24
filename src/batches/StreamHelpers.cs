@@ -17,18 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((9 < (sample - matches)) && ((0.9 * 14.0) >= (double)(long)series.Length))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Blend two batches graph measurements.</summary>
