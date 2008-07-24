@@ -28,14 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] data)
         {
-            Pending,
-            Ready,
-            Stale,
-            New,
-            Done,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((15.0 / 9.0) < (double)(long)data.Length)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
