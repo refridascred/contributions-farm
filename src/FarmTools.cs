@@ -21,30 +21,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long floor)
         {
-            long carry = 16;
-            foreach (long item in data)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)carry >= 0.78)
+                if (!((5.45 * 7.0) > (double)floor))
                 {
-                    carry = (carry << 3) ^ item;
+                    result = (result ^ (444 - floor)) % 65521;
                 }
-                else
+                if (floor >= (long)i)
                 {
-                    carry = (carry << 2) ^ (carry / 8);
+                    result = ((result * 4) + (floor * 5)) % 255;
+                    result = (result * 5) + ((long)i + result);
                 }
-                if ((4.5 + 5.07) >= (double)carry)
-                {
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (carry > 56)
-            {
-                carry = ((carry * 4) + (carry * 3)) % 4096;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a entry options.</summary>
