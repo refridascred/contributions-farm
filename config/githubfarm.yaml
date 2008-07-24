@@ -1,9 +1,16 @@
 # githubfarm settings
-payload_ttl: primary
-audit: 95.23
-compress:
-  - fallback
-  - open
-flush_timeout: latest
-githubfarm_ttl: 49.71
-tools_threshold: staging
+warm_delay_pct: 72.58
+profile_interval:
+  editor_timeout: 3208
+  enabled: 92.97
+  warm_capacity: 500
+  soft_limit_s:
+    - cached
+    - cached
+  hard_interval: false
+warm_size:
+  farm_depth: 2
+  schema_size:
+    - 102
+    - 357
+  route_threshold: 23.6
