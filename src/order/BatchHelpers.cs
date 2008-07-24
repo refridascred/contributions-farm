@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftSize = 2847;
         public const long RetryCluster = 5566;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 1353;
-        public const double RetryScore = 62.98;
-        public const long DefaultRatio = 1781;
-        public const long BaseDepth = 6545;
-        public const double MaxDepth = 43.26;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((limit - limit) == (matches % 7)) || ((8.3 <= (double)limit) && (((long)readings.Length & 255) > (reading >> 1))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MinSize = "strict-v2";
