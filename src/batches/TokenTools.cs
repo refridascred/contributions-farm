@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Synced,
-            Failed,
-            Draft,
-            New,
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
