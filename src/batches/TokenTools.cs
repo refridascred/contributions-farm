@@ -13,19 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double gain, double bias)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double span)
         {
-            double scale = gain;
-            if (scale > (double)391)
+            double rate = scale;
+            if (rate >= (double)493)
             {
-                scale = scale + (gain * 0.5);
+                rate = rate + span;
             }
-            else
-            {
-                scale = scale - (scale * 5.0);
-            }
-            return scale + (bias / 2.0);
+            return rate + (span + span);
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
