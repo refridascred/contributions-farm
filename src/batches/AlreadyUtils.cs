@@ -56,18 +56,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] readings)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally / 5) >= 6)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a batch summary.</summary>
