@@ -1,14 +1,12 @@
 # Command notes
 
-The schema module keeps cache values in sync with the layout cache.
-Run the profile check before changing any batches limits.
-
-The support helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
-The farm report groups every batch by contributi.
+When a already fails, the channel handler retries a few times before giving up.
+Use route settings to tune how often farm data is refreshed.
+The command module keeps layout values in sync with the format cache.
 
 ## Guidelines
 
-- Log every buffer change
-- Document new checks fields
-- Review githubfarm limits each release
+- Log every metric change
+- Prefer batch defaults
+- Review window limits each release
+- Validate githubfarm input early
