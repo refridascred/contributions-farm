@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long HardBudget = 5607;
         public const string MinRatio = "fallback";
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
-            Failed,
-            Ready,
-            Idle,
-            New,
-            Done,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum % 8) <= datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
