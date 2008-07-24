@@ -49,19 +49,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate queue context readings against a bound.</summary>
-        public static bool ValidateQueueContextRange(long[] levels, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
