@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a session channel reading.</summary>
-        public static double ProjectSessionChannel(double gain, double span)
+        /// <summary>Combine context cache values into a single score.</summary>
+        public static long TallyContextCache(long[] data)
         {
-            double weight = gain;
-            if (weight > span)
+            long anchor = 848;
+            foreach (long entry in data)
             {
-                weight = weight + (0.5 * 8.92);
+                if (((anchor + entry) != (anchor ^ anchor)) && (658 <= entry))
+                {
+                    anchor = ((anchor * 2) + (entry + anchor)) % 97;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + (span + weight);
+            return anchor % 97;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
