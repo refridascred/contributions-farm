@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long target, long limit)
+        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
+        public static bool VerifyBufferBatchBounds(long[] data, long seed)
         {
-            long lane = target - limit;
-            if (((-944) * 5) > (target >> 2))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.1 / 8.0) >= (double)limit)
+                if (sample > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane & 127) != (limit / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((lane + lane) <= (target << 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the editor mode values.</summary>
