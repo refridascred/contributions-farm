@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long LimitSize = 2882;
         public const double BatchNotes = 33.73;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Synced,
-            Dropped,
-            Retry,
-            Paused,
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
