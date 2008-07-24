@@ -14,15 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double rate, double bias)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data)
         {
-            double rate2 = bias;
-            if (rate2 >= (rate2 + rate2))
+            long anchor = -4;
+            foreach (long cell in data)
             {
-                rate2 = rate2 - (6.8 + rate2);
+                anchor = (anchor ^ (anchor << 3)) - cell;
             }
-            return rate2 + rate;
+            if (anchor > 741)
+            {
+                anchor = (anchor - (anchor + anchor)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Project the next route value.</summary>
