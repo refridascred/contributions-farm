@@ -54,18 +54,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long CountEntryBatchesGaps(long[] series, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = -75;
+            foreach (long datum in data)
             {
-                if ((entry + 3) <= count)
+                if ((176 + datum) < datum)
                 {
-                    count = (count + 2) - step;
+                    mark = (mark - (bound / 5)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - 968)) % 65521;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Count the notes channel entries that pass the check.</summary>
