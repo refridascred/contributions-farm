@@ -1,5 +1,13 @@
 # githubfarm settings
-strict: 681
-warm_limit_pct: false
-contributi_ttl: 20.45
-poll_timeout_s: stable
+verbose: 65.75
+batch_interval:
+  soft_capacity_count: 9817
+  filter_depth:
+    - 246
+    - 129
+    - 263
+  soft_window_ms: 7.94
+  default_window_ms: 6271
+batches_threshold: standard
+min_timeout: 1604
+sync_interval_pct: 66.19
