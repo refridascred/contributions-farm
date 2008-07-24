@@ -77,10 +77,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinInterval = 1779;
-        public const long MinLevel = 4492;
-        public const double DefaultScore = 30.06;
-        public const long DefaultFactor = 100;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Dropped,
+            New,
+            Active,
+            Retry,
+            Done,
+        }
     }
 }
