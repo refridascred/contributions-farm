@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const long MaxWidth = 2482;
         public const long StepGithubfarm = 508;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 6580;
-        public const long LimitCount = 8483;
-        public const long BaseStats = 2659;
-        public const long StepTimeout = 5977;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleTimeout = 1861;
+        public const double RetryFarm = 17.06;
+        public const long SoftSpan = 3430;
+        public const long BaseFarm = 5436;
+        public const long BatchFarm = 4600;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardFactor = 57.21;
