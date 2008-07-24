@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
