@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a format already value against two limits.</summary>
-        public static long RankFormatAlready(long offset, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] data, long limit)
         {
-            long slot = offset - target;
-            if (((74 % 60) > (slot + offset)) || ((slot % 64) >= target))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (8.74 / 8.0))
+                if ((limit << 3) > (reading - limit))
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
