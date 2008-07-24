@@ -63,20 +63,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = 98;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int i = 0; i < 5; i++)
                 {
-                    score = ((score << 3) ^ (bound * 2)) ^ (long)i2;
-                    score = score - score;
+                    anchor = (anchor ^ (long)i) % 4096;
                 }
-                score = ((score * 3) + (long)i) % 97;
+                anchor = ((anchor << 3) ^ (datum - anchor)) % 65521;
             }
-            return score;
+            if (anchor > 2)
+            {
+                anchor = (anchor << 3) ^ (anchor / 8);
+            }
+            return anchor;
         }
     }
 }
