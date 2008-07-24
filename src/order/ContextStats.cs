@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!(59 >= item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
