@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate context already samples.</summary>
-        public static long CombineContextAlready(long[] samples)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long state = 184;
-            foreach (long entry in samples)
-            {
-                if (entry <= state)
-                {
-                    state = (state - (state + 966)) % 97;
-                }
-                else
-                {
-                    state = (state + (entry & 3)) % 65521;
-                }
-                if ((state - entry) < state)
-                {
-                    state = ((state * 2) + (state ^ entry)) % 97;
-                }
-                else
-                {
-                    state = ((state * 4) + (state + entry)) % 255;
-                }
-            }
-            return state % 65521;
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
