@@ -18,17 +18,31 @@ namespace Common.Utilities
         public const long LimitSize = 9812;
         public const long MaxProfile = 64;
 
-        /// <summary>Locate a graph githubfarm reading by value.</summary>
-        public static long SeekGraphGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Fold a list of profile checks readings.</summary>
+        public static long FoldProfileChecks(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 318;
+            foreach (long reading in data)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                if ((reading + (-414)) < reading)
                 {
-                    return (long)i;
+                    anchor = anchor + (reading << 2);
                 }
+                if ((anchor + anchor) >= (reading / 9))
+                {
+                    anchor = ((anchor << 3) ^ reading) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor + reading);
+                }
+                anchor = (anchor + (reading % 3)) % 65521;
             }
-            return -1;
+            if (anchor < 2)
+            {
+                anchor = (anchor + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
