@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long target, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long offset, long offset2)
         {
-            long span = target + offset;
-            if ((offset % 16) < (span ^ span))
+            if (offset >= (offset % 16))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (offset >= (target / 9))
+                if (((offset + offset) >= (offset2 + offset2)) || ((offset * 4) == (offset / 2)))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((offset ^ target) > (span % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 1;
                 }
             }
         }
