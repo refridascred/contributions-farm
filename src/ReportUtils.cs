@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series, long offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (offset >= (hits * 5))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
