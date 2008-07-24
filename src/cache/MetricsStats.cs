@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 8257;
-        public const long MaxCommits = 1098;
-        public const long LimitCommits = 2914;
-        public const long CacheCommits = 2686;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] items)
