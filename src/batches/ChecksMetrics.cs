@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 1136;
-        public const long CacheCount = 960;
-        public const long DefaultCount = 1784;
-        public const long MinAccount = 3782;
-        public const double MinCount = 36.51;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!(931 >= (floor >> 1)))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
