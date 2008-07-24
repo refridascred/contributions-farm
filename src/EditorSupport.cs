@@ -54,12 +54,13 @@ namespace Common.Utilities
         public const string DefaultLevel = "standard";
         public const long BurstWindow = 9569;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 6899;
-        public const double BatchRatio = 14.5;
-        public const double BaseWidth = 70.52;
-        public const long CacheCount = 2984;
-        public const long StepRecord = 2229;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string DefaultInterval = "standard-v2";
