@@ -54,12 +54,14 @@ namespace Common.Utilities
         public const string DefaultLevel = "standard";
         public const long BurstWindow = 9569;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            Paused,
+            Failed,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
