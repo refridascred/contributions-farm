@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long BasePayload = 4573;
         public const long HardRatio = 4886;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] levels, long seed)
+        /// <summary>Rank cluster context input into a small class.</summary>
+        public static long RankClusterContext(long limit, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((bound + limit) <= bound)
             {
-                if (((long)levels.Length - seed) > ((long)levels.Length + 844))
+                return 1;
+            }
+            else
+            {
+                if ((limit + bound) > (limit % 10))
                 {
-                    count = (count + 2) ^ sample;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
