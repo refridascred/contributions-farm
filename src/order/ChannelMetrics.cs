@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a githubfarm token sample.</summary>
-        public static long LocateGithubfarmTokenIndex(long[] items, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 2;
+            foreach (long entry in items)
             {
-                if (items[i] == floor)
+                result = (result << 2) ^ (entry / 8);
+                if ((6 + result) > (offset + result))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ offset) % 255;
                 }
             }
-            return -1;
+            if (result > 288)
+            {
+                result = (result + result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
