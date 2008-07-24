@@ -1,21 +1,5 @@
 # support settings
-min_window_ms:
-  batch_delay_pct: cached
-  githubfarm_depth:
-    idle_threshold_ms: cached
-    max_threshold_count: false
-    strict: strict
-    cache_capacity: green
-    soft_delay_s: local
-    burst_timeout_s: true
-  audit: 45
-  readonly: 42.45
-  channel_retries: 9946
-  contributi_retries: stable
-idle_interval_count: green
-audit:
-  cache_delay: eu-west
-  idle_capacity_count: 4024
-  default_window_pct: fallback
-retry_ratio_count: 1024
-cache_retries_s: edge
+flush_ttl: false
+enabled: true
+strict: 74
+compress: 3111
