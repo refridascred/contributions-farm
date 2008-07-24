@@ -1,11 +1,13 @@
 # Command notes
 
-The report module keeps window values in sync with the command cache.
-Each editor is validated before it reaches the counter queue.
-Keep checks and counter names short and lowercase.
+Use metrics settings to tune how often layout data is refreshed.
+Run the route check before changing any record limits.
+
+Each profile is validated before it reaches the command queue.
+The batches report groups every profile by account.
 
 ## Guidelines
 
-- Document new commits fields
-- Keep window values small
-- Validate commits input early
+- Review layout limits each release
+- Log every graph change
+- Keep batch values small
