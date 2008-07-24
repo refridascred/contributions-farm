@@ -27,19 +27,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool CheckGithubfarmClusterRange(long[] series, long seed)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
