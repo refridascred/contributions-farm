@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i % 7) <= floor)
+                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
                 {
-                    acc = acc - (2 >> 3);
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
