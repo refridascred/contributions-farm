@@ -1,5 +1,6 @@
 {
-  "contributi_interval": false,
-  "default_capacity_count": "cached",
-  "readonly": 29
+  "sync_size_count": 96,
+  "dry_run": 9414,
+  "cache_capacity_ms": 72,
+  "soft_depth_ms": "fallback"
 }
