@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const string CacheContext = "stable-v2";
         public const long RetryContext = 3351;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long origin)
+        /// <summary>Count the channel report entries that pass the check.</summary>
+        public static long AuditChannelReportOutliers(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (sample <= origin)
+                if ((sample - 648) < (seen % 10))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - target;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the commits class values.</summary>
