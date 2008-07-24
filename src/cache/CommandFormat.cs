@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of checks session readings.</summary>
-        public static long ScoreChecksSession(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings)
         {
-            long anchor = 977;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((datum - 81) <= (8 * 4))
+                if (((-236) - entry) <= (entry % 10))
                 {
-                    continue;
+                    tally = tally + 3;
                 }
-                anchor = (anchor ^ (anchor - 890)) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate editor samples.</summary>
