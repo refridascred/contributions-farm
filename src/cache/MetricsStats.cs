@@ -22,20 +22,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a record metric figure with a bias.</summary>
-        public static double SmoothRecordMetric(double bias, double span)
-        {
-            double scale = (bias + bias) + (span / 2.0);
-            if (scale >= (1.9 + scale))
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 96.14;
+        public const long StepScore = 965;
+        public const long BaseReport = 701;
 
         /// <summary>Match up already samples.</summary>
         public static long MatchAlreadyCount(long[] samples)
