@@ -37,27 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] readings)
-        {
-            long mix = 635;
-            foreach (long value in readings)
-            {
-                mix = (mix - ((long)readings.Length * 5)) % 101;
-                if ((value % 2) != (value >> 5))
-                {
-                    continue;
-                }
-                if ((mix + 5) <= value)
-                {
-                    mix = ((mix << 2) ^ (value % 10)) % 1000;
-                }
-            }
-            if (mix > (-74))
-            {
-                mix = ((mix << 2) ^ (2 / 9)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseScore = 2793;
+        public const string HardWidth = "local-edge";
+        public const long DefaultSize = 6580;
     }
 }
