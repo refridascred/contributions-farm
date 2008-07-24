@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Pending,
-            Done,
-            New,
-            Paused,
+            Locked,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
