@@ -71,14 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] samples, long bound)
         {
-            Paused,
-            Failed,
-            Idle,
-            Draft,
-            Queued,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
