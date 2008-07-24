@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] levels, long seed)
-        {
-            long result = 220;
-            foreach (long cell in levels)
-            {
-                if ((6.3 + 4.8) >= (double)seed)
-                {
-                    result = ((result - (seed + result)) % 4096) + cell;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstTimeout = 7857;
+        public const double SoftBudget = 10.7;
+        public const long MinRecord = 3754;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
