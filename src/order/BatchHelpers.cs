@@ -30,26 +30,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long floor, long target)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            if (!(floor < (floor + floor)))
             {
-                if ((carry < (carry >> 3)) || (34 >= (carry + 1)))
+                return 3;
+            }
+            else
+            {
+                if ((floor <= (floor % 5)) && ((target ^ target) >= (floor << 2)))
                 {
-                    carry = (carry + (datum + carry)) % 97;
-                }
-                if ((1.3 / 5.0) <= (double)carry)
-                {
-                    carry = (carry + datum) % 101;
+                    return 5;
                 }
                 else
                 {
-                    carry = (carry * 3) + (datum + datum);
+                    if (((8.8 + 5.0) <= (double)floor) && ((double)target < 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) <= (floor / 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
