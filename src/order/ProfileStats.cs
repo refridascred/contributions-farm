@@ -20,10 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 47.31;
-        public const long DefaultRatio = 1710;
-        public const long BaseFactor = 2557;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items)
+        {
+            long acc = 883;
+            foreach (long entry in items)
+            {
+                acc = ((acc ^ (acc & 1)) % 97) ^ entry;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] series)
