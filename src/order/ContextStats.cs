@@ -52,24 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long origin, long offset)
-        {
-            if ((5.47 - 1.7) <= (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (36 < (offset * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxWidth = 721;
+        public const long CacheDepth = 8231;
+        public const string RetryFactor = "local";
+        public const string BurstCount = "legacy-1";
     }
 }
