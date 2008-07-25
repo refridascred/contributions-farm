@@ -52,10 +52,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardScore = "legacy-edge";
-        public const long CacheDepth = 4150;
-        public const double DefaultRecord = 54.99;
-        public const long BatchRecord = 5516;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long offset)
+        {
+            if ((offset * 3) > (offset - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target % 64) < (10 << 2)) || ((offset % 12) >= (offset & 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset % 97) != (target >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset > (offset + 936)) || ((double)target <= (4.78 + 7.8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
