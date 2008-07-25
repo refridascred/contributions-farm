@@ -38,14 +38,20 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
         {
-            New,
-            Stale,
-            Dropped,
-            Failed,
-            Synced,
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result ^ target) % 65521) ^ (long)i2;
+                    result = (result << 2) ^ (target - result);
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
