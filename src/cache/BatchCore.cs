@@ -34,31 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long offset)
         {
-            long mark = 54;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mark <= (mark / 8))
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
                 {
-                    mark = ((mark * 5) + (696 >> 4)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (value & 255);
-                    mark = (mark + (mark & 127)) % 4096;
-                }
-                if ((-8) > (mark << 2))
-                {
-                    mark = (mark << 3) ^ ((-20) >> 1);
+                    return (long)i;
                 }
             }
-            if (mark > (-189))
-            {
-                mark = (mark + 924) % 101;
-            }
-            return mark;
+            return -1;
         }
     }
 }
