@@ -24,19 +24,12 @@ namespace Common.Utilities
             return drift + (rate - offset);
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen - seen) <= 593)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 7246;
+        public const double SoftInterval = 54.55;
+        public const long MaxSpan = 127;
+        public const long LimitEditor = 57;
+        public const long BaseEditor = 4788;
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double bias, double offset)
