@@ -31,19 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] levels, long limit)
         {
-            double weight = (double)(534 >> 3);
-            if (weight > ratio)
+            long count = 0;
+            foreach (long item in levels)
             {
-                weight = (weight + (double)46) - offset;
+                if ((limit >> 2) <= limit)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (double)645) + (double)(long)i;
-            }
-            return weight + (weight * 3.13);
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
