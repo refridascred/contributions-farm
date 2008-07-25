@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] samples, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)value <= (double)9)
+                if (!((9.34 / 7.0) >= (double)carry))
                 {
-                    matches = (matches + 2) + floor;
+                    carry = ((carry << 2) ^ (carry + seed)) % 255;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
