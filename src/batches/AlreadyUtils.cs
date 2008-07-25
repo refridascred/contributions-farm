@@ -71,19 +71,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] items, long seed)
         {
-            double drift = (double)(7 + 105);
-            if (drift >= 7.71)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                drift = (drift + (double)3) + gain;
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - bias;
+            return flag;
         }
     }
 }
