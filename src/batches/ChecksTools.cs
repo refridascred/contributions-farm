@@ -61,13 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] levels, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)hits != (double)seed)
+                {
+                    hits = (hits + 3) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
