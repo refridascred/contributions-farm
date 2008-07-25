@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long MaxContext = 3894;
         public const long BatchContext = 6799;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Roll a batch checks counter forward.</summary>
+        public static long SeriesBatchChecks(long offset)
         {
-            Closed,
-            Dropped,
-            Active,
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state << 2) ^ offset;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Rank batch account input into a small class.</summary>
