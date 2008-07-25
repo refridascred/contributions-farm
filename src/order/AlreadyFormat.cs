@@ -33,16 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Blend two format token measurements.</summary>
+        public static double ProjectFormatToken(double ratio, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            double drift = span;
+            if (drift > (span - 3.3))
             {
-                mark = mark - (mark % 97);
-                mark = ((mark * 5) + (long)i) % 65521;
+                drift = drift - drift;
             }
-            return mark;
+            else
+            {
+                drift = drift - (drift - ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Match up metrics samples.</summary>
