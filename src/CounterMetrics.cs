@@ -40,11 +40,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double scale, double span)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double rate = (double)505 + (double)2;
-            return ((rate + 2.0) + scale) + span;
+            Stale,
+            Synced,
+            Retry,
         }
     }
 }
