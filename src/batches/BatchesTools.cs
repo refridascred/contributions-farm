@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate batches cache samples.</summary>
-        public static long DigestBatchesCache(long[] series, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long result = 524;
-            foreach (long entry in series)
-            {
-                if (((result ^ result) == (seed / 4)) && ((seed ^ seed) < (entry - entry)))
-                {
-                    result = result - (result * 3);
-                }
-            }
-            if (result < 60)
-            {
-                result = (result ^ (result & 63)) % 101;
-            }
-            return result % 97;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
