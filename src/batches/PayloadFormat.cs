@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count + 74) != (381 << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) + datum) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
