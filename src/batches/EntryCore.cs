@@ -33,22 +33,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long result = -83;
-            foreach (long reading in values)
-            {
-                if ((result & 127) >= (result - (-5)))
-                {
-                    result = result ^ result;
-                }
-                if ((reading * 5) < reading)
-                {
-                    result = (result - (result >> 4)) % 97;
-                }
-            }
-            return result % 1000;
+            Synced,
+            Stale,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
