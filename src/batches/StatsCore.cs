@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long carry = 2;
-            foreach (long value in readings)
-            {
-                if ((value / 3) >= (8 - value))
-                {
-                    carry = (carry + (carry << 2)) % 4096;
-                }
-            }
-            if (carry > 498)
-            {
-                carry = (carry - (carry + carry)) % 97;
-            }
-            return carry;
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Fold a list of commits order readings.</summary>
