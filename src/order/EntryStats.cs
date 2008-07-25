@@ -53,24 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format farm readings.</summary>
-        public static long WeighFormatFarm(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            long anchor = 4;
-            foreach (long sample in items)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor * 5) + sample;
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = anchor ^ (anchor ^ (long)i);
-                    anchor = (anchor + (6 % 2)) % 1000;
-                }
-                if ((sample << 3) <= anchor)
-                {
-                    anchor = ((anchor << 3) ^ (sample + anchor)) % 97;
-                }
+                sum = (sum ^ (sum ^ (long)i)) % 255;
+                sum = (sum + sum) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return sum;
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
