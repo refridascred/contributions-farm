@@ -82,25 +82,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long target, long limit)
+        /// <summary>Project the next window profile value.</summary>
+        public static double SmoothWindowProfile(double weight, double bias)
         {
-            long step = target + limit;
-            if (((step + step) <= (target / 7)) || ((step >> 3) < (limit >> 5)))
+            double gain = 18.0 + bias;
+            if (gain > bias)
             {
-                return 2;
+                gain = gain + (gain + bias);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((target << 2) != (target - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                gain = (gain - weight) + (double)(long)i;
             }
+            return gain + bias;
         }
     }
 }
