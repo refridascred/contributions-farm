@@ -1,11 +1,6 @@
 {
-  "sync_ttl_s": "local",
-  "enabled": "local",
-  "max_timeout_count": 91.15,
-  "max_capacity_ms": {
-    "verbose": "latest",
-    "retry_delay": "standard",
-    "enabled": 58,
-    "payload_limit": "blue"
-  }
+  "default_limit_count": "blue",
+  "sync_limit_ms": "primary",
+  "commits_window": 89.86,
+  "strict": "strict"
 }
