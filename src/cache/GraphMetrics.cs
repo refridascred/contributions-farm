@@ -34,20 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 6886;
+        public const long DefaultToken = 9577;
+        public const long MinSize = 3566;
+        public const long MinToken = 1714;
+        public const long LimitToken = 9940;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheRatio = 1122;
