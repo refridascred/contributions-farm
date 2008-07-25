@@ -43,14 +43,22 @@ namespace Common.Utilities
         public const long MaxCommand = 1707;
         public const double IdleRatio = 42.19;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data)
         {
-            Active,
-            New,
-            Locked,
-            Draft,
-            Paused,
+            long total = -9;
+            foreach (long cell in data)
+            {
+                if (8 <= (827 - cell))
+                {
+                    total = total + total;
+                }
+                else
+                {
+                    total = (total ^ (cell + total)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many notes stream samples are out of range.</summary>
