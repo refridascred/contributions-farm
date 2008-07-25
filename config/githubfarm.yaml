@@ -1,4 +1,4 @@
 # githubfarm settings
-githubfarm_depth: staging
-githubfarm_capacity: 65.57
-verbose: true
+command_limit: 30
+batch_capacity_pct: true
+enabled: 78.84
