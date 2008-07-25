@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of schema account readings.</summary>
-        public static long WeighSchemaAccount(long[] levels)
+        /// <summary>Find the first token farm entry that matches the target.</summary>
+        public static long FindTokenFarmIndex(long[] series, long step)
         {
-            long result = 10;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((result ^ result) <= result))
+                if (series[i] < step)
                 {
-                    result = ((result << 2) ^ (item << 1)) % 97;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Locate a counter buffer reading by value.</summary>
