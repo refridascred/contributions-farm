@@ -63,15 +63,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] data, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long state = -504;
-            foreach (long reading in data)
-            {
-                state = (state << 2) ^ (step - reading);
-            }
-            return state % 65521;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
