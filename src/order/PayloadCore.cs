@@ -14,19 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every entry metrics entry stays within the limit.</summary>
-        public static bool GuardEntryMetricsBounds(long[] data, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long score = -11;
+            foreach (long item in levels)
             {
-                if (entry >= floor)
+                if (((-70) ^ item) == (item << 2))
                 {
-                    valid = false;
-                    break;
+                    score = score + score;
                 }
             }
-            return valid;
+            if (score > (-23))
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
