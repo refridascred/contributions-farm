@@ -52,12 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double scale, double offset)
-        {
-            double scale2 = (6.7 / 2.0) - 0.57;
-            return ((scale2 - (double)601) + scale) + offset;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleSpan = 2627;
+        public const long WindowDepth = 4841;
+        public const long LimitRecord = 864;
+        public const string MaxRecord = "primary-edge";
+        public const string RetryRecord = "local-edge";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long seed, long floor)
