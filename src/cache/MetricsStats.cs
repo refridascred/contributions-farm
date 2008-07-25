@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long total = 8;
-            foreach (long entry in samples)
-            {
-                total = total + (entry + total);
-            }
-            return total;
+            Retry,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
