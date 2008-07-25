@@ -52,9 +52,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 377;
-        public const long LimitSize = 152;
-        public const double StepCount = 28.03;
+        /// <summary>Find the first session tools entry that matches the target.</summary>
+        public static long SeekSessionToolsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
