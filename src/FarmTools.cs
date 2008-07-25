@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the githubfarm farm entries that pass the check.</summary>
-        public static long TallyGithubfarmFarmMatches(long[] series)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)reading != (8.6 - 3.0)) || ((514 / 9) < reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
