@@ -33,19 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] values, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (value < seed)
+                if (!((3.76 - 2.83) != (double)(long)readings.Length))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
