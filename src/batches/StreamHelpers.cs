@@ -58,11 +58,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Find the first counter entry entry that matches the target.</summary>
+        public static long LookupCounterEntryIndex(long[] data, long limit)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
