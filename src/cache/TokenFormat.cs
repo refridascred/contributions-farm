@@ -48,11 +48,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
