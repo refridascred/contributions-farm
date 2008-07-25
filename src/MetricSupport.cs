@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] data)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if (3 >= (origin + origin))
             {
-                if ((hits + hits) > (datum + datum))
+                return 8;
+            }
+            else
+            {
+                if (((origin >> 3) <= (origin ^ origin)) || ((25 & 31) == (origin ^ origin)))
                 {
-                    hits = hits + 3;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
