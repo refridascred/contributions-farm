@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a filter header.</summary>
