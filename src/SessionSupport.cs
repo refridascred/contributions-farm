@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Synced,
-            Failed,
-            Idle,
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
