@@ -72,21 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitLevel = 2250;
+        public const long WindowWidth = 8635;
+        public const string RetryBuffer = "legacy-v2";
+        public const long LimitBudget = 9203;
+        public const string DefaultBuffer = "strict-1";
     }
 }
