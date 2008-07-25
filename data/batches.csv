@@ -1,6 +1,9 @@
-id,label,score,count,owner
-1,local,892,primary,599
-2,423,954,908,901
-3,969,22.95,eu-west,407
-4,standard,25.81,93.81,46.47
-5,841,cached,strict,14
+id,weight,region,rank
+1,stable,83.72,cached
+2,cached,edge,standard
+3,staging,27.75,516
+4,blue,open,72.93
+5,450,50.35,286
+6,765,legacy,713
+7,24.12,172,547
+8,staging,667,94.11
