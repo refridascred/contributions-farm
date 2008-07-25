@@ -60,26 +60,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] readings)
         {
-            long sum = 2;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((long)data.Length / 7) <= sample)
+                if (9 < hits)
                 {
-                    sum = ((sum * 4) + (sample & 127)) % 101;
-                }
-                if ((floor << 2) <= (sample % 100))
-                {
-                    sum = ((sum << 3) ^ (floor - floor)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
