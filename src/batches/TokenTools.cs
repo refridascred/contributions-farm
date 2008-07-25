@@ -19,17 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel farm entry that matches the target.</summary>
-        public static long FindChannelFarmIndex(long[] readings, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = offset + floor;
+            if ((double)gap != (7.0 * 16.0))
             {
-                if (readings[i] > offset)
+                return 8;
+            }
+            else
+            {
+                if (((floor + offset) < (offset & 15)) && ((double)floor > (double)offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + offset) >= (389 / 4)) && ((1.57 * 4.0) != (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (gap < offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
