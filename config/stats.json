@@ -1,5 +1,8 @@
 {
-  "idle_interval_s": false,
-  "soft_retries_count": "local",
-  "farm_ratio": false
+  "burst_capacity_ms": false,
+  "cache_ratio": "staging",
+  "default_window_pct": true,
+  "command_size": "blue",
+  "profile_interval": false,
+  "sync_ratio": 250
 }
