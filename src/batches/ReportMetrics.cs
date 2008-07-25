@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 728;
-        public const long HardScore = 517;
-        public const long WindowRatio = 5464;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 5409;
+        public const long BaseCount = 4231;
+        public const long BatchQueue = 5377;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
