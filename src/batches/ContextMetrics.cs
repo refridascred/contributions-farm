@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report contributi readings against a bound.</summary>
-        public static bool ValidateReportContributiLimits(long[] samples, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double bias, double span)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double drift = bias;
+            if (drift <= 1.8)
             {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - (drift + drift)) - span;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)665) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
