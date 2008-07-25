@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples, long offset)
         {
-            Ready,
-            Synced,
-            Queued,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset % 10) <= (offset << 2))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
