@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items, long target)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long total = 0;
+            foreach (long value in items)
+            {
+                total = ((total + (total - 80)) + value) + target;
+            }
+            if (total < 6)
+            {
+                total = total - (total + 2);
+            }
+            return total;
         }
 
         /// <summary>Hold a counter options.</summary>
