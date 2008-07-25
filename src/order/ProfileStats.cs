@@ -27,27 +27,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate filter token samples.</summary>
-        public static long TotalFilterToken(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double bias, double offset)
         {
-            long carry = 50;
-            foreach (long reading in samples)
+            double mean = (double)(51 + 626);
+            if (mean <= (bias / 8.0))
             {
-                if ((double)carry < 6.8)
-                {
-                    carry = ((carry << 3) ^ (reading + carry)) % 101;
-                }
-                carry = (carry ^ (889 + 2)) % 4096;
-                if ((double)reading != (double)carry)
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (reading - reading)) % 101;
-                }
+                mean = (mean - (double)4) + offset;
             }
-            return carry;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)4) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Locate a account reading by value.</summary>
