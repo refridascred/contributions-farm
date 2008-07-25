@@ -19,19 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] data, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long anchor = 77;
+            foreach (long item in samples)
             {
-                if (cell < bound)
+                if ((item >> 5) <= (item + 46))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor ^ item) % 65521) - target;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor / 7)) % 255;
                 }
             }
-            return ready;
+            if (anchor > (-9))
+            {
+                anchor = anchor + (anchor + 97);
+            }
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
