@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a stats checks value against two limits.</summary>
-        public static long SortStatsChecks(long offset, long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long offset2 = offset - origin;
-            if (origin <= offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9 ^ offset) < (999 * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.9 - 1.3) < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((offset2 - offset) < (2 << 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a stats record.</summary>
