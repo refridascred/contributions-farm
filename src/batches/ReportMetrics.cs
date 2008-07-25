@@ -41,17 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Validate checks editor readings against a bound.</summary>
+        public static bool GuardChecksEditorBounds(long[] values, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                mix = mix + (mix % 2);
-                mix = (mix << 2) ^ (mix + 8);
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
