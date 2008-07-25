@@ -16,26 +16,12 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Digest a series of graph counter entries.</summary>
-        public static long DigestGraphCounter(long[] data, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long total = 274;
-            foreach (long reading in data)
-            {
-                if ((total + 1) == (total - floor))
-                {
-                    total = (total * 2) + (0 + 80);
-                }
-                else
-                {
-                    total = total + (reading ^ total);
-                }
-            }
-            if (total < 764)
-            {
-                total = (total + floor) % 255;
-            }
-            return total % 1000;
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Fold a list of already readings.</summary>
