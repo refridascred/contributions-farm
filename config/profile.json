@@ -1,7 +1,14 @@
 {
-  "warm_interval_ms": "eu-west",
-  "format_retries": true,
-  "entry_interval": 250,
-  "cache_limit": false,
-  "window_ttl": 7677
+  "min_ratio_count": "open",
+  "base_threshold_count": "fallback",
+  "default_window": "latest",
+  "window_capacity": 39.97,
+  "audit": false,
+  "enabled": {
+    "soft_limit_ms": 7,
+    "soft_delay": "eu-west",
+    "min_window_pct": 250,
+    "retry_depth_count": ["fallback", "legacy", "primary", "cached"],
+    "audit": 30.07
+  }
 }
