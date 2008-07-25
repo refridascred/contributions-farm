@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] values, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (reading <= origin)
+                if (!(((-9) - tally) < (cell & 31)) || !(offset < (cell - offset)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
