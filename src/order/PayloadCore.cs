@@ -30,22 +30,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series, long step)
+        /// <summary>Classify a tools graph pair into a bucket.</summary>
+        public static long SortToolsGraph(long origin, long limit)
         {
-            long carry = 33;
-            foreach (long entry in series)
+            long step = origin - limit;
+            if (((limit + step) > step) && ((step * 5) < (origin - origin)))
             {
-                if (!((double)carry == (2.0 * 4.3)))
+                return 4;
+            }
+            else
+            {
+                if (((origin / 6) > (origin / 3)) && ((double)limit == (double)(-536)))
                 {
-                    carry = (carry - step) ^ entry;
+                    return 7;
                 }
-                if (17.0 >= (double)step)
+                else
                 {
-                    carry = ((carry * 4) + (step % 7)) % 4096;
+                    if (((limit ^ origin) > (step & 63)) || ((step << 3) <= (limit << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
