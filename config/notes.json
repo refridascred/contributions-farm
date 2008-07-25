@@ -1,6 +1,5 @@
 {
-  "idle_interval_pct": ["fallback", "standard"],
-  "poll_threshold_pct": [497, 386],
-  "profile_interval": false,
-  "flush_retries_ms": 3722
+  "min_window_ms": ["local", "staging", "blue"],
+  "verbose": ["stable", "legacy", "legacy", "primary"],
+  "strict": 13
 }
