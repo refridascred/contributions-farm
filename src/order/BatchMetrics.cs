@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            double weight = 20.0;
+            return ((weight - 8.69) + scale) + offset;
         }
 
         /// <summary>Describe the payload mode values.</summary>
