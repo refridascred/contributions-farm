@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Active,
-            Synced,
-            Paused,
-            Done,
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every session format entry stays within the limit.</summary>
