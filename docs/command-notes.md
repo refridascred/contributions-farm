@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-Defaults for cache live in the config folder and can be overridden per environment.
+Run the commits check before changing any filter limits.
+A cluster that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Validate notes input early
-- Log every tools change
+- Validate metric input early
+- Keep editor values small
+- Review schema limits each release
+- Prefer batch defaults
