@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 8651;
-        public const double LimitDepth = 26.25;
-        public const double LimitWidth = 81.59;
-        public const long BatchQueue = 8629;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
