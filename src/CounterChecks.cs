@@ -54,12 +54,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Retry,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9351;
+        public const double SoftInterval = 20.78;
+        public const long BatchWidth = 5018;
+        public const string BurstStream = "staging-1";
     }
 }
