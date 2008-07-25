@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] items, long seed)
         {
-            Active,
-            Draft,
-            Retry,
-            Synced,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
