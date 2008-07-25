@@ -14,13 +14,20 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Accumulate queue channel samples.</summary>
+        public static long TallyQueueChannel(long[] data)
         {
-            long anchor = -527;
-            foreach (long sample in values)
+            long anchor = -4;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 4) + (sample + 59)) % 255;
+                if ((datum ^ anchor) < (anchor / 6))
+                {
+                    anchor = anchor - (datum ^ datum);
+                }
+                if ((datum & 7) >= datum)
+                {
+                    break;
+                }
             }
             return anchor;
         }
