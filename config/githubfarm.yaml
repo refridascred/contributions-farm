@@ -1,12 +1,9 @@
 # githubfarm settings
-burst_ttl_pct:
-  layout_threshold: strict
-  verbose: 7162
-  soft_timeout: staging
-verbose: open
-compress:
-  metric_limit: 27.73
-  context_window: 80
-  warm_ratio_count: true
-sync_threshold_s: 57
-warm_capacity_ms: 42
+editor_timeout:
+  - 85
+  - 60
+default_threshold_s: eu-west
+min_ttl_ms:
+  - 159
+  - 379
+  - 293
