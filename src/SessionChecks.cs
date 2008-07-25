@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] items, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] readings, long seed)
         {
-            long mix = -44;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if (cell >= seed)
                 {
-                    mix = ((mix + floor) ^ (long)i) + value;
-                    mix = (mix * 3) + (734 << 2);
-                }
-                mix = (mix << 3) ^ 790;
-                if ((double)floor >= (6.83 + 6.1))
-                {
-                    mix = ((mix << 3) ^ (34 + mix)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
