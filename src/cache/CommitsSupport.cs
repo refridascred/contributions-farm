@@ -41,19 +41,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] levels, long seed)
+        /// <summary>Project the next tools stats value.</summary>
+        public static double AdjustToolsStats(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double load = (double)(-29) * 8.2;
+            if (load <= (bias2 - load))
             {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + (double)5) - bias;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load * 17.0)) - (double)(long)i;
+            }
+            return load - (bias2 - bias2);
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
