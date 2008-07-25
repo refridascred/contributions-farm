@@ -65,18 +65,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
-        {
-            long carry = 95;
-            foreach (long item in items)
-            {
-                if ((0.4 - 19.0) > (double)item)
-                {
-                    carry = (carry * 2) + item;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 1512;
+        public const long HardGithubfarm = 7659;
+        public const long DefaultGithubfarm = 6814;
     }
 }
