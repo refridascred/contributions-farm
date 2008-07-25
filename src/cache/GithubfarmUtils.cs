@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next account batches value from a seed.</summary>
-        public static long IterateAccountBatches(long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (!((double)value >= 3.53) && (((origin >> 4) > origin) || ((matches + 28) > matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the batch phase values.</summary>
