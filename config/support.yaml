@@ -1,6 +1,5 @@
 # support settings
-default_interval: 9603
-cache_ratio_ms: 100
-audit: 30
-flush_threshold_count: true
-compress: true
+soft_ttl: 4150
+base_ttl_count: true
+max_size_s: eu-west
+channel_retries: 73.5
