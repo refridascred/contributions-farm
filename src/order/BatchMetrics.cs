@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            double weight = 20.0;
-            return ((weight - 8.69) + scale) + offset;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
