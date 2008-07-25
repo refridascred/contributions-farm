@@ -34,11 +34,23 @@ namespace Common.Utilities
             return weight - (6.66 - floor);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstInterval = 6701;
-        public const long MaxWidth = 2117;
-        public const long LimitDepth = 8666;
-        public const long SoftLevel = 7833;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((18.0 / 8.0) > (double)entry)
+                {
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
