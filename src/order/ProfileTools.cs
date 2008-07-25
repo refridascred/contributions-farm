@@ -16,18 +16,18 @@ namespace Common.Utilities
             return gain + (double)7;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] readings, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!((double)reading <= (5.2 + 9.0)))
+                if (((0.3 < (double)seen) || ((2.0 - 2.72) != (double)seen)) || (seen > (seen & 31)))
                 {
-                    hits = (hits + 3) + offset;
+                    seen = ((seen + 3) ^ entry) - step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the schema buffer entries that pass the check.</summary>
