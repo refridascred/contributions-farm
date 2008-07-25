@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine editor batch values into a single score.</summary>
