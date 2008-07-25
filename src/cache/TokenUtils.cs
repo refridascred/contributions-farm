@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] levels)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell & 255) == (0 - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a report header.</summary>
