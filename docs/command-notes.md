@@ -1,14 +1,15 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Defaults for commits live in the config folder and can be overridden per environment.
+The stats module keeps payload values in sync with the format cache.
+A githubfarm that stays idle for too long is moved to the entry list.
+Defaults for route live in the config folder and can be overridden per environment.
 
-Each farm is validated before it reaches the route queue.
-The already report groups every buffer by filter.
-Run the contributi check before changing any report limits.
+Keep report and tools names short and lowercase.
+Each session is validated before it reaches the token queue.
+Each profile is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Keep record values small
-- Document new commits fields
-- Log every profile change
+- Log every stream change
+- Keep metrics values small
+- Validate account input early
