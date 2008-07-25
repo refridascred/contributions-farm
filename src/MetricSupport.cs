@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const long LimitEditor = 57;
         public const long BaseEditor = 4788;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] data, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (data[i] > origin)
+                if (item >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
