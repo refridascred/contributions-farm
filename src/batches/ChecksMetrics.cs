@@ -68,11 +68,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc ^ (step % 8)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
