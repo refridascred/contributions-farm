@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 2;
+            foreach (long sample in items)
             {
-                if (((hits ^ item) != (item << 3)) || ((hits + 4) < (hits % 10)))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state * 2) + (sample << 1)) + offset;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
