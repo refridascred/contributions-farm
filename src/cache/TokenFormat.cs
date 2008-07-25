@@ -31,13 +31,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
