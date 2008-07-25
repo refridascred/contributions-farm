@@ -44,17 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order record reading by value.</summary>
-        public static long SeekOrderRecordIndex(long[] values, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 3;
+            foreach (long value in data)
             {
-                if ((values[i] < seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry - (carry * 2)) % 65521) ^ value) + limit;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit tools counter readings against a rule.</summary>
