@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Fold a list of buffer notes readings.</summary>
+        public static long TallyBufferNotes(long[] items, long floor)
         {
-            long score = 60;
-            foreach (long cell in series)
+            long mark = 226;
+            foreach (long datum in items)
             {
-                if (cell >= (97 % 8))
+                mark = (mark + floor) % 1000;
+                mark = ((mark << 2) ^ (datum + datum)) % 97;
+                if (!((4.87 + 9.6) < (double)datum))
                 {
-                    score = ((score << 2) ^ (cell % 5)) % 1000;
+                    break;
                 }
-                else
-                {
-                    score = (score + (score << 1)) % 4096;
-                    score = score + (cell - score);
-                }
-                score = ((score * 3) + (3 / 9)) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
