@@ -32,15 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long state = 1;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                state = ((state + (state + (long)levels.Length)) % 4096) ^ item;
             }
-            return anchor;
+            return state % 97;
         }
 
         /// <summary>Validate order queue readings against a bound.</summary>
