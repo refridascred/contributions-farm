@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long BatchStats = 2295;
         public const double RetryCount = 11.36;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long target)
         {
-            Retry,
-            Ready,
-            Closed,
-            Pending,
+            long score = 18;
+            foreach (long entry in items)
+            {
+                score = (score ^ (target & 255)) + entry;
+                score = score + (58 + score);
+            }
+            return score;
         }
 
         /// <summary>Describe the cluster state values.</summary>
