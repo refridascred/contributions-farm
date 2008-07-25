@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 2732;
+        public const string SoftCount = "strict-1";
+        public const long DefaultScore = 2616;
 
         /// <summary>Combine editor batch values into a single score.</summary>
         public static long ScoreEditorBatch(long[] samples, long origin)
