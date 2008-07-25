@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] series, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((sample < (bound - bound)) || (((bound % 100) <= (bound / 2)) || ((double)sample < (double)462)))
+                if ((origin - origin) == (long)readings.Length)
                 {
-                    count = count + 2;
+                    matches = (matches + 2) + value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a metrics account reading by value.</summary>
