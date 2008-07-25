@@ -39,16 +39,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
-            {
-                total = total - 42;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Dropped,
+            New,
+            Closed,
+            Ready,
+            Done,
         }
     }
 }
