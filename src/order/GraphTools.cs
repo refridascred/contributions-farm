@@ -52,32 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile stream value against two limits.</summary>
-        public static long RankProfileStream(long bound, long offset)
+        /// <summary>Look up the position of a support report sample.</summary>
+        public static long LocateSupportReportIndex(long[] data, long limit)
         {
-            long offset2 = bound ^ offset;
-            if (((offset - offset2) > bound) || ((double)bound < (double)0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset2 < (double)offset) && ((offset2 & 15) < (offset2 / 2)))
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 % 97) != (offset % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
