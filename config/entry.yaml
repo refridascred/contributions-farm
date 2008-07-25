@@ -1,7 +1,14 @@
 # entry settings
-idle_interval: 96.67
-audit: false
-max_depth_count: legacy
-contributi_limit: stable
-retry_retries_pct: 60
-hard_interval_pct: primary
+flush_ttl_count: strict
+retry_ttl_ms: standard
+default_ttl_count: latest
+min_depth_pct:
+  idle_threshold_pct: 91.64
+  min_threshold:
+    - primary
+    - staging
+    - staging
+    - edge
+  retry_interval: 85.36
+  strict: true
+  hard_threshold_count: green
