@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Check that every report token entry stays within the limit.</summary>
+        public static bool ValidateReportTokenBounds(long[] levels, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Accumulate cache samples.</summary>
