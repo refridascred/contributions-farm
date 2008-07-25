@@ -38,17 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (values[i] <= bound)
+                if (value < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
