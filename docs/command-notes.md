@@ -1,11 +1,15 @@
 # Command notes
 
-When a contributi fails, the support handler retries a few times before giving up.
-The graph report groups every batches by window.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Defaults for context live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
+
+The batches report groups every metric by stream.
+A cache that stays idle for too long is moved to the schema list.
+The report module keeps metrics values in sync with the channel cache.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Document new profile fields
-- Log every contributi change
+- Log every format change
+- Review channel limits each release
+- Keep session values small
+- Prefer schema defaults
