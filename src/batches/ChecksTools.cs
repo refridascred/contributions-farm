@@ -21,18 +21,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((hits ^ 633) > (reading - 0)) && ((origin << 1) > origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
