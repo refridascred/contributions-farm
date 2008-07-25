@@ -56,11 +56,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Closed,
+            Active,
+            Paused,
+            New,
         }
     }
 }
