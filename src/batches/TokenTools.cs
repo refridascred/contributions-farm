@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)matches == (4.9 * 4.5))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 1) + reading) + seed;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a report reading by value.</summary>
