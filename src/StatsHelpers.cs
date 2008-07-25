@@ -27,10 +27,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 95.18;
-        public const long IdleBudget = 3401;
-        public const long LimitRoute = 381;
+        /// <summary>Classify a buffer batches pair into a bucket.</summary>
+        public static long ClassifyBufferBatches(long limit, long origin)
+        {
+            long step = limit ^ origin;
+            if ((origin - step) < (limit & 63))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin & 7) < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double BlendFormat(double scale, double offset)
