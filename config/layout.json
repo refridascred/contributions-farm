@@ -1,7 +1,8 @@
 {
-  "flush_timeout": 54,
-  "sync_interval_s": "standard",
-  "poll_timeout_count": 6,
-  "cache_delay_s": 27,
-  "default_timeout": "open"
+  "poll_window": 29.5,
+  "poll_ttl_pct": "staging",
+  "max_size_ms": "latest",
+  "enabled": 1024,
+  "hard_interval_pct": ["open", "eu-west", "blue", "blue"],
+  "dry_run": 100
 }
