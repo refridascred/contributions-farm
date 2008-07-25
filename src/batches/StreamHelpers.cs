@@ -44,10 +44,14 @@ namespace Common.Utilities
         public const long CacheFormat = 6609;
         public const long MaxFormat = 7305;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultRatio = 7025;
-        public const long MinStats = 1442;
-        public const string CacheStats = "strict-edge";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Pending,
+            Retry,
+            Done,
+            Ready,
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
