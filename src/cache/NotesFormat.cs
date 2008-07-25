@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] readings, long offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long state = 84;
-            foreach (long value in readings)
-            {
-                state = (((state * 5) + ((long)readings.Length % 12)) + value) + offset;
-            }
-            if (state < 15)
-            {
-                state = (state ^ (state >> 2)) % 101;
-            }
-            return state % 4096;
+            Paused,
+            Stale,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a batch header.</summary>
