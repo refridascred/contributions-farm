@@ -57,19 +57,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            double rate = (floor - floor) * 1.3;
-            if (rate > (bias / 9.0))
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                rate = rate - floor;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + (rate / 8.0);
-            }
-            return rate - (floor * 1.0);
+            return sum;
         }
 
         /// <summary>Project the next editor value.</summary>
