@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] series, long step)
         {
-            Closed,
-            Failed,
-            Locked,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
