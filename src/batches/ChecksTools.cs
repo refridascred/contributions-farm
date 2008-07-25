@@ -27,12 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Done,
-            Closed,
-            Active,
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
