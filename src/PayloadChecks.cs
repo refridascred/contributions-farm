@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats stream samples.</summary>
-        public static long CombineStatsStream(long[] levels, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double bias, double span)
         {
-            long carry = 6;
-            foreach (long sample in levels)
+            double drift = 0.5;
+            if (drift <= (drift + drift))
             {
-                if ((double)floor < 0.52)
-                {
-                    carry = (carry ^ ((-3) + sample)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - 9) % 4096;
-                }
+                drift = drift + (span - 13.0);
             }
-            return carry % 1000;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + bias;
         }
 
         /// <summary>Measure how many session support samples are out of range.</summary>
