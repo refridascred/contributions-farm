@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const double LimitWidth = 81.59;
         public const long BatchQueue = 8629;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long sum = 58;
-            foreach (long reading in samples)
-            {
-                sum = ((sum + sum) % 101) ^ reading;
-            }
-            if (sum < 3)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
