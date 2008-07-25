@@ -27,23 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double weight, double bias)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series, long floor)
         {
-            double gain = (double)1 / 2.0;
-            if (gain > (gain / 5.0))
+            long mark = 1;
+            foreach (long item in series)
             {
-                gain = gain - (9.0 - bias);
+                mark = ((mark - mark) % 65521) ^ item;
             }
-            else
+            if (mark > 4)
             {
-                gain = gain - weight;
+                mark = (mark ^ (floor >> 1)) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (weight * 11.0)) + (double)(long)i;
-            }
-            return gain + weight;
+            return mark;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
