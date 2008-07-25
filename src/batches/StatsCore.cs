@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings, long limit)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long sum = 41;
-            foreach (long datum in readings)
-            {
-                sum = (((sum ^ (196 % 10)) % 255) ^ datum) + limit;
-            }
-            if (sum > 817)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum % 4096;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
