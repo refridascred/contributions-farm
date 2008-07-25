@@ -24,11 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstFactor = 3577;
-        public const long LimitLevel = 2988;
-        public const long BurstChannel = 29;
-        public const double LimitChannel = 38.08;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryDepth = 990;
+        public const double BurstEntry = 18.26;
+        public const long LimitEntry = 521;
+        public const long IdleEntry = 2620;
+        public const long StepEntry = 9210;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] items, long bound)
