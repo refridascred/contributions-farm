@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long acc = 133;
-            foreach (long item in items)
-            {
-                acc = ((acc + (acc + acc)) % 97) - item;
-            }
-            if (acc < 94)
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc % 65521;
+            Active,
+            Paused,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
