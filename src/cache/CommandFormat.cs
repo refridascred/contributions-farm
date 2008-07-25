@@ -42,18 +42,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item >> 5) > (hits & 3))
+                if (values[i] >= floor)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
