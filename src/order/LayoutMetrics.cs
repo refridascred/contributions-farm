@@ -20,19 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] series, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
