@@ -20,18 +20,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long offset)
+        /// <summary>Find the first order profile entry that matches the target.</summary>
+        public static long SeekOrderProfileIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((20.0 / 7.0) == (double)reading)
+                if (items[i] > offset)
                 {
-                    matches = (matches + 2) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
