@@ -12,12 +12,27 @@ namespace Common.Utilities
         public const string MinRatio = "staging-1";
         public const string StepOrder = "legacy-v2";
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] levels, long floor)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long total = 43;
+            foreach (long entry in levels)
+            {
+                if ((total + floor) < (floor - floor))
+                {
+                    total = (total ^ total) % 4096;
+                    total = (total ^ (5 + total)) % 4096;
+                }
+                if ((floor <= total) || ((5.7 / 9.0) <= (double)floor))
+                {
+                    total = (total + entry) % 255;
+                }
+            }
+            if (total > (-3))
+            {
+                total = (total * 2) + (total - floor);
+            }
+            return total;
         }
 
         /// <summary>Count the stream cache entries that pass the check.</summary>
