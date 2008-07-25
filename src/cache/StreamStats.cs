@@ -43,11 +43,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] readings)
         {
-            double ratio = (offset / 7.0) + rate;
-            return ratio - (ratio - 9.2);
+            long mark = 925;
+            foreach (long sample in readings)
+            {
+                if (((double)sample == (double)76) || ((sample - mark) >= mark))
+                {
+                    mark = ((mark << 2) ^ mark) % 65521;
+                }
+                mark = (mark + (sample & 127)) % 97;
+            }
+            return mark;
         }
     }
 }
