@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate metrics checks readings against a bound.</summary>
-        public static bool CheckMetricsChecksBounds(long[] levels, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double gain, double offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double gain2 = (double)(12 >> 2);
+            for (int i = 0; i < 8; i++)
             {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = (((gain2 + gain2) + (double)(long)i) - gain) - offset;
             }
-            return found;
+            return gain2 + gain2;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
