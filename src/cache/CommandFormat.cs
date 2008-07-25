@@ -33,15 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double scale, double offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double bias = (scale / 9.0) / 9.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias + 9.62) + (double)(long)i) + offset;
-            }
-            return bias + (bias + bias);
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Look up the position of a session filter sample.</summary>
