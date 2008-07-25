@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Idle,
-            Failed,
-            Stale,
-            Queued,
-            Ready,
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a layout context reading by value.</summary>
