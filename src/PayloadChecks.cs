@@ -90,15 +90,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double scale, double span)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            double drift = (double)822 - (double)55;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                drift = (drift + (scale * 1.0)) + (double)(long)i;
             }
-            return score;
+            return drift - (span - 11.0);
         }
 
         /// <summary>Describe the batch status values.</summary>
