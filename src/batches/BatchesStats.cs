@@ -46,30 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] readings, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] values)
         {
-            long result = 350;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((entry / 6) != (long)readings.Length)
+                if ((long)values.Length >= (416 << 1))
                 {
-                    result = result - target;
-                }
-                else
-                {
-                    result = (result << 2) ^ (entry * 5);
-                }
-                if (target <= (result & 63))
-                {
-                    break;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            if (result > 16)
-            {
-                result = ((result * 2) + (target + target)) % 65521;
-            }
-            return result;
+            return matches;
         }
     }
 }
