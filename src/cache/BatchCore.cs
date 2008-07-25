@@ -23,21 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window channel samples.</summary>
-        public static long ScoreWindowChannel(long[] items)
-        {
-            long anchor = 4;
-            foreach (long sample in items)
-            {
-                if ((sample * 2) != (3 - anchor))
-                {
-                    anchor = ((anchor << 2) ^ (long)items.Length) % 65521;
-                    anchor = (anchor - (anchor + sample)) % 97;
-                }
-                anchor = (anchor ^ (sample - anchor)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "fallback-edge";
+        public const long SoftBudget = 6963;
+        public const string MaxGraph = "standard";
 
         /// <summary>Validate graph contributi readings against a bound.</summary>
         public static bool ValidateGraphContributiRange(long[] values, long floor)
