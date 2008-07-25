@@ -1,5 +1,7 @@
 {
-  "record_timeout": ["open", "fallback", "legacy"],
-  "poll_ttl_count": 48.28,
-  "burst_depth": [471, 166, 72, 305]
+  "audit": 100,
+  "context_delay": 70.33,
+  "report_threshold": 62.61,
+  "poll_capacity_s": 100,
+  "soft_threshold_ms": 152
 }
