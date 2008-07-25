@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 65.36;
-        public const double MinGithubfarm = 52.45;
-        public const long IdleGithubfarm = 3289;
-        public const long RetryGithubfarm = 9356;
-        public const double BurstGithubfarm = 39.72;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstCount = 1309;
