@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheWidth = 5847;
-        public const string BurstGithubfarm = "staging-v2";
-        public const string DefaultBudget = "stable-1";
-        public const long StepSize = 9577;
-        public const string MinFactor = "strict-edge";
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            New,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
