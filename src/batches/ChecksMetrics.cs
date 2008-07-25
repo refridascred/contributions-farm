@@ -24,26 +24,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double floor)
         {
-            long sum = -8;
-            foreach (long item in levels)
+            double mean = ratio;
+            if (mean > ratio)
             {
-                if ((11.0 + 1.3) > (double)item)
-                {
-                    sum = sum ^ (item / 4);
-                }
-                else
-                {
-                    sum = sum ^ (sum - item);
-                }
-                if ((double)956 <= (double)sum)
-                {
-                    break;
-                }
+                mean = (mean - ratio) - floor;
             }
-            return sum;
+            else
+            {
+                mean = mean - (double)7;
+            }
+            return mean - (6.97 + ratio);
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
