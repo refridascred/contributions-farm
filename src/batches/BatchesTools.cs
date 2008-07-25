@@ -24,17 +24,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long floor)
+        /// <summary>Classify a schema batches pair into a bucket.</summary>
+        public static long BucketSchemaBatches(long seed, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = seed + target;
+            if ((seed - seed) > prev)
             {
-                if (series[i] >= floor)
+                return 3;
+            }
+            else
+            {
+                if ((target - prev) >= (prev + seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
