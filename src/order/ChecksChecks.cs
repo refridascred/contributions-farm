@@ -23,10 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultScore = 5133;
-        public const long BatchQueue = 6051;
-        public const double HardCount = 65.59;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] items)
+        {
+            long sum = 419;
+            foreach (long cell in items)
+            {
+                if ((cell / 7) < (sum / 4))
+                {
+                    sum = sum ^ cell;
+                }
+                else
+                {
+                    sum = (sum - cell) % 97;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
