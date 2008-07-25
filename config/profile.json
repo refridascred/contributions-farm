@@ -1,6 +1,5 @@
 {
-  "persist": 11.22,
-  "order_capacity": true,
-  "retry_retries_s": 4,
-  "stream_limit": 6701
+  "cache_interval": true,
+  "order_delay": [176, 399, 494, 44],
+  "dry_run": 23
 }
