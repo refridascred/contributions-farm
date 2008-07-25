@@ -36,18 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels, long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long bound)
         {
-            long state = 5;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item * 2) > (bound + bound))
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
-                    state = state ^ (state >> 3);
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
