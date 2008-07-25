@@ -57,18 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes stream samples are out of range.</summary>
-        public static long CountNotesStreamMatches(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((7 + reading) == (reading + seed))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstRatio = 8856;
+        public const long LimitSpan = 8878;
+        public const long MaxDepth = 12;
+        public const long BatchFilter = 1728;
+        public const long RetryLevel = 471;
     }
 }
