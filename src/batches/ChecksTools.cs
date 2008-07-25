@@ -61,18 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] values, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (limit < (sample + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
