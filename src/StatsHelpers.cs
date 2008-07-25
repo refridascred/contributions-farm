@@ -27,25 +27,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a buffer batches pair into a bucket.</summary>
-        public static long ClassifyBufferBatches(long limit, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double weight, double bias)
         {
-            long step = limit ^ origin;
-            if ((origin - step) < (limit & 63))
+            double gain = (double)1 / 2.0;
+            if (gain > (gain / 5.0))
             {
-                return 7;
+                gain = gain - (9.0 - bias);
             }
             else
             {
-                if ((origin & 7) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = gain - weight;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (weight * 11.0)) + (double)(long)i;
+            }
+            return gain + weight;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
