@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BaseDepth = 8890;
         public const long SoftScore = 5159;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftInterval = 6138;
-        public const double IdleSize = 0.59;
-        public const double HardTimeout = 52.7;
-        public const long MinBudget = 5240;
-        public const long RetrySpan = 1206;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 6197;
+        public const long WindowTimeout = 5796;
+        public const string SoftEntry = "legacy-edge";
+        public const long RetryEntry = 7255;
 
         /// <summary>Check that every window channel entry stays within the limit.</summary>
         public static bool ValidateWindowChannelLimits(long[] items, long seed)
