@@ -53,25 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long origin, long bound)
-        {
-            long next = origin + bound;
-            if ((origin - 70) == (origin + 17))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)next != (8.1 + 3.07))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "primary";
+        public const long CacheBatches = 6965;
+        public const double LimitSize = 22.3;
+        public const string LimitRatio = "staging-1";
     }
 }
