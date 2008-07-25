@@ -80,21 +80,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up order account samples.</summary>
-        public static long CompareOrderAccountCount(long[] readings)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] <= target)
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
