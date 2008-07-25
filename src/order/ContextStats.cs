@@ -33,14 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Synced,
-            Dropped,
-            Stale,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardScore = "legacy-edge";
+        public const long CacheDepth = 4150;
+        public const double DefaultRecord = 54.99;
+        public const long BatchRecord = 5516;
     }
 }
