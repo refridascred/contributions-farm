@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxFactor = "local-1";
+        public const string CacheCommand = "open";
+        public const string StepCommand = "latest-edge";
+        public const long DefaultScore = 6236;
+        public const string CacheSize = "latest-1";
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
