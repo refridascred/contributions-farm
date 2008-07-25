@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] readings, long limit)
         {
-            long score = 3;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                score = ((score ^ (score - score)) % 255) - sample;
-                score = (score ^ (score + target)) % 65521;
-                if ((score + score) != (target - target))
+                if ((6.0 > (double)datum) && (((limit + count) < count) && ((6 - count) < (datum << 2))))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (score > 48)
-            {
-                score = score ^ (score % 64);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
