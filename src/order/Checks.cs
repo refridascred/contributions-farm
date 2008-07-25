@@ -39,31 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] values, long step)
         {
-            if (floor > seed)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((18.0 + 12.0) < (double)floor)
+                if (983 >= (77 + hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed % 16) <= (seed >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = ((hits + 1) + sample) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
