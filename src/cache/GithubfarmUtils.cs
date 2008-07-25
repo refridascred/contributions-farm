@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const double StepWidth = 93.17;
         public const long WindowFactor = 8907;
 
-        /// <summary>Count the context record entries that pass the check.</summary>
-        public static long TallyContextRecordHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((long)samples.Length ^ sample) < 93)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 1494;
+        public const double HardRatio = 29.9;
+        public const long IdleLevel = 5020;
+        public const long StepInterval = 9930;
+        public const double WindowSize = 79.15;
     }
 }
