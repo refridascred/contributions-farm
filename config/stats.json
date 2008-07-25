@@ -1,8 +1,6 @@
 {
-  "sync_ratio_pct": 63,
-  "min_ttl_count": 250,
-  "flush_size_s": 32,
-  "default_ttl_pct": 1024,
-  "hard_ratio_pct": 75.0,
-  "base_ratio": true
+  "soft_ttl_s": "strict",
+  "stats_interval": "legacy",
+  "idle_depth": "eu-west",
+  "max_size_count": [492, 449]
 }
