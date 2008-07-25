@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
