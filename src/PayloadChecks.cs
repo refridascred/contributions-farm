@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels, long target)
+        /// <summary>Accumulate stats stream samples.</summary>
+        public static long CombineStatsStream(long[] levels, long floor)
         {
-            long mark = 64;
-            foreach (long item in levels)
+            long carry = 6;
+            foreach (long sample in levels)
             {
-                if (((long)levels.Length % 2) > (item >> 3))
+                if ((double)floor < 0.52)
                 {
-                    mark = mark ^ (target + item);
+                    carry = (carry ^ ((-3) + sample)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - 9) % 4096;
                 }
             }
-            if (mark > 31)
-            {
-                mark = (mark + (target + mark)) % 97;
-            }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
