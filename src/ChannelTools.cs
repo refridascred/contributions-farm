@@ -37,17 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context checks sample.</summary>
-        public static long SeekContextChecksIndex(long[] items, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                if (sample > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
