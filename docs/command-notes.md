@@ -1,13 +1,14 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The layout helpers are pure functions, so they are safe to call from any thread.
+A buffer that stays idle for too long is moved to the batch list.
+Each format is validated before it reaches the route queue.
 
-Keep stream and tools names short and lowercase.
-Keep queue and already names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
+When a graph fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate layout input early
-- Log every route change
+- Log every token change
+- Document new context fields
+- Review entry limits each release
+- Keep metrics values small
