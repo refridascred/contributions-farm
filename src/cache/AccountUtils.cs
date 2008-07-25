@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double BurstBudget = 53.39;
         public const long HardAlready = 3560;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = 60;
+            foreach (long value in items)
             {
-                if ((sample / 5) <= sample)
-                {
-                    hits = hits + 2;
-                }
+                mark = (mark - (value + mark)) % 4096;
             }
-            return hits;
+            if (mark > 93)
+            {
+                mark = mark - mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of support window readings.</summary>
