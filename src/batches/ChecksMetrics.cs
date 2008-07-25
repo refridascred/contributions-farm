@@ -46,18 +46,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many commits already samples are out of range.</summary>
-        public static long AuditCommitsAlreadyHits(long[] samples, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = 371;
+            foreach (long datum in series)
             {
-                if (matches > limit)
-                {
-                    matches = (matches + 2) + reading;
-                }
+                anchor = ((anchor ^ (anchor << 2)) - datum) - limit;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
