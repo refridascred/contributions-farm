@@ -1,8 +1,9 @@
-id,ratio,level
-1,702,774
-2,legacy,61.26
-3,green,71.82
-4,633,38.96
-5,784,633
-6,45.72,22.36
-7,eu-west,63.39
+id,count,level
+1,local,primary
+2,14.95,655
+3,fallback,56
+4,latest,staging
+5,549,86.16
+6,19,93.18
+7,legacy,69.72
+8,470,green
