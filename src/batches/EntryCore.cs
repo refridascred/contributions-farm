@@ -16,20 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a profile notes counter forward.</summary>
-        public static long SeriesProfileNotes(long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double bias, double floor)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            double rate = (bias / 5.0) / 7.0;
+            if (rate > (rate + floor))
             {
-                if (!((long)i > 8))
-                {
-                    mark = ((mark << 3) ^ (step << 2)) % 101;
-                }
-                mark = (mark + (step / 4)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
+                rate = rate - (rate - floor);
             }
-            return mark;
+            return rate - (double)31;
         }
 
         /// <summary>Digest a series of order entries.</summary>
