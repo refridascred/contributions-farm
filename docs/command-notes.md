@@ -1,13 +1,14 @@
 # Command notes
 
-When a route fails, the notes handler retries a few times before giving up.
-Each cluster is validated before it reaches the account queue.
+The batches module keeps format values in sync with the context cache.
+A report that stays idle for too long is moved to the batches list.
 
-The batch report groups every route by editor.
-Run the window check before changing any cache limits.
+The format helpers are pure functions, so they are safe to call from any thread.
+The session report groups every record by metrics.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate route input early
-- Keep tools values small
+- Document new filter fields
+- Keep editor values small
+- Log every entry change
