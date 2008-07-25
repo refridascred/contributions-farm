@@ -35,12 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryLevel = 1155;
-        public const long DefaultScore = 7655;
-        public const long BurstCommand = 2736;
-        public const string BurstLevel = "fallback-edge";
-        public const long CacheCommand = 5469;
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long AuditTokenCommitsHits(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((hits < (hits + value)) || ((0 >> 3) >= origin)) || !((origin * 4) <= (value + value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] values)
