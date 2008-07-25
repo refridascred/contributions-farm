@@ -15,13 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Active,
             Dropped,
-            Synced,
-            Idle,
+            Pending,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
