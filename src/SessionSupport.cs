@@ -23,13 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] readings, long offset)
         {
-            Failed,
-            Synced,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (hits <= (reading + offset))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
