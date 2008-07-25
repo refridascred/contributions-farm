@@ -1,15 +1,7 @@
 {
-  "max_window_pct": {
-    "hard_delay": {
-      "base_limit_pct": "edge",
-      "retry_interval_ms": false,
-      "persist": 84.62,
-      "cache_ratio_ms": false
-    },
-    "warm_timeout_pct": true,
-    "sync_threshold_pct": 49,
-    "session_delay": 500
-  },
-  "commits_ratio": "open",
-  "min_retries_s": 6334
+  "max_window": 54,
+  "burst_depth_count": 96,
+  "max_limit": 22,
+  "enabled": "eu-west",
+  "flush_limit": 77
 }
