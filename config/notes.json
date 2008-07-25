@@ -1,6 +1,8 @@
 {
-  "retry_retries": "open",
-  "burst_limit_count": 9.97,
-  "default_capacity": 1231,
-  "command_window": 55
+  "enabled": 62,
+  "githubfarm_depth": 57.91,
+  "notes_size": 82.34,
+  "audit": 49.12,
+  "layout_timeout": 61,
+  "batch_retries_s": false
 }
