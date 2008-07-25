@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] readings, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!(seen >= (6 * 3)))
-                {
-                    seen = ((seen + 1) - value) + offset;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
