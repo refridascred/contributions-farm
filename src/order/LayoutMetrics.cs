@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseInterval = "open-1";
-        public const string HardSpan = "cached-1";
-        public const long IdleRatio = 3925;
-        public const long CacheFactor = 5258;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] items, long floor)
