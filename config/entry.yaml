@@ -1,14 +1,23 @@
 # entry settings
-flush_ttl_count: strict
-retry_ttl_ms: standard
-default_ttl_count: latest
-min_depth_pct:
-  idle_threshold_pct: 91.64
-  min_threshold:
-    - primary
-    - staging
-    - staging
-    - edge
-  retry_interval: 85.36
-  strict: true
-  hard_threshold_count: green
+cache_interval: 1024
+base_retries:
+  - fallback
+  - strict
+retry_limit_pct: open
+enabled:
+  layout_interval: primary
+  compress:
+    - 61
+    - 46
+    - 113
+  idle_ttl: 65.83
+readonly:
+  - fallback
+  - green
+  - edge
+  - fallback
+account_retries:
+  - 408
+  - 331
+  - 427
+  - 91
