@@ -53,21 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings, long step)
-        {
-            long anchor = 9;
-            foreach (long cell in readings)
-            {
-                if (((step + anchor) >= (anchor + cell)) || ((step & 63) <= (cell % 8)))
-                {
-                    anchor = ((anchor << 3) ^ (step + anchor)) % 4096;
-                }
-                anchor = (anchor << 2) ^ (step + step);
-                anchor = (anchor - (13 + 62)) % 101;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSpan = 8381;
+        public const long MaxProfile = 6641;
+        public const long MaxTimeout = 6814;
+        public const string BatchFactor = "fallback-edge";
+        public const long CacheProfile = 7792;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long WeighRecord(long[] readings)
