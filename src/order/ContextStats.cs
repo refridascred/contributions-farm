@@ -20,14 +20,30 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            Idle,
-            Draft,
-            Active,
-            Closed,
-            Dropped,
+            long total = 3;
+            foreach (long item in samples)
+            {
+                if (((item % 97) < (total / 4)) && (item > (item * 3)))
+                {
+                    total = (total ^ (371 ^ item)) % 255;
+                }
+                if ((double)total > (5.0 / 8.0))
+                {
+                    total = total + (total % 97);
+                }
+                if (64 <= total)
+                {
+                    total = total + (total + total);
+                }
+            }
+            if (total < 9)
+            {
+                total = (total << 3) ^ (total & 7);
+            }
+            return total % 1000;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
