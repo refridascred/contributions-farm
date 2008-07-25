@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const double WindowGraph = 0.88;
         public const double BurstGraph = 15.05;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 20.02;
-        public const long BaseWidth = 5058;
-        public const double CacheStream = 43.13;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((tally % 100) < tally))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long BucketTools(long limit, long floor)
