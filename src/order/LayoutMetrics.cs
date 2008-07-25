@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] values, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long acc = 37;
+            foreach (long sample in items)
             {
-                if (cell > bound)
+                if ((floor / 5) > (floor ^ floor))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc ^ (sample >> 1)) % 1000;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a channel info.</summary>
