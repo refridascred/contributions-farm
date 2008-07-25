@@ -37,21 +37,32 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = seed - floor;
+            if (((2.2 / 8.0) >= (double)step) && ((9.27 / 5.0) < (double)step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((8.5 - 19.0) > (double)step)
                 {
-                    if ((items[i] + items[j]) < 12)
+                    return 8;
+                }
+                else
+                {
+                    if (!(step <= ((-45) + floor)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the notes level values.</summary>
