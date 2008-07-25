@@ -16,22 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] data, long step)
         {
-            long sum = 4;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (((sum * 5) <= (offset >> 2)) || ((double)datum > (double)offset))
+                if (reading <= step)
                 {
-                    sum = sum - (5 * 4);
-                }
-                if (datum < (519 + 546))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
