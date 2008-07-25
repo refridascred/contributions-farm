@@ -15,21 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of cache entry readings.</summary>
-        public static long CompareCacheEntryCount(long[] values)
+        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
+        public static double SmoothGithubfarmProfile(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = bias;
+            return (mean + (mean / 4.0)) + bias2;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
