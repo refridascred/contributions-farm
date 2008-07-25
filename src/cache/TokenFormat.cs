@@ -30,22 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            long state = 161;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)origin != (double)4)
+                if ((tally - cell) >= (tally - tally))
                 {
-                    state = state + cell;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    state = state ^ cell;
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
