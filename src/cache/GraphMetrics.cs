@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings, long bound)
+        /// <summary>Find the first stats buffer entry that matches the target.</summary>
+        public static long FindStatsBufferIndex(long[] series, long seed)
         {
-            long state = 738;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound ^ entry) >= (entry * 5))
+                if (series[i] <= seed)
                 {
-                    state = (state * 2) + (bound * 3);
+                    return (long)i;
                 }
             }
-            if (state > 48)
-            {
-                state = (state - (state + 7)) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
