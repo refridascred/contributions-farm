@@ -16,19 +16,19 @@ namespace Common.Utilities
             return rate + (double)119;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long bound)
         {
-            long score = 88;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                score = score ^ datum;
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score < 6)
-            {
-                score = (score - (score - score)) % 65521;
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
