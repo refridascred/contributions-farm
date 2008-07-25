@@ -33,39 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long bound, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] values, long seed)
         {
-            long gap = bound ^ offset;
-            if (((bound >> 1) == (18 ^ offset)) || ((gap / 4) < (0 + offset)))
+            bool flag = true;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (573 < ((-70) ^ gap))
+                if (value < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - 49) >= gap)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + 295) <= (offset >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
