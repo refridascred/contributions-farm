@@ -43,19 +43,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] items, long floor)
+        /// <summary>Audit schema editor readings against a rule.</summary>
+        public static long MeasureSchemaEditorOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (datum <= floor)
+                if (5.8 < (double)cell)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the context status values.</summary>
