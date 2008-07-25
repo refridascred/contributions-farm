@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] readings, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long acc = 909;
+            foreach (long sample in readings)
             {
-                if (reading <= offset)
+                if (((long)readings.Length * 4) != (110 + acc))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - (sample << 2)) % 1000;
                 }
             }
-            return ok;
+            if (acc > 493)
+            {
+                acc = ((acc * 5) + (acc ^ acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two profile measurements.</summary>
