@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const double LimitWidth = 81.59;
         public const long BatchQueue = 8629;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = 58;
+            foreach (long reading in samples)
+            {
+                sum = ((sum + sum) % 101) ^ reading;
+            }
+            if (sum < 3)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
     }
 }
