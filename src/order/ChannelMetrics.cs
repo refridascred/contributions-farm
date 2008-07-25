@@ -30,15 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] samples, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long total = 65;
-            foreach (long value in samples)
-            {
-                total = ((total - (value & 63)) % 65521) - origin;
-            }
-            return total;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
