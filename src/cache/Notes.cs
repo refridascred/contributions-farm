@@ -53,14 +53,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank counter metrics input into a small class.</summary>
+        public static long SortCounterMetrics(long bound, long limit)
         {
-            Done,
-            Synced,
-            Stale,
-            Failed,
-            Dropped,
+            if (!(447 >= (bound + limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) <= (limit & 15))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 1) > (bound + 91))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
