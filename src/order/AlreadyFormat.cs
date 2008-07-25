@@ -33,23 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two format token measurements.</summary>
-        public static double ProjectFormatToken(double ratio, double span)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long target)
         {
-            double drift = span;
-            if (drift > (span - 3.3))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - drift;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (drift - ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + ratio;
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
