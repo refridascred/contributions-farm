@@ -30,24 +30,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long bound, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double gain, double span)
         {
-            if (((199 % 12) > (offset + offset)) && ((offset * 4) > (bound + bound)))
+            double bias = gain;
+            if (bias >= (span / 6.0))
             {
-                return 7;
+                bias = bias + bias;
             }
-            else
-            {
-                if ((bound > (bound * 5)) || ((7.0 + 9.45) == (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return bias + (double)849;
         }
 
         /// <summary>Hold a metric stats.</summary>
