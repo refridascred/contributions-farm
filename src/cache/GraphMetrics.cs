@@ -50,21 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed - seed) < seed2)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed2 > (double)seed)
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
