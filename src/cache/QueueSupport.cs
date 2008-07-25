@@ -24,12 +24,31 @@ namespace Common.Utilities
         public const double LimitWidth = 81.59;
         public const long BatchQueue = 8629;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long seed, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            if ((double)floor != (0.91 * 7.47))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed + floor) <= (seed ^ (-343))) && (seed >= (floor / 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - floor) < (7 - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
