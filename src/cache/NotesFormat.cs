@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            Ready,
-            Locked,
-            Pending,
-            Idle,
+            long score = 30;
+            foreach (long datum in readings)
+            {
+                if ((score + score) <= (3 >> 3))
+                {
+                    score = ((score << 2) ^ (datum % 7)) % 97;
+                }
+                else
+                {
+                    score = (score ^ ((long)readings.Length - score)) % 4096;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the filter class values.</summary>
