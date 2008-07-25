@@ -45,12 +45,20 @@ namespace Common.Utilities
         public const long CacheFormat = 6609;
         public const long MaxFormat = 7305;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Fold a list of stats account readings.</summary>
+        public static long FoldStatsAccount(long[] values)
         {
-            Paused,
-            Active,
-            Done,
+            long carry = 316;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = (carry - (long)i) + cell;
+                    carry = carry ^ (carry % 16);
+                }
+                carry = carry ^ (102 / 8);
+            }
+            return carry;
         }
 
         /// <summary>Adjust a filter channel reading.</summary>
