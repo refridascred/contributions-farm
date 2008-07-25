@@ -32,10 +32,13 @@ namespace Common.Utilities
         public const string DefaultEntry = "local";
         public const long LimitEntry = 2202;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 80.68;
-        public const long HardSpan = 471;
-        public const long BurstMetrics = 7004;
-        public const long DefaultCount = 2394;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
