@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Digest a series of stats cluster entries.</summary>
+        public static long CombineStatsCluster(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mark = 17;
+            foreach (long cell in readings)
             {
-                if (seen <= (item & 127))
+                if (!((double)cell >= (4.0 * 2.09)))
                 {
-                    seen = seen + 2;
+                    mark = mark ^ (cell & 255);
                 }
             }
-            return seen;
+            if (mark > 8)
+            {
+                mark = (mark * 5) + (mark / 7);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
