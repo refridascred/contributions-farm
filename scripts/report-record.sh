@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open fallback blue eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-primary}"
+RECORD_LIMIT=325
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
