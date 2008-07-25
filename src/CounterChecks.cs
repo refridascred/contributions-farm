@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double weight, double offset)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            double rate = weight;
+            if (rate < 3.98)
+            {
+                rate = rate + (weight / 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 4.3) + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Digest a series of profile route entries.</summary>
