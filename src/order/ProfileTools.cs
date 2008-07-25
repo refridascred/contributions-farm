@@ -55,18 +55,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit tools counter readings against a rule.</summary>
-        public static long CountToolsCounterGaps(long[] samples, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long step = seed + seed2;
+            if (seed < (seed2 & 1))
             {
-                if (floor <= seen)
+                return 1;
+            }
+            else
+            {
+                if (((seed ^ seed) == (step >> 3)) && ((step % 100) < (seed2 + seed2)))
                 {
-                    seen = (seen + 3) ^ cell;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
