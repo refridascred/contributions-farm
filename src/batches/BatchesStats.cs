@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] series)
-        {
-            long result = 8;
-            foreach (long value in series)
-            {
-                result = ((result * 2) + (value - value)) % 101;
-            }
-            if (result < 34)
-            {
-                result = (result * 2) + result;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftBudget = 3609;
+        public const long HardCount = 8368;
+        public const long StepTimeout = 570;
+        public const long LimitFarm = 5241;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long origin)
