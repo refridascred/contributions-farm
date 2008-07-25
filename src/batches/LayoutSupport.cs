@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string LimitSupport = "strict";
         public const double CacheTimeout = 6.77;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] data, long floor)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
