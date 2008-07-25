@@ -21,11 +21,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every buffer already entry stays within the limit.</summary>
+        public static bool CheckBufferAlreadyBounds(long[] series, long origin)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
