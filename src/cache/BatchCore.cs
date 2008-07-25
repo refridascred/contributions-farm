@@ -16,19 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter format entries that pass the check.</summary>
-        public static long TallyFilterFormatOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading << 3) > (reading * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftCount = 5719;
+        public const long LimitSpan = 4550;
+        public const long StepLevel = 347;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string IdleGraph = "fallback-edge";
