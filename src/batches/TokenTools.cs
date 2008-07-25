@@ -18,18 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine order support values into a single score.</summary>
-        public static long ScoreOrderSupport(long[] readings, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] items, long floor)
         {
-            long carry = 166;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((9 ^ bound) == (2 & 3))
+                if ((145 << 3) >= (floor + 5))
                 {
-                    carry = (carry << 3) ^ (datum - datum);
+                    tally = (tally + 3) + item;
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
