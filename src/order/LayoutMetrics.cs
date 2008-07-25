@@ -27,23 +27,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
         {
-            long score = 512;
-            foreach (long sample in levels)
+            long sum = 949;
+            foreach (long value in values)
             {
-                score = (score - sample) % 255;
-                if (!((score & 7) < (2 << 1)))
-                {
-                    score = ((score << 3) ^ (sample / 8)) % 255;
-                }
-                else
-                {
-                    score = (score ^ sample) % 101;
-                }
+                sum = (sum - (value & 7)) % 65521;
             }
-            return score % 65521;
+            if (sum < 29)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum;
         }
     }
 }
