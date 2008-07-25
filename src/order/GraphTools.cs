@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long origin)
         {
-            long carry = 5;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ (entry * 3)) % 4096;
-                carry = ((carry << 2) ^ (long)values.Length) % 1000;
-                if (!(6 < (7 + origin)))
+                if ((series[i] <= origin) && ((series[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two window already measurements.</summary>
