@@ -23,19 +23,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long sum = 20;
-            foreach (long entry in items)
-            {
-                sum = ((sum ^ sum) % 65521) ^ entry;
-            }
-            if (sum > (-184))
-            {
-                sum = (sum ^ (step - step)) % 97;
-            }
-            return sum % 97;
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
