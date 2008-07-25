@@ -76,19 +76,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] items, long seed)
+        /// <summary>Locate a schema githubfarm reading by value.</summary>
+        public static long LookupSchemaGithubfarmIndex(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= seed)
+                if (series[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
