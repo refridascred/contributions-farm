@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstLevel = 1237;
-        public const double BaseDepth = 39.2;
-        public const string IdleSize = "staging-edge";
-        public const long HardBudget = 3770;
-        public const long MinMetrics = 8120;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double scale, double span)
+        {
+            double bias = scale;
+            if (bias > (19.0 * 5.0))
+            {
+                bias = bias - (double)5;
+            }
+            else
+            {
+                bias = bias + 0.28;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + (double)450;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
