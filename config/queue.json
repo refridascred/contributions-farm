@@ -1,6 +1,8 @@
 {
-  "enabled": "standard",
-  "format_ttl": 20,
-  "support_depth": false,
-  "min_depth_ms": 542
+  "readonly": 14.95,
+  "soft_delay_pct": 41.39,
+  "strict": 71.3,
+  "counter_depth": 5217,
+  "stream_depth": 30,
+  "cluster_capacity": "fallback"
 }
