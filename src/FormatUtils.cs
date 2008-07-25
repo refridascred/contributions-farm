@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a buffer batch pair into a bucket.</summary>
+        public static long RankBufferBatch(long limit, long bound)
         {
-            Stale,
-            New,
-            Queued,
+            if ((double)limit <= (7.6 * 7.5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound % 12) < (limit + bound)) && ((bound + 894) < bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
