@@ -72,15 +72,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
