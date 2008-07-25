@@ -16,16 +16,12 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowTimeout = 7255;
+        public const double BurstMetric = 37.12;
+        public const long LimitFactor = 6233;
+        public const string IdleSize = "latest";
+        public const string MaxScore = "staging-v2";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] series, long origin)
