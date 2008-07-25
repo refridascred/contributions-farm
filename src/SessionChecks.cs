@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] levels)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double weight2 = (weight * 0.3) - (span - 0.42);
+            if (weight2 < weight)
             {
-                if ((reading * 3) <= 95)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight2 = weight2 + weight2;
             }
-            return seen;
+            else
+            {
+                weight2 = weight2 - span;
+            }
+            return weight2 + 5.11;
         }
 
         /// <summary>Adjust a counter reading.</summary>
