@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Digest a series of profile route entries.</summary>
+        public static long FoldProfileRoute(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long mark = 73;
+            foreach (long reading in items)
+            {
+                mark = mark + (mark - reading);
+            }
+            if (mark < 2)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Match up report samples.</summary>
