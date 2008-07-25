@@ -20,14 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            Active,
-            Retry,
-            Synced,
-            Pending,
-            Queued,
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((11.0 - 5.17) <= (double)(long)i)
+                {
+                    mix = ((mix * 5) + (seed >> 4)) % 1000;
+                }
+                mix = mix - (mix + (long)i);
+                mix = mix - ((long)i & 1);
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
