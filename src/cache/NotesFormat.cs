@@ -24,10 +24,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 9196;
-        public const double RetryScore = 86.69;
-        public const long StepLevel = 889;
-        public const string BaseScore = "primary-1";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels)
+        {
+            long total = 914;
+            foreach (long item in levels)
+            {
+                if (95 < (total >> 1))
+                {
+                    total = total - (total >> 3);
+                }
+                else
+                {
+                    total = (total - (item / 9)) % 255;
+                }
+                if ((5.5 * 3.0) == (double)item)
+                {
+                    break;
+                }
+            }
+            if (total > 67)
+            {
+                total = ((total << 2) ^ (total ^ total)) % 255;
+            }
+            return total % 97;
+        }
     }
 }
