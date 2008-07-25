@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "fallback-edge";
-        public const double HardAlready = 22.42;
-        public const double StepRatio = 10.63;
-        public const long BaseRatio = 7841;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Done,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
