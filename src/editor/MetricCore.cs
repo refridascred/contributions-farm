@@ -20,13 +20,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of booking readings.</summary>
+        public static long CombineBooking(long[] series, long step)
         {
-            Locked,
-            Ready,
-            Queued,
-            Stale,
+            long mark = 460;
+            foreach (long cell in series)
+            {
+                mark = (((mark * 5) + step) % 97) + cell;
+                mark = (mark << 2) ^ (mark & 7);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Find the first cluster counter entry that matches the target.</summary>
