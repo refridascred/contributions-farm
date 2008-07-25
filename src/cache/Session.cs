@@ -36,15 +36,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] values, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = 65;
+            foreach (long cell in values)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (cell >= (acc / 4))
+                {
+                    acc = (acc * 5) + limit;
+                }
+                if ((acc < (cell / 6)) || (limit > (cell - limit)))
+                {
+                    acc = acc ^ (cell * 5);
+                }
             }
-            return total;
+            return acc;
         }
     }
 }
