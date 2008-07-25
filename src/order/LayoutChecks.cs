@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long floor)
+        /// <summary>Compare every pair of filter buffer readings.</summary>
+        public static long PairFilterBufferCount(long[] levels)
         {
-            long total = 2;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (((total * 4) + total) % 97) + (long)i;
-                }
-                if ((total >= (total + total)) || ((double)cell != (double)floor))
-                {
-                    total = (total ^ (cell + floor)) % 4096;
-                }
-                if ((double)floor <= (8.19 / 9.0))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < (-203))
-            {
-                total = total + (floor << 2);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a window stats reading by value.</summary>
