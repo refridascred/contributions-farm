@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up notes token samples.</summary>
-        public static long OverlapNotesTokenCount(long[] readings)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(812 + 35);
+            if (gain >= ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - (double)(-2);
             }
-            return count;
+            else
+            {
+                gain = gain + (bias + bias);
+            }
+            return gain - (gain - 4.1);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
