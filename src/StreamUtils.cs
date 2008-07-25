@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            long total = 57;
-            foreach (long reading in levels)
+            long acc = 7;
+            foreach (long datum in readings)
             {
-                if (((85 + total) == (total / 5)) || ((100 - (long)levels.Length) > (443 - 254)))
+                if (acc < (acc << 3))
                 {
-                    total = total - reading;
+                    acc = (acc - (358 & 15)) + datum;
+                }
+                if (!((double)(long)readings.Length >= 5.23))
+                {
+                    acc = acc - acc;
                 }
                 else
                 {
-                    total = (total + reading) % 65521;
+                    acc = (acc - (276 / 7)) % 101;
                 }
             }
-            return total % 1000;
+            if (acc > 3)
+            {
+                acc = (acc - (acc + 2)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
