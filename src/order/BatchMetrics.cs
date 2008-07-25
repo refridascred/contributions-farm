@@ -21,26 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long seed, long floor)
-        {
-            long gap = seed + floor;
-            if (((755 >> 2) == (seed ^ gap)) && ((seed ^ gap) == (215 % 64)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed < (double)gap) || ((0 / 4) >= (seed % 24)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 7130;
+        public const string SoftSpan = "open-1";
+        public const long WindowBuffer = 7650;
+        public const long RetryDepth = 254;
+        public const long IdleScore = 3596;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleSpan = 2627;
