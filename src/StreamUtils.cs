@@ -57,13 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Failed,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultScore = 5131;
+        public const long RetrySchema = 4220;
+        public const long DefaultSchema = 6135;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] series)
