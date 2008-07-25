@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const string WindowStream = "staging-v2";
         public const string BaseStream = "primary";
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Idle,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a report entry.</summary>
