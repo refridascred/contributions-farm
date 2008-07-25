@@ -63,18 +63,16 @@ namespace Common.Utilities
         public const long MaxCommand = 1707;
         public const double IdleRatio = 42.19;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long offset)
         {
-            long carry = 5;
-            foreach (long entry in levels)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)entry >= (10.0 * 3.46))
-                {
-                    carry = carry ^ (6 + floor);
-                }
+                sum = (sum << 2) ^ 75;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Measure how many notes stream samples are out of range.</summary>
