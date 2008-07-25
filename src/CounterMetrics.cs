@@ -70,22 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((cell * 4) < (seed + 180)) && !((806 + cell) > (seed + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetrySpan = 2036;
+        public const long LimitEntry = 9717;
+        public const long BaseFactor = 3498;
+        public const long BaseLevel = 9803;
     }
 }
