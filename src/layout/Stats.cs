@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] data, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = -3;
+            foreach (long datum in series)
             {
-                if (!((seen + limit) <= (seen + seen)) || (limit > (limit + reading)))
+                if ((mix > (400 & 255)) && ((datum + 103) >= (datum + datum)))
                 {
-                    seen = seen + 3;
+                    mix = ((mix << 3) ^ (datum & 1)) % 4096;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
