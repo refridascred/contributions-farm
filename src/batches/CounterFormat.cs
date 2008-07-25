@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "primary";
+        public const long CacheLevel = 2848;
+        public const long BatchAccount = 822;
 
         /// <summary>Accumulate queue channel samples.</summary>
         public static long TallyQueueChannel(long[] data)
