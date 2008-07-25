@@ -1,7 +1,19 @@
 {
-  "hard_capacity_count": "eu-west",
-  "persist": 36.67,
-  "batch_delay": true,
-  "enabled": true,
-  "poll_threshold_ms": "standard"
+  "token_capacity": "fallback",
+  "support_depth": {
+    "min_depth_ms": "eu-west",
+    "contributi_ttl": 30.96,
+    "idle_size_pct": 93.22,
+    "poll_ttl_pct": {
+      "readonly": "green",
+      "audit": true,
+      "idle_depth_ms": "cached",
+      "default_delay": 67.78,
+      "retry_interval": "green",
+      "cache_ratio": "local"
+    }
+  },
+  "compress": 91.96,
+  "persist": [85, 341],
+  "support_window": ["stable", "staging", "green", "strict"]
 }
