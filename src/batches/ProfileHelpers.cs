@@ -58,11 +58,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 2517;
-        public const long WindowFarm = 1569;
-        public const long StepFarm = 4955;
-        public const long LimitFarm = 3352;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 408;
+        public const long SoftCount = 9;
+        public const double RetrySession = 8.86;
 
         /// <summary>Digest a series of tools checks entries.</summary>
         public static long CombineToolsChecks(long[] data, long limit)
