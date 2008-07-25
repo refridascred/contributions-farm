@@ -49,10 +49,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstFactor = "staging";
-        public const double LimitGraph = 67.91;
-        public const double WindowTimeout = 48.37;
+        /// <summary>Derive the next token order value from a seed.</summary>
+        public static long StepTokenOrder(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((target * 3) > (anchor + 525))
+                {
+                    anchor = (anchor - (632 + target)) % 1000;
+                    anchor = anchor - (anchor + target);
+                    break;
+                }
+                anchor = (anchor ^ (anchor / 2)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ScaleCounter(double scale, double span)
