@@ -46,15 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] series, long limit)
+        /// <summary>Count farm record pairs that satisfy a relation.</summary>
+        public static long CompareFarmRecordCount(long[] values)
         {
-            long anchor = 371;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor ^ (anchor << 2)) - datum) - limit;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
