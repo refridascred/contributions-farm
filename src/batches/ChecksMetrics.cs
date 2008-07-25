@@ -68,12 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series, long step)
         {
-            Synced,
-            Idle,
-            Retry,
+            long acc = -6;
+            foreach (long cell in series)
+            {
+                acc = (((acc ^ ((-734) - acc)) % 1000) ^ cell) - step;
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
