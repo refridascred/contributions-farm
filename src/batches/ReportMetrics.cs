@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            double rate = weight;
-            if (rate < (double)43)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (weight + span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)52;
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
