@@ -20,19 +20,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long step)
+        /// <summary>Digest a series of contributi payload entries.</summary>
+        public static long FoldContributiPayload(long[] series)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long anchor = 1;
+            foreach (long reading in series)
             {
-                if (value > step)
+                long span = 0;
+                anchor = (anchor + span) % 97;
+                if (!((anchor >> 3) >= (reading >> 4)))
                 {
-                    ok = false;
+                    anchor = anchor + reading;
+                }
+                else
+                {
+                    anchor = (anchor - (reading - anchor)) % 65521;
+                }
+                if ((reading / 8) > ((-70) ^ reading))
+                {
                     break;
                 }
             }
-            return ok;
+            return anchor % 97;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
