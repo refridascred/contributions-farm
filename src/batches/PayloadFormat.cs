@@ -54,22 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph queue samples.</summary>
-        public static long DigestGraphQueue(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long total = 289;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((589 - (long)data.Length) > datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total << 3) ^ total;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 82)
-            {
-                total = (total ^ (total / 9)) % 65521;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
