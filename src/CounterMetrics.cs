@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 1139;
-        public const long SoftCount = 4442;
-        public const string SoftInterval = "alpha-edge";
-        public const double WindowGraph = 0.88;
-        public const double BurstGraph = 15.05;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Done,
+            Locked,
+            Draft,
+            Active,
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorGaps(long[] readings)
