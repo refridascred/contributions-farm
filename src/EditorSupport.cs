@@ -59,17 +59,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next token buffer value from a seed.</summary>
-        public static long DeriveTokenBuffer(long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] readings, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                carry = (carry - (offset ^ (long)i)) % 1000;
-                carry = (carry * 3) + (carry * 3);
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((873 % 24) >= hits)
+                {
+                    hits = ((hits + 2) + entry) - step;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Accumulate graph already samples.</summary>
