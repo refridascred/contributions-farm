@@ -52,19 +52,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the context status values.</summary>
