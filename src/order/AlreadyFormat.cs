@@ -19,23 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache githubfarm values into a single score.</summary>
-        public static long TotalCacheGithubfarm(long[] series)
+        /// <summary>Count channel context pairs that satisfy a relation.</summary>
+        public static long PairChannelContextCount(long[] levels)
         {
-            long state = 5;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ 50) % 101;
-                if (item >= (item & 255))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 3) + item) % 4096;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 2)
-            {
-                state = (state - (state - 96)) % 1000;
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
