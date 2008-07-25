@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window stats reading by value.</summary>
-        public static long SeekWindowStatsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 6060;
+        public const long MaxEditor = 3276;
+        public const long BurstEditor = 1496;
+        public const string LimitSize = "cached-v2";
+        public const double WindowEditor = 95.53;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
