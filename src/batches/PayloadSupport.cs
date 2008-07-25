@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report editor entries.</summary>
-        public static long CombineReportEditor(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] levels, long bound)
         {
-            long result = 423;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                result = result + (result ^ result);
-                if ((double)cell <= 11.0)
+                if ((double)count < (7.32 + 4.0))
                 {
-                    break;
+                    count = ((count + 3) ^ value) + bound;
                 }
             }
-            if (result < 215)
-            {
-                result = result ^ (result ^ result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
