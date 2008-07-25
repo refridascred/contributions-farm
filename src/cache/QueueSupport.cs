@@ -21,19 +21,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every buffer already entry stays within the limit.</summary>
-        public static bool CheckBufferAlreadyBounds(long[] series, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long result = 8;
+            foreach (long item in readings)
             {
-                if (cell != origin)
+                result = ((result << 2) ^ (item + result)) % 97;
+                if ((result * 4) >= (item * 4))
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 3) ^ (3 ^ result)) % 65521;
                 }
             }
-            return ready;
+            return result;
         }
     }
 }
