@@ -31,12 +31,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
