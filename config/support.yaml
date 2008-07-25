@@ -1,24 +1,19 @@
 # support settings
-batch_delay: false
-hard_ttl_s: false
-poll_timeout_s: local
-retry_capacity_ms: 7940
-burst_capacity_pct: 37
-soft_ttl:
-  soft_retries:
-    burst_ratio_count: 74
-    hard_limit: 19
-    sync_delay_ms:
-      - standard
-      - local
-    min_capacity_s:
-      - 48
-      - 398
-      - 231
-      - 104
-    cache_capacity_s: strict
-    sync_delay_s: true
-  profile_interval: true
-  layout_limit: legacy
-  default_delay: eu-west
-  poll_interval: primary
+report_ratio: 82
+warm_window_ms:
+  batch_ttl_count:
+    - 477
+    - 246
+    - 489
+  strict: 24.58
+  flush_delay_s: 32.24
+enabled: 82
+metrics_delay: local
+retry_depth_count:
+  readonly: standard
+  queue_limit: 100
+  verbose: 2
+  audit: 26.8
+  max_window: local
+  flush_limit_pct: false
+retry_window_count: 8914
