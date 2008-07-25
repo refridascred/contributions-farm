@@ -20,13 +20,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Locate a cache account reading by value.</summary>
+        public static long LocateCacheAccountIndex(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
