@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long BatchStats = 2295;
         public const double RetryCount = 11.36;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 893;
+            foreach (long entry in samples)
             {
-                if (seen <= cell)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (((anchor + (anchor - anchor)) % 101) + entry) + seed;
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
