@@ -19,18 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] items)
+        /// <summary>Combine cache githubfarm values into a single score.</summary>
+        public static long TotalCacheGithubfarm(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long state = 5;
+            foreach (long item in series)
             {
-                if (3 >= item)
+                state = ((state << 2) ^ 50) % 101;
+                if (item >= (item & 255))
                 {
-                    hits = hits + 2;
+                    state = ((state * 3) + item) % 4096;
                 }
             }
-            return hits;
+            if (state < 2)
+            {
+                state = (state - (state - 96)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
