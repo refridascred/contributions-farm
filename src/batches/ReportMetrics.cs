@@ -32,24 +32,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] items)
         {
-            if ((offset + offset) >= (offset % 7))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 12) < (offset >> 2))
+                if ((count % 60) < (value / 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
