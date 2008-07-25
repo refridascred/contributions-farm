@@ -45,11 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinBudget = "primary-edge";
-        public const string MinSpan = "open-edge";
-        public const long RetryLevel = 6071;
-        public const long RetryProfile = 4136;
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long AuditBatchContributiGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((1.9 * 0.84) >= (double)hits)
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long DigestToken(long[] readings, long floor)
