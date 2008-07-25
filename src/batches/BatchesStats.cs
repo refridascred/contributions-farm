@@ -43,10 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseBudget = 4333;
-        public const long StepSize = 1450;
-        public const double BaseAccount = 86.99;
-        public const long RetryInterval = 3744;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
