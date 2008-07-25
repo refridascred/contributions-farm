@@ -20,24 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cache command samples.</summary>
-        public static long CombineCacheCommand(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long origin)
         {
-            long total = 95;
-            foreach (long datum in series)
+            if ((double)bound <= (4.26 / 3.0))
             {
-                long gap = (3 - 7) & 31;
-                if (!((gap >> 3) <= gap))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound >= 4.02)
                 {
-                    total = ((total << 2) ^ ((-470) - gap)) - datum;
+                    return 4;
                 }
-                total = ((total << 2) ^ (total + 9)) % 4096;
+                else
+                {
+                    if (origin >= (origin * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((650 + origin) < (3 + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            if (total > 1)
-            {
-                total = (total - total) % 1000;
-            }
-            return total % 97;
         }
 
         /// <summary>Combine account values into a single score.</summary>
