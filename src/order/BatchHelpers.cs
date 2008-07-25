@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleCount = 85.14;
-        public const string WindowContext = "latest";
-        public const long MaxContext = 3894;
-        public const long BatchContext = 6799;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public double Count { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Combine editor batch values into a single score.</summary>
         public static long ScoreEditorBatch(long[] samples, long origin)
