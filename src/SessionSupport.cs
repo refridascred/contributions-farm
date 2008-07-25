@@ -40,21 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 4831;
+        public const double WindowSession = 31.93;
+        public const string CacheScore = "staging-v2";
+        public const double RetrySession = 76.04;
     }
 }
