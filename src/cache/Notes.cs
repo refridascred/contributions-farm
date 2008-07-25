@@ -53,23 +53,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (matches >= ((-4) + matches))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 85.85;
+        public const long MaxEditor = 4042;
+        public const string MinRatio = "stable-edge";
+        public const long BaseInterval = 1227;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
