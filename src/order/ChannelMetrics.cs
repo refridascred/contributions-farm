@@ -29,11 +29,38 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long step)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            if ((step / 6) <= 7)
+            {
+                return 0;
+            }
+            else
+            {
+                if (step < origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step + origin) <= origin) || ((origin & 127) > (origin * 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - step) != (9 + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
