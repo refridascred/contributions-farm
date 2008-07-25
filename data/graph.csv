@@ -1,9 +1,8 @@
-id,active,state
-1,533,fallback
-2,94.05,96.11
-3,90.71,60.43
-4,826,82.27
-5,31,270
-6,757,821
-7,477,staging
-8,22.49,79.32
+id,token,score,level
+1,cached,208,open
+2,strict,854,65.65
+3,standard,67,60.69
+4,cached,426,480
+5,666,392,796
+6,85.46,edge,cached
+7,local,60.48,34.21
