@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every layout stream entry stays within the limit.</summary>
-        public static bool CheckLayoutStreamBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 7914;
+        public const long WindowPayload = 7242;
+        public const long BurstScore = 8742;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryBounds(long[] samples, long bound)
