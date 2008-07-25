@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long BaseCommits = 3753;
         public const long WindowInterval = 7326;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3168;
+        public const string HardCount = "staging-edge";
+        public const string CacheChannel = "primary-v2";
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
