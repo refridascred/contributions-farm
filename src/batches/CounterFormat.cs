@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (item >= hits)
+                if (datum > (matches * 3))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
