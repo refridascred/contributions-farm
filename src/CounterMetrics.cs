@@ -21,20 +21,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every command report entry stays within the limit.</summary>
-        public static bool CheckCommandReportLimits(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 20.02;
+        public const long BaseWidth = 5058;
+        public const double CacheStream = 43.13;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long BucketTools(long limit, long floor)
