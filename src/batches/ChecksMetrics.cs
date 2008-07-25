@@ -20,19 +20,12 @@ namespace Common.Utilities
             return drift - (double)13;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double gain = scale;
-            if (gain <= (double)(-999))
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (bias - bias)) + (double)(long)i;
-            }
-            return gain - gain;
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
