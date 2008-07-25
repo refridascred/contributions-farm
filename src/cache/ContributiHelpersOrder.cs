@@ -24,18 +24,12 @@ namespace Common.Utilities
             return load - 9.4;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((((long)values.Length >> 2) <= sample) || ((sample * 5) >= (count + sample))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
