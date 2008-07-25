@@ -19,16 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits tools readings.</summary>
-        public static long TotalCommitsTools(long[] levels, long step)
-        {
-            long score = 2;
-            foreach (long datum in levels)
-            {
-                score = ((score << 3) ^ (datum << 3)) + step;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 47.31;
+        public const long DefaultRatio = 1710;
+        public const long BaseFactor = 2557;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long ScoreStream(long[] data, long target)
