@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (5.23 <= (double)sample)
+                if (!!(444 > (seen ^ cell)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a session snapshot.</summary>
