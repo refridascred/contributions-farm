@@ -82,15 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Blend two contributi already measurements.</summary>
+        public static double BlendContributiAlready(double bias, double offset)
         {
-            double rate = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate - rate) + (double)(long)i) - floor;
-            }
-            return rate + (6.0 + scale);
+            double weight = (offset * 3.0) / 6.0;
+            return (weight + offset) + bias;
         }
     }
 }
