@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long origin, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long next = origin + floor;
-            if (((floor + next) < floor) || ((next + 132) >= 260))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)703 != (double)origin) || ((floor + floor) >= (16 & 31)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Retry,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Combine editor batch values into a single score.</summary>
