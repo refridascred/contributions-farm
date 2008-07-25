@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseTimeout = 4691;
-        public const long MaxOrder = 7705;
-        public const long WindowLevel = 7817;
-        public const long LimitFactor = 1020;
-        public const long MaxFactor = 3450;
+        /// <summary>Match up notes token samples.</summary>
+        public static long OverlapNotesTokenCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsLimits(long[] samples, long bound)
