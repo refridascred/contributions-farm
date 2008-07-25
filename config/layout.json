@@ -1,6 +1,29 @@
 {
-  "burst_retries_ms": ["stable", "strict", "blue", "edge"],
-  "retry_timeout_ms": "blue",
-  "command_timeout": "local",
-  "compress": 3751
+  "retry_depth_count": false,
+  "hard_ttl_count": {
+    "retry_window_s": 75.48,
+    "metrics_size": 25.97,
+    "retry_ratio_pct": 30
+  },
+  "min_timeout_s": "local",
+  "retry_window": {
+    "flush_timeout": {
+      "sync_timeout": 6186,
+      "warm_retries_pct": "blue",
+      "sync_depth_pct": [291, 310, 25, 69],
+      "queue_timeout": "fallback",
+      "retry_timeout_count": 500
+    },
+    "max_capacity_s": {
+      "batch_threshold": 86.7,
+      "hard_retries": 2,
+      "readonly": [186, 380, 427],
+      "sync_ttl_count": "fallback",
+      "batch_ratio": 86.68
+    },
+    "account_ratio": "open",
+    "default_limit_s": 9.86
+  },
+  "graph_timeout": 60,
+  "strict": 76
 }
