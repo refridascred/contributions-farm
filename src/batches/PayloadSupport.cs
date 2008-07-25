@@ -24,12 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryDepth = 990;
-        public const double BurstEntry = 18.26;
-        public const long LimitEntry = 521;
-        public const long IdleEntry = 2620;
-        public const long StepEntry = 9210;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] items, long bound)
