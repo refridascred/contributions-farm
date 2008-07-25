@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first contributi already entry that matches the target.</summary>
-        public static long LocateContributiAlreadyIndex(long[] samples, long bound)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
