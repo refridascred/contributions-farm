@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] data, long limit)
         {
-            long result = 7;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (offset <= (result + result))
+                if (reading > limit)
                 {
-                    result = (result + (entry & 15)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the batches level values.</summary>
