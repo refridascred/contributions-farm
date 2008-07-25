@@ -1,5 +1,6 @@
 {
-  "retry_capacity_count": 8740,
-  "flush_depth": false,
-  "audit": 7799
+  "compress": "stable",
+  "retry_depth_s": "standard",
+  "base_size": [169, 330],
+  "payload_limit": "latest"
 }
