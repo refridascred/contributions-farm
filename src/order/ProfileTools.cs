@@ -54,13 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a stream filter value against two limits.</summary>
+        public static long BucketStreamFilter(long seed, long origin)
         {
-            Idle,
-            Synced,
-            Active,
-            Closed,
+            if ((double)seed <= (9.4 - 10.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin < (3.31 + 17.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
