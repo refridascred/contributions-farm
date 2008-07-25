@@ -36,17 +36,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] data, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (data[i] < floor)
+                if (sample != target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
