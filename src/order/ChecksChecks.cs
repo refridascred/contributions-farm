@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] items, long seed)
+        /// <summary>Check that every record buffer entry stays within the limit.</summary>
+        public static bool GuardRecordBufferBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (!((24 + seed) > (datum / 2)))
+                if (datum < seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a window record.</summary>
