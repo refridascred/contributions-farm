@@ -78,12 +78,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchWidth = 807;
-        public const string DefaultRoute = "open-v2";
-        public const long BaseFactor = 4068;
-        public const long BurstLevel = 7293;
-        public const long RetryRoute = 4351;
+        /// <summary>Validate layout cache readings against a bound.</summary>
+        public static bool VerifyLayoutCacheRange(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a tools token reading.</summary>
         public static double BlendToolsToken(double bias, double floor)
