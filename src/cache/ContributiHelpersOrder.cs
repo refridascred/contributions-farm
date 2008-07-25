@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate order commits samples.</summary>
-        public static long FoldOrderCommits(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long result = 60;
-            foreach (long value in samples)
-            {
-                result = result ^ (result + result);
-                if ((value + value) < (value >> 5))
-                {
-                    result = (result ^ (value % 12)) % 65521;
-                }
-                if ((result >> 3) != (result / 7))
-                {
-                    result = ((result * 2) + (result - (long)samples.Length)) % 101;
-                }
-            }
-            return result;
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a graph entry.</summary>
