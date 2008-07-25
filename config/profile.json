@@ -1,6 +1,9 @@
 {
-  "compress": false,
-  "sync_delay": "green",
-  "commits_window": 534,
-  "payload_timeout": 250
+  "warm_ttl": false,
+  "persist": false,
+  "cache_window_ms": {
+    "farm_ttl": 57.95,
+    "base_limit_ms": 1024,
+    "hard_limit_ms": [83, 148, 285, 494]
+  }
 }
