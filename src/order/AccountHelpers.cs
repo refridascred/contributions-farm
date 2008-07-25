@@ -36,23 +36,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the buffer entry series from a seed.</summary>
-        public static long DeriveBufferEntry(long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long target2)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            if ((target2 + target) < (target2 - target2))
             {
-                if (target <= (target & 1))
-                {
-                    state = ((state << 3) ^ state) % 255;
-                }
-                if ((state - target) <= ((long)i - state))
-                {
-                    state = ((state * 2) + (-1)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((double)target2 <= (3.79 - 2.73))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((82 % 7) >= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics options.</summary>
