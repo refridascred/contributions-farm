@@ -1,14 +1,13 @@
 # Command notes
 
-The token module keeps batch values in sync with the schema cache.
-Each graph is validated before it reaches the commits queue.
-Each already is validated before it reaches the route queue.
+When a route fails, the notes handler retries a few times before giving up.
+Each cluster is validated before it reaches the account queue.
 
-The stream module keeps schema values in sync with the support cache.
-A filter that stays idle for too long is moved to the command list.
+The batch report groups every route by editor.
+Run the window check before changing any cache limits.
 
 ## Guidelines
 
-- Validate payload input early
-- Log every queue change
-- Document new session fields
+- Prefer batch defaults
+- Validate route input early
+- Keep tools values small
