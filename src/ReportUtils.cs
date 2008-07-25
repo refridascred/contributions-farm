@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Accumulate commits stream samples.</summary>
+        public static long ScoreCommitsStream(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 29;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (((mark << 3) ^ (sample * 4)) % 97) - origin;
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Describe the graph kind values.</summary>
