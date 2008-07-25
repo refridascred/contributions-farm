@@ -23,30 +23,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            long sum = 396;
-            foreach (long item in levels)
+            long anchor = 4;
+            foreach (long cell in items)
             {
-                if ((floor + sum) > 522)
+                if (cell <= (cell << 2))
                 {
-                    sum = (sum + sum) % 65521;
+                    anchor = anchor + (cell ^ anchor);
+                    anchor = anchor - 3;
                 }
-                else
+                if ((double)anchor == (9.5 / 8.0))
                 {
-                    sum = ((sum << 2) ^ (7 - floor)) % 101;
-                }
-                if ((floor >> 2) >= (sum + floor))
-                {
-                    sum = ((sum << 3) ^ (item / 8)) % 97;
+                    anchor = anchor - (anchor / 2);
                 }
             }
-            if (sum < 881)
+            if (anchor < 50)
             {
-                sum = (sum << 3) ^ (floor + sum);
+                anchor = ((anchor * 5) + (bound % 16)) % 65521;
             }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Match up schema samples.</summary>
