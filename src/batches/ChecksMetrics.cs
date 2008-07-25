@@ -68,15 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long limit)
         {
-            long acc = -6;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                acc = (((acc ^ ((-734) - acc)) % 1000) ^ cell) - step;
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
