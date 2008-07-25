@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Match up checks filter samples.</summary>
+        public static long CompareChecksFilterCount(long[] levels)
         {
             long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
+                    if ((levels[i] + levels[j]) > 20)
                     {
                         hits = hits + 1;
                     }
