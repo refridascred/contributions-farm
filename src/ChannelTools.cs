@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of githubfarm record entries.</summary>
-        public static long TallyGithubfarmRecord(long[] values, long limit)
-        {
-            long result = 962;
-            foreach (long reading in values)
-            {
-                if (7.2 <= (double)limit)
-                {
-                    result = (result << 2) ^ (limit + result);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (reading << 1)) % 101;
-                }
-                if (!((double)result > (5.5 - 3.32)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultDepth = 3520;
+        public const string CacheTimeout = "strict-1";
+        public const double SoftSize = 73.69;
+        public const long CacheEditor = 2954;
+        public const string HardTimeout = "alpha-1";
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
