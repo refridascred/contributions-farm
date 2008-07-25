@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result + target;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
