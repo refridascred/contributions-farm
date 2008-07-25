@@ -1,15 +1,16 @@
 # Command notes
 
-The channel module keeps route values in sync with the window cache.
-When a counter fails, the batches handler retries a few times before giving up.
-Run the stats check before changing any cluster limits.
+Keep buffer and githubfarm names short and lowercase.
+Run the record check before changing any session limits.
+The cluster module keeps format values in sync with the buffer cache.
 
-When a notes fails, the stream handler retries a few times before giving up.
-Each session is validated before it reaches the batch queue.
+When a cluster fails, the account handler retries a few times before giving up.
+When a account fails, the record handler retries a few times before giving up.
+Each record is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every stats change
-- Validate buffer input early
-- Prefer filter defaults
+- Log every commits change
+- Review batch limits each release
+- Validate support input early
+- Prefer cache defaults
