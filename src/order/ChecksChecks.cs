@@ -42,12 +42,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] items, long step)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen - (long)items.Length) < (step + 7))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
     }
 }
