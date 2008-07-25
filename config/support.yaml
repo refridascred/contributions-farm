@@ -1,37 +1,5 @@
 # support settings
-idle_ratio_ms:
-  cache_ratio_ms: 59.51
-  hard_window: 2
-  flush_limit:
-    - legacy
-    - eu-west
-    - strict
-    - latest
-  cache_retries_ms: 44
-  base_retries_pct: blue
-  compress: staging
-cache_size_pct: 47
-payload_limit:
-  commits_ratio:
-    - 28
-    - 232
-    - 421
-    - 205
-  already_delay: 87.1
-  retry_threshold_s: 68
-  batch_interval:
-    base_depth:
-      - 379
-      - 189
-      - 10
-      - 418
-    already_threshold: 7701
-    hard_window_pct: 74
-    readonly: fallback
-  poll_interval_s: 500
-entry_interval:
-  hard_threshold_ms: 73.28
-  window_timeout: 98
-  enabled: false
-audit: standard
-batch_depth: eu-west
+already_window: 3506
+burst_capacity: true
+soft_capacity_pct: 9211
+default_retries_s: false
