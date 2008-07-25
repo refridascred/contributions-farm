@@ -55,26 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples, long origin)
+        /// <summary>Look up the position of a command channel sample.</summary>
+        public static long LookupCommandChannelIndex(long[] series, long seed)
         {
-            long result = 99;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.48 / 3.0) <= (double)result)
+                if (series[i] <= seed)
                 {
-                    result = (result << 3) ^ (entry + origin);
-                }
-                if ((entry <= origin) || ((8.1 * 3.1) > (double)origin))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 58)
-            {
-                result = result - 7;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics account entries.</summary>
