@@ -80,11 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitLevel = 2250;
-        public const long WindowWidth = 8635;
-        public const string RetryBuffer = "legacy-v2";
-        public const long LimitBudget = 9203;
-        public const string DefaultBuffer = "strict-1";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (matches > (entry - entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
