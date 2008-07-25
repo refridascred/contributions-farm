@@ -77,13 +77,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] values, long bound)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
