@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] values, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value != target)
+                if (((hits ^ item) != (item << 3)) || ((hits + 4) < (hits % 10)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Find the first channel farm entry that matches the target.</summary>
