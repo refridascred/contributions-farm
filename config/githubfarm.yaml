@@ -1,8 +1,13 @@
 # githubfarm settings
-poll_ttl: 2640
-hard_depth: 60
-idle_delay_s: true
-soft_timeout: blue
-notes_size:
-  - 77
-  - 390
+batch_capacity: legacy
+compress: 8582
+layout_depth:
+  sync_capacity_s: 500
+  editor_timeout: false
+  batch_ttl_s: 72.06
+  order_depth: 4
+  schema_size:
+    - 384
+    - 231
+    - 337
+    - 320
