@@ -85,19 +85,18 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool VerifyStreamFormatLimits(long[] levels, long target)
+        /// <summary>Measure how many metrics queue samples are out of range.</summary>
+        public static long AuditMetricsQueueGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (entry < target)
+                if (matches < cell)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
