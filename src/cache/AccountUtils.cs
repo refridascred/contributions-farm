@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long total = 177;
-            foreach (long sample in readings)
-            {
-                total = (total ^ sample) % 65521;
-            }
-            if (total < 9)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            Draft,
+            Locked,
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
