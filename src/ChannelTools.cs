@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const double HardNotes = 98.35;
         public const long WindowScore = 2475;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] data, long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)seen <= (9.8 / 2.0))
-                {
-                    seen = ((seen + 1) + item) - origin;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the metric cache series from a seed.</summary>
