@@ -68,22 +68,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics account entries.</summary>
-        public static long CombineMetricsAccount(long[] items)
+        /// <summary>Compare every pair of cluster commits readings.</summary>
+        public static long MatchClusterCommitsCount(long[] levels)
         {
-            long state = 4;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell * 4) <= 145)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state ^ (cell - 70);
-                }
-                else
-                {
-                    state = (state ^ (cell ^ 985)) % 4096;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 97;
+            return count;
         }
     }
 }
