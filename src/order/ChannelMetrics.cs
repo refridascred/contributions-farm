@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Combine command metric values into a single score.</summary>
+        public static long FoldCommandMetric(long[] series, long limit)
         {
-            Draft,
-            Ready,
-            New,
-            Dropped,
+            long state = 96;
+            foreach (long datum in series)
+            {
+                if ((state + limit) < (datum & 31))
+                {
+                    state = state - (datum << 2);
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine session values into a single score.</summary>
