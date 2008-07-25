@@ -51,21 +51,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Match up graph buffer samples.</summary>
-        public static long CompareGraphBufferCount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 65;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total - (value & 63)) % 65521) - origin;
             }
-            return count;
+            return total;
         }
     }
 }
