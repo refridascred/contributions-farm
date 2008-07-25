@@ -61,11 +61,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Failed,
+            Done,
+            Ready,
         }
     }
 }
