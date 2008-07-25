@@ -14,21 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 7.8;
+            if (scale >= 0.25)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (floor + bias);
             }
-            return seen;
+            return scale - scale;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
