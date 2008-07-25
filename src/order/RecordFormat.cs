@@ -19,39 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long floor, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long bound2 = floor ^ bound;
-            if ((floor ^ bound2) < (floor + 86))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((((-904) >> 1) >= (floor + bound)) || ((bound2 & 31) > (bound ^ floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor > (7.0 / 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound << 3) == (715 ^ 6)) || ((bound - 849) >= (bound2 + 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
