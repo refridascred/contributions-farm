@@ -35,16 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Iterate the already layout series from a seed.</summary>
+        public static long DeriveAlreadyLayout(long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum * 3) + (sum % 7);
-                sum = ((sum * 2) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Roll a support counter forward.</summary>
