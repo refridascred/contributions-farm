@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result + (result - result);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 2134;
+        public const string IdleReport = "latest-v2";
+        public const double MinReport = 2.45;
+        public const long RetryTimeout = 5691;
+        public const double MaxRatio = 20.12;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryScore = "strict";
