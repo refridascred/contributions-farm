@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
-        public static bool ValidatePayloadMetricsRange(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 5197;
+        public const string BurstReport = "strict-edge";
+        public const long BurstSpan = 4973;
+        public const long SoftReport = 1377;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] data)
