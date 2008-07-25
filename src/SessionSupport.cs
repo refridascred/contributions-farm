@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] items, long step)
         {
-            Active,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)(long)items.Length < (double)839)
+                {
+                    hits = ((hits + 3) ^ entry) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
