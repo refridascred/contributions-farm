@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Pending,
+            Paused,
             Stale,
-            Dropped,
-            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
