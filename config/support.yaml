@@ -1,17 +1,7 @@
 # support settings
-retry_ratio_pct: staging
-default_retries: 1372
-warm_window_count: latest
-buffer_limit:
-  soft_threshold: open
-  batch_window: 46
-  batch_retries: 39
-  cache_retries_pct: fallback
-  persist:
-    readonly: staging
-    cache_timeout_pct: 5863
-    poll_limit_count: 7632
-    strict: 83.57
-    farm_threshold: 37.85
-counter_delay: 808
-stats_interval: legacy
+readonly: true
+metric_capacity: false
+sync_timeout_count:
+  - 226
+  - 120
+  - 272
