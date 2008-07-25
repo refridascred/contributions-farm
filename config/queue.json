@@ -1,7 +1,8 @@
 {
-  "strict": ["latest", "open", "standard", "stable"],
-  "buffer_delay": 7474,
-  "cache_window_ms": 14,
-  "warm_threshold": 38.86,
-  "compress": 4.47
+  "editor_timeout": 250,
+  "batch_depth_s": ["local", "standard"],
+  "max_timeout_count": false,
+  "warm_timeout_pct": "primary",
+  "contributi_threshold": true,
+  "max_timeout": 8161
 }
