@@ -80,18 +80,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] readings, long seed)
+        /// <summary>Find the first token already entry that matches the target.</summary>
+        public static long LocateTokenAlreadyIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.07 + 5.45) != (double)seed)
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    seen = (seen + 2) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
