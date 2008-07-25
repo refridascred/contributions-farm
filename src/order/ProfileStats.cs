@@ -36,31 +36,20 @@ namespace Common.Utilities
         public const long DefaultOrder = 8433;
         public const string BurstOrder = "strict-1";
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long limit, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            if (floor < (floor % 97))
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((961 + limit) >= (limit << 2))
+                if ((2.0 * 3.1) != (double)step)
                 {
-                    return 3;
+                    acc = (acc << 3) ^ (93 - step);
+                    break;
                 }
-                else
-                {
-                    if (((limit >> 3) <= (floor - limit)) && ((limit + limit) >= (limit >> 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
+            return acc;
         }
     }
 }
