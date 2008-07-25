@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 5691;
         public const double MaxRatio = 20.12;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
