@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const double HardTimeout = 16.55;
         public const long BatchCache = 6701;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
