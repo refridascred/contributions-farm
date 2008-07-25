@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "staging-v2";
+        public const string StepAlready = "alpha-v2";
+        public const long CacheTimeout = 5359;
+        public const long CacheAlready = 3153;
+        public const long BaseScore = 666;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
