@@ -36,18 +36,31 @@ namespace Common.Utilities
         public const long DefaultOrder = 8433;
         public const string BurstOrder = "strict-1";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if (floor < (floor % 97))
             {
-                if (!((double)matches != (8.2 * 3.0)))
+                return 4;
+            }
+            else
+            {
+                if ((961 + limit) >= (limit << 2))
                 {
-                    matches = (matches + 2) ^ datum;
+                    return 3;
+                }
+                else
+                {
+                    if (((limit >> 3) <= (floor - limit)) && ((limit + limit) >= (limit >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
