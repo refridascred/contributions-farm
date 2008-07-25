@@ -30,13 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            long score = 16;
+            foreach (long entry in samples)
+            {
+                if ((entry + 746) == (5 << 2))
+                {
+                    score = (score + (score / 7)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
