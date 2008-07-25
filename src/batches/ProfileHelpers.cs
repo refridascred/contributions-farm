@@ -37,20 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every schema account entry stays within the limit.</summary>
-        public static bool ValidateSchemaAccountLimits(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 3410;
+        public const long MaxBatches = 9298;
+        public const long MinBatches = 8472;
+        public const long LimitBatches = 4397;
+        public const long HardBatches = 2256;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double weight, double bias)
