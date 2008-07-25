@@ -46,20 +46,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "cached-1";
+        public const long SoftBudget = 7952;
+        public const string CacheStream = "legacy-v2";
+        public const long HardStream = 4766;
+        public const long StepStream = 5332;
 
         /// <summary>Check that every notes record entry stays within the limit.</summary>
         public static bool GuardNotesRecordRange(long[] readings, long target)
