@@ -49,15 +49,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Adjust a counter payload reading.</summary>
+        public static double SmoothCounterPayload(double rate, double span)
         {
-            double drift = (double)(65 - 33);
-            if (drift <= rate)
+            double rate2 = rate / 5.0;
+            if (rate2 < (19.0 * 8.46))
             {
-                drift = (drift + drift) + floor;
+                rate2 = rate2 - (rate2 + span);
             }
-            return drift - (7.64 + rate);
+            else
+            {
+                rate2 = rate2 - (double)112;
+            }
+            return rate2 + 18.0;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
