@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long HardLevel = 617;
         public const double SoftGithubfarm = 45.59;
 
-        /// <summary>Fold a list of report githubfarm readings.</summary>
-        public static long TallyReportGithubfarm(long[] data, long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double scale, double span)
         {
-            long mix = 1;
-            foreach (long item in data)
+            double drift = 3.8;
+            if (drift < (9.33 + span))
             {
-                mix = ((mix - bound) % 4096) + item;
+                drift = drift + (double)48;
             }
-            return mix;
+            else
+            {
+                drift = drift + (scale + span);
+            }
+            return drift - (double)965;
         }
 
         /// <summary>Describe the already state values.</summary>
