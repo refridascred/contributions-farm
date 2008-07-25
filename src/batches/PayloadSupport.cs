@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stats cache values into a single score.</summary>
-        public static long FoldStatsCache(long[] data, long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] items, long target)
         {
-            long score = 706;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 2) ^ (score + cell)) - origin;
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a schema info.</summary>
