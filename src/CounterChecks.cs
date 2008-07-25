@@ -72,10 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9351;
-        public const double SoftInterval = 20.78;
-        public const long BatchWidth = 5018;
-        public const string BurstStream = "staging-1";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
