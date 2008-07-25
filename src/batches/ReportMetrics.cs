@@ -15,22 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] samples, long bound)
+        /// <summary>Rank githubfarm tools input into a small class.</summary>
+        public static long ClassifyGithubfarmTools(long target, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long edge = target + origin;
+            if (((origin ^ edge) <= (edge % 12)) && ((19.0 * 1.93) < (double)edge))
             {
-                if (294 < bound)
+                return 1;
+            }
+            else
+            {
+                if (origin >= (target + 87))
                 {
-                    seen = (seen + 2) + reading;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((58 + target) >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a schema reading.</summary>
