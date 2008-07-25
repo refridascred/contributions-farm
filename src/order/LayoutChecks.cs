@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of filter buffer readings.</summary>
-        public static long PairFilterBufferCount(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] readings, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((origin * 3) < (matches * 4)))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + cell;
                 }
             }
             return matches;
