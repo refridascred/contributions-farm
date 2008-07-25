@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double mean = 6.7 * 19.0;
-            if (mean >= (double)22)
-            {
-                mean = ((mean - mean) + gain) + offset;
-            }
-            else
-            {
-                mean = mean - (1.0 + mean);
-            }
-            return mean - (mean + mean);
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
