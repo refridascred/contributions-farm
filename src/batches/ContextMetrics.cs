@@ -51,21 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step ^ step) > (seed ^ step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((step / 9) > (seed % 60)) || ((5.0 + 3.1) == (double)seed))
                 {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
