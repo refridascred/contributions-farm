@@ -42,19 +42,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double weight, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((5.13 + 6.0) == (double)floor))
-                {
-                    score = ((score * 2) + (floor / 3)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            double ratio = (2.5 / 5.0) / 9.0;
+            return ((ratio - 1.0) + weight) + floor;
         }
     }
 }
