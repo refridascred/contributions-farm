@@ -19,19 +19,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] samples, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long bound2 = floor ^ bound;
+            if ((floor ^ bound2) < (floor + 86))
             {
-                if (entry <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((((-904) >> 1) >= (floor + bound)) || ((bound2 & 31) > (bound ^ floor)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor > (7.0 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound << 3) == (715 ^ 6)) || ((bound - 849) >= (bound2 + 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
