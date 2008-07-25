@@ -48,12 +48,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetrySpan = 5095;
-        public const long MinQueue = 8688;
-        public const double BatchCount = 18.45;
-        public const long BatchDepth = 6092;
-        public const long HardWidth = 4631;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] readings, long limit)
