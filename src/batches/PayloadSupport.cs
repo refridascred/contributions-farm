@@ -19,11 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long sum = -16;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum * 2) + (sum + (long)i)) + sample;
+                    sum = (sum - (sum % 5)) % 97;
+                }
+                sum = (sum - sum) % 1000;
+                sum = ((sum * 4) + (offset % 97)) % 101;
+            }
+            if (sum > 55)
+            {
+                sum = sum - (sum * 2);
+            }
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
