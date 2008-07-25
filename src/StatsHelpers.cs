@@ -27,19 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mark = 1;
-            foreach (long item in series)
-            {
-                mark = ((mark - mark) % 65521) ^ item;
-            }
-            if (mark > 4)
-            {
-                mark = (mark ^ (floor >> 1)) % 97;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
