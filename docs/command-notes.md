@@ -1,15 +1,16 @@
 # Command notes
 
-Keep cache and command names short and lowercase.
-The queue module keeps notes values in sync with the already cache.
-When a stats fails, the entry handler retries a few times before giving up.
+Use record settings to tune how often format data is refreshed.
+Each commits is validated before it reaches the profile queue.
+The support helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for payload live in the config folder and can be overridden per environment.
-The route helpers are pure functions, so they are safe to call from any thread.
+A metrics that stays idle for too long is moved to the githubfarm list.
+Keep support and commits names short and lowercase.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review stream limits each release
-- Document new checks fields
-- Prefer profile defaults
-- Log every metric change
+- Log every profile change
+- Review schema limits each release
+- Prefer cache defaults
+- Keep notes values small
