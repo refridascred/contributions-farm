@@ -63,22 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultInterval = "legacy";
+        public const double IdleWidth = 1.73;
+        public const long StepSpan = 3180;
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] items)
