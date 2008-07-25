@@ -1,6 +1,10 @@
 # support settings
-hard_timeout_ms: 4227
-enabled: primary
-burst_depth: 30.19
-cache_threshold_pct: cached
-sync_interval_count: primary
+max_threshold_ms: 1024
+batches_capacity: 73
+format_ttl:
+  - 489
+  - 389
+  - 81
+strict: 100
+sync_threshold_s: 8.97
+cluster_delay: blue
