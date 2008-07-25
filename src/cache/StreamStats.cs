@@ -49,22 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] values)
+        /// <summary>Check that every support commits entry stays within the limit.</summary>
+        public static bool CheckSupportCommitsRange(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((cell ^ hits) < (cell ^ 4))
+                if (datum >= offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
