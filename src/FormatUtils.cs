@@ -38,15 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double bias2)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] readings, long limit)
         {
-            double ratio = bias2;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                ratio = (ratio - (9.0 / 6.0)) + (double)(long)i;
+                if ((item + count) <= (count - count))
+                {
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio - (ratio - bias);
+            return count;
         }
 
         /// <summary>Derive the next support contributi value from a seed.</summary>
