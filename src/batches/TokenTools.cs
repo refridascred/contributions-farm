@@ -19,14 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next context record value from a seed.</summary>
+        public static long IterateContextRecord(long bound)
         {
-            Pending,
-            Paused,
-            Retry,
-            Done,
-            Failed,
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result + (result << 3)) % 97;
+                result = ((result * 2) + 51) % 4096;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next metrics value.</summary>
