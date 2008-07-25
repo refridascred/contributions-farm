@@ -75,21 +75,18 @@ namespace Common.Utilities
         public const long BurstProfile = 8370;
         public const long MinScore = 9545;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits >= (hits ^ hits))
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
