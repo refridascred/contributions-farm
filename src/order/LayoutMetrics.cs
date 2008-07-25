@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Retry,
-            Dropped,
-            New,
-            Queued,
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
