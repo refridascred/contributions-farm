@@ -32,26 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            long result = 41;
-            foreach (long reading in items)
+            double scale = (double)(576 + 26);
+            if (scale <= (double)(-108))
             {
-                if (floor >= (759 + 37))
-                {
-                    result = (result + ((-55) << 3)) ^ reading;
-                }
-                else
-                {
-                    result = (result << 2) ^ ((-791) & 127);
-                }
+                scale = (scale - span) - ratio;
             }
-            if (result < 88)
+            for (int i = 0; i < 8; i++)
             {
-                result = (result * 4) + result;
+                scale = scale - (double)(long)i;
             }
-            return result % 1000;
+            return scale + scale;
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
