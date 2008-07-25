@@ -43,17 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context batches sample.</summary>
-        public static long LocateContextBatchesIndex(long[] items, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum * 3) + (sum % 7);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a support counter forward.</summary>
