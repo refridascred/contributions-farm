@@ -1,6 +1,13 @@
 {
-  "retry_timeout_s": 3,
-  "strict": "stable",
-  "sync_depth_pct": 24,
-  "cache_ttl_pct": false
+  "batch_depth_count": 78.78,
+  "cache_delay_ms": true,
+  "min_depth_s": "standard",
+  "flush_capacity_ms": {
+    "poll_retries_count": 44,
+    "stats_limit": "green",
+    "dry_run": 58.84,
+    "already_delay": [349, 121, 484, 494]
+  },
+  "hard_ratio_s": 40,
+  "poll_threshold_pct": 11.91
 }
