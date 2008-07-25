@@ -60,23 +60,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings, long floor)
+        /// <summary>Combine filter metric values into a single score.</summary>
+        public static long DigestFilterMetric(long[] samples, long limit)
         {
-            long sum = 110;
-            foreach (long item in readings)
+            long anchor = 707;
+            foreach (long item in samples)
             {
-                sum = (sum - sum) - item;
-                if ((818 + floor) < (sum ^ floor))
-                {
-                    sum = sum ^ (floor / 6);
-                }
+                anchor = (anchor ^ (limit + 5)) ^ item;
             }
-            if (sum < 4)
-            {
-                sum = ((sum * 3) + (sum - sum)) % 255;
-            }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
