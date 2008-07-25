@@ -1,5 +1,7 @@
 {
-  "burst_threshold_ms": 53,
-  "retry_threshold_s": "cached",
-  "strict": 58
+  "idle_limit_s": "stable",
+  "strict": true,
+  "warm_size_s": "fallback",
+  "min_retries": 2461,
+  "poll_capacity_s": 85.15
 }
