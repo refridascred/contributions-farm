@@ -20,11 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of cluster schema readings.</summary>
+        public static long WeighClusterSchema(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 833;
+            foreach (long datum in levels)
+            {
+                mark = (mark + mark) % 101;
+                if ((double)datum == (7.0 - 0.26))
+                {
+                    break;
+                }
+            }
+            if (mark > 363)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
