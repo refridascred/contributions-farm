@@ -32,10 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchScore = 21.31;
-        public const long CacheTimeout = 2438;
-        public const long CacheCount = 4757;
-        public const string StepWidth = "legacy";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((seen + value) <= (seen ^ 847)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
