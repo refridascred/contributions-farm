@@ -40,22 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.01 + 5.94) <= (double)seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
