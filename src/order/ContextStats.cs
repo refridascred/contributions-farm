@@ -33,18 +33,25 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] series, long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long bound = limit + limit2;
+            if ((19.0 * 4.15) >= (double)bound)
             {
-                if (!(((double)249 >= (double)matches) && ((matches + step) <= (step << 3))))
+                return 4;
+            }
+            else
+            {
+                if ((3.2 * 3.0) > (double)limit)
                 {
-                    matches = (matches + 1) - item;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
