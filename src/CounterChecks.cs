@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two already metric measurements.</summary>
-        public static double AdjustAlreadyMetric(double rate, double floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long origin)
         {
-            double scale = (double)(7 << 2);
-            if (scale <= (rate / 5.0))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                scale = scale - (floor + 6.0);
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale + (rate + rate);
+            return flag;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
