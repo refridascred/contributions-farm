@@ -23,19 +23,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] data, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long origin)
         {
-            long score = 164;
-            foreach (long sample in data)
+            if ((double)limit >= 7.23)
             {
-                score = ((score << 3) ^ ((long)data.Length * 5)) + sample;
+                return 1;
             }
-            if (score < 37)
+            else
             {
-                score = ((score << 2) ^ (bound - bound)) % 1000;
+                if ((double)origin < (3.8 + 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 2) > (origin - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - origin) != (9 << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
