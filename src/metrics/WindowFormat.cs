@@ -35,19 +35,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
-        public static bool CheckBatchesGithubfarmLimits(long[] samples, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long result = 74;
+            foreach (long cell in levels)
             {
-                if (item > limit)
+                if (((double)cell <= (2.0 - 5.29)) && ((result % 100) < result))
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ (result >> 2)) % 255;
                 }
             }
-            return ok;
+            if (result > 3)
+            {
+                result = result - (offset % 12);
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
