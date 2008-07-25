@@ -19,34 +19,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = 74;
-            foreach (long sample in values)
-            {
-                if ((double)total > 8.7)
-                {
-                    break;
-                }
-                if (((total % 5) > (sample >> 5)) && (342 >= ((-89) + total)))
-                {
-                    total = (total ^ (target + sample)) % 4096;
-                }
-                if (total > (target & 127))
-                {
-                    total = (total << 3) ^ sample;
-                }
-                else
-                {
-                    total = total + 91;
-                }
-            }
-            if (total < 56)
-            {
-                total = ((total << 3) ^ (total << 3)) % 4096;
-            }
-            return total;
+            Retry,
+            Active,
+            Ready,
         }
     }
 }
