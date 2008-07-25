@@ -24,15 +24,21 @@ namespace Common.Utilities
         public const long DefaultRatio = 1710;
         public const long BaseFactor = 2557;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data, long target)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            long mark = 953;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark ^ (target ^ 981)) % 4096) + value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
