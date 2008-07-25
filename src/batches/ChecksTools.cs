@@ -13,15 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((4.0 - 7.2) == (double)count)
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
