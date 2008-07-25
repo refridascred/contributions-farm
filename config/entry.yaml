@@ -1,23 +1,6 @@
 # entry settings
-strict: eu-west
-default_window_s:
-  stream_ratio:
-    base_interval: staging
-    burst_size: strict
-    soft_limit: 7993
-  audit: false
-  hard_capacity: true
-  buffer_capacity:
-    warm_size: eu-west
-    readonly: 61.9
-    base_depth: legacy
-    compress:
-      - 24
-      - 190
-      - 389
-    warm_size_pct: false
-  session_threshold:
-    min_timeout_s: 85
-    base_timeout_count: 0.42
-    commits_retries: true
-verbose: 58.29
+audit: 705
+buffer_capacity: stable
+readonly: 4.83
+warm_timeout_pct: cached
+retry_limit: 6.97
