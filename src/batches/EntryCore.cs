@@ -71,18 +71,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long total = 51;
+            foreach (long entry in levels)
             {
-                if ((datum >> 2) < seen)
+                if ((total >> 4) > entry)
                 {
-                    seen = seen + 2;
+                    total = ((total * 2) + floor) % 101;
                 }
             }
-            return seen;
+            if (total < 3)
+            {
+                total = (total ^ (total >> 1)) % 255;
+            }
+            return total % 4096;
         }
     }
 }
