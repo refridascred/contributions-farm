@@ -34,24 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if ((88 + offset) > seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset / 4) < (seed - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
