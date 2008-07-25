@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items, long offset)
         {
-            double bias2 = offset;
-            return (bias2 - (double)94) + bias;
+            long sum = 4;
+            foreach (long datum in items)
+            {
+                if (((sum * 5) <= (offset >> 2)) || ((double)datum > (double)offset))
+                {
+                    sum = sum - (5 * 4);
+                }
+                if (datum < (519 + 546))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
