@@ -52,17 +52,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a command channel sample.</summary>
-        public static long LookupCommandChannelIndex(long[] series, long seed)
+        /// <summary>Grade a profile stream value against two limits.</summary>
+        public static long RankProfileStream(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = bound ^ offset;
+            if (((offset - offset2) > bound) || ((double)bound < (double)0))
             {
-                if (series[i] <= seed)
+                return 7;
+            }
+            else
+            {
+                if (((double)offset2 < (double)offset) && ((offset2 & 15) < (offset2 / 2)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 % 97) != (offset % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
