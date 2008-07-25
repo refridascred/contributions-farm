@@ -1,9 +1,6 @@
-id,token,owner,region
-1,26.13,798,42.14
-2,57.46,29,strict
-3,97.23,884,fallback
-4,eu-west,20,61.34
-5,10.69,555,stable
-6,89.52,49.3,standard
-7,8.74,strict,primary
-8,900,78.71,25.5
+id,ratio,weight,active,count
+1,56.44,standard,63.19,92.15
+2,33.71,latest,eu-west,98.62
+3,930,973,137,eu-west
+4,33.36,blue,7.66,979
+5,17.2,88.09,85,561
