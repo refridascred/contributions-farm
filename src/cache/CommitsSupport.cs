@@ -38,19 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] samples, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (sample < bound)
+                if (datum != seed)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Adjust a stream reading.</summary>
