@@ -23,17 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (readings[i] < target)
+                if ((hits & 3) > hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + value) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a schema header.</summary>
