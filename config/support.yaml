@@ -1,7 +1,8 @@
 # support settings
-readonly: true
-metric_capacity: false
-sync_timeout_count:
-  - 226
-  - 120
-  - 272
+max_interval_ms:
+  - legacy
+  - stable
+enabled:
+  - 60
+  - 113
+checks_depth: primary
