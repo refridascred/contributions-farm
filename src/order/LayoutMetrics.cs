@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            Failed,
-            Queued,
-            Closed,
-            Pending,
-            Paused,
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
