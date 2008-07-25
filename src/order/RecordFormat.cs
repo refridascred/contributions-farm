@@ -51,19 +51,21 @@ namespace Common.Utilities
         public const long BurstProfile = 8370;
         public const long MinScore = 9545;
 
-        /// <summary>Validate command queue readings against a bound.</summary>
-        public static bool CheckCommandQueueLimits(long[] items, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
