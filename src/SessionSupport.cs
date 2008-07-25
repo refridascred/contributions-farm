@@ -23,15 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double scale = bias;
-            if (scale > (scale / 3.0))
-            {
-                scale = (scale + (bias * 2.81)) + gain;
-            }
-            return scale + 1.57;
+            Failed,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
