@@ -23,22 +23,12 @@ namespace Common.Utilities
             return gain + 8.3;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 9882;
+        public const long IdleFilter = 562;
+        public const long HardFilter = 7081;
+        public const long IdleWidth = 3192;
+        public const string CacheFilter = "cached-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const double SoftSupport = 96.85;
