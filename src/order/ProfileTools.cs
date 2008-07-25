@@ -16,18 +16,25 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] levels, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (((0.3 < (double)seen) || ((2.0 - 2.72) != (double)seen)) || (seen > (seen & 31)))
+                score = (score * 3) + ((long)i / 8);
+                if ((double)score > (5.7 + 3.0))
                 {
-                    seen = ((seen + 3) ^ entry) - step;
+                    score = (score - score) % 101;
+                    score = (score + 69) % 101;
                 }
+                else
+                {
+                    score = score - target;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the schema buffer entries that pass the check.</summary>
