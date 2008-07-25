@@ -34,19 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] data, long seed)
+        /// <summary>Count the schema buffer entries that pass the check.</summary>
+        public static long MeasureSchemaBufferHits(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= seed)
+                if ((double)bound >= (7.5 + 5.6))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit counter report readings against a rule.</summary>
