@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] items, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally <= (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) - sample;
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
