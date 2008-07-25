@@ -1,6 +1,6 @@
 {
-  "compress": "stable",
-  "retry_depth_s": "standard",
-  "base_size": [169, 330],
-  "payload_limit": "latest"
+  "hard_ttl_count": 5165,
+  "batch_ttl": "primary",
+  "sync_timeout": 57,
+  "strict": ["green", "edge", "blue"]
 }
