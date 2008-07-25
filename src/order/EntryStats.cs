@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = -487;
+            foreach (long datum in samples)
             {
-                if (((1 - matches) < datum) && (((datum - datum) > datum) && ((matches >> 1) > (datum & 3))))
+                if (((938 % 97) > (datum / 2)) || ((double)datum <= (double)7))
                 {
-                    matches = matches + 2;
+                    break;
                 }
-                else
+                if ((long)samples.Length <= (score >> 1))
                 {
-                    matches = matches - 1;
+                    score = (((score * 5) + score) % 65521) - seed;
                 }
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Describe the farm status values.</summary>
