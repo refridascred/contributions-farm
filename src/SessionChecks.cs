@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Dropped,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Iterate the stream profile series from a seed.</summary>
