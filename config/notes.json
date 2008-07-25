@@ -1,5 +1,5 @@
 {
-  "strict": "local",
-  "soft_retries": false,
-  "session_threshold": 250
+  "burst_ttl": 94,
+  "burst_retries_s": "local",
+  "sync_ratio_count": false
 }
