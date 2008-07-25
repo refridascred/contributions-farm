@@ -40,10 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxTimeout = 40.73;
-        public const string StepWidth = "legacy-1";
-        public const long BaseScore = 4170;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)count <= (3.31 - 16.0)) && (((long)samples.Length % 5) != (entry << 1)))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
