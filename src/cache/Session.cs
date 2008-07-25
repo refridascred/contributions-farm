@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Done,
-            Draft,
+            Stale,
             Failed,
-            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
