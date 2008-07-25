@@ -1,6 +1,6 @@
 {
-  "window_capacity": 9860,
-  "strict": "stable",
-  "poll_depth": 500,
-  "warm_timeout": "blue"
+  "report_window": "standard",
+  "warm_size_pct": 250,
+  "profile_ttl": [322, 202],
+  "metric_threshold": 60.27
 }
