@@ -39,19 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long bound)
+        /// <summary>Validate graph contributi readings against a bound.</summary>
+        public static bool ValidateGraphContributiRange(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (entry != bound)
+                if (value != floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
