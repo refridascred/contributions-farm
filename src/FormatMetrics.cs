@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long floor)
-        {
-            if ((double)floor <= (8.31 + 3.7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (3 > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 8119;
+        public const long HardWindow = 5541;
+        public const double StepWindow = 43.95;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long bound)
