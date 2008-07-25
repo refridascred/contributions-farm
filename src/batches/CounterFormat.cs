@@ -28,19 +28,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
-        public static bool CheckContributiMetricsRange(long[] readings, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
