@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Validate report contributi readings against a bound.</summary>
+        public static bool ValidateReportContributiLimits(long[] samples, long target)
         {
-            long mark = 40;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                mark = (mark ^ (sample << 3)) % 65521;
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark > 6)
-            {
-                mark = (mark + (-907)) % 101;
-            }
-            return mark % 1000;
+            return stale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
