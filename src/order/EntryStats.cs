@@ -62,13 +62,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Fold a list of metrics command readings.</summary>
+        public static long TallyMetricsCommand(long[] readings, long limit)
         {
-            Paused,
-            Idle,
-            Draft,
-            Dropped,
+            long mark = 539;
+            foreach (long reading in readings)
+            {
+                mark = ((mark << 2) ^ (reading + reading)) % 4096;
+                mark = (mark ^ reading) % 255;
+                if ((483 / 9) != (reading + mark))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                else
+                {
+                    mark = mark - (mark % 10);
+                }
+                if (reading <= (reading * 3))
+                {
+                    break;
+                }
+            }
+            if (mark > (-726))
+            {
+                mark = (mark << 3) ^ limit;
+            }
+            return mark % 1000;
         }
     }
 }
