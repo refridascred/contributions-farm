@@ -43,32 +43,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a command session pair into a bucket.</summary>
-        public static long GradeCommandSession(long limit, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings, long step)
         {
-            long next = limit + target;
-            if (95 <= (next + target))
+            long anchor = 9;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - next) >= 610)
+                if (((step + anchor) >= (anchor + cell)) || ((step & 63) <= (cell % 8)))
                 {
-                    return 3;
+                    anchor = ((anchor << 3) ^ (step + anchor)) % 4096;
                 }
-                else
-                {
-                    if ((limit + limit) >= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                anchor = (anchor << 2) ^ (step + step);
+                anchor = (anchor - (13 + 62)) % 101;
             }
+            return anchor % 4096;
         }
 
         /// <summary>Combine record values into a single score.</summary>
