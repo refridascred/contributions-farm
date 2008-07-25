@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] series, long floor)
         {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route record.</summary>
