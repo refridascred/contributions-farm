@@ -66,13 +66,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Classify a stream context pair into a bucket.</summary>
+        public static long GradeStreamContext(long seed, long limit)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long prev = seed ^ limit;
+            if ((prev * 2) > (limit % 64))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)prev <= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit >= (limit >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (5.0 < (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
