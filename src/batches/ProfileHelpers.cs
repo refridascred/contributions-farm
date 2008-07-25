@@ -48,18 +48,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((2 - reading) >= (reading + reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
