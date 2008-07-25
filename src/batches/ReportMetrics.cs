@@ -37,15 +37,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double ratio, double bias)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double scale = bias;
-            if (scale < bias)
-            {
-                scale = scale - ratio;
-            }
-            return scale + (ratio * 0.1);
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
