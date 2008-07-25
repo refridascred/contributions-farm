@@ -20,11 +20,13 @@ namespace Common.Utilities
             return scale2 + (double)376;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 6800;
-        public const long LimitSize = 5963;
-        public const string DefaultTools = "cached-v2";
-        public const long HardCount = 653;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Dropped,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] values)
