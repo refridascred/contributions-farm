@@ -30,11 +30,19 @@ namespace Common.Utilities
         public const long LimitEditor = 57;
         public const long BaseEditor = 4788;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples, long target)
         {
-            double drift = (double)24 * 13.0;
-            return ((drift + drift) + bias) + offset;
+            long score = 8;
+            foreach (long sample in samples)
+            {
+                score = (((score << 2) ^ (score << 3)) ^ sample) + target;
+            }
+            if (score < (-2))
+            {
+                score = ((score * 4) + score) % 97;
+            }
+            return score % 97;
         }
     }
 }
