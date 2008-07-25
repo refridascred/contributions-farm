@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] readings)
+        /// <summary>Iterate the queue graph series from a seed.</summary>
+        public static long DeriveQueueGraph(long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (matches > (sample >> 3))
-                {
-                    matches = matches + 1;
-                }
+                mark = (mark + 7) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
