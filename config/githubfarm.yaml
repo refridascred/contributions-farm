@@ -1,33 +1,17 @@
 # githubfarm settings
-burst_size_count:
-  counter_ratio: 81.83
-  batches_limit: true
-  burst_threshold_count:
-    min_threshold_pct:
-      - 139
-      - 208
-      - 128
-      - 321
-    order_ratio: 85.38
-    retry_timeout: 43.09
-min_threshold_ms:
-  idle_ttl_count: local
-  max_interval: 1024
-  sync_threshold:
-    context_retries: 8171
-    commits_window:
-      - 209
-      - 93
-    buffer_window: eu-west
-    max_ttl: false
-    default_retries_count: true
-    notes_threshold: 1024
-cache_timeout_pct: standard
-flush_timeout_pct: legacy
-sync_window_ms:
-  default_ttl: 62.85
-  cache_limit: 49.64
-  persist: 14
-  strict: local
-  idle_size_pct: 52
-  already_ttl: latest
+account_capacity: legacy
+hard_limit_count: green
+idle_interval_pct:
+  default_ratio: green
+  compress: 57.87
+  persist: 39
+  cache_threshold_s: 63
+poll_interval_pct:
+  max_depth_pct: 1816
+  stream_retries: 18
+  sync_ratio: true
+  burst_delay:
+    - 34
+    - 377
+    - 438
+    - 479
