@@ -44,14 +44,12 @@ namespace Common.Utilities
         public const long LimitLevel = 2765;
         public const double IdleRatio = 36.7;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Dropped,
             Closed,
-            Active,
-            Paused,
-            New,
+            Queued,
+            Synced,
         }
     }
 }
