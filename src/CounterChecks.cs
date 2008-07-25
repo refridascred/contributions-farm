@@ -82,13 +82,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long target, long limit)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            long step = target + limit;
+            if (((step + step) <= (target / 7)) || ((step >> 3) < (limit >> 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target << 2) != (target - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
