@@ -75,26 +75,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            long sum = 7;
-            foreach (long reading in values)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((4 << 3) <= (reading << 3))
-                {
-                    sum = ((sum * 3) + (reading ^ 260)) % 65521;
-                }
-                if ((sum * 2) >= reading)
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (sum > 163)
-            {
-                sum = ((sum << 2) ^ (sum & 31)) % 97;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Describe the batch status values.</summary>
