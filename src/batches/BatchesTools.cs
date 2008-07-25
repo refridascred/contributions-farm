@@ -23,25 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a schema batches pair into a bucket.</summary>
-        public static long BucketSchemaBatches(long seed, long target)
+        /// <summary>Accumulate already order samples.</summary>
+        public static long ScoreAlreadyOrder(long[] data, long target)
         {
-            long prev = seed + target;
-            if ((seed - seed) > prev)
+            long carry = 728;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - prev) >= (prev + seed))
+                if (8 >= (long)data.Length)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    carry = ((carry - 5) % 97) - sample;
                 }
             }
+            if (carry > 421)
+            {
+                carry = carry + (target + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
