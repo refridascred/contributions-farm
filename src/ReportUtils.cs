@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit metric payload readings against a rule.</summary>
-        public static long TallyMetricPayloadHits(long[] levels)
+        /// <summary>Validate metrics checks readings against a bound.</summary>
+        public static bool CheckMetricsChecksBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (!(entry > (989 - count)))
+                if (sample <= step)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the graph kind values.</summary>
