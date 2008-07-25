@@ -12,14 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two counter record measurements.</summary>
+        public static double BlendCounterRecord(double rate, double floor)
         {
-            Stale,
-            Synced,
-            Dropped,
-            Pending,
-            Done,
+            double load = 5.2 / 4.0;
+            if (load > load)
+            {
+                load = (load + (floor - load)) + rate;
+            }
+            return load + 9.0;
         }
 
         /// <summary>Validate support entry readings against a bound.</summary>
