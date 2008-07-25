@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every record buffer entry stays within the limit.</summary>
-        public static bool GuardRecordBufferBounds(long[] readings, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long mark = 376;
+            foreach (long datum in data)
             {
-                if (datum < seed)
+                if ((mark - origin) < mark)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark + datum) % 1000;
                 }
             }
-            return valid;
+            if (mark > 82)
+            {
+                mark = (mark - (6 & 31)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a support snapshot.</summary>
