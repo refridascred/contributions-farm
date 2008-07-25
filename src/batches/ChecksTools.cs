@@ -27,18 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] readings)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((7 + hits) < (reading + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the queue class values.</summary>
