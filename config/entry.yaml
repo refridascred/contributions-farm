@@ -1,13 +1,9 @@
 # entry settings
-min_window_s: false
-sync_interval_count:
-  batch_interval_s:
-    - blue
-    - latest
-    - cached
-    - primary
-  batch_limit: legacy
-  readonly: 11.66
-  session_window: 75
-stream_limit: legacy
-sync_delay_count: legacy
+idle_retries_pct: 1156
+audit: 62.6
+verbose: 100
+default_ttl:
+  - eu-west
+  - eu-west
+  - blue
+base_window: true
