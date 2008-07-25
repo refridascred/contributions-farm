@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] items, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample << 1) > seed)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
