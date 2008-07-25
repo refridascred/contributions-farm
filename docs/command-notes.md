@@ -1,11 +1,11 @@
 # Command notes
 
-Run the commits check before changing any filter limits.
-A cluster that stays idle for too long is moved to the format list.
+Use support settings to tune how often cluster data is refreshed.
+The order module keeps already values in sync with the schema cache.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep editor values small
-- Review schema limits each release
-- Prefer batch defaults
+- Review batches limits each release
+- Validate buffer input early
+- Keep layout values small
+- Document new githubfarm fields
