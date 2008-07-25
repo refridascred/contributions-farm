@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] series, long seed)
         {
-            public double Total { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a batch header.</summary>
