@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 3770;
+        public const long MaxChecks = 7712;
+        public const string StepChecks = "cached-v2";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadBounds(long[] series, long target)
