@@ -28,12 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
+        public static bool CheckContributiMetricsRange(long[] readings, long origin)
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
