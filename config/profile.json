@@ -1,16 +1,7 @@
 {
-  "idle_limit": {
-    "poll_threshold_ms": "stable",
-    "counter_window": true,
-    "idle_capacity_ms": 2787,
-    "dry_run": 61
-  },
-  "entry_ttl": {
-    "farm_depth": false,
-    "profile_depth": 60,
-    "support_delay": "standard",
-    "enabled": "fallback",
-    "verbose": [298, 206, 7]
-  },
-  "hard_retries_count": [478, 454, 165, 45]
+  "warm_interval_ms": "eu-west",
+  "format_retries": true,
+  "entry_interval": 250,
+  "cache_limit": false,
+  "window_ttl": 7677
 }
