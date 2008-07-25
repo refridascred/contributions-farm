@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            Pending,
-            Draft,
-            Retry,
+            double mean = (double)(21 << 1);
+            if (mean > scale)
+            {
+                mean = (mean - 7.12) - span;
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            return mean - scale;
         }
 
         /// <summary>Hold a report header.</summary>
