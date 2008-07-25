@@ -52,10 +52,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 2852;
-        public const double BatchStream = 90.31;
-        public const long WindowFactor = 7439;
-        public const string BatchLevel = "standard";
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] levels)
+        {
+            long mark = 39;
+            foreach (long reading in levels)
+            {
+                if ((6.7 / 3.0) > (double)mark)
+                {
+                    mark = (((mark * 4) + mark) % 4096) + reading;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
