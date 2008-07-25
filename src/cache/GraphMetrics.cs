@@ -44,12 +44,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheRatio = 1122;
-        public const long BatchGraph = 6157;
-        public const long WindowBudget = 4064;
-        public const long SoftScore = 7775;
-        public const long BaseGraph = 9347;
+        /// <summary>Classify a stats cluster pair into a bucket.</summary>
+        public static long BucketStatsCluster(long limit, long step)
+        {
+            if ((step - limit) == (6 - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit * 4) > (24 ^ 5)) && ((6.3 * 7.59) > (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long OverlapAlreadyCount(long[] series)
