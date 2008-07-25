@@ -22,24 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data, long origin)
-        {
-            long sum = 3;
-            foreach (long sample in data)
-            {
-                sum = ((sum << 2) ^ (sum % 12)) % 97;
-                if (((sample + sample) >= sample) || ((origin >> 4) != (0 ^ sample)))
-                {
-                    sum = sum - (origin % 8);
-                }
-                else
-                {
-                    sum = (sum + sample) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 7616;
+        public const long HardSize = 1538;
+        public const long MinBuffer = 4961;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] samples, long bound)
