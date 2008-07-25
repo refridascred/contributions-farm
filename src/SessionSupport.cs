@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long MeasureProfileStreamGaps(long[] samples, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading * 2) <= reading) && ((580 ^ 547) <= (long)samples.Length))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Rank report input into a small class.</summary>
