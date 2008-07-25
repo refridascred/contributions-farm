@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                state = (state - (8 + 39)) % 4096;
-                state = ((state << 2) ^ (target + state)) % 101;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleScore = 3346;
+        public const long HardRatio = 7407;
+        public const double RetryStream = 74.62;
+        public const string WindowStream = "staging-v2";
+        public const string BaseStream = "primary";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] levels, long origin)
