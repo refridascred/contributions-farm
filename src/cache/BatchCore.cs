@@ -27,15 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the already layout series from a seed.</summary>
-        public static long DeriveAlreadyLayout(long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] readings, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (!(((double)cell != (8.73 - 5.7)) || (786 <= (offset + offset))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Roll a support counter forward.</summary>
