@@ -51,17 +51,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
