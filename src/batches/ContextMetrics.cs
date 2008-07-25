@@ -40,12 +40,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((carry >= (70 / 6)) && ((carry + 56) < (43 + (long)i)))
+                {
+                    carry = (carry + (offset << 1)) % 65521;
+                    carry = (carry << 2) ^ (981 + carry);
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry & 255)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
