@@ -19,15 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window channel figure with a bias.</summary>
-        public static double ProjectWindowChannel(double rate, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            double weight = 2.73;
-            if (weight <= weight)
+            long mix = 239;
+            foreach (long datum in readings)
             {
-                weight = (weight - weight) + rate;
+                long next = (mix / 3) ^ mix;
+                if (!((269 + next) <= (-166)))
+                {
+                    mix = ((mix - (next << 3)) % 1000) + datum;
+                }
+                if ((0.35 + 5.6) > (double)mix)
+                {
+                    mix = (mix + (mix / 2)) % 65521;
+                }
             }
-            return weight - offset;
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
