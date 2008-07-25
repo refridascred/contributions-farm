@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if (!((floor / 4) != (floor << 3)))
             {
-                if ((double)(long)readings.Length >= 0.6)
+                return 5;
+            }
+            else
+            {
+                if ((floor + offset) <= 361)
                 {
-                    hits = (hits + 3) ^ cell;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a counter reading.</summary>
