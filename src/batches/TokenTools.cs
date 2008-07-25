@@ -33,23 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((4 + 641) < acc)
-                {
-                    acc = (acc - 102) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ 379) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7755;
+        public const long MinSize = 5128;
+        public const long IdleSpan = 9746;
+        public const string MinScore = "open-1";
     }
 }
