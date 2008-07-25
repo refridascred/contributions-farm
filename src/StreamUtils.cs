@@ -57,10 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultScore = 5131;
-        public const long RetrySchema = 4220;
-        public const long DefaultSchema = 6135;
+        /// <summary>Adjust a session format reading.</summary>
+        public static double BlendSessionFormat(double gain, double offset)
+        {
+            double gain2 = gain;
+            if (gain2 < (gain2 / 9.0))
+            {
+                gain2 = gain2 - (7.55 + gain);
+            }
+            else
+            {
+                gain2 = gain2 - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 - (double)517;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] series)
