@@ -30,18 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit filter editor readings against a rule.</summary>
-        public static long TallyFilterEditorGaps(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = 3;
+            foreach (long datum in data)
             {
-                if (!((entry - hits) >= (hits % 64)))
-                {
-                    hits = hits + 2;
-                }
+                total = ((total * 4) + (datum + total)) % 97;
             }
-            return hits;
+            if (total < 53)
+            {
+                total = (total * 3) + (total + 19);
+            }
+            return total;
         }
     }
 }
