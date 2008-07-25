@@ -1,4 +1,6 @@
 # entry settings
-verbose: 30
-dry_run: edge
-buffer_delay: 5471
+persist: 19.29
+poll_depth: 4157
+dry_run: 30
+cache_timeout_count: 4.68
+retry_timeout_count: true
