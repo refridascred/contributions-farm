@@ -14,22 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the order account entries that pass the check.</summary>
-        public static long MeasureOrderAccountMatches(long[] data)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long score = 78;
+            foreach (long entry in readings)
             {
-                if (!((reading % 100) == (reading << 2)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score - score) - entry;
+                score = score + ((-75) + floor);
             }
-            return seen;
+            if (score < 96)
+            {
+                score = (score - (floor >> 4)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate layout tools readings against a bound.</summary>
