@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long total = 6;
-            foreach (long reading in levels)
-            {
-                if (!((455 + 1) > total))
-                {
-                    total = ((total << 2) ^ total) + reading;
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a stream githubfarm sample.</summary>
