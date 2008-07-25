@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc ^ 95;
-                acc = ((acc * 4) + acc) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Project the next stream session value.</summary>
