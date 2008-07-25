@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                if ((sample < (bound - bound)) || (((bound % 100) <= (bound / 2)) || ((double)sample < (double)462)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a metrics account reading by value.</summary>
