@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long floor)
+        /// <summary>Locate a account record reading by value.</summary>
+        public static long SeekAccountRecordIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
+                if (values[i] <= bound)
                 {
                     return (long)i;
                 }
