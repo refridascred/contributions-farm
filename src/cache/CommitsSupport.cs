@@ -69,12 +69,19 @@ namespace Common.Utilities
             return drift - (8.35 / 8.0);
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] samples, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
