@@ -23,18 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] levels)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (cell <= (320 ^ matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
