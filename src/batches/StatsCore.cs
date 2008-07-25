@@ -55,15 +55,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double rate, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double drift = 6.6 / 7.0;
-            if (drift < floor)
-            {
-                drift = (drift - (1.7 + drift)) - rate;
-            }
-            return drift + drift;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Derive the next route profile value from a seed.</summary>
