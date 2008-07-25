@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = 63;
-            foreach (long value in items)
-            {
-                score = (score << 3) ^ (value << 1);
-            }
-            return score;
+            Ready,
+            Synced,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Rank command input into a small class.</summary>
