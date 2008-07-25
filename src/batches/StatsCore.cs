@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples, long offset)
         {
-            Active,
-            Synced,
-            Failed,
-            Paused,
-            Ready,
+            long carry = 136;
+            foreach (long datum in samples)
+            {
+                carry = ((carry - (datum % 97)) % 1000) - offset;
+            }
+            if (carry > 510)
+            {
+                carry = (carry + ((long)samples.Length / 2)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Adjust a session reading.</summary>
