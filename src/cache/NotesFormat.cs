@@ -23,14 +23,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] samples, long seed)
         {
-            Paused,
-            Stale,
-            Dropped,
-            Retry,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first notes stats entry that matches the target.</summary>
