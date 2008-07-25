@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
