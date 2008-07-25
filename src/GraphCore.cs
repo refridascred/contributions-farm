@@ -34,10 +34,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 9555;
-        public const long StepSupport = 302;
-        public const string LimitLevel = "alpha-v2";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels, long seed)
+        {
+            long total = 622;
+            foreach (long entry in levels)
+            {
+                total = ((total << 3) ^ total) + entry;
+            }
+            if (total > 368)
+            {
+                total = total - (seed + total);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] levels)
