@@ -44,9 +44,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 7598;
-        public const long IdleRatio = 7704;
-        public const string HardFactor = "alpha-v2";
-        public const long RetryAccount = 2118;
+        public const long BaseBudget = 4333;
+        public const long StepSize = 1450;
+        public const double BaseAccount = 86.99;
+        public const long RetryInterval = 3744;
     }
 }
