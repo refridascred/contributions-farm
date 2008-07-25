@@ -14,13 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public bool Level { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            Idle,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
