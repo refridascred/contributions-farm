@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] readings, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.0 + 6.0) <= (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) + seed;
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
