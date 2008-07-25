@@ -56,18 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (!((2.55 / 3.0) != (double)seen) || ((double)seen < (0.01 + 5.3)))
+                if (value < offset)
                 {
-                    seen = (seen + 1) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
