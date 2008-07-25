@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long origin)
         {
-            double drift = 2.8;
-            if (drift >= drift)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                drift = drift - 13.0;
+                anchor = (anchor ^ (anchor + anchor)) % 97;
+                anchor = (anchor + origin) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (floor / 9.0);
+            return anchor;
         }
 
         /// <summary>Describe the stats status values.</summary>
