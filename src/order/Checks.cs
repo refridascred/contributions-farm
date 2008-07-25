@@ -31,19 +31,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] readings, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            if (floor > seed)
             {
-                if (value > seed)
+                return 7;
+            }
+            else
+            {
+                if ((18.0 + 12.0) < (double)floor)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed % 16) <= (seed >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate payload metrics readings against a bound.</summary>
