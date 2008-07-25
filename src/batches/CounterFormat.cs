@@ -22,19 +22,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] items, long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
