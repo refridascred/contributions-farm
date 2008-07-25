@@ -46,17 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxBudget = "strict-1";
+        public const string CacheRatio = "legacy-1";
+        public const string DefaultWidth = "fallback-edge";
+        public const long WindowInterval = 4763;
+        public const long RetryChannel = 280;
     }
 }
