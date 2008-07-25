@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const long IdleBudget = 3401;
         public const long LimitRoute = 381;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] data, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = 3.3;
+            return (ratio - offset) + scale;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
