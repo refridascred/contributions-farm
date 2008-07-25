@@ -47,19 +47,17 @@ namespace Common.Utilities
         public const long BatchCommits = 2904;
         public const string RetryInterval = "standard-1";
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] levels, long step)
         {
-            long score = 779;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score * 4) + (sample + (long)items.Length);
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (score > (-28))
-            {
-                score = (score * 5) + 4;
-            }
-            return score;
+            return -1;
         }
     }
 }
