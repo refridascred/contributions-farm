@@ -21,11 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Compare every pair of stream batches readings.</summary>
+        public static long CompareStreamBatchesCount(long[] levels)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
