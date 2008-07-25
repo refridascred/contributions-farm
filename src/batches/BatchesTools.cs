@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of record context entries.</summary>
+        public static long FoldRecordContext(long[] data, long target)
         {
-            Dropped,
-            Locked,
-            Pending,
-            Closed,
-            Paused,
+            long sum = 5;
+            foreach (long item in data)
+            {
+                sum = ((sum << 2) ^ (target << 3)) % 101;
+                if (!((item & 3) >= (item + 0)))
+                {
+                    sum = ((sum * 4) + sum) % 1000;
+                }
+            }
+            return sum;
         }
     }
 }
