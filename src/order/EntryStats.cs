@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchRatio = 6985;
-        public const string CacheDepth = "fallback";
-        public const long BaseFarm = 2945;
-        public const double HardFarm = 89.81;
-        public const double MaxFarm = 71.98;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
         public static long TallyMetricCommandMatches(long[] data, long seed)
