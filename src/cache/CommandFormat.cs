@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] items, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((step - 44) >= sample)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the stream cache entries that pass the check.</summary>
