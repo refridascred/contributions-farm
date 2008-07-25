@@ -29,19 +29,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long anchor = 805;
-            foreach (long datum in readings)
-            {
-                anchor = (((anchor * 5) + (anchor % 60)) % 65521) + datum;
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor ^ (61 ^ anchor)) % 4096;
-            }
-            return anchor % 4096;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
