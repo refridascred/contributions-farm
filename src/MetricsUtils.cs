@@ -40,18 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((double)hits == (0.9 + 1.1))
+                if (datum <= floor)
                 {
-                    hits = (hits + 2) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the context status values.</summary>
