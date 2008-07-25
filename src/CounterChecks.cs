@@ -45,32 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] values)
         {
-            long next = offset - limit;
-            if ((17.0 / 6.0) != (double)next)
+            long count = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) >= (limit ^ 984))
+                if ((double)count != (double)item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)next < (7.16 * 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
