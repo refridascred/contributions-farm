@@ -19,38 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long limit, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if ((6.16 * 17.0) <= (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit % 16) == (limit & 3)) && ((double)seed > 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed < (seed & 7)) && ((limit - seed) > limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed >= (limit % 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
