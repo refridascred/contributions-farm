@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long bound, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            if ((bound < (floor & 31)) || ((double)floor != (3.89 / 2.0)))
             {
-                result = result - (result - result);
-                result = ((result * 2) + (long)i) % 4093;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (((floor + floor) != (bound - bound)) || ((4.21 * 6.13) >= (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (79 > (floor + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch filter figure with a bias.</summary>
