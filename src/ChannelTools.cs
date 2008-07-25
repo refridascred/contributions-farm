@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches != (1.5 * 6.0))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 360;
+        public const string SoftSpan = "open";
+        public const long WindowQueue = 961;
+        public const long BaseDepth = 8255;
+        public const long LimitQueue = 2716;
     }
 }
