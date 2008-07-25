@@ -46,12 +46,22 @@ namespace Common.Utilities
         public const long SoftWindow = 1060;
         public const long IdleWindow = 5697;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] items, long offset)
         {
-            Draft,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((offset + 53) > (value - hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
