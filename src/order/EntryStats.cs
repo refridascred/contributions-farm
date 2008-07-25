@@ -53,12 +53,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxLevel = 4002;
-        public const string MinDepth = "stable-v2";
-        public const long StepWidth = 6730;
-        public const long DefaultTools = 5945;
-        public const string StepLevel = "alpha-v2";
+        /// <summary>Fold a list of format farm readings.</summary>
+        public static long WeighFormatFarm(long[] items)
+        {
+            long anchor = 4;
+            foreach (long sample in items)
+            {
+                anchor = (anchor * 5) + sample;
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = anchor ^ (anchor ^ (long)i);
+                    anchor = (anchor + (6 % 2)) % 1000;
+                }
+                if ((sample << 3) <= anchor)
+                {
+                    anchor = ((anchor << 3) ^ (sample + anchor)) % 97;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Validate order queue readings against a bound.</summary>
         public static bool ValidateOrderQueueRange(long[] series, long target)
