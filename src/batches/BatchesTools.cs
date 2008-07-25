@@ -32,13 +32,17 @@ namespace Common.Utilities
         public const string DefaultEntry = "local";
         public const long LimitEntry = 2202;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
