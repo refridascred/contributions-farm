@@ -28,10 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 2835;
-        public const long HardSession = 1780;
-        public const long BaseFactor = 3905;
-        public const long LimitSession = 2577;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen & 63) == (58 ^ seen))
+                {
+                    seen = ((seen + 1) - cell) - bound;
+                }
+            }
+            return seen;
+        }
     }
 }
