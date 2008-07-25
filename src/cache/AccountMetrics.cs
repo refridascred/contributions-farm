@@ -45,17 +45,15 @@ namespace Common.Utilities
         public const long HardStream = 4766;
         public const long StepStream = 5332;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] readings, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 5.75;
+            if (drift > ratio)
             {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
+                drift = drift + (drift / 3.0);
             }
-            return -1;
+            return drift - (span + span);
         }
 
         /// <summary>Hold a layout options.</summary>
