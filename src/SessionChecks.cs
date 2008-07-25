@@ -48,19 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 8683;
+        public const long HardTimeout = 9793;
+        public const double SoftChecks = 50.5;
+        public const long CacheChecks = 4014;
     }
 }
