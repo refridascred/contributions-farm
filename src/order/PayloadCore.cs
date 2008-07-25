@@ -49,11 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double drift = (double)(0 & 7);
-            return (drift + span) + gain;
+            Ready,
+            Paused,
+            Done,
         }
     }
 }
