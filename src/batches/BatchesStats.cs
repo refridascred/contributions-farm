@@ -32,18 +32,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the session order entries that pass the check.</summary>
-        public static long TallySessionOrderOutliers(long[] items, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((target << 2) < (seed % 3))
             {
-                if (floor > (floor ^ datum))
+                return 0;
+            }
+            else
+            {
+                if (((double)target == (7.7 / 9.0)) && ((double)seed != (double)2))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
