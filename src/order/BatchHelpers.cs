@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleCount = 85.14;
+        public const string WindowContext = "latest";
+        public const long MaxContext = 3894;
+        public const long BatchContext = 6799;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] items)
