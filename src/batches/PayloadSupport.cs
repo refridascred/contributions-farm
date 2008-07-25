@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long SoftQueue = 625;
         public const long MinRatio = 8339;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of report editor entries.</summary>
+        public static long CombineReportEditor(long[] data)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long result = 423;
+            foreach (long cell in data)
+            {
+                result = result + (result ^ result);
+                if ((double)cell <= 11.0)
+                {
+                    break;
+                }
+            }
+            if (result < 215)
+            {
+                result = result ^ (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of context readings.</summary>
