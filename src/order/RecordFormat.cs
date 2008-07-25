@@ -19,15 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two metrics profile measurements.</summary>
-        public static double AdjustMetricsProfile(double ratio, double offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] samples, long origin)
         {
-            double scale = offset - (double)459;
-            if (scale <= 20.0)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                scale = (scale + (double)34) - ratio;
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + scale;
+            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
