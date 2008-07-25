@@ -38,19 +38,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support entry readings against a bound.</summary>
-        public static bool GuardSupportEntryLimits(long[] readings, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long delta = step + bound;
+            if ((0.5 / 5.0) < (double)delta)
             {
-                if (value < target)
+                return 3;
+            }
+            else
+            {
+                if (bound <= (delta + 21))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step < 6.1)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step < 4.1)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
