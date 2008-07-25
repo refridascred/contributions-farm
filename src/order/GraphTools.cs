@@ -65,14 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Dropped,
-            Failed,
-            Queued,
-            Paused,
-            Active,
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
