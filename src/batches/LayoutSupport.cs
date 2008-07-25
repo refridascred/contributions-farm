@@ -45,22 +45,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
-        public static long CountGithubfarmBufferGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value + 572) < 8)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6339;
+        public const long MinBuffer = 147;
+        public const string BurstBuffer = "legacy-v2";
     }
 }
