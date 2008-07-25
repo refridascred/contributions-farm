@@ -40,18 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] samples, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = 589;
+            foreach (long value in items)
             {
-                if (!((double)count <= (3.31 - 16.0)) && (((long)samples.Length % 5) != (entry << 1)))
-                {
-                    count = (count + 1) + origin;
-                }
+                state = (((state * 3) + (state * 3)) + value) + bound;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a layout summary.</summary>
