@@ -19,13 +19,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
