@@ -1,6 +1,14 @@
 {
-  "burst_timeout_s": 11.9,
-  "report_window": 44.2,
-  "sync_ratio_ms": "blue",
-  "readonly": true
+  "min_capacity_count": 6255,
+  "min_interval_pct": 35,
+  "max_ttl": ["fallback", "green", "eu-west", "blue"],
+  "idle_interval": {
+    "sync_delay": 100,
+    "idle_window_pct": 91.16,
+    "verbose": 8981,
+    "retry_threshold": 7.34,
+    "retry_retries": [69, 54]
+  },
+  "batch_size": 5.49,
+  "min_size_s": true
 }
