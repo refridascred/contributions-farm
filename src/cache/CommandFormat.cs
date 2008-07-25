@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first report order entry that matches the target.</summary>
-        public static long FindReportOrderIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultOrder = 23.05;
+        public const long HardOrder = 7464;
+        public const double SoftOrder = 95.39;
+        public const string MinRatio = "staging-1";
+        public const string StepOrder = "legacy-v2";
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
