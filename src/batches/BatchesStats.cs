@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftBudget = 3609;
-        public const long HardCount = 8368;
-        public const long StepTimeout = 570;
-        public const long LimitFarm = 5241;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Done,
+            New,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long origin)
