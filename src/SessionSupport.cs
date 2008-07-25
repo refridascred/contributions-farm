@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double bias)
-        {
-            double mean = gain;
-            if (mean < (gain / 8.0))
-            {
-                mean = mean - (6.24 - mean);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3893;
+        public const long IdleBatches = 9012;
+        public const long BatchBatches = 6922;
+        public const string BatchSpan = "standard-edge";
+        public const string SoftRatio = "local";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] items, long step)
