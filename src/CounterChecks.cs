@@ -46,22 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] values, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] samples, long bound)
         {
-            long anchor = 41;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((bound << 3) < 935)
+                if ((double)value >= (7.35 - 7.3))
                 {
-                    anchor = anchor + sample;
+                    seen = (seen + 2) - bound;
                 }
                 else
                 {
-                    anchor = (anchor - (sample % 12)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
