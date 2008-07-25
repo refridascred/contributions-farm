@@ -51,11 +51,26 @@ namespace Common.Utilities
             return ((scale2 - (double)601) + scale) + offset;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheLevel = 97.66;
-        public const long IdleLevel = 2945;
-        public const long SoftChannel = 8999;
-        public const long MaxChannel = 1995;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long seed, long floor)
+        {
+            long slot = seed ^ floor;
+            if (floor >= (floor + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor < slot)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long OverlapStatsCount(long[] samples)
