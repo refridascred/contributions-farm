@@ -1,12 +1,13 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the schema list.
-Each commits is validated before it reaches the batch queue.
-The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a record fails, the support handler retries a few times before giving up.
+
+Run the contributi check before changing any window limits.
+Run the context check before changing any notes limits.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer already defaults
-- Keep payload values small
-- Review already limits each release
+- Log every editor change
+- Keep support values small
+- Review editor limits each release
