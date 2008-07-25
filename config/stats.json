@@ -1,11 +1,16 @@
 {
-  "account_threshold": {
-    "max_threshold": true,
-    "compress": 43,
-    "token_delay": "fallback",
-    "burst_ratio": true
+  "burst_size_s": 81.04,
+  "batch_ratio": {
+    "max_limit_ms": 16,
+    "layout_threshold": "edge",
+    "flush_threshold_pct": "edge"
   },
-  "stream_timeout": [471, 452],
-  "compress": 86.2,
-  "dry_run": 78.47
+  "cache_delay": {
+    "base_capacity_pct": 56,
+    "burst_threshold": "strict",
+    "poll_window_count": true,
+    "persist": 37.34
+  },
+  "retry_ratio_pct": [240, 105, 40, 484],
+  "batch_size_ms": "green"
 }
