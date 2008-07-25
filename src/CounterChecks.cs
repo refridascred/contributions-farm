@@ -41,21 +41,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count payload account pairs that satisfy a relation.</summary>
-        public static long ComparePayloadAccountCount(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -6;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(total <= 32))
                 {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - (reading / 6)) % 97;
+                }
+                else
+                {
+                    total = total - (total ^ total);
+                }
+                if ((13.0 / 2.0) < (double)total)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total > 0)
+            {
+                total = ((total * 5) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the route class values.</summary>
