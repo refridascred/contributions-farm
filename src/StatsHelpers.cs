@@ -35,19 +35,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next record editor value from a seed.</summary>
-        public static long DeriveRecordEditor(long origin)
+        /// <summary>Derive the next order batches value from a seed.</summary>
+        public static long SeriesOrderBatches(long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((806 - carry) == ((long)i + carry))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    carry = carry - (origin + (long)i);
+                    sum = (sum + (1 * 4)) + (long)i2;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
