@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] data, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + seen) >= seen)
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate stream context samples.</summary>
