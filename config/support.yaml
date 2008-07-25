@@ -1,7 +1,21 @@
 # support settings
-idle_delay_count:
-  - 313
-  - 390
-  - 387
-verbose: 83.36
-cache_interval_pct: false
+flush_size_ms:
+  retry_ratio_s: fallback
+  window_depth: stable
+  hard_ttl_ms: false
+burst_capacity_ms:
+  max_capacity_pct: latest
+  window_limit: 59.63
+  min_ratio: 14.62
+  min_timeout_count:
+    - edge
+    - local
+    - open
+  poll_window:
+    - 195
+    - 281
+    - 322
+min_timeout_s: 97
+batch_interval_pct: 33
+cache_capacity_pct: false
+poll_limit: true
