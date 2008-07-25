@@ -45,19 +45,17 @@ namespace Common.Utilities
         public const long HardStream = 4766;
         public const long StepStream = 5332;
 
-        /// <summary>Check that every notes record entry stays within the limit.</summary>
-        public static bool GuardNotesRecordRange(long[] readings, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < target)
+                if (readings[i] == step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
