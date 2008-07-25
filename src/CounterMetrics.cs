@@ -37,13 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long target)
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            long score = 6;
+            foreach (long entry in series)
+            {
+                score = ((score * 2) + (entry & 31)) + target;
+                if (!((entry & 3) >= (score - 28)))
+                {
+                    score = score - (score - entry);
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
