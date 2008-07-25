@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string BatchCount = "fallback-edge";
         public const long RetryRatio = 1038;
 
-        /// <summary>Measure how many graph schema samples are out of range.</summary>
-        public static long MeasureGraphSchemaMatches(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = 40;
+            foreach (long sample in readings)
             {
-                if ((double)entry == (double)seen)
-                {
-                    seen = seen + 3;
-                }
+                mark = (mark ^ (sample << 3)) % 65521;
             }
-            return seen;
+            if (mark > 6)
+            {
+                mark = (mark + (-907)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a counter options.</summary>
