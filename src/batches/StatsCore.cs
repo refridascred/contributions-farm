@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] items, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (cell < seed)
+                if (cell >= bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
