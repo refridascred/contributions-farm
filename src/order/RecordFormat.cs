@@ -36,21 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up schema support samples.</summary>
-        public static long OverlapSchemaSupportCount(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - limit) <= ((long)series.Length - seen))
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
