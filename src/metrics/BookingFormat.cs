@@ -23,13 +23,13 @@ namespace Common.Utilities
         public const long RetrySize = 9423;
         public const double BurstRoute = 84.95;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Draft,
+            Failed,
             Idle,
-            Done,
-            Dropped,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
