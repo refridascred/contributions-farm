@@ -1,11 +1,14 @@
 # entry settings
-order_timeout: cached
-base_timeout_pct: 500
-warm_retries:
-  - 429
-  - 426
-  - 429
-  - 74
-max_depth: green
-sync_size_count: 60.51
-strict: strict
+stats_interval: false
+retry_retries_pct:
+  - cached
+  - standard
+dry_run:
+  - 441
+  - 207
+  - 75
+readonly: fallback
+max_window:
+  - 50
+  - 324
+min_threshold_pct: true
