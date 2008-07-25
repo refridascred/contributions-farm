@@ -42,26 +42,18 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                long slot = (target + target) % 3;
-                if (((double)slot >= (double)target) && ((slot + target) != (long)i))
+                if (((long)series.Length & 1) != (item + item))
                 {
-                    slot = ((slot << 3) ^ 4) % 1000;
-                    slot = ((slot << 3) ^ 62) % 1000;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    slot = ((slot * 5) + (target << 2)) % 4096;
-                }
-                slot = slot ^ (slot - slot);
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
