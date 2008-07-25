@@ -43,19 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long target)
+        /// <summary>Iterate the metric cache series from a seed.</summary>
+        public static long DeriveMetricCache(long step)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark + (mark - mark)) % 4096;
+                mark = mark - (step >> 1);
+                mark = mark ^ (mark ^ 531);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
     }
 }
