@@ -43,19 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((9.34 / 7.0) >= (double)carry))
-                {
-                    carry = ((carry << 2) ^ (carry + seed)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
