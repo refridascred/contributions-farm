@@ -40,15 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series, long origin)
         {
-            long state = 622;
-            foreach (long value in levels)
+            long sum = 6;
+            foreach (long entry in series)
             {
-                state = ((state + state) % 255) ^ value;
+                sum = ((sum + (6 << 3)) % 4096) + origin;
+                sum = (sum << 3) ^ (entry * 2);
             }
-            return state % 97;
+            return sum;
         }
     }
 }
