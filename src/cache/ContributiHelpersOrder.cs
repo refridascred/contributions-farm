@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const long BaseCommits = 3753;
         public const long WindowInterval = 7326;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double span)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long step)
         {
-            double weight = 2.82 * 17.0;
-            if (weight >= weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + (double)6) - span;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (weight * 2.62);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (9.97 - gain)) + (double)(long)i;
-            }
-            return weight + (gain - gain);
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
