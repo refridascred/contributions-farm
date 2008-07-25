@@ -30,18 +30,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches >> 4) >= cell)
+                if (items[i] == step)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
