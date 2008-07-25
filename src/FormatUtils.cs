@@ -19,14 +19,22 @@ namespace Common.Utilities
         public const string BaseToken = "latest-v2";
         public const long StepCount = 4428;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] series, long seed)
         {
-            Pending,
-            Ready,
-            Done,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (seed <= hits)
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry level values.</summary>
