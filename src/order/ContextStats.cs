@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleWidth = 45.67;
-        public const double BaseSession = 59.47;
-        public const string StepRatio = "legacy";
-        public const long StepSession = 2859;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public double Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
