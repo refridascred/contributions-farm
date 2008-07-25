@@ -61,11 +61,14 @@ namespace Common.Utilities
         public const string WindowRoute = "open-edge";
         public const double MinRoute = 71.08;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            Idle,
+            Pending,
+            Done,
+            Retry,
+            New,
         }
     }
 }
