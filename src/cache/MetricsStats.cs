@@ -49,10 +49,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "primary";
-        public const long CacheBatches = 6965;
-        public const double LimitSize = 22.3;
-        public const string LimitRatio = "staging-1";
+        /// <summary>Measure how many notes stream samples are out of range.</summary>
+        public static long CountNotesStreamMatches(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((7 + reading) == (reading + seed))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
