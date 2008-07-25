@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Failed,
-            Synced,
-            New,
-            Pending,
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
