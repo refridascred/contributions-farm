@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long MaxContext = 3894;
         public const long BatchContext = 6799;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine editor batch values into a single score.</summary>
+        public static long ScoreEditorBatch(long[] samples, long origin)
         {
-            Dropped,
-            New,
-            Draft,
+            long score = 87;
+            foreach (long reading in samples)
+            {
+                score = (((score << 3) ^ (origin / 2)) % 65521) + reading;
+            }
+            return score;
         }
 
         /// <summary>Rank batch account input into a small class.</summary>
