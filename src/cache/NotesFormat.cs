@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            New,
+            Ready,
             Locked,
-            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the filter class values.</summary>
