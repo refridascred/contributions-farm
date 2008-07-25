@@ -27,20 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long total = 472;
-            foreach (long value in levels)
-            {
-                if (!((0.1 - 9.5) > (double)target))
-                {
-                    total = total - target;
-                }
-                total = total - (511 + value);
-                total = total + (total % 12);
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the metric cache series from a seed.</summary>
