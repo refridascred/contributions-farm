@@ -99,23 +99,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long offset, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long limit2)
         {
-            long offset2 = offset - seed;
-            if ((offset2 / 9) != (offset2 ^ offset))
+            long lane = limit ^ limit2;
+            if ((limit2 > (99 & 15)) && ((limit * 2) > (lane ^ limit)))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (((offset2 - seed) <= offset) && ((offset2 % 24) <= (seed / 6)))
+                if (((lane % 24) != (lane >> 2)) && ((254 - limit) >= lane))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 8;
+                    if ((double)lane >= (15.0 / 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
