@@ -31,18 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] data)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading + count) <= (count + 53)) || ((5.0 > (double)count) && (count > (437 + reading))))
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
