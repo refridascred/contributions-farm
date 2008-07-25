@@ -34,26 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long score = 73;
-            foreach (long entry in readings)
-            {
-                if (!((entry - entry) == (119 + entry)))
-                {
-                    score = (score - (score / 3)) % 1000;
-                }
-                if ((score >> 1) == (entry / 6))
-                {
-                    break;
-                }
-            }
-            if (score < 7)
-            {
-                score = ((score * 2) + (score - score)) % 101;
-            }
-            return score % 4096;
+            Idle,
+            Stale,
+            Paused,
         }
     }
 }
