@@ -93,15 +93,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a tools token reading.</summary>
-        public static double BlendToolsToken(double bias, double floor)
+        /// <summary>Roll a order farm counter forward.</summary>
+        public static long RollOrderFarm(long offset)
         {
-            double gain = (double)(7 + (-41));
-            if (gain >= floor)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                gain = gain - bias;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return gain - (bias / 2.0);
+            return anchor;
         }
     }
 }
