@@ -48,19 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a counter payload reading.</summary>
-        public static double SmoothCounterPayload(double rate, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            double rate2 = rate / 5.0;
-            if (rate2 < (19.0 * 8.46))
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                rate2 = rate2 - (rate2 + span);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (((acc << 2) ^ (315 + acc)) % 1000) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                rate2 = rate2 - (double)112;
-            }
-            return rate2 + 18.0;
+            return acc;
         }
 
         /// <summary>Fold a list of context readings.</summary>
