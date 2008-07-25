@@ -1,7 +1,6 @@
 {
-  "idle_limit_s": "stable",
-  "strict": true,
-  "warm_size_s": "fallback",
-  "min_retries": 2461,
-  "poll_capacity_s": 85.15
+  "record_window": ["eu-west", "fallback"],
+  "audit": 73,
+  "report_delay": 61,
+  "min_interval_ms": "local"
 }
