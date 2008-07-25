@@ -29,10 +29,15 @@ namespace Common.Utilities
         public const long SoftBudget = 6963;
         public const string MaxGraph = "standard";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowDepth = "staging";
-        public const long HardWindow = 9358;
-        public const long CacheWindow = 2244;
-        public const double RetryWindow = 14.54;
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double weight, double floor)
+        {
+            double scale = floor - (double)9;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (floor / 6.0)) + (double)(long)i;
+            }
+            return scale - (4.5 + weight);
+        }
     }
 }
