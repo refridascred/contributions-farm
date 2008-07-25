@@ -1,11 +1,12 @@
 # Command notes
 
-Use order settings to tune how often stream data is refreshed.
-When a channel fails, the profile handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+When a githubfarm fails, the layout handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every payload change
-- Keep route values small
 - Validate layout input early
-- Review channel limits each release
+- Prefer editor defaults
+- Log every metrics change
+- Review commits limits each release
