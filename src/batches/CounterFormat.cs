@@ -13,21 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Blend two order graph measurements.</summary>
+        public static double ScaleOrderGraph(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)40 / 3.0;
+            if (rate < (span + rate))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + (scale + 4.36);
             }
-            return count;
+            return rate + (double)60;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
