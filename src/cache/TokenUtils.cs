@@ -22,12 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] items, long seed)
         {
-            Active,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((count >> 3) != (seed / 5)) && (((double)seed <= (9.0 + 8.7)) || (datum > (seed & 15))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
