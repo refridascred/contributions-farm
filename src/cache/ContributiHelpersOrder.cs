@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BaseCommits = 3753;
         public const long WindowInterval = 7326;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a metrics entry.</summary>
