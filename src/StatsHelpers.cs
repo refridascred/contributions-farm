@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            long total = 0;
+            foreach (long cell in readings)
+            {
+                long step = total;
+                if (((step + step) > total) && (step > total))
+                {
+                    step = step ^ (cell + step);
+                }
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
