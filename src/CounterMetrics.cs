@@ -36,18 +36,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] items, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (value < (count - value))
+                if (((cell * 4) < (seed + 180)) && !((806 + cell) > (seed + tally)))
                 {
-                    count = (count + 2) - offset;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
