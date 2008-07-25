@@ -1,6 +1,24 @@
 {
-  "default_window": "strict",
-  "flush_ttl_pct": true,
-  "window_ratio": 1929,
-  "farm_interval": "eu-west"
+  "hard_delay_count": {
+    "stream_ttl": 70.78,
+    "metrics_retries": {
+      "strict": 6947,
+      "idle_size_s": 250,
+      "readonly": [32, 260, 215, 155],
+      "warm_ttl": [138, 22],
+      "metrics_ttl": ["edge", "cached"],
+      "buffer_size": "staging"
+    },
+    "dry_run": 44.32,
+    "strict": "green"
+  },
+  "channel_depth": "legacy",
+  "hard_ttl_pct": {
+    "already_limit": ["green", "eu-west", "standard", "local"],
+    "batch_interval_pct": 13,
+    "batch_interval": ["edge", "cached"],
+    "cache_ratio_count": 82.65
+  },
+  "default_delay_pct": "staging",
+  "strict": ["open", "strict", "blue"]
 }
