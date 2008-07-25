@@ -70,11 +70,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Check that every stream format entry stays within the limit.</summary>
+        public static bool VerifyStreamFormatLimits(long[] levels, long target)
         {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
