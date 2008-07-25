@@ -16,12 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 8977;
-        public const string WindowInterval = "cached-1";
-        public const double HardLevel = 2.75;
-        public const long DefaultScore = 5321;
-        public const string MinProfile = "staging";
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool VerifyAccountCommandBounds(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long seed, long floor)
