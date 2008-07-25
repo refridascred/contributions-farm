@@ -61,13 +61,23 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Blend two format counter measurements.</summary>
+        public static double AdjustFormatCounter(double scale, double floor)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Locked,
+            double weight = floor;
+            if (weight <= weight)
+            {
+                weight = weight + (9.57 / 2.0);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Check that every stream format entry stays within the limit.</summary>
