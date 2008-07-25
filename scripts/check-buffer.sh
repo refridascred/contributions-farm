@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard fallback edge; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=339
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge open fallback; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
