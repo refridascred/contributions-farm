@@ -59,22 +59,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] items, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long score = 1;
-            foreach (long cell in items)
-            {
-                if ((score >= 8) && ((3 % 64) <= (score - cell)))
-                {
-                    score = score - cell;
-                }
-                if (floor > (score * 4))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
