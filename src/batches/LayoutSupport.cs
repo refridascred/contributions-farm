@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine context cache values into a single score.</summary>
-        public static long TallyContextCache(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long anchor = 848;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((anchor + entry) != (anchor ^ anchor)) && (658 <= entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (entry + anchor)) % 97;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
