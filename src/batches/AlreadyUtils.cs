@@ -48,13 +48,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items)
         {
-            public double Region { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long score = 91;
+            foreach (long datum in items)
+            {
+                if ((score >> 5) <= (score - (-32)))
+                {
+                    score = score + (datum - datum);
+                }
+                if ((score & 15) == (datum + score))
+                {
+                    score = score - (datum >> 2);
+                }
+                if ((score ^ (-612)) < (score << 2))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
