@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a account record reading by value.</summary>
-        public static long SeekAccountRecordIndex(long[] values, long bound)
+        /// <summary>Measure how many account contributi samples are out of range.</summary>
+        public static long MeasureAccountContributiGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] <= bound)
+                if (!((91 - entry) >= (entry + entry)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
