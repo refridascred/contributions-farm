@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-blue}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=189
+log "limit is ${CHANNEL_LIMIT}"
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in fallback staging primary edge; do
-    log "checking ${item}"
-done
