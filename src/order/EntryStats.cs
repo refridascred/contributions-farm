@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((14.0 - 8.07) < (double)target) || (matches >= (target % 3)))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstDepth = "latest-v2";
+        public const long DefaultTimeout = 60;
+        public const long RetrySchema = 1539;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] items, long floor)
