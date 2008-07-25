@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long CacheLevel = 2848;
         public const long BatchAccount = 822;
 
-        /// <summary>Accumulate queue channel samples.</summary>
-        public static long TallyQueueChannel(long[] data)
-        {
-            long anchor = -4;
-            foreach (long datum in data)
-            {
-                if ((datum ^ anchor) < (anchor / 6))
-                {
-                    anchor = anchor - (datum ^ datum);
-                }
-                if ((datum & 7) >= datum)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "standard";
+        public const long StepChecks = 7620;
+        public const long DefaultBudget = 1573;
+        public const double MinInterval = 79.13;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] values)
