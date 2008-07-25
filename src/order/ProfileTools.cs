@@ -45,18 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter report readings against a rule.</summary>
-        public static long CountCounterReportHits(long[] series, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell + cell) == (cell % 10))
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    seen = (seen + 1) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
