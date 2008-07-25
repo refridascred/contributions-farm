@@ -34,14 +34,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Dropped,
-            New,
-            Closed,
-            Ready,
-            Done,
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
