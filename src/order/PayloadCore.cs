@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            New,
-            Draft,
-            Retry,
+            Failed,
+            Dropped,
             Locked,
-            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
