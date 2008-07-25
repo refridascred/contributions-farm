@@ -48,11 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double scale, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            double ratio = 3.3;
-            return (ratio - offset) + scale;
+            long acc = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (acc < (58 / 2))
+                {
+                    acc = (acc ^ target) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
