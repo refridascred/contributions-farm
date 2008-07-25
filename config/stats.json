@@ -1,6 +1,20 @@
 {
-  "farm_depth": [291, 455],
-  "idle_window_ms": 58.88,
-  "idle_delay_count": [313, 444],
-  "command_limit": 56.74
+  "profile_delay": {
+    "batch_retries_pct": 18.16,
+    "max_size_ms": {
+      "sync_retries_pct": "eu-west",
+      "readonly": [125, 223],
+      "sync_interval_ms": 5670,
+      "warm_delay_pct": ["strict", "primary"],
+      "persist": 72.59,
+      "batch_limit": "legacy"
+    },
+    "min_retries_count": 89,
+    "min_interval": "primary",
+    "filter_interval": false,
+    "flush_timeout_s": 60
+  },
+  "hard_threshold": [377, 486],
+  "burst_limit": "strict",
+  "batch_retries": 30
 }
