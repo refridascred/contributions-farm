@@ -62,18 +62,12 @@ namespace Common.Utilities
         public const long SoftCount = 9;
         public const double RetrySession = 8.86;
 
-        /// <summary>Digest a series of tools checks entries.</summary>
-        public static long CombineToolsChecks(long[] data, long limit)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long state = 45;
-            foreach (long cell in data)
-            {
-                if (cell < (state >> 1))
-                {
-                    state = ((state - (cell % 97)) % 97) + limit;
-                }
-            }
-            return state % 65521;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
