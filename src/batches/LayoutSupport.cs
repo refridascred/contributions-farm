@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double bias = (floor - floor) * 10.0;
-            if (bias > (double)(-22))
-            {
-                bias = (bias - (bias * 2.21)) - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias + (floor * 5.0);
+            Stale,
+            Synced,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Locate a layout context reading by value.</summary>
