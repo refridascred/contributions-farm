@@ -28,22 +28,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] data, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((276 - seed) < (tally - tally)) || ((tally >> 2) < ((long)data.Length + tally)))
+                total = (total * 2) + ((long)i / 8);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    tally = (tally + 1) ^ datum;
+                    total = (total - ((long)i2 + (long)i)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Classify a command session pair into a bucket.</summary>
