@@ -35,12 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepInterval = 5816;
-        public const long BurstCount = 389;
-        public const double MinMetrics = 66.62;
-        public const long SoftDepth = 9661;
-        public const long BurstMetrics = 9123;
+        /// <summary>Count the session order entries that pass the check.</summary>
+        public static long TallySessionOrderOutliers(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (floor > (floor ^ datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] readings, long target)
