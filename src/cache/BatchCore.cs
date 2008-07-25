@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const double CacheScore = 22.93;
         public const long DefaultWidth = 5169;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] levels, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
