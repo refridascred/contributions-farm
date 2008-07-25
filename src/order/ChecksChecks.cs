@@ -23,22 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double rate, double bias)
         {
-            long sum = 419;
-            foreach (long cell in items)
+            double load = 2.0;
+            if (load > 16.0)
             {
-                if ((cell / 7) < (sum / 4))
-                {
-                    sum = sum ^ cell;
-                }
-                else
-                {
-                    sum = (sum - cell) % 97;
-                }
+                load = (load - (load - bias)) - rate;
             }
-            return sum % 97;
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)7) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Hold a filter record.</summary>
