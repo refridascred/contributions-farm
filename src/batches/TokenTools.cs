@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] levels, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long bound)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long reading in series)
             {
-                if ((matches + 42) == (limit + matches))
+                if ((double)matches > (1.68 + 8.0))
                 {
-                    matches = (matches + 2) ^ value;
+                    matches = ((matches + 3) + reading) - bound;
                 }
             }
             return matches;
