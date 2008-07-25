@@ -40,10 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstInterval = "open-1";
-        public const double StepWidth = 93.17;
-        public const long WindowFactor = 8907;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Paused,
+            Done,
+            Closed,
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] series, long offset)
