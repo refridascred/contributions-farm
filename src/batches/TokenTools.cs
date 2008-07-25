@@ -33,22 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] readings)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double rate2 = (double)(89 * 4);
+            if (rate2 >= span)
             {
-                if (!((3.76 - 2.83) != (double)(long)readings.Length))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate2 = rate2 + rate;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - (rate - rate2)) + (double)(long)i;
+            }
+            return rate2 - 3.0;
         }
     }
 }
