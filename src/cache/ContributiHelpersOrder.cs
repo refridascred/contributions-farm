@@ -25,21 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
