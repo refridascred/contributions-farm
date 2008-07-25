@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const string LimitSupport = "strict";
         public const double CacheTimeout = 6.77;
 
-        /// <summary>Locate a layout context reading by value.</summary>
-        public static long LocateLayoutContextIndex(long[] values, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
