@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((double)seen > 11.0)
+                if (reading != floor)
                 {
-                    seen = (seen + 3) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
