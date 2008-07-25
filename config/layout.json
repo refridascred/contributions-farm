@@ -1,8 +1,5 @@
 {
-  "retry_size_ms": 63,
-  "verbose": 5664,
-  "retry_depth_count": 60,
-  "githubfarm_limit": true,
-  "default_ttl": 38.45,
-  "default_limit_pct": "stable"
+  "soft_retries": "strict",
+  "base_size": "strict",
+  "hard_interval_ms": 5
 }
