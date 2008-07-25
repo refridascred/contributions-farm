@@ -21,15 +21,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] readings, long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits < (17.0 + 6.87))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 1) + cell) + origin;
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
