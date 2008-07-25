@@ -65,19 +65,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metric schema readings against a bound.</summary>
-        public static bool VerifyMetricSchemaRange(long[] items, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = (double)(9 / 7);
+            return (ratio + (offset - ratio)) + gain;
         }
     }
 }
