@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long seed, long seed2)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] data, long bound)
         {
-            long next = seed - seed2;
-            if ((next & 7) == (next - seed2))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 + seed) >= (8 & 1))
+                if (cell < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a batch header.</summary>
