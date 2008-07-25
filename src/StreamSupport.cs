@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long floor2)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels, long offset)
         {
-            long gap = floor ^ floor2;
-            if (((floor2 >> 5) >= (94 + 830)) || ((double)gap >= (2.0 - 2.97)))
+            long mix = 1;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 + gap) > floor2)
+                if ((53 * 5) < (offset * 4))
                 {
-                    return 1;
+                    mix = (mix * 2) + (cell << 2);
                 }
                 else
                 {
-                    if (((9.42 - 1.19) < (double)floor) && (floor >= (gap << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = mix - (cell << 3);
                 }
             }
+            if (mix > 981)
+            {
+                mix = (mix * 4) + (mix / 5);
+            }
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
