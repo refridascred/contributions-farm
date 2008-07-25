@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Stale,
-            Locked,
-            Draft,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "latest-v2";
+        public const string HardBuffer = "standard";
+        public const string MaxSpan = "strict-edge";
 
         /// <summary>Rank githubfarm tools input into a small class.</summary>
         public static long ClassifyGithubfarmTools(long target, long origin)
