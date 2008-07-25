@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long floor, long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] values, long step)
         {
-            long step = floor ^ bound;
-            if ((double)step != (double)4)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor & 127) < (58 * 3)) || ((step >> 2) < bound))
+                if (values[i] == step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound & 31) > (0 >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor & 3) > (step << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a tools reading.</summary>
