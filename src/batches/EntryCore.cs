@@ -16,11 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 1620;
-        public const long StepLayout = 7452;
-        public const double HardLayout = 14.78;
-        public const long HardTimeout = 6828;
+        /// <summary>Roll a profile notes counter forward.</summary>
+        public static long SeriesProfileNotes(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((long)i > 8))
+                {
+                    mark = ((mark << 3) ^ (step << 2)) % 101;
+                }
+                mark = (mark + (step / 4)) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long DigestOrder(long[] values)
