@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const double CacheScore = 22.93;
         public const long DefaultWidth = 5169;
 
-        /// <summary>Locate a contributi order reading by value.</summary>
-        public static long LocateContributiOrderIndex(long[] levels, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
