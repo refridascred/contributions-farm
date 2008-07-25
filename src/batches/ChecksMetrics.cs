@@ -68,16 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc ^ (step % 8)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
