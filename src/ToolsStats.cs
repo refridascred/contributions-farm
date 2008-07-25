@@ -54,18 +54,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long offset2 = offset - seed;
+            if ((offset2 / 9) != (offset2 ^ offset))
             {
-                if (9 < hits)
+                return 7;
+            }
+            else
+            {
+                if (((offset2 - seed) <= offset) && ((offset2 % 24) <= (seed / 6)))
                 {
-                    hits = (hits + 3) ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
