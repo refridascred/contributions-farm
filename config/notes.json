@@ -1,8 +1,8 @@
 {
-  "payload_capacity": 387,
-  "buffer_interval": 1769,
-  "compress": [74, 362, 425],
-  "entry_size": 28,
-  "hard_depth": "fallback",
-  "channel_ratio": 43.03
+  "notes_threshold": 67.87,
+  "already_ttl": 100,
+  "flush_ratio_ms": ["edge", "staging", "standard"],
+  "min_timeout": 6559,
+  "payload_limit": ["standard", "open", "cached"],
+  "format_timeout": "green"
 }
