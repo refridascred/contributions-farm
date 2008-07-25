@@ -54,22 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] series, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((item << 1) >= (matches + matches))
+                if ((floor ^ 41) < (tally * 2))
                 {
-                    matches = (matches + 1) + origin;
+                    tally = (tally + 2) - sample;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
