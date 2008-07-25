@@ -1,12 +1,5 @@
 {
-  "sync_window_ms": 9102,
-  "farm_threshold": {
-    "cache_window_count": "cached",
-    "batch_depth": 84.64,
-    "idle_delay_pct": "local"
-  },
-  "soft_threshold": false,
-  "audit": 1024,
-  "default_threshold_pct": "green",
-  "base_size_pct": 61.19
+  "cache_capacity": "fallback",
+  "min_size": 53,
+  "batch_delay_ms": "fallback"
 }
