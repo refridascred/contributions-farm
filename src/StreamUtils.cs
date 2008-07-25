@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            double scale = offset - (0.4 * 14.0);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + 6.7;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
