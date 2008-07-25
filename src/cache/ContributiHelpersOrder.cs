@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long BaseCommits = 3753;
         public const long WindowInterval = 7326;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit cluster already readings against a rule.</summary>
+        public static long TallyClusterAlreadyMatches(long[] values, long bound)
         {
-            New,
-            Retry,
-            Failed,
-            Locked,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((365 + (-664)) != (bound + datum)) && ((30 ^ datum) == (bound % 24)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
