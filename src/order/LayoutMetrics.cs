@@ -30,15 +30,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] series, long limit)
+        /// <summary>Audit filter editor readings against a rule.</summary>
+        public static long TallyFilterEditorGaps(long[] items)
         {
-            long acc = 81;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc ^ limit) % 4096) ^ item;
+                if (!((entry - hits) >= (hits % 64)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
