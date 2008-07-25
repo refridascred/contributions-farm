@@ -29,22 +29,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of payload report readings.</summary>
-        public static long DigestPayloadReport(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long sum = 5;
-            foreach (long item in items)
+            long score = 73;
+            foreach (long entry in readings)
             {
-                if (((long)items.Length > (sum & 1)) && (item >= (sum + sum)))
+                if (!((entry - entry) == (119 + entry)))
                 {
-                    sum = (sum + (sum & 127)) % 101;
+                    score = (score - (score / 3)) % 1000;
                 }
-                if (sum >= (item + item))
+                if ((score >> 1) == (entry / 6))
                 {
                     break;
                 }
             }
-            return sum;
+            if (score < 7)
+            {
+                score = ((score * 2) + (score - score)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
