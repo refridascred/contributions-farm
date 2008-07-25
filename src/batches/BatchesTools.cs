@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Accumulate batches cache samples.</summary>
+        public static long DigestBatchesCache(long[] series, long seed)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long result = 524;
+            foreach (long entry in series)
+            {
+                if (((result ^ result) == (seed / 4)) && ((seed ^ seed) < (entry - entry)))
+                {
+                    result = result - (result * 3);
+                }
+            }
+            if (result < 60)
+            {
+                result = (result ^ (result & 63)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a schema batches pair into a bucket.</summary>
