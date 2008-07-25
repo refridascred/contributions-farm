@@ -42,11 +42,31 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long CacheCommand = 5469;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long limit, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            if (offset >= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset << 2) <= (0 & 31))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset <= (0.7 * 3.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
