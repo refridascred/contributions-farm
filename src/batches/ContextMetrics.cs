@@ -35,11 +35,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark * 4) + (bound ^ mark);
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
