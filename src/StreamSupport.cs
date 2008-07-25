@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long bound)
+        /// <summary>Locate a buffer contributi reading by value.</summary>
+        public static long SeekBufferContributiIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < bound)
+                if (series[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
