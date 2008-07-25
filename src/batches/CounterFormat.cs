@@ -34,12 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
         {
-            Synced,
-            Queued,
-            New,
+            long mix = 61;
+            foreach (long entry in items)
+            {
+                mix = ((mix ^ (mix >> 2)) % 255) ^ entry;
+            }
+            return mix % 4096;
         }
     }
 }
