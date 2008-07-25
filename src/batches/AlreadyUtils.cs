@@ -56,11 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 12.64;
-        public const long RetryScore = 1254;
-        public const double CacheEditor = 6.64;
-        public const long BatchEditor = 3004;
-        public const string WindowBudget = "strict-edge";
+        /// <summary>Measure how many commits token samples are out of range.</summary>
+        public static long AuditCommitsTokenMatches(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (77 >= (bound << 3))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
