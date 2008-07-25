@@ -34,17 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                if (reading <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
