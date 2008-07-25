@@ -1,23 +1,24 @@
 # githubfarm settings
-compress:
-  - 94
-  - 208
-cache_timeout_s: 25.53
-batch_window: 4.08
-burst_limit:
-  - 247
-  - 95
-  - 345
-idle_depth_pct: 45.6
-window_ratio:
-  githubfarm_depth:
-    - 368
-    - 413
-    - 210
-  persist:
-    - 196
-    - 84
-    - 255
-  support_ratio: fallback
-  stream_threshold: 9709
-  report_size: fallback
+default_ratio: 6642
+channel_ratio: false
+support_window:
+  cache_delay:
+    - stable
+    - fallback
+    - open
+    - stable
+  stats_timeout: true
+  format_interval: false
+persist: false
+flush_size_s:
+  metric_timeout:
+    - eu-west
+    - legacy
+    - cached
+    - blue
+  warm_timeout_count:
+    - 466
+    - 427
+    - 37
+  window_depth: 4153
+poll_threshold_count: primary
