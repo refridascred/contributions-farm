@@ -35,10 +35,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7467;
-        public const double BatchRatio = 16.12;
-        public const long MinLayout = 6764;
-        public const long WindowLayout = 1528;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleFactor = 7524;
+        public const double CacheRatio = 28.11;
+        public const string BaseDepth = "open-v2";
     }
 }
