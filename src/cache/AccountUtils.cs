@@ -25,21 +25,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of support window readings.</summary>
-        public static long MatchSupportWindowCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 8823;
+        public const long BurstDepth = 968;
+        public const long MaxBatches = 7765;
+        public const long StepRatio = 6012;
+        public const long CacheBatches = 1297;
     }
 }
