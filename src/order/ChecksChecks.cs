@@ -34,38 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long seed, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] values, long seed)
         {
-            if (((seed + 3) == (seed ^ seed)) || ((double)floor < (double)seed))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed >= (seed >> 4))
+                if (!(count >= (entry - seed)))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((seed >= (seed / 7)) && (4.54 >= (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor >= (seed << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
