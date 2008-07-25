@@ -63,20 +63,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 6091;
+        public const long DefaultContributi = 2312;
+        public const long HardContributi = 9879;
+        public const double BaseRatio = 68.25;
+        public const long StepScore = 4104;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
