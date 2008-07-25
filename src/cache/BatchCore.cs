@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double CacheScore = 22.93;
         public const long DefaultWidth = 5169;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double ratio, double floor)
+        /// <summary>Count the filter format entries that pass the check.</summary>
+        public static long TallyFilterFormatOutliers(long[] values)
         {
-            double mean = ratio;
-            if (mean <= ratio)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mean = (mean - (mean / 5.0)) + floor;
+                if ((reading << 3) > (reading * 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean - (17.0 - mean);
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
