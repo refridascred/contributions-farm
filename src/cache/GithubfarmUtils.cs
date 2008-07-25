@@ -32,15 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
