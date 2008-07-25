@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((62 <= (sample ^ seen)) || (((seen >> 1) < (86 - seen)) && (sample <= (seen >> 4))))
+                if (((offset << 2) <= (offset >> 3)) && (((long)i >> 5) >= (52 - offset)))
                 {
-                    seen = seen + 2;
+                    score = (score << 3) ^ (offset & 63);
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
