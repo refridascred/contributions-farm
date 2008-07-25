@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine window already values into a single score.</summary>
-        public static long TotalWindowAlready(long[] levels)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long acc = 657;
-            foreach (long value in levels)
-            {
-                acc = (acc << 3) ^ (value << 2);
-            }
-            if (acc < 5)
-            {
-                acc = acc ^ (acc - (long)levels.Length);
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
