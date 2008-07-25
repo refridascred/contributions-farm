@@ -31,9 +31,19 @@ namespace Common.Utilities
             return mean - (mean * 20.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 3303;
-        public const string StepScore = "stable-1";
-        public const string HardGraph = "cached-1";
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double bias, double bias2)
+        {
+            double gain = bias2;
+            if (gain <= (double)31)
+            {
+                gain = gain - (gain + bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain + (bias2 + bias);
+        }
     }
 }
