@@ -28,12 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            New,
-            Draft,
-            Dropped,
+            Failed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
