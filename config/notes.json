@@ -1,12 +1,5 @@
 {
-  "poll_interval_ms": {
-    "editor_depth": "open",
-    "idle_size": [488, 156, 278, 358],
-    "default_interval": 52,
-    "sync_interval": ["primary", "blue", "stable"]
-  },
-  "readonly": "primary",
-  "flush_retries_pct": 500,
-  "retry_size_pct": 250,
-  "min_ttl": "open"
+  "batch_ttl": ["latest", "staging", "edge", "cached"],
+  "soft_threshold_count": "eu-west",
+  "already_retries": "standard"
 }
