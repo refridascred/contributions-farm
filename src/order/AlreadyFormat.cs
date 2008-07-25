@@ -63,14 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            Synced,
-            Failed,
-            Paused,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches - (long)values.Length) > (matches % 100))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
