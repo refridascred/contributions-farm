@@ -33,15 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double ratio, double bias)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double load = (2.55 - ratio) / 8.0;
-            if (load < load)
-            {
-                load = (load + load) - bias;
-            }
-            return load - load;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
