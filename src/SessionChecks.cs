@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((sample << 2) <= (sample - tally))
+                if ((double)(long)readings.Length >= 0.6)
                 {
-                    tally = tally + 1;
+                    hits = (hits + 3) ^ cell;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Adjust a counter reading.</summary>
