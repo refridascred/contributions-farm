@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double bias, double bias2)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long target)
         {
-            double mean = bias2 / 5.0;
-            if (mean <= bias)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mean = mean + mean;
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - (bias - bias2);
+            return found;
         }
 
         /// <summary>Fold a list of session readings.</summary>
