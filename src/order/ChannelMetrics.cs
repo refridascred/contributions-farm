@@ -16,10 +16,27 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSpan = 7187;
-        public const long MaxNotes = 3083;
-        public const string RetryBudget = "latest-edge";
+        /// <summary>Digest a series of graph counter entries.</summary>
+        public static long DigestGraphCounter(long[] data, long floor)
+        {
+            long total = 274;
+            foreach (long reading in data)
+            {
+                if ((total + 1) == (total - floor))
+                {
+                    total = (total * 2) + (0 + 80);
+                }
+                else
+                {
+                    total = total + (reading ^ total);
+                }
+            }
+            if (total < 764)
+            {
+                total = (total + floor) % 255;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] series, long origin)
