@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long WindowToken = 8023;
         public const string BaseToken = "fallback";
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values, long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mix = 204;
-            foreach (long entry in values)
-            {
-                mix = ((mix + (entry % 100)) % 101) - seed;
-            }
-            if (mix > 9)
-            {
-                mix = (mix - (469 >> 2)) % 4096;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a stats stats.</summary>
