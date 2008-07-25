@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] values, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                carry = carry - (bound * 3);
-                carry = ((carry << 3) ^ carry) % 97;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Find the first channel farm entry that matches the target.</summary>
