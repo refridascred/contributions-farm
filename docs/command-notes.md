@@ -1,16 +1,15 @@
 # Command notes
 
-Keep buffer and githubfarm names short and lowercase.
-Run the record check before changing any session limits.
-The cluster module keeps format values in sync with the buffer cache.
+Keep cache and command names short and lowercase.
+The queue module keeps notes values in sync with the already cache.
+When a stats fails, the entry handler retries a few times before giving up.
 
-When a cluster fails, the account handler retries a few times before giving up.
-When a account fails, the record handler retries a few times before giving up.
-Each record is validated before it reaches the format queue.
+Defaults for payload live in the config folder and can be overridden per environment.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every commits change
-- Review batch limits each release
-- Validate support input early
-- Prefer cache defaults
+- Review stream limits each release
+- Document new checks fields
+- Prefer profile defaults
+- Log every metric change
