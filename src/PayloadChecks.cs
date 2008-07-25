@@ -47,11 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardInterval = 1510;
-        public const double StepCount = 22.67;
-        public const string MaxRatio = "standard-v2";
-        public const double CacheRoute = 22.03;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum % 16) < ((-4) + (long)readings.Length))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double SoftTools = 82.26;
