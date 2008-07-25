@@ -45,18 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] readings)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (((-327) >> 5) >= (sample ^ (-5)))
+                if (item > bound)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
