@@ -1,5 +1,8 @@
 {
-  "default_delay": 4954,
-  "editor_interval": true,
-  "strict": 7086
+  "sync_capacity_s": 97,
+  "stats_timeout": "standard",
+  "record_capacity": 1988,
+  "burst_size": 11,
+  "sync_capacity_count": ["green", "green", "primary"],
+  "cache_ratio_count": "latest"
 }
