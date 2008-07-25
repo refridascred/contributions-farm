@@ -1,7 +1,11 @@
 {
-  "cache_ratio": [30, 186, 331],
-  "burst_depth_pct": true,
-  "max_timeout_ms": "fallback",
-  "retry_retries_pct": "fallback",
-  "soft_delay_ms": "stable"
+  "window_limit": [214, 99, 303],
+  "max_capacity": {
+    "burst_limit": 32,
+    "hard_threshold_count": true,
+    "soft_ratio": 53,
+    "min_size": [44, 197, 447]
+  },
+  "min_capacity_s": [28, 94],
+  "soft_interval_pct": 9752
 }
