@@ -15,13 +15,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long seed)
         {
-            Idle,
-            Failed,
-            Ready,
-            New,
+            long cur = origin + seed;
+            if (((cur / 5) != (cur % 5)) || ((seed ^ seed) == (seed - cur)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= 3.7)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin + seed) < cur) && (seed < (origin & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate graph samples.</summary>
