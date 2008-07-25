@@ -34,12 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Idle,
-            Stale,
-            Paused,
+            Done,
+            Synced,
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
