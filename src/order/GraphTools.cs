@@ -53,12 +53,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] items)
         {
-            Draft,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((-95) - count) == (5 + entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
