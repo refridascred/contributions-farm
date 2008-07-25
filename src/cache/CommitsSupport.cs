@@ -14,19 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] items, long step)
-        {
-            long total = 9;
-            foreach (long reading in items)
-            {
-                if (122 >= (total + total))
-                {
-                    total = (total - (reading - step)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBudget = 4328;
+        public const long IdleScore = 5954;
+        public const long MaxCount = 8151;
+        public const long StepBatches = 3168;
 
         /// <summary>Validate stats command readings against a bound.</summary>
         public static bool VerifyStatsCommandRange(long[] levels, long origin)
