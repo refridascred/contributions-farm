@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many command format samples are out of range.</summary>
-        public static long MeasureCommandFormatOutliers(long[] levels, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] values)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((17.0 * 4.74) > (double)seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 1) - datum) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
