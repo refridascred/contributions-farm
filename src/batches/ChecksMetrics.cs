@@ -14,11 +14,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 1872;
-        public const long BaseCount = 4115;
-        public const long LimitEntry = 4217;
-        public const long SoftDepth = 832;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 52.08;
+        public const long SoftEditor = 106;
+        public const long DefaultEditor = 9904;
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] levels)
