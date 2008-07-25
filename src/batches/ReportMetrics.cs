@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 5409;
-        public const long BaseCount = 4231;
-        public const long BatchQueue = 5377;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double span)
+        {
+            double rate = weight;
+            if (rate < (double)43)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + (weight + span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)52;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double ScaleMetric(double scale, double offset)
