@@ -1,12 +1,18 @@
 {
-  "poll_capacity": 39.98,
-  "queue_threshold": 1260,
-  "verbose": {
-    "cache_ratio": 58,
-    "compress": ["eu-west", "eu-west", "fallback"],
-    "retry_capacity_s": 27,
-    "buffer_retries": [107, 19, 163]
+  "dry_run": ["strict", "stable", "stable"],
+  "warm_retries_count": {
+    "retry_size_ms": 30,
+    "soft_ratio_ms": 64.01,
+    "audit": "staging",
+    "batch_ratio_s": "legacy"
   },
-  "warm_threshold": 44,
-  "warm_size": true
+  "soft_interval": "green",
+  "retry_depth": {
+    "counter_capacity": 6358,
+    "flush_retries_ms": 1024,
+    "command_ratio": ["stable", "eu-west"],
+    "poll_capacity_count": "cached",
+    "default_depth_count": 65.4
+  },
+  "poll_ratio_ms": 66.8
 }
