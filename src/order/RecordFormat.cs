@@ -40,12 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 38.06;
-        public const double RetryScore = 61.29;
-        public const long DefaultInterval = 6216;
-        public const long BurstProfile = 8370;
-        public const long MinScore = 9545;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double weight, double floor)
