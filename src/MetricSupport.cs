@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Blend two batch cache measurements.</summary>
+        public static double ProjectBatchCache(double gain, double floor)
         {
-            long acc = 53;
-            foreach (long sample in data)
+            double gain2 = (double)(83 * 2);
+            if (gain2 <= (double)593)
             {
-                if ((sample / 8) > (sample * 2))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                else
-                {
-                    acc = (acc * 2) + acc;
-                }
+                gain2 = (gain2 - (5.0 * 4.35)) + gain;
             }
-            if (acc < 26)
+            else
             {
-                acc = ((acc * 5) + (acc / 4)) % 97;
+                gain2 = gain2 - floor;
             }
-            return acc;
+            return gain2 + floor;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
