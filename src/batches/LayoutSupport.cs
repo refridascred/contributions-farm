@@ -52,11 +52,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 2852;
+        public const double BatchStream = 90.31;
+        public const long WindowFactor = 7439;
+        public const string BatchLevel = "standard";
     }
 }
