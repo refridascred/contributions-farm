@@ -1,5 +1,14 @@
 {
-  "cache_capacity": "fallback",
-  "min_size": 53,
-  "batch_delay_ms": "fallback"
+  "base_limit_pct": {
+    "verbose": 1328,
+    "farm_threshold": [298, 289, 312],
+    "max_retries": "open",
+    "cache_delay": {
+      "base_threshold_pct": true,
+      "base_size_s": 28,
+      "readonly": 22.75
+    }
+  },
+  "poll_delay_s": "primary",
+  "soft_size": 88.99
 }
