@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] readings, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((origin * 3) < (matches * 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + cell;
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
