@@ -27,21 +27,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
