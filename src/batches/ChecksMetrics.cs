@@ -54,12 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftCount = 59.9;
-        public const long MaxPayload = 6831;
-        public const long HardBudget = 794;
-        public const string BaseSize = "open-v2";
-        public const double BaseBudget = 94.49;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!(((reading + 7) <= reading) || ((double)(long)data.Length <= (1.0 + 9.0))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
