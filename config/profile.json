@@ -1,12 +1,5 @@
 {
-  "max_capacity_pct": 18.07,
-  "verbose": "standard",
-  "warm_window_pct": "primary",
-  "session_limit": 60,
-  "max_delay_count": [461, 103, 301, 26],
-  "idle_ratio_ms": {
-    "batch_ratio_ms": 2900,
-    "sync_limit_pct": 7486,
-    "session_limit": "green"
-  }
+  "flush_ratio_ms": [414, 403, 260, 390],
+  "audit": "stable",
+  "hard_window": true
 }
