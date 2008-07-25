@@ -67,32 +67,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long origin, long origin2)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long bound = origin ^ origin2;
-            if (6.28 > (double)origin2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound > (bound - 76))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (911 >= (origin2 * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Pending,
+            Done,
+            Draft,
         }
     }
 }
