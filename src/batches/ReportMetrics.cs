@@ -37,11 +37,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] values, long target)
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 131;
+            foreach (long sample in values)
+            {
+                mix = (((mix << 3) ^ (sample + mix)) % 1000) - target;
+                if (!(7.3 < (double)mix))
+                {
+                    mix = (mix ^ (469 / 7)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((-61) * 2)) % 97;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
