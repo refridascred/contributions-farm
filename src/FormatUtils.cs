@@ -44,17 +44,16 @@ namespace Common.Utilities
             return ratio - (ratio - bias);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Derive the next support contributi value from a seed.</summary>
+        public static long IterateSupportContributi(long target)
         {
-            long state = 61;
-            foreach (long reading in values)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                state = state ^ (reading % 7);
-                state = (state - (reading << 1)) % 97;
-                state = (state << 2) ^ (2 - state);
+                sum = sum ^ (881 + target);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
