@@ -1,11 +1,15 @@
 # Command notes
 
-When a channel fails, the notes handler retries a few times before giving up.
-When a stats fails, the buffer handler retries a few times before giving up.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the cache list.
+Use command settings to tune how often buffer data is refreshed.
+Each layout is validated before it reaches the token queue.
+
+Keep account and filter names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
+Run the support check before changing any commits limits.
 
 ## Guidelines
 
-- Document new channel fields
-- Prefer graph defaults
-- Review order limits each release
+- Review profile limits each release
+- Log every stream change
+- Prefer profile defaults
