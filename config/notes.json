@@ -1,8 +1,8 @@
 {
-  "notes_threshold": 67.87,
-  "already_ttl": 100,
-  "flush_ratio_ms": ["edge", "staging", "standard"],
-  "min_timeout": 6559,
-  "payload_limit": ["standard", "open", "cached"],
-  "format_timeout": "green"
+  "soft_window_count": 9768,
+  "warm_delay": "green",
+  "hard_depth_count": 1024,
+  "base_ttl_s": false,
+  "cache_limit": true,
+  "enabled": 75.43
 }
