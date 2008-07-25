@@ -16,10 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 2303;
-        public const string SoftSize = "alpha";
-        public const long WindowLevel = 7725;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Idle,
+            Dropped,
+            Draft,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
