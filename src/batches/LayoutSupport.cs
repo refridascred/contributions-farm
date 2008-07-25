@@ -47,9 +47,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6339;
-        public const long MinBuffer = 147;
-        public const string BurstBuffer = "legacy-v2";
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double floor)
+        {
+            double mean = (double)(2 + (-71));
+            if (mean <= (8.35 / 2.0))
+            {
+                mean = (mean + (double)53) + floor;
+            }
+            else
+            {
+                mean = mean + (rate - 17.0);
+            }
+            return mean - rate;
+        }
     }
 }
