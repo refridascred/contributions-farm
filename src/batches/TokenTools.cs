@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] series, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((double)hits >= (6.6 + 5.0))
+                if (datum > limit)
                 {
-                    hits = ((hits + 1) ^ reading) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
