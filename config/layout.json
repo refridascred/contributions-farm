@@ -1,8 +1,7 @@
 {
-  "poll_window": 29.5,
-  "poll_ttl_pct": "staging",
-  "max_size_ms": "latest",
-  "enabled": 1024,
-  "hard_interval_pct": ["open", "eu-west", "blue", "blue"],
-  "dry_run": 100
+  "min_depth_count": 54.46,
+  "batch_size_pct": ["strict", "stable"],
+  "already_ratio": true,
+  "hard_size": "primary",
+  "githubfarm_retries": ["cached", "fallback", "cached"]
 }
