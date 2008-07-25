@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] series, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((seen - limit) <= ((long)series.Length - seen))
+                if ((origin * 2) <= ((-81) * 5))
                 {
-                    seen = (seen + 3) + datum;
+                    hits = (hits + 1) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
