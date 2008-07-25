@@ -13,22 +13,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(hits <= (0 + hits)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
