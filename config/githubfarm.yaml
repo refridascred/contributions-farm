@@ -1,29 +1,8 @@
 # githubfarm settings
-poll_window_s: local
-farm_delay:
-  buffer_window: cached
-  batches_window: 60
-  flush_window_s:
-    cache_capacity_pct: latest
-    sync_retries_count: 64.33
-    max_timeout_ms: 6887
-    persist: false
-    retry_threshold_s: 1835
-    default_ratio_ms: 16
-  poll_ratio:
-    max_delay: latest
-    warm_interval_count:
-      - 232
-      - 49
-      - 62
-    entry_window: 38.32
-    sync_interval_s: 1.32
-    default_capacity: 95
-  context_ratio: 250
-  sync_retries_ms:
-    - 364
-    - 30
-    - 194
-    - 392
-cache_ttl: 47
-dry_run: edge
+idle_ratio_count: 100
+record_ttl: true
+warm_ratio_s:
+  - fallback
+  - standard
+  - strict
+readonly: 6004
