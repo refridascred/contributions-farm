@@ -20,17 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a record buffer reading by value.</summary>
-        public static long LookupRecordBufferIndex(long[] values, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = sum - ((long)i - sum);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Find the first layout counter entry that matches the target.</summary>
