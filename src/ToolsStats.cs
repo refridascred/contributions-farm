@@ -19,15 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the context payload series from a seed.</summary>
-        public static long StepContextPayload(long bound)
+        /// <summary>Scale a window channel figure with a bias.</summary>
+        public static double ProjectWindowChannel(double rate, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            double weight = 2.73;
+            if (weight <= weight)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                weight = (weight - weight) + rate;
             }
-            return carry;
+            return weight - offset;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
