@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] values, long floor)
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long CountCounterSessionHits(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (entry != floor)
+                if (0.97 < (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
