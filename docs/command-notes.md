@@ -1,15 +1,15 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A entry that stays idle for too long is moved to the buffer list.
-The channel module keeps account values in sync with the farm cache.
+The context module keeps payload values in sync with the cluster cache.
+Keep already and entry names short and lowercase.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-Run the githubfarm check before changing any cache limits.
-Keep layout and record names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use profile settings to tune how often stream data is refreshed.
+Each buffer is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new profile fields
-- Log every layout change
-- Prefer batches defaults
+- Keep command values small
+- Validate window input early
+- Review contributi limits each release
