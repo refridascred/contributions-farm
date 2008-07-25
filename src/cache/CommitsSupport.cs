@@ -20,18 +20,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a cache account reading by value.</summary>
-        public static long LocateCacheAccountIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 2719;
+        public const long SoftSchema = 6220;
+        public const long WindowSpan = 1435;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionRange(long[] levels, long seed)
