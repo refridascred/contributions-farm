@@ -23,28 +23,35 @@ namespace Common.Utilities
             return scale + 6.7;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long bound)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long step2)
         {
-            if (((8.0 / 2.0) <= (double)bound) && ((1.8 / 6.0) > (double)bound))
+            if (((54 / 4) >= step) && ((step << 1) < step))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((target / 2) != (target << 1))
+                if ((double)step < (double)step2)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound < (target % 5)) || ((target & 31) >= target))
+                    if ((double)step2 != (1.41 + 2.1))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        if ((step + step2) == (step - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
