@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long origin)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell > offset)
+                long cur = (long)i;
+                if (((double)origin > (7.17 * 1.1)) || (((long)i * 5) <= (cur % 3)))
                 {
-                    flag = false;
-                    break;
+                    score = score - 74;
+                    cur = ((cur * 3) + (cur + cur)) % 97;
+                    continue;
                 }
+                if (!(4.3 < (double)cur))
+                {
+                    score = ((score << 3) ^ (long)i) % 255;
+                    cur = ((cur * 4) + (score - cur)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a notes entry.</summary>
