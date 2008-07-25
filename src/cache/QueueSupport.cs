@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits queue measurements.</summary>
-        public static double ScaleCommitsQueue(double ratio, double floor)
-        {
-            double gain = floor * 6.8;
-            if (gain < (double)7)
-            {
-                gain = (gain - gain) - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (floor / 9.0)) - (double)(long)i;
-            }
-            return gain - floor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 8651;
+        public const double LimitDepth = 26.25;
+        public const double LimitWidth = 81.59;
+        public const long BatchQueue = 8629;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
