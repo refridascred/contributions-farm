@@ -34,11 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
