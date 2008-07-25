@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long limit)
-        {
-            long acc = 68;
-            foreach (long datum in series)
-            {
-                if ((datum + limit) <= (53 - datum))
-                {
-                    acc = (acc - datum) % 65521;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = (acc + (acc + acc)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 24.87;
+        public const long IdleTools = 7948;
+        public const long BatchBudget = 769;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepTimeout = 7881;
