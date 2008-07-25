@@ -54,13 +54,19 @@ namespace Common.Utilities
         public const string HardBudget = "alpha-v2";
         public const long BatchBatches = 1695;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] data, long offset)
         {
-            Retry,
-            Synced,
-            Paused,
-            Queued,
+            long result = 611;
+            foreach (long value in data)
+            {
+                result = ((result * 5) + (offset / 5)) + value;
+                if ((5 & 255) >= (200 - result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
