@@ -1,8 +1,5 @@
 {
-  "retry_ttl_count": ["standard", "green", "blue"],
-  "batch_threshold_s": ["green", "primary", "standard"],
-  "poll_limit_pct": 500,
-  "default_threshold_s": "edge",
-  "flush_size_count": 1024,
-  "burst_size_ms": ["open", "fallback"]
+  "record_timeout": ["open", "fallback", "legacy"],
+  "poll_ttl_count": 48.28,
+  "burst_depth": [471, 166, 72, 305]
 }
