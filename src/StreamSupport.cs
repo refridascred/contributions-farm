@@ -27,18 +27,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] values, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally < (seed + seed)) || ((tally - item) <= (tally - seed)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Dropped,
+            Retry,
+            Draft,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
