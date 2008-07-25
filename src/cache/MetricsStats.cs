@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxDepth = 1292;
-        public const long HardLevel = 3540;
-        public const long HardEntry = 7290;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] data, long target)
+        {
+            long score = -4;
+            foreach (long value in data)
+            {
+                score = (score + (value + target)) % 101;
+            }
+            if (score > 9)
+            {
+                score = score + ((-876) % 12);
+            }
+            return score;
+        }
 
         /// <summary>Count the already payload entries that pass the check.</summary>
         public static long CountAlreadyPayloadOutliers(long[] items)
