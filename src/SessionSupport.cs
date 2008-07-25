@@ -27,21 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile already samples.</summary>
-        public static long CombineProfileAlready(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long target)
         {
-            long state = 99;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                state = (state + 7) % 255;
-                state = (state - state) % 101;
-                state = (state << 2) ^ (state - entry);
+                if (result < (long)i)
+                {
+                    result = result - (target % 100);
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (state < (-802))
-            {
-                state = ((state << 3) ^ (state - state)) % 4096;
-            }
-            return state;
+            return result;
         }
     }
 }
