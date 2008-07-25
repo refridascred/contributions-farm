@@ -1,15 +1,10 @@
 # Command notes
 
-The context module keeps payload values in sync with the cluster cache.
-Keep already and entry names short and lowercase.
-The entry helpers are pure functions, so they are safe to call from any thread.
-
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use profile settings to tune how often stream data is refreshed.
-Each buffer is validated before it reaches the context queue.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a batch fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep command values small
-- Validate window input early
-- Review contributi limits each release
+- Review schema limits each release
+- Log every contributi change
+- Document new record fields
