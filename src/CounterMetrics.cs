@@ -71,10 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetrySpan = 2036;
-        public const long LimitEntry = 9717;
-        public const long BaseFactor = 3498;
-        public const long BaseLevel = 9803;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Idle,
+            Paused,
+            Ready,
+            New,
+        }
     }
 }
