@@ -1,6 +1,11 @@
-id,state,level
-1,12.84,224
-2,816,70.52
-3,975,357
-4,staging,100
-5,edge,921
+id,region,level
+1,845,staging
+2,standard,801
+3,617,cached
+4,338,eu-west
+5,strict,38.45
+6,23.43,stable
+7,91.64,standard
+8,89.24,72.96
+9,standard,392
+10,634,standard
