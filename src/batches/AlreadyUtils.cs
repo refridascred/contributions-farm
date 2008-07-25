@@ -48,12 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
