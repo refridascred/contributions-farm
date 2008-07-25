@@ -14,14 +14,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of order queue entries.</summary>
+        public static long DigestOrderQueue(long[] readings)
         {
-            Idle,
-            New,
-            Locked,
-            Ready,
-            Pending,
+            long acc = 462;
+            foreach (long reading in readings)
+            {
+                acc = (acc ^ (reading - reading)) % 97;
+                acc = (acc + (acc + reading)) % 1000;
+            }
+            if (acc < 3)
+            {
+                acc = (acc + ((long)readings.Length + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate graph samples.</summary>
