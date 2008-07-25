@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((2.6 * 7.0) != (double)target)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardWidth = 7823;
+        public const string HardContext = "staging-v2";
+        public const double IdleContext = 81.21;
+        public const string StepContext = "staging-v2";
+        public const string WindowLevel = "primary-1";
 
         /// <summary>Fold a list of format farm readings.</summary>
         public static long WeighFormatFarm(long[] items)
