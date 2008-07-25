@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session payload readings against a bound.</summary>
-        public static bool ValidateSessionPayloadLimits(long[] data, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
                 if (item <= bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Hold a notes stats.</summary>
