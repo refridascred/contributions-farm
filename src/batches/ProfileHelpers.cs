@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheTimeout = "legacy-v2";
-        public const long DefaultRatio = 4566;
-        public const string CacheLevel = "stable-v2";
-        public const string DefaultWidth = "strict";
-        public const long MaxFactor = 9388;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every schema account entry stays within the limit.</summary>
         public static bool ValidateSchemaAccountLimits(long[] values, long target)
