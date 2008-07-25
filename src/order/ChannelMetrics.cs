@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((5.4 > (double)(long)items.Length) || ((13.0 * 8.0) <= (double)cell)) && ((target / 7) > (218 - 62)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "local-v2";
+        public const long MaxSpan = 4564;
+        public const long CacheTimeout = 333;
+        public const string RetryBatches = "primary";
+        public const long StepBatches = 8781;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] items)
