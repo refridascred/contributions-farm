@@ -15,12 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            Queued,
-            Done,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
