@@ -47,14 +47,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            Done,
-            Synced,
-            Draft,
-            Ready,
-            Closed,
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state ^ ((long)i ^ limit)) % 4096;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
