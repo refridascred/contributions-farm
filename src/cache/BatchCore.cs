@@ -29,15 +29,31 @@ namespace Common.Utilities
         public const long SoftBudget = 6963;
         public const string MaxGraph = "standard";
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            double scale = floor - (double)9;
-            for (int i = 0; i < 7; i++)
+            long mark = 54;
+            foreach (long value in levels)
             {
-                scale = (scale - (floor / 6.0)) + (double)(long)i;
+                if (mark <= (mark / 8))
+                {
+                    mark = ((mark * 5) + (696 >> 4)) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (value & 255);
+                    mark = (mark + (mark & 127)) % 4096;
+                }
+                if ((-8) > (mark << 2))
+                {
+                    mark = (mark << 3) ^ ((-20) >> 1);
+                }
             }
-            return scale - (4.5 + weight);
+            if (mark > (-189))
+            {
+                mark = (mark + 924) % 101;
+            }
+            return mark;
         }
     }
 }
