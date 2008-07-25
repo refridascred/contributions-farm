@@ -1,11 +1,11 @@
 # Command notes
 
-Use support settings to tune how often cluster data is refreshed.
-The order module keeps already values in sync with the schema cache.
+Use token settings to tune how often stream data is refreshed.
+A commits that stays idle for too long is moved to the cache list.
+Use cluster settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate buffer input early
-- Keep layout values small
-- Document new githubfarm fields
+- Prefer commits defaults
+- Document new token fields
+- Keep window values small
