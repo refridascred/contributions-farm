@@ -21,12 +21,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 7130;
-        public const string SoftSpan = "open-1";
-        public const long WindowBuffer = 7650;
-        public const long RetryDepth = 254;
-        public const long IdleScore = 3596;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Locked,
+            Idle,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleSpan = 2627;
