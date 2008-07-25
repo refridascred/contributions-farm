@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryRatio = "local-v2";
-        public const long IdleSchema = 1425;
-        public const string RetrySchema = "cached-v2";
-        public const long BatchRatio = 2073;
-        public const long CacheSchema = 3714;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Stale,
+            Paused,
+            Queued,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] data, long floor)
