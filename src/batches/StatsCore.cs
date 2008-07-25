@@ -64,31 +64,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate editor session samples.</summary>
-        public static long ScoreEditorSession(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long limit)
         {
-            long sum = 1;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (items[i] == limit)
                 {
-                    sum = (((sum * 4) + value) % 4096) ^ (long)i;
-                    sum = sum - (987 + sum);
-                }
-                if ((value * 2) >= value)
-                {
-                    sum = ((sum << 3) ^ (3 + 459)) % 4096;
-                }
-                else
-                {
-                    sum = sum - (-3);
-                }
-                if ((sum - 779) >= (3 - value))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
