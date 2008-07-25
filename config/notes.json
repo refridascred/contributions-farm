@@ -1,15 +1,6 @@
 {
-  "cache_window": "staging",
-  "min_capacity": [42, 110],
-  "filter_delay": {
-    "idle_timeout_pct": 39.08,
-    "soft_ttl_pct": true,
-    "soft_limit_pct": {
-      "burst_interval_pct": [81, 153],
-      "default_window_ms": false,
-      "warm_timeout": 60
-    },
-    "max_depth": "standard",
-    "audit": "strict"
-  }
+  "retry_retries": "open",
+  "burst_limit_count": 9.97,
+  "default_capacity": 1231,
+  "command_window": 55
 }
