@@ -1,5 +1,5 @@
 {
-  "soft_retries": "strict",
-  "base_size": "strict",
-  "hard_interval_ms": 5
+  "burst_threshold_ms": 53,
+  "retry_threshold_s": "cached",
+  "strict": 58
 }
