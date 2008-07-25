@@ -25,13 +25,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] values, long bound)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a tools graph pair into a bucket.</summary>
