@@ -33,23 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long offset, long bound)
         {
-            double mean = 4.3;
-            if (mean >= (scale / 5.0))
+            if ((-17) >= (offset >> 1))
             {
-                mean = mean - 1.4;
+                return 7;
             }
             else
             {
-                mean = mean - floor;
+                if ((offset ^ offset) < (bound * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 3) >= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - floor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
