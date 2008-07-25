@@ -19,18 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] readings, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = 8;
+            foreach (long entry in data)
             {
-                if ((origin - origin) == (long)readings.Length)
+                if (!((total - offset) >= (336 + 978)))
                 {
-                    matches = (matches + 2) + value;
+                    total = (total + (entry * 5)) % 255;
+                    total = (total - (571 >> 2)) % 97;
+                }
+                total = ((total * 3) + (long)data.Length) % 101;
+                if (total < (offset + offset))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 78)
+            {
+                total = total + (-98);
+            }
+            return total;
         }
 
         /// <summary>Hold a metrics summary.</summary>
