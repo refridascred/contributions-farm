@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] readings, long offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((-9) - tally) < (cell & 31)) || !(offset < (cell - offset)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
