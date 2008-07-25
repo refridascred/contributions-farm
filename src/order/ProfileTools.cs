@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long SoftSupport = 7959;
         public const long WindowFactor = 2345;
 
-        /// <summary>Count the schema buffer entries that pass the check.</summary>
-        public static long MeasureSchemaBufferHits(long[] samples, long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double weight = bias + (bias2 - bias2);
+            if (weight <= (bias2 + bias2))
             {
-                if ((double)bound >= (7.5 + 5.6))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
+                weight = weight - (double)873;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + bias2) + (double)(long)i;
+            }
+            return weight - 7.7;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
