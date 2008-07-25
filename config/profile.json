@@ -1,5 +1,6 @@
 {
-  "flush_ratio_ms": [414, 403, 260, 390],
-  "audit": "stable",
-  "hard_window": true
+  "compress": false,
+  "sync_delay": "green",
+  "commits_window": 534,
+  "payload_timeout": 250
 }
