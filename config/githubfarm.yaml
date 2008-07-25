@@ -1,7 +1,17 @@
 # githubfarm settings
-sync_threshold_pct: 1024
-max_delay_pct: standard
-hard_delay_s: eu-west
-stats_interval: blue
-poll_delay_count: cached
-stats_delay: 60
+verbose:
+  support_size: true
+  max_depth_ms: 100
+  min_threshold_count: 46.1
+  readonly: 24.07
+  retry_threshold_pct:
+    window_ttl: standard
+    soft_depth: 45.9
+    record_delay: legacy
+    batch_delay: stable
+account_threshold: 68
+persist:
+  base_ttl_s: false
+  min_ttl: blue
+  sync_capacity_s: staging
+  default_window_pct: primary
