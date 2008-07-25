@@ -32,17 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first layout counter entry that matches the target.</summary>
-        public static long LocateLayoutCounterIndex(long[] readings, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Locked,
         }
     }
 }
