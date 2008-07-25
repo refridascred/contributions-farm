@@ -1,24 +1,12 @@
 # githubfarm settings
-default_ratio: 6642
-channel_ratio: false
-support_window:
-  cache_delay:
-    - stable
-    - fallback
-    - open
-    - stable
-  stats_timeout: true
-  format_interval: false
-persist: false
-flush_size_s:
-  metric_timeout:
-    - eu-west
-    - legacy
-    - cached
-    - blue
-  warm_timeout_count:
-    - 466
-    - 427
-    - 37
-  window_depth: 4153
-poll_threshold_count: primary
+burst_ttl_pct:
+  layout_threshold: strict
+  verbose: 7162
+  soft_timeout: staging
+verbose: open
+compress:
+  metric_limit: 27.73
+  context_window: 80
+  warm_ratio_count: true
+sync_threshold_s: 57
+warm_capacity_ms: 42
