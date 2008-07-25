@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseBudget = 9186;
-        public const double BurstScore = 55.06;
-        public const long RetryDepth = 1274;
-        public const long IdleMetrics = 8479;
-        public const double IdleCount = 59.19;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstFactor = 3577;
