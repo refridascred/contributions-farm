@@ -1,24 +1,15 @@
 {
-  "hard_delay_count": {
-    "stream_ttl": 70.78,
-    "metrics_retries": {
-      "strict": 6947,
-      "idle_size_s": 250,
-      "readonly": [32, 260, 215, 155],
-      "warm_ttl": [138, 22],
-      "metrics_ttl": ["edge", "cached"],
-      "buffer_size": "staging"
+  "max_window_pct": {
+    "hard_delay": {
+      "base_limit_pct": "edge",
+      "retry_interval_ms": false,
+      "persist": 84.62,
+      "cache_ratio_ms": false
     },
-    "dry_run": 44.32,
-    "strict": "green"
+    "warm_timeout_pct": true,
+    "sync_threshold_pct": 49,
+    "session_delay": 500
   },
-  "channel_depth": "legacy",
-  "hard_ttl_pct": {
-    "already_limit": ["green", "eu-west", "standard", "local"],
-    "batch_interval_pct": 13,
-    "batch_interval": ["edge", "cached"],
-    "cache_ratio_count": 82.65
-  },
-  "default_delay_pct": "staging",
-  "strict": ["open", "strict", "blue"]
+  "commits_ratio": "open",
+  "min_retries_s": 6334
 }
