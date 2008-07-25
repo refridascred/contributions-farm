@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheWidth = 5847;
+        public const string BurstGithubfarm = "staging-v2";
+        public const string DefaultBudget = "stable-1";
+        public const long StepSize = 9577;
+        public const string MinFactor = "strict-edge";
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
