@@ -37,17 +37,14 @@ namespace Common.Utilities
         public const string HardBudget = "alpha-v2";
         public const long BatchBatches = 1695;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long seed)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Queued,
+            Ready,
+            New,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
