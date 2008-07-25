@@ -30,18 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] values, long offset)
+        /// <summary>Scale a checks batch figure with a bias.</summary>
+        public static double AdjustChecksBatch(double scale, double span)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double mean = scale;
+            if (mean <= (3.58 - span))
             {
-                if ((double)seen == (double)50)
-                {
-                    seen = ((seen + 1) + item) + offset;
-                }
+                mean = mean + scale;
             }
-            return seen;
+            else
+            {
+                mean = mean + (scale - 7.0);
+            }
+            return mean + (mean / 5.0);
         }
     }
 }
