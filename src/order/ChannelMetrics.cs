@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const string RetryBatches = "primary";
         public const long StepBatches = 8781;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 63;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix + (sample ^ 98)) % 4096;
+                mix = ((mix << 3) ^ (bound + 8)) % 4096;
+                mix = mix - (424 / 2);
             }
-            return matches;
+            if (mix > 31)
+            {
+                mix = ((mix * 3) + (mix + mix)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a account summary.</summary>
