@@ -30,21 +30,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((199 % 12) > (offset + offset)) && ((offset * 4) > (bound + bound)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound > (bound * 5)) || ((7.0 + 9.45) == (double)bound))
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric stats.</summary>
