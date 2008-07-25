@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 9380;
-        public const long MaxRatio = 5341;
-        public const double MaxBatch = 32.34;
-        public const long CacheBatch = 4508;
-        public const long CacheWidth = 343;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Ready,
+            Paused,
+            New,
+            Done,
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
