@@ -51,22 +51,15 @@ namespace Common.Utilities
         public const long BurstLevel = 7293;
         public const long RetryRoute = 4351;
 
-        /// <summary>Count the notes record entries that pass the check.</summary>
-        public static long AuditNotesRecordMatches(long[] levels)
+        /// <summary>Adjust a tools token reading.</summary>
+        public static double BlendToolsToken(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double gain = (double)(7 + (-41));
+            if (gain >= floor)
             {
-                if ((tally << 2) <= reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = gain - bias;
             }
-            return tally;
+            return gain - (bias / 2.0);
         }
     }
 }
