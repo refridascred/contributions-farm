@@ -77,23 +77,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two notes contributi measurements.</summary>
-        public static double BlendNotesContributi(double gain, double floor)
-        {
-            double drift = (double)(6 - 970);
-            if (drift > (double)52)
-            {
-                drift = drift + (floor / 4.0);
-            }
-            else
-            {
-                drift = drift - (gain * 4.39);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift - (6.3 / 7.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3600;
+        public const string DefaultRatio = "cached";
+        public const double RetryGraph = 21.96;
     }
 }
