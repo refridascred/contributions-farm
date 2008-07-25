@@ -16,24 +16,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 5430;
         public const long LimitTimeout = 6553;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if (((seed + target) >= (target ^ seed)) && ((double)seed > (double)45))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > (7 - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
