@@ -20,38 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long offset, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long bound)
         {
-            if (((double)7 != (double)offset) && ((double)offset == (6.91 + 7.0)))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.5 - 2.16) >= (double)seed)
+                if (entry < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-248) % 97) > (seed + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset > seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
