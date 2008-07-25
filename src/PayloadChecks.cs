@@ -58,12 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series, long floor)
         {
-            Ready,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((452 << 3) != (551 + floor)) && ((matches * 2) >= (matches + sample)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
