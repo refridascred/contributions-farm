@@ -22,23 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record githubfarm value from a seed.</summary>
-        public static long StepRecordGithubfarm(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long anchor = -57;
+            foreach (long item in values)
             {
-                if (11.0 > (double)seed)
+                if ((item % 2) < 28)
                 {
-                    break;
+                    continue;
                 }
-                if ((5.4 * 2.0) < (double)sum)
-                {
-                    sum = ((sum * 3) + (seed + (long)i)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                anchor = anchor - anchor;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a filter header.</summary>
