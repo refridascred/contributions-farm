@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] readings)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Done,
-            Stale,
+            long total = 9;
+            foreach (long cell in readings)
+            {
+                total = (total + (cell + cell)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer info.</summary>
