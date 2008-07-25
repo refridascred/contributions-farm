@@ -1,5 +1,8 @@
 {
-  "default_ratio_ms": "cached",
-  "graph_size": "latest",
-  "warm_interval_ms": "stable"
+  "idle_limit_ms": "strict",
+  "base_size_ms": 1024,
+  "dry_run": 2772,
+  "counter_interval": "edge",
+  "route_ratio": 10,
+  "warm_depth": [190, 8, 100, 203]
 }
