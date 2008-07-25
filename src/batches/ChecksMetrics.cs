@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two entry stream measurements.</summary>
-        public static double BlendEntryStream(double gain, double floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double drift = (double)(72 & 1);
-            if (drift <= drift)
-            {
-                drift = ((drift + (double)(-7)) - gain) + floor;
-            }
-            else
-            {
-                drift = drift + (3.63 - 10.0);
-            }
-            return drift - (double)13;
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
