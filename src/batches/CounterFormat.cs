@@ -34,9 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 1604;
-        public const double BaseCount = 3.52;
-        public const long StepRatio = 4829;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Synced,
+            Queued,
+            New,
+        }
     }
 }
