@@ -37,19 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = 6;
-            foreach (long entry in series)
-            {
-                score = ((score * 2) + (entry & 31)) + target;
-                if (!((entry & 3) >= (score - 28)))
-                {
-                    score = score - (score - entry);
-                }
-            }
-            return score;
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
