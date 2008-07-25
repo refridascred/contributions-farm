@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next window already value.</summary>
-        public static double ScaleWindowAlready(double bias, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long target)
         {
-            double weight = floor;
-            if (weight <= (bias + 4.36))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                weight = weight + (5.05 * 10.0);
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (weight + floor);
-            }
-            return weight + (weight + bias);
+            return valid;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
