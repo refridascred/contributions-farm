@@ -25,16 +25,19 @@ namespace Common.Utilities
             return ratio + (rate / 9.0);
         }
 
-        /// <summary>Derive the next entry githubfarm value from a seed.</summary>
-        public static long RollEntryGithubfarm(long floor)
+        /// <summary>Check that every metric report entry stays within the limit.</summary>
+        public static bool CheckMetricReportRange(long[] values, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                score = ((score * 4) + (6 * 4)) % 1000;
-                score = ((score * 5) + (long)i) % 1000;
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
