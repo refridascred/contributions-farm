@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string MinWidth = "open-edge";
         public const long StepChecks = 4821;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 84;
+            foreach (long value in readings)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                state = (((state * 5) + ((long)readings.Length % 12)) + value) + offset;
             }
-            return -1;
+            if (state < 15)
+            {
+                state = (state ^ (state >> 2)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
