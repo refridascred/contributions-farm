@@ -19,27 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] levels, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] data)
         {
-            long total = 43;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((total + floor) < (floor - floor))
+                if (!((hits ^ hits) < (item - hits)) || ((double)674 <= (double)hits))
                 {
-                    total = (total ^ total) % 4096;
-                    total = (total ^ (5 + total)) % 4096;
-                }
-                if ((floor <= total) || ((5.7 / 9.0) <= (double)floor))
-                {
-                    total = (total + entry) % 255;
+                    hits = hits + 3;
                 }
             }
-            if (total > (-3))
-            {
-                total = (total * 2) + (total - floor);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the entry class values.</summary>
