@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
+        public static bool ValidatePayloadMetricsRange(long[] readings, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Accumulate editor samples.</summary>
