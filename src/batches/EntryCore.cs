@@ -20,26 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] series, long limit)
         {
-            long state = 8;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((419 * 2) < (state + cell))
+                if (value <= limit)
                 {
-                    state = (state + ((long)data.Length + 472)) % 101;
-                }
-                if ((state >= (cell - cell)) || (0 < (cell ^ cell)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (state < 112)
-            {
-                state = (state + state) % 1000;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
