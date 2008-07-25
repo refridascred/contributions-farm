@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
