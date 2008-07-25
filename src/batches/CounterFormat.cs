@@ -34,13 +34,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 1604;
+        public const double BaseCount = 3.52;
+        public const long StepRatio = 4829;
     }
 }
