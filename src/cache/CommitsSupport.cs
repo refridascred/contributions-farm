@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 5691;
         public const double MaxRatio = 20.12;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] series, long target)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a entry summary.</summary>
