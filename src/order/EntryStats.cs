@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchRatio = 6985;
+        public const string CacheDepth = "fallback";
+        public const long BaseFarm = 2945;
+        public const double HardFarm = 89.81;
+        public const double MaxFarm = 71.98;
 
         /// <summary>Measure how many metric command samples are out of range.</summary>
         public static long TallyMetricCommandMatches(long[] data, long seed)
