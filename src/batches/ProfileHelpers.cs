@@ -60,12 +60,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long target, long offset)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            if ((776 / 9) > (offset + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.8 - 0.3) != (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
