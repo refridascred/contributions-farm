@@ -15,39 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long step, long step2)
-        {
-            if ((double)step < 9.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step2 == (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((20.0 - 18.0) < (double)step2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step - 49) < step2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 1890;
+        public const string BaseRatio = "latest";
+        public const long HardLevel = 6429;
+        public const double RetryCount = 22.01;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxBudget = "strict-1";
