@@ -23,38 +23,11 @@ namespace Common.Utilities
             return scale + 6.7;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long step2)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if (((54 / 4) >= step) && ((step << 1) < step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (double)step2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step2 != (1.41 + 2.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step + step2) == (step - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a session format reading.</summary>
