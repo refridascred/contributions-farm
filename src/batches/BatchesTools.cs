@@ -23,22 +23,32 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate already order samples.</summary>
-        public static long ScoreAlreadyOrder(long[] data, long target)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long bound)
         {
-            long carry = 728;
-            foreach (long sample in data)
+            long step = offset - bound;
+            if (bound > (bound & 31))
             {
-                if (8 >= (long)data.Length)
+                return 4;
+            }
+            else
+            {
+                if (step <= (bound * 2))
                 {
-                    carry = ((carry - 5) % 97) - sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 2) >= (bound % 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry > 421)
-            {
-                carry = carry + (target + carry);
-            }
-            return carry % 97;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
