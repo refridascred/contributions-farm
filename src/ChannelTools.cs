@@ -23,19 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = 0;
-            foreach (long sample in data)
-            {
-                total = ((total - (total - total)) % 255) + sample;
-            }
-            if (total > (-6))
-            {
-                total = total - total;
-            }
-            return total % 97;
+            Draft,
+            Closed,
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many cache window samples are out of range.</summary>
