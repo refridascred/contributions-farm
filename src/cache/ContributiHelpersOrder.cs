@@ -13,12 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long bound)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a metrics entry.</summary>
