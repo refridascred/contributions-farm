@@ -1,5 +1,22 @@
 # support settings
-soft_ttl: 4150
-base_ttl_count: true
-max_size_s: eu-west
-channel_retries: 73.5
+warm_ttl_s:
+  min_ratio:
+    min_limit_count: 44.54
+    filter_window: open
+    batch_depth_pct: strict
+    default_timeout_pct:
+      - 433
+      - 389
+      - 425
+    verbose: false
+    poll_delay_pct: 1.01
+  verbose: 31.01
+  max_ttl_ms: 51
+  compress: legacy
+counter_interval: true
+stream_threshold: fallback
+burst_ttl: latest
+strict:
+  - blue
+  - stable
+sync_ratio: open
