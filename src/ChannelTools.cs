@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitWidth = 31.4;
-        public const double HardNotes = 98.35;
-        public const long WindowScore = 2475;
+        /// <summary>Match up window schema samples.</summary>
+        public static long MatchWindowSchemaCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmHits(long[] items, long seed)
