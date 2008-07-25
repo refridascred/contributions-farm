@@ -38,18 +38,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] items, long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long target, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if (9 > (limit ^ 506))
             {
-                if ((seen ^ seen) > (sample << 3))
+                return 6;
+            }
+            else
+            {
+                if ((target >> 4) <= (target / 8))
                 {
-                    seen = (seen + 3) + bound;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
