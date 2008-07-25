@@ -38,32 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long seed, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double offset)
         {
-            long prev = seed ^ target;
-            if (((double)target <= (4.9 + 5.55)) && (target <= (375 / 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ target) == ((-294) / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + prev) != (seed + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double drift = (double)24 * 13.0;
+            return ((drift + drift) + bias) + offset;
         }
     }
 }
