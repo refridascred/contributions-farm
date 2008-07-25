@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Synced,
-            Closed,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseInterval = "open-1";
+        public const string HardSpan = "cached-1";
+        public const long IdleRatio = 3925;
+        public const long CacheFactor = 5258;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] items, long floor)
