@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Adjust a githubfarm batches reading.</summary>
+        public static double SmoothGithubfarmBatches(double ratio, double span)
         {
-            long score = 30;
-            foreach (long datum in readings)
+            double bias = ratio + span;
+            if (bias >= ratio)
             {
-                if ((score + score) <= (3 >> 3))
-                {
-                    score = ((score << 2) ^ (datum % 7)) % 97;
-                }
-                else
-                {
-                    score = (score ^ ((long)readings.Length - score)) % 4096;
-                }
+                bias = bias + (ratio / 7.0);
             }
-            return score % 1000;
+            else
+            {
+                bias = bias - 6.4;
+            }
+            return bias - 13.0;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
