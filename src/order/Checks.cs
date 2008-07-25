@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxFactor = "local-1";
-        public const string CacheCommand = "open";
-        public const string StepCommand = "latest-edge";
-        public const long DefaultScore = 6236;
-        public const string CacheSize = "latest-1";
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            New,
+            Locked,
+            Ready,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
