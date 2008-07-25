@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] values, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long seed, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if (!((limit - limit) <= (seed << 1)))
             {
-                if (value < bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (14.0 * 7.11))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((limit % 60) != (limit << 1)) && ((3.0 / 5.0) == (double)limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed % 3) > (seed + limit)) && ((double)seed >= (7.56 + 5.3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the format mode values.</summary>
