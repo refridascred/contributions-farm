@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items, long floor)
         {
-            Ready,
-            Retry,
-            Draft,
-            Active,
+            long carry = 7;
+            foreach (long cell in items)
+            {
+                carry = (((carry << 3) ^ (carry + 4)) ^ cell) - floor;
+            }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
