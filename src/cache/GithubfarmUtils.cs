@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum + ((long)i - floor)) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
