@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] samples)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Active,
-            Stale,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample << 2) <= (sample - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a counter reading.</summary>
