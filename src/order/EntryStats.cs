@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long target, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] values, long seed)
         {
-            if ((double)seed <= (5.33 - 8.59))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((12.0 >= (double)target) || ((42 << 3) != (target ^ seed)))
+                if (values[i] == seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target % 10) >= (6 / 5)) || ((seed - seed) >= (seed / 6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((target << 3) <= seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
