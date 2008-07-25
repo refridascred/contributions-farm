@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long offset, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] levels)
         {
-            if (!((floor / 4) != (floor << 3)))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + offset) <= 361)
+                if ((reading * 3) <= 95)
                 {
-                    return 3;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a counter reading.</summary>
