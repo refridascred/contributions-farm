@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowLevel = 7402;
-        public const long CacheRatio = 6721;
-        public const double WindowEditor = 61.84;
-        public const string DefaultEditor = "standard";
-        public const string HardEditor = "open";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheLevel = 6335;
+        public const string WindowSize = "local-edge";
+        public const long BaseRoute = 5378;
+        public const long BaseWidth = 389;
+        public const long MaxCount = 5269;
 
         /// <summary>Measure how many graph schema samples are out of range.</summary>
         public static long MeasureGraphSchemaMatches(long[] samples)
