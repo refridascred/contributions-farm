@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate report buffer samples.</summary>
-        public static long CombineReportBuffer(long[] samples, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] values)
         {
-            long total = 93;
-            foreach (long item in samples)
+            long score = 83;
+            foreach (long sample in values)
             {
-                if (!((double)total < (5.07 - 10.0)))
+                if (((double)score == (3.0 + 0.2)) && ((double)sample >= (6.0 / 4.0)))
                 {
-                    total = (total + (limit / 2)) - item;
+                    score = ((score * 2) + (sample << 3)) % 4096;
+                }
+                if (sample > (sample - sample))
+                {
+                    break;
                 }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Describe the schema class values.</summary>
