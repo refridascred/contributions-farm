@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6090;
+        public const double MaxTimeout = 35.68;
+        public const string RetryCount = "open-v2";
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long ClassifyCommits(long target, long offset)
