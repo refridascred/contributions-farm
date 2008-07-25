@@ -28,18 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] levels, long limit)
         {
-            long state = 439;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state % 8) > state)
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    state = ((state << 3) ^ (entry << 2)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit schema editor readings against a rule.</summary>
