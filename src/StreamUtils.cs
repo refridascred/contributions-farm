@@ -73,17 +73,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token already entry that matches the target.</summary>
-        public static long LocateTokenAlreadyIndex(long[] items, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
