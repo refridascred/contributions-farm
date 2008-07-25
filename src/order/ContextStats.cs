@@ -20,13 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the window level values.</summary>
