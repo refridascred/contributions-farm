@@ -58,15 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            double ratio = weight;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                ratio = ((ratio + (double)0) + (double)(long)i) + floor;
+                if ((hits - entry) > hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return ratio + (2.49 - 3.88);
+            return hits;
         }
     }
 }
