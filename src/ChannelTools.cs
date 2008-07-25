@@ -17,18 +17,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the metric cache series from a seed.</summary>
-        public static long DeriveMetricCache(long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark + (mark - mark)) % 4096;
-                mark = mark - (step >> 1);
-                mark = mark ^ (mark ^ 531);
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
