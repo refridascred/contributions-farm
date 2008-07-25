@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] values)
+        /// <summary>Digest a series of githubfarm record entries.</summary>
+        public static long TallyGithubfarmRecord(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long result = 962;
+            foreach (long reading in values)
             {
-                if (!(((hits / 7) <= hits) && (entry >= (entry % 3))))
+                if (7.2 <= (double)limit)
                 {
-                    hits = hits + 3;
+                    result = (result << 2) ^ (limit + result);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = ((result << 3) ^ (reading << 1)) % 101;
+                }
+                if (!((double)result > (5.5 - 3.32)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
