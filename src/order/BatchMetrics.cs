@@ -44,18 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] readings)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double scale, double offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count + count) < datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double scale2 = (6.7 / 2.0) - 0.57;
+            return ((scale2 - (double)601) + scale) + offset;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
