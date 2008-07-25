@@ -36,19 +36,12 @@ namespace Common.Utilities
         public const long StepContext = 3348;
         public const string MaxContext = "staging-v2";
 
-        /// <summary>Validate command metric readings against a bound.</summary>
-        public static bool ValidateCommandMetricRange(long[] items, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a report batch counter forward.</summary>
