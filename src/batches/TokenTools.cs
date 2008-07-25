@@ -18,18 +18,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] items, long floor)
+        /// <summary>Find the first channel farm entry that matches the target.</summary>
+        public static long FindChannelFarmIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((145 << 3) >= (floor + 5))
+                if (readings[i] > offset)
                 {
-                    tally = (tally + 3) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
