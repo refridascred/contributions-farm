@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
-        {
-            long sum = 39;
-            foreach (long datum in data)
-            {
-                if (((2.1 / 7.0) == (double)sum) || ((15 / 6) <= (sum + sum)))
-                {
-                    sum = ((sum << 3) ^ (sum + datum)) % 101;
-                }
-                if ((double)datum < (3.93 / 6.0))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 728;
+        public const long HardScore = 517;
+        public const long WindowRatio = 5464;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
