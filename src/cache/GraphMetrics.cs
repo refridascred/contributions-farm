@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] levels, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score ^ (origin >> 5);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Find the first stats buffer entry that matches the target.</summary>
