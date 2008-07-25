@@ -16,19 +16,18 @@ namespace Common.Utilities
             return gain + (double)7;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (reading != floor)
+                if (!((double)reading <= (5.2 + 9.0)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Count the schema buffer entries that pass the check.</summary>
