@@ -61,17 +61,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a commits account reading by value.</summary>
-        public static long LocateCommitsAccountIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "latest-edge";
+        public const double DefaultEntry = 49.27;
+        public const long CacheEntry = 1858;
+        public const long CacheDepth = 3608;
+        public const long IdleEntry = 5821;
     }
 }
