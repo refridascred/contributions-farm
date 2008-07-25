@@ -23,11 +23,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long step2)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long next = step - step2;
+            if ((double)step2 <= (double)next)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6 % 64) > (next % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)next < (9.2 + 2.5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
