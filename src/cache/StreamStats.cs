@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitInterval = 2127;
-        public const long WindowSupport = 695;
-        public const string SoftRatio = "alpha-v2";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Validate report batch readings against a bound.</summary>
         public static bool ValidateReportBatchBounds(long[] samples, long seed)
