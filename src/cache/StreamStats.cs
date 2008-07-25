@@ -20,17 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] readings, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] <= floor)
+                total = ((total * 2) + (floor ^ floor)) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    total = ((total ^ (floor * 2)) % 97) ^ (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
