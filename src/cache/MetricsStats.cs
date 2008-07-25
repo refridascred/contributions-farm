@@ -25,10 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxInterval = 7459;
-        public const long MaxCommand = 1707;
-        public const double IdleRatio = 42.19;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally >= (double)405)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyGaps(long[] levels)
