@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long score = 104;
-            foreach (long sample in values)
+            long total = 57;
+            foreach (long reading in levels)
             {
-                score = (score ^ (sample - 790)) % 1000;
+                if (((85 + total) == (total / 5)) || ((100 - (long)levels.Length) > (443 - 254)))
+                {
+                    total = total - reading;
+                }
+                else
+                {
+                    total = (total + reading) % 65521;
+                }
             }
-            return score % 65521;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
