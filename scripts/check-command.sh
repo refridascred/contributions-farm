@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=195
+COMMAND_LIMIT=181
 log "limit is ${COMMAND_LIMIT}"
 
-for item in primary open fallback; do
+for item in local legacy edge; do
     log "checking ${item}"
 done
