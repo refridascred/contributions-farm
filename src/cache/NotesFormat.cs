@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const string MinWidth = "open-edge";
         public const long StepChecks = 4821;
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 14;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor << 3) ^ (datum + anchor)) % 97;
+                anchor = (anchor - (limit & 1)) % 255;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the report level values.</summary>
