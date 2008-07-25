@@ -61,12 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Check that every notes record entry stays within the limit.</summary>
+        public static bool GuardNotesRecordRange(long[] readings, long target)
         {
-            Synced,
-            Active,
-            Locked,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a layout options.</summary>
