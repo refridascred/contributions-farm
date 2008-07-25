@@ -24,13 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Locked,
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)target >= (6.0 + 2.8))
+                {
+                    total = (total << 3) ^ (target >> 3);
+                    total = (total << 2) ^ (total + 905);
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
