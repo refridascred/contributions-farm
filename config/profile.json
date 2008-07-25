@@ -1,5 +1,6 @@
 {
-  "batch_delay": 3919,
-  "compress": [338, 135, 91, 472],
-  "retry_delay_ms": 74.97
+  "base_size_s": 0.17,
+  "flush_delay_pct": ["green", "primary", "open", "staging"],
+  "retry_limit": [183, 108],
+  "cluster_ttl": [184, 491, 146, 491]
 }
