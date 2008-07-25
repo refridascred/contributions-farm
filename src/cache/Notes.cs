@@ -45,12 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Queued,
-            Idle,
-            Locked,
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
