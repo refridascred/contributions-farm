@@ -13,38 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long offset, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] readings, long step)
         {
-            if (((offset << 2) <= target) && (((-39) % 60) < (target ^ offset)))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (target >= ((-7) ^ offset))
+                if ((matches > (9 << 1)) || ((921 << 2) == (step + matches)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + 46) > (target + 27))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < (target + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 1) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate profile already samples.</summary>
