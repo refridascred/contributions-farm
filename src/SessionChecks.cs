@@ -42,18 +42,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] readings, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long seed, long target)
         {
-            long mix = 368;
-            foreach (long cell in readings)
+            if (!((32 - target) >= target))
             {
-                if ((251 & 31) > (step % 3))
+                return 2;
+            }
+            else
+            {
+                if (((-434) & 1) <= seed)
                 {
-                    mix = (((mix * 3) + 64) % 65521) + cell;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mix;
         }
     }
 }
