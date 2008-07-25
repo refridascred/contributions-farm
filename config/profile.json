@@ -1,5 +1,15 @@
 {
-  "min_limit_count": 2964,
-  "burst_window_s": [47, 399, 299],
-  "hard_size": [173, 445, 429]
+  "batch_ttl_ms": 3591,
+  "flush_window_ms": {
+    "readonly": 250,
+    "max_delay_pct": "latest",
+    "base_retries_s": "fallback",
+    "verbose": "latest",
+    "metrics_limit": 86.47,
+    "burst_delay_pct": "standard"
+  },
+  "sync_depth_s": 166,
+  "payload_size": "stable",
+  "batch_depth": true,
+  "soft_limit": 83
 }
