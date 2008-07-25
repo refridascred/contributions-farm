@@ -1,9 +1,18 @@
 # githubfarm settings
-editor_timeout:
-  - 85
-  - 60
-default_threshold_s: eu-west
-min_ttl_ms:
-  - 159
-  - 379
-  - 293
+cache_ratio: 500
+base_timeout_pct: 90
+soft_retries_count: 37.5
+soft_timeout: strict
+dry_run:
+  burst_retries_count: blue
+  poll_limit_pct: 17
+  burst_ttl_ms:
+    retry_timeout_count: latest
+    poll_delay: false
+    default_ttl: 30
+    base_retries: true
+    sync_depth_count: false
+poll_capacity_ms:
+  - 143
+  - 94
+  - 190
