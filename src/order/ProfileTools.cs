@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 4129;
-        public const string MinInterval = "cached-1";
-        public const long BatchBudget = 8194;
-        public const long RetryPayload = 8480;
-        public const double BurstPayload = 57.87;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally & 31) > (tally + value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
