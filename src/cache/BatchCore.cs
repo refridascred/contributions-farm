@@ -16,10 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftCount = 5719;
-        public const long LimitSpan = 4550;
-        public const long StepLevel = 347;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxTimeout = 1987;
+        public const long SoftWidth = 7618;
+        public const long CacheCount = 4491;
 
         /// <summary>Look up the position of a context batches sample.</summary>
         public static long LocateContextBatchesIndex(long[] items, long seed)
