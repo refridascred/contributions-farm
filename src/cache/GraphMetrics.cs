@@ -33,18 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] values, long seed)
         {
-            long anchor = 2;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((3.1 - 7.4) > (double)(long)items.Length) && ((5 % 2) >= sample))
+                if (((double)seed < (double)matches) && ((entry + 296) >= (seed / 5)))
                 {
-                    anchor = ((anchor * 3) + (55 - sample)) % 65521;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
