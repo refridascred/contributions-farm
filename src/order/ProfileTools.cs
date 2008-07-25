@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels)
         {
-            long score = 9;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((sample - score) >= (score - sample))
+                if ((double)seen > 11.0)
                 {
-                    score = (score + sample) % 1000;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Project the next payload value.</summary>
