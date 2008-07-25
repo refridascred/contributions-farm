@@ -13,12 +13,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Grade a context order value against two limits.</summary>
+        public static long GradeContextOrder(long step, long origin)
         {
-            Paused,
-            New,
-            Synced,
+            if ((origin - origin) >= (origin / 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + 79) > (step - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin >= (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step / 2) != (92 - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
