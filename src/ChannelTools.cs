@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultDepth = 3520;
-        public const string CacheTimeout = "strict-1";
-        public const double SoftSize = 73.69;
-        public const long CacheEditor = 2954;
-        public const string HardTimeout = "alpha-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitWidth = 31.4;
+        public const double HardNotes = 98.35;
+        public const long WindowScore = 2475;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
