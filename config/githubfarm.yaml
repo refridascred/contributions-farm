@@ -1,13 +1,10 @@
 # githubfarm settings
-verbose: 65.75
-batch_interval:
-  soft_capacity_count: 9817
-  filter_depth:
-    - 246
-    - 129
-    - 263
-  soft_window_ms: 7.94
-  default_window_ms: 6271
-batches_threshold: standard
-min_timeout: 1604
-sync_interval_pct: 66.19
+poll_threshold: 8087
+soft_threshold: green
+idle_depth_ms: 100
+flush_limit_count:
+  max_capacity_pct: 4863
+  soft_ratio_pct: 250
+  default_delay_s: 7935
+  readonly: 1024
+strict: false
