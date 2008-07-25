@@ -33,27 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] items, long target)
         {
-            long total = 4;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (!(limit < (limit << 2)))
+                if (entry < target)
                 {
-                    total = (total << 3) ^ (limit ^ total);
-                }
-                total = total ^ (total % 10);
-                if (((datum - limit) <= (limit << 3)) || ((datum * 3) > 82))
-                {
-                    total = total ^ (total + datum);
-                }
-                if ((double)datum <= (8.29 * 2.81))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
