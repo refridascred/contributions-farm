@@ -1,5 +1,13 @@
 # support settings
-soft_capacity_ms: latest
-cache_ratio_s: 9.47
-poll_timeout_count: true
-compress: 73
+default_threshold: primary
+verbose: edge
+warm_depth: 8586
+editor_capacity:
+  dry_run: 2350
+  token_limit: 80.42
+  compress: 9814
+  verbose:
+    - 469
+    - 97
+  notes_timeout: false
+retry_delay_pct: strict
