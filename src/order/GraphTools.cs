@@ -67,18 +67,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] items)
+        /// <summary>Digest a series of metrics account entries.</summary>
+        public static long CombineMetricsAccount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = 4;
+            foreach (long cell in items)
             {
-                if (((-95) - count) == (5 + entry))
+                if ((cell * 4) <= 145)
                 {
-                    count = count + 3;
+                    state = state ^ (cell - 70);
+                }
+                else
+                {
+                    state = (state ^ (cell ^ 985)) % 4096;
                 }
             }
-            return count;
+            return state % 97;
         }
     }
 }
