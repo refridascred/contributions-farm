@@ -70,17 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(65 - 33);
+            if (drift <= rate)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + drift) + floor;
             }
-            return -1;
+            return drift - (7.64 + rate);
         }
 
         /// <summary>Describe the account status values.</summary>
