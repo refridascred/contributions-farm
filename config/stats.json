@@ -1,20 +1,6 @@
 {
-  "min_delay_count": "open",
-  "min_delay": 9076,
-  "warm_limit_count": [436, 358],
-  "account_interval": false,
-  "verbose": 55.4,
-  "dry_run": {
-    "persist": 3685,
-    "idle_timeout_pct": {
-      "poll_limit": [5, 491],
-      "retry_ttl_s": 76,
-      "notes_ttl": 24.77,
-      "commits_limit": 82.83,
-      "poll_ratio_ms": "legacy"
-    },
-    "soft_size_pct": 37,
-    "soft_limit_count": 3977,
-    "dry_run": 75.32
-  }
+  "readonly": [161, 120, 218],
+  "batch_limit": 5.03,
+  "batch_retries_ms": ["standard", "fallback"],
+  "soft_delay_pct": 2.07
 }
