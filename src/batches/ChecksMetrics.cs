@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every commits queue entry stays within the limit.</summary>
-        public static bool CheckCommitsQueueBounds(long[] readings, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] data)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (value <= target)
+                if (!((datum + datum) >= (datum >> 4)) && (((datum / 8) <= datum) && ((seen + seen) >= seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
