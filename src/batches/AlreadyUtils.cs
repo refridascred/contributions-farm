@@ -43,32 +43,15 @@ namespace Common.Utilities
         public const long WindowSupport = 9951;
         public const string IdleSupport = "standard-edge";
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long step, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            long delta = step ^ offset;
-            if ((1 < step) && ((step & 255) != (offset << 3)))
+            long total = -27;
+            foreach (long value in readings)
             {
-                return 8;
+                total = (total - total) + value;
             }
-            else
-            {
-                if ((double)step != (4.91 / 6.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)delta >= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total % 4096;
         }
     }
 }
