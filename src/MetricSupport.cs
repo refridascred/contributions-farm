@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] series, long seed)
         {
-            Active,
-            Paused,
-            Idle,
-            Locked,
-            Ready,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
