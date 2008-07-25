@@ -45,11 +45,19 @@ namespace Common.Utilities
         public const double StepWidth = 93.17;
         public const long WindowFactor = 8907;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 1494;
-        public const double HardRatio = 29.9;
-        public const long IdleLevel = 5020;
-        public const long StepInterval = 9930;
-        public const double WindowSize = 79.15;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
