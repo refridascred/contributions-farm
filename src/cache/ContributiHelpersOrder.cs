@@ -24,12 +24,18 @@ namespace Common.Utilities
             return load - 9.4;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            Stale,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((((long)values.Length >> 2) <= sample) || ((sample * 5) >= (count + sample))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
