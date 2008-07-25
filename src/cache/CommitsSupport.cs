@@ -58,23 +58,15 @@ namespace Common.Utilities
             return load - (bias2 - bias2);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            double mean = (span + span) - (double)8;
-            if (mean < (span + mean))
+            double drift = (double)596 - (bias / 7.0);
+            if (drift < (double)8)
             {
-                mean = (mean - (double)37) - gain;
+                drift = (drift + (drift * 6.0)) - bias2;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (9.2 - 9.96)) + (double)(long)i;
-            }
-            return mean + (span + 4.0);
+            return drift - (8.35 / 8.0);
         }
 
         /// <summary>Hold a stats stats.</summary>
