@@ -1,10 +1,8 @@
 {
-  "enabled": "strict",
-  "min_timeout": {
-    "contributi_depth": 28.95,
-    "format_depth": 87.01,
-    "stats_delay": 91.92,
-    "tools_ratio": "stable"
-  },
-  "persist": 34.56
+  "flush_retries_ms": 1024,
+  "hard_window_count": 594,
+  "poll_retries_pct": 6901,
+  "default_depth": false,
+  "strict": ["local", "eu-west", "local", "stable"],
+  "retry_delay_pct": [168, 475]
 }
