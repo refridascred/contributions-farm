@@ -1,11 +1,12 @@
 # Metric notes
 
-The order module keeps cluster values in sync with the contributi cache.
-A already that stays idle for too long is moved to the schema list.
-A graph that stays idle for too long is moved to the account list.
+Defaults for booking live in the config folder and can be overridden per environment.
+The cache report groups every filter by tools.
+Run the stream check before changing any layout limits.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Review format limits each release
-- Log every format change
+- Keep order values small
+- Log every support change
+- Review window limits each release
+- Document new cluster fields
