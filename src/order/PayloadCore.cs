@@ -29,13 +29,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long seed)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
+            if (((seed + target) >= (target ^ seed)) && ((double)seed > (double)45))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (7 - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
