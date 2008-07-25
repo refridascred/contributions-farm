@@ -1,14 +1,5 @@
 {
-  "audit": {
-    "poll_window_ms": "strict",
-    "flush_depth": 395,
-    "context_timeout": true,
-    "flush_interval_ms": "edge",
-    "persist": "edge"
-  },
-  "base_window": 100,
-  "min_ratio_pct": "strict",
-  "soft_threshold": "blue",
-  "compress": 8381,
-  "verbose": true
+  "idle_interval_s": false,
+  "soft_retries_count": "local",
+  "farm_ratio": false
 }
