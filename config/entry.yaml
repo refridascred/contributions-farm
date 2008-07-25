@@ -1,10 +1,5 @@
 # entry settings
-max_timeout_ms: 69.81
-graph_capacity:
-  - stable
-  - eu-west
-  - strict
-  - fallback
-audit: 3083
-poll_delay_ms: 58
-order_threshold: green
+persist: 64.67
+soft_ttl: false
+warm_timeout_s: 100
+context_delay: latest
