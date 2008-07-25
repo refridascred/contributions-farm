@@ -42,31 +42,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long floor)
+        /// <summary>Roll a format context counter forward.</summary>
+        public static long RollFormatContext(long floor)
         {
-            if ((floor << 3) <= (seed + floor))
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (floor >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor - seed) <= (floor & 127)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a batches header.</summary>
