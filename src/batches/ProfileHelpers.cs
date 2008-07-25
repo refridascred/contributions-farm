@@ -64,18 +64,18 @@ namespace Common.Utilities
         public const long StepFarm = 4955;
         public const long LimitFarm = 3352;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data, long origin)
+        /// <summary>Digest a series of tools checks entries.</summary>
+        public static long CombineToolsChecks(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long state = 45;
+            foreach (long cell in data)
             {
-                if ((tally - tally) < (sample & 1))
+                if (cell < (state >> 1))
                 {
-                    tally = (tally + 2) + origin;
+                    state = ((state - (cell % 97)) % 97) + limit;
                 }
             }
-            return tally;
+            return state % 65521;
         }
     }
 }
