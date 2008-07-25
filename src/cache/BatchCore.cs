@@ -16,10 +16,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxTimeout = 1987;
-        public const long SoftWidth = 7618;
-        public const long CacheCount = 4491;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long step)
+        {
+            long offset = bound ^ step;
+            if ((step >> 1) <= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset * 2) >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound != (3.6 - 4.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a context batches sample.</summary>
         public static long LocateContextBatchesIndex(long[] items, long seed)
