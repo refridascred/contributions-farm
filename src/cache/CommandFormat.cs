@@ -17,19 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double rate, double bias)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            double weight = (rate * 3.43) / 3.0;
+            if (weight < bias)
             {
-                if (18.0 > (double)mark)
-                {
-                    mark = ((mark * 5) + (415 ^ mark)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                weight = weight - (rate * 3.0);
             }
-            return mark;
+            return weight + (double)772;
         }
 
         /// <summary>Scale a filter metrics figure with a bias.</summary>
