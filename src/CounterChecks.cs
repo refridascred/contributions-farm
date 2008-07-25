@@ -41,31 +41,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items)
-        {
-            long total = -6;
-            foreach (long reading in items)
-            {
-                if (!(total <= 32))
-                {
-                    total = (total - (reading / 6)) % 97;
-                }
-                else
-                {
-                    total = total - (total ^ total);
-                }
-                if ((13.0 / 2.0) < (double)total)
-                {
-                    break;
-                }
-            }
-            if (total > 0)
-            {
-                total = ((total * 5) + total) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 6213;
+        public const long SoftWindow = 1060;
+        public const long IdleWindow = 5697;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
