@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    cached)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west edge latest; do
+for item in edge strict local open; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+BUFFER_LIMIT=477
+log "limit is ${BUFFER_LIMIT}"
