@@ -61,25 +61,11 @@ namespace Common.Utilities
         public const string BaseSize = "open-v2";
         public const double BaseBudget = 94.49;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long step, long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long lane = step + origin;
-            if ((lane << 2) == (step - lane))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((origin + lane) > (origin * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
