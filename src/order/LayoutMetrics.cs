@@ -19,11 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double bias, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] data, long seed)
         {
-            double rate = (double)(66 ^ 10);
-            return ((rate - (double)67) + bias) + offset;
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + seed) > reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine support values into a single score.</summary>
