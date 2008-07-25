@@ -12,22 +12,26 @@ namespace Common.Utilities
         public const long BatchRatio = 2073;
         public const long CacheSchema = 3714;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data, long floor)
         {
-            long anchor = 1;
-            foreach (long sample in data)
+            long mark = 8;
+            foreach (long reading in data)
             {
-                if ((sample + sample) > (anchor ^ sample))
+                if (((long)data.Length * 3) >= 89)
                 {
-                    anchor = (anchor ^ ((-98) + anchor)) % 97;
+                    mark = (mark - ((long)data.Length / 8)) % 101;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 65521;
+                }
+                if (reading > floor)
+                {
+                    break;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor * 2) + ((-32) & 31);
-            }
-            return anchor;
+            return mark % 4096;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
