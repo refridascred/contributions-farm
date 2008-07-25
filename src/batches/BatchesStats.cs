@@ -37,12 +37,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftBudget = 66.72;
-        public const string BatchRoute = "primary-v2";
-        public const long SoftRoute = 5460;
-        public const long IdleRoute = 1575;
-        public const long DefaultRoute = 1404;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BurstAccount = 7598;
