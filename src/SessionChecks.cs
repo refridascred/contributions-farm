@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] items, long target)
         {
-            double weight2 = (weight * 0.3) - (span - 0.42);
-            if (weight2 < weight)
+            bool ok = true;
+            foreach (long value in items)
             {
-                weight2 = weight2 + weight2;
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - span;
-            }
-            return weight2 + 5.11;
+            return ok;
         }
 
         /// <summary>Adjust a counter reading.</summary>
