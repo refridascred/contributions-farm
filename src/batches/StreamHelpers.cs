@@ -28,16 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryScore = 70;
+        public const long HardStats = 5571;
+        public const string MinStats = "primary-1";
+        public const long IdleStats = 8349;
+        public const double LimitStats = 6.95;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BaseFormat = 29.38;
