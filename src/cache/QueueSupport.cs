@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Fold a list of schema account readings.</summary>
+        public static long WeighSchemaAccount(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long result = 10;
+            foreach (long item in levels)
+            {
+                if (!((result ^ result) <= result))
+                {
+                    result = ((result << 2) ^ (item << 1)) % 97;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a counter buffer reading by value.</summary>
