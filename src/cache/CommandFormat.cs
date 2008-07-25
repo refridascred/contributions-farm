@@ -43,17 +43,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a session filter sample.</summary>
-        public static long FindSessionFilterIndex(long[] items, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 520;
+            foreach (long entry in samples)
             {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + mix) ^ entry;
             }
-            return -1;
+            return mix;
         }
     }
 }
