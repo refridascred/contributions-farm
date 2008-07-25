@@ -34,19 +34,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] data, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long seed, long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long prev = seed ^ target;
+            if (((double)target <= (4.9 + 5.55)) && (target <= (375 / 4)))
             {
-                if (value <= target)
+                return 6;
+            }
+            else
+            {
+                if ((seed ^ target) == ((-294) / 3))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((target + prev) != (seed + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
