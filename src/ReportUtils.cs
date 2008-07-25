@@ -58,19 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double bias)
-        {
-            double ratio = (double)(51 + 9);
-            if (ratio >= (double)882)
-            {
-                ratio = ((ratio + 8.5) - gain) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (3.0 - ratio)) + (double)(long)i;
-            }
-            return ratio + (ratio / 6.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "fallback-edge";
+        public const long MinFactor = 3415;
+        public const long MaxStats = 6906;
     }
 }
