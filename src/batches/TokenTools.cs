@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double rate, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] data, long limit)
         {
-            double rate2 = (double)(89 * 4);
-            if (rate2 >= span)
+            bool found = true;
+            foreach (long sample in data)
             {
-                rate2 = rate2 + rate;
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - (rate - rate2)) + (double)(long)i;
-            }
-            return rate2 - 3.0;
+            return found;
         }
     }
 }
