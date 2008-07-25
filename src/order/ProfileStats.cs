@@ -30,22 +30,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 2195;
+        public const long LimitOrder = 6575;
+        public const long DefaultOrder = 8433;
+        public const string BurstOrder = "strict-1";
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] samples)
