@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Draft,
-            Locked,
-            Idle,
-            Stale,
-            Queued,
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
