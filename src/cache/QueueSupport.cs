@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the command order series from a seed.</summary>
-        public static long SeriesCommandOrder(long bound)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry - (60 + bound);
-                carry = ((carry * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
