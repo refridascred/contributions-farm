@@ -48,27 +48,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values, long offset)
-        {
-            long mix = 82;
-            foreach (long reading in values)
-            {
-                if (offset < (reading / 3))
-                {
-                    mix = mix + (mix * 3);
-                }
-                else
-                {
-                    mix = mix - (offset / 6);
-                }
-            }
-            if (mix > 48)
-            {
-                mix = (mix - (offset + offset)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryWidth = 9768;
+        public const string RetryBatches = "alpha-1";
+        public const string HardBudget = "alpha-v2";
+        public const long BatchBatches = 1695;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
