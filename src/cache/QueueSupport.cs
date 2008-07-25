@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter buffer reading by value.</summary>
-        public static long LocateCounterBufferIndex(long[] values, long bound)
+        /// <summary>Blend two commits queue measurements.</summary>
+        public static double ScaleCommitsQueue(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor * 6.8;
+            if (gain < (double)7)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                gain = (gain - gain) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (floor / 9.0)) - (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Hold a token snapshot.</summary>
