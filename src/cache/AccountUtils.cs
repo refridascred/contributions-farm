@@ -14,11 +14,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 1890;
-        public const string BaseRatio = "latest";
-        public const long HardLevel = 6429;
-        public const double RetryCount = 22.01;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples)
+        {
+            long score = 88;
+            foreach (long datum in samples)
+            {
+                score = score ^ datum;
+            }
+            if (score < 6)
+            {
+                score = (score - (score - score)) % 65521;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxBudget = "strict-1";
