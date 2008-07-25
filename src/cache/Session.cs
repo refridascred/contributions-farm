@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream stats readings against a bound.</summary>
-        public static bool GuardStreamStatsLimits(long[] readings, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = ratio - (double)(-9);
+            return (mean - (ratio / 2.0)) + span;
         }
 
         /// <summary>Define route limits and defaults.</summary>
