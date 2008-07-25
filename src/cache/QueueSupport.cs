@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first token farm entry that matches the target.</summary>
-        public static long FindTokenFarmIndex(long[] series, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 973;
+            foreach (long entry in samples)
             {
-                if (series[i] < step)
+                state = (state ^ (state + entry)) % 4096;
+                state = ((state << 3) ^ state) % 65521;
+                if (state <= (932 + entry))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ state;
+                }
+                if ((double)entry != (7.84 * 9.3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 11)
+            {
+                state = (state * 2) + state;
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
