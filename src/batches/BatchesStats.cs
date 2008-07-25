@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Done,
-            New,
-            Stale,
-            Synced,
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit account readings against a rule.</summary>
