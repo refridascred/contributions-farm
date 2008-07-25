@@ -38,18 +38,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 70.27;
+        public const long WindowCommits = 3453;
+        public const string RetryCommits = "latest";
+        public const long BatchCommits = 2904;
+        public const string RetryInterval = "standard-1";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long step, long seed)
