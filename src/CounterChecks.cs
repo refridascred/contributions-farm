@@ -27,18 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] readings, long bound)
         {
-            long total = 916;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((total ^ item) >= (item - 762))
+                if (5 >= bound)
                 {
-                    total = ((total << 2) ^ (total * 5)) % 255;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
