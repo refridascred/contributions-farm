@@ -46,13 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long seed)
         {
-            Paused,
-            Retry,
-            Failed,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
