@@ -62,13 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout cache readings against a bound.</summary>
-        public static bool VerifyLayoutCacheRange(long[] levels, long bound)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool ValidateStreamEntryBounds(long[] levels, long limit)
         {
             bool ready = true;
-            foreach (long item in levels)
+            foreach (long datum in levels)
             {
-                if (item >= bound)
+                if (datum > limit)
                 {
                     ready = false;
                     break;
