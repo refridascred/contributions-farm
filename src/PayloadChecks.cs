@@ -66,32 +66,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long bound, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long edge = bound + step;
-            if ((edge << 2) >= edge)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) <= (step / 6))
+                if ((4 << 3) <= (reading << 3))
                 {
-                    return 8;
+                    sum = ((sum * 3) + (reading ^ 260)) % 65521;
                 }
-                else
+                if ((sum * 2) >= reading)
                 {
-                    if (step < (6 & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (sum > 163)
+            {
+                sum = ((sum << 2) ^ (sum & 31)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch status values.</summary>
