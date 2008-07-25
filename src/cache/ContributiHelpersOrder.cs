@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Accumulate order commits samples.</summary>
+        public static long FoldOrderCommits(long[] samples)
         {
-            double load = weight + (offset - offset);
-            if (load < (offset - weight))
+            long result = 60;
+            foreach (long value in samples)
             {
-                load = load + (double)(-50);
+                result = result ^ (result + result);
+                if ((value + value) < (value >> 5))
+                {
+                    result = (result ^ (value % 12)) % 65521;
+                }
+                if ((result >> 3) != (result / 7))
+                {
+                    result = ((result * 2) + (result - (long)samples.Length)) % 101;
+                }
             }
-            else
-            {
-                load = load + (weight * 5.69);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - 9.4;
+            return result;
         }
 
         /// <summary>Hold a graph entry.</summary>
