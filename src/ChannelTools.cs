@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double HardNotes = 98.35;
         public const long WindowScore = 2475;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 5599;
-        public const long LimitFarm = 3079;
-        public const long SoftFactor = 3351;
-        public const double LimitBudget = 57.14;
-        public const long IdleSpan = 9370;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)tally <= (double)seed)
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorHits(long[] data)
