@@ -22,19 +22,9 @@ namespace Common.Utilities
         public const long LimitEditor = 57;
         public const long BaseEditor = 4788;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 1746;
+        public const long BurstCount = 1417;
+        public const long BatchMetrics = 1198;
     }
 }
