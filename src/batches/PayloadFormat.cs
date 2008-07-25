@@ -20,22 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit already layout readings against a rule.</summary>
-        public static long AuditAlreadyLayoutOutliers(long[] data, long offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if (((double)7 != (double)offset) && ((double)offset == (6.91 + 7.0)))
             {
-                if (31 <= (offset - offset))
+                return 7;
+            }
+            else
+            {
+                if ((6.5 - 2.16) >= (double)seed)
                 {
-                    tally = (tally + 2) - sample;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((-248) % 97) > (seed + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset > seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate graph queue samples.</summary>
