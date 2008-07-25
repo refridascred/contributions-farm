@@ -19,11 +19,40 @@ namespace Common.Utilities
         public const long IdleBuffer = 7623;
         public const string WindowLevel = "strict-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 3674;
-        public const double HardSize = 45.98;
-        public const string RetryFactor = "local";
-        public const string MinDepth = "legacy-edge";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long target)
+        {
+            long slot = floor + target;
+            if (((slot * 5) <= (floor & 1)) || ((20.0 * 1.0) <= (double)floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((slot % 5) < (floor << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + slot) <= 7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (slot < floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmMatches(long[] samples, long target)
