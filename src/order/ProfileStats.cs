@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((offset << 2) <= (offset >> 3)) && (((long)i >> 5) >= (52 - offset)))
-                {
-                    score = (score << 3) ^ (offset & 63);
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
