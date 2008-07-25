@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long HardBudget = 3770;
         public const long MinMetrics = 8120;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double bias, double bias2)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double gain = bias;
-            if (gain >= bias)
-            {
-                gain = (gain + 3.0) + bias2;
-            }
-            return gain + 8.3;
+            Active,
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Check that every session format entry stays within the limit.</summary>
