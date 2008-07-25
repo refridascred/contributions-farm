@@ -48,10 +48,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 94.95;
-        public const string BaseSpan = "staging-v2";
-        public const double CacheSpan = 42.98;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values, long offset)
+        {
+            long mix = 82;
+            foreach (long reading in values)
+            {
+                if (offset < (reading / 3))
+                {
+                    mix = mix + (mix * 3);
+                }
+                else
+                {
+                    mix = mix - (offset / 6);
+                }
+            }
+            if (mix > 48)
+            {
+                mix = (mix - (offset + offset)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
