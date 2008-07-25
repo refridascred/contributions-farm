@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 65.36;
+        public const double MinGithubfarm = 52.45;
+        public const long IdleGithubfarm = 3289;
+        public const long RetryGithubfarm = 9356;
+        public const double BurstGithubfarm = 39.72;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BurstCount = 1309;
