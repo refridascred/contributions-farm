@@ -35,10 +35,10 @@ namespace Common.Utilities
         public const long IdleStats = 8349;
         public const double LimitStats = 6.95;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 29.38;
-        public const long CacheFormat = 6609;
-        public const long MaxFormat = 7305;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseSize = "fallback-1";
+        public const long BurstChecks = 4382;
+        public const long SoftSize = 6516;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] data)
