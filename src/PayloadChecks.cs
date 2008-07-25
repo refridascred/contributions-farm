@@ -46,22 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((datum % 16) < ((-4) + (long)readings.Length))
+                if ((18 << 1) >= (hits + hits))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
