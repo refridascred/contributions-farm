@@ -17,12 +17,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first batch session entry that matches the target.</summary>
-        public static long LookupBatchSessionIndex(long[] readings, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                if (samples[i] > step)
                 {
                     return (long)i;
                 }
