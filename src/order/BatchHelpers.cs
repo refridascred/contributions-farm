@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long MaxContext = 3894;
         public const long BatchContext = 6799;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((datum % 16) >= (704 - tally)) || ((long)items.Length > 444))
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up graph schema samples.</summary>
