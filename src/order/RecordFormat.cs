@@ -37,19 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long limit)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
