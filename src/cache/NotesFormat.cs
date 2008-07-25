@@ -27,30 +27,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] series, long offset)
         {
-            long total = 914;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (95 < (total >> 1))
+                if (item != offset)
                 {
-                    total = total - (total >> 3);
-                }
-                else
-                {
-                    total = (total - (item / 9)) % 255;
-                }
-                if ((5.5 * 3.0) == (double)item)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (total > 67)
-            {
-                total = ((total << 2) ^ (total ^ total)) % 255;
-            }
-            return total % 97;
+            return ok;
         }
     }
 }
