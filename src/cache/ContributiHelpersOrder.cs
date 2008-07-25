@@ -15,14 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Validate batch notes readings against a bound.</summary>
+        public static bool ValidateBatchNotesBounds(long[] readings, long bound)
         {
-            Dropped,
-            Pending,
-            Stale,
-            Draft,
-            Done,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
