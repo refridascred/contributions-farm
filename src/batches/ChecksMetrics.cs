@@ -46,13 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] items, long seed)
         {
             bool stale = true;
-            foreach (long datum in levels)
+            foreach (long datum in items)
             {
-                if (datum != limit)
+                if (datum >= seed)
                 {
                     stale = false;
                     break;
