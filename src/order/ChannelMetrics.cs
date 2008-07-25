@@ -16,12 +16,13 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Closed,
             Draft,
-            Synced,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of already readings.</summary>
