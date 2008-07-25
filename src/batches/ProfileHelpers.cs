@@ -59,13 +59,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool GuardChecksRecordLimits(long[] readings, long limit)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Failed,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
