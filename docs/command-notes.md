@@ -1,11 +1,11 @@
 # Command notes
 
-The queue report groups every account by cache.
-Each filter is validated before it reaches the channel queue.
+Defaults for layout live in the config folder and can be overridden per environment.
+Use commits settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Review metric limits each release
-- Document new commits fields
-- Prefer record defaults
-- Keep route values small
+- Log every channel change
+- Validate token input early
+- Keep queue values small
+- Review channel limits each release
