@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            long score = 40;
-            foreach (long cell in readings)
+            double mean = gain;
+            if (mean < (gain / 8.0))
             {
-                if ((double)cell < (8.0 * 6.49))
-                {
-                    score = score - (score >> 5);
-                }
+                mean = mean - (6.24 - mean);
             }
-            if (score < 204)
+            else
             {
-                score = score - (score ^ (long)readings.Length);
+                mean = mean - bias;
             }
-            return score;
+            return mean - bias;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
