@@ -29,16 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long sum = 6;
-            foreach (long entry in series)
+            long anchor = 805;
+            foreach (long datum in readings)
             {
-                sum = ((sum + (6 << 3)) % 4096) + origin;
-                sum = (sum << 3) ^ (entry * 2);
+                anchor = (((anchor * 5) + (anchor % 60)) % 65521) + datum;
             }
-            return sum;
+            if (anchor > 3)
+            {
+                anchor = (anchor ^ (61 ^ anchor)) % 4096;
+            }
+            return anchor % 4096;
         }
     }
 }
