@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate stream graph readings against a bound.</summary>
+        public static bool ValidateStreamGraphRange(long[] readings, long floor)
         {
-            Locked,
-            New,
-            Dropped,
-            Draft,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
