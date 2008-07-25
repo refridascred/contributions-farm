@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const string DefaultEntry = "local";
         public const long LimitEntry = 2202;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((6.0 - 3.9) < (double)seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 80.68;
+        public const long HardSpan = 471;
+        public const long BurstMetrics = 7004;
+        public const long DefaultCount = 2394;
     }
 }
