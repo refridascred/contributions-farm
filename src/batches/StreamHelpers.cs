@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] samples, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((double)reading < (7.0 - 1.5))
+                if (6.0 < (double)value)
                 {
-                    tally = (tally + 3) + bound;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a batch options.</summary>
