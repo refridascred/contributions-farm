@@ -1,15 +1,8 @@
 {
-  "persist": [111, 293],
-  "filter_delay": 91.65,
-  "poll_depth_s": {
-    "strict": 100,
-    "report_delay": 267,
-    "warm_ttl_count": "staging",
-    "enabled": false,
-    "max_size_s": [193, 381, 414, 397],
-    "soft_threshold_pct": ["green", "latest", "staging"]
-  },
-  "min_ratio_pct": ["latest", "strict"],
-  "cluster_depth": [9, 188],
-  "base_depth_ms": true
+  "poll_delay": 92.09,
+  "strict": 1785,
+  "poll_retries": "latest",
+  "audit": 1024,
+  "githubfarm_timeout": "primary",
+  "counter_limit": 28
 }
