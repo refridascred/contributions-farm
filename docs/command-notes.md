@@ -1,16 +1,13 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the route check before changing any cluster limits.
-Each layout is validated before it reaches the batch queue.
+When a metric fails, the stream handler retries a few times before giving up.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-Keep report and order names short and lowercase.
-Keep session and session names short and lowercase.
-Each contributi is validated before it reaches the counter queue.
+Each queue is validated before it reaches the account queue.
+Use record settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Log every graph change
-- Prefer schema defaults
-- Review support limits each release
-- Validate payload input early
+- Review tools limits each release
+- Log every cluster change
+- Validate notes input early
