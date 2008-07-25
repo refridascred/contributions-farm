@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Count the cache batches entries that pass the check.</summary>
+        public static long MeasureCacheBatchesGaps(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits % 12) != (hits + step))
                 {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
