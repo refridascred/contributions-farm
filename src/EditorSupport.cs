@@ -79,24 +79,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long seed, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            if ((seed >= (5 * 5)) && ((4 >> 1) > (624 - seed)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)seed == (3.0 + 2.04)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
