@@ -48,12 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
+        /// <summary>Locate a order record reading by value.</summary>
+        public static long SeekOrderRecordIndex(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
