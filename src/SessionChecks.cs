@@ -26,13 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstInterval = 6701;
+        public const long MaxWidth = 2117;
+        public const long LimitDepth = 8666;
+        public const long SoftLevel = 7833;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long seed, long target)
