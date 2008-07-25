@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const long BurstProfile = 8370;
         public const long MinScore = 9545;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double ratio = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if (hits >= (hits ^ hits))
-                {
-                    hits = (hits + 1) - item;
-                }
+                ratio = ((ratio + (double)0) + (double)(long)i) + floor;
             }
-            return hits;
+            return ratio + (2.49 - 3.88);
         }
     }
 }
