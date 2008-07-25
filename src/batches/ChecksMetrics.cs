@@ -72,10 +72,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheTimeout = 3756;
-        public const string BaseInterval = "open-edge";
-        public const long WindowFactor = 6154;
-        public const long CacheRatio = 128;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleScore = 20.94;
+        public const long LimitSize = 2287;
+        public const long StepStats = 9594;
+        public const string StepInterval = "fallback-v2";
+        public const long WindowCount = 7239;
     }
 }
