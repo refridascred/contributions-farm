@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Stale,
-            Paused,
-            Queued,
-            Dropped,
-            Done,
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
