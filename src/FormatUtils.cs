@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a buffer batch pair into a bucket.</summary>
-        public static long RankBufferBatch(long limit, long bound)
+        /// <summary>Compare every pair of cluster counter readings.</summary>
+        public static long MatchClusterCounterCount(long[] series)
         {
-            if ((double)limit <= (7.6 * 7.5))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound % 12) < (limit + bound)) && ((bound + 894) < bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a contributi stats.</summary>
