@@ -33,20 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheInterval = 242;
+        public const double BaseCount = 70.83;
+        public const double DefaultProfile = 37.03;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountBounds(long[] items, long offset)
