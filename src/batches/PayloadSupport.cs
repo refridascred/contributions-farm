@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxCount = 14.39;
+        public const long MaxQueue = 3741;
+        public const long MinDepth = 5254;
+        public const long SoftQueue = 625;
+        public const long MinRatio = 8339;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
