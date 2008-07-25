@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] levels)
         {
-            if ((double)origin == (12.0 - 1.7))
+            long score = 68;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + offset) > (offset ^ offset))
+                if ((score << 3) < (score * 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset + offset) < (origin + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = (score + item) % 255;
                 }
             }
+            if (score < 211)
+            {
+                score = score ^ 1;
+            }
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
