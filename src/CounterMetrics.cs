@@ -50,20 +50,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next stream farm value from a seed.</summary>
-        public static long SeriesStreamFarm(long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] items, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (value < (count - value))
                 {
-                    score = (score ^ (offset - score)) + (long)i2;
+                    count = (count + 2) - offset;
                 }
-                score = (score - (offset + 0)) % 1000;
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
     }
 }
