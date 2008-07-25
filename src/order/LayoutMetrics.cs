@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Locked,
-            Retry,
-            Active,
-            Dropped,
             Failed,
+            Queued,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
