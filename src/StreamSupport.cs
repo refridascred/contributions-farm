@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const double SoftBudget = 10.7;
         public const long MinRecord = 3754;
 
-        /// <summary>Count the already payload entries that pass the check.</summary>
-        public static long TallyAlreadyPayloadOutliers(long[] samples, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.7 * 2.0) >= (double)target)
+                if (readings[i] >= offset)
                 {
-                    tally = (tally + 3) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
