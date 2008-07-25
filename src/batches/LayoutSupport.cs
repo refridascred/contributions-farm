@@ -28,10 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepCount = "latest-1";
-        public const long LimitSpan = 6471;
-        public const long SoftFarm = 9582;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Locked,
+            Stale,
+            Failed,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Check that every filter command entry stays within the limit.</summary>
         public static bool ValidateFilterCommandRange(long[] samples, long target)
