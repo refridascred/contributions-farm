@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long step, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long span = step + target;
-            if ((step & 255) >= (step >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.2 * 8.95) <= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.6 - 5.9) != (double)span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
