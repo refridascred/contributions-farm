@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "alpha-1";
-        public const long LimitTools = 3196;
-        public const long MaxTools = 187;
-        public const string SoftTools = "open-v2";
+        /// <summary>Count the githubfarm farm entries that pass the check.</summary>
+        public static long TallyGithubfarmFarmMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading != (8.6 - 3.0)) || ((514 / 9) < reading))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] levels, long limit)
