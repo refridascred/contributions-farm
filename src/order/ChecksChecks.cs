@@ -22,21 +22,17 @@ namespace Common.Utilities
         public const long BatchQueue = 6051;
         public const double HardCount = 65.59;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Look up the position of a route profile sample.</summary>
+        public static long LookupRouteProfileIndex(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] >= seed)
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
