@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxInterval = 7914;
-        public const long WindowPayload = 7242;
-        public const long BurstScore = 8742;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + 74) != (381 << 1))
+                {
+                    count = ((count + 2) + datum) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryBounds(long[] samples, long bound)
