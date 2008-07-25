@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseContributi = "primary-edge";
-        public const double CacheScore = 22.93;
-        public const long DefaultWidth = 5169;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items)
+        {
+            long score = 63;
+            foreach (long value in items)
+            {
+                score = (score << 3) ^ (value << 1);
+            }
+            return score;
+        }
 
         /// <summary>Count the filter format entries that pass the check.</summary>
         public static long TallyFilterFormatOutliers(long[] values)
