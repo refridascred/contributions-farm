@@ -37,24 +37,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long target)
         {
-            long score = 641;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (floor < (value % 3))
+                if (item != target)
                 {
-                    score = (score ^ value) % 65521;
-                    continue;
-                }
-                score = ((score << 3) ^ value) % 65521;
-                if ((floor >> 3) > 6)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Describe the context status values.</summary>
