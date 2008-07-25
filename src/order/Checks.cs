@@ -17,18 +17,14 @@ namespace Common.Utilities
         public const long StepTimeout = 2502;
         public const double SoftChecks = 93.42;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] samples)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((5 * 2) <= (sample >> 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
