@@ -14,19 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double drift = ratio;
-            if (drift >= (ratio + ratio))
-            {
-                drift = drift + floor;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            return drift + (double)213;
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
