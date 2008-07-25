@@ -31,16 +31,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            if (((8.0 / 2.0) <= (double)bound) && ((1.8 / 6.0) > (double)bound))
             {
-                acc = (acc - (offset + (long)i)) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((target / 2) != (target << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound < (target % 5)) || ((target & 31) >= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
