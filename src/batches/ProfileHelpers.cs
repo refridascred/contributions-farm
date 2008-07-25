@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] samples, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (cell < offset)
+                if (entry >= offset)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Combine buffer editor values into a single score.</summary>
