@@ -76,26 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] data, long offset)
-        {
-            long result = -141;
-            foreach (long value in data)
-            {
-                if ((offset + result) <= (result + 11))
-                {
-                    result = ((result * 5) + (3 % 5)) % 65521;
-                }
-                else
-                {
-                    result = (result * 4) + value;
-                }
-            }
-            if (result < 493)
-            {
-                result = (result - (offset + offset)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchScore = 47.48;
+        public const long LimitCounter = 3784;
+        public const long SoftFactor = 6851;
+        public const long StepWidth = 7544;
     }
 }
