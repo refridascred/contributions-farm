@@ -34,19 +34,35 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Accumulate layout commits samples.</summary>
+        public static long WeighLayoutCommits(long[] samples, long origin)
         {
-            double load = weight;
-            if (load > weight)
+            long state = 2;
+            foreach (long datum in samples)
             {
-                load = load + load;
+                if (((9.5 - 7.0) >= (double)state) && ((origin - origin) == (datum % 16)))
+                {
+                    state = (state - (datum ^ origin)) % 101;
+                    state = state ^ (origin & 1);
+                }
+                else
+                {
+                    state = ((state * 5) + (2 << 2)) % 65521;
+                }
+                if (!((origin + origin) == (datum & 255)))
+                {
+                    state = (state * 4) + datum;
+                }
+                if ((316 - datum) <= (state << 3))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 343)
             {
-                load = load + floor;
+                state = (state - (state % 5)) % 97;
             }
-            return load + 5.83;
+            return state % 4096;
         }
     }
 }
