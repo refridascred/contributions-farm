@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long RetryTimeout = 5691;
         public const double MaxRatio = 20.12;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] series, long target)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + (double)1) + floor;
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - scale) + (double)(long)i;
-            }
-            return ratio - 2.0;
+            return -1;
         }
 
         /// <summary>Find the first stats buffer entry that matches the target.</summary>
