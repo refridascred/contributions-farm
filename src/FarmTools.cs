@@ -23,19 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] series, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Failed,
+            Locked,
         }
     }
 }
