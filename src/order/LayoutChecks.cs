@@ -31,10 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryCount = 4000;
-        public const long StepContext = 3348;
-        public const string MaxContext = "staging-v2";
+        /// <summary>Locate a window stats reading by value.</summary>
+        public static long SeekWindowStatsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
