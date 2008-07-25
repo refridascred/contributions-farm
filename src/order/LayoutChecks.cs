@@ -86,22 +86,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((origin ^ hits) >= origin) || !((origin >> 3) != ((long)levels.Length - datum)))
+                if ((count & 31) <= (count / 2))
                 {
-                    hits = hits + 1;
+                    count = (count + 1) ^ reading;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
