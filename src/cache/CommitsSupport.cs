@@ -25,17 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats buffer entry that matches the target.</summary>
-        public static long SeekStatsBufferIndex(long[] levels, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
