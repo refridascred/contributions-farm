@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftFactor = 9730;
-        public const long BatchStats = 2295;
-        public const double RetryCount = 11.36;
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] samples, long seed)
