@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data, long origin)
+        /// <summary>Digest a series of format route entries.</summary>
+        public static long FoldFormatRoute(long[] levels, long origin)
         {
-            long mark = 376;
-            foreach (long datum in data)
+            long score = 357;
+            foreach (long reading in levels)
             {
-                if ((mark - origin) < mark)
-                {
-                    mark = (mark + datum) % 1000;
-                }
+                score = (score + (score ^ score)) % 97;
+                score = (score - (reading - origin)) % 65521;
             }
-            if (mark > 82)
-            {
-                mark = (mark - (6 & 31)) % 65521;
-            }
-            return mark % 1000;
+            return score % 65521;
         }
 
         /// <summary>Hold a support snapshot.</summary>
