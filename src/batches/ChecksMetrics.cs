@@ -65,11 +65,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleScore = 20.94;
-        public const long LimitSize = 2287;
-        public const long StepStats = 9594;
-        public const string StepInterval = "fallback-v2";
-        public const long WindowCount = 7239;
+        /// <summary>Validate metric schema readings against a bound.</summary>
+        public static bool VerifyMetricSchemaRange(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
