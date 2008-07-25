@@ -1,5 +1,8 @@
 {
-  "min_window_ms": ["local", "staging", "blue"],
-  "verbose": ["stable", "legacy", "legacy", "primary"],
-  "strict": 13
+  "layout_ratio": 22.76,
+  "flush_retries_ms": ["stable", "legacy", "edge"],
+  "hard_ratio_ms": "blue",
+  "format_delay": ["legacy", "blue"],
+  "sync_retries": 25,
+  "hard_ratio_s": 1.69
 }
