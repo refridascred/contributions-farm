@@ -1,22 +1,7 @@
 {
-  "strict": 16.68,
-  "max_delay_s": 9108,
-  "warm_capacity_count": 64.26,
-  "hard_retries_ms": {
-    "verbose": 46.98,
-    "support_window": true,
-    "compress": "strict",
-    "warm_delay": "cached",
-    "max_threshold_count": "standard",
-    "warm_window_ms": "local"
-  },
-  "base_depth_pct": {
-    "flush_depth": 500,
-    "min_limit": "stable",
-    "compress": 8429,
-    "cache_ratio_ms": "standard",
-    "max_depth_ms": 1,
-    "max_capacity_ms": "edge"
-  },
-  "max_ttl": 1024
+  "dry_run": 5773,
+  "batches_size": "legacy",
+  "poll_limit_count": 7806,
+  "audit": 250,
+  "max_size_s": 97
 }
