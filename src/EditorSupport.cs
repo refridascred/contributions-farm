@@ -50,15 +50,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long AuditBatchContributiGaps(long[] items)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
             long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.9 * 0.84) >= (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) - reading;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
