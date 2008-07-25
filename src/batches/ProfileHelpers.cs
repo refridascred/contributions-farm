@@ -49,13 +49,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            Idle,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a record stats.</summary>
