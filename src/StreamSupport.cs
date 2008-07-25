@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long bound, long bound2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long bound)
         {
-            if (bound <= bound2)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound - bound) > bound) && ((8.0 + 1.1) < (double)bound2))
+                if (sample < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound2 << 2) == (bound2 % 97)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (8.72 <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
