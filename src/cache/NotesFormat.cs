@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] samples, long limit)
         {
-            long anchor = 241;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (860 << 3)) - sample;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 667)
-            {
-                anchor = ((anchor * 5) + (anchor / 9)) % 255;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
