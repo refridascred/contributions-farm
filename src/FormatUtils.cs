@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long CacheContext = 444;
         public const double BatchFactor = 34.72;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Scale a record checks figure with a bias.</summary>
+        public static double BlendRecordChecks(double ratio, double floor)
         {
-            Pending,
-            Retry,
-            Active,
+            double bias = ratio;
+            if (bias < (16.0 / 6.0))
+            {
+                bias = (bias - (8.73 - ratio)) - floor;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Hold a token options.</summary>
