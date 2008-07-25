@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] series, long offset)
         {
-            Idle,
-            Stale,
-            Ready,
-            Paused,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches + entry) >= (matches << 1))
+                {
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
