@@ -27,15 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double scale, double bias)
         {
-            long sum = 9;
-            foreach (long item in values)
+            double drift = (double)(71 - (-2));
+            if (drift <= (double)8)
             {
-                sum = ((sum * 5) + (item & 15)) % 65521;
+                drift = drift + (scale + bias);
             }
-            return sum;
+            else
+            {
+                drift = drift + scale;
+            }
+            return drift - drift;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
