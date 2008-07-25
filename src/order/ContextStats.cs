@@ -48,22 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] items, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 902;
+            foreach (long cell in series)
             {
-                if ((floor ^ 41) < (tally * 2))
+                if ((4.3 * 11.0) != (double)cell)
                 {
-                    tally = (tally + 2) - sample;
+                    result = ((result << 2) ^ cell) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result * 4) + result;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
