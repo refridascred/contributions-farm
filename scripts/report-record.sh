@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+RECORD_LIMIT=332
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west primary edge; do
+for item in edge stable; do
     log "checking ${item}"
 done
