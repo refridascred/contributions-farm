@@ -82,19 +82,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double ratio = offset;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - offset;
-            }
-            else
-            {
-                ratio = ratio - (offset * 8.57);
-            }
-            return ratio + (scale - 4.5);
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
