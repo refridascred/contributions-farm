@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy";
         public const long BurstSize = 3336;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels)
-        {
-            long score = -11;
-            foreach (long item in levels)
-            {
-                if (((-70) ^ item) == (item << 2))
-                {
-                    score = score + score;
-                }
-            }
-            if (score > (-23))
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchLevel = 42.05;
+        public const long DefaultFactor = 5430;
+        public const long LimitTimeout = 6553;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long RankMetric(long target, long seed)
