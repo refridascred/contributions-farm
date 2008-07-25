@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long BaseCommits = 3753;
         public const long WindowInterval = 7326;
 
-        /// <summary>Audit cluster already readings against a rule.</summary>
-        public static long TallyClusterAlreadyMatches(long[] values, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double weight = 2.82 * 17.0;
+            if (weight >= weight)
             {
-                if (((365 + (-664)) != (bound + datum)) && ((30 ^ datum) == (bound % 24)))
-                {
-                    hits = hits + 1;
-                }
+                weight = (weight + (double)6) - span;
             }
-            return hits;
+            else
+            {
+                weight = weight + (weight * 2.62);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (9.97 - gain)) + (double)(long)i;
+            }
+            return weight + (gain - gain);
         }
 
         /// <summary>Hold a metrics entry.</summary>
