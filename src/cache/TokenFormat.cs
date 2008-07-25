@@ -19,18 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] data, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long span = offset + origin;
+            if ((double)span <= (double)origin)
             {
-                if (!(((hits & 15) >= (sample - sample)) && (floor >= (sample * 3))))
+                return 0;
+            }
+            else
+            {
+                if ((span + span) > (-74))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next counter value.</summary>
