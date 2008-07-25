@@ -1,11 +1,4 @@
 # entry settings
-already_timeout: 4
-metric_delay: false
-readonly:
-  profile_interval:
-    - eu-west
-    - fallback
-    - local
-    - edge
-  max_window_s: cached
-  support_ratio: true
+verbose: 30
+dry_run: edge
+buffer_delay: 5471
