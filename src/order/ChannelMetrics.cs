@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] items, long target)
         {
-            Queued,
-            Stale,
-            Locked,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((5.4 > (double)(long)items.Length) || ((13.0 * 8.0) <= (double)cell)) && ((target / 7) > (218 - 62)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
