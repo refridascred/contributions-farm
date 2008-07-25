@@ -23,10 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 7372;
-        public const string StepDepth = "fallback-v2";
-        public const long RetryEditor = 6290;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 4831;
