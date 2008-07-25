@@ -57,12 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 6091;
-        public const long DefaultContributi = 2312;
-        public const long HardContributi = 9879;
-        public const double BaseRatio = 68.25;
-        public const long StepScore = 4104;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchSize = 7031;
+        public const string BurstSize = "strict-1";
+        public const string WindowRoute = "open-edge";
+        public const double MinRoute = 71.08;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
