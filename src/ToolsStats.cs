@@ -32,15 +32,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long edge = origin ^ floor;
+            if (0 < (floor - edge))
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((origin * 5) >= edge)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate command samples.</summary>
