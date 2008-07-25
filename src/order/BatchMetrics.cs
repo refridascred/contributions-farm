@@ -21,13 +21,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values)
         {
-            Locked,
-            Idle,
-            Ready,
-            Stale,
+            long total = 415;
+            foreach (long item in values)
+            {
+                if (!(item >= (total - item)))
+                {
+                    total = ((total << 2) ^ (item >> 1)) % 1000;
+                }
+                else
+                {
+                    total = (total << 2) ^ (item - item);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
