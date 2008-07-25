@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long acc = 983;
-            foreach (long value in samples)
-            {
-                acc = (acc + (1 + 69)) % 255;
-                acc = (acc << 3) ^ acc;
-                acc = (acc * 5) + acc;
-                if (!((acc % 100) != (value >> 3)))
-                {
-                    break;
-                }
-            }
-            if (acc > 65)
-            {
-                acc = (acc ^ acc) % 101;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
