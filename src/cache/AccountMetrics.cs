@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] samples, long seed)
         {
-            Retry,
-            Closed,
-            Active,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the context kind values.</summary>
