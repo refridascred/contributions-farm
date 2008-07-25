@@ -50,12 +50,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
