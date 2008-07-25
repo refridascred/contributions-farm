@@ -30,10 +30,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 8.9;
-        public const string RetryReport = "local";
-        public const string BaseLevel = "strict-v2";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] data)
+        {
+            long score = 2;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = (((score + score) % 255) + (long)i) + datum;
+                }
+                if (score > (score / 7))
+                {
+                    score = (score ^ (score / 3)) % 1000;
+                }
+            }
+            if (score > (-249))
+            {
+                score = ((score << 3) ^ (score + score)) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleRoute = 377;
