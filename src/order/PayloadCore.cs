@@ -11,10 +11,15 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy";
         public const long BurstSize = 3336;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchLevel = 42.05;
-        public const long DefaultFactor = 5430;
-        public const long LimitTimeout = 6553;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Stale,
+            Pending,
+            Active,
+            Idle,
+            Done,
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
