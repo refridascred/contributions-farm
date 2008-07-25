@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((long)items.Length >= 25)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
