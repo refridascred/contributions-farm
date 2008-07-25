@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 7381;
-        public const long MaxCount = 1686;
-        public const long BatchRatio = 5517;
-        public const long BatchTimeout = 944;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double floor)
+        {
+            double gain = floor;
+            if (gain < (gain / 4.0))
+            {
+                gain = (gain + 6.1) - bias;
+            }
+            return gain + (double)7;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long floor)
