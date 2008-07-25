@@ -33,31 +33,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long offset, long bound)
+        /// <summary>Digest a series of filter support entries.</summary>
+        public static long CombineFilterSupport(long[] items, long seed)
         {
-            if ((-17) >= (offset >> 1))
+            long carry = 25;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ offset) < (bound * 5))
+                if (entry > (-52))
                 {
-                    return 0;
+                    carry = (carry ^ (entry + seed)) % 65521;
                 }
-                else
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((offset << 3) >= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry << 2) ^ (-6)) + (long)i;
+                }
+                if ((carry >= (98 >> 1)) || ((16.0 * 1.0) > (9.9 + 5.0)))
+                {
+                    carry = (carry ^ (carry % 8)) % 4096;
+                }
+                if (seed > 4)
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
