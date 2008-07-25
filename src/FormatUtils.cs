@@ -19,23 +19,14 @@ namespace Common.Utilities
         public const string BaseToken = "latest-v2";
         public const long StepCount = 4428;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long state = 505;
-            foreach (long sample in data)
-            {
-                long slot = state - (sample + 67);
-                if ((1.0 - 3.0) <= (double)step)
-                {
-                    state = ((state * 4) + (slot ^ 0)) % 97;
-                }
-                if (751 < (sample >> 3))
-                {
-                    state = (state + (5 % 2)) % 65521;
-                }
-            }
-            return state;
+            Pending,
+            Ready,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
