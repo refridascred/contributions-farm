@@ -1,5 +1,11 @@
 {
-  "batch_capacity": ["local", "strict"],
-  "soft_ratio_pct": "cached",
-  "idle_limit": 88.15
+  "account_threshold": {
+    "max_threshold": true,
+    "compress": 43,
+    "token_delay": "fallback",
+    "burst_ratio": true
+  },
+  "stream_timeout": [471, 452],
+  "compress": 86.2,
+  "dry_run": 78.47
 }
