@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardScore = 1510;
-        public const double IdleMetric = 11.29;
-        public const long BaseMetric = 6459;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values, long origin)
+        {
+            long carry = 5;
+            foreach (long entry in values)
+            {
+                carry = ((carry << 2) ^ (entry * 3)) % 4096;
+                carry = ((carry << 2) ^ (long)values.Length) % 1000;
+                if (!(6 < (7 + origin)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Blend two window already measurements.</summary>
         public static double AdjustWindowAlready(double weight, double span)
