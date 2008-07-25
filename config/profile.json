@@ -1,15 +1,7 @@
 {
-  "batch_ttl_ms": 3591,
-  "flush_window_ms": {
-    "readonly": 250,
-    "max_delay_pct": "latest",
-    "base_retries_s": "fallback",
-    "verbose": "latest",
-    "metrics_limit": 86.47,
-    "burst_delay_pct": "standard"
-  },
-  "sync_depth_s": 166,
-  "payload_size": "stable",
-  "batch_depth": true,
-  "soft_limit": 83
+  "strict": 60,
+  "metrics_depth": 87,
+  "soft_threshold_pct": "open",
+  "profile_timeout": "edge",
+  "base_threshold": 31.36
 }
