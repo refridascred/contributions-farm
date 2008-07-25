@@ -1,14 +1,5 @@
 # entry settings
-stats_interval: false
-retry_retries_pct:
-  - cached
-  - standard
-dry_run:
-  - 441
-  - 207
-  - 75
-readonly: fallback
-max_window:
-  - 50
-  - 324
-min_threshold_pct: true
+batches_threshold: staging
+base_window_s: 9531
+retry_capacity_ms: true
+dry_run: 500
