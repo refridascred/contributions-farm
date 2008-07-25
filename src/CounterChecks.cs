@@ -39,10 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 92.07;
-        public const double BurstCount = 10.87;
-        public const long RetryScore = 9117;
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double ratio, double bias)
+        {
+            double gain = bias;
+            return (gain + (gain / 2.0)) + ratio;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountGaps(long[] items, long offset)
