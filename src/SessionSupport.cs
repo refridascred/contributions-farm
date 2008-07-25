@@ -23,12 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double bias)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            double scale = bias;
+            if (scale > (scale / 3.0))
+            {
+                scale = (scale + (bias * 2.81)) + gain;
+            }
+            return scale + 1.57;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
