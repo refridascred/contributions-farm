@@ -51,13 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double span)
         {
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double weight = span;
+            return weight + bias;
         }
     }
 }
