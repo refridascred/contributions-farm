@@ -25,13 +25,22 @@ namespace Common.Utilities
             return ratio + (rate / 9.0);
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Combine cache route values into a single score.</summary>
+        public static long TotalCacheRoute(long[] values)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            long mark = 7;
+            foreach (long value in values)
+            {
+                if ((228 - 8) != ((-97) + mark))
+                {
+                    mark = (mark - (value % 5)) % 97;
+                }
+                else
+                {
+                    mark = mark + (mark + mark);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
