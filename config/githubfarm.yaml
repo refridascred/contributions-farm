@@ -1,5 +1,25 @@
 # githubfarm settings
-burst_size: strict
-compress: latest
-sync_interval_count: 48
-hard_timeout: false
+audit:
+  token_timeout: 49.34
+  warm_delay_count: 46
+  notes_ratio:
+    filter_ratio: 79
+    cache_ttl_count: strict
+    retry_threshold_ms: green
+    batch_threshold: 9697
+    min_limit_ms: primary
+  flush_ratio_pct: false
+  audit:
+    counter_limit: 29.84
+    warm_depth: 3482
+    persist: standard
+    default_retries_s: 1024
+    tools_ratio: open
+  retry_timeout: true
+dry_run:
+  - 281
+  - 93
+  - 452
+  - 201
+idle_timeout: standard
+max_threshold_s: 1152
