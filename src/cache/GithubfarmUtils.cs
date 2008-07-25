@@ -17,12 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] series, long bound)
         {
-            Retry,
-            Active,
-            Paused,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
