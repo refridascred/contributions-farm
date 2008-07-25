@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((double)target < (6.0 / 2.0))
+                if (reading <= target)
                 {
-                    hits = (hits + 2) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
