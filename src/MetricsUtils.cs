@@ -52,19 +52,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every command counter entry stays within the limit.</summary>
-        public static bool ValidateCommandCounterBounds(long[] items, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= limit)
+                if ((double)hits == (0.9 + 1.1))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
