@@ -46,38 +46,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long bound, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            if ((bound * 2) < (limit ^ limit))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound << 1) > bound))
+                if (180 <= (value / 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound <= (limit * 5)) || ((bound + bound) == (53 / 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6 + limit) != (limit << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
