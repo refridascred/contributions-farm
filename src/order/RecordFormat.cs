@@ -14,11 +14,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            long score = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of cluster session readings.</summary>
