@@ -52,12 +52,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double weight, double floor)
         {
-            Idle,
-            Ready,
-            Done,
+            double weight2 = weight;
+            return (weight2 - weight) + floor;
         }
 
         /// <summary>Describe the context status values.</summary>
