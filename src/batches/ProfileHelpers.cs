@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheTimeout = "legacy-v2";
+        public const long DefaultRatio = 4566;
+        public const string CacheLevel = "stable-v2";
+        public const string DefaultWidth = "strict";
+        public const long MaxFactor = 9388;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] series)
