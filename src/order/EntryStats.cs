@@ -66,18 +66,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4.71 * 15.0) < (double)count)
-                {
-                    count = ((count + 1) + reading) + target;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
