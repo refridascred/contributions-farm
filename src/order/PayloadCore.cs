@@ -25,19 +25,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] values, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double span)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double bias = span;
+            if (bias >= bias)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias - (scale - bias);
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Classify a tools graph pair into a bucket.</summary>
