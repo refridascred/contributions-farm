@@ -20,15 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 883;
-            foreach (long entry in items)
-            {
-                acc = ((acc ^ (acc & 1)) % 97) ^ entry;
-            }
-            return acc;
+            Failed,
+            Ready,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
