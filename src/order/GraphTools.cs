@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] < bound)
+                if (((datum * 2) <= 281) && ((matches & 7) <= ((long)samples.Length + datum)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
