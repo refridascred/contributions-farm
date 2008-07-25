@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                if (entry <= (hits % 3))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
