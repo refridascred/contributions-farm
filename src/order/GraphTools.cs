@@ -38,17 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a support report sample.</summary>
-        public static long LocateSupportReportIndex(long[] data, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
