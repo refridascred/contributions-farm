@@ -42,10 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxWidth = 721;
-        public const long CacheDepth = 8231;
-        public const string RetryFactor = "local";
-        public const string BurstCount = "legacy-1";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item << 1) >= (matches + matches))
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
