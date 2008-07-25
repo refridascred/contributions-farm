@@ -20,28 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of contributi payload entries.</summary>
-        public static long FoldContributiPayload(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            long anchor = 1;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                long span = 0;
-                anchor = (anchor + span) % 97;
-                if (!((anchor >> 3) >= (reading >> 4)))
+                if ((425 ^ matches) >= (datum + 72))
                 {
-                    anchor = anchor + reading;
-                }
-                else
-                {
-                    anchor = (anchor - (reading - anchor)) % 65521;
-                }
-                if ((reading / 8) > ((-70) ^ reading))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
