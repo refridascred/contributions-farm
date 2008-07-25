@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] series, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long sum = 7;
+            foreach (long reading in levels)
             {
-                if (reading > target)
+                sum = ((sum << 2) ^ (83 << 1)) % 97;
+                sum = sum - (sum << 3);
+                if ((sum * 5) < (reading + 507))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return sum % 97;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
