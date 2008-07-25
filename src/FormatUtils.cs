@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxRatio = 6329;
+        public const string BaseToken = "latest-v2";
+        public const long StepCount = 4428;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterLimits(long[] items, long target)
