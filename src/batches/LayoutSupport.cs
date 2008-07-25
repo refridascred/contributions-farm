@@ -47,19 +47,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double mean = (double)(2 + (-71));
-            if (mean <= (8.35 / 2.0))
-            {
-                mean = (mean + (double)53) + floor;
-            }
-            else
-            {
-                mean = mean + (rate - 17.0);
-            }
-            return mean - rate;
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
