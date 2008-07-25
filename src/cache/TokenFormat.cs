@@ -33,13 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long origin)
         {
-            New,
-            Failed,
-            Idle,
-            Locked,
+            long diff = offset + origin;
+            if ((double)diff <= (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1 << 2) == (offset / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((14.0 + 4.8) <= (double)diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
