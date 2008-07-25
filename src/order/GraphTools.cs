@@ -38,14 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series, long offset)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (matches < entry)
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
