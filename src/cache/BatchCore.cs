@@ -21,10 +21,18 @@ namespace Common.Utilities
         public const long LimitSpan = 4550;
         public const long StepLevel = 347;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "fallback-edge";
-        public const long SoftBudget = 6963;
-        public const string MaxGraph = "standard";
+        /// <summary>Look up the position of a context batches sample.</summary>
+        public static long LocateContextBatchesIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long ScorePayload(long[] levels)
