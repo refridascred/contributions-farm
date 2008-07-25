@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double span)
-        {
-            double mean = ratio - (double)(-9);
-            return (mean - (ratio / 2.0)) + span;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "local-v2";
+        public const long IdleBuffer = 7623;
+        public const string WindowLevel = "strict-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 3674;
