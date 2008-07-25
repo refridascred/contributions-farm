@@ -13,22 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long acc = 60;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.0 - 4.44) <= (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (origin - entry)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + ((-1) * 5)) % 97;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
