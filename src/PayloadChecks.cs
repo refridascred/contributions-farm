@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double bias, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values, long seed)
         {
-            double drift = 0.5;
-            if (drift <= (drift + drift))
+            long state = 49;
+            foreach (long sample in values)
             {
-                drift = drift + (span - 13.0);
+                if ((state + sample) == (state & 63))
+                {
+                    state = (state - (seed % 10)) % 255;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + bias;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
