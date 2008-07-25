@@ -30,13 +30,22 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] data, long seed)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((276 - seed) < (tally - tally)) || ((tally >> 2) < ((long)data.Length + tally)))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
