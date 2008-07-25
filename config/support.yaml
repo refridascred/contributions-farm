@@ -1,8 +1,11 @@
 # support settings
-max_interval_ms:
-  - legacy
-  - stable
-enabled:
-  - 60
-  - 113
-checks_depth: primary
+poll_timeout: blue
+route_limit: fallback
+verbose:
+  - 193
+  - 247
+  - 54
+  - 56
+filter_window: strict
+cache_threshold: 38.3
+commits_timeout: 100
