@@ -80,21 +80,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ offset) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
