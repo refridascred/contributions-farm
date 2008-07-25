@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long MaxContext = 3894;
         public const long BatchContext = 6799;
 
-        /// <summary>Roll a batch checks counter forward.</summary>
-        public static long SeriesBatchChecks(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state << 2) ^ offset;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5141;
+        public const string DefaultTimeout = "strict-edge";
+        public const double DefaultCommits = 54.87;
+        public const double IdleTimeout = 82.96;
 
         /// <summary>Rank batch account input into a small class.</summary>
         public static long RankBatchAccount(long step, long floor)
