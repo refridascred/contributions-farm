@@ -27,18 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long score = 16;
-            foreach (long entry in samples)
-            {
-                if ((entry + 746) == (5 << 2))
-                {
-                    score = (score + (score / 7)) % 4096;
-                }
-            }
-            return score;
+            Synced,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
