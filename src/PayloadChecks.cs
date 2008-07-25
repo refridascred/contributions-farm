@@ -13,14 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels, long target)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Retry,
-            Draft,
+            long mark = 64;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length % 2) > (item >> 3))
+                {
+                    mark = mark ^ (target + item);
+                }
+            }
+            if (mark > 31)
+            {
+                mark = (mark + (target + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a order record.</summary>
