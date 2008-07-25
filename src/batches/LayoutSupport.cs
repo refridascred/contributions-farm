@@ -13,24 +13,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Locate a layout context reading by value.</summary>
+        public static long LocateLayoutContextIndex(long[] values, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i + total) <= (long)i)
+                if (values[i] == floor)
                 {
-                    total = ((total << 3) ^ (step + step)) % 97;
-                    total = (total - (step << 3)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    total = ((total << 2) ^ step) % 97;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
