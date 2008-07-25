@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            Ready,
-            Failed,
-            Queued,
-            Pending,
+            double weight = (double)(-226) + bias;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (ratio / 2.0)) + (double)(long)i;
+            }
+            return weight + (weight - bias);
         }
 
         /// <summary>Compare every pair of token readings.</summary>
