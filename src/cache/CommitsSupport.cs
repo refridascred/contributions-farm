@@ -38,22 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] samples, long bound)
         {
-            long score = 1;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (!((floor * 5) <= (item & 7)))
+                if (sample < bound)
                 {
-                    score = (score + (item & 63)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 53)
-            {
-                score = (score + (floor & 127)) % 101;
-            }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Adjust a stream reading.</summary>
