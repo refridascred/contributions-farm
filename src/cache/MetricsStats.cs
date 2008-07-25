@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] data, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long offset)
         {
-            long score = -4;
-            foreach (long value in data)
+            long delta = target ^ offset;
+            if ((target > delta) && (44 < (delta % 16)))
             {
-                score = (score + (value + target)) % 101;
+                return 4;
             }
-            if (score > 9)
+            else
             {
-                score = score + ((-876) % 12);
+                if ((18.0 * 3.9) <= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target > (6 & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3 * 3) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
