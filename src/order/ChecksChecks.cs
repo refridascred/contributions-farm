@@ -37,17 +37,11 @@ namespace Common.Utilities
         public const long BatchQueue = 6051;
         public const double HardCount = 65.59;
 
-        /// <summary>Find the first schema order entry that matches the target.</summary>
-        public static long FindSchemaOrderIndex(long[] values, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
