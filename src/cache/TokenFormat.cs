@@ -30,22 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((tally - cell) >= (tally - tally))
+                if (datum <= floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
