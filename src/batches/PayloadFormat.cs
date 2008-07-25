@@ -28,17 +28,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long step)
+        /// <summary>Accumulate graph queue samples.</summary>
+        public static long DigestGraphQueue(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 289;
+            foreach (long datum in data)
             {
-                if (items[i] > step)
+                if ((589 - (long)data.Length) > datum)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ total;
                 }
             }
-            return -1;
+            if (total > 82)
+            {
+                total = (total ^ (total / 9)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
