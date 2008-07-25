@@ -40,17 +40,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)505 + (double)2;
+            return ((rate + 2.0) + scale) + span;
         }
     }
 }
