@@ -13,11 +13,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long target)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((anchor ^ target) <= (anchor + (long)i)))
+                {
+                    anchor = (anchor + (anchor + (long)i)) % 255;
+                    anchor = (anchor ^ (target + target)) % 4096;
+                }
+                if ((anchor + target) < (84 - (long)i))
+                {
+                    anchor = ((anchor << 2) ^ (target % 8)) % 255;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor + (target % 100)) % 255;
+                    anchor = anchor - (anchor / 7);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
