@@ -54,12 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] data, long limit)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
