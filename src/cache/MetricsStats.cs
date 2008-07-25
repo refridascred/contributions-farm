@@ -26,18 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally >= (double)405)
+                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
                 {
-                    tally = (tally + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
