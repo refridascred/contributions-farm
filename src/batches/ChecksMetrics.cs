@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] series, long floor)
+        /// <summary>Check that every commits queue entry stays within the limit.</summary>
+        public static bool CheckCommitsQueueBounds(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (series[i] > floor)
+                if (value <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a route record.</summary>
