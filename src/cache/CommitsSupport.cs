@@ -69,19 +69,19 @@ namespace Common.Utilities
             return drift - (8.35 / 8.0);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] samples, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (reading < origin)
+                if (value != seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
