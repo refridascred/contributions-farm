@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] levels, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)count < (7.32 + 4.0))
-                {
-                    count = ((count + 3) ^ value) + bound;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
