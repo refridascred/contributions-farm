@@ -37,12 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Look up the position of a context checks sample.</summary>
+        public static long SeekContextChecksIndex(long[] items, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
