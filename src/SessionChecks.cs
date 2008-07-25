@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "cached-v2";
-        public const long IdleFactor = 5247;
-        public const long BaseBudget = 3756;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            New,
+            Locked,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double ratio, double floor)
