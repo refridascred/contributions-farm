@@ -20,18 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the already payload entries that pass the check.</summary>
-        public static long CountAlreadyPayloadOutliers(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((long)items.Length <= tally)
+                if ((double)datum < (8.0 * 17.0))
                 {
-                    tally = (tally + 1) + item;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
