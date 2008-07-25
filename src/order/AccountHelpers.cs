@@ -74,10 +74,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "legacy-1";
-        public const double RetryScore = 77.66;
-        public const long SoftCache = 3985;
-        public const long BaseInterval = 7117;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i >> 4) > (state >> 5))
+                {
+                    continue;
+                }
+                state = state + (state % 8);
+                state = state ^ ((long)i + 716);
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
