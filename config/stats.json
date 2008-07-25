@@ -1,13 +1,15 @@
 {
-  "graph_limit": 16.75,
-  "session_capacity": "blue",
-  "batch_capacity_s": "standard",
-  "audit": {
-    "farm_window": 3.3,
-    "soft_window_s": 30,
-    "max_delay_count": 30,
-    "default_timeout": "standard",
-    "batch_interval": "latest"
+  "sync_capacity_s": {
+    "schema_depth": true,
+    "metrics_window": 58.76,
+    "burst_interval_count": {
+      "soft_ttl_ms": true,
+      "strict": false,
+      "soft_capacity_pct": ["open", "cached", "fallback"],
+      "soft_depth": 49.91
+    }
   },
-  "idle_timeout_s": "eu-west"
+  "sync_window_ms": [87, 329],
+  "max_depth_pct": ["edge", "blue"],
+  "compress": 6760
 }
