@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= (320 ^ matches))
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a checks batch figure with a bias.</summary>
