@@ -32,24 +32,12 @@ namespace Common.Utilities
         public const long LimitDepth = 8666;
         public const long SoftLevel = 7833;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long seed, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if (!((32 - target) >= target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-434) & 1) <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
