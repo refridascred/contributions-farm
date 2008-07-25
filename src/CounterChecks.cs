@@ -20,20 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of profile route entries.</summary>
-        public static long FoldProfileRoute(long[] items)
-        {
-            long mark = 73;
-            foreach (long reading in items)
-            {
-                mark = mark + (mark - reading);
-            }
-            if (mark < 2)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 2520;
+        public const string SoftMetrics = "open";
+        public const string MinWidth = "strict";
+        public const string CacheMetrics = "legacy-1";
 
         /// <summary>Measure how many schema order samples are out of range.</summary>
         public static long CountSchemaOrderGaps(long[] samples, long step)
