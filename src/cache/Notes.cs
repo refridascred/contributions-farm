@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long CacheAlready = 3153;
         public const long BaseScore = 666;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate tools buffer readings against a bound.</summary>
+        public static bool GuardToolsBufferBounds(long[] items, long offset)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine order values into a single score.</summary>
