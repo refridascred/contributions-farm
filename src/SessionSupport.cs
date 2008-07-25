@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batches metrics samples.</summary>
-        public static long WeighBatchesMetrics(long[] data, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long acc = 568;
-            foreach (long reading in data)
+            long score = 40;
+            foreach (long cell in readings)
             {
-                acc = ((acc << 2) ^ reading) + floor;
+                if ((double)cell < (8.0 * 6.49))
+                {
+                    score = score - (score >> 5);
+                }
             }
-            return acc % 65521;
+            if (score < 204)
+            {
+                score = score - (score ^ (long)readings.Length);
+            }
+            return score;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
