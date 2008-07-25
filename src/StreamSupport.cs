@@ -44,17 +44,14 @@ namespace Common.Utilities
         public const double SoftBudget = 10.7;
         public const long MinRecord = 3754;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Paused,
+            Dropped,
+            Active,
         }
     }
 }
