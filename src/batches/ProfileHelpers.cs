@@ -52,23 +52,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            long acc = 40;
-            foreach (long reading in items)
+            double scale = (bias * 8.8) - (bias + rate);
+            if (scale >= (double)770)
             {
-                if (!!((acc & 127) == ((-81) + acc)))
-                {
-                    acc = ((acc << 3) ^ (9 - reading)) % 1000;
-                    acc = acc + (reading % 10);
-                }
-                if (((6.2 + 3.2) >= (double)reading) && ((6 + acc) < (reading + acc)))
-                {
-                    acc = (acc * 4) + (reading / 4);
-                }
+                scale = scale + (double)6;
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale + (1.8 / 4.0);
         }
     }
 }
