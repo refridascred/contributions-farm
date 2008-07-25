@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheLevel = 6335;
-        public const string WindowSize = "local-edge";
-        public const long BaseRoute = 5378;
-        public const long BaseWidth = 389;
-        public const long MaxCount = 5269;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 1652;
+        public const double BurstScore = 9.02;
+        public const string BaseDepth = "strict";
 
         /// <summary>Measure how many graph schema samples are out of range.</summary>
         public static long MeasureGraphSchemaMatches(long[] samples)
