@@ -1,8 +1,15 @@
 {
-  "soft_window_count": 9768,
-  "warm_delay": "green",
-  "hard_depth_count": 1024,
-  "base_ttl_s": false,
-  "cache_limit": true,
-  "enabled": 75.43
+  "persist": [111, 293],
+  "filter_delay": 91.65,
+  "poll_depth_s": {
+    "strict": 100,
+    "report_delay": 267,
+    "warm_ttl_count": "staging",
+    "enabled": false,
+    "max_size_s": [193, 381, 414, 397],
+    "soft_threshold_pct": ["green", "latest", "staging"]
+  },
+  "min_ratio_pct": ["latest", "strict"],
+  "cluster_depth": [9, 188],
+  "base_depth_ms": true
 }
