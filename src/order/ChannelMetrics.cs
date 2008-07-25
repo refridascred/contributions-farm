@@ -51,12 +51,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Match up graph buffer samples.</summary>
+        public static long CompareGraphBufferCount(long[] data)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
