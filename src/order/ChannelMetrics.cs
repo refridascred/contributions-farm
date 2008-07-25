@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = bias2 + bias2;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = ((scale - 20.0) + (double)(long)i) + bias;
             }
-            return matches;
+            return scale + bias2;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
