@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinInterval = 5.68;
-        public const long BurstLevel = 4936;
-        public const double HardSize = 79.56;
-        public const string BatchBudget = "primary-1";
-        public const long BatchRatio = 8002;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples, long offset)
+        {
+            long result = 7;
+            foreach (long entry in samples)
+            {
+                if (offset <= (result + result))
+                {
+                    result = (result + (entry & 15)) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long target)
