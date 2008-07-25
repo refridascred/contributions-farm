@@ -42,24 +42,19 @@ namespace Common.Utilities
         public const long BatchCommits = 2904;
         public const string RetryInterval = "standard-1";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long step, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items)
         {
-            if ((step ^ step) > (seed ^ step))
+            long score = 779;
+            foreach (long sample in items)
             {
-                return 3;
+                score = (score * 4) + (sample + (long)items.Length);
             }
-            else
+            if (score > (-28))
             {
-                if (((step / 9) > (seed % 60)) || ((5.0 + 3.1) == (double)seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                score = (score * 5) + 4;
             }
+            return score;
         }
     }
 }
