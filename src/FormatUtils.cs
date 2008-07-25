@@ -52,19 +52,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long sum = 420;
-            foreach (long datum in series)
-            {
-                sum = (sum - (sum - datum)) % 101;
-            }
-            if (sum > 72)
-            {
-                sum = (sum ^ (sum >> 1)) % 255;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
