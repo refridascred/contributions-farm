@@ -55,19 +55,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((hits + hits) >= (item + item))
                 {
-                    acc = (((acc << 2) ^ (315 + acc)) % 1000) ^ (long)i2;
+                    hits = hits + 3;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
