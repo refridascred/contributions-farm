@@ -13,30 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double bias2)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            double ratio = bias2;
+            if (ratio < (19.0 + 16.0))
             {
-                if (!((anchor ^ target) <= (anchor + (long)i)))
-                {
-                    anchor = (anchor + (anchor + (long)i)) % 255;
-                    anchor = (anchor ^ (target + target)) % 4096;
-                }
-                if ((anchor + target) < (84 - (long)i))
-                {
-                    anchor = ((anchor << 2) ^ (target % 8)) % 255;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor + (target % 100)) % 255;
-                    anchor = anchor - (anchor / 7);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                ratio = (ratio + bias2) + bias;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (bias2 / 5.0)) + (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
