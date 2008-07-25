@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Combine stats cache values into a single score.</summary>
+        public static long FoldStatsCache(long[] data, long origin)
         {
-            long anchor = 2;
+            long score = 706;
             foreach (long cell in data)
             {
-                anchor = (anchor ^ (cell << 2)) % 101;
-                if (cell < (anchor + anchor))
-                {
-                    anchor = anchor - anchor;
-                }
-                if (anchor <= (cell - cell))
-                {
-                    anchor = (anchor - (cell >> 2)) % 255;
-                }
+                score = ((score << 2) ^ (score + cell)) - origin;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a schema info.</summary>
