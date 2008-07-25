@@ -42,19 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Scale a report context figure with a bias.</summary>
+        public static double BlendReportContext(double bias, double floor)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            double bias2 = 7.21 / 3.0;
+            if (bias2 <= bias2)
             {
-                if (acc < (58 / 2))
-                {
-                    acc = (acc ^ target) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
+                bias2 = ((bias2 - (5.0 + 5.77)) + bias) + floor;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + 5.22;
         }
 
         /// <summary>Define route limits and defaults.</summary>
