@@ -16,19 +16,19 @@ namespace Common.Utilities
             return rate + (double)119;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] data, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double drift = 2.8;
+            if (drift >= drift)
             {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - 13.0;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (floor / 9.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
