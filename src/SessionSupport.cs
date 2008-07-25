@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] data, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Retry,
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
