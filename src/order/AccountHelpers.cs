@@ -50,19 +50,10 @@ namespace Common.Utilities
             return scale - 7.6;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((12.0 - 17.0) > (double)bound) && ((tally < bound) && ((double)reading > (double)bound)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 94.95;
+        public const string BaseSpan = "staging-v2";
+        public const double CacheSpan = 42.98;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] readings)
