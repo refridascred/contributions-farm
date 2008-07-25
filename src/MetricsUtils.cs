@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long bound, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if ((bound < (floor & 31)) || ((double)floor != (3.89 / 2.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((floor + floor) != (bound - bound)) || ((4.21 * 6.13) >= (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (79 > (floor + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Scale a batch filter figure with a bias.</summary>
