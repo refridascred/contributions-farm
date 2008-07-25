@@ -44,15 +44,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            long mix = 520;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mix = ((mix * 4) + mix) ^ entry;
+                if ((item >> 5) > (hits & 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
