@@ -42,15 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Validate report queue readings against a bound.</summary>
+        public static bool ValidateReportQueueLimits(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
