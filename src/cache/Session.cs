@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate stream stats readings against a bound.</summary>
+        public static bool GuardStreamStatsLimits(long[] readings, long floor)
         {
-            Synced,
-            Idle,
-            Retry,
-            Draft,
-            Failed,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
