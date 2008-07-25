@@ -50,29 +50,18 @@ namespace Common.Utilities
             return scale - 7.6;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] data, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)anchor == (double)(long)i)
+                if (((12.0 - 17.0) > (double)bound) && ((tally < bound) && ((double)reading > (double)bound)))
                 {
-                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 4096;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = ((anchor << 3) ^ 364) % 4096;
-                if ((floor + anchor) <= (floor >> 3))
-                {
-                    anchor = ((anchor * 5) + (long)i) % 255;
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
