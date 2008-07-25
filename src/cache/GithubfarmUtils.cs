@@ -40,14 +40,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Queued,
-            Active,
-            Draft,
-            Done,
-            Locked,
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
