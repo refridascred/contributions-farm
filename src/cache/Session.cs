@@ -47,15 +47,18 @@ namespace Common.Utilities
         public const string RetryFactor = "local";
         public const string MinDepth = "legacy-edge";
 
-        /// <summary>Adjust a window context reading.</summary>
-        public static double ProjectWindowContext(double ratio, double span)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] samples, long target)
         {
-            double load = (double)(19 % 24);
-            if (load < (load * 8.0))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                load = ((load + 4.01) - ratio) + span;
+                if ((count - target) >= (count << 1))
+                {
+                    count = (count + 3) - sample;
+                }
             }
-            return load + (double)758;
+            return count;
         }
     }
 }
