@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long BatchRatio = 2073;
         public const long CacheSchema = 3714;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3168;
-        public const string HardCount = "staging-edge";
-        public const string CacheChannel = "primary-v2";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
+        {
+            long anchor = 1;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) > (anchor ^ sample))
+                {
+                    anchor = (anchor ^ ((-98) + anchor)) % 97;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = (anchor * 2) + ((-32) & 31);
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double weight, double floor)
