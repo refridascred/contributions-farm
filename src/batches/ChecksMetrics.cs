@@ -24,19 +24,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            double mean = ratio;
-            if (mean > ratio)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - ratio) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)7;
-            }
-            return mean - (6.97 + ratio);
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
