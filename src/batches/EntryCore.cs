@@ -33,14 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Synced,
-            Stale,
-            Locked,
+            Closed,
+            Paused,
             Idle,
-            Done,
+            Active,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
