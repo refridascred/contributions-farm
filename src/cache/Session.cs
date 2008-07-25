@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate stream graph readings against a bound.</summary>
-        public static bool ValidateStreamGraphRange(long[] readings, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long bound, long limit)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            if ((2 & 127) > (bound + bound))
             {
-                if (item <= floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= 2.3)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
