@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 5197;
-        public const string BurstReport = "strict-edge";
-        public const long BurstSpan = 4973;
-        public const long SoftReport = 1377;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] data)
