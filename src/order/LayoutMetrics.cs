@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the layout metrics series from a seed.</summary>
-        public static long IterateLayoutMetrics(long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((long)i > step))
+                if (!((origin >> 4) <= (origin % 60)))
                 {
-                    result = result ^ (16 + (long)i);
+                    acc = (acc - origin) % 1000;
                 }
-                result = ((result * 4) + (long)i) % 1000;
+                if ((66 * 4) <= (acc * 5))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Hold a layout header.</summary>
