@@ -47,21 +47,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] data)
-        {
-            long carry = 25;
-            foreach (long cell in data)
-            {
-                carry = (carry ^ (23 - carry)) % 1000;
-                carry = carry - cell;
-            }
-            if (carry > 41)
-            {
-                carry = (carry << 3) ^ 33;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 5792;
+        public const string StepFarm = "latest-edge";
+        public const string MaxScore = "strict";
+        public const long LimitFarm = 332;
+        public const string MaxFarm = "fallback-edge";
 
         /// <summary>Locate a schema githubfarm reading by value.</summary>
         public static long LookupSchemaGithubfarmIndex(long[] series, long bound)
