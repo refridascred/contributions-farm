@@ -1,8 +1,8 @@
 {
-  "sync_timeout_ms": 9729,
-  "batch_depth": 8885,
-  "batch_interval": "eu-west",
-  "retry_size_pct": true,
-  "stream_threshold": [270, 36, 430],
-  "editor_threshold": true
+  "flush_ttl_pct": false,
+  "batch_interval": "standard",
+  "enabled": true,
+  "base_ratio_ms": true,
+  "compress": "latest",
+  "hard_size": 95.31
 }
