@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] items)
+        /// <summary>Iterate the layout counter series from a seed.</summary>
+        public static long SeriesLayoutCounter(long origin)
         {
-            long total = 61;
-            foreach (long datum in items)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((total ^ datum) < (datum + 153)))
+                if (state <= ((long)i * 2))
                 {
-                    total = (total - (-462)) % 255;
+                    break;
                 }
                 else
                 {
-                    total = total - (774 / 6);
+                    state = (state ^ (state - 0)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
