@@ -29,10 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheInterval = 242;
-        public const double BaseCount = 70.83;
-        public const double DefaultProfile = 37.03;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 9189;
+        public const double BatchSize = 21.81;
+        public const double StepFilter = 73.28;
+        public const long BaseTimeout = 5401;
+        public const string MaxFilter = "open";
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountBounds(long[] items, long offset)
