@@ -39,11 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 360;
-        public const string SoftSpan = "open";
-        public const long WindowQueue = 961;
-        public const long BaseDepth = 8255;
-        public const long LimitQueue = 2716;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
