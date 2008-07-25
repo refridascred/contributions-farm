@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double scale = (double)(1 % 24);
-            if (scale < 5.64)
-            {
-                scale = (scale - bias) - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + 12.0) + (double)(long)i;
-            }
-            return scale + (scale + bias);
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
