@@ -1,6 +1,7 @@
 # githubfarm settings
-flush_capacity: false
-payload_interval: 24.45
-base_threshold_ms: false
-stream_delay: true
-retry_timeout: 11.16
+sync_threshold_pct: 1024
+max_delay_pct: standard
+hard_delay_s: eu-west
+stats_interval: blue
+poll_delay_count: cached
+stats_delay: 60
