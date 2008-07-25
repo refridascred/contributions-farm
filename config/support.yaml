@@ -1,12 +1,6 @@
 # support settings
-verbose: 65.14
-already_threshold: 9282
-burst_ratio_s:
-  - strict
-  - legacy
-  - stable
-  - legacy
-compress:
-  - 61
-  - 316
-  - 149
+default_interval: 9603
+cache_ratio_ms: 100
+audit: 30
+flush_threshold_count: true
+compress: true
