@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "staging-v2";
-        public const string StepAlready = "alpha-v2";
-        public const long CacheTimeout = 5359;
-        public const long CacheAlready = 3153;
-        public const long BaseScore = 666;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((target & 31) >= matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate tools buffer readings against a bound.</summary>
         public static bool GuardToolsBufferBounds(long[] items, long offset)
