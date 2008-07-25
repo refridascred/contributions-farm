@@ -1,8 +1,11 @@
 {
-  "sync_capacity_s": 97,
-  "stats_timeout": "standard",
-  "record_capacity": 1988,
-  "burst_size": 11,
-  "sync_capacity_count": ["green", "green", "primary"],
-  "cache_ratio_count": "latest"
+  "audit": "staging",
+  "batch_ttl_pct": {
+    "default_size_s": 52,
+    "soft_ttl": ["fallback", "primary", "local"],
+    "poll_ttl_count": 30
+  },
+  "context_limit": 56,
+  "burst_retries_s": false,
+  "verbose": 7.09
 }
