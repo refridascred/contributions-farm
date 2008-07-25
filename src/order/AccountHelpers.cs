@@ -69,27 +69,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long acc = 84;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step < (datum >> 3)) && (6.2 < (double)acc))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc + datum) % 97;
-                }
-                acc = (acc + step) % 1000;
-                if ((50 >> 3) <= (step & 7))
-                {
-                    acc = acc ^ (8 / 3);
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc * 3) + (acc % 12);
-            }
-            return acc % 97;
+            return seen;
         }
     }
 }
