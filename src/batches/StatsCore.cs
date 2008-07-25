@@ -41,13 +41,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a buffer record.</summary>
