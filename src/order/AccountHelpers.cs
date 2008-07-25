@@ -35,19 +35,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double scale = bias2;
-            if (scale < bias)
-            {
-                scale = scale - (scale * 1.08);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (4.0 / 6.0)) + (double)(long)i;
-            }
-            return scale - 7.6;
+            Failed,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
