@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] levels, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) <= entry)
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
