@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue checks samples are out of range.</summary>
-        public static long AuditQueueChecksOutliers(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((entry ^ tally) > (entry % 7))
+                if ((2.6 * 7.0) != (double)target)
                 {
-                    tally = tally + 2;
+                    count = (count + 1) - item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of format readings.</summary>
