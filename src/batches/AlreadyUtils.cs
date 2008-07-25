@@ -21,26 +21,21 @@ namespace Common.Utilities
             return gain + 8.3;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            long score = 91;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score >> 5) <= (score - (-32)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score + (datum - datum);
-                }
-                if ((score & 15) == (datum + score))
-                {
-                    score = score - (datum >> 2);
-                }
-                if ((score ^ (-612)) < (score << 2))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
