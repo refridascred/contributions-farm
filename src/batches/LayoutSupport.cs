@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            double bias = (floor - floor) * 10.0;
+            if (bias > (double)(-22))
+            {
+                bias = (bias - (bias * 2.21)) - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias + (floor * 5.0);
         }
 
         /// <summary>Locate a layout context reading by value.</summary>
