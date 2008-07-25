@@ -20,10 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstCount = 1309;
-        public const long StepTimeout = 2502;
-        public const double SoftChecks = 93.42;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Paused,
+            Idle,
+            Draft,
+            Done,
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
