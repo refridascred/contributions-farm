@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache window samples are out of range.</summary>
-        public static long MeasureCacheWindowOutliers(long[] data)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (hits > sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
