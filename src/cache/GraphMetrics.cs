@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings, long bound)
         {
-            long carry = 17;
-            foreach (long datum in series)
+            long state = 738;
+            foreach (long entry in readings)
             {
-                if ((datum - carry) <= carry)
+                if ((bound ^ entry) >= (entry * 5))
                 {
-                    carry = (carry << 3) ^ datum;
+                    state = (state * 2) + (bound * 3);
                 }
             }
-            return carry;
+            if (state > 48)
+            {
+                state = (state - (state + 7)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a record record.</summary>
