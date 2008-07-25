@@ -27,19 +27,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks batch figure with a bias.</summary>
-        public static double AdjustChecksBatch(double scale, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long floor)
         {
-            double mean = scale;
-            if (mean <= (3.58 - span))
+            if (((seed + 3) == (seed ^ seed)) || ((double)floor < (double)seed))
             {
-                mean = mean + scale;
+                return 6;
             }
             else
             {
-                mean = mean + (scale - 7.0);
+                if (seed >= (seed >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >= (seed / 7)) && (4.54 >= (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor >= (seed << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return mean + (mean / 5.0);
         }
     }
 }
