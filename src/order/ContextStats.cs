@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] series, long offset)
+        /// <summary>Fold a list of editor buffer readings.</summary>
+        public static long CombineEditorBuffer(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 4;
+            foreach (long sample in levels)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (sample * 2)) + seed;
             }
-            return -1;
+            if (score < 287)
+            {
+                score = (score ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a route stats.</summary>
