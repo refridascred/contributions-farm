@@ -38,26 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] readings, long floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = 68;
-            foreach (long value in readings)
-            {
-                if (((double)result >= (0.6 / 6.0)) && ((floor - result) >= (value / 6)))
-                {
-                    result = ((result << 2) ^ (long)readings.Length) % 1000;
-                }
-                else
-                {
-                    result = (result + (value - floor)) % 101;
-                }
-                if ((floor >> 4) <= (long)readings.Length)
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the stream status values.</summary>
