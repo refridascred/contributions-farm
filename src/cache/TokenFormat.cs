@@ -15,25 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long offset, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long span = offset + origin;
-            if ((double)span <= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((span + span) > (-74))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
