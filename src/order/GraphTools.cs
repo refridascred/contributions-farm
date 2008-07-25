@@ -41,13 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long AuditToolsCacheOutliers(long[] levels, long floor)
         {
-            Idle,
-            Ready,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen - 77) >= (3 + 16))
+                {
+                    seen = ((seen + 2) ^ entry) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
