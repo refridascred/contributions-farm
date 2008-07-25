@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] values, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = 632;
+            foreach (long reading in values)
             {
-                if ((7.56 + 16.0) != (double)floor)
-                {
-                    seen = (seen + 3) - datum;
-                }
+                result = ((result ^ (offset + offset)) % 97) + reading;
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Validate report batch readings against a bound.</summary>
