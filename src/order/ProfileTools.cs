@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            double rate = (double)(7 - 614);
+            if (rate > bias)
+            {
+                rate = (rate + (4.1 + rate)) - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + (double)0;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
