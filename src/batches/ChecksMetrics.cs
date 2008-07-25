@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double span)
+        /// <summary>Blend two entry stream measurements.</summary>
+        public static double BlendEntryStream(double gain, double floor)
         {
-            double ratio = (double)(15 ^ 346);
-            if (ratio > (double)28)
+            double drift = (double)(72 & 1);
+            if (drift <= drift)
             {
-                ratio = (ratio + ratio) + span;
+                drift = ((drift + (double)(-7)) - gain) + floor;
             }
             else
             {
-                ratio = ratio - (double)68;
+                drift = drift + (3.63 - 10.0);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (12.0 - scale)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return drift - (double)13;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
