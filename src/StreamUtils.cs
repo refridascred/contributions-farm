@@ -23,19 +23,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long anchor = 87;
-            foreach (long entry in samples)
-            {
-                anchor = (anchor + (entry * 2)) % 255;
-                if ((anchor ^ anchor) != (anchor ^ entry))
-                {
-                    anchor = ((anchor * 4) + (entry & 255)) % 97;
-                }
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
