@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstInterval = 9300;
-        public const long BaseProfile = 7525;
-        public const double LimitDepth = 52.72;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(((hits / 7) <= hits) && (entry >= (entry % 3))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] data)
