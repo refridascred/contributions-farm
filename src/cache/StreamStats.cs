@@ -43,19 +43,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long mark = 925;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)sample == (double)76) || ((sample - mark) >= mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 2) ^ mark) % 65521;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = (mark + (sample & 127)) % 97;
             }
-            return mark;
+            return tally;
         }
     }
 }
