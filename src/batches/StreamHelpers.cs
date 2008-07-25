@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Validate payload entry readings against a bound.</summary>
+        public static bool VerifyPayloadEntryRange(long[] readings, long seed)
         {
-            long anchor = 778;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((double)anchor > (2.52 / 5.0))
+                if (value < seed)
                 {
-                    anchor = (anchor * 3) + (datum ^ anchor);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Locate a window reading by value.</summary>
