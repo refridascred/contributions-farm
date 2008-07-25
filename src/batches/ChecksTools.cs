@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            double bias = 6.8 + (double)(-65);
-            if (bias < (double)88)
+            double mean = 6.7 * 19.0;
+            if (mean >= (double)22)
             {
-                bias = (bias + (double)748) - floor;
+                mean = ((mean - mean) + gain) + offset;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias - (scale * 9.08)) + (double)(long)i;
+                mean = mean - (1.0 + mean);
             }
-            return bias - scale;
+            return mean - (mean + mean);
         }
 
         /// <summary>Hold a stats options.</summary>
