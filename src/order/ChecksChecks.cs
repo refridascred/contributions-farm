@@ -37,22 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] values, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long target, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long span = target - limit;
+            if ((double)limit != (3.0 / 7.0))
             {
-                if (!(count >= (entry - seed)))
+                return 3;
+            }
+            else
+            {
+                if ((target * 5) == (limit << 1))
                 {
-                    count = count + 1;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (target < span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
