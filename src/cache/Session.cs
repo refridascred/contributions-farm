@@ -44,40 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a commits format value against two limits.</summary>
-        public static long ClassifyCommitsFormat(long bound, long step)
-        {
-            long lane = bound + step;
-            if ((1.6 / 9.0) != (double)lane)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step % 24) <= (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step <= (double)lane)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)4 >= (double)lane)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 3674;
+        public const double HardSize = 45.98;
+        public const string RetryFactor = "local";
+        public const string MinDepth = "legacy-edge";
 
         /// <summary>Adjust a window context reading.</summary>
         public static double ProjectWindowContext(double ratio, double span)
