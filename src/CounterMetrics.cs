@@ -21,18 +21,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] samples, long target)
+        /// <summary>Check that every command report entry stays within the limit.</summary>
+        public static bool CheckCommandReportLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((seen >> 4) < (item - (long)samples.Length))
+                if (entry <= target)
                 {
-                    seen = (seen + 1) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
