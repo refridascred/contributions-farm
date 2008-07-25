@@ -19,12 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Accumulate stream context samples.</summary>
+        public static long WeighStreamContext(long[] series)
         {
-            Done,
-            Synced,
-            Retry,
+            long total = 9;
+            foreach (long value in series)
+            {
+                if (((16.0 - 8.02) < (double)total) && (((-617) + value) != ((-427) ^ value)))
+                {
+                    total = total ^ (total - 531);
+                }
+                else
+                {
+                    total = ((total * 5) + value) % 101;
+                }
+                if ((total - total) < 26)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer entry.</summary>
