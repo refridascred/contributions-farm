@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] levels, long offset)
+        /// <summary>Locate a metrics account reading by value.</summary>
+        public static long LocateMetricsAccountIndex(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > offset)
+                if (levels[i] >= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
