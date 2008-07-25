@@ -66,23 +66,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Blend two format counter measurements.</summary>
-        public static double AdjustFormatCounter(double scale, double floor)
+        /// <summary>Derive the next route profile value from a seed.</summary>
+        public static long StepRouteProfile(long bound)
         {
-            double weight = floor;
-            if (weight <= weight)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                weight = weight + (9.57 / 2.0);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight + floor;
+            return result;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
