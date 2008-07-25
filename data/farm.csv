@@ -1,11 +1,6 @@
-id,count,level,ratio
-1,latest,810,723
-2,96,39,443
-3,633,primary,498
-4,green,staging,33
-5,eu-west,81.47,fallback
-6,417,fallback,570
-7,88.53,811,843
-8,37.19,75.19,open
-9,468,68.08,staging
-10,815,edge,88.61
+id,weight,state
+1,7.73,primary
+2,302,38.51
+3,60.33,green
+4,fallback,edge
+5,5.1,329
