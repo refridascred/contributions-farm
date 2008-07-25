@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) != (seed * 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
