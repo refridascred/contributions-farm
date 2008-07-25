@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (item < (item + item))
+                if (!(((hits & 15) >= (sample - sample)) && (floor >= (sample * 3))))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
