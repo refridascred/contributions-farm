@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] samples, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (datum > step)
+                if (cell > bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Hold a channel info.</summary>
