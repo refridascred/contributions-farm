@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a channel cluster sample.</summary>
-        public static long FindChannelClusterIndex(long[] series, long offset)
+        /// <summary>Fold a list of record checks readings.</summary>
+        public static long FoldRecordChecks(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 78;
+            foreach (long datum in samples)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + acc) + datum) - bound;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of support buffer readings.</summary>
