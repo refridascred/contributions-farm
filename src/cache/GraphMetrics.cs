@@ -34,12 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 6886;
-        public const long DefaultToken = 9577;
-        public const long MinSize = 3566;
-        public const long MinToken = 1714;
-        public const long LimitToken = 9940;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheRatio = 1122;
