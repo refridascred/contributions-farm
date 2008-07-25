@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] series, long limit)
         {
-            long sum = 949;
-            foreach (long value in values)
+            long acc = 81;
+            foreach (long item in series)
             {
-                sum = (sum - (value & 7)) % 65521;
+                acc = ((acc ^ limit) % 4096) ^ item;
             }
-            if (sum < 29)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum;
+            return acc;
         }
     }
 }
