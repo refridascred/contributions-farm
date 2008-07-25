@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double bias)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            double scale = bias;
+            if (scale >= (double)85)
+            {
+                scale = scale - (3.12 + weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale * 1.0)) + (double)(long)i;
+            }
+            return scale - (double)110;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
