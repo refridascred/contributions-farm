@@ -35,18 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] data, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally + floor) >= (tally << 1))
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
