@@ -20,12 +20,14 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            Stale,
+            Paused,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
