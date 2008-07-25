@@ -1,6 +1,10 @@
 {
-  "readonly": [161, 120, 218],
-  "batch_limit": 5.03,
-  "batch_retries_ms": ["standard", "fallback"],
-  "soft_delay_pct": 2.07
+  "soft_capacity": "eu-west",
+  "hard_limit_pct": "primary",
+  "soft_window_pct": {
+    "flush_retries_s": false,
+    "session_interval": "latest",
+    "order_capacity": "latest"
+  },
+  "burst_threshold_pct": "green"
 }
