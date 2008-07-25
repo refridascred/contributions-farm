@@ -50,16 +50,11 @@ namespace Common.Utilities
             return load - (bias2 - bias2);
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double bias2)
-        {
-            double drift = (double)596 - (bias / 7.0);
-            if (drift < (double)8)
-            {
-                drift = (drift + (drift * 6.0)) - bias2;
-            }
-            return drift - (8.35 / 8.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 73.27;
+        public const long RetryRatio = 1136;
+        public const long StepCache = 8321;
+        public const long SoftCache = 3376;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatLimits(long[] items, long seed)
