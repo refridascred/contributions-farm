@@ -58,12 +58,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
