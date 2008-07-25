@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Retry,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 48.12;
+        public const long RetryCommits = 765;
+        public const long SoftLevel = 2247;
+        public const long BaseCommits = 3753;
+        public const long WindowInterval = 7326;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesBounds(long[] readings, long bound)
