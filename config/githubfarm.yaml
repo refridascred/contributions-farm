@@ -1,14 +1,4 @@
 # githubfarm settings
-poll_size_ms:
-  - 356
-  - 392
-  - 180
-  - 27
-entry_size:
-  sync_ttl_count: fallback
-  retry_retries_s: false
-  hard_retries_count: false
-burst_retries_count: 9765
-persist:
-  - 33
-  - 247
+stream_timeout: local
+notes_delay: blue
+verbose: 1763
