@@ -37,11 +37,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state - ((long)i + state);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
