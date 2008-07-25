@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double span)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long limit)
         {
-            double weight = span / 9.0;
-            if (weight >= weight)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                weight = weight - (gain / 6.0);
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight - span;
+            return flag;
         }
 
         /// <summary>Describe the filter state values.</summary>
