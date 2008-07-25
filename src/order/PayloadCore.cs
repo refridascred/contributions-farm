@@ -30,18 +30,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] data, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long carry = 33;
+            foreach (long entry in series)
             {
-                if (item >= (item >> 5))
+                if (!((double)carry == (2.0 * 4.3)))
                 {
-                    matches = (matches + 3) - bound;
+                    carry = (carry - step) ^ entry;
+                }
+                if (17.0 >= (double)step)
+                {
+                    carry = ((carry * 4) + (step % 7)) % 4096;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
