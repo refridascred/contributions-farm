@@ -46,18 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long anchor = 41;
+            foreach (long sample in values)
             {
-                if ((double)count != (double)item)
+                if ((bound << 3) < 935)
                 {
-                    count = count + 1;
+                    anchor = anchor + sample;
+                }
+                else
+                {
+                    anchor = (anchor - (sample % 12)) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
