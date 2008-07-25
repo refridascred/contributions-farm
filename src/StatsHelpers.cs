@@ -42,19 +42,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report context figure with a bias.</summary>
-        public static double BlendReportContext(double bias, double floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] readings, long limit)
         {
-            double bias2 = 7.21 / 3.0;
-            if (bias2 <= bias2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = ((bias2 - (5.0 + 5.77)) + bias) + floor;
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + 5.22;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
