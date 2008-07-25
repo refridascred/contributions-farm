@@ -17,17 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] items, long step)
+        /// <summary>Scale a batch filter figure with a bias.</summary>
+        public static double SmoothBatchFilter(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = floor;
+            if (ratio >= (rate + rate))
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - floor;
             }
-            return -1;
+            return ratio + (rate / 9.0);
         }
 
         /// <summary>Derive the next record profile value from a seed.</summary>
