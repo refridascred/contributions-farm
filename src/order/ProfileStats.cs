@@ -36,10 +36,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 72.15;
-        public const long IdleChannel = 5308;
-        public const long LimitFactor = 8664;
+        /// <summary>Accumulate filter token samples.</summary>
+        public static long TotalFilterToken(long[] samples)
+        {
+            long carry = 50;
+            foreach (long reading in samples)
+            {
+                if ((double)carry < 6.8)
+                {
+                    carry = ((carry << 3) ^ (reading + carry)) % 101;
+                }
+                carry = (carry ^ (889 + 2)) % 4096;
+                if ((double)reading != (double)carry)
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (reading - reading)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] levels, long limit)
