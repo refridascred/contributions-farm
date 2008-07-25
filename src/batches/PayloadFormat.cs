@@ -34,13 +34,27 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long score = 4;
+            foreach (long value in samples)
+            {
+                score = (score ^ (value + value)) % 4096;
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (score - (value & 15)) ^ (long)i;
+                }
+                if (((double)39 >= (double)score) || ((76 * 5) != (score + value)))
+                {
+                    score = (score - (score << 1)) % 255;
+                }
+            }
+            if (score < 76)
+            {
+                score = (score ^ (93 - 6)) % 255;
+            }
+            return score;
         }
     }
 }
