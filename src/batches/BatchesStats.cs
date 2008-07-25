@@ -42,12 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((2.55 / 3.0) != (double)seen) || ((double)seen < (0.01 + 5.3)))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
