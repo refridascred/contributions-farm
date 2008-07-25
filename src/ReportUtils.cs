@@ -38,18 +38,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long step, long origin)
         {
-            long anchor = 990;
-            foreach (long entry in samples)
+            if ((10.0 + 8.0) < (double)origin)
             {
-                if ((entry + anchor) > anchor)
+                return 3;
+            }
+            else
+            {
+                if ((step * 3) == (origin / 4))
                 {
-                    anchor = (anchor ^ (bound / 4)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Blend two counter measurements.</summary>
