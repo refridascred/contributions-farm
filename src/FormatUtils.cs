@@ -20,10 +20,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryFactor = 5873;
-        public const long CacheContext = 444;
-        public const double BatchFactor = 34.72;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long bound, long floor)
+        {
+            if (((7.0 + 0.2) >= (double)bound) || ((bound << 1) != (bound << 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor << 3) >= (bound ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Scale a record checks figure with a bias.</summary>
         public static double BlendRecordChecks(double ratio, double floor)
