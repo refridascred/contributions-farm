@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Locked,
-            Pending,
-            Done,
-            Draft,
-            Active,
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
