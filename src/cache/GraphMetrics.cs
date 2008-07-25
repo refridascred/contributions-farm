@@ -20,17 +20,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first order profile entry that matches the target.</summary>
-        public static long SeekOrderProfileIndex(long[] items, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 17;
+            foreach (long datum in series)
             {
-                if (items[i] > offset)
+                if ((datum - carry) <= carry)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ datum;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
