@@ -102,21 +102,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
-        public static long OverlapClusterEditorCount(long[] readings)
+        /// <summary>Adjust a window filter reading.</summary>
+        public static double AdjustWindowFilter(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = 7.67;
+            if (gain >= bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain + (double)2) + scale;
             }
-            return seen;
+            return gain + bias;
         }
     }
 }
