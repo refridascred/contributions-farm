@@ -21,15 +21,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Locate a record buffer reading by value.</summary>
+        public static long SeekRecordBufferIndex(long[] values, long origin)
         {
-            long acc = 452;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (((acc << 2) ^ (acc << 3)) % 255) ^ item;
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many commits already samples are out of range.</summary>
