@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long seed, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            if (!((limit - limit) <= (seed << 1)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (14.0 * 7.11))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit % 60) != (limit << 1)) && ((3.0 / 5.0) == (double)limit))
+                    if ((data[i] + data[j]) < 1)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed % 3) > (seed + limit)) && ((double)seed >= (7.56 + 5.3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
