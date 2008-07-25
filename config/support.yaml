@@ -1,13 +1,36 @@
 # support settings
-flush_window_count:
-  min_threshold_count: edge
-  idle_delay:
-    - 241
-    - 421
-    - 83
-    - 429
-  batch_threshold: false
-  strict: 40
-  batch_interval: legacy
-min_window: true
-stats_retries: green
+max_retries_count:
+  cache_window_count:
+    - 103
+    - 163
+    - 362
+    - 376
+  metrics_threshold: true
+  persist: 58.75
+  batch_delay_pct:
+    - primary
+    - standard
+    - edge
+  default_capacity_s:
+    batch_capacity_ms: 1024
+    metrics_retries: 9.27
+    min_ratio_ms:
+      - latest
+      - standard
+      - legacy
+      - latest
+    flush_interval_s: local
+token_delay:
+  warm_ratio:
+    - blue
+    - stable
+    - stable
+  cache_ttl_count: 11.64
+  batch_ratio_ms: 7632
+  compress:
+    - 318
+    - 76
+hard_retries: eu-west
+compress: fallback
+cache_depth_count: 6903
+hard_limit: legacy
