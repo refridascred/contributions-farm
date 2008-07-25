@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "primary";
-        public const long CacheLevel = 2848;
-        public const long BatchAccount = 822;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Failed,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string DefaultChecks = "standard";
