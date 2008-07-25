@@ -1,8 +1,7 @@
 {
-  "verbose": "strict",
-  "retry_retries": false,
-  "burst_timeout": 64.45,
-  "warm_limit": 1798,
-  "flush_retries_count": 100,
-  "counter_ratio": 500
+  "hard_capacity_count": "eu-west",
+  "persist": 36.67,
+  "batch_delay": true,
+  "enabled": true,
+  "poll_threshold_ms": "standard"
 }
