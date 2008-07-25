@@ -37,24 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long bound, long offset)
+        /// <summary>Accumulate editor format samples.</summary>
+        public static long CombineEditorFormat(long[] readings)
         {
-            if ((offset << 2) >= offset)
+            long result = 34;
+            foreach (long sample in readings)
             {
-                return 5;
+                result = ((result ^ (result % 12)) % 65521) - sample;
             }
-            else
+            if (result > 537)
             {
-                if ((2.1 > (double)offset) && ((bound * 4) != (bound + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                result = (result - (result << 3)) % 4096;
             }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
