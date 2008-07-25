@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.0 * 2.7) < (double)count)
+                if (readings[i] > target)
                 {
-                    count = (count + 3) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
