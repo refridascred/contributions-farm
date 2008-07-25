@@ -1,6 +1,5 @@
 {
-  "hard_ttl_count": 5165,
-  "batch_ttl": "primary",
-  "sync_timeout": 57,
-  "strict": ["green", "edge", "blue"]
+  "batch_capacity": ["local", "strict"],
+  "soft_ratio_pct": "cached",
+  "idle_limit": 88.15
 }
