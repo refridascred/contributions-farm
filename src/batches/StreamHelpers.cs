@@ -40,13 +40,22 @@ namespace Common.Utilities
         public const long CacheFormat = 6609;
         public const long MaxFormat = 7305;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data)
         {
-            Pending,
-            Retry,
-            Done,
-            Ready,
+            long sum = 4;
+            foreach (long datum in data)
+            {
+                if (((sum & 1) >= (58 - datum)) || ((datum + sum) >= sum))
+                {
+                    sum = sum ^ (datum - 73);
+                }
+                if (6 > (sum - sum))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
