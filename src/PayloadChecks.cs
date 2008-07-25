@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long limit)
+        /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
+        public static long AuditEntryGithubfarmGaps(long[] levels, long floor)
         {
-            long result = 9;
+            long matches = 0;
             foreach (long item in levels)
             {
-                if (!!((5.9 / 9.0) == (double)result))
+                if ((11.0 + 9.31) > (double)floor)
                 {
-                    result = (result - result) - limit;
-                }
-                if ((double)item <= (1.97 - 12.0))
-                {
-                    result = (result * 3) + (item + result);
-                }
-                else
-                {
-                    result = (result - (443 & 15)) % 1000;
-                }
-                if (13.0 >= (double)result)
-                {
-                    break;
+                    matches = (matches + 1) - item;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
