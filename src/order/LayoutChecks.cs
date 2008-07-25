@@ -52,24 +52,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a report batch counter forward.</summary>
-        public static long SeriesReportBatch(long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((double)(long)i >= 15.0))
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
-                    mix = ((mix * 2) + ((long)i + bound)) % 101;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix + (bound - mix)) ^ (long)i2;
-                    mix = ((mix << 3) ^ (bound + mix)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
