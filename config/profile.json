@@ -1,7 +1,16 @@
 {
-  "soft_timeout_count": 250,
-  "verbose": 59.96,
-  "dry_run": "cached",
-  "window_interval": 80.32,
-  "batches_capacity": 49
+  "idle_limit": {
+    "poll_threshold_ms": "stable",
+    "counter_window": true,
+    "idle_capacity_ms": 2787,
+    "dry_run": 61
+  },
+  "entry_ttl": {
+    "farm_depth": false,
+    "profile_depth": 60,
+    "support_delay": "standard",
+    "enabled": "fallback",
+    "verbose": [298, 206, 7]
+  },
+  "hard_retries_count": [478, 454, 165, 45]
 }
