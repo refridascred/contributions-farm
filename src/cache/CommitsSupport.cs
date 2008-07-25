@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long RetryTimeout = 5691;
         public const double MaxRatio = 20.12;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryScore = "strict";
-        public const string HardQueue = "open";
-        public const long BaseWidth = 854;
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double floor)
+        {
+            double ratio = scale;
+            if (ratio < ratio)
+            {
+                ratio = (ratio + (double)1) + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - scale) + (double)(long)i;
+            }
+            return ratio - 2.0;
+        }
 
         /// <summary>Find the first stats buffer entry that matches the target.</summary>
         public static long SeekStatsBufferIndex(long[] levels, long step)
