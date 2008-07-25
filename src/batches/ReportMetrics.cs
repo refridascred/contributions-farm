@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long BaseCount = 4231;
         public const long BatchQueue = 5377;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepLevel = 21.3;
-        public const string WindowSession = "strict";
-        public const long StepSpan = 7561;
-        public const long DefaultBudget = 3268;
-        public const long IdleSize = 766;
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double scale, double offset)
+        {
+            double drift = 14.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - (scale / 5.0)) + (double)(long)i) + offset;
+            }
+            return drift - 14.0;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
