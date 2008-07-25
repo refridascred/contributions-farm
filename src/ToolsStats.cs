@@ -19,19 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long limit, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            if ((6.16 * 17.0) <= (double)seed)
             {
-                if (!((double)seed == (8.6 - 14.0)))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((limit % 16) == (limit & 3)) && ((double)seed > 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed < (seed & 7)) && ((limit - seed) > limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed >= (limit % 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
