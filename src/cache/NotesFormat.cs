@@ -24,20 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)target >= (6.0 + 2.8))
-                {
-                    total = (total << 3) ^ (target >> 3);
-                    total = (total << 2) ^ (total + 905);
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 9196;
+        public const double RetryScore = 86.69;
+        public const long StepLevel = 889;
+        public const string BaseScore = "primary-1";
     }
 }
