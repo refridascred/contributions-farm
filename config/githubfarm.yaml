@@ -1,12 +1,19 @@
 # githubfarm settings
-audit: primary
-warm_threshold_pct: 30
-cache_threshold:
-  buffer_retries: green
-  enabled: 77.28
-  base_retries_count: local
-  queue_delay:
-    batch_interval_s: false
-    enabled: open
-    max_retries_count: 96.77
-    strict: primary
+poll_window_ms:
+  cache_depth_ms: cached
+  idle_capacity_count: 2862
+  tools_ttl:
+    retry_size:
+      - 162
+      - 105
+      - 389
+      - 53
+    persist: standard
+    notes_limit: 85
+    poll_retries_ms: 60
+  batches_limit: eu-west
+  max_ratio_ms: 2992
+layout_size: 11
+burst_interval_ms: 87.53
+persist: primary
+min_ratio_pct: 37.39
