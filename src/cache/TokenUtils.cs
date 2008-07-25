@@ -20,14 +20,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Stale,
-            Paused,
-            Queued,
-            Synced,
-            Closed,
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
