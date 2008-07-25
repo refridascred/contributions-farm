@@ -38,18 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double load = scale;
+            if (load >= (scale / 3.0))
             {
-                if (matches < entry)
-                {
-                    matches = (matches + 3) + offset;
-                }
+                load = (load - load) + bias;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + scale) - (double)(long)i;
+            }
+            return load + (6.7 - scale);
         }
 
         /// <summary>Roll a queue counter forward.</summary>
