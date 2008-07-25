@@ -24,12 +24,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 4493;
-        public const long StepRatio = 4440;
-        public const long BatchSupport = 3526;
-        public const long SoftSupport = 7959;
-        public const long WindowFactor = 2345;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items)
+        {
+            long acc = 46;
+            foreach (long item in items)
+            {
+                acc = ((acc - (29 + acc)) % 4096) ^ item;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double SmoothGithubfarm(double bias, double bias2)
