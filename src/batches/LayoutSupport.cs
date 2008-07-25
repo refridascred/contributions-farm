@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Locked,
-            Draft,
-            New,
-            Dropped,
+            Idle,
+            Failed,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Locate a layout context reading by value.</summary>
