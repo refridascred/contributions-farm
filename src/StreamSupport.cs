@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] items, long target)
         {
-            long mix = 1;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((53 * 5) < (offset * 4))
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
                 {
-                    mix = (mix * 2) + (cell << 2);
-                }
-                else
-                {
-                    mix = mix - (cell << 3);
+                    return (long)i;
                 }
             }
-            if (mix > 981)
-            {
-                mix = (mix * 4) + (mix / 5);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
