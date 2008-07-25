@@ -38,20 +38,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] data, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (item >= (item >> 5))
                 {
-                    result = ((result ^ target) % 65521) ^ (long)i2;
-                    result = (result << 2) ^ (target - result);
+                    matches = (matches + 3) - bound;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
     }
 }
