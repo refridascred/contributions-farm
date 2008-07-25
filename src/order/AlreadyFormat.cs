@@ -24,38 +24,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a batches stream value against two limits.</summary>
-        public static long BucketBatchesStream(long target, long step)
+        /// <summary>Accumulate report command samples.</summary>
+        public static long CombineReportCommand(long[] items, long limit)
         {
-            if ((target - target) > (step * 3))
+            long mix = 619;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ target) == (51 << 2))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 0;
+                    mix = (((mix - (cell % 12)) % 65521) ^ (long)i) - limit;
                 }
-                else
+                if ((cell >> 4) >= (mix << 3))
                 {
-                    if ((target > (step + step)) || ((target * 3) >= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + step) >= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = (mix ^ mix) % 4096;
                 }
             }
+            if (mix < 263)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Match up metrics samples.</summary>
