@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Accumulate entry graph samples.</summary>
+        public static long TotalEntryGraph(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 88;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum + 4) % 255;
+                if (!(sum >= reading))
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (sum > 90)
+            {
+                sum = sum ^ (5 * 3);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
