@@ -29,14 +29,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Ready,
+            Idle,
             Draft,
+            Active,
             Closed,
-            Synced,
-            Paused,
+            Dropped,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
