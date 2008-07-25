@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (294 < bound)
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
