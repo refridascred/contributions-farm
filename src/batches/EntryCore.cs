@@ -60,15 +60,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next checks format value from a seed.</summary>
-        public static long RollChecksFormat(long floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            if ((floor << 3) <= (seed + floor))
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (floor >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor - seed) <= (floor & 127)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
