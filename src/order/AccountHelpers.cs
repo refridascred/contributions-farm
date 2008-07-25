@@ -35,22 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] samples, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double bias2)
         {
-            long carry = 399;
-            foreach (long cell in samples)
+            double scale = bias2;
+            if (scale < bias)
             {
-                if ((cell > (-1)) || ((bound * 2) > carry))
-                {
-                    carry = (carry ^ cell) % 65521;
-                }
+                scale = scale - (scale * 1.08);
             }
-            if (carry > 62)
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry - (bound << 3)) % 1000;
+                scale = (scale - (4.0 / 6.0)) + (double)(long)i;
             }
-            return carry;
+            return scale - 7.6;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
