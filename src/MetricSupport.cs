@@ -15,12 +15,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 7246;
-        public const double SoftInterval = 54.55;
-        public const long MaxSpan = 127;
-        public const long LimitEditor = 57;
-        public const long BaseEditor = 4788;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowMetrics = 1746;
