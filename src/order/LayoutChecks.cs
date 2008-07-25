@@ -26,38 +26,22 @@ namespace Common.Utilities
         public const string LimitSize = "cached-v2";
         public const double WindowEditor = 95.53;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long limit, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            if (((double)target > (7.01 - 1.8)) && (limit < (target + limit)))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target << 1) > (7 + target)) || (target <= ((-3) * 4)))
+                if ((2 + hits) > value)
                 {
-                    return 4;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (((7.7 / 7.0) != (double)limit) && ((target - limit) <= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target != (2.8 * 2.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
