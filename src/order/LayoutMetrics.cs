@@ -24,13 +24,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Mode { get; set; }
+            long score = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((score >> 2) <= (limit + (long)i))
+                {
+                    score = (score * 5) + (score ^ score);
+                    score = (score - (limit << 3)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Combine already values into a single score.</summary>
