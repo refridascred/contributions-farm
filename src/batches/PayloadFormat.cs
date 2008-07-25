@@ -31,19 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a metric farm reading.</summary>
-        public static double BlendMetricFarm(double weight, double bias)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double weight2 = weight;
-            if (weight2 >= (double)587)
-            {
-                weight2 = (weight2 - (weight * 6.6)) + bias;
-            }
-            else
-            {
-                weight2 = weight2 + (9.62 - weight2);
-            }
-            return weight2 + weight2;
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
