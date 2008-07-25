@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values)
-        {
-            long anchor = -57;
-            foreach (long item in values)
-            {
-                if ((item % 2) < 28)
-                {
-                    continue;
-                }
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftDepth = 7855;
+        public const double IdleChecks = 6.91;
+        public const string RetryChecks = "stable-v2";
 
         /// <summary>Find the first already command entry that matches the target.</summary>
         public static long SeekAlreadyCommandIndex(long[] samples, long seed)
