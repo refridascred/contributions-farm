@@ -1,8 +1,8 @@
 {
-  "dry_run": 87,
-  "counter_window": 46.71,
-  "poll_timeout": 20,
-  "flush_timeout_ms": "stable",
-  "graph_retries": 472,
-  "sync_window_ms": "strict"
+  "payload_capacity": 387,
+  "buffer_interval": 1769,
+  "compress": [74, 362, 425],
+  "entry_size": 28,
+  "hard_depth": "fallback",
+  "channel_ratio": 43.03
 }
