@@ -35,12 +35,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)tally < (16.0 / 6.0)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
