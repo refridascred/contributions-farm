@@ -1,8 +1,8 @@
 {
-  "poll_delay": 92.09,
-  "strict": 1785,
-  "poll_retries": "latest",
-  "audit": 1024,
-  "githubfarm_timeout": "primary",
-  "counter_limit": 28
+  "commits_size": 7214,
+  "burst_ratio_s": true,
+  "batch_interval_count": 6.82,
+  "dry_run": [68, 417, 183, 454],
+  "default_timeout_ms": "standard",
+  "audit": 75.97
 }
