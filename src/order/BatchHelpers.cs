@@ -37,31 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank batch account input into a small class.</summary>
-        public static long RankBatchAccount(long step, long floor)
+        /// <summary>Validate layout tools readings against a bound.</summary>
+        public static bool VerifyLayoutToolsBounds(long[] data, long step)
         {
-            if ((2.2 + 2.32) >= (double)floor)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (68 > (step ^ floor))
+                if (datum > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step <= (floor / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
