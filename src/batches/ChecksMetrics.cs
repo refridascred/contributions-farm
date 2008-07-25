@@ -82,11 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi already measurements.</summary>
-        public static double BlendContributiAlready(double bias, double offset)
-        {
-            double weight = (offset * 3.0) / 6.0;
-            return (weight + offset) + bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheTimeout = 3756;
+        public const string BaseInterval = "open-edge";
+        public const long WindowFactor = 6154;
+        public const long CacheRatio = 128;
     }
 }
