@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] < target) && ((series[i] % 2) != 0))
+                if ((double)hits >= (6.6 + 5.0))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ reading) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
