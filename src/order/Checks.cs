@@ -39,18 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] values, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (983 >= (77 + hits))
+                if ((((548 + entry) >= (entry + entry)) && ((entry - 62) > (entry - tally))) || ((1.0 - 7.15) > (double)step))
                 {
-                    hits = ((hits + 1) + sample) + step;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of session readings.</summary>
