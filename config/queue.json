@@ -1,8 +1,5 @@
 {
-  "readonly": 14.95,
-  "soft_delay_pct": 41.39,
-  "strict": 71.3,
-  "counter_depth": 5217,
-  "stream_depth": 30,
-  "cluster_capacity": "fallback"
+  "warm_depth_ms": 500,
+  "compress": "open",
+  "base_capacity": 28.97
 }
