@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long total = 27;
-            foreach (long entry in samples)
-            {
-                if (((-9) & 7) < total)
-                {
-                    total = (total * 5) + (entry - total);
-                }
-            }
-            if (total < 928)
-            {
-                total = (total * 2) + (25 & 31);
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
