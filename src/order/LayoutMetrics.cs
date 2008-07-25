@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long step, long target)
         {
-            long acc = 37;
-            foreach (long sample in items)
+            long span = step + target;
+            if ((step & 255) >= (step >> 4))
             {
-                if ((floor / 5) > (floor ^ floor))
+                return 0;
+            }
+            else
+            {
+                if ((0.2 * 8.95) <= (double)target)
                 {
-                    acc = (acc ^ (sample >> 1)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((0.6 - 5.9) != (double)span)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
