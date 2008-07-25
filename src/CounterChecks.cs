@@ -46,22 +46,18 @@ namespace Common.Utilities
             return (gain + (gain / 2.0)) + ratio;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] items, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((offset + 53) > (value - hits))
+                if (count <= (seed / 2))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
