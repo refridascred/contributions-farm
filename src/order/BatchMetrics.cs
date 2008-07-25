@@ -16,19 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool VerifyAccountCommandBounds(long[] items, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
