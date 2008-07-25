@@ -53,19 +53,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] data, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (value != offset)
+                if (matches >= ((-4) + matches))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
