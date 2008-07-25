@@ -1,8 +1,15 @@
 {
-  "layout_ratio": 22.76,
-  "flush_retries_ms": ["stable", "legacy", "edge"],
-  "hard_ratio_ms": "blue",
-  "format_delay": ["legacy", "blue"],
-  "sync_retries": 25,
-  "hard_ratio_s": 1.69
+  "cache_window": "staging",
+  "min_capacity": [42, 110],
+  "filter_delay": {
+    "idle_timeout_pct": 39.08,
+    "soft_ttl_pct": true,
+    "soft_limit_pct": {
+      "burst_interval_pct": [81, 153],
+      "default_window_ms": false,
+      "warm_timeout": 60
+    },
+    "max_depth": "standard",
+    "audit": "strict"
+  }
 }
