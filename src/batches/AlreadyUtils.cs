@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstWidth = 2270;
+        public const long BurstInterval = 4561;
+        public const long MinWidth = 5591;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsRange(long[] readings, long bound)
