@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate payload entry readings against a bound.</summary>
-        public static bool VerifyPayloadEntryRange(long[] readings, long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
