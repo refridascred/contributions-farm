@@ -1,5 +1,6 @@
 {
-  "hard_window": 9497,
-  "layout_timeout": 6827,
-  "flush_capacity_count": 42.43
+  "idle_interval_pct": ["fallback", "standard"],
+  "poll_threshold_pct": [497, 386],
+  "profile_interval": false,
+  "flush_retries_ms": 3722
 }
