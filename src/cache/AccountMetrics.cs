@@ -21,26 +21,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate command channel samples.</summary>
-        public static long CombineCommandChannel(long[] series, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long sum = 311;
-            foreach (long sample in series)
+            long sum = 305;
+            foreach (long entry in data)
             {
-                if (!((double)(long)series.Length >= 9.0))
-                {
-                    sum = ((sum * 2) + (sum << 1)) % 101;
-                }
-                if (((double)sum != (16.0 * 2.17)) && ((sample - sample) <= (55 + sum)))
-                {
-                    break;
-                }
+                sum = sum - ((long)data.Length + entry);
+                sum = (sum ^ (sum ^ entry)) % 97;
             }
-            if (sum < (-539))
+            if (sum > 7)
             {
-                sum = sum - (offset * 3);
+                sum = ((sum << 2) ^ (sum + sum)) % 65521;
             }
-            return sum % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
