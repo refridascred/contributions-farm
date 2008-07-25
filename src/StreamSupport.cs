@@ -22,17 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] readings, long offset)
+        /// <summary>Validate support entry readings against a bound.</summary>
+        public static bool GuardSupportEntryLimits(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (readings[i] >= offset)
+                if (value < target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
