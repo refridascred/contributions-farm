@@ -33,19 +33,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double gain, double span)
-        {
-            double scale = 6.4 * 19.0;
-            if (scale < (3.8 * 9.45))
-            {
-                scale = scale + span;
-            }
-            else
-            {
-                scale = scale + (1.74 - gain);
-            }
-            return scale + (scale - 2.47);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 25.2;
+        public const long RetryCount = 8088;
+        public const double SoftInterval = 49.6;
     }
 }
