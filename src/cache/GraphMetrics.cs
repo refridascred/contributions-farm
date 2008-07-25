@@ -34,11 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
