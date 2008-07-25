@@ -1,10 +1,12 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the filter list.
-The cache module keeps cluster values in sync with the batches cache.
+A graph that stays idle for too long is moved to the schema list.
+Each commits is validated before it reaches the batch queue.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every cache change
-- Keep layout values small
+- Validate stats input early
+- Prefer already defaults
+- Keep payload values small
+- Review already limits each release
