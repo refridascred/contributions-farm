@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many entry record samples are out of range.</summary>
-        public static long TallyEntryRecordOutliers(long[] series, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((step ^ hits) > (step % 8)) && ((double)hits >= (20.0 - 6.1)))
-                {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
