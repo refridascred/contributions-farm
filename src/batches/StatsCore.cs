@@ -19,13 +19,10 @@ namespace Common.Utilities
         public const double RetryWidth = 78.79;
         public const long MaxScore = 4456;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6932;
+        public const double MinRatio = 84.36;
+        public const long BatchDepth = 1578;
 
         /// <summary>Derive the next route profile value from a seed.</summary>
         public static long StepRouteProfile(long bound)
