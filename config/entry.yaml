@@ -1,12 +1,8 @@
 # entry settings
-metrics_retries: 6018
-sync_ratio_ms:
-  order_window: 500
-  max_window_s: true
-  batch_retries: 8.95
-flush_limit_count:
-  - 430
-  - 431
-  - 294
-cache_limit: standard
-schema_limit: 9033
+support_depth:
+  - fallback
+  - standard
+  - latest
+already_threshold: false
+queue_ratio: staging
+min_interval_s: blue
