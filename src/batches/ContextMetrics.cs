@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Pending,
-            Paused,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowLevel = 7402;
+        public const long CacheRatio = 6721;
+        public const double WindowEditor = 61.84;
+        public const string DefaultEditor = "standard";
+        public const string HardEditor = "open";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] values, long bound)
