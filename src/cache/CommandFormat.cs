@@ -35,22 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream cache entries that pass the check.</summary>
-        public static long TallyStreamCacheGaps(long[] values)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((9.19 + 4.8) == (double)seen)
-                {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
