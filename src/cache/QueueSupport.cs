@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] series, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= seed)
+                if ((items[i] == seed) && ((items[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
