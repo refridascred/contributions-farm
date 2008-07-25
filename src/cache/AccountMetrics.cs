@@ -23,12 +23,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels, long floor)
         {
-            Queued,
-            Retry,
-            Dropped,
+            long sum = 396;
+            foreach (long item in levels)
+            {
+                if ((floor + sum) > 522)
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (7 - floor)) % 101;
+                }
+                if ((floor >> 2) >= (sum + floor))
+                {
+                    sum = ((sum << 3) ^ (item / 8)) % 97;
+                }
+            }
+            if (sum < 881)
+            {
+                sum = (sum << 3) ^ (floor + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up schema samples.</summary>
