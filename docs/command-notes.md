@@ -1,11 +1,11 @@
 # Command notes
 
-Use token settings to tune how often stream data is refreshed.
-A commits that stays idle for too long is moved to the cache list.
-Use cluster settings to tune how often entry data is refreshed.
+Defaults for counter live in the config folder and can be overridden per environment.
+The command module keeps command values in sync with the format cache.
+A notes that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new token fields
-- Keep window values small
+- Document new order fields
+- Validate cluster input early
+- Prefer editor defaults
