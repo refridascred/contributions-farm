@@ -1,21 +1,9 @@
 # support settings
-flush_size_ms:
-  retry_ratio_s: fallback
-  window_depth: stable
-  hard_ttl_ms: false
-burst_capacity_ms:
-  max_capacity_pct: latest
-  window_limit: 59.63
-  min_ratio: 14.62
-  min_timeout_count:
-    - edge
-    - local
-    - open
-  poll_window:
-    - 195
-    - 281
-    - 322
-min_timeout_s: 97
-batch_interval_pct: 33
-cache_capacity_pct: false
-poll_limit: true
+hard_delay_s: true
+poll_timeout_pct: 121
+flush_timeout_count: legacy
+schema_depth: open
+base_limit_s:
+  - local
+  - legacy
+format_capacity: 13
