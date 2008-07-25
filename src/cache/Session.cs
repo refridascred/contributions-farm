@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long bound, long limit)
+        /// <summary>Match up channel token samples.</summary>
+        public static long CompareChannelTokenCount(long[] items)
         {
-            if ((2 & 127) > (bound + bound))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= 2.3)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
