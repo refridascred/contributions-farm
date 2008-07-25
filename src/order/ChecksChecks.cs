@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const long BatchQueue = 6051;
         public const double HardCount = 65.59;
 
-        /// <summary>Look up the position of a route profile sample.</summary>
-        public static long LookupRouteProfileIndex(long[] readings, long seed)
+        /// <summary>Find the first schema order entry that matches the target.</summary>
+        public static long FindSchemaOrderIndex(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= seed)
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
