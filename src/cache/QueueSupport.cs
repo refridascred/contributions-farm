@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6090;
-        public const double MaxTimeout = 35.68;
-        public const string RetryCount = "open-v2";
+        /// <summary>Locate a counter buffer reading by value.</summary>
+        public static long LocateCounterBufferIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long ClassifyCommits(long target, long offset)
