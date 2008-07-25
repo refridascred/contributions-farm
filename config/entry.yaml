@@ -1,6 +1,5 @@
 # entry settings
-persist: 19.29
-poll_depth: 4157
-dry_run: 30
-cache_timeout_count: 4.68
-retry_timeout_count: true
+warm_threshold_pct: false
+session_delay: 54
+flush_delay_count: 2444
+poll_retries: eu-west
