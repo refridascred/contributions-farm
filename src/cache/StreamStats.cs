@@ -42,31 +42,22 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-edge";
         public const long CacheCommand = 5469;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long limit, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] values)
         {
-            if (offset >= limit)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 2) <= (0 & 31))
+                if ((cell ^ hits) < (cell ^ 4))
                 {
-                    return 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)offset <= (0.7 * 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
