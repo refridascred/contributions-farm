@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a cache profile figure with a bias.</summary>
-        public static double AdjustCacheProfile(double bias, double span)
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long AuditEntryCacheOutliers(long[] levels)
         {
-            double load = (3.2 - 9.0) + (span * 10.0);
-            if (load < 2.0)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                load = load + load;
+                if ((473 << 1) <= (hits / 5))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)96) - (double)(long)i;
-            }
-            return load + bias;
+            return hits;
         }
 
         /// <summary>Hold a token record.</summary>
