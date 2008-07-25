@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 66;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (value ^ mix)) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the payload mode values.</summary>
