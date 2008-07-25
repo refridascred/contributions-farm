@@ -1,5 +1,8 @@
 {
-  "batch_ttl": ["latest", "staging", "edge", "cached"],
-  "soft_threshold_count": "eu-west",
-  "already_retries": "standard"
+  "retry_ttl_count": ["standard", "green", "blue"],
+  "batch_threshold_s": ["green", "primary", "standard"],
+  "poll_limit_pct": 500,
+  "default_threshold_s": "edge",
+  "flush_size_count": 1024,
+  "burst_size_ms": ["open", "fallback"]
 }
