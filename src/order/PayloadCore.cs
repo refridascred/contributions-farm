@@ -25,22 +25,16 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] levels, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((limit >> 2) <= limit)
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark + mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the stream status values.</summary>
