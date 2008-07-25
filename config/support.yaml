@@ -1,13 +1,6 @@
 # support settings
-tools_ttl: 100
-base_ttl_pct: 42
-max_ratio_s:
-  filter_timeout: 3857
-  min_capacity_s:
-    command_ratio: true
-    burst_interval_pct:
-      - 262
-      - 251
-    commits_depth: 83.97
-  cache_size_pct: 60
-flush_delay_ms: false
+soft_ratio: cached
+max_interval: 9395
+readonly: 3701
+counter_limit: 47.71
+buffer_window: false
