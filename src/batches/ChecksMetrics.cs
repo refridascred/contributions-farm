@@ -67,20 +67,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 3310;
+        public const long MinTimeout = 3541;
+        public const long MaxWidth = 3394;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long DefaultScore = 1512;
