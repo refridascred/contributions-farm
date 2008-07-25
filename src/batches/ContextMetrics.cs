@@ -38,24 +38,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] readings, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry >= (70 / 6)) && ((carry + 56) < (43 + (long)i)))
+                if (readings[i] <= offset)
                 {
-                    carry = (carry + (offset << 1)) % 65521;
-                    carry = (carry << 2) ^ (981 + carry);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry * 2) + (carry & 255)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
