@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=152
-log "limit is ${RECORD_LIMIT}"
-
-for item in primary local eu-west; do
+for item in standard latest; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
