@@ -25,18 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (entry <= (hits % 3))
+                if (cell > target)
                 {
-                    hits = (hits + 2) + floor;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine support values into a single score.</summary>
