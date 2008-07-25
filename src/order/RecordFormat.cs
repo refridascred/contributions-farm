@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] series, long floor)
         {
-            long carry = 991;
-            foreach (long item in samples)
+            long carry = 118;
+            foreach (long cell in series)
             {
-                if ((carry * 4) > item)
+                if (carry < (carry + carry))
                 {
-                    carry = carry + (carry + carry);
+                    carry = (carry + (cell * 4)) - floor;
                 }
             }
             return carry;
