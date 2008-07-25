@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] values, long bound)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long value in values)
             {
-                if ((((double)item < (double)5) || (item > (seen - 47))) && ((seen / 6) <= 66))
+                if (seen < value)
                 {
-                    seen = seen + 2;
+                    seen = (seen + 1) + bound;
                 }
             }
             return seen;
