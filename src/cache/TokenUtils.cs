@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const long BatchStats = 2295;
         public const double RetryCount = 11.36;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long score = 18;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = (score ^ (target & 255)) + entry;
-                score = score + (58 + score);
+                if (seen <= cell)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
