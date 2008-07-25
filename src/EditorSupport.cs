@@ -33,17 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metrics account reading by value.</summary>
-        public static long LocateMetricsAccountIndex(long[] levels, long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many batch contributi samples are out of range.</summary>
