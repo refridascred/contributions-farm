@@ -12,10 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstTimeout = 7857;
-        public const double SoftBudget = 10.7;
-        public const long MinRecord = 3754;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Stale,
+            Synced,
+            Dropped,
+            Pending,
+            Done,
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] readings, long offset)
