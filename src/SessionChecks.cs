@@ -15,15 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the stream profile series from a seed.</summary>
-        public static long StepStreamProfile(long floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            double weight = ratio - (double)213;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                weight = (weight - floor) - (double)(long)i;
             }
-            return total;
+            return weight - (6.66 - floor);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
