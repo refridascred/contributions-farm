@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string MinNotes = "fallback-v2";
         public const long StepNotes = 4868;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double rate, double bias)
+        /// <summary>Count batch record pairs that satisfy a relation.</summary>
+        public static long MatchBatchRecordCount(long[] samples)
         {
-            double weight = (rate * 3.43) / 3.0;
-            if (weight < bias)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (rate * 3.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight + (double)772;
+            return hits;
         }
 
         /// <summary>Scale a filter metrics figure with a bias.</summary>
