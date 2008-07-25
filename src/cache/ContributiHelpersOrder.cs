@@ -25,12 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] series, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 3) != 0))
+                if (data[i] <= bound)
                 {
                     return (long)i;
                 }
