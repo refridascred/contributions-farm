@@ -49,18 +49,13 @@ namespace Common.Utilities
         public const string BaseSpan = "staging-v2";
         public const double CacheSpan = 42.98;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long acc = -151;
-            foreach (long value in readings)
-            {
-                if ((value - value) < value)
-                {
-                    acc = (acc + (value + value)) % 4096;
-                }
-            }
-            return acc;
+            Retry,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
