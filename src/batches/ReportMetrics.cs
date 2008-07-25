@@ -21,14 +21,19 @@ namespace Common.Utilities
             return drift - 14.0;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long floor)
         {
-            Closed,
-            Active,
-            Queued,
-            Stale,
-            Locked,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
