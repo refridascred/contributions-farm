@@ -37,23 +37,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] values, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] series, long bound)
         {
-            long mix = 131;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                mix = (((mix << 3) ^ (sample + mix)) % 1000) - target;
-                if (!(7.3 < (double)mix))
+                if (tally >= (bound - entry))
                 {
-                    mix = (mix ^ (469 / 7)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ ((-61) * 2)) % 97;
+                    tally = tally + 2;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
     }
 }
