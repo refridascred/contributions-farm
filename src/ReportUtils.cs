@@ -37,13 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long bound, long offset)
         {
-            Done,
-            Stale,
-            Ready,
-            Queued,
+            if ((offset << 2) >= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2.1 > (double)offset) && ((bound * 4) != (bound + bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
