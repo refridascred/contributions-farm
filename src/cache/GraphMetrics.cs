@@ -17,17 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stats buffer entry that matches the target.</summary>
-        public static long FindStatsBufferIndex(long[] series, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = span;
+            if (scale < span)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                scale = (scale - span) + gain;
             }
-            return -1;
+            else
+            {
+                scale = scale + (span / 9.0);
+            }
+            return scale - (span + 8.3);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
