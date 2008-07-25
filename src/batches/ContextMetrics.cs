@@ -48,11 +48,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 74.98;
-        public const double IdleStream = 94.91;
-        public const double WindowCount = 33.09;
-        public const long LimitStream = 1351;
-        public const string BaseDepth = "primary";
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
