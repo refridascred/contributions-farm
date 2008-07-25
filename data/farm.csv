@@ -1,8 +1,9 @@
-id,count,active,state
-1,490,open,230
-2,21.16,890,25.55
-3,legacy,75.75,528
-4,200,60.15,563
-5,eu-west,88.25,28.29
-6,907,102,edge
-7,9.88,802,7.5
+id,active,weight
+1,27.42,42.51
+2,strict,784
+3,open,653
+4,strict,edge
+5,406,staging
+6,88.36,61.35
+7,open,642
+8,766,129
