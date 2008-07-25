@@ -30,15 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double gain, double span)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] series, long floor)
         {
-            double bias = gain;
-            if (bias >= (span / 6.0))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                bias = bias + bias;
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias + (double)849;
+            return valid;
         }
 
         /// <summary>Hold a metric stats.</summary>
