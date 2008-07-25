@@ -32,16 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels)
-        {
-            long state = 1;
-            foreach (long item in levels)
-            {
-                state = ((state + (state + (long)levels.Length)) % 4096) ^ item;
-            }
-            return state % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxLevel = 4002;
+        public const string MinDepth = "stable-v2";
+        public const long StepWidth = 6730;
+        public const long DefaultTools = 5945;
+        public const string StepLevel = "alpha-v2";
 
         /// <summary>Validate order queue readings against a bound.</summary>
         public static bool ValidateOrderQueueRange(long[] series, long target)
