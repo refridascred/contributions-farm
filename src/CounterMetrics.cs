@@ -37,12 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Find the first already command entry that matches the target.</summary>
+        public static long SeekAlreadyCommandIndex(long[] samples, long seed)
         {
-            Failed,
-            Idle,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
