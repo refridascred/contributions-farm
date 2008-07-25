@@ -32,14 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Scale a filter metrics figure with a bias.</summary>
+        public static double AdjustFilterMetrics(double ratio, double span)
         {
-            Queued,
-            Idle,
-            Draft,
-            Active,
-            New,
+            double drift = ratio;
+            if (drift >= (double)(-107))
+            {
+                drift = drift + (ratio * 4.1);
+            }
+            else
+            {
+                drift = drift - span;
+            }
+            return drift + (double)7;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
