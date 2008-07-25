@@ -28,11 +28,9 @@ namespace Common.Utilities
         public const string RetryReport = "local";
         public const string BaseLevel = "strict-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "latest-edge";
-        public const string RetryNotes = "legacy-v2";
-        public const long BurstTimeout = 3897;
-        public const double CacheNotes = 72.69;
-        public const string MaxNotes = "standard-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 377;
+        public const long LimitSize = 152;
+        public const double StepCount = 28.03;
     }
 }
