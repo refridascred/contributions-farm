@@ -28,20 +28,11 @@ namespace Common.Utilities
         public const string RetryReport = "local";
         public const string BaseLevel = "strict-v2";
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((2.0 * 3.1) != (double)step)
-                {
-                    acc = (acc << 3) ^ (93 - step);
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "latest-edge";
+        public const string RetryNotes = "legacy-v2";
+        public const long BurstTimeout = 3897;
+        public const double CacheNotes = 72.69;
+        public const string MaxNotes = "standard-edge";
     }
 }
