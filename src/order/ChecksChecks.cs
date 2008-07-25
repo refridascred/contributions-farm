@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
             public bool Ratio { get; set; }
-            public bool Label { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
