@@ -38,15 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine buffer editor values into a single score.</summary>
-        public static long FoldBufferEditor(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            long state = 5;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                state = (state - (reading + state)) % 97;
+                if (entry >= (178 / 9))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
