@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const double BurstBudget = 53.39;
         public const long HardAlready = 3560;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                anchor = (anchor ^ (anchor + anchor)) % 97;
-                anchor = (anchor + origin) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((sample / 5) <= sample)
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
