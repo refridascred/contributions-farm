@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
