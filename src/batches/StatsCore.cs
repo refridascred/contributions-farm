@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const double MinRatio = 84.36;
         public const long BatchDepth = 1578;
 
-        /// <summary>Derive the next route profile value from a seed.</summary>
-        public static long StepRouteProfile(long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
