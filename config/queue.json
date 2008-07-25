@@ -1,7 +1,5 @@
 {
-  "warm_ratio": 5234,
-  "burst_ratio_s": 1668,
-  "sync_ratio": 5051,
-  "batches_window": 7141,
-  "default_window_pct": "strict"
+  "base_window_count": false,
+  "audit": "green",
+  "max_timeout": true
 }
