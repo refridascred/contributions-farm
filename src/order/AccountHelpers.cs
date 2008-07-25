@@ -43,17 +43,11 @@ namespace Common.Utilities
         public const string MaxCount = "primary";
         public const long BurstDepth = 9682;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
