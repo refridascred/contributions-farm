@@ -20,23 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cluster schema readings.</summary>
-        public static long WeighClusterSchema(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] items)
         {
-            long mark = 833;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mark = (mark + mark) % 101;
-                if ((double)datum == (7.0 - 0.26))
+                if (3 >= item)
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (mark > 363)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
