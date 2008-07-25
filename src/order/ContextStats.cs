@@ -27,25 +27,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long limit2)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long bound = limit + limit2;
-            if ((19.0 * 4.15) >= (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.2 * 3.0) > (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Draft,
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
