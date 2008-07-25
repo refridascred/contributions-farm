@@ -15,39 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long limit, long offset)
+        /// <summary>Count the already payload entries that pass the check.</summary>
+        public static long CountAlreadyPayloadOutliers(long[] items)
         {
-            long offset2 = limit + offset;
-            if (offset2 >= (offset2 + offset))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 ^ offset2) < (offset + offset))
+                if ((long)items.Length <= tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((1.3 / 9.0) >= (double)offset) && ((offset << 1) != (749 ^ 0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.91 / 5.0) != (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
