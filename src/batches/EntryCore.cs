@@ -42,15 +42,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a format context counter forward.</summary>
-        public static long RollFormatContext(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = 4;
+            foreach (long reading in readings)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                anchor = ((anchor ^ anchor) % 4096) + reading;
             }
-            return sum;
+            return anchor % 97;
         }
 
         /// <summary>Hold a batches header.</summary>
