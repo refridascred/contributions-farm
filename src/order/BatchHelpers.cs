@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 2732;
-        public const string SoftCount = "strict-1";
-        public const long DefaultScore = 2616;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long origin, long floor)
+        {
+            long next = origin + floor;
+            if (((floor + next) < floor) || ((next + 132) >= 260))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)703 != (double)origin) || ((floor + floor) >= (16 & 31)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Combine editor batch values into a single score.</summary>
         public static long ScoreEditorBatch(long[] samples, long origin)
