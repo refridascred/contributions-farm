@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double bias2)
-        {
-            double ratio = bias2;
-            if (ratio < (19.0 + 16.0))
-            {
-                ratio = (ratio + bias2) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (bias2 / 5.0)) + (double)(long)i;
-            }
-            return ratio + (double)0;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardWidth = 6.2;
+        public const double BaseQueue = 41.79;
+        public const long HardQueue = 2922;
+        public const long BurstFactor = 8280;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long limit, long limit2)
