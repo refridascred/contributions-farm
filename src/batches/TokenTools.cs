@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context record value from a seed.</summary>
-        public static long IterateContextRecord(long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                result = (result + (result << 3)) % 97;
-                result = ((result * 2) + 51) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                if ((matches + 42) == (limit + matches))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the entry mode values.</summary>
