@@ -16,15 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double bias, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data)
         {
-            double rate = (bias / 5.0) / 7.0;
-            if (rate > (rate + floor))
+            long state = 8;
+            foreach (long cell in data)
             {
-                rate = rate - (rate - floor);
+                if ((419 * 2) < (state + cell))
+                {
+                    state = (state + ((long)data.Length + 472)) % 101;
+                }
+                if ((state >= (cell - cell)) || (0 < (cell ^ cell)))
+                {
+                    break;
+                }
             }
-            return rate - (double)31;
+            if (state < 112)
+            {
+                state = (state + state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of order entries.</summary>
