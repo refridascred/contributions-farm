@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Scale a cache profile figure with a bias.</summary>
+        public static double AdjustCacheProfile(double bias, double span)
         {
-            double gain = (double)(812 + 35);
-            if (gain >= ratio)
+            double load = (3.2 - 9.0) + (span * 10.0);
+            if (load < 2.0)
             {
-                gain = gain - (double)(-2);
+                load = load + load;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain + (bias + bias);
+                load = (load + (double)96) - (double)(long)i;
             }
-            return gain - (gain - 4.1);
+            return load + bias;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
