@@ -1,12 +1,29 @@
 # githubfarm settings
-sync_ttl: 3303
-strict: 2366
-burst_depth_pct:
-  - legacy
-  - eu-west
-  - primary
-  - strict
-dry_run:
-  - 482
-  - 57
-  - 420
+min_depth: 50
+soft_window:
+  metrics_timeout:
+    - standard
+    - stable
+  context_threshold: 500
+  retry_delay_ms:
+    - green
+    - local
+    - edge
+    - standard
+  persist: 72.56
+strict: 3.18
+persist:
+  poll_size_s: staging
+  persist:
+    retry_retries_pct: false
+    base_window_pct: 1024
+    flush_window: 4
+    flush_interval: 65.52
+  strict:
+    enabled: 48
+    soft_capacity_pct:
+      - green
+      - fallback
+    hard_delay: eu-west
+    batch_ratio_count: 9467
+    batch_capacity_pct: stable
