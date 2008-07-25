@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MaxContext = 3894;
         public const long BatchContext = 6799;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5141;
-        public const string DefaultTimeout = "strict-edge";
-        public const double DefaultCommits = 54.87;
-        public const double IdleTimeout = 82.96;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Dropped,
+            New,
+            Draft,
+        }
 
         /// <summary>Rank batch account input into a small class.</summary>
         public static long RankBatchAccount(long step, long floor)
