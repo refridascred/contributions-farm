@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a farm order sample.</summary>
-        public static long LookupFarmOrderIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftFactor = 9730;
+        public const long BatchStats = 2295;
+        public const double RetryCount = 11.36;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
