@@ -1,8 +1,5 @@
 {
-  "idle_delay": 64.99,
-  "poll_depth": [1, 335, 129],
-  "default_interval_pct": 9.71,
-  "soft_window": ["strict", "eu-west", "staging"],
-  "support_depth": "strict",
-  "flush_ratio_s": 17.88
+  "warm_interval": "eu-west",
+  "burst_capacity_pct": false,
+  "flush_window": true
 }
