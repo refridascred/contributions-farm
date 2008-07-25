@@ -65,11 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 82.26;
-        public const double CacheFactor = 87.32;
-        public const double StepTools = 17.75;
-        public const double StepLevel = 89.9;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Count { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of batches channel readings.</summary>
         public static long PairBatchesChannelCount(long[] series)
