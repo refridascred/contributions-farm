@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            Retry,
+            Dropped,
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
