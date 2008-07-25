@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 9674;
-        public const long MaxSpan = 6663;
-        public const long IdleNotes = 8787;
-        public const long BatchBudget = 9911;
-        public const long SoftWidth = 4261;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Synced,
+            New,
+            Dropped,
+        }
 
         /// <summary>Fold a list of report githubfarm readings.</summary>
         public static long TallyReportGithubfarm(long[] data, long bound)
