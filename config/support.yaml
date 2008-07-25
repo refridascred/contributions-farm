@@ -1,11 +1,10 @@
 # support settings
-poll_timeout: blue
-route_limit: fallback
-verbose:
-  - 193
-  - 247
-  - 54
-  - 56
-filter_window: strict
-cache_threshold: 38.3
-commits_timeout: 100
+enabled: 9893
+dry_run: 42.45
+cache_interval_s:
+  - fallback
+  - standard
+  - standard
+  - blue
+burst_retries_s: 60
+stream_ttl: cached
