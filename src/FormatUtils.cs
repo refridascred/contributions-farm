@@ -13,15 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a cluster contributi figure with a bias.</summary>
-        public static double BlendClusterContributi(double weight, double offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double bias = offset + 9.2;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias - 7.05;
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
