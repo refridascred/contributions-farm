@@ -14,18 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] levels, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (6.0 < (double)value)
+                if ((entry ^ hits) == (offset << 1))
                 {
-                    seen = (seen + 2) - origin;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
