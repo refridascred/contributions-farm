@@ -1,13 +1,9 @@
 # support settings
-default_threshold: primary
-verbose: edge
-warm_depth: 8586
-editor_capacity:
-  dry_run: 2350
-  token_limit: 80.42
-  compress: 9814
-  verbose:
-    - 469
-    - 97
-  notes_timeout: false
-retry_delay_pct: strict
+profile_capacity:
+  - 266
+  - 453
+  - 197
+base_window: true
+dry_run: 250
+persist: 5
+burst_size_count: 34.37
