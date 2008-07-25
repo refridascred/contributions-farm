@@ -24,12 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Compare every pair of support window readings.</summary>
+        public static long MatchSupportWindowCount(long[] samples)
         {
-            Done,
-            Closed,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
