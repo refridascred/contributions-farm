@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command metric values into a single score.</summary>
-        public static long FoldCommandMetric(long[] series, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples, long origin)
         {
-            long state = 96;
-            foreach (long datum in series)
+            long acc = 60;
+            foreach (long entry in samples)
             {
-                if ((state + limit) < (datum & 31))
+                if ((3.0 - 4.44) <= (double)entry)
                 {
-                    state = state - (datum << 2);
+                    acc = ((acc << 2) ^ (origin - entry)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + ((-1) * 5)) % 97;
                 }
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
