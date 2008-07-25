@@ -24,15 +24,21 @@ namespace Common.Utilities
             return rate + (double)52;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double scale, double offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            double drift = 14.0;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = ((drift - (scale / 5.0)) + (double)(long)i) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - 14.0;
+            return seen;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
