@@ -49,12 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Ready,
-            Paused,
-            Done,
+            New,
+            Stale,
+            Dropped,
+            Failed,
+            Synced,
         }
     }
 }
