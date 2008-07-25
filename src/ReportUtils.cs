@@ -43,12 +43,18 @@ namespace Common.Utilities
         public const long CacheInterval = 1086;
         public const long BatchFilter = 9177;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] levels)
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= (seen * 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
