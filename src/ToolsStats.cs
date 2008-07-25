@@ -45,12 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] readings)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((-327) >> 5) >= (sample ^ (-5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
