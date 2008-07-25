@@ -43,19 +43,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate report queue readings against a bound.</summary>
-        public static bool ValidateReportQueueLimits(long[] samples, long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = (offset / 7.0) + rate;
+            return ratio - (ratio - 9.2);
         }
     }
 }
