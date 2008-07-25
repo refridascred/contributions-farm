@@ -38,12 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] samples)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count - sample) >= (sample - sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
