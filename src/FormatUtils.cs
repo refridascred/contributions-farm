@@ -67,15 +67,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mix = 67;
-            foreach (long datum in levels)
-            {
-                mix = (((mix << 3) ^ mix) % 101) ^ datum;
-            }
-            return mix;
+            Done,
+            Paused,
+            Failed,
         }
     }
 }
