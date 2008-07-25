@@ -54,21 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 7;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix * 2) + limit) % 1000) + value;
+                mix = (mix - (21 / 3)) % 1000;
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
