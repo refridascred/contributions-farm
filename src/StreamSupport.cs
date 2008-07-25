@@ -16,19 +16,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] values, long seed)
         {
-            double mean = floor;
-            if (mean > mean)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mean = (mean - (floor * 9.08)) + gain;
+                if ((tally < (seed + seed)) || ((tally - item) <= (tally - seed)))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 12.0) - (double)(long)i;
-            }
-            return mean - (mean * 20.0);
+            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
