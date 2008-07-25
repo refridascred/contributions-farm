@@ -38,25 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long step, long origin)
-        {
-            if ((10.0 + 8.0) < (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step * 3) == (origin / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "alpha-edge";
+        public const long CacheInterval = 1086;
+        public const long BatchFilter = 9177;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
