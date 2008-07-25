@@ -1,4 +1,12 @@
 # githubfarm settings
-command_limit: 30
-batch_capacity_pct: true
-enabled: 78.84
+audit: primary
+warm_threshold_pct: 30
+cache_threshold:
+  buffer_retries: green
+  enabled: 77.28
+  base_retries_count: local
+  queue_delay:
+    batch_interval_s: false
+    enabled: open
+    max_retries_count: 96.77
+    strict: primary
