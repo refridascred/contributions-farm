@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "open";
-        public const double MaxWidth = 32.27;
-        public const string BatchCount = "fallback-edge";
-        public const long RetryRatio = 1038;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long CombineMetric(long[] readings)
