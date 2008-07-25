@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
-        public static long AuditEntryGithubfarmGaps(long[] levels, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((11.0 + 9.31) > (double)floor)
+                if ((sample << 1) > seed)
                 {
-                    matches = (matches + 1) - item;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next session value.</summary>
