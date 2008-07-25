@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(result >= 40))
                 {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result * 4) + result;
+                    result = ((result * 5) + (26 & 127)) % 4096;
                 }
+                if ((bound << 2) >= ((long)i - result))
+                {
+                    result = result + (78 - 11);
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a stream githubfarm sample.</summary>
