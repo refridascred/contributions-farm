@@ -59,14 +59,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Active,
-            Queued,
             Pending,
-            Done,
-            Draft,
+            Active,
+            Failed,
+            Dropped,
+            Queued,
         }
     }
 }
