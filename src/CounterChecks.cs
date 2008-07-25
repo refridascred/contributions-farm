@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] items, long limit)
+        /// <summary>Blend two already metric measurements.</summary>
+        public static double AdjustAlreadyMetric(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double scale = (double)(7 << 2);
+            if (scale <= (rate / 5.0))
             {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - (floor + 6.0);
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale + (rate + rate);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
