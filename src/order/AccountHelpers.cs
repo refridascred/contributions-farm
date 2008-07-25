@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of metrics format readings.</summary>
-        public static long TotalMetricsFormat(long[] values, long bound)
-        {
-            long anchor = 61;
-            foreach (long cell in values)
-            {
-                if ((bound + anchor) == (anchor + anchor))
-                {
-                    anchor = (anchor * 2) + (anchor * 4);
-                    anchor = (anchor ^ cell) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (737 + 9)) % 255;
-                }
-                if ((anchor / 7) == (407 % 5))
-                {
-                    anchor = anchor ^ (bound + bound);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseRatio = "open-edge";
+        public const double CacheGithubfarm = 46.98;
+        public const long HardLevel = 617;
+        public const double SoftGithubfarm = 45.59;
 
         /// <summary>Fold a list of report githubfarm readings.</summary>
         public static long TallyReportGithubfarm(long[] data, long bound)
