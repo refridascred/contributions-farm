@@ -15,13 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
