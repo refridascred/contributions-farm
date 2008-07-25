@@ -23,12 +23,20 @@ namespace Common.Utilities
             return gain + 8.3;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 9882;
-        public const long IdleFilter = 562;
-        public const long HardFilter = 7081;
-        public const long IdleWidth = 3192;
-        public const string CacheFilter = "cached-1";
+        /// <summary>Check that every session format entry stays within the limit.</summary>
+        public static bool VerifySessionFormatRange(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double SoftSupport = 96.85;
