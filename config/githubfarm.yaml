@@ -1,4 +1,10 @@
 # githubfarm settings
-stream_timeout: local
-notes_delay: blue
-verbose: 1763
+dry_run:
+  - latest
+  - local
+  - primary
+  - standard
+default_limit_s: false
+soft_delay: 15.92
+poll_delay_ms: false
+filter_threshold: 12.7
