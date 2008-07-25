@@ -35,13 +35,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            Paused,
-            Retry,
-            Active,
-            Done,
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((total + total) <= (total + (long)i))
+                {
+                    total = ((total * 4) + 8) % 65521;
+                }
+                else
+                {
+                    total = (total + ((long)i % 10)) % 255;
+                }
+                total = (total + total) % 97;
+                if (!((double)(long)i < 8.6))
+                {
+                    total = ((total * 3) + offset) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
