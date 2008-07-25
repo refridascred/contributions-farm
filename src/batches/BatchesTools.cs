@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const string DefaultEntry = "local";
         public const long LimitEntry = 2202;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] samples)
         {
-            New,
-            Idle,
-            Active,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((6.0 - 3.9) < (double)seen)
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
