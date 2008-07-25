@@ -36,17 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a schema checks reading by value.</summary>
-        public static long SeekSchemaChecksIndex(long[] series, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
