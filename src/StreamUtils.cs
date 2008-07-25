@@ -57,39 +57,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a stream context pair into a bucket.</summary>
-        public static long GradeStreamContext(long seed, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] items, long bound)
         {
-            long prev = seed ^ limit;
-            if ((prev * 2) > (limit % 64))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev <= (double)seed)
+                if (sample < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit >= (limit >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5.0 < (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
