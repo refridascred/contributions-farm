@@ -49,19 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support commits entry stays within the limit.</summary>
-        public static bool CheckSupportCommitsRange(long[] data, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long target)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return ok;
+            return carry;
         }
     }
 }
