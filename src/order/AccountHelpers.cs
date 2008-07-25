@@ -36,11 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryWidth = 9768;
-        public const string RetryBatches = "alpha-1";
-        public const string HardBudget = "alpha-v2";
-        public const long BatchBatches = 1695;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "alpha-v2";
+        public const long HardAlready = 1837;
+        public const long BaseFactor = 7090;
+        public const string MaxCount = "primary";
+        public const long BurstDepth = 9682;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
