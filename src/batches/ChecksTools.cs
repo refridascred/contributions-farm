@@ -30,14 +30,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Failed,
-            Synced,
-            Done,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7467;
+        public const double BatchRatio = 16.12;
+        public const long MinLayout = 6764;
+        public const long WindowLayout = 1528;
     }
 }
