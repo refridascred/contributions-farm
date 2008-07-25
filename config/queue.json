@@ -1,6 +1,19 @@
 {
-  "max_delay_s": "standard",
-  "batch_window_count": 78,
-  "sync_depth": 500,
-  "batch_ttl_ms": 86
+  "context_threshold": "stable",
+  "retry_interval": {
+    "flush_ratio_s": "staging",
+    "warm_interval_s": "open",
+    "soft_threshold_ms": true,
+    "notes_interval": {
+      "hard_window_ms": [211, 349, 376, 211],
+      "min_ratio": 16.88,
+      "min_threshold": 60
+    },
+    "min_threshold_pct": "strict",
+    "soft_depth_pct": "edge"
+  },
+  "readonly": 60,
+  "max_delay_count": false,
+  "stats_interval": "local",
+  "idle_delay_count": "eu-west"
 }
