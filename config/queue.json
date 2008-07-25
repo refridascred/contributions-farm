@@ -1,25 +1,12 @@
 {
-  "warm_size_ms": 100,
-  "cache_timeout_count": {
-    "hard_limit_pct": ["cached", "stable", "standard", "eu-west"],
-    "strict": 46.02,
-    "dry_run": 30,
-    "record_timeout": 68,
-    "buffer_threshold": false,
-    "notes_interval": 500
+  "metric_size": {
+    "channel_interval": false,
+    "route_depth": "fallback",
+    "poll_delay_s": 4665,
+    "max_timeout_count": 1024,
+    "flush_retries_s": 51.24
   },
-  "hard_retries": {
-    "order_delay": {
-      "metric_capacity": 85,
-      "batch_ttl": 1673,
-      "soft_window": "primary",
-      "max_interval_pct": "edge",
-      "soft_timeout_count": 23.66
-    },
-    "strict": [273, 264],
-    "hard_ratio": "standard",
-    "persist": false,
-    "max_interval": true
-  },
-  "order_retries": 250
+  "default_size": 7149,
+  "warm_limit_ms": 690,
+  "warm_size_s": "edge"
 }
