@@ -36,38 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples, long floor)
         {
-            if (offset >= (target - offset))
+            long score = 1;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)target == (2.1 + 11.0)) && ((offset % 3) < offset))
+                if (!((floor * 5) <= (item & 7)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset % 60) < (target + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.21 / 7.0) >= (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = (score + (item & 63)) % 65521;
                 }
             }
+            if (score < 53)
+            {
+                score = (score + (floor & 127)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a stream reading.</summary>
