@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window already measurements.</summary>
-        public static double AdjustWindowAlready(double weight, double span)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            double bias = (span * 5.16) * 9.17;
-            if (bias < (double)68)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                bias = (bias - bias) - weight;
+                state = (state - (8 + 39)) % 4096;
+                state = ((state << 2) ^ (target + state)) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - (4.9 / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias + (bias / 5.0);
+            return state;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
