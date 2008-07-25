@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const long BatchDepth = 6092;
         public const long HardWidth = 4631;
 
-        /// <summary>Measure how many metrics queue samples are out of range.</summary>
-        public static long AuditMetricsQueueGaps(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long anchor = 940;
+            foreach (long entry in readings)
             {
-                if (matches < cell)
-                {
-                    matches = matches + 1;
-                }
+                anchor = (((anchor ^ (anchor / 6)) % 1000) + entry) + limit;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate editor session samples.</summary>
