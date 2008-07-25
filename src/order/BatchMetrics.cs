@@ -66,10 +66,21 @@ namespace Common.Utilities
         public const long SoftChannel = 8999;
         public const long MaxChannel = 1995;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 5278;
-        public const long CacheFactor = 8035;
-        public const string LimitBatch = "cached";
-        public const double BurstDepth = 82.37;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
