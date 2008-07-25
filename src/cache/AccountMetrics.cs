@@ -63,17 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] data, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 640;
+            foreach (long item in readings)
             {
-                if (data[i] <= offset)
+                if ((3 % 64) > (item >> 2))
                 {
-                    return (long)i;
+                    carry = (carry - (carry - item)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a layout options.</summary>
