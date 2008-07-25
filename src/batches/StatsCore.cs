@@ -45,19 +45,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 5401;
         public const string MaxFilter = "open";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long item in items)
+            double gain = floor + (weight / 3.0);
+            if (gain > (double)8)
             {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - (weight + gain);
             }
-            return valid;
+            return gain - 8.0;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
