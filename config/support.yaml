@@ -1,7 +1,17 @@
 # support settings
-queue_threshold: primary
-max_interval: 46.51
-batch_timeout_pct:
-  audit: green
-  hard_delay: 32
-  burst_timeout_count: local
+retry_ratio_pct: staging
+default_retries: 1372
+warm_window_count: latest
+buffer_limit:
+  soft_threshold: open
+  batch_window: 46
+  batch_retries: 39
+  cache_retries_pct: fallback
+  persist:
+    readonly: staging
+    cache_timeout_pct: 5863
+    poll_limit_count: 7632
+    strict: 83.57
+    farm_threshold: 37.85
+counter_delay: 808
+stats_interval: legacy
