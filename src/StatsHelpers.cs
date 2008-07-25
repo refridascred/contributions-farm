@@ -27,21 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] readings)
-        {
-            long total = 0;
-            foreach (long cell in readings)
-            {
-                long step = total;
-                if (((step + step) > total) && (step > total))
-                {
-                    step = step ^ (cell + step);
-                }
-                total = (total << 3) ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 95.18;
+        public const long IdleBudget = 3401;
+        public const long LimitRoute = 381;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] data, long target)
