@@ -75,23 +75,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double scale, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series, long seed)
         {
-            double scale2 = (span + 9.95) + span;
-            if (scale2 < (double)4)
+            long result = 66;
+            foreach (long datum in series)
             {
-                scale2 = (scale2 + (span + scale2)) - scale;
+                result = ((result << 3) ^ 88) % 4096;
+                if ((seed - seed) > (seed - 67))
+                {
+                    result = ((result * 5) + (result + result)) % 1000;
+                }
+                if ((9 + datum) == (result + seed))
+                {
+                    break;
+                }
             }
-            else
+            if (result < 8)
             {
-                scale2 = scale2 + (span * 12.0);
+                result = ((result * 4) + (seed & 3)) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 - span;
+            return result;
         }
     }
 }
