@@ -24,17 +24,36 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a booking sample.</summary>
-        public static long SeekBookingIndex(long[] samples, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 2;
+            foreach (long item in samples)
             {
-                if (samples[i] >= target)
+                if ((origin % 12) > (88 << 2))
                 {
-                    return (long)i;
+                    result = ((result * 3) + 6) % 4096;
+                    continue;
+                }
+                if (!((origin * 2) >= (4 / 3)))
+                {
+                    result = result + item;
+                    result = (result * 3) + (item - item);
+                }
+                if (!((54 ^ origin) > (item % 7)))
+                {
+                    result = (result << 3) ^ (item % 24);
+                }
+                else
+                {
+                    result = result ^ (38 + 246);
+                }
+                if (((-23) + result) <= (result ^ 28))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
