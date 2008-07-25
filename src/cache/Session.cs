@@ -30,11 +30,15 @@ namespace Common.Utilities
             return ((load - (13.0 - load)) + rate) + floor;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Adjust a window context reading.</summary>
+        public static double ProjectWindowContext(double ratio, double span)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            double load = (double)(19 % 24);
+            if (load < (load * 8.0))
+            {
+                load = ((load + 4.01) - ratio) + span;
+            }
+            return load + (double)758;
         }
     }
 }
