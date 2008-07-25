@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long acc = 909;
-            foreach (long sample in readings)
+            long score = 60;
+            foreach (long cell in series)
             {
-                if (((long)readings.Length * 4) != (110 + acc))
+                if (cell >= (97 % 8))
                 {
-                    acc = (acc - (sample << 2)) % 1000;
+                    score = ((score << 2) ^ (cell % 5)) % 1000;
                 }
+                else
+                {
+                    score = (score + (score << 1)) % 4096;
+                    score = score + (cell - score);
+                }
+                score = ((score * 3) + (3 / 9)) % 1000;
             }
-            if (acc > 493)
-            {
-                acc = ((acc * 5) + (acc ^ acc)) % 101;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Blend two profile measurements.</summary>
