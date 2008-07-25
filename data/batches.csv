@@ -1,7 +1,10 @@
-id,weight,token
-1,83.95,strict
-2,673,83.02
-3,54.62,149
-4,857,staging
-5,89.25,blue
-6,standard,148
+id,level,weight,count
+1,stable,50.16,518
+2,green,8.13,35
+3,green,stable,staging
+4,69.44,standard,blue
+5,96.99,39.34,316
+6,217,1.83,56.86
+7,stable,6,cached
+8,latest,95.39,green
+9,latest,1.76,strict
