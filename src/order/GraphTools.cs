@@ -59,21 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cluster command readings.</summary>
-        public static long OverlapClusterCommandCount(long[] items)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long target)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] == target)
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
