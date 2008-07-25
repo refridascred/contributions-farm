@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] levels, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long state = 5;
+            foreach (long item in levels)
             {
-                if (sample != bound)
+                if ((item * 2) > (bound + bound))
                 {
-                    flag = false;
-                    break;
+                    state = state ^ (state >> 3);
                 }
             }
-            return flag;
+            return state % 97;
         }
     }
 }
