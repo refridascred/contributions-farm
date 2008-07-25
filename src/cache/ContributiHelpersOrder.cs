@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const string HardCount = "staging-edge";
         public const string CacheChannel = "primary-v2";
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            double load = weight;
+            if (load > weight)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load + 5.83;
         }
     }
 }
