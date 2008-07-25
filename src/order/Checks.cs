@@ -21,21 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
