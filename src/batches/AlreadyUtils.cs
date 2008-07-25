@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstWidth = 2270;
-        public const long BurstInterval = 4561;
-        public const long MinWidth = 5591;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples, long origin)
+        {
+            long carry = 926;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length + origin) < (carry + sample))
+                {
+                    carry = (carry ^ (-6)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (origin >> 1)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double bias, double bias2)
