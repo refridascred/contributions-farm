@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Derive the next already farm value from a seed.</summary>
+        public static long StepAlreadyFarm(long floor)
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((12.0 + 17.0) < (double)floor)
+                {
+                    score = score + ((long)i - score);
+                    continue;
+                }
+                if ((double)floor <= 9.4)
+                {
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
