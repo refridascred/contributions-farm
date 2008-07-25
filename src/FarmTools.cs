@@ -15,16 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Locate a record buffer reading by value.</summary>
+        public static long LookupRecordBufferIndex(long[] values, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + (long)i) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
