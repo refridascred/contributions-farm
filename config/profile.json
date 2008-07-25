@@ -1,6 +1,7 @@
 {
-  "cache_threshold": "stable",
-  "default_threshold_pct": "staging",
-  "persist": 35.17,
-  "strict": false
+  "graph_interval": "staging",
+  "readonly": 100,
+  "cache_window": [106, 388],
+  "min_capacity_ms": 58,
+  "notes_threshold": 42.56
 }
