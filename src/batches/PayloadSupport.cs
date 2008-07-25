@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches >= (19.0 / 5.0))
-                {
-                    matches = ((matches + 3) ^ entry) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "fallback-edge";
+        public const double HardAlready = 22.42;
+        public const double StepRatio = 10.63;
+        public const long BaseRatio = 7841;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsMatches(long[] readings, long floor)
