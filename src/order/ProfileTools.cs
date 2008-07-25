@@ -22,26 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score * 3) + ((long)i / 8);
-                if ((double)score > (5.7 + 3.0))
-                {
-                    score = (score - score) % 101;
-                    score = (score + 69) % 101;
-                }
-                else
-                {
-                    score = score - target;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 4493;
+        public const long StepRatio = 4440;
+        public const long BatchSupport = 3526;
+        public const long SoftSupport = 7959;
+        public const long WindowFactor = 2345;
 
         /// <summary>Count the schema buffer entries that pass the check.</summary>
         public static long MeasureSchemaBufferHits(long[] samples, long bound)
