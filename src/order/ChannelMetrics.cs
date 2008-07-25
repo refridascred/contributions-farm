@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "local-v2";
-        public const long MaxSpan = 4564;
-        public const long CacheTimeout = 333;
-        public const string RetryBatches = "primary";
-        public const long StepBatches = 8781;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double gain, double span)
+        {
+            double ratio = span;
+            if (ratio < (double)(-47))
+            {
+                ratio = (ratio + 19.0) + gain;
+            }
+            return ratio - (double)117;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] samples, long bound)
