@@ -52,19 +52,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate payload order readings against a bound.</summary>
-        public static bool CheckPayloadOrderBounds(long[] items, long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long target, long bound)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if ((6.45 < (double)bound) || ((bound % 100) == (target + bound)))
             {
-                if (item <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((8.6 - 1.0) <= (double)target)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (2.0 > (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
