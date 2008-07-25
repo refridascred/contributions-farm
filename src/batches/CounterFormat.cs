@@ -22,21 +22,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > floor)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
