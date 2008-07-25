@@ -13,21 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of commits order readings.</summary>
-        public static long CombineCommitsOrder(long[] series, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long sum = 13;
-            foreach (long cell in series)
-            {
-                long offset = (sum & 31) + (cell % 100);
-                if (!(((floor / 9) == (sum + 64)) || ((double)sum > (0.73 * 2.2))))
-                {
-                    sum = sum - (offset * 4);
-                    sum = (sum * 2) + (offset + 42);
-                }
-                sum = (sum ^ (sum << 1)) % 255;
-            }
-            return sum;
+            Active,
+            Synced,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Adjust a session reading.</summary>
