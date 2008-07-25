@@ -1,9 +1,6 @@
-id,label,level,owner,weight
-1,fallback,503,95.94,272
-2,916,32,989,87.39
-3,310,staging,eu-west,blue
-4,edge,700,eu-west,394
-5,38.23,551,73.69,52.28
-6,43.96,572,58.33,legacy
-7,88.26,94.14,497,open
-8,standard,42.04,124,primary
+id,rank
+1,250
+2,cached
+3,418
+4,151
+5,654
