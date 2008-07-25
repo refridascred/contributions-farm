@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchSpan = 83.99;
+        public const string HardTools = "legacy-1";
+        public const long SoftRatio = 5660;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] readings, long limit)
