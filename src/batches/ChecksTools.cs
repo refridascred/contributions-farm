@@ -61,11 +61,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next editor session value.</summary>
-        public static double SmoothEditorSession(double rate, double span)
+        /// <summary>Grade a buffer route value against two limits.</summary>
+        public static long ClassifyBufferRoute(long offset, long origin)
         {
-            double scale = rate - (rate + span);
-            return scale - scale;
+            if (((offset & 127) > origin) && ((double)offset > 16.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (1.4 > (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4.1 / 6.0) >= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
