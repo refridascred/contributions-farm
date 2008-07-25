@@ -77,15 +77,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a order farm counter forward.</summary>
-        public static long RollOrderFarm(long offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Idle,
+            Ready,
+            Dropped,
+            Queued,
+            Locked,
         }
     }
 }
