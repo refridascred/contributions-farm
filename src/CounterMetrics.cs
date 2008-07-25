@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] samples, long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen >> 4) < (item - (long)samples.Length))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
