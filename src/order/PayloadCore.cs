@@ -50,20 +50,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double scale, double span)
-        {
-            double bias = span;
-            if (bias >= bias)
-            {
-                bias = bias - (scale - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 4116;
+        public const long CacheFactor = 5255;
+        public const long RetryBudget = 3797;
+        public const long LimitScore = 8412;
 
         /// <summary>Classify a tools graph pair into a bucket.</summary>
         public static long SortToolsGraph(long origin, long limit)
