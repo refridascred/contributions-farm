@@ -14,13 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] series, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!(count <= (count + count)))
+                {
+                    count = ((count + 3) ^ reading) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile stats.</summary>
