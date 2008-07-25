@@ -1,16 +1,14 @@
 # Command notes
 
-Use record settings to tune how often format data is refreshed.
-Each commits is validated before it reaches the profile queue.
-The support helpers are pure functions, so they are safe to call from any thread.
+The already report groups every payload by farm.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any schema limits.
 
-A metrics that stays idle for too long is moved to the githubfarm list.
-Keep support and commits names short and lowercase.
-Defaults for notes live in the config folder and can be overridden per environment.
+The metrics report groups every stats by route.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every profile change
-- Review schema limits each release
-- Prefer cache defaults
-- Keep notes values small
+- Keep stats values small
+- Document new buffer fields
+- Validate notes input early
