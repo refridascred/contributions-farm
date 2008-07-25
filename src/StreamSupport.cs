@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long total = 6;
+            foreach (long reading in levels)
             {
-                if (!(result >= 40))
+                if (!((455 + 1) > total))
                 {
-                    result = (result * 4) + result;
-                    result = ((result * 5) + (26 & 127)) % 4096;
+                    total = ((total << 2) ^ total) + reading;
                 }
-                if ((bound << 2) >= ((long)i - result))
-                {
-                    result = result + (78 - 11);
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Look up the position of a stream githubfarm sample.</summary>
