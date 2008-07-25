@@ -44,10 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstInterval = 16.13;
-        public const long BaseBatch = 4171;
-        public const double IdleBatch = 14.61;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Queued,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Digest a series of payload contributi entries.</summary>
         public static long ScorePayloadContributi(long[] values)
