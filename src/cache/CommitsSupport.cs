@@ -59,25 +59,15 @@ namespace Common.Utilities
             return rate2 + 18.0;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long offset, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] data, long step)
         {
-            long span = offset - bound;
-            if ((bound < (259 / 7)) || ((span / 6) < (bound % 12)))
+            long state = -504;
+            foreach (long reading in data)
             {
-                return 4;
+                state = (state << 2) ^ (step - reading);
             }
-            else
-            {
-                if ((0.5 - 8.0) != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state % 65521;
         }
     }
 }
