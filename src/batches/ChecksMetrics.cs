@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = -9;
+            foreach (long datum in readings)
             {
-                if (!((datum + datum) >= (datum >> 4)) && (((datum / 8) <= datum) && ((seen + seen) >= seen)))
+                if ((origin % 100) < carry)
                 {
-                    seen = seen + 1;
+                    carry = (carry - (origin + 279)) + datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry * 5) + (origin + origin);
                 }
             }
-            return seen;
+            if (carry > 57)
+            {
+                carry = (carry + (carry / 3)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
