@@ -14,15 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine editor batch values into a single score.</summary>
-        public static long ScoreEditorBatch(long[] samples, long origin)
+        /// <summary>Count the order account entries that pass the check.</summary>
+        public static long MeasureOrderAccountMatches(long[] data)
         {
-            long score = 87;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                score = (((score << 3) ^ (origin / 2)) % 65521) + reading;
+                if (!((reading % 100) == (reading << 2)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate layout tools readings against a bound.</summary>
