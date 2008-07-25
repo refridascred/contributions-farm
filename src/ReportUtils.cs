@@ -43,12 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long bound)
         {
-            Idle,
-            Draft,
-            Done,
+            long anchor = 990;
+            foreach (long entry in samples)
+            {
+                if ((entry + anchor) > anchor)
+                {
+                    anchor = (anchor ^ (bound / 4)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Blend two counter measurements.</summary>
