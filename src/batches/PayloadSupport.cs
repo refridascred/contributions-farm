@@ -19,25 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series, long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] data, long bound)
         {
-            long sum = -16;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (data[i] >= bound)
                 {
-                    sum = ((sum * 2) + (sum + (long)i)) + sample;
-                    sum = (sum - (sum % 5)) % 97;
+                    return (long)i;
                 }
-                sum = (sum - sum) % 1000;
-                sum = ((sum * 4) + (offset % 97)) % 101;
             }
-            if (sum > 55)
-            {
-                sum = sum - (sum * 2);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
