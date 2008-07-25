@@ -1,8 +1,6 @@
 {
-  "enabled": 62,
-  "githubfarm_depth": 57.91,
-  "notes_size": 82.34,
-  "audit": 49.12,
-  "layout_timeout": 61,
-  "batch_retries_s": false
+  "stream_ttl": true,
+  "support_delay": [199, 489],
+  "idle_interval_count": ["standard", "strict", "eu-west"],
+  "batch_window_pct": 8684
 }
