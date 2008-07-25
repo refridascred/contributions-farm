@@ -1,7 +1,26 @@
 # entry settings
-compress: strict
-retry_limit_count:
-  - latest
-  - strict
-min_depth: false
-poll_depth: blue
+payload_threshold: staging
+poll_threshold:
+  - 237
+  - 23
+  - 180
+hard_ttl_s: fallback
+verbose:
+  filter_threshold: cached
+  batch_ttl:
+    - green
+    - legacy
+  soft_depth_s: primary
+  entry_depth:
+    default_ratio_ms: 411
+    schema_delay: 85.19
+    sync_delay_count:
+      - 94
+      - 68
+      - 315
+      - 221
+    max_retries_pct: 4
+    dry_run: 81.5
+  retry_size: local
+  stats_interval: 67.73
+strict: blue
