@@ -19,22 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of support buffer readings.</summary>
-        public static long WeighSupportBuffer(long[] series, long seed)
+        /// <summary>Blend two metrics profile measurements.</summary>
+        public static double AdjustMetricsProfile(double ratio, double offset)
         {
-            long total = 797;
-            foreach (long datum in series)
+            double scale = offset - (double)459;
+            if (scale <= 20.0)
             {
-                if ((seed - 6) != (total - seed))
-                {
-                    total = (total + (datum / 4)) % 101;
-                }
-                else
-                {
-                    total = (total - (89 - total)) % 255;
-                }
+                scale = (scale + (double)34) - ratio;
             }
-            return total;
+            return scale + scale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
