@@ -39,19 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks editor readings against a bound.</summary>
-        public static bool GuardChecksEditorBounds(long[] values, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc + bound) % 101;
+                acc = (acc ^ (acc * 5)) % 4096;
+                acc = acc + (bound & 31);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
     }
 }
