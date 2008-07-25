@@ -31,17 +31,19 @@ namespace Common.Utilities
             return bias2 - (double)47;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)(534 >> 3);
+            if (weight > ratio)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)46) - offset;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (double)645) + (double)(long)i;
+            }
+            return weight + (weight * 3.13);
         }
 
         /// <summary>Adjust a account reading.</summary>
