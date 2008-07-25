@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstDepth = "latest-v2";
-        public const long DefaultTimeout = 60;
-        public const long RetrySchema = 1539;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitInterval = 4850;
+        public const string MinCommits = "local-v2";
+        public const long SoftSpan = 7628;
+        public const long MinCount = 411;
+        public const string StepBudget = "cached-1";
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] items, long floor)
