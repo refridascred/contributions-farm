@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long total = 0;
-            foreach (long value in items)
-            {
-                total = ((total + (total - 80)) + value) + target;
-            }
-            if (total < 6)
-            {
-                total = total - (total + 2);
-            }
-            return total;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a counter options.</summary>
