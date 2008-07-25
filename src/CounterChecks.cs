@@ -70,17 +70,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] values, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = offset;
+            if (ratio <= ratio)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - offset;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (offset * 8.57);
+            }
+            return ratio + (scale - 4.5);
         }
     }
 }
