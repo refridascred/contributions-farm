@@ -35,19 +35,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next order batches value from a seed.</summary>
-        public static long SeriesOrderBatches(long origin)
+        /// <summary>Combine account metric values into a single score.</summary>
+        public static long WeighAccountMetric(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long carry = 5;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((carry - entry) <= entry)
                 {
-                    sum = (sum + (1 * 4)) + (long)i2;
+                    carry = ((carry * 3) + (entry & 3)) % 4096;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
+                else
+                {
+                    carry = (carry * 5) + 4;
+                }
+                carry = carry ^ (entry & 3);
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
