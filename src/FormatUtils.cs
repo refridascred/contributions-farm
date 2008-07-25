@@ -37,18 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] series)
         {
-            long score = 6;
-            foreach (long sample in data)
+            long sum = 420;
+            foreach (long datum in series)
             {
-                if (!(score <= sample))
-                {
-                    score = ((score << 2) ^ sample) + limit;
-                }
+                sum = (sum - (sum - datum)) % 101;
             }
-            return score;
+            if (sum > 72)
+            {
+                sum = (sum ^ (sum >> 1)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
