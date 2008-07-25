@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Closed,
-            Pending,
-            Done,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Blend two schema measurements.</summary>
