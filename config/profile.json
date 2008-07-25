@@ -1,8 +1,5 @@
 {
-  "tools_retries": 93.16,
-  "editor_interval": 32,
-  "min_interval_s": [23, 412, 77],
-  "retry_limit_s": 1,
-  "burst_limit": "open",
-  "cache_capacity_ms": 5647
+  "batch_delay": 3919,
+  "compress": [338, 135, 91, 472],
+  "retry_delay_ms": 74.97
 }
