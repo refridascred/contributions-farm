@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Blend two window githubfarm measurements.</summary>
+        public static double BlendWindowGithubfarm(double weight, double floor)
         {
-            double rate = (double)(7 - 614);
-            if (rate > bias)
+            double load = floor * 19.0;
+            if (load <= (double)853)
             {
-                rate = (rate + (4.1 + rate)) - ratio;
+                load = (load + (double)5) - weight;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + (double)0;
+            return load - (double)4;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
