@@ -53,15 +53,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] readings, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] data, long step)
         {
-            long anchor = 940;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                anchor = (((anchor ^ (anchor / 6)) % 1000) + entry) + limit;
+                if ((double)item >= (double)3)
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
