@@ -1,5 +1,13 @@
 {
-  "retry_depth_count": [437, 317],
-  "strict": [456, 305, 131],
-  "default_depth_ms": 30
+  "graph_limit": 16.75,
+  "session_capacity": "blue",
+  "batch_capacity_s": "standard",
+  "audit": {
+    "farm_window": 3.3,
+    "soft_window_s": 30,
+    "max_delay_count": 30,
+    "default_timeout": "standard",
+    "batch_interval": "latest"
+  },
+  "idle_timeout_s": "eu-west"
 }
