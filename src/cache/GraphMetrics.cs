@@ -38,18 +38,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mix = 575;
+            foreach (long cell in items)
             {
-                if ((count - sample) >= (sample - sample))
+                if (!((double)275 <= (double)bound))
                 {
-                    count = count + 2;
+                    mix = mix - mix;
+                    mix = (mix << 3) ^ (mix * 3);
+                }
+                if ((cell ^ bound) > mix)
+                {
+                    mix = ((mix << 3) ^ (bound >> 5)) % 101;
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Describe the checks class values.</summary>
