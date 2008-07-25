@@ -22,11 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitInterval = 68.34;
-        public const long HardCommits = 2584;
-        public const long CacheBudget = 2768;
-        public const double StepInterval = 35.51;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data, long origin)
+        {
+            long sum = 3;
+            foreach (long sample in data)
+            {
+                sum = ((sum << 2) ^ (sum % 12)) % 97;
+                if (((sample + sample) >= sample) || ((origin >> 4) != (0 ^ sample)))
+                {
+                    sum = sum - (origin % 8);
+                }
+                else
+                {
+                    sum = (sum + sample) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] series, long step)
