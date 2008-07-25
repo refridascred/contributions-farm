@@ -28,19 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric report entry stays within the limit.</summary>
-        public static bool CheckMetricReportRange(long[] values, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long state = 439;
+            foreach (long entry in readings)
             {
-                if (item >= offset)
+                if ((state % 8) > state)
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 3) ^ (entry << 2)) % 101;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Audit schema editor readings against a rule.</summary>
