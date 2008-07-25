@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (series[i] > step)
+                if ((95 << 2) > (target + target))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
