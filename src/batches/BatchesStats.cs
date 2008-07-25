@@ -22,21 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            New,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the session order entries that pass the check.</summary>
