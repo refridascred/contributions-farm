@@ -60,15 +60,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long carry = 25;
+            foreach (long cell in data)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                carry = (carry ^ (23 - carry)) % 1000;
+                carry = carry - cell;
             }
-            return sum;
+            if (carry > 41)
+            {
+                carry = (carry << 3) ^ 33;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
