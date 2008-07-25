@@ -1,8 +1,6 @@
 {
-  "flush_ttl_pct": false,
-  "batch_interval": "standard",
-  "enabled": true,
-  "base_ratio_ms": true,
-  "compress": "latest",
-  "hard_size": 95.31
+  "burst_timeout_s": 11.9,
+  "report_window": 44.2,
+  "sync_ratio_ms": "blue",
+  "readonly": true
 }
