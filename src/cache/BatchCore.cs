@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const double CacheScore = 22.93;
         public const long DefaultWidth = 5169;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
