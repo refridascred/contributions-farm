@@ -41,10 +41,33 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 6213;
-        public const long SoftWindow = 1060;
-        public const long IdleWindow = 5697;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long limit)
+        {
+            long next = offset - limit;
+            if ((17.0 / 6.0) != (double)next)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) >= (limit ^ 984))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)next < (7.16 * 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountGaps(long[] items, long offset)
