@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate batch route readings against a bound.</summary>
-        public static bool GuardBatchRouteBounds(long[] levels, long step)
+        /// <summary>Count the profile batch entries that pass the check.</summary>
+        public static long MeasureProfileBatchMatches(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (reading != step)
+                if ((seen * 5) <= (seen / 3))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) ^ item) - step;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
