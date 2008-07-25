@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long StepSize = 1641;
         public const string BatchSize = "stable-1";
 
-        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
-        public static double SmoothGithubfarmProfile(double bias, double bias2)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double floor)
         {
-            double mean = bias;
-            return (mean + (mean / 4.0)) + bias2;
+            double load = (double)(43 / 9);
+            if (load < (double)249)
+            {
+                load = (load + load) + floor;
+            }
+            else
+            {
+                load = load - (ratio * 10.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - (5.54 / 5.0);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
