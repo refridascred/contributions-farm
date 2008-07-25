@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate commits stream samples.</summary>
-        public static long ScoreCommitsStream(long[] samples, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mark = 29;
-            foreach (long sample in samples)
-            {
-                mark = (((mark << 3) ^ (sample * 4)) % 97) - origin;
-            }
-            return mark % 4096;
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
