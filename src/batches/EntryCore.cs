@@ -45,13 +45,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Derive the next checks format value from a seed.</summary>
+        public static long RollChecksFormat(long floor)
         {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
