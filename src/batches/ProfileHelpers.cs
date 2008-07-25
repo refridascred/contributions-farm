@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const string DefaultWidth = "strict";
         public const long MaxFactor = 9388;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] series)
+        /// <summary>Check that every schema account entry stays within the limit.</summary>
+        public static bool ValidateSchemaAccountLimits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (entry >= (178 / 9))
+                if (datum >= target)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the format state values.</summary>
