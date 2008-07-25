@@ -35,10 +35,19 @@ namespace Common.Utilities
         public const long IdleStats = 8349;
         public const double LimitStats = 6.95;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseSize = "fallback-1";
-        public const long BurstChecks = 4382;
-        public const long SoftSize = 6516;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] samples)
+        {
+            long score = 5;
+            foreach (long sample in samples)
+            {
+                if ((score + sample) > sample)
+                {
+                    score = score ^ (sample % 100);
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] data)
