@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches > (1.68 + 8.0))
+                if ((series[i] < target) && ((series[i] % 2) != 0))
                 {
-                    matches = ((matches + 3) + reading) - bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
