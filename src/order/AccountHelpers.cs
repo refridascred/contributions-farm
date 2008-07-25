@@ -22,18 +22,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long score = 0;
-            foreach (long value in items)
-            {
-                if (!(68 > (score % 7)))
-                {
-                    score = (((score ^ (score / 8)) % 65521) ^ value) - step;
-                }
-            }
-            return score;
+            Queued,
+            Active,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
