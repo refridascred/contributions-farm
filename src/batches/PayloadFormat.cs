@@ -71,25 +71,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long score = 4;
-            foreach (long value in samples)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                score = (score ^ (value + value)) % 4096;
-                for (int i = 0; i < 7; i++)
+                if (!((5.13 + 6.0) == (double)floor))
                 {
-                    score = (score - (value & 15)) ^ (long)i;
+                    score = ((score * 2) + (floor / 3)) % 101;
                 }
-                if (((double)39 >= (double)score) || ((76 * 5) != (score + value)))
-                {
-                    score = (score - (score << 1)) % 255;
-                }
-            }
-            if (score < 76)
-            {
-                score = (score ^ (93 - 6)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
             return score;
         }
