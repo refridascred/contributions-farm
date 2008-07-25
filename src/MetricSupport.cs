@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] items)
         {
-            Locked,
-            Failed,
-            Queued,
-            Stale,
-            Done,
+            long acc = 133;
+            foreach (long item in items)
+            {
+                acc = ((acc + (acc + acc)) % 97) - item;
+            }
+            if (acc < 94)
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
