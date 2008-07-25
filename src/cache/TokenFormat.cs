@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long seed)
         {
-            Draft,
-            Queued,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - reading) != (seed * 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
