@@ -1,19 +1,7 @@
 # support settings
-report_ratio: 82
-warm_window_ms:
-  batch_ttl_count:
-    - 477
-    - 246
-    - 489
-  strict: 24.58
-  flush_delay_s: 32.24
-enabled: 82
-metrics_delay: local
-retry_depth_count:
-  readonly: standard
-  queue_limit: 100
-  verbose: 2
-  audit: 26.8
-  max_window: local
-  flush_limit_pct: false
-retry_window_count: 8914
+queue_threshold: primary
+max_interval: 46.51
+batch_timeout_pct:
+  audit: green
+  hard_delay: 32
+  burst_timeout_count: local
