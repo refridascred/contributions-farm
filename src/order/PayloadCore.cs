@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of buffer notes readings.</summary>
-        public static long TallyBufferNotes(long[] items, long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long mark = 226;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + floor) % 1000;
-                mark = ((mark << 2) ^ (datum + datum)) % 97;
-                if (!((4.87 + 9.6) < (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
