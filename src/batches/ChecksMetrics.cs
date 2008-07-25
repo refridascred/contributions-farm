@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 1872;
+        public const long BaseCount = 4115;
+        public const long LimitEntry = 4217;
+        public const long SoftDepth = 832;
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] levels)
