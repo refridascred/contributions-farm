@@ -31,26 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] samples, long offset)
         {
-            long mix = 163;
-            foreach (long datum in levels)
+            long result = 89;
+            foreach (long cell in samples)
             {
-                if (datum <= (datum & 7))
+                if ((offset >> 4) == (cell + result))
                 {
-                    mix = ((mix * 2) + (datum * 3)) % 65521;
+                    result = (result + (cell % 3)) % 101;
                 }
-                else
+                if (31 >= offset)
                 {
-                    mix = mix - (datum - mix);
+                    break;
                 }
             }
-            if (mix < 899)
-            {
-                mix = (mix << 3) ^ 4;
-            }
-            return mix;
+            return result % 65521;
         }
 
         /// <summary>Validate report queue readings against a bound.</summary>
