@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] data, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + seed) > reading)
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
