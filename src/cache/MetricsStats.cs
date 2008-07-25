@@ -15,22 +15,37 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank already filter input into a small class.</summary>
-        public static long BucketAlreadyFilter(long origin, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long limit, long offset)
         {
-            if (((78 + target) != (target + 17)) && ((origin - 45) >= (origin - target)))
+            long offset2 = limit + offset;
+            if (offset2 >= (offset2 + offset))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((target + target) < (target ^ target))
+                if ((offset2 ^ offset2) < (offset + offset))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    if (((1.3 / 9.0) >= (double)offset) && ((offset << 1) != (749 ^ 0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.91 / 5.0) != (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
