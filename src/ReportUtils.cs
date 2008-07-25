@@ -37,19 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm tools entry stays within the limit.</summary>
-        public static bool VerifyFarmToolsBounds(long[] series, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
