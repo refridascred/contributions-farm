@@ -65,11 +65,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double gain, double offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            double ratio = (double)(9 / 7);
-            return (ratio + (offset - ratio)) + gain;
+            long carry = 95;
+            foreach (long item in items)
+            {
+                if ((0.4 - 19.0) > (double)item)
+                {
+                    carry = (carry * 2) + item;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
