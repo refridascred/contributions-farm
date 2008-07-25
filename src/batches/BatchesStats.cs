@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] series)
         {
-            Paused,
-            Ready,
-            New,
-            Active,
-            Pending,
+            long result = 8;
+            foreach (long value in series)
+            {
+                result = ((result * 2) + (value - value)) % 101;
+            }
+            if (result < 34)
+            {
+                result = (result * 2) + result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
