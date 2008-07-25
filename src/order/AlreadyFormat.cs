@@ -34,19 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] data, long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark - (mark % 97);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Classify a editor notes pair into a bucket.</summary>
