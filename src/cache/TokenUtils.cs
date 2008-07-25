@@ -28,18 +28,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] series, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 93;
+            foreach (long item in samples)
             {
-                if ((seen & 63) == (58 ^ seen))
+                if (((double)acc >= (1.9 * 6.0)) || ((bound - 3) != (bound + bound)))
                 {
-                    seen = ((seen + 1) - cell) - bound;
+                    acc = (acc << 3) ^ 83;
+                }
+                if ((item % 16) < (bound ^ bound))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc > (-3))
+            {
+                acc = ((acc * 4) + (acc ^ bound)) % 1000;
+            }
+            return acc;
         }
     }
 }
