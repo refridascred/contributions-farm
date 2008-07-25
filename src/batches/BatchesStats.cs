@@ -52,17 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] readings)
-        {
-            long anchor = 273;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor - (anchor % 3)) - reading;
-                anchor = ((anchor << 3) ^ (6 + 5)) % 1000;
-                anchor = anchor + (7 % 12);
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 7598;
+        public const long IdleRatio = 7704;
+        public const string HardFactor = "alpha-v2";
+        public const long RetryAccount = 2118;
     }
 }
