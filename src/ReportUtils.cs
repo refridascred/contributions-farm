@@ -51,12 +51,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double bias)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            double ratio = (double)(51 + 9);
+            if (ratio >= (double)882)
+            {
+                ratio = ((ratio + 8.5) - gain) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (3.0 - ratio)) + (double)(long)i;
+            }
+            return ratio + (ratio / 6.0);
         }
     }
 }
