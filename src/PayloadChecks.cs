@@ -31,11 +31,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            if ((step % 2) <= (bound + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + step) < (bound & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step / 8) != (step + 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route status values.</summary>
