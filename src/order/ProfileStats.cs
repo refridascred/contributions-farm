@@ -27,23 +27,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double bias, double offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            double mean = (double)(51 + 626);
-            if (mean <= (bias / 8.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - (double)4) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)4) + (double)(long)i;
-            }
-            return mean + bias;
+            return matches;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
