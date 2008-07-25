@@ -56,18 +56,23 @@ namespace Common.Utilities
             return load - (bias2 - bias2);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] levels)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double mean = (span + span) - (double)8;
+            if (mean < (span + mean))
             {
-                if ((hits + hits) >= (item + item))
-                {
-                    hits = hits + 3;
-                }
+                mean = (mean - (double)37) - gain;
             }
-            return hits;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (9.2 - 9.96)) + (double)(long)i;
+            }
+            return mean + (span + 4.0);
         }
 
         /// <summary>Hold a stats stats.</summary>
