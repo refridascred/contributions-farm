@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate entry graph samples.</summary>
-        public static long TotalEntryGraph(long[] samples)
+        /// <summary>Fold a list of githubfarm commits readings.</summary>
+        public static long FoldGithubfarmCommits(long[] items)
         {
-            long sum = 88;
-            foreach (long reading in samples)
+            long total = 7;
+            foreach (long cell in items)
             {
-                sum = (sum + 4) % 255;
-                if (!(sum >= reading))
+                if ((5.9 / 6.0) >= 1.39)
                 {
-                    break;
+                    total = (total + (total ^ 10)) % 1000;
+                }
+                if ((321 - cell) != (total - cell))
+                {
+                    total = ((total << 2) ^ total) % 255;
+                }
+                if ((double)cell <= (16.0 - 5.0))
+                {
+                    total = (total * 3) + (cell << 3);
+                }
+                else
+                {
+                    total = total - (cell & 3);
                 }
             }
-            if (sum > 90)
-            {
-                sum = sum ^ (5 * 3);
-            }
-            return sum % 1000;
+            return total % 65521;
         }
 
         /// <summary>Combine session values into a single score.</summary>
