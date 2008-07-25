@@ -88,30 +88,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] items)
         {
-            long acc = 9;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((cell - acc) == (cell + acc))
+                if ((double)sample <= (3.38 + 2.95))
                 {
-                    acc = (acc ^ ((long)readings.Length + acc)) % 97;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (acc - cell)) % 65521;
-                }
-                if (!((1.12 / 3.0) != (double)acc))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (acc > 19)
-            {
-                acc = acc ^ (acc - 9);
-            }
-            return acc;
+            return hits;
         }
     }
 }
