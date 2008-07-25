@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long origin, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            if (3 >= (origin + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin >> 3) <= (origin ^ origin)) || ((25 & 31) == (origin ^ origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Failed,
+            Queued,
+            Stale,
+            Done,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
