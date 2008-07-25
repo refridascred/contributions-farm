@@ -27,19 +27,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] readings, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias = ratio;
+            return bias + (13.0 + span);
         }
 
         /// <summary>Match up metrics samples.</summary>
