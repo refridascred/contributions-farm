@@ -31,20 +31,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long sum = 305;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum - ((long)data.Length + entry);
-                sum = (sum ^ (sum ^ entry)) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum > 7)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 65521;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
