@@ -25,22 +25,16 @@ namespace Common.Utilities
             return ratio + (rate / 9.0);
         }
 
-        /// <summary>Combine cache route values into a single score.</summary>
-        public static long TotalCacheRoute(long[] values)
+        /// <summary>Derive the next entry githubfarm value from a seed.</summary>
+        public static long RollEntryGithubfarm(long floor)
         {
-            long mark = 7;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((228 - 8) != ((-97) + mark))
-                {
-                    mark = (mark - (value % 5)) % 97;
-                }
-                else
-                {
-                    mark = mark + (mark + mark);
-                }
+                score = ((score * 4) + (6 * 4)) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return mark % 97;
+            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
