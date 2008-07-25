@@ -36,19 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            double drift = offset;
-            if (drift < (6.0 / 2.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - offset) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (drift + offset);
-            }
-            return drift - offset;
+            return matches;
         }
     }
 }
