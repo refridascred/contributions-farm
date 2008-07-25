@@ -26,13 +26,38 @@ namespace Common.Utilities
         public const string LimitSize = "cached-v2";
         public const double WindowEditor = 95.53;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long limit, long target)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            if (((double)target > (7.01 - 1.8)) && (limit < (target + limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target << 1) > (7 + target)) || (target <= ((-3) * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((7.7 / 7.0) != (double)limit) && ((target - limit) <= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target != (2.8 * 2.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
