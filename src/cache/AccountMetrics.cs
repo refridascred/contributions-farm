@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] samples, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long total = 61;
+            foreach (long datum in items)
             {
-                if (item >= seed)
+                if (!((total ^ datum) < (datum + 153)))
                 {
-                    ok = false;
-                    break;
+                    total = (total - (-462)) % 255;
+                }
+                else
+                {
+                    total = total - (774 / 6);
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the context kind values.</summary>
