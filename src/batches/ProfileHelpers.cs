@@ -54,12 +54,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Synced,
-            Locked,
-            New,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
