@@ -28,22 +28,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long acc = 452;
+            foreach (long item in samples)
             {
-                if ((93 & 7) < (datum - datum))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (((acc << 2) ^ (acc << 3)) % 255) ^ item;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many commits already samples are out of range.</summary>
