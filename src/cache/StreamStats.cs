@@ -19,21 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 2) + (floor ^ floor)) % 1000;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((total ^ (floor * 2)) % 97) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 7112;
+        public const string BaseDepth = "open-v2";
+        public const double StepFactor = 42.2;
 
         /// <summary>Audit token commits readings against a rule.</summary>
         public static long AuditTokenCommitsHits(long[] samples, long origin)
