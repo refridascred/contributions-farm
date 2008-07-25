@@ -57,10 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitLevel = 55.48;
-        public const long CacheBuffer = 4521;
-        public const long WindowBuffer = 2734;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Failed,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] series)
