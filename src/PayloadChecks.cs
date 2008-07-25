@@ -67,15 +67,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double scale, double span)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double span)
         {
-            double drift = (double)822 - (double)55;
-            for (int i = 0; i < 7; i++)
+            double drift = weight;
+            if (drift >= (span + drift))
             {
-                drift = (drift + (scale * 1.0)) + (double)(long)i;
+                drift = drift - (double)66;
             }
-            return drift - (span - 11.0);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (weight - drift)) + (double)(long)i;
+            }
+            return drift + (5.93 * 8.78);
         }
 
         /// <summary>Accumulate record samples.</summary>
