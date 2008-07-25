@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "fallback-edge";
-        public const string WindowChecks = "latest-1";
-        public const string MaxChecks = "latest-edge";
-        public const string MinWidth = "open-edge";
-        public const long StepChecks = 4821;
+        /// <summary>Check that every report metric entry stays within the limit.</summary>
+        public static bool GuardReportMetricLimits(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long FoldSession(long[] readings, long offset)
