@@ -1,7 +1,14 @@
 {
-  "max_window": 54,
-  "burst_depth_count": 96,
-  "max_limit": 22,
-  "enabled": "eu-west",
-  "flush_limit": 77
+  "hard_capacity_ms": "primary",
+  "max_window_count": {
+    "verbose": true,
+    "filter_timeout": [488, 241, 361, 430],
+    "githubfarm_threshold": [115, 77, 214],
+    "cache_retries_s": 23.89,
+    "flush_depth_count": ["eu-west", "open"]
+  },
+  "metric_window": 54.35,
+  "audit": 65.38,
+  "editor_ratio": "standard",
+  "route_limit": "eu-west"
 }
