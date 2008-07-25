@@ -20,32 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long limit, long floor)
+        /// <summary>Iterate the stream profile series from a seed.</summary>
+        public static long StepStreamProfile(long floor)
         {
-            long bound = limit - floor;
-            if ((double)limit != (2.0 / 6.0))
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound <= (bound - bound)) && ((42 - floor) >= (bound << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.7 * 1.92) < (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a route summary.</summary>
