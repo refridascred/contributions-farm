@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items, long offset)
         {
-            Closed,
-            Ready,
-            Failed,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((2.9 / 4.0) == (double)offset) || !((double)matches > 1.97))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up checks samples.</summary>
