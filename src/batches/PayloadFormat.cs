@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 3.68;
-        public const string MinBudget = "strict-edge";
-        public const double HardTimeout = 16.55;
-        public const long BatchCache = 6701;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Failed,
+            Synced,
+            New,
+            Pending,
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
