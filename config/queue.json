@@ -1,5 +1,6 @@
 {
-  "base_window_count": false,
-  "audit": "green",
-  "max_timeout": true
+  "enabled": "standard",
+  "format_ttl": 20,
+  "support_depth": false,
+  "min_depth_ms": 542
 }
