@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] items)
         {
-            double gain = bias;
-            return (gain + (gain / 2.0)) + ratio;
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (seen > (item / 8))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
