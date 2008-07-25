@@ -20,10 +20,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 2719;
-        public const long SoftSchema = 6220;
-        public const long WindowSpan = 1435;
+        /// <summary>Count the graph entry entries that pass the check.</summary>
+        public static long AuditGraphEntryHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ count) <= (cell - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionRange(long[] levels, long seed)
