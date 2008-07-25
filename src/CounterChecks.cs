@@ -35,18 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Measure how many schema order samples are out of range.</summary>
+        public static long CountSchemaOrderGaps(long[] samples, long step)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits - step) > (hits & 255))
                 {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - reading;
                 }
             }
             return hits;
