@@ -28,12 +28,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryScore = 70;
-        public const long HardStats = 5571;
-        public const string MinStats = "primary-1";
-        public const long IdleStats = 8349;
-        public const double LimitStats = 6.95;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((516 >= entry) || (((double)count >= (13.0 * 16.0)) && ((count ^ (long)readings.Length) != (count * 4))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] samples)
