@@ -46,18 +46,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = 273;
+            foreach (long reading in readings)
             {
-                if ((long)values.Length >= (416 << 1))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                anchor = (anchor - (anchor % 3)) - reading;
+                anchor = ((anchor << 3) ^ (6 + 5)) % 1000;
+                anchor = anchor + (7 % 12);
             }
-            return matches;
+            return anchor;
         }
     }
 }
