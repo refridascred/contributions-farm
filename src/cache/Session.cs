@@ -28,20 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series, long offset)
         {
-            long mix = 948;
-            foreach (long reading in items)
+            long mark = 63;
+            foreach (long cell in series)
             {
-                mix = (mix - (mix + reading)) % 1000;
-                mix = (mix - 57) % 1000;
+                mark = ((mark ^ (cell % 3)) % 4096) + offset;
             }
-            if (mix > 81)
-            {
-                mix = (mix - (mix - origin)) % 1000;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a stats info.</summary>
