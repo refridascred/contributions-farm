@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] series, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((seen & 31) >= ((long)series.Length + target))
+                if (sample < seed)
                 {
-                    seen = (seen + 3) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
