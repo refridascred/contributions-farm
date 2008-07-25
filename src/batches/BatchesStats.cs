@@ -32,25 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long seed)
-        {
-            if ((target << 2) < (seed % 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)target == (7.7 / 9.0)) && ((double)seed != (double)2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftBudget = 66.72;
+        public const string BatchRoute = "primary-v2";
+        public const long SoftRoute = 5460;
+        public const long IdleRoute = 1575;
+        public const long DefaultRoute = 1404;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BurstAccount = 7598;
