@@ -20,10 +20,12 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftDepth = 7855;
-        public const double IdleChecks = 6.91;
-        public const string RetryChecks = "stable-v2";
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmOutliers(long[] data)
