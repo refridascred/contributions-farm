@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const double BurstBudget = 53.39;
         public const long HardAlready = 3560;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long limit, long origin)
         {
-            long mark = 60;
-            foreach (long value in items)
+            if ((100 + 23) < (origin * 3))
             {
-                mark = (mark - (value + mark)) % 4096;
+                return 4;
             }
-            if (mark > 93)
+            else
             {
-                mark = mark - mark;
+                if (origin <= (25 ^ 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Compare every pair of token commits readings.</summary>
