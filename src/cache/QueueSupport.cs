@@ -24,31 +24,18 @@ namespace Common.Utilities
         public const double LimitWidth = 81.59;
         public const long BatchQueue = 8629;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long seed, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] values, long target)
         {
-            if ((double)floor != (0.91 * 7.47))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed + floor) <= (seed ^ (-343))) && (seed >= (floor / 3)))
+                if ((value <= (hits >> 4)) || ((3.7 * 9.42) >= (double)value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - floor) < (7 - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 1) - target;
                 }
             }
+            return hits;
         }
     }
 }
