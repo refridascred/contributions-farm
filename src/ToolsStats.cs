@@ -56,19 +56,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] items, long seed)
+        /// <summary>Classify a command session pair into a bucket.</summary>
+        public static long GradeCommandSession(long limit, long target)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long next = limit + target;
+            if (95 <= (next + target))
             {
-                if (cell <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((limit - next) >= 610)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) >= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
