@@ -37,11 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            double rate = offset;
+            return rate + scale;
         }
     }
 }
