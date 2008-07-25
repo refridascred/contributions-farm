@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheWidth = "standard-1";
-        public const long RetryTimeout = 9882;
-        public const long LimitWidth = 5911;
-        public const long RetryRoute = 532;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings, long limit)
+        {
+            long sum = 41;
+            foreach (long datum in readings)
+            {
+                sum = (((sum ^ (196 % 10)) % 255) ^ datum) + limit;
+            }
+            if (sum > 817)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double BlendSession(double rate, double floor)
