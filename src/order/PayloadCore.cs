@@ -56,32 +56,18 @@ namespace Common.Utilities
         public const long RetryBudget = 3797;
         public const long LimitScore = 8412;
 
-        /// <summary>Classify a tools graph pair into a bucket.</summary>
-        public static long SortToolsGraph(long origin, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            long step = origin - limit;
-            if (((limit + step) > step) && ((step * 5) < (origin - origin)))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin / 6) > (origin / 3)) && ((double)limit == (double)(-536)))
+                if ((seen + value) <= (seen + seen))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit ^ origin) > (step & 63)) || ((step << 3) <= (limit << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
