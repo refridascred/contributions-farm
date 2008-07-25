@@ -61,25 +61,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long seed2)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long offset)
         {
-            long step = seed + seed2;
-            if (seed < (seed2 & 1))
+            long sum = 141;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed ^ seed) == (step >> 3)) && ((step % 100) < (seed2 + seed2)))
+                if (item > (sum * 2))
                 {
-                    return 5;
+                    sum = (((sum << 3) ^ (sum / 9)) % 97) + offset;
+                    sum = (sum + (item - 316)) % 1000;
                 }
-                else
-                {
-                    return 2;
-                }
+                sum = ((sum << 3) ^ sum) % 255;
             }
+            return sum;
         }
     }
 }
