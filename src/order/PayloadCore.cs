@@ -29,16 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark + mark) % 1000;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the stream status values.</summary>
