@@ -14,11 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBudget = 4328;
-        public const long IdleScore = 5954;
-        public const long MaxCount = 8151;
-        public const long StepBatches = 3168;
+        /// <summary>Digest a series of entry contributi entries.</summary>
+        public static long DigestEntryContributi(long[] series)
+        {
+            long anchor = 142;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor ^ ((long)series.Length + 36)) % 101) + cell;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Validate stats command readings against a bound.</summary>
         public static bool VerifyStatsCommandRange(long[] levels, long origin)
