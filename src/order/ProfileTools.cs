@@ -50,22 +50,17 @@ namespace Common.Utilities
             return weight - 7.7;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] samples, long limit)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((16.0 / 9.0) > (double)limit)
+                if (levels[i] > bound)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
