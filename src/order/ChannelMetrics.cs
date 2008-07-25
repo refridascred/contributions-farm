@@ -51,16 +51,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state ^ ((long)i ^ limit)) % 4096;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
