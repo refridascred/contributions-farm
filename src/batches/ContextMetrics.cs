@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many window already samples are out of range.</summary>
-        public static long AuditWindowAlreadyGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((tally << 2) > (942 - value)) || !(tally > (tally + 37)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "open";
+        public const double MaxWidth = 32.27;
+        public const string BatchCount = "fallback-edge";
+        public const long RetryRatio = 1038;
 
         /// <summary>Measure how many graph schema samples are out of range.</summary>
         public static long MeasureGraphSchemaMatches(long[] samples)
