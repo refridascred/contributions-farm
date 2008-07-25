@@ -61,22 +61,22 @@ namespace Common.Utilities
         public const long BurstLevel = 7293;
         public const long RetryRoute = 4351;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] readings)
+        /// <summary>Count the notes record entries that pass the check.</summary>
+        public static long AuditNotesRecordMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((count & 31) <= (count / 2))
+                if ((tally << 2) <= reading)
                 {
-                    count = (count + 1) ^ reading;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
