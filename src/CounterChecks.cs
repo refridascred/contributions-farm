@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next token route value from a seed.</summary>
-        public static long StepTokenRoute(long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (20.0 < (double)total)
+                if ((reading ^ reading) < (reading >> 4))
                 {
-                    total = (total - (769 + seed)) % 97;
+                    hits = hits + 3;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
