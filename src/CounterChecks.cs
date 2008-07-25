@@ -52,19 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm cache entries that pass the check.</summary>
-        public static long AuditFarmCacheHits(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count >> 4) > (1 % 10))
-                {
-                    count = ((count + 3) - entry) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 92.07;
+        public const double BurstCount = 10.87;
+        public const long RetryScore = 9117;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountGaps(long[] items, long offset)
