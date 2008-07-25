@@ -30,17 +30,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] series, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 953;
+            foreach (long value in data)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ (target ^ 981)) % 4096) + value;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
