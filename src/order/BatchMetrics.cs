@@ -44,20 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            long total = -6;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                total = ((total - offset) % 1000) ^ entry;
-                total = (total << 2) ^ 10;
+                if ((count + count) < datum)
+                {
+                    count = count + 1;
+                }
             }
-            if (total < 971)
-            {
-                total = ((total * 4) + (86 ^ total)) % 97;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
