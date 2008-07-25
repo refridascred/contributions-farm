@@ -33,38 +33,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] values)
         {
-            if ((step / 6) <= 7)
+            long state = 95;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (step < origin)
+                if ((148 * 3) <= (state + sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step + origin) <= origin) || ((origin & 127) > (origin * 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - step) != (9 + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = state - (state >> 4);
                 }
             }
+            return state;
         }
     }
 }
