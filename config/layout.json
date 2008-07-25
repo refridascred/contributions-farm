@@ -1,5 +1,6 @@
 {
-  "hard_depth_ms": "primary",
-  "audit": [351, 372, 256, 439],
-  "verbose": 1024
+  "window_timeout": "staging",
+  "enabled": "eu-west",
+  "default_depth_ms": false,
+  "layout_timeout": "legacy"
 }
