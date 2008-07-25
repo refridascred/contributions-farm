@@ -21,9 +21,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 25.2;
-        public const long RetryCount = 8088;
-        public const double SoftInterval = 49.6;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Dropped,
+            Closed,
+            Locked,
+            Active,
+            Idle,
+        }
     }
 }
