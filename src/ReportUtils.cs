@@ -58,9 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "fallback-edge";
-        public const long MinFactor = 3415;
-        public const long MaxStats = 6906;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
