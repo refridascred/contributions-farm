@@ -51,18 +51,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] series)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)series.Length & 1) != (item + item))
+                if ((double)anchor == (double)(long)i)
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 4096;
                 }
+                else
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor << 3) ^ 364) % 4096;
+                if ((floor + anchor) <= (floor >> 3))
+                {
+                    anchor = ((anchor * 5) + (long)i) % 255;
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
