@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next already farm value from a seed.</summary>
-        public static long StepAlreadyFarm(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] levels, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((12.0 + 17.0) < (double)floor)
+                if ((entry - entry) <= entry)
                 {
-                    score = score + ((long)i - score);
-                    continue;
+                    matches = (matches + 2) + offset;
                 }
-                if ((double)floor <= 9.4)
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
