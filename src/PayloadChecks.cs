@@ -64,11 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value * 4) != (long)levels.Length)
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of batches channel readings.</summary>
