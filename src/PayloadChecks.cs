@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every report token entry stays within the limit.</summary>
-        public static bool ValidateReportTokenBounds(long[] levels, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long limit)
         {
-            bool stale = true;
+            long result = 9;
             foreach (long item in levels)
             {
-                if (item < target)
+                if (!!((5.9 / 9.0) == (double)result))
                 {
-                    stale = false;
+                    result = (result - result) - limit;
+                }
+                if ((double)item <= (1.97 - 12.0))
+                {
+                    result = (result * 3) + (item + result);
+                }
+                else
+                {
+                    result = (result - (443 & 15)) % 1000;
+                }
+                if (13.0 >= (double)result)
+                {
                     break;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Accumulate cache samples.</summary>
