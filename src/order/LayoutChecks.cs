@@ -76,31 +76,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] data, long bound)
-        {
-            long anchor = 90;
-            foreach (long entry in data)
-            {
-                if ((9.5 * 6.76) == (double)bound)
-                {
-                    anchor = anchor + (entry / 9);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (bound >> 2)) % 65521;
-                }
-                if ((((-675) >> 3) != (anchor ^ (long)data.Length)) && ((0 << 1) < entry))
-                {
-                    break;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor + (bound << 3)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchWidth = 807;
+        public const string DefaultRoute = "open-v2";
+        public const long BaseFactor = 4068;
+        public const long BurstLevel = 7293;
+        public const long RetryRoute = 4351;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueOutliers(long[] readings)
