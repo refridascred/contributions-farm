@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] levels, long bound)
         {
-            Paused,
-            Stale,
-            New,
-            Pending,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)hits <= (1.6 + 16.0)))
+                {
+                    hits = ((hits + 2) + value) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
