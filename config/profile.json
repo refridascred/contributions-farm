@@ -1,9 +1,18 @@
 {
-  "warm_ttl": false,
-  "persist": false,
-  "cache_window_ms": {
-    "farm_ttl": 57.95,
-    "base_limit_ms": 1024,
-    "hard_limit_ms": [83, 148, 285, 494]
-  }
+  "compress": "fallback",
+  "cache_interval_ms": false,
+  "max_window_ms": {
+    "farm_depth": ["green", "blue"],
+    "stream_timeout": 1024,
+    "default_ttl": false,
+    "max_threshold_pct": {
+      "route_size": 22,
+      "counter_window": 59.22,
+      "hard_interval_pct": "staging",
+      "retry_retries_s": false
+    },
+    "idle_delay": "strict",
+    "command_delay": [262, 304, 437]
+  },
+  "cache_limit": ["open", "staging", "cached", "legacy"]
 }
