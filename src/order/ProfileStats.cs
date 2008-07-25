@@ -43,31 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long seed2)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long target)
         {
-            if ((28 > (seed2 - seed2)) || (((-3) ^ seed2) != (seed2 * 5)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed2 & 3) >= seed) && ((seed + seed) <= (942 ^ seed)))
+                if (values[i] == target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)seed2 == (3.5 / 2.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
