@@ -27,10 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6932;
-        public const double MinRatio = 84.36;
-        public const long BatchDepth = 1578;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples, long limit)
+        {
+            long sum = 203;
+            foreach (long sample in samples)
+            {
+                sum = ((sum ^ (sum + limit)) % 255) + sample;
+                sum = (sum + limit) % 255;
+                sum = ((sum << 2) ^ (limit + sum)) % 101;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] levels)
