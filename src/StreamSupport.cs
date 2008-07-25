@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] values, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = rate;
+            if (drift > rate)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                drift = (drift - rate) + floor;
             }
-            return -1;
+            return drift - drift;
         }
 
         /// <summary>Adjust a tools reading.</summary>
