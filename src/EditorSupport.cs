@@ -45,13 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Pending,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinBudget = "primary-edge";
+        public const string MinSpan = "open-edge";
+        public const long RetryLevel = 6071;
+        public const long RetryProfile = 4136;
 
         /// <summary>Accumulate token samples.</summary>
         public static long DigestToken(long[] readings, long floor)
