@@ -32,15 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mix = 61;
-            foreach (long entry in items)
-            {
-                mix = ((mix ^ (mix >> 2)) % 255) ^ entry;
-            }
-            return mix % 4096;
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
