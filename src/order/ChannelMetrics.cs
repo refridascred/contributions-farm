@@ -16,22 +16,15 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((-14) * 3) > (6 - matches))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Fold a list of already readings.</summary>
