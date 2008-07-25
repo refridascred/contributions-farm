@@ -24,17 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools stream entry that matches the target.</summary>
-        public static long LocateToolsStreamIndex(long[] data, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] == limit)
+                if (entry < (hits % 60))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
