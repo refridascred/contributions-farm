@@ -1,10 +1,11 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the entry queue.
-Keep queue and record names short and lowercase.
+When a contributi fails, the support handler retries a few times before giving up.
+The graph report groups every batches by window.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review commits limits each release
-- Keep notes values small
-- Log every layout change
+- Prefer counter defaults
+- Document new profile fields
+- Log every contributi change
