@@ -64,14 +64,25 @@ namespace Common.Utilities
             return drift - (7.64 + rate);
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long bound)
         {
-            Locked,
-            Pending,
-            Ready,
-            New,
-            Paused,
+            long span = offset - bound;
+            if ((bound < (259 / 7)) || ((span / 6) < (bound % 12)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.5 - 8.0) != (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
