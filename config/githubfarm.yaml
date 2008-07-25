@@ -1,6 +1,23 @@
 # githubfarm settings
-editor_delay: true
-batch_interval_count: standard
-soft_window_ms: cached
-burst_threshold_ms: 72.83
-githubfarm_ttl: true
+audit: 50
+compress:
+  hard_timeout_pct:
+    persist: 30
+    sync_timeout_count: false
+    burst_capacity: fallback
+    batch_ratio_pct: legacy
+    audit: 5
+    cache_ttl_count: true
+  entry_window: 71.83
+  base_ratio: cached
+  max_timeout_s:
+    burst_size:
+      - primary
+      - eu-west
+      - local
+    cache_threshold: legacy
+    persist: 250
+    contributi_capacity: 61
+  default_interval: 1976
+  buffer_limit: 9351
+dry_run: 30
