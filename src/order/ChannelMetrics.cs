@@ -16,12 +16,10 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowTimeout = 7255;
-        public const double BurstMetric = 37.12;
-        public const long LimitFactor = 6233;
-        public const string IdleSize = "latest";
-        public const string MaxScore = "staging-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSpan = 7187;
+        public const long MaxNotes = 3083;
+        public const string RetryBudget = "latest-edge";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] series, long origin)
