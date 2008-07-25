@@ -1,6 +1,7 @@
 {
-  "stream_ttl": true,
-  "support_delay": [199, 489],
-  "idle_interval_count": ["standard", "strict", "eu-west"],
-  "batch_window_pct": 8684
+  "burst_depth_count": [349, 138, 280],
+  "flush_window_s": 11,
+  "persist": "cached",
+  "cache_capacity": 30,
+  "readonly": "local"
 }
