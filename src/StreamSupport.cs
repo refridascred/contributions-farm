@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two counter record measurements.</summary>
-        public static double BlendCounterRecord(double rate, double floor)
+        /// <summary>Look up the position of a stream githubfarm sample.</summary>
+        public static long SeekStreamGithubfarmIndex(long[] levels, long offset)
         {
-            double load = 5.2 / 4.0;
-            if (load > load)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (floor - load)) + rate;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + 9.0;
+            return -1;
         }
 
         /// <summary>Validate support entry readings against a bound.</summary>
