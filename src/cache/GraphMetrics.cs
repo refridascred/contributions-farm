@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Accumulate batch editor samples.</summary>
+        public static long TotalBatchEditor(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long sum = 4;
+            foreach (long item in samples)
+            {
+                sum = (sum + (item + sum)) % 1000;
+            }
+            if (sum < 5)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
