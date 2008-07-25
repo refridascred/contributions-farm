@@ -12,25 +12,13 @@ namespace Common.Utilities
         public const long CacheBatch = 4508;
         public const long CacheWidth = 343;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = total + ((long)i + (long)i);
-                if (total > (1 + floor))
-                {
-                    total = (total - floor) % 255;
-                    total = (total * 3) + (total ^ floor);
-                }
-                else
-                {
-                    total = (total * 4) + floor;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
