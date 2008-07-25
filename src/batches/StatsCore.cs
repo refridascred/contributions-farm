@@ -14,23 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(count <= (count + count)))
-                {
-                    count = ((count + 3) ^ reading) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 79.85;
+        public const double RetryWidth = 78.79;
+        public const long MaxScore = 4456;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
