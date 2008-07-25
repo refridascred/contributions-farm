@@ -15,19 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate batch notes readings against a bound.</summary>
-        public static bool ValidateBatchNotesBounds(long[] readings, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (sample < bound)
+                if ((2.0 * 2.7) < (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
