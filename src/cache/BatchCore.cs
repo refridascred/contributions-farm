@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const double CacheScore = 22.93;
         public const long DefaultWidth = 5169;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] levels, long bound)
         {
-            Closed,
-            Idle,
-            New,
-            Draft,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
