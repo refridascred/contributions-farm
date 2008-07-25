@@ -32,20 +32,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long total = seed;
+            long anchor = limit;
             for (int i = 0; i < 12; i++)
             {
-                total = (total * 2) + ((long)i / 8);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (total - ((long)i2 + (long)i)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Classify a command session pair into a bucket.</summary>
