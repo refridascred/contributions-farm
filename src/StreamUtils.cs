@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Adjust a filter stream reading.</summary>
+        public static double BlendFilterStream(double weight, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            double load = (double)(62 % 12);
+            if (load > load)
+            {
+                load = load - (6.3 - weight);
+            }
+            else
+            {
+                load = load + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
