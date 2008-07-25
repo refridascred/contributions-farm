@@ -37,11 +37,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleSpan = 4105;
+        public const long DefaultBatch = 2593;
+        public const long WindowBatch = 7709;
+        public const long LimitInterval = 3278;
+        public const long CacheTimeout = 5146;
     }
 }
