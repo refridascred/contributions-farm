@@ -13,31 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long floor, long floor2)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            if ((floor2 - floor2) < (floor2 + floor2))
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (floor >= floor2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor2 >= 3.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
