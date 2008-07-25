@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] data, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= step)
+                if (series[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
