@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string DefaultEditor = "standard";
         public const string HardEditor = "open";
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long bound)
+        /// <summary>Measure how many graph schema samples are out of range.</summary>
+        public static long MeasureGraphSchemaMatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (values[i] >= bound)
+                if ((double)entry == (double)seen)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
