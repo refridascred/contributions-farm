@@ -50,17 +50,32 @@ namespace Common.Utilities
         public const long LimitFarm = 332;
         public const string MaxFarm = "fallback-edge";
 
-        /// <summary>Locate a schema githubfarm reading by value.</summary>
-        public static long LookupSchemaGithubfarmIndex(long[] series, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = step ^ offset;
+            if ((1 < step) && ((step & 255) != (offset << 3)))
             {
-                if (series[i] == bound)
+                return 8;
+            }
+            else
+            {
+                if ((double)step != (4.91 / 6.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)delta >= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
