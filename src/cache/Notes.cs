@@ -15,21 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Combine window already values into a single score.</summary>
+        public static long TotalWindowAlready(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 657;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc << 3) ^ (value << 2);
             }
-            return hits;
+            if (acc < 5)
+            {
+                acc = acc ^ (acc - (long)levels.Length);
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm options.</summary>
