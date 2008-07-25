@@ -28,15 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double rate, double floor)
         {
-            long mark = 63;
-            foreach (long cell in series)
-            {
-                mark = ((mark ^ (cell % 3)) % 4096) + offset;
-            }
-            return mark;
+            double load = 4.01;
+            return ((load - (13.0 - load)) + rate) + floor;
         }
 
         /// <summary>Hold a stats info.</summary>
