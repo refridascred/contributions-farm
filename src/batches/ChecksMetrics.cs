@@ -57,17 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Measure how many commits already samples are out of range.</summary>
+        public static long AuditCommitsAlreadyHits(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
+                if (matches > limit)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
