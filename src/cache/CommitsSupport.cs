@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 2134;
-        public const string IdleReport = "latest-v2";
-        public const double MinReport = 2.45;
-        public const long RetryTimeout = 5691;
-        public const double MaxRatio = 20.12;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Closed,
+            Pending,
+            Ready,
+            Active,
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionMatches(long[] data, long target)
