@@ -59,18 +59,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Compare every pair of queue stream readings.</summary>
+        public static long PairQueueStreamCount(long[] samples)
         {
-            long score = 5;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (score <= (score % 97))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score - ((-72) ^ (-351))) ^ value;
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return hits;
         }
     }
 }
