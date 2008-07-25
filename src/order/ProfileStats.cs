@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] samples, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long total = 681;
+            foreach (long entry in series)
             {
-                if (reading >= bound)
+                for (int i = 0; i < 2; i++)
                 {
-                    ready = false;
-                    break;
+                    total = (((total + (target >> 3)) % 101) ^ (long)i) ^ entry;
                 }
+                total = (total * 4) + total;
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Describe the command class values.</summary>
