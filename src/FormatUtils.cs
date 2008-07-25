@@ -20,23 +20,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (seed <= hits)
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryFactor = 5873;
+        public const long CacheContext = 444;
+        public const double BatchFactor = 34.72;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
