@@ -40,21 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Check that every filter command entry stays within the limit.</summary>
+        public static bool ValidateFilterCommandRange(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < target)
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Audit githubfarm buffer readings against a rule.</summary>
