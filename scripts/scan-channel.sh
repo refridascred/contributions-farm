@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=366
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -19,6 +16,14 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached latest local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
