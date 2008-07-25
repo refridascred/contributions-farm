@@ -55,11 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
+            public long Ratio { get; set; }
+            public long Region { get; set; }
             public string Mode { get; set; } = "";
-            public long Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
