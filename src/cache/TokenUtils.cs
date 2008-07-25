@@ -26,26 +26,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples, long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long acc = 93;
-            foreach (long item in samples)
-            {
-                if (((double)acc >= (1.9 * 6.0)) || ((bound - 3) != (bound + bound)))
-                {
-                    acc = (acc << 3) ^ 83;
-                }
-                if ((item % 16) < (bound ^ bound))
-                {
-                    break;
-                }
-            }
-            if (acc > (-3))
-            {
-                acc = ((acc * 4) + (acc ^ bound)) % 1000;
-            }
-            return acc;
+            Active,
+            Retry,
+            Draft,
         }
     }
 }
