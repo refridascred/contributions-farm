@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Fold a list of command batch readings.</summary>
-        public static long DigestCommandBatch(long[] readings, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long acc = -3;
-            foreach (long datum in readings)
-            {
-                if (datum >= 20)
-                {
-                    acc = acc - (floor % 8);
-                }
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
