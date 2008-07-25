@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up graph batches samples.</summary>
-        public static long CompareGraphBatchesCount(long[] readings)
+        /// <summary>Derive the next entry schema value from a seed.</summary>
+        public static long SeriesEntrySchema(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix + (offset - mix)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Locate a channel account reading by value.</summary>
