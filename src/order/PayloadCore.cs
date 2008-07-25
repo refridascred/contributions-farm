@@ -14,15 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double bias, double floor)
+        /// <summary>Check that every entry metrics entry stays within the limit.</summary>
+        public static bool GuardEntryMetricsBounds(long[] data, long floor)
         {
-            double scale = 7.8;
-            if (scale >= 0.25)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                scale = scale + (floor + bias);
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return valid;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
