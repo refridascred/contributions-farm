@@ -35,12 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Grade a counter profile value against two limits.</summary>
+        public static long BucketCounterProfile(long target, long target2)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long edge = target - target2;
+            if (7 <= (target2 * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target2 >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge & 3) > target2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
