@@ -54,11 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
