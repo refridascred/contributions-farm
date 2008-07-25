@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every report metric entry stays within the limit.</summary>
-        public static bool GuardReportMetricLimits(long[] values, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of session readings.</summary>
