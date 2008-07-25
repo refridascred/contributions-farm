@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
