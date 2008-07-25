@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] data, long offset)
+        /// <summary>Measure how many account already samples are out of range.</summary>
+        public static long AuditAccountAlreadyMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((7 + seen) >= (73 + 1)) || (((long)data.Length + seen) <= (offset ^ item)))
+                if (!(count >= (-638)) || ((5.56 - 8.4) > (5.0 / 8.0)))
                 {
-                    seen = seen + 3;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine account values into a single score.</summary>
