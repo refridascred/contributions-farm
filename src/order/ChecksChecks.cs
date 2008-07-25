@@ -28,32 +28,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long target, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long span = target - limit;
-            if ((double)limit != (3.0 / 7.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target * 5) == (limit << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target < span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
     }
 }
