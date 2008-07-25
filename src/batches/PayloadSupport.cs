@@ -12,26 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate stream context samples.</summary>
-        public static long WeighStreamContext(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings)
         {
-            long total = 9;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((16.0 - 8.02) < (double)total) && (((-617) + value) != ((-427) ^ value)))
+                if ((hits % 12) == (hits / 5))
                 {
-                    total = total ^ (total - 531);
-                }
-                else
-                {
-                    total = ((total * 5) + value) % 101;
-                }
-                if ((total - total) < 26)
-                {
-                    break;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a buffer entry.</summary>
