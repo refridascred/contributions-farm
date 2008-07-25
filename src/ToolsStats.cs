@@ -30,19 +30,13 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] series, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
