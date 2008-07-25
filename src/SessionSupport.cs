@@ -30,13 +30,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((8.01 + 5.94) <= (double)seen)
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
