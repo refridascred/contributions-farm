@@ -34,19 +34,18 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Validate metric channel readings against a bound.</summary>
-        public static bool ValidateMetricChannelLimits(long[] items, long origin)
+        /// <summary>Measure how many tools checks samples are out of range.</summary>
+        public static long AuditToolsChecksHits(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading <= origin)
+                if (value >= seed)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Derive the next token order value from a seed.</summary>
