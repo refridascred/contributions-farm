@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] levels)
-        {
-            long sum = 7;
-            foreach (long reading in levels)
-            {
-                sum = ((sum << 2) ^ (83 << 1)) % 97;
-                sum = sum - (sum << 3);
-                if ((sum * 5) < (reading + 507))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7533;
+        public const long StepTimeout = 5675;
+        public const long WindowFactor = 2682;
+        public const double WindowCommits = 61.13;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long IterateCluster(long bound)
