@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Audit already layout readings against a rule.</summary>
+        public static long AuditAlreadyLayoutOutliers(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (31 <= (offset - offset))
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate graph queue samples.</summary>
