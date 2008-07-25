@@ -39,17 +39,18 @@ namespace Common.Utilities
         public const long BatchCommits = 2904;
         public const string RetryInterval = "standard-1";
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] levels, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (levels[i] > step)
+                if ((double)seed > (7.94 / 5.0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
