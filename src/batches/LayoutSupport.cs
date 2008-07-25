@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Locate a layout context reading by value.</summary>
