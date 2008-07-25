@@ -14,10 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 79.85;
-        public const double RetryWidth = 78.79;
-        public const long MaxScore = 4456;
+        /// <summary>Look up the position of a channel filter sample.</summary>
+        public static long FindChannelFilterIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BatchContributi = 6932;
