@@ -15,19 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double ratio = (double)(5 - 91);
-            if (ratio >= (floor * 1.9))
-            {
-                ratio = ratio + (double)67;
-            }
-            else
-            {
-                ratio = ratio + (gain - floor);
-            }
-            return ratio - (ratio * 8.68);
+            Active,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
