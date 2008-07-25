@@ -71,16 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] data, long step)
         {
-            long carry = 11;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                carry = (carry - 16) + target;
-                carry = carry ^ sample;
+                if (18.0 >= (double)step)
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            return carry % 1000;
+            return tally;
         }
     }
 }
