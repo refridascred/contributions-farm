@@ -31,10 +31,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 4831;
-        public const double WindowSession = 31.93;
-        public const string CacheScore = "staging-v2";
-        public const double RetrySession = 76.04;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
