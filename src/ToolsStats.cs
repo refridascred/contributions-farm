@@ -45,13 +45,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] items, long seed)
         {
             bool ok = true;
-            foreach (long item in series)
+            foreach (long cell in items)
             {
-                if (item > bound)
+                if (cell <= seed)
                 {
                     ok = false;
                     break;
