@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (matches < (matches >> 2))
+                if (((7 + seen) >= (73 + 1)) || (((long)data.Length + seen) <= (offset ^ item)))
                 {
-                    matches = ((matches + 2) + entry) + seed;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
