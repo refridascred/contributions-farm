@@ -16,12 +16,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 5430;
         public const long LimitTimeout = 6553;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Idle,
-            Draft,
-            New,
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
