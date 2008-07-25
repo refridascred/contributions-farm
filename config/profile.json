@@ -1,16 +1,5 @@
 {
-  "dry_run": ["blue", "edge", "primary", "primary"],
-  "verbose": {
-    "default_retries": 2066,
-    "checks_limit": 100,
-    "buffer_timeout": 80
-  },
-  "readonly": 28.16,
-  "max_ttl_ms": "cached",
-  "flush_threshold_pct": {
-    "buffer_size": 9536,
-    "command_retries": "green",
-    "readonly": ["latest", "local", "fallback", "fallback"]
-  },
-  "min_threshold_s": 5174
+  "min_limit_count": 2964,
+  "burst_window_s": [47, 399, 299],
+  "hard_size": [173, 445, 429]
 }
