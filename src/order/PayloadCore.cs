@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Draft,
-            Retry,
-            New,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 27.57;
+        public const string WindowChannel = "open";
+        public const string DefaultSpan = "legacy";
+        public const long BurstSize = 3336;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] levels)
