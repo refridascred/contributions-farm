@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double weight, double bias)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long target)
         {
-            double scale = bias;
-            if (scale >= (double)85)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - (3.12 + weight);
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale * 1.0)) + (double)(long)i;
-            }
-            return scale - (double)110;
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
