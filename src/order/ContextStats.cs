@@ -52,15 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long origin, long offset)
         {
-            double drift = 3.0;
-            for (int i = 0; i < 5; i++)
+            if ((5.47 - 1.7) <= (double)origin)
             {
-                drift = ((drift + weight) + (double)(long)i) - offset;
+                return 2;
             }
-            return drift - (double)0;
+            else
+            {
+                if (36 < (offset * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
