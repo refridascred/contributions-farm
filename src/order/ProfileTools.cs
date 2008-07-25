@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double span)
+        /// <summary>Measure how many context route samples are out of range.</summary>
+        public static long MeasureContextRouteMatches(long[] readings, long floor)
         {
-            double mean = (double)((-36) * 4);
-            if (mean >= (mean + weight))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mean = mean + (span / 2.0);
+                if ((floor & 31) <= (matches ^ matches))
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            else
-            {
-                mean = mean + (double)2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + (weight * 3.85);
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
