@@ -21,19 +21,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every account record entry stays within the limit.</summary>
-        public static bool ValidateAccountRecordRange(long[] data, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
