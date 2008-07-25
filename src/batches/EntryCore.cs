@@ -59,13 +59,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 5;
+            foreach (long value in data)
+            {
+                if (score <= (score % 97))
+                {
+                    score = (score - ((-72) ^ (-351))) ^ value;
+                }
+            }
+            return score % 1000;
         }
     }
 }
