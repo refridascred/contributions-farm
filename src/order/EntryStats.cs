@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric command samples are out of range.</summary>
-        public static long TallyMetricCommandMatches(long[] data, long seed)
+        /// <summary>Measure how many queue checks samples are out of range.</summary>
+        public static long AuditQueueChecksOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((sample + 7) <= (seed << 3)) || ((45 - sample) == (sample << 3)))
+                if ((entry ^ tally) > (entry % 7))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a schema checks reading by value.</summary>
