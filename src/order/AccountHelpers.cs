@@ -43,14 +43,17 @@ namespace Common.Utilities
         public const string MaxCount = "primary";
         public const long BurstDepth = 9682;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long offset)
         {
-            Pending,
-            Stale,
-            Queued,
-            Ready,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
