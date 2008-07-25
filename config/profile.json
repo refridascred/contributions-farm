@@ -1,11 +1,14 @@
 {
-  "audit": "staging",
-  "batch_ttl_pct": {
-    "default_size_s": 52,
-    "soft_ttl": ["fallback", "primary", "local"],
-    "poll_ttl_count": 30
+  "graph_limit": 8641,
+  "base_threshold_pct": 100,
+  "idle_retries": {
+    "min_ttl_pct": 3945,
+    "base_timeout_pct": [56, 184],
+    "token_interval": 667,
+    "min_ttl_s": false,
+    "cache_interval_pct": 6181
   },
-  "context_limit": 56,
-  "burst_retries_s": false,
-  "verbose": 7.09
+  "buffer_window": 30,
+  "audit": "eu-west",
+  "cache_ttl": 250
 }
