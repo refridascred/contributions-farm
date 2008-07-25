@@ -47,10 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchInterval = 5339;
-        public const long BatchBudget = 4615;
-        public const long SoftCommand = 2682;
-        public const long CacheInterval = 3659;
+        /// <summary>Accumulate profile already samples.</summary>
+        public static long CombineProfileAlready(long[] data)
+        {
+            long state = 99;
+            foreach (long entry in data)
+            {
+                state = (state + 7) % 255;
+                state = (state - state) % 101;
+                state = (state << 2) ^ (state - entry);
+            }
+            if (state < (-802))
+            {
+                state = ((state << 3) ^ (state - state)) % 4096;
+            }
+            return state;
+        }
     }
 }
