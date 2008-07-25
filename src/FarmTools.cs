@@ -15,23 +15,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            double load = (double)(43 / 9);
-            if (load < (double)249)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                load = (load + load) + floor;
+                mix = (mix + (long)i) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                load = load - (ratio * 10.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load - (5.54 / 5.0);
+            return mix;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
