@@ -1,9 +1,24 @@
 {
-  "warm_timeout_ms": 97.92,
-  "warm_timeout_pct": {
-    "report_size": "legacy",
-    "enabled": 9998,
-    "base_threshold_pct": 100
+  "default_ratio": true,
+  "min_window": 91,
+  "compress": 100,
+  "hard_ratio": {
+    "min_limit": ["eu-west", "standard", "blue"],
+    "cache_timeout": false,
+    "window_retries": {
+      "flush_window_pct": 39,
+      "sync_timeout_count": 68,
+      "batch_timeout": 2499,
+      "editor_ttl": 1024,
+      "graph_ratio": [278, 108],
+      "batch_interval_pct": false
+    },
+    "verbose": [382, 185]
   },
-  "verbose": 8800
+  "warm_delay_ms": {
+    "dry_run": "local",
+    "max_interval_ms": 13.37,
+    "poll_retries_pct": false
+  },
+  "graph_depth": [325, 160, 259]
 }
