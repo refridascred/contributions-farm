@@ -54,18 +54,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits token samples are out of range.</summary>
-        public static long AuditCommitsTokenMatches(long[] items, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (77 >= (bound << 3))
+                if (target <= anchor)
                 {
-                    count = (count + 3) + reading;
+                    anchor = ((anchor * 4) + (long)i) % 1000;
+                    anchor = (anchor << 2) ^ (61 - target);
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
