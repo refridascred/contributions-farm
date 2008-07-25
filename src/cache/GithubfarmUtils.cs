@@ -34,13 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstInterval = "open-1";
+        public const double StepWidth = 93.17;
+        public const long WindowFactor = 8907;
 
         /// <summary>Count the context record entries that pass the check.</summary>
         public static long TallyContextRecordHits(long[] samples)
