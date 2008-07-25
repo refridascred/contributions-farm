@@ -28,12 +28,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Derive the next stream farm value from a seed.</summary>
+        public static long SeriesStreamFarm(long offset)
         {
-            Stale,
-            Synced,
-            Retry,
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (score ^ (offset - score)) + (long)i2;
+                }
+                score = (score - (offset + 0)) % 1000;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
