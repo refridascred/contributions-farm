@@ -1,10 +1,34 @@
 # githubfarm settings
-poll_threshold: 8087
-soft_threshold: green
-idle_depth_ms: 100
-flush_limit_count:
-  max_capacity_pct: 4863
-  soft_ratio_pct: 250
-  default_delay_s: 7935
-  readonly: 1024
-strict: false
+burst_capacity_count: 57.85
+verbose:
+  sync_depth: green
+  stream_capacity: 30
+  persist:
+    - cached
+    - standard
+  verbose:
+    enabled: green
+    batches_interval: green
+    metrics_window: eu-west
+    metric_capacity: 66.11
+    burst_capacity_count: 3082
+    max_limit: standard
+enabled:
+  - 79
+  - 297
+poll_limit_s: 1024
+hard_interval_s: 48.84
+burst_threshold_count:
+  warm_ttl_count: 96.73
+  warm_size_pct:
+    graph_delay: 49.42
+    cache_capacity: true
+    poll_delay_pct: 60
+    warm_retries_s: latest
+    readonly: 8702
+    token_delay: cached
+  schema_ratio: edge
+  soft_window:
+    - 93
+    - 252
+  max_window_count: 500
