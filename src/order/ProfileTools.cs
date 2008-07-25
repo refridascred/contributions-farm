@@ -61,24 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream filter value against two limits.</summary>
-        public static long BucketStreamFilter(long seed, long origin)
+        /// <summary>Audit tools counter readings against a rule.</summary>
+        public static long CountToolsCounterGaps(long[] samples, long floor)
         {
-            if ((double)seed <= (9.4 - 10.0))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin < (3.31 + 17.0))
+                if (floor <= seen)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) ^ cell;
                 }
             }
+            return seen;
         }
     }
 }
