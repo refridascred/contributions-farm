@@ -37,24 +37,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long target, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] series, long bound)
         {
-            if (9 > (limit ^ 506))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 4) <= (target / 8))
+                if (datum <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
