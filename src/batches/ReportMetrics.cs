@@ -19,18 +19,34 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            long total = 74;
+            foreach (long sample in values)
             {
-                if ((count % 60) < (value / 2))
+                if ((double)total > 8.7)
                 {
-                    count = count + 2;
+                    break;
+                }
+                if (((total % 5) > (sample >> 5)) && (342 >= ((-89) + total)))
+                {
+                    total = (total ^ (target + sample)) % 4096;
+                }
+                if (total > (target & 127))
+                {
+                    total = (total << 3) ^ sample;
+                }
+                else
+                {
+                    total = total + 91;
                 }
             }
-            return count;
+            if (total < 56)
+            {
+                total = ((total << 3) ^ (total << 3)) % 4096;
+            }
+            return total;
         }
     }
 }
