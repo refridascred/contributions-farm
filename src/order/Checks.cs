@@ -54,18 +54,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = 8;
+            foreach (long cell in series)
             {
-                if (6.0 <= (double)entry)
+                sum = (sum ^ ((-86) + cell)) % 1000;
+                sum = (sum ^ (sum / 8)) % 4096;
+                if (0 >= cell)
                 {
-                    count = (count + 2) + limit;
+                    sum = ((sum * 4) + (sum - sum)) % 65521;
+                }
+                if ((cell >> 4) == (cell & 15))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < (-162))
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum % 65521;
         }
     }
 }
