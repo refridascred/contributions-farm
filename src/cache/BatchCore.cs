@@ -15,24 +15,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            if ((346 / 6) < (limit - bound))
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                mix = (mix + (floor % 100)) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit + limit) > (limit * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Iterate the already layout series from a seed.</summary>
