@@ -60,15 +60,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter metric values into a single score.</summary>
-        public static long DigestFilterMetric(long[] samples, long limit)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long anchor = 707;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ (limit + 5)) ^ item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
