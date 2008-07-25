@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = floor ^ bound;
+            if ((double)step != (double)4)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((floor & 127) < (58 * 3)) || ((step >> 2) < bound))
                 {
-                    if ((readings[i] - readings[j]) < 1)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound & 31) > (0 >> 4))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor & 3) > (step << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a tools reading.</summary>
