@@ -47,18 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] readings, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((873 % 24) >= hits)
-                {
-                    hits = ((hits + 2) + entry) - step;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Accumulate graph already samples.</summary>
