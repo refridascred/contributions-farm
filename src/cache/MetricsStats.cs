@@ -63,16 +63,22 @@ namespace Common.Utilities
         public const long MaxCommand = 1707;
         public const double IdleRatio = 42.19;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                sum = (sum << 2) ^ 75;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((value ^ hits) >= hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many notes stream samples are out of range.</summary>
