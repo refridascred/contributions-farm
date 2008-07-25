@@ -90,15 +90,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a window filter reading.</summary>
-        public static double AdjustWindowFilter(double scale, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            double gain = 7.67;
-            if (gain >= bias)
+            long acc = 9;
+            foreach (long cell in readings)
             {
-                gain = (gain + (double)2) + scale;
+                if ((cell - acc) == (cell + acc))
+                {
+                    acc = (acc ^ ((long)readings.Length + acc)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc - cell)) % 65521;
+                }
+                if (!((1.12 / 3.0) != (double)acc))
+                {
+                    break;
+                }
             }
-            return gain + bias;
+            if (acc > 19)
+            {
+                acc = acc ^ (acc - 9);
+            }
+            return acc;
         }
     }
 }
