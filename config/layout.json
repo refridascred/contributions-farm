@@ -1,6 +1,5 @@
 {
-  "window_timeout": "staging",
-  "enabled": "eu-west",
-  "default_depth_ms": false,
-  "layout_timeout": "legacy"
+  "burst_size_ms": 99,
+  "graph_ratio": 17.51,
+  "min_interval_s": [358, 409, 212, 57]
 }
