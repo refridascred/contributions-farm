@@ -83,19 +83,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            long acc = step;
+            long carry = bound;
             for (int i = 0; i < 5; i++)
             {
-                if ((double)(long)i == (3.4 + 15.0))
-                {
-                    acc = (acc ^ (acc / 5)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
     }
 }
