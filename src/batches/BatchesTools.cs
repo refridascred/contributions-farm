@@ -44,19 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record context entries.</summary>
-        public static long FoldRecordContext(long[] data, long target)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] data, long offset)
         {
-            long sum = 5;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 2) ^ (target << 3)) % 101;
-                if (!((item & 3) >= (item + 0)))
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
                 {
-                    sum = ((sum * 4) + sum) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
