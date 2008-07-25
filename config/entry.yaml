@@ -1,5 +1,7 @@
 # entry settings
-persist: 64.67
-soft_ttl: false
-warm_timeout_s: 100
-context_delay: latest
+compress: strict
+retry_limit_count:
+  - latest
+  - strict
+min_depth: false
+poll_depth: blue
