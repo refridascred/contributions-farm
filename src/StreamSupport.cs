@@ -27,39 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long delta = step + bound;
-            if ((0.5 / 5.0) < (double)delta)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound <= (delta + 21))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step < 6.1)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step < 4.1)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
