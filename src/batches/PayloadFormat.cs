@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] items, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (item >= bound)
+                if ((double)item == (5.22 / 8.0))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
