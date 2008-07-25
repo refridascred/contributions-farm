@@ -67,19 +67,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double span)
+        /// <summary>Compare every pair of batches channel readings.</summary>
+        public static long PairBatchesChannelCount(long[] series)
         {
-            double drift = weight;
-            if (drift >= (span + drift))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (double)66;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (weight - drift)) + (double)(long)i;
-            }
-            return drift + (5.93 * 8.78);
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
