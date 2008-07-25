@@ -41,18 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((7.79 * 18.0) < (double)step) && (sample < (step - step)))
+                if (cell > bound)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
