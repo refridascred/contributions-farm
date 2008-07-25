@@ -1,15 +1,15 @@
 # Already notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Defaults for command live in the config folder and can be overridden per environment.
-Keep contributi and profile names short and lowercase.
+Run the token check before changing any record limits.
+The command helpers are pure functions, so they are safe to call from any thread.
 
-The cluster report groups every token by filter.
-Use support settings to tune how often editor data is refreshed.
+Keep githubfarm and checks names short and lowercase.
+Use record settings to tune how often tools data is refreshed.
+Each batches is validated before it reaches the booking queue.
 
 ## Guidelines
 
-- Review record limits each release
-- Keep cache values small
-- Validate entry input early
-- Document new contributi fields
+- Document new record fields
+- Review batch limits each release
+- Log every format change
+- Prefer batch defaults
