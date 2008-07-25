@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine metric metrics values into a single score.</summary>
-        public static long ScoreMetricMetrics(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] values, long seed)
         {
-            long state = -5;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((item + item) <= (item - (-13))) && ((double)state <= 7.59))
+                if (matches < (matches >> 2))
                 {
-                    state = state + (item - state);
-                }
-                if ((state & 255) <= (state - state))
-                {
-                    state = ((state << 3) ^ (1 - (long)data.Length)) % 65521;
-                }
-                if (state >= 9)
-                {
-                    break;
+                    matches = ((matches + 2) + entry) + seed;
                 }
             }
-            if (state > 403)
-            {
-                state = (state - state) % 97;
-            }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
