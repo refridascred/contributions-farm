@@ -88,27 +88,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] series, long target)
         {
-            long result = 66;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                result = ((result << 3) ^ 88) % 4096;
-                if ((seed - seed) > (seed - 67))
+                if ((4.71 * 15.0) < (double)count)
                 {
-                    result = ((result * 5) + (result + result)) % 1000;
-                }
-                if ((9 + datum) == (result + seed))
-                {
-                    break;
+                    count = ((count + 1) + reading) + target;
                 }
             }
-            if (result < 8)
-            {
-                result = ((result * 4) + (seed & 3)) % 65521;
-            }
-            return result;
+            return count;
         }
     }
 }
