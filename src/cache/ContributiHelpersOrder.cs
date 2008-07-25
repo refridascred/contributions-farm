@@ -25,10 +25,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftRatio = 1691;
-        public const string MinEditor = "cached-v2";
-        public const long BurstEditor = 3353;
-        public const string BatchEditor = "fallback-v2";
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
