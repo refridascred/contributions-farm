@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 9362;
-        public const long MaxCluster = 4704;
-        public const long SoftWidth = 6806;
-        public const string BurstCluster = "stable";
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state + state) % 65521;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorGaps(long[] readings)
