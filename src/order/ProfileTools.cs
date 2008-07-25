@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two window githubfarm measurements.</summary>
-        public static double BlendWindowGithubfarm(double weight, double floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            double load = floor * 19.0;
-            if (load <= (double)853)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (double)5) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - (double)4;
+            return count;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
