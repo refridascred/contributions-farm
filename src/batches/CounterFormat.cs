@@ -13,15 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two order graph measurements.</summary>
-        public static double ScaleOrderGraph(double scale, double span)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double rate = (double)40 / 3.0;
-            if (rate < (span + rate))
-            {
-                rate = rate + (scale + 4.36);
-            }
-            return rate + (double)60;
+            Ready,
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
