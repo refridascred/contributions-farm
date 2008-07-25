@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 3858;
-        public const long WindowSpan = 5760;
-        public const long LimitTimeout = 664;
-        public const long MinReport = 5486;
-        public const long WindowSize = 4677;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings)
+        {
+            long total = 177;
+            foreach (long sample in readings)
+            {
+                total = (total ^ sample) % 65521;
+            }
+            if (total < 9)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long step, long step2)
