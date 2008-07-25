@@ -61,16 +61,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long mix = 3;
+            foreach (long reading in items)
             {
-                carry = ((carry << 3) ^ offset) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((reading <= mix) && ((1.0 * 0.27) >= (double)(long)items.Length))
+                {
+                    mix = ((mix + (396 >> 2)) % 65521) - seed;
+                }
+                else
+                {
+                    mix = (mix ^ ((-50) * 3)) % 255;
+                }
             }
-            return carry;
+            if (mix > 0)
+            {
+                mix = ((mix << 3) ^ (mix + 0)) % 1000;
+            }
+            return mix % 97;
         }
     }
 }
