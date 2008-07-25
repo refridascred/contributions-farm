@@ -15,19 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double offset)
+        /// <summary>Compare every pair of cache entry readings.</summary>
+        public static long CompareCacheEntryCount(long[] values)
         {
-            double gain = (double)(72 + 228);
-            if (gain >= (double)500)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = ((gain - 2.0) + weight) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 12.0) + (double)(long)i;
-            }
-            return gain + 5.0;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
