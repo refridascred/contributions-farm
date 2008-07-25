@@ -18,17 +18,38 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound + bound2) > ((-1) - bound2))
             {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) == (bound << 1)) && ((double)bound != (double)bound2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((7.11 * 1.11) <= (double)bound2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound >> 4) <= (bound >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
