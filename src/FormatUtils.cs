@@ -57,11 +57,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "latest-edge";
-        public const double DefaultEntry = 49.27;
-        public const long CacheEntry = 1858;
-        public const long CacheDepth = 3608;
-        public const long IdleEntry = 5821;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] levels)
+        {
+            long mix = 67;
+            foreach (long datum in levels)
+            {
+                mix = (((mix << 3) ^ mix) % 101) ^ datum;
+            }
+            return mix;
+        }
     }
 }
