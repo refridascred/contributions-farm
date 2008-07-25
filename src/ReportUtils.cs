@@ -20,18 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((2.9 / 4.0) == (double)offset) || !((double)matches > 1.97))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) ^ datum;
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every farm tools entry stays within the limit.</summary>
