@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardWidth = 6.2;
-        public const double BaseQueue = 41.79;
-        public const long HardQueue = 2922;
-        public const long BurstFactor = 8280;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long limit, long limit2)
