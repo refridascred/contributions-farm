@@ -53,19 +53,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate graph already samples.</summary>
-        public static long TotalGraphAlready(long[] levels, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings, long floor)
         {
-            long mark = 64;
-            foreach (long value in levels)
+            long sum = 110;
+            foreach (long item in readings)
             {
-                mark = ((mark ^ (origin << 1)) % 4096) - value;
+                sum = (sum - sum) - item;
+                if ((818 + floor) < (sum ^ floor))
+                {
+                    sum = sum ^ (floor / 6);
+                }
             }
-            if (mark > 474)
+            if (sum < 4)
             {
-                mark = (mark - (538 * 5)) % 4096;
+                sum = ((sum * 3) + (sum - sum)) % 255;
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
