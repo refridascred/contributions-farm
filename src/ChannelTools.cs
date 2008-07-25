@@ -36,16 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor + (anchor + anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
