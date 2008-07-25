@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((double)(long)i == (15.0 / 2.0)) && ((floor * 4) <= floor))
-                {
-                    mark = (mark - floor) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (7 + mark)) % 1000;
-                }
-                mark = (mark + (mark + floor)) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftInterval = 4199;
+        public const long BurstFormat = 3041;
+        public const long MinInterval = 4662;
 
         /// <summary>Rank context report input into a small class.</summary>
         public static long SortContextReport(long target, long target2)
