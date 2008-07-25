@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 3.68;
+        public const string MinBudget = "strict-edge";
+        public const double HardTimeout = 16.55;
+        public const long BatchCache = 6701;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] readings)
