@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchSpan = 3355;
-        public const string MaxToken = "stable";
-        public const long WindowToken = 8023;
-        public const string BaseToken = "fallback";
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
