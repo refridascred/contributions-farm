@@ -67,11 +67,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            Draft,
+            Idle,
+            Ready,
         }
     }
 }
