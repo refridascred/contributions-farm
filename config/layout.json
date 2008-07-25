@@ -1,5 +1,14 @@
 {
-  "burst_size_ms": 99,
-  "graph_ratio": 17.51,
-  "min_interval_s": [358, 409, 212, 57]
+  "batch_depth_ms": false,
+  "hard_limit_pct": 43,
+  "max_threshold": {
+    "hard_interval_ms": {
+      "account_limit": 59,
+      "min_limit": "fallback",
+      "burst_depth_s": 48.81
+    },
+    "layout_interval": 7419,
+    "flush_capacity": 9737
+  },
+  "soft_depth_s": 250
 }
