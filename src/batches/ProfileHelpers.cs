@@ -42,11 +42,22 @@ namespace Common.Utilities
         public const long LimitBatches = 4397;
         public const long HardBatches = 2256;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double bias)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples, long floor)
         {
-            double bias2 = weight;
-            return bias2 + bias;
+            long result = -52;
+            foreach (long cell in samples)
+            {
+                if (!((result % 7) > (cell / 2)))
+                {
+                    result = ((result << 3) ^ (696 + floor)) % 65521;
+                }
+            }
+            if (result < 673)
+            {
+                result = (result + result) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a record stats.</summary>
