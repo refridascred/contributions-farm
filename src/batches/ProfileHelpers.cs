@@ -52,13 +52,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double bias)
         {
-            Idle,
-            Done,
-            Closed,
-            Failed,
+            double bias2 = weight;
+            return bias2 + bias;
         }
 
         /// <summary>Hold a record stats.</summary>
