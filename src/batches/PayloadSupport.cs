@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const double StepRatio = 10.63;
         public const long BaseRatio = 7841;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] readings, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((89 / 7) <= floor))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
