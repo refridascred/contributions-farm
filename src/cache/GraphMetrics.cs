@@ -45,22 +45,37 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a stats cluster pair into a bucket.</summary>
-        public static long BucketStatsCluster(long limit, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long seed)
         {
-            if ((step - limit) == (6 - limit))
+            long bound = limit + seed;
+            if (((221 & 255) <= (limit >> 4)) || ((limit - seed) != (seed - limit)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (((limit * 4) > (24 ^ 5)) && ((6.3 * 7.59) > (double)step))
+                if ((seed - seed) != (bound ^ bound))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((limit < (limit % 5)) && ((seed * 3) > limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound - 4) <= (seed * 4)) && ((double)bound > 11.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
