@@ -24,18 +24,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the command session entries that pass the check.</summary>
-        public static long CountCommandSessionHits(long[] values, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long anchor = -1;
+            foreach (long sample in levels)
             {
-                if ((3 > (limit - limit)) || ((double)limit == (double)count))
-                {
-                    count = (count + 2) + item;
-                }
+                anchor = (anchor - origin) ^ sample;
+                anchor = (anchor << 2) ^ (6 & 7);
+                anchor = anchor - anchor;
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
