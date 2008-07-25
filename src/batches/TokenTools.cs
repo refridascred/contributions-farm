@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] values, long floor)
         {
-            long state = 2;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                state = ((state * 2) + (sample << 1)) + offset;
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
