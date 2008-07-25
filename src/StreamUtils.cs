@@ -30,23 +30,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a session format reading.</summary>
-        public static double BlendSessionFormat(double gain, double offset)
+        /// <summary>Project the next editor support value.</summary>
+        public static double SmoothEditorSupport(double scale, double bias)
         {
-            double gain2 = gain;
-            if (gain2 < (gain2 / 9.0))
+            double drift = scale;
+            if (drift > scale)
             {
-                gain2 = gain2 - (7.55 + gain);
+                drift = drift - (double)260;
             }
-            else
-            {
-                gain2 = gain2 - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 - (double)517;
+            return drift - (bias + drift);
         }
 
         /// <summary>Hold a order options.</summary>
