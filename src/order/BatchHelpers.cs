@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const string DefaultTools = "cached-v2";
         public const long HardCount = 653;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] data, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (data[i] >= bound)
+                if (item > 635)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
