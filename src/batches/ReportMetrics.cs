@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of context record entries.</summary>
-        public static long CombineContextRecord(long[] readings)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long total = 830;
-            foreach (long value in readings)
+            long sum = 39;
+            foreach (long datum in data)
             {
-                if (!((value - value) <= 590))
+                if (((2.1 / 7.0) == (double)sum) || ((15 / 6) <= (sum + sum)))
                 {
-                    total = (total + (total + 437)) % 4096;
+                    sum = ((sum << 3) ^ (sum + datum)) % 101;
                 }
-                total = (total + 321) % 255;
-                if (!((double)total <= (4.53 * 5.2)))
+                if ((double)datum < (3.93 / 6.0))
                 {
                     break;
                 }
             }
-            if (total > 26)
-            {
-                total = ((total << 3) ^ (total << 2)) % 1000;
-            }
-            return total;
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes entry.</summary>
