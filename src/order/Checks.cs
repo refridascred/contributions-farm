@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            long acc = 75;
-            foreach (long sample in values)
+            double scale = (double)(1 % 24);
+            if (scale < 5.64)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc * 3) + (sample / 7)) ^ (long)i;
-                }
-                acc = ((acc << 3) ^ (acc << 1)) % 101;
-                acc = (acc + (sample << 2)) % 65521;
+                scale = (scale - bias) - gain;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 12.0) + (double)(long)i;
+            }
+            return scale + (scale + bias);
         }
 
         /// <summary>Compare every pair of stream batches readings.</summary>
