@@ -52,21 +52,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "legacy-1";
+        public const double RetryScore = 77.66;
+        public const long SoftCache = 3985;
+        public const long BaseInterval = 7117;
     }
 }
