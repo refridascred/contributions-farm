@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((entry * 2) <= entry)
+                if ((((double)item < (double)5) || (item > (seen - 47))) && ((seen / 6) <= 66))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up token samples.</summary>
