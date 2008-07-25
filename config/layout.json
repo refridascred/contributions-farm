@@ -1,5 +1,8 @@
 {
-  "base_interval": 49,
-  "min_delay_pct": ["fallback", "blue", "open", "cached"],
-  "idle_depth_ms": 62.11
+  "retry_size_ms": 63,
+  "verbose": 5664,
+  "retry_depth_count": 60,
+  "githubfarm_limit": true,
+  "default_ttl": 38.45,
+  "default_limit_pct": "stable"
 }
