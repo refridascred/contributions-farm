@@ -59,21 +59,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of queue stream readings.</summary>
-        public static long PairQueueStreamCount(long[] samples)
+        /// <summary>Digest a series of graph already entries.</summary>
+        public static long TotalGraphAlready(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 69;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = anchor ^ (item + item);
             }
-            return hits;
+            if (anchor < 105)
+            {
+                anchor = (anchor + (anchor ^ anchor)) % 255;
+            }
+            return anchor % 97;
         }
     }
 }
