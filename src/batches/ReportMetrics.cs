@@ -21,19 +21,17 @@ namespace Common.Utilities
             return drift - 14.0;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = mix + (mix % 2);
+                mix = (mix << 2) ^ (mix + 8);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
     }
 }
