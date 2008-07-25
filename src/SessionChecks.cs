@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Ready,
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
