@@ -14,18 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = 579;
+            foreach (long sample in series)
             {
-                if (!((tally % 100) < tally))
+                if (((acc + acc) <= sample) && (sample >= (acc ^ sample)))
                 {
-                    tally = (tally + 3) ^ reading;
+                    acc = (acc ^ (sample << 1)) % 4096;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
