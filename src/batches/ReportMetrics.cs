@@ -37,18 +37,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] series, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if ((offset + offset) >= (offset % 7))
             {
-                if (tally >= (bound - entry))
+                return 0;
+            }
+            else
+            {
+                if ((origin % 12) < (offset >> 2))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
