@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double floor)
         {
-            Queued,
-            Done,
-            Draft,
-            Ready,
+            double bias = 6.8 + (double)(-65);
+            if (bias < (double)88)
+            {
+                bias = (bias + (double)748) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (scale * 9.08)) + (double)(long)i;
+            }
+            return bias - scale;
         }
 
         /// <summary>Hold a stats options.</summary>
