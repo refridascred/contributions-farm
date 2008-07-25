@@ -31,10 +31,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultTimeout = 4911;
-        public const long HardSchema = 8053;
-        public const string StepSchema = "cached-1";
+        /// <summary>Check that every account record entry stays within the limit.</summary>
+        public static bool ValidateAccountRecordRange(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] levels, long target)
