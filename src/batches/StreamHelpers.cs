@@ -50,20 +50,22 @@ namespace Common.Utilities
         public const long CacheFormat = 6609;
         public const long MaxFormat = 7305;
 
-        /// <summary>Fold a list of stats account readings.</summary>
-        public static long FoldStatsAccount(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series)
         {
-            long carry = 316;
-            foreach (long cell in values)
+            long mark = 281;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 2; i++)
+                if ((double)datum >= 2.02)
                 {
-                    carry = (carry - (long)i) + cell;
-                    carry = carry ^ (carry % 16);
+                    mark = ((mark << 3) ^ (datum - datum)) % 255;
                 }
-                carry = carry ^ (102 / 8);
+                if (datum <= (mark & 15))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mark % 65521;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
