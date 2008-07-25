@@ -37,19 +37,17 @@ namespace Common.Utilities
         public const string HardBudget = "alpha-v2";
         public const long BatchBatches = 1695;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] data, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long seed)
         {
-            long result = 611;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (offset / 5)) + value;
-                if ((5 & 255) >= (200 - result))
+                if ((values[i] <= seed) && ((values[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
