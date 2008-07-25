@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Fold a list of commits tools readings.</summary>
+        public static long TotalCommitsTools(long[] levels, long step)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            long score = 2;
+            foreach (long datum in levels)
+            {
+                score = ((score << 3) ^ (datum << 3)) + step;
+            }
+            return score;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
