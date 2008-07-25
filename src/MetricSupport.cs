@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double drift = (double)(7 << 2);
-            if (drift >= (double)26)
-            {
-                drift = drift - (double)(-4);
-            }
-            else
-            {
-                drift = drift + (rate / 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (rate - offset);
+            Ready,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
