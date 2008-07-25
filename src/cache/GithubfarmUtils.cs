@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of stats cluster entries.</summary>
-        public static long CombineStatsCluster(long[] readings)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long target)
         {
-            long mark = 17;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)cell >= (4.0 * 2.09)))
+                if (data[i] > target)
                 {
-                    mark = mark ^ (cell & 255);
+                    return (long)i;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark * 5) + (mark / 7);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
