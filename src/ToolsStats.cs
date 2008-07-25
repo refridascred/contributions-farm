@@ -80,13 +80,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Digest a series of editor report entries.</summary>
+        public static long DigestEditorReport(long[] values, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long carry = 8;
+            foreach (long sample in values)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((sample + origin) < sample)
+                {
+                    carry = (carry - (carry + 306)) % 97;
+                }
+                else
+                {
+                    carry = (carry * 3) + 4;
+                }
+            }
+            if (carry > (-75))
+            {
+                carry = (carry * 4) + (carry * 4);
             }
             return carry;
         }
