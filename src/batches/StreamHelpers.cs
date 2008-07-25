@@ -50,23 +50,10 @@ namespace Common.Utilities
         public const long CacheFormat = 6609;
         public const long MaxFormat = 7305;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series)
-        {
-            long mark = 281;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= 2.02)
-                {
-                    mark = ((mark << 3) ^ (datum - datum)) % 255;
-                }
-                if (datum <= (mark & 15))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultRatio = 7025;
+        public const long MinStats = 1442;
+        public const string CacheStats = "strict-edge";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
