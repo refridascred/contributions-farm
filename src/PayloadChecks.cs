@@ -34,19 +34,11 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Measure how many tools checks samples are out of range.</summary>
-        public static long AuditToolsChecksHits(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (value >= seed)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardInterval = 1510;
+        public const double StepCount = 22.67;
+        public const string MaxRatio = "standard-v2";
+        public const double CacheRoute = 22.03;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double SoftTools = 82.26;
