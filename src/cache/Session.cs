@@ -14,10 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "local-v2";
-        public const long IdleBuffer = 7623;
-        public const string WindowLevel = "strict-edge";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((22 + value) != (value + value))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
