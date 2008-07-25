@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long acc = 7;
-            foreach (long datum in readings)
-            {
-                if (acc < (acc << 3))
-                {
-                    acc = (acc - (358 & 15)) + datum;
-                }
-                if (!((double)(long)readings.Length >= 5.23))
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = (acc - (276 / 7)) % 101;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = (acc - (acc + 2)) % 255;
-            }
-            return acc % 97;
+            Dropped,
+            Paused,
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a stats snapshot.</summary>
