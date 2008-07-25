@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!((hits ^ hits) < (item - hits)) || ((double)674 <= (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
