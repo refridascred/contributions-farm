@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((target / 5) >= target) || ((double)entry < 4.11))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 290;
+        public const long DefaultProfile = 8320;
+        public const long LimitCount = 4949;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorGaps(long[] readings)
