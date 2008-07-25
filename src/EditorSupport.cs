@@ -79,11 +79,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheSize = 84.18;
-        public const double BurstRatio = 51.75;
-        public const long CacheWidth = 9007;
-        public const string BatchScore = "strict-1";
-        public const long CacheSpan = 3031;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long seed, long step)
+        {
+            if ((seed >= (5 * 5)) && ((4 >> 1) > (624 - seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)seed == (3.0 + 2.04)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
