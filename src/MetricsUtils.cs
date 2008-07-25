@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits + sample) > sample)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = result - (result - result);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Locate a format reading by value.</summary>
