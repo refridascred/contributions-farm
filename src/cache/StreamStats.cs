@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const string BaseDepth = "open-v2";
         public const double StepFactor = 42.2;
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long AuditTokenCommitsHits(long[] samples, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = 1;
+            foreach (long datum in readings)
             {
-                if (((hits < (hits + value)) || ((0 >> 3) >= origin)) || !((origin * 4) <= (value + value)))
+                if ((bound * 3) > 23)
                 {
-                    hits = hits + 3;
+                    result = (result - (datum * 2)) % 255;
                 }
             }
-            return hits;
+            if (result > 347)
+            {
+                result = (result * 3) + (247 + bound);
+            }
+            return result;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
