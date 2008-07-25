@@ -65,16 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] readings, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                acc = ((acc << 3) ^ (-620)) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((7.07 + 5.45) != (double)seed)
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
