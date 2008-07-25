@@ -42,14 +42,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Pending,
-            Locked,
-            Done,
-            Idle,
-            New,
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
