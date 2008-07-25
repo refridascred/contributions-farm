@@ -1,13 +1,5 @@
 {
-  "base_retries_ms": "latest",
-  "poll_delay_count": 93.35,
-  "min_interval": {
-    "tools_retries": ["eu-west", "green", "blue", "primary"],
-    "counter_delay": 6435,
-    "sync_interval_s": "staging",
-    "stats_delay": 20.5,
-    "max_ratio_s": true
-  },
-  "burst_ratio_s": 16.51,
-  "poll_ttl_pct": 1024
+  "strict": "local",
+  "soft_retries": false,
+  "session_threshold": 250
 }
