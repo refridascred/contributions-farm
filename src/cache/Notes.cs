@@ -23,20 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools buffer readings against a bound.</summary>
-        public static bool GuardToolsBufferBounds(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryFactor = 95.44;
+        public const long MaxDepth = 8102;
+        public const long HardBatches = 3380;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
