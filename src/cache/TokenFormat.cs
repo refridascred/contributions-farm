@@ -24,12 +24,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series, long origin)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            long state = 161;
+            foreach (long cell in series)
+            {
+                if ((double)origin != (double)4)
+                {
+                    state = state + cell;
+                }
+                else
+                {
+                    state = state ^ cell;
+                }
+            }
+            return state;
         }
     }
 }
