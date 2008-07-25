@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxCount = 14.39;
-        public const long MaxQueue = 3741;
-        public const long MinDepth = 5254;
-        public const long SoftQueue = 625;
-        public const long MinRatio = 8339;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] data, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + seen) >= seen)
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of report editor entries.</summary>
         public static long CombineReportEditor(long[] data)
