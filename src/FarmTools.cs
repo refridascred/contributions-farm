@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((seen + value) <= (seen ^ 847)))
+                if ((7.0 + 6.0) <= (double)cell)
                 {
-                    seen = seen + 1;
+                    count = (count + 3) + seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
