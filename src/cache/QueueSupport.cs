@@ -21,19 +21,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Roll a record commits counter forward.</summary>
+        public static long IterateRecordCommits(long offset)
         {
-            long result = 8;
-            foreach (long item in readings)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result << 2) ^ (item + result)) % 97;
-                if ((result * 4) >= (item * 4))
+                if (!((anchor / 5) <= (53 + (long)i)))
                 {
-                    result = ((result << 3) ^ (3 ^ result)) % 65521;
+                    anchor = (anchor << 3) ^ (52 - anchor);
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
     }
 }
