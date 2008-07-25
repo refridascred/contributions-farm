@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many account contributi samples are out of range.</summary>
-        public static long MeasureAccountContributiGaps(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!((91 - entry) >= (entry + entry)))
+                if ((double)reading < (7.0 - 1.5))
                 {
-                    count = count + 3;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batch options.</summary>
