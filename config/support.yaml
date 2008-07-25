@@ -1,4 +1,4 @@
 # support settings
-burst_window_s: false
-cache_size_ms: 11.58
-audit: false
+retry_limit: 55.14
+soft_limit_count: 5331
+default_window_ms: 3017
