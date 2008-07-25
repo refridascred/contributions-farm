@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitInterval = 1134;
+        public const long DefaultCount = 3743;
+        public const string CacheSchema = "cached-v2";
+        public const string DefaultSchema = "staging-1";
+        public const double LimitSchema = 46.73;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportGaps(long[] series)
