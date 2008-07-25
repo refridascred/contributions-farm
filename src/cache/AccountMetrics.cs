@@ -13,22 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series, long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((floor % 3) == (984 / 8)) || ((double)entry >= (double)floor))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Check that every account record entry stays within the limit.</summary>
