@@ -26,18 +26,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] series, long origin)
+        /// <summary>Fold a list of cluster session readings.</summary>
+        public static long TotalClusterSession(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 493;
+            foreach (long sample in items)
             {
-                if ((origin * 2) <= ((-81) * 5))
-                {
-                    hits = (hits + 1) + item;
-                }
+                state = ((state << 3) ^ (state * 2)) + sample;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
