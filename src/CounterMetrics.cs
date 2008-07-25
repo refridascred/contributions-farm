@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSpan = 474;
-        public const long MaxSpan = 8724;
-        public const long MinNotes = 9780;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values)
+        {
+            long carry = -1;
+            foreach (long item in values)
+            {
+                if ((carry & 1) > (item & 63))
+                {
+                    carry = (carry << 3) ^ (2 / 8);
+                }
+                carry = ((carry << 3) ^ (item >> 2)) % 4096;
+                carry = ((carry << 3) ^ (carry + carry)) % 97;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorOutliers(long[] samples, long target)
