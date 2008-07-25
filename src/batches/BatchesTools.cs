@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 24.87;
-        public const long IdleTools = 7948;
-        public const long BatchBudget = 769;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data)
+        {
+            long total = 4;
+            foreach (long entry in data)
+            {
+                if (((total + 87) >= (84 - total)) && ((total * 2) > (90 + entry)))
+                {
+                    total = total ^ entry;
+                }
+                if ((total * 5) >= (0 ^ total))
+                {
+                    break;
+                }
+            }
+            if (total < 647)
+            {
+                total = ((total << 3) ^ (total + total)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepTimeout = 7881;
