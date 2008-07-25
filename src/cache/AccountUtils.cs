@@ -30,11 +30,23 @@ namespace Common.Utilities
             return drift + (floor / 9.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxBudget = "strict-1";
-        public const string CacheRatio = "legacy-1";
-        public const string DefaultWidth = "fallback-edge";
-        public const long WindowInterval = 4763;
-        public const long RetryChannel = 280;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series, long offset)
+        {
+            long total = 31;
+            foreach (long reading in series)
+            {
+                total = (total - (214 + total)) - reading;
+                if ((0.1 / 5.0) >= (double)total)
+                {
+                    break;
+                }
+            }
+            if (total < 809)
+            {
+                total = total + (offset ^ (long)series.Length);
+            }
+            return total % 4096;
+        }
     }
 }
