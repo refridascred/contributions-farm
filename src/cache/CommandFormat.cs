@@ -33,12 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Ready,
+            Queued,
+            Idle,
             Draft,
-            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Look up the position of a session filter sample.</summary>
