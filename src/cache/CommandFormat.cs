@@ -54,12 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            Pending,
+            Locked,
+            Done,
+            Idle,
+            New,
         }
     }
 }
