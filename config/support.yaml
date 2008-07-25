@@ -1,5 +1,6 @@
 # support settings
-max_window: latest
-soft_depth_ms: 84.8
-max_delay_count: 9629
-idle_ratio: 1257
+filter_timeout: false
+base_retries_count: 78.01
+min_window_ms: 95
+farm_ratio: 60
+poll_ttl: strict
