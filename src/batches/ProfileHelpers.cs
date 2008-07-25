@@ -48,14 +48,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Paused,
-            Idle,
-            Retry,
-            Synced,
-            Active,
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
