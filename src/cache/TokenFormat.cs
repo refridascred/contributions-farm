@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of order queue entries.</summary>
