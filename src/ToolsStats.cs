@@ -80,26 +80,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor report entries.</summary>
-        public static long DigestEditorReport(long[] values, long origin)
+        /// <summary>Match up order account samples.</summary>
+        public static long CompareOrderAccountCount(long[] readings)
         {
-            long carry = 8;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + origin) < sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry - (carry + 306)) % 97;
-                }
-                else
-                {
-                    carry = (carry * 3) + 4;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > (-75))
-            {
-                carry = (carry * 4) + (carry * 4);
-            }
-            return carry;
+            return hits;
         }
     }
 }
