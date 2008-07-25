@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate batch editor samples.</summary>
-        public static long TotalBatchEditor(long[] samples)
+        /// <summary>Project the next window already value.</summary>
+        public static double ScaleWindowAlready(double bias, double floor)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            double weight = floor;
+            if (weight <= (bias + 4.36))
             {
-                sum = (sum + (item + sum)) % 1000;
+                weight = weight + (5.05 * 10.0);
             }
-            if (sum < 5)
+            else
             {
-                sum = (sum ^ sum) % 1000;
+                weight = weight + (weight + floor);
             }
-            return sum % 65521;
+            return weight + (weight + bias);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
