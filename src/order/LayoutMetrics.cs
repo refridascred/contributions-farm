@@ -19,11 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            double rate = (double)(66 ^ 10);
+            return ((rate - (double)67) + bias) + offset;
         }
 
         /// <summary>Combine support values into a single score.</summary>
