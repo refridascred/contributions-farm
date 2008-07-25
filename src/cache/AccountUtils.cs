@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double gain, double bias)
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            double rate = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate - rate) + (double)(long)i) - bias;
+            }
+            return rate + (double)119;
         }
 
         /// <summary>Digest a series of context entries.</summary>
