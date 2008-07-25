@@ -27,22 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] readings, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (5 >= bound)
+                if ((double)hits < (17.0 + 6.87))
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = ((hits + 1) + cell) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
