@@ -25,11 +25,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 8823;
-        public const long BurstDepth = 968;
-        public const long MaxBatches = 7765;
-        public const long StepRatio = 6012;
-        public const long CacheBatches = 1297;
+        /// <summary>Compare every pair of token commits readings.</summary>
+        public static long OverlapTokenCommitsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
