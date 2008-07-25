@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] items, long floor)
         {
-            Ready,
-            Pending,
-            Stale,
-            Locked,
+            long mix = -44;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = ((mix + floor) ^ (long)i) + value;
+                    mix = (mix * 3) + (734 << 2);
+                }
+                mix = (mix << 3) ^ 790;
+                if ((double)floor >= (6.83 + 6.1))
+                {
+                    mix = ((mix << 3) ^ (34 + mix)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a format info.</summary>
