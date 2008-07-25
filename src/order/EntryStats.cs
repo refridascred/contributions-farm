@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardWidth = 7823;
-        public const string HardContext = "staging-v2";
-        public const double IdleContext = 81.21;
-        public const string StepContext = "staging-v2";
-        public const string WindowLevel = "primary-1";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((14.0 - 8.07) < (double)target) || (matches >= (target % 3)))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of format farm readings.</summary>
         public static long WeighFormatFarm(long[] items)
