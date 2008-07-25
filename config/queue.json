@@ -1,24 +1,6 @@
 {
-  "batch_threshold_pct": {
-    "default_timeout": "fallback",
-    "sync_delay_ms": "strict",
-    "burst_window_ms": "primary",
-    "batch_interval_s": 83,
-    "batches_limit": {
-      "enabled": false,
-      "strict": 250,
-      "warm_threshold_s": "stable",
-      "hard_interval": "stable",
-      "base_threshold_ms": false,
-      "command_ratio": 69.96
-    },
-    "stream_capacity": false
-  },
-  "warm_ttl_ms": {
-    "githubfarm_ratio": 57,
-    "batch_threshold": 10,
-    "warm_capacity": 19,
-    "profile_size": "open"
-  },
-  "account_depth": false
+  "max_delay_s": "standard",
+  "batch_window_count": 78,
+  "sync_depth": 500,
+  "batch_ttl_ms": 86
 }
