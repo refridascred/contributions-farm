@@ -1,4 +1,13 @@
 # support settings
-retry_limit: 55.14
-soft_limit_count: 5331
-default_window_ms: 3017
+flush_window_count:
+  min_threshold_count: edge
+  idle_delay:
+    - 241
+    - 421
+    - 83
+    - 429
+  batch_threshold: false
+  strict: 40
+  batch_interval: legacy
+min_window: true
+stats_retries: green
