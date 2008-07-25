@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 121;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark ^ mark) % 101;
+                if ((28 - step) <= (1 & 255))
                 {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 4) + cell) % 97;
+                }
+                if ((step * 2) >= (46 ^ mark))
+                {
+                    mark = (mark * 4) + 8;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of report githubfarm readings.</summary>
