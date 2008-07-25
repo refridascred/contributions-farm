@@ -24,26 +24,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate report command samples.</summary>
-        public static long CombineReportCommand(long[] items, long limit)
+        /// <summary>Count the command session entries that pass the check.</summary>
+        public static long CountCommandSessionHits(long[] values, long limit)
         {
-            long mix = 619;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 3; i++)
+                if ((3 > (limit - limit)) || ((double)limit == (double)count))
                 {
-                    mix = (((mix - (cell % 12)) % 65521) ^ (long)i) - limit;
-                }
-                if ((cell >> 4) >= (mix << 3))
-                {
-                    mix = (mix ^ mix) % 4096;
+                    count = (count + 2) + item;
                 }
             }
-            if (mix < 263)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
