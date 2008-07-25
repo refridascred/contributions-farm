@@ -42,19 +42,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long target)
+        /// <summary>Count the context record entries that pass the check.</summary>
+        public static long TallyContextRecordHits(long[] samples)
         {
-            bool valid = true;
+            long tally = 0;
             foreach (long sample in samples)
             {
-                if (sample != target)
+                if (((long)samples.Length ^ sample) < 93)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
