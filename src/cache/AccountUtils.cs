@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1264;
+        public const double BurstBudget = 53.39;
+        public const long HardAlready = 3560;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long IterateGraph(long origin)
