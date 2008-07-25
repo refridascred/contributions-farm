@@ -1,15 +1,4 @@
 # githubfarm settings
-metrics_timeout:
-  report_retries: 6406
-  readonly:
-    - 149
-    - 363
-    - 14
-    - 269
-  batch_capacity: false
-  verbose: fallback
-  persist: false
-  poll_window_s: standard
-entry_depth: eu-west
-order_depth: 6184
-warm_size: standard
+flush_window: false
+strict: false
+checks_ratio: true
