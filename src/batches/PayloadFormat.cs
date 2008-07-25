@@ -29,13 +29,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long step)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
