@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long acc = 53;
+            foreach (long sample in data)
             {
-                result = result + target;
-                result = ((result * 2) + (long)i) % 101;
+                if ((sample / 8) > (sample * 2))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                else
+                {
+                    acc = (acc * 2) + acc;
+                }
             }
-            return result;
+            if (acc < 26)
+            {
+                acc = ((acc * 5) + (acc / 4)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
