@@ -20,13 +20,31 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long floor, long floor2)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            if ((floor2 - floor2) < (floor2 + floor2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= floor2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor2 >= 3.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
