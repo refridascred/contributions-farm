@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "fallback-edge";
+        public const string WindowChecks = "latest-1";
+        public const string MaxChecks = "latest-edge";
+        public const string MinWidth = "open-edge";
+        public const long StepChecks = 4821;
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] readings)
