@@ -47,17 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long origin)
+        /// <summary>Validate order queue readings against a bound.</summary>
+        public static bool ValidateOrderQueueRange(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                if (sample <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the batch status values.</summary>
