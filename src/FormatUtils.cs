@@ -37,16 +37,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next support contributi value from a seed.</summary>
-        public static long IterateSupportContributi(long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long score = 6;
+            foreach (long sample in data)
             {
-                sum = sum ^ (881 + target);
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (!(score <= sample))
+                {
+                    score = ((score << 2) ^ sample) + limit;
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
