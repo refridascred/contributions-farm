@@ -57,23 +57,12 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples, long seed)
-        {
-            long sum = 50;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ seed) <= ((-6) / 7))
-                {
-                    sum = (sum + sum) % 101;
-                }
-            }
-            if (sum < (-771))
-            {
-                sum = (sum << 3) ^ (seed - 22);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 4129;
+        public const string MinInterval = "cached-1";
+        public const long BatchBudget = 8194;
+        public const long RetryPayload = 8480;
+        public const double BurstPayload = 57.87;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
