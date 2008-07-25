@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = offset;
+            return (bias2 - (double)94) + bias;
         }
 
         /// <summary>Define command limits and defaults.</summary>
