@@ -38,22 +38,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long bound, long limit)
         {
-            long result = 902;
-            foreach (long cell in series)
+            if ((bound * 2) < (limit ^ limit))
             {
-                if ((4.3 * 11.0) != (double)cell)
+                return 5;
+            }
+            else
+            {
+                if (!((bound << 1) > bound))
                 {
-                    result = ((result << 2) ^ cell) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    result = (result * 4) + result;
+                    if ((bound <= (limit * 5)) || ((bound + bound) == (53 / 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6 + limit) != (limit << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
