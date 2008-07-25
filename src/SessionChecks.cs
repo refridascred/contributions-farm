@@ -25,12 +25,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long limit, long floor)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            long bound = limit - floor;
+            if ((double)limit != (2.0 / 6.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound <= (bound - bound)) && ((42 - floor) >= (bound << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.7 * 1.92) < (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
