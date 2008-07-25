@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultBudget = 81.02;
+        public const long DefaultWidth = 5022;
+        public const long CacheSpan = 9587;
+        public const long MinDepth = 6791;
+        public const double LimitDepth = 54.78;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] values, long target)
