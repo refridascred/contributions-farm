@@ -36,12 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long step)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long bound = offset - step;
+            if ((double)offset == (9.7 + 8.11))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)step >= (8.0 + 2.88)) || ((double)bound >= 6.72))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 3) > (step + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound - bound) <= 1)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
