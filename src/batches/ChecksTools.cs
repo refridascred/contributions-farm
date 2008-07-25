@@ -13,18 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] samples)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((4.0 - 7.2) == (double)count)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a support summary.</summary>
