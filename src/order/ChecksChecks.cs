@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long BatchQueue = 6051;
         public const double HardCount = 65.59;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
     }
 }
