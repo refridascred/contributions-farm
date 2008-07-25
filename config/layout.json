@@ -1,6 +1,6 @@
 {
-  "persist": 44.28,
-  "format_ttl": "legacy",
-  "min_delay_ms": 4559,
-  "warm_interval_ms": 3209
+  "retry_timeout_s": 3,
+  "strict": "stable",
+  "sync_depth_pct": 24,
+  "cache_ttl_pct": false
 }
