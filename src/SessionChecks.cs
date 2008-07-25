@@ -36,23 +36,10 @@ namespace Common.Utilities
             return weight - (6.66 - floor);
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((18.0 / 8.0) > (double)entry)
-                {
-                    matches = (matches + 3) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheTimeout = 17.54;
+        public const long MaxScore = 9763;
+        public const long SoftBudget = 5261;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueBounds(long[] data, long limit)
