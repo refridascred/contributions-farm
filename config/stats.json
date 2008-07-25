@@ -1,19 +1,5 @@
 {
-  "min_limit_s": [398, 154, 486, 254],
-  "batch_capacity_pct": "fallback",
-  "compress": "edge",
-  "base_capacity_count": {
-    "poll_window_s": 26.36,
-    "enabled": {
-      "hard_retries": "open",
-      "cache_limit_ms": "staging",
-      "enabled": 6432,
-      "sync_limit_ms": "green"
-    },
-    "retry_timeout_ms": false,
-    "window_capacity": [462, 194],
-    "verbose": "strict",
-    "dry_run": false
-  },
-  "default_capacity_ms": "latest"
+  "retry_capacity_count": 8740,
+  "flush_depth": false,
+  "audit": 7799
 }
