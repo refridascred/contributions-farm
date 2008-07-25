@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 23.05;
-        public const long HardOrder = 7464;
-        public const double SoftOrder = 95.39;
-        public const string MinRatio = "staging-1";
-        public const string StepOrder = "legacy-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultFactor = 5172;
+        public const long WindowCache = 9140;
+        public const string CacheCount = "standard-edge";
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] levels, long floor)
