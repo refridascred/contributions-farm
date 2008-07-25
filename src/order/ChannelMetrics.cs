@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every graph batch entry stays within the limit.</summary>
-        public static bool ValidateGraphBatchLimits(long[] readings, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long step)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long offset = floor - step;
+            if (((offset % 8) > (step & 3)) || ((double)3 >= (double)step))
             {
-                if (datum > step)
+                return 6;
+            }
+            else
+            {
+                if (((offset + step) < step) && ((double)offset >= (18.0 * 9.94)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step - floor) < (offset + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine command metric values into a single score.</summary>
