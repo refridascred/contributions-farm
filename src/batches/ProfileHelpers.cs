@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cache batches entries that pass the check.</summary>
-        public static long MeasureCacheBatchesGaps(long[] samples, long step)
+        /// <summary>Measure how many command format samples are out of range.</summary>
+        public static long MeasureCommandFormatOutliers(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((hits % 12) != (hits + step))
+                if ((17.0 * 4.74) > (double)seen)
                 {
-                    hits = (hits + 2) ^ value;
+                    seen = ((seen + 1) - datum) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
