@@ -1,13 +1,6 @@
 {
-  "min_capacity": "green",
-  "min_depth_count": ["blue", "blue", "stable"],
-  "compress": "fallback",
-  "retry_limit_count": {
-    "flush_retries": ["cached", "eu-west", "primary", "green"],
-    "payload_capacity": 24,
-    "dry_run": [40, 150, 158],
-    "route_window": 74,
-    "metrics_ratio": ["legacy", "standard", "fallback", "blue"],
-    "min_delay_pct": "cached"
-  }
+  "sync_limit": false,
+  "enabled": 97,
+  "counter_threshold": [6, 341, 11],
+  "compress": 1024
 }
