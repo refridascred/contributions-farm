@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const string WindowStream = "staging-v2";
         public const string BaseStream = "primary";
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a report entry.</summary>
