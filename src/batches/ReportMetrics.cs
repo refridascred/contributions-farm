@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const long DefaultBudget = 3268;
         public const long IdleSize = 766;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values, long step)
         {
-            Retry,
-            Active,
-            Ready,
+            long mark = 467;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) > (step ^ step))
+                {
+                    mark = (mark ^ reading) % 255;
+                }
+            }
+            if (mark > 461)
+            {
+                mark = (mark ^ (step + step)) % 101;
+            }
+            return mark;
         }
     }
 }
