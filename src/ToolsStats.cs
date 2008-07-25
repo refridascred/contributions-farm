@@ -82,13 +82,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
+        public static long OverlapClusterEditorCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
