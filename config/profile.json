@@ -1,14 +1,16 @@
 {
-  "graph_limit": 8641,
-  "base_threshold_pct": 100,
-  "idle_retries": {
-    "min_ttl_pct": 3945,
-    "base_timeout_pct": [56, 184],
-    "token_interval": 667,
-    "min_ttl_s": false,
-    "cache_interval_pct": 6181
-  },
-  "buffer_window": 30,
-  "audit": "eu-west",
-  "cache_ttl": 250
+  "already_delay": ["strict", "staging", "legacy"],
+  "min_capacity_s": "latest",
+  "default_ttl": "standard",
+  "cache_delay_pct": {
+    "min_capacity": {
+      "cache_depth_s": 85,
+      "min_retries_s": false,
+      "cache_threshold": 2635,
+      "retry_ratio": [258, 181, 103, 128],
+      "default_size": 22.42
+    },
+    "sync_depth": false,
+    "base_limit_s": "eu-west"
+  }
 }
