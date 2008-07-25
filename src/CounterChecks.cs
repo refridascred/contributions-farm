@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Token { get; set; }
             public long Label { get; set; }
-            public double Level { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of profile route entries.</summary>
