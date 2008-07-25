@@ -37,19 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter command entry stays within the limit.</summary>
-        public static bool ValidateFilterCommandRange(long[] samples, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Failed,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
