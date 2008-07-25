@@ -1,15 +1,26 @@
 # support settings
-max_depth_pct: 22
-persist:
-  - eu-west
-  - stable
-hard_interval_ms:
-  - latest
-  - standard
-  - local
-  - blue
-readonly: green
-audit: eu-west
-sync_interval:
-  - 293
-  - 321
+poll_threshold_s: false
+flush_window_count: 17
+batch_delay_count: latest
+context_size:
+  idle_interval:
+    - 488
+    - 152
+    - 308
+  poll_delay_count: strict
+  burst_ttl:
+    poll_ratio: false
+    base_limit: standard
+    max_window_ms: 3297
+    sync_threshold: standard
+    editor_retries: 4.27
+  readonly: staging
+context_interval: true
+idle_ttl:
+  dry_run: open
+  idle_timeout_count:
+    - stable
+    - standard
+    - fallback
+    - open
+  batch_interval: edge
