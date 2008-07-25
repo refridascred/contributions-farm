@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const long LimitEditor = 57;
         public const long BaseEditor = 4788;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples, long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long origin)
         {
-            long score = 8;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score << 2) ^ (score << 3)) ^ sample) + target;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (score < (-2))
-            {
-                score = ((score * 4) + score) % 97;
-            }
-            return score % 97;
+            return -1;
         }
     }
 }
