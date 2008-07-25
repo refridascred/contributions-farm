@@ -23,18 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] items, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long total = 472;
+            foreach (long value in levels)
             {
-                if ((hits & 3) > hits)
+                if (!((0.1 - 9.5) > (double)target))
                 {
-                    hits = ((hits + 2) + value) - floor;
+                    total = total - target;
                 }
+                total = total - (511 + value);
+                total = total + (total % 12);
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
