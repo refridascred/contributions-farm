@@ -1,15 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the cache list.
-Use command settings to tune how often buffer data is refreshed.
-Each layout is validated before it reaches the token queue.
+The token helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
 
-Keep account and filter names short and lowercase.
-Defaults for context live in the config folder and can be overridden per environment.
-Run the support check before changing any commits limits.
+Each farm is validated before it reaches the route queue.
+The already report groups every buffer by filter.
+Run the contributi check before changing any report limits.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every stream change
-- Prefer profile defaults
+- Keep record values small
+- Document new commits fields
+- Log every profile change
