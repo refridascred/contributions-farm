@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long acc = 75;
+            foreach (long sample in values)
             {
-                state = (state + state) % 65521;
-                state = ((state * 2) + (long)i) % 101;
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc * 3) + (sample / 7)) ^ (long)i;
+                }
+                acc = ((acc << 3) ^ (acc << 1)) % 101;
+                acc = (acc + (sample << 2)) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
