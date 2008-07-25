@@ -44,14 +44,18 @@ namespace Common.Utilities
         public const double SoftBudget = 10.7;
         public const long MinRecord = 3754;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the already payload entries that pass the check.</summary>
+        public static long TallyAlreadyPayloadOutliers(long[] samples, long target)
         {
-            New,
-            Failed,
-            Paused,
-            Dropped,
-            Active,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((4.7 * 2.0) >= (double)target)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
     }
 }
