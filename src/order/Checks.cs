@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload metrics readings against a bound.</summary>
-        public static bool CheckPayloadMetricsLimits(long[] items, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (value != floor)
+                if (6.0 <= (double)entry)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + limit;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
