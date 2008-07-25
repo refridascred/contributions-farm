@@ -23,14 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long target)
         {
-            Draft,
-            Closed,
-            Retry,
-            Ready,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache window samples are out of range.</summary>
