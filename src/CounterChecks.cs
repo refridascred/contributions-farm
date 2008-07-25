@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double weight, double offset)
+        /// <summary>Derive the next token route value from a seed.</summary>
+        public static long StepTokenRoute(long seed)
         {
-            double rate = weight;
-            if (rate < 3.98)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate + (weight / 5.0);
+                if (20.0 < (double)total)
+                {
+                    total = (total - (769 + seed)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 4.3) + (double)(long)i;
-            }
-            return rate + offset;
+            return total;
         }
 
         /// <summary>Digest a series of profile route entries.</summary>
