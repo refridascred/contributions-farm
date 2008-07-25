@@ -7,14 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=162
+CHANNEL_LIMIT=233
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in legacy local edge latest; do
-    log "checking ${item}"
-done
