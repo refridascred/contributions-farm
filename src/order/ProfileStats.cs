@@ -30,11 +30,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 2195;
-        public const long LimitOrder = 6575;
-        public const long DefaultOrder = 8433;
-        public const string BurstOrder = "strict-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 8.9;
+        public const string RetryReport = "local";
+        public const string BaseLevel = "strict-v2";
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long DeriveCluster(long step)
