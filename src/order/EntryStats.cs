@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a farm metrics sample.</summary>
-        public static long LookupFarmMetricsIndex(long[] items, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long target, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)seed <= (5.33 - 8.59))
             {
-                if (items[i] > bound)
+                return 6;
+            }
+            else
+            {
+                if ((12.0 >= (double)target) || ((42 << 3) != (target ^ seed)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((target % 10) >= (6 / 5)) || ((seed - seed) >= (seed / 6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((target << 3) <= seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
