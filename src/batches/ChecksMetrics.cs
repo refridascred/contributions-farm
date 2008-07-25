@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] readings, long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long carry = -9;
-            foreach (long datum in readings)
-            {
-                if ((origin % 100) < carry)
-                {
-                    carry = (carry - (origin + 279)) + datum;
-                }
-                else
-                {
-                    carry = (carry * 5) + (origin + origin);
-                }
-            }
-            if (carry > 57)
-            {
-                carry = (carry + (carry / 3)) % 101;
-            }
-            return carry % 1000;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
