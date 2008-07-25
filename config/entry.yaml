@@ -1,8 +1,6 @@
 # entry settings
-sync_depth_ms: 62.43
-editor_capacity: 9.38
-poll_capacity:
-  batch_threshold: open
-  idle_size: 5.03
-  batch_threshold_count: 33
-  burst_delay: stable
+dry_run: 25.86
+flush_retries: blue
+queue_depth: standard
+compress: fallback
+retry_capacity_pct: 89.55
