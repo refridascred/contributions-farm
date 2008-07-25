@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = bias2 / 5.0;
+            if (mean <= bias)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + mean;
             }
-            return -1;
+            return mean - (bias - bias2);
         }
 
         /// <summary>Fold a list of session readings.</summary>
