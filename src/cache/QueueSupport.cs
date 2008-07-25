@@ -25,38 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] items)
         {
-            if (!((target % 10) >= (target * 3)))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (8.0 * 2.55))
+                if ((long)items.Length >= 25)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target < (offset - 173))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target + 24) > (595 % 100)) && ((target << 3) <= 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
     }
 }
