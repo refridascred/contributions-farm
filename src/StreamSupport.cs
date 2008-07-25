@@ -31,19 +31,21 @@ namespace Common.Utilities
             return mean - (mean * 20.0);
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            double gain = bias2;
-            if (gain <= (double)31)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (gain + bias);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain + (bias2 + bias);
+            return hits;
         }
     }
 }
