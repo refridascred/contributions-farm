@@ -24,18 +24,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] samples, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double ratio, double bias)
         {
-            long result = 330;
-            foreach (long datum in samples)
+            double load = (2.55 - ratio) / 8.0;
+            if (load < load)
             {
-                if (!((datum ^ datum) >= (56 + datum)))
-                {
-                    result = ((result * 3) + (result - limit)) % 4096;
-                }
+                load = (load + load) - bias;
             }
-            return result % 97;
+            return load - load;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
