@@ -1,6 +1,5 @@
 {
-  "poll_window_count": true,
-  "burst_threshold": "blue",
-  "schema_threshold": "green",
-  "order_threshold": ["local", "legacy", "primary"]
+  "retry_depth_count": [437, 317],
+  "strict": [456, 305, 131],
+  "default_depth_ms": 30
 }
