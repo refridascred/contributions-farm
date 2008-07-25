@@ -40,12 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values)
         {
-            Paused,
-            Done,
-            Closed,
+            long sum = 9;
+            foreach (long item in values)
+            {
+                sum = ((sum * 5) + (item & 15)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
