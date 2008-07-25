@@ -62,31 +62,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long target, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if ((6.45 < (double)bound) || ((bound % 100) == (target + bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.6 - 1.0) <= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (2.0 > (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
