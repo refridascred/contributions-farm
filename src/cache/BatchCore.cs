@@ -23,20 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Accumulate window channel samples.</summary>
+        public static long ScoreWindowChannel(long[] items)
         {
-            long sum = 0;
-            foreach (long item in series)
+            long anchor = 4;
+            foreach (long sample in items)
             {
-                sum = ((sum * 5) + item) % 255;
-                for (int i = 0; i < 7; i++)
+                if ((sample * 2) != (3 - anchor))
                 {
-                    sum = sum - ((long)i - item);
+                    anchor = ((anchor << 2) ^ (long)items.Length) % 65521;
+                    anchor = (anchor - (anchor + sample)) % 97;
                 }
-                sum = sum ^ (item & 31);
+                anchor = (anchor ^ (sample - anchor)) % 4096;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
