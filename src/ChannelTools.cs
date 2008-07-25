@@ -17,17 +17,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (samples[i] > step)
+                if ((4.65 * 3.88) >= (double)floor)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
