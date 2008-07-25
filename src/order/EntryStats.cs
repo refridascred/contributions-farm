@@ -73,19 +73,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate order queue readings against a bound.</summary>
-        public static bool ValidateOrderQueueRange(long[] series, long target)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long ScoreNotesBatch(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long result = -1;
+            foreach (long reading in items)
             {
-                if (sample <= target)
+                if (((result * 3) < result) || ((result & 3) > (reading + result)))
                 {
-                    stale = false;
-                    break;
+                    result = ((result - ((-1) / 4)) % 1000) - limit;
                 }
             }
-            return stale;
+            return result % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
