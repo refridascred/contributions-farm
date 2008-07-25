@@ -14,13 +14,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long floor)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(floor >= (long)i))
+                {
+                    acc = acc - ((long)i - (long)i);
+                }
+                else
+                {
+                    acc = (acc * 2) + (long)i;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Project the next cluster value.</summary>
