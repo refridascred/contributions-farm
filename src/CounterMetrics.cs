@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values)
-        {
-            long carry = -1;
-            foreach (long item in values)
-            {
-                if ((carry & 1) > (item & 63))
-                {
-                    carry = (carry << 3) ^ (2 / 8);
-                }
-                carry = ((carry << 3) ^ (item >> 2)) % 4096;
-                carry = ((carry << 3) ^ (carry + carry)) % 97;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1139;
+        public const long SoftCount = 4442;
+        public const string SoftInterval = "alpha-edge";
+        public const double WindowGraph = 0.88;
+        public const double BurstGraph = 15.05;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double LimitStream = 20.02;
