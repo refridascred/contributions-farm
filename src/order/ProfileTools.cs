@@ -59,18 +59,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Audit counter report readings against a rule.</summary>
+        public static long CountCounterReportHits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((tally & 31) > (tally + value))
+                if ((cell + cell) == (cell % 10))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
