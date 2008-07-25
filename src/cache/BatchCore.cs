@@ -34,19 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] data, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ (2 - acc)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
     }
 }
