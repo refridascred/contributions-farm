@@ -87,22 +87,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long total = 51;
-            foreach (long entry in levels)
-            {
-                if ((total >> 4) > entry)
-                {
-                    total = ((total * 2) + floor) % 101;
-                }
-            }
-            if (total < 3)
-            {
-                total = (total ^ (total >> 1)) % 255;
-            }
-            return total % 4096;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
