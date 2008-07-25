@@ -15,26 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data, long floor)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double floor)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            double ratio = (double)(5 - 91);
+            if (ratio >= (floor * 1.9))
             {
-                if (((long)data.Length * 3) >= 89)
-                {
-                    mark = (mark - ((long)data.Length / 8)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (mark + mark)) % 65521;
-                }
-                if (reading > floor)
-                {
-                    break;
-                }
+                ratio = ratio + (double)67;
             }
-            return mark % 4096;
+            else
+            {
+                ratio = ratio + (gain - floor);
+            }
+            return ratio - (ratio * 8.68);
         }
 
         /// <summary>Hold a account stats.</summary>
