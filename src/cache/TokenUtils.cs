@@ -27,19 +27,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 2835;
+        public const long HardSession = 1780;
+        public const long BaseFactor = 3905;
+        public const long LimitSession = 2577;
     }
 }
