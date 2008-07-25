@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] data)
         {
-            long carry = 7;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                carry = (((carry << 3) ^ (carry + 4)) ^ cell) - floor;
+                if ((hits + hits) > (datum + datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
