@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long step, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            long lane = step + limit;
-            if (limit > (975 ^ (-1)))
+            long total = 27;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 4) >= step)
+                if (((-9) & 7) < total)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)lane != (double)642)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total * 5) + (entry - total);
                 }
             }
+            if (total < 928)
+            {
+                total = (total * 2) + (25 & 31);
+            }
+            return total;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
