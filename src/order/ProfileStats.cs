@@ -43,17 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] values, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] == target)
+                if (!((double)matches != (8.2 * 3.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
