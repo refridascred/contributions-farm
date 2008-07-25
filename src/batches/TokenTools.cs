@@ -33,13 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long origin)
         {
-            Failed,
-            Synced,
-            New,
-            Paused,
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((4 + 641) < acc)
+                {
+                    acc = (acc - 102) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ 379) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
