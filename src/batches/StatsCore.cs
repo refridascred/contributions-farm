@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a channel filter sample.</summary>
-        public static long FindChannelFilterIndex(long[] levels, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
