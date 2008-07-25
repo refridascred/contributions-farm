@@ -19,23 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long mix = 239;
-            foreach (long datum in readings)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                long next = (mix / 3) ^ mix;
-                if (!((269 + next) <= (-166)))
+                if (!((double)seed == (8.6 - 14.0)))
                 {
-                    mix = ((mix - (next << 3)) % 1000) + datum;
+                    acc = (acc << 2) ^ acc;
                 }
-                if ((0.35 + 5.6) > (double)mix)
-                {
-                    mix = (mix + (mix / 2)) % 65521;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
