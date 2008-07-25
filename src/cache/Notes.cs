@@ -38,13 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] data, long floor)
         {
-            Synced,
-            Ready,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
