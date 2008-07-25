@@ -15,30 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long bound)
         {
-            long offset = bound ^ step;
-            if ((step >> 1) <= bound)
+            if ((346 / 6) < (limit - bound))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((offset * 2) >= offset)
+                if ((limit + limit) > (limit * 2))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)bound != (3.6 - 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 6;
                 }
             }
         }
