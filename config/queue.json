@@ -1,8 +1,13 @@
 {
-  "editor_timeout": 250,
-  "batch_depth_s": ["local", "standard"],
-  "max_timeout_count": false,
-  "warm_timeout_pct": "primary",
-  "contributi_threshold": true,
-  "max_timeout": 8161
+  "retry_retries_count": 30,
+  "enabled": ["green", "legacy"],
+  "min_threshold_s": {
+    "audit": false,
+    "strict": "green",
+    "min_ttl": "fallback",
+    "layout_retries": ["edge", "edge", "strict", "strict"]
+  },
+  "idle_capacity": "latest",
+  "retry_retries_s": 71.01,
+  "editor_size": [196, 495]
 }
