@@ -1,18 +1,16 @@
 {
-  "soft_interval": 5702,
-  "schema_timeout": 22,
-  "burst_size_s": {
-    "readonly": {
-      "min_interval_ms": false,
-      "retry_capacity_count": "eu-west",
-      "max_timeout_count": 5.04,
-      "strict": ["local", "eu-west", "green", "legacy"],
-      "readonly": [100, 289, 432, 122],
-      "format_retries": false
-    },
-    "githubfarm_interval": true,
-    "retry_depth_count": ["stable", "primary"]
+  "dry_run": ["blue", "edge", "primary", "primary"],
+  "verbose": {
+    "default_retries": 2066,
+    "checks_limit": 100,
+    "buffer_timeout": 80
   },
-  "route_capacity": "open",
-  "poll_depth_count": "green"
+  "readonly": 28.16,
+  "max_ttl_ms": "cached",
+  "flush_threshold_pct": {
+    "buffer_size": 9536,
+    "command_retries": "green",
+    "readonly": ["latest", "local", "fallback", "fallback"]
+  },
+  "min_threshold_s": 5174
 }
