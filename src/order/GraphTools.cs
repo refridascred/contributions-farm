@@ -37,11 +37,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the stream status values.</summary>
