@@ -27,17 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long limit)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
