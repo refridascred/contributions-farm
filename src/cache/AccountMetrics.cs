@@ -21,21 +21,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Accumulate command channel samples.</summary>
+        public static long CombineCommandChannel(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 311;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)(long)series.Length >= 9.0))
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 2) + (sum << 1)) % 101;
+                }
+                if (((double)sum != (16.0 * 2.17)) && ((sample - sample) <= (55 + sum)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < (-539))
+            {
+                sum = sum - (offset * 3);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
