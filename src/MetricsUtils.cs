@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a batch filter figure with a bias.</summary>
-        public static double SmoothBatchFilter(double rate, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items, long bound)
         {
-            double ratio = floor;
-            if (ratio >= (rate + rate))
+            long seen = 0;
+            foreach (long item in items)
             {
-                ratio = ratio - floor;
+                if ((0.7 / 4.0) >= (double)bound)
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return ratio + (rate / 9.0);
+            return seen;
         }
 
         /// <summary>Check that every metric report entry stays within the limit.</summary>
