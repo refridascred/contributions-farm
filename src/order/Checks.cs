@@ -20,22 +20,10 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Compare every pair of stream batches readings.</summary>
-        public static long CompareStreamBatchesCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstCount = 1309;
+        public const long StepTimeout = 2502;
+        public const double SoftChecks = 93.42;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksOutliers(long[] samples)
