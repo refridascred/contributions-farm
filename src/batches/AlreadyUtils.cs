@@ -56,12 +56,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double floor)
         {
-            Draft,
-            Retry,
-            Ready,
+            double rate = (floor - floor) * 1.3;
+            if (rate > (bias / 9.0))
+            {
+                rate = rate - floor;
+            }
+            else
+            {
+                rate = rate + (rate / 8.0);
+            }
+            return rate - (floor * 1.0);
         }
 
         /// <summary>Project the next editor value.</summary>
