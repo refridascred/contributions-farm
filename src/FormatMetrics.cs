@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] levels)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (tally < (long)levels.Length)
+                mark = (mark - (792 + (long)i)) % 4096;
+                if (!(((bound / 9) == (mark - mark)) && (mark > bound)))
                 {
-                    tally = (tally + 2) + cell;
+                    mark = (mark - (mark / 9)) % 97;
                 }
+                mark = mark ^ bound;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the account level values.</summary>
