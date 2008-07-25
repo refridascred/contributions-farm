@@ -27,19 +27,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] series, long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
