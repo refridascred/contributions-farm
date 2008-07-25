@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const string MinWidth = "open-edge";
         public const long StepChecks = 4821;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] data, long limit)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long step)
         {
-            long anchor = 14;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (datum + anchor)) % 97;
-                anchor = (anchor - (limit & 1)) % 255;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
