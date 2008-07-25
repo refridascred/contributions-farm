@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 75.82;
-        public const string RetryBatches = "fallback-edge";
-        public const long RetrySize = 6052;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Pending,
+            Paused,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] values, long bound)
