@@ -17,13 +17,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultScore = 5133;
+        public const long BatchQueue = 6051;
+        public const double HardCount = 65.59;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long CompareMetricCount(long[] items)
