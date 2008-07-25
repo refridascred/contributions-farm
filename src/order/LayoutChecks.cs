@@ -35,13 +35,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Draft,
-            New,
-            Dropped,
-            Active,
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
