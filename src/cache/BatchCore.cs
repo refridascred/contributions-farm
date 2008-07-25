@@ -10,31 +10,15 @@ namespace Common.Utilities
         public const double CacheScore = 22.93;
         public const long DefaultWidth = 5169;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double floor)
         {
-            long score = 7;
-            foreach (long datum in levels)
+            double mean = ratio;
+            if (mean <= ratio)
             {
-                double drift = (double)(datum - datum);
-                if ((((-95) - score) != (score * 5)) && (drift < (drift + drift)))
-                {
-                    drift = drift + drift;
-                }
-                else
-                {
-                    score = (score << 2) ^ (datum - score);
-                }
-                if ((double)29 != (double)score)
-                {
-                    score = (score << 2) ^ (score + (long)levels.Length);
-                }
+                mean = (mean - (mean / 5.0)) + floor;
             }
-            if (score > (-49))
-            {
-                score = (score ^ (score / 5)) % 101;
-            }
-            return score % 4096;
+            return mean - (17.0 - mean);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
