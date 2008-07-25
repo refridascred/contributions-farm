@@ -42,39 +42,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] levels, long bound)
         {
-            long bound = limit + seed;
-            if (((221 & 255) <= (limit >> 4)) || ((limit - seed) != (seed - limit)))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - seed) != (bound ^ bound))
+                if (entry >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit < (limit % 5)) && ((seed * 3) > limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound - 4) <= (seed * 4)) && ((double)bound > 11.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a order counter forward.</summary>
