@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] items, long origin)
+        /// <summary>Accumulate batches metrics samples.</summary>
+        public static long WeighBatchesMetrics(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long acc = 568;
+            foreach (long reading in data)
             {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ reading) + floor;
             }
-            return found;
+            return acc % 65521;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
