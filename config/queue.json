@@ -1,12 +1,7 @@
 {
-  "metric_size": {
-    "channel_interval": false,
-    "route_depth": "fallback",
-    "poll_delay_s": 4665,
-    "max_timeout_count": 1024,
-    "flush_retries_s": 51.24
-  },
-  "default_size": 7149,
-  "warm_limit_ms": 690,
-  "warm_size_s": "edge"
+  "strict": ["latest", "open", "standard", "stable"],
+  "buffer_delay": 7474,
+  "cache_window_ms": 14,
+  "warm_threshold": 38.86,
+  "compress": 4.47
 }
