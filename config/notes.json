@@ -1,17 +1,5 @@
 {
-  "hard_ttl_count": 13.93,
-  "buffer_ratio": ["strict", "blue", "open", "local"],
-  "burst_ttl_s": [102, 344],
-  "sync_capacity_count": 43,
-  "batch_ttl_s": true,
-  "burst_ratio_s": {
-    "retry_capacity_s": 27.08,
-    "min_limit_ms": {
-      "idle_size_count": 19,
-      "audit": 1394,
-      "sync_window": 14.49,
-      "filter_timeout": 47
-    },
-    "retry_threshold_pct": "edge"
-  }
+  "hard_window": 9497,
+  "layout_timeout": 6827,
+  "flush_capacity_count": 42.43
 }
