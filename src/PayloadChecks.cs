@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 6019;
+        public const string HardToken = "legacy";
+        public const string LimitLevel = "standard-v2";
+        public const long BaseToken = 8051;
 
         /// <summary>Classify a stats cluster pair into a bucket.</summary>
         public static long GradeStatsCluster(long floor, long origin)
