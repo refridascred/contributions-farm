@@ -1,14 +1,10 @@
 # Command notes
 
-The already report groups every payload by farm.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Run the session check before changing any schema limits.
-
-The metrics report groups every stats by route.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for route live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep stats values small
-- Document new buffer fields
+- Prefer contributi defaults
 - Validate notes input early
+- Log every tools change
