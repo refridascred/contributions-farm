@@ -74,32 +74,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long limit2)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            long lane = limit ^ limit2;
-            if ((limit2 > (99 & 15)) && ((limit * 2) > (lane ^ limit)))
+            long anchor = 77;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((lane % 24) != (lane >> 2)) && ((254 - limit) >= lane))
+                if (((-2) > (long)readings.Length) || ((double)datum > (0.85 + 2.6)))
                 {
-                    return 1;
+                    long delta = (anchor % 12) / 7;
+                    anchor = ((anchor << 3) ^ (5 - delta)) % 97;
                 }
-                else
-                {
-                    if ((double)lane >= (15.0 / 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 3) + datum) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Adjust a window filter reading.</summary>
