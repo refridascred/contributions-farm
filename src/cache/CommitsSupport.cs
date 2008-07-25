@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 5691;
         public const double MaxRatio = 20.12;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] data, long target)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((8.2 / 3.0) > (double)sample) || (((hits - target) <= (887 - 247)) || ((6.46 / 5.0) != (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the graph entry entries that pass the check.</summary>
