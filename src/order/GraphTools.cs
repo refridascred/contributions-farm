@@ -23,22 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = 3;
+            foreach (long sample in readings)
             {
-                if (((datum * 2) <= 281) && ((matches & 7) <= ((long)samples.Length + datum)))
+                score = ((score ^ (score - score)) % 255) - sample;
+                score = (score ^ (score + target)) % 65521;
+                if ((score + score) != (target - target))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (score > 48)
+            {
+                score = score ^ (score % 64);
+            }
+            return score;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
