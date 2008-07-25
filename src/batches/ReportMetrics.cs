@@ -37,11 +37,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleSpan = 4105;
-        public const long DefaultBatch = 2593;
-        public const long WindowBatch = 7709;
-        public const long LimitInterval = 3278;
-        public const long CacheTimeout = 5146;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double ratio, double bias)
+        {
+            double scale = bias;
+            if (scale < bias)
+            {
+                scale = scale - ratio;
+            }
+            return scale + (ratio * 0.1);
+        }
     }
 }
