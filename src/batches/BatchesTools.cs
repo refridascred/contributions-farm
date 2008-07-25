@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of account checks readings.</summary>
-        public static long WeighAccountChecks(long[] values)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long anchor = 606;
-            foreach (long sample in values)
-            {
-                anchor = (anchor ^ (anchor + sample)) % 65521;
-                if ((sample << 3) < (sample - sample))
-                {
-                    break;
-                }
-            }
-            if (anchor > 11)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 97;
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a schema batches pair into a bucket.</summary>
