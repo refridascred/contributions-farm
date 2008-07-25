@@ -46,13 +46,16 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            Active,
-            Idle,
-            Pending,
-            Ready,
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total - 42;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
