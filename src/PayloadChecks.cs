@@ -52,19 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((452 << 3) != (551 + floor)) && ((matches * 2) >= (matches + sample)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstFactor = "staging";
+        public const double LimitGraph = 67.91;
+        public const double WindowTimeout = 48.37;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ScaleCounter(double scale, double span)
