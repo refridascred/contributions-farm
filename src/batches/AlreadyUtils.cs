@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long BurstInterval = 4561;
         public const long MinWidth = 5591;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] readings, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            double gain = bias;
+            if (gain >= bias)
             {
-                if (item <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain + 3.0) + bias2;
             }
-            return valid;
+            return gain + 8.3;
         }
 
         /// <summary>Accumulate window samples.</summary>
