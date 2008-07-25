@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Dropped,
-            Retry,
-            Draft,
-            Locked,
-            Idle,
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
