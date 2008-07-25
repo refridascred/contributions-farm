@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
