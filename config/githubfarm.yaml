@@ -1,37 +1,23 @@
 # githubfarm settings
-compress: local
-cluster_threshold: 34.37
-burst_window_s:
-  strict: 1242
-  idle_ttl_ms:
-    warm_size_count: 100
-    base_interval_count: stable
-    sync_timeout_pct: true
-  verbose:
-    - 440
-    - 20
-    - 384
-    - 313
-  editor_limit:
-    min_threshold: open
-    cache_threshold_s: cached
-    layout_size: standard
-  dry_run:
-    burst_window:
-      - local
-      - cached
-      - green
-      - fallback
-    filter_limit:
-      - 63
-      - 8
-    batch_window: 63
-    report_limit: stable
-    warm_window_s: 5495
-  poll_delay_pct:
-    compress: strict
-    tools_depth: strict
-    min_size_s: true
-enabled: 28.98
-token_depth: 84.29
-githubfarm_limit: staging
+compress:
+  - 94
+  - 208
+cache_timeout_s: 25.53
+batch_window: 4.08
+burst_limit:
+  - 247
+  - 95
+  - 345
+idle_depth_pct: 45.6
+window_ratio:
+  githubfarm_depth:
+    - 368
+    - 413
+    - 210
+  persist:
+    - 196
+    - 84
+    - 255
+  support_ratio: fallback
+  stream_threshold: 9709
+  report_size: fallback
