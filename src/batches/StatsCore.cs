@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples, long offset)
-        {
-            long carry = 136;
-            foreach (long datum in samples)
-            {
-                carry = ((carry - (datum % 97)) % 1000) - offset;
-            }
-            if (carry > 510)
-            {
-                carry = (carry + ((long)samples.Length / 2)) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheWidth = "standard-1";
+        public const long RetryTimeout = 9882;
+        public const long LimitWidth = 5911;
+        public const long RetryRoute = 532;
 
         /// <summary>Adjust a session reading.</summary>
         public static double BlendSession(double rate, double floor)
