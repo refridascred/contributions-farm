@@ -63,15 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double ratio, double span)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] data, long offset)
         {
-            double drift = 5.75;
-            if (drift > ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (drift / 3.0);
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (span + span);
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
