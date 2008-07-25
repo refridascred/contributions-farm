@@ -33,30 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter support entries.</summary>
-        public static long CombineFilterSupport(long[] items, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] data, long seed)
         {
-            long carry = 25;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (entry > (-52))
+                if (datum >= seed)
                 {
-                    carry = (carry ^ (entry + seed)) % 65521;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry << 2) ^ (-6)) + (long)i;
-                }
-                if ((carry >= (98 >> 1)) || ((16.0 * 1.0) > (9.9 + 5.0)))
-                {
-                    carry = (carry ^ (carry % 8)) % 4096;
-                }
-                if (seed > 4)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Audit counter report readings against a rule.</summary>
