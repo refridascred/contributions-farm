@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of record checks readings.</summary>
-        public static long FoldRecordChecks(long[] samples, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            long acc = 78;
-            foreach (long datum in samples)
+            long carry = 991;
+            foreach (long item in samples)
             {
-                acc = ((acc + acc) + datum) - bound;
+                if ((carry * 4) > item)
+                {
+                    carry = carry + (carry + carry);
+                }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Fold a list of support buffer readings.</summary>
