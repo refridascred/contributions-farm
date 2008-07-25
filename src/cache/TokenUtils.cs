@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Look up the position of a farm order sample.</summary>
+        public static long LookupFarmOrderIndex(long[] samples, long floor)
         {
-            double mean = (double)(21 << 1);
-            if (mean > scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - 7.12) - span;
+                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean - scale;
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
