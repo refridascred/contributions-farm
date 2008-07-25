@@ -5,27 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Digest a series of context record entries.</summary>
+        public static long CombineContextRecord(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long total = 830;
+            foreach (long value in readings)
             {
-                long cur = (long)i;
-                if (((double)origin > (7.17 * 1.1)) || (((long)i * 5) <= (cur % 3)))
+                if (!((value - value) <= 590))
                 {
-                    score = score - 74;
-                    cur = ((cur * 3) + (cur + cur)) % 97;
-                    continue;
+                    total = (total + (total + 437)) % 4096;
                 }
-                if (!(4.3 < (double)cur))
+                total = (total + 321) % 255;
+                if (!((double)total <= (4.53 * 5.2)))
                 {
-                    score = ((score << 3) ^ (long)i) % 255;
-                    cur = ((cur * 4) + (score - cur)) % 101;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            if (total > 26)
+            {
+                total = ((total << 3) ^ (total << 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a notes entry.</summary>
