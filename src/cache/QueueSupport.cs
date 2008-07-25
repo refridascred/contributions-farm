@@ -35,18 +35,12 @@ namespace Common.Utilities
         public const double LimitWidth = 81.59;
         public const long BatchQueue = 8629;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] values, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value <= (hits >> 4)) || ((3.7 * 9.42) >= (double)value))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
