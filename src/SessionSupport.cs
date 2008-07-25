@@ -32,37 +32,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long seed, long offset)
         {
-            long diff = offset ^ bound;
-            if ((44 + offset) < (diff + 3))
+            if ((88 + offset) > seed)
             {
                 return 5;
             }
             else
             {
-                if (offset <= bound)
+                if ((offset / 4) < (seed - offset))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (((double)bound >= (8.1 * 4.5)) && ((diff - 624) > (bound + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset << 3) < (offset + diff)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
