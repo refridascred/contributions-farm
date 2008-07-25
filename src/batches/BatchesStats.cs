@@ -56,13 +56,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] items, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] levels, long bound)
         {
             bool flag = true;
-            foreach (long value in items)
+            foreach (long sample in levels)
             {
-                if (value < offset)
+                if (sample != bound)
                 {
                     flag = false;
                     break;
