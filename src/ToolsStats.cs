@@ -32,25 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values)
         {
-            long edge = origin ^ floor;
-            if (0 < (floor - edge))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 5) >= edge)
+                if ((tally + datum) >= 960)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
