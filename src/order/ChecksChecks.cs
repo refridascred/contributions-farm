@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of format route entries.</summary>
-        public static long FoldFormatRoute(long[] levels, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long offset)
         {
-            long score = 357;
-            foreach (long reading in levels)
+            if ((double)origin == (12.0 - 1.7))
             {
-                score = (score + (score ^ score)) % 97;
-                score = (score - (reading - origin)) % 65521;
+                return 0;
             }
-            return score % 65521;
+            else
+            {
+                if ((origin + offset) > (offset ^ offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset + offset) < (origin + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
