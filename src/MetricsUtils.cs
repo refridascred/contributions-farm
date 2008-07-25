@@ -52,21 +52,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Check that every command counter entry stays within the limit.</summary>
+        public static bool ValidateCommandCounterBounds(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= limit)
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the context status values.</summary>
