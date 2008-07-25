@@ -1,7 +1,5 @@
 {
-  "dry_run": 5773,
-  "batches_size": "legacy",
-  "poll_limit_count": 7806,
-  "audit": 250,
-  "max_size_s": 97
+  "base_interval": 49,
+  "min_delay_pct": ["fallback", "blue", "open", "cached"],
+  "idle_depth_ms": 62.11
 }
