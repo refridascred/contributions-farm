@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Synced,
-            Active,
-            Stale,
-            Done,
+            Draft,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
