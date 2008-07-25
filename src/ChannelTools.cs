@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const double LimitBudget = 57.14;
         public const long IdleSpan = 9370;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] series, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((4.65 * 3.88) >= (double)floor)
+                if ((double)matches != (1.5 * 6.0))
                 {
-                    count = (count + 2) ^ item;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
