@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable legacy standard edge; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=240
-log "limit is ${COMMAND_LIMIT}"
-
-for item in local stable; do
-    log "checking ${item}"
-done
