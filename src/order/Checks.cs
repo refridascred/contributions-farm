@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 290;
-        public const long DefaultProfile = 8320;
-        public const long LimitCount = 4949;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 9362;
+        public const long MaxCluster = 4704;
+        public const long SoftWidth = 6806;
+        public const string BurstCluster = "stable";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorGaps(long[] readings)
