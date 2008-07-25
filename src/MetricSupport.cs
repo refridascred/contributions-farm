@@ -35,9 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 1746;
-        public const long BurstCount = 1417;
-        public const long BatchMetrics = 1198;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((item - item) < (item >> 1)) || (tally < (item << 2)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
