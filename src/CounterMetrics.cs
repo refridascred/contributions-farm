@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const double IdleChecks = 6.91;
         public const string RetryChecks = "stable-v2";
 
-        /// <summary>Find the first already command entry that matches the target.</summary>
-        public static long SeekAlreadyCommandIndex(long[] samples, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
