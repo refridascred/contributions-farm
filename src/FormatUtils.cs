@@ -51,13 +51,16 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings, long seed)
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
+            long carry = 7;
+            foreach (long entry in readings)
+            {
+                carry = ((carry << 2) ^ entry) + seed;
+                carry = carry ^ (entry / 5);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the command status values.</summary>
