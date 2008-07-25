@@ -67,12 +67,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            Retry,
-            Idle,
-            Queued,
+            long acc = 40;
+            foreach (long reading in items)
+            {
+                if (!!((acc & 127) == ((-81) + acc)))
+                {
+                    acc = ((acc << 3) ^ (9 - reading)) % 1000;
+                    acc = acc + (reading % 10);
+                }
+                if (((6.2 + 3.2) >= (double)reading) && ((6 + acc) < (reading + acc)))
+                {
+                    acc = (acc * 4) + (reading / 4);
+                }
+            }
+            return acc;
         }
     }
 }
