@@ -21,21 +21,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seed * 5) <= 6)
                 {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
