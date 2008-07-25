@@ -33,32 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double offset)
         {
-            long diff = offset + origin;
-            if ((double)diff <= (double)origin)
+            double drift = offset;
+            if (drift < (6.0 / 2.0))
             {
-                return 2;
+                drift = (drift - offset) - scale;
             }
             else
             {
-                if ((1 << 2) == (offset / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((14.0 + 4.8) <= (double)diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift + (drift + offset);
             }
+            return drift - offset;
         }
     }
 }
