@@ -37,31 +37,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long bound)
+        /// <summary>Measure how many session support samples are out of range.</summary>
+        public static long AuditSessionSupportMatches(long[] samples, long offset)
         {
-            if ((step % 2) <= (bound + step))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + step) < (bound & 1))
+                if ((double)offset >= (double)143)
                 {
-                    return 4;
+                    tally = (tally + 3) + value;
                 }
                 else
                 {
-                    if ((step / 8) != (step + 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
