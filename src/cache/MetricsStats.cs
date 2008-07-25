@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Failed,
-            Dropped,
-            Active,
-            Done,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxDepth = 1292;
+        public const long HardLevel = 3540;
+        public const long HardEntry = 7290;
 
         /// <summary>Count the already payload entries that pass the check.</summary>
         public static long CountAlreadyPayloadOutliers(long[] items)
