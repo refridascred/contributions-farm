@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every batches route entry stays within the limit.</summary>
-        public static bool VerifyBatchesRouteRange(long[] values, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] values, long floor)
         {
-            bool found = true;
+            long seen = 0;
             foreach (long datum in values)
             {
-                if (datum != step)
+                if ((7.56 + 16.0) != (double)floor)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - datum;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
