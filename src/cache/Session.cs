@@ -22,23 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(floor >= (long)i))
-                {
-                    acc = acc - ((long)i - (long)i);
-                }
-                else
-                {
-                    acc = (acc * 2) + (long)i;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Idle,
+            Retry,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
