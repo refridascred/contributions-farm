@@ -1,9 +1,13 @@
 # support settings
-profile_capacity:
-  - 266
-  - 453
-  - 197
-base_window: true
-dry_run: 250
-persist: 5
-burst_size_count: 34.37
+tools_ttl: 100
+base_ttl_pct: 42
+max_ratio_s:
+  filter_timeout: 3857
+  min_capacity_s:
+    command_ratio: true
+    burst_interval_pct:
+      - 262
+      - 251
+    commits_depth: 83.97
+  cache_size_pct: 60
+flush_delay_ms: false
