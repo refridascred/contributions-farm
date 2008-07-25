@@ -23,10 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 6297;
-        public const double BurstLevel = 15.02;
-        public const long CacheRatio = 7512;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
