@@ -13,18 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long AuditMetricChannelOutliers(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((sample << 2) > (count + count))
+                if (((floor % 3) == (984 / 8)) || ((double)entry >= (double)floor))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
