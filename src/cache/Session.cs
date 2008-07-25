@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up channel token samples.</summary>
-        public static long CompareChannelTokenCount(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] readings, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(seen >= (6 * 3)))
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 1) - value) + offset;
                 }
             }
             return seen;
