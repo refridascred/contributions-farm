@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                if ((62 <= (sample ^ seen)) || (((seen >> 1) < (86 - seen)) && (sample <= (seen >> 4))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of commits tools readings.</summary>
