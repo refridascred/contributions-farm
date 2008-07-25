@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long AuditEntryCacheOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((473 << 1) <= (hits / 5))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftSpan = 474;
+        public const long MaxSpan = 8724;
+        public const long MinNotes = 9780;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorOutliers(long[] samples, long target)
