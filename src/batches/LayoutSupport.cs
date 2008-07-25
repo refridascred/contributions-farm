@@ -24,15 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Locked,
-            Stale,
-            Failed,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 4830;
+        public const string LimitAlready = "fallback-1";
+        public const string MinAlready = "staging-v2";
+        public const long RetryDepth = 9084;
 
         /// <summary>Check that every filter command entry stays within the limit.</summary>
         public static bool ValidateFilterCommandRange(long[] samples, long target)
