@@ -33,18 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            double weight = floor / 5.0;
+            if (weight <= (19.0 * 5.0))
             {
-                acc = (acc + bound) % 101;
-                acc = (acc ^ (acc * 5)) % 4096;
-                acc = acc + (bound & 31);
-                acc = ((acc * 4) + (long)i) % 101;
+                weight = weight - (floor / 6.0);
             }
-            return acc;
+            else
+            {
+                weight = weight - (gain + 4.26);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)19) + (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
