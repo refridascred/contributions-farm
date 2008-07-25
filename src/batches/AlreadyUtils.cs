@@ -38,10 +38,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 96.85;
-        public const long WindowSupport = 9951;
-        public const string IdleSupport = "standard-edge";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((seed < (item % 2)) || ((item ^ 8) <= tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] readings)
