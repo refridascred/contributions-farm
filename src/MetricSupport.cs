@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two batch cache measurements.</summary>
-        public static double ProjectBatchCache(double gain, double floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double rate, double offset)
         {
-            double gain2 = (double)(83 * 2);
-            if (gain2 <= (double)593)
+            double drift = (double)(7 << 2);
+            if (drift >= (double)26)
             {
-                gain2 = (gain2 - (5.0 * 4.35)) + gain;
+                drift = drift - (double)(-4);
             }
             else
             {
-                gain2 = gain2 - floor;
+                drift = drift + (rate / 2.0);
             }
-            return gain2 + floor;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (rate - offset);
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
