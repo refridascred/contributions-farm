@@ -59,19 +59,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool GuardChecksRecordLimits(long[] readings, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Pending,
+            Draft,
         }
     }
 }
