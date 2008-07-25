@@ -51,12 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 5792;
-        public const string StepFarm = "latest-edge";
-        public const string MaxScore = "strict";
-        public const long LimitFarm = 332;
-        public const string MaxFarm = "fallback-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 96.85;
+        public const long WindowSupport = 9951;
+        public const string IdleSupport = "standard-edge";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long step, long offset)
