@@ -27,11 +27,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double span)
+        /// <summary>Grade a batches stream value against two limits.</summary>
+        public static long BucketBatchesStream(long target, long step)
         {
-            double bias = ratio;
-            return bias + (13.0 + span);
+            if ((target - target) > (step * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ target) == (51 << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target > (step + step)) || ((target * 3) >= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + step) >= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metrics samples.</summary>
