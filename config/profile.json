@@ -1,5 +1,7 @@
 {
-  "batch_size_ms": true,
-  "poll_size": "open",
-  "flush_window": 61.33
+  "soft_timeout_count": 250,
+  "verbose": 59.96,
+  "dry_run": "cached",
+  "window_interval": 80.32,
+  "batches_capacity": 49
 }
