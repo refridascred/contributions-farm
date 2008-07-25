@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two metric payload measurements.</summary>
-        public static double AdjustMetricPayload(double gain, double bias)
-        {
-            double scale = 6.3 - gain;
-            if (scale < 6.7)
-            {
-                scale = scale + bias;
-            }
-            return scale - (gain / 8.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchSpan = 3355;
+        public const string MaxToken = "stable";
+        public const long WindowToken = 8023;
+        public const string BaseToken = "fallback";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] values, long seed)
