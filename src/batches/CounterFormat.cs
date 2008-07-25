@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long step)
         {
-            double weight = (double)(-226) + bias;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                weight = (weight + (ratio / 2.0)) + (double)(long)i;
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (weight - bias);
+            return ok;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
