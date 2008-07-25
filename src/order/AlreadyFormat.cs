@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a githubfarm context figure with a bias.</summary>
-        public static double ScaleGithubfarmContext(double bias, double span)
+        /// <summary>Validate batch route readings against a bound.</summary>
+        public static bool GuardBatchRouteBounds(long[] levels, long step)
         {
-            double gain = (double)75 * 7.9;
-            if (gain >= (span * 2.33))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                gain = (gain + (double)551) + bias;
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - (double)616;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
