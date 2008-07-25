@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long seed)
         {
-            Pending,
-            Stale,
-            Draft,
-            New,
-            Synced,
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine window already values into a single score.</summary>
