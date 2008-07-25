@@ -18,38 +18,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long bound, long bound2)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if ((bound + bound2) > ((-1) - bound2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound + bound) == (bound << 1)) && ((double)bound != (double)bound2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.11 * 1.11) <= (double)bound2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound >> 4) <= (bound >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            New,
+            Pending,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the queue phase values.</summary>
