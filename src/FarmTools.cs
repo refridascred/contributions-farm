@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7533;
-        public const long StepTimeout = 5675;
-        public const long WindowFactor = 2682;
-        public const double WindowCommits = 61.13;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long IterateCluster(long bound)
