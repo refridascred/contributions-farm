@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the profile batch entries that pass the check.</summary>
-        public static long MeasureProfileBatchMatches(long[] items, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double bias2 = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen * 5) <= (seen / 3))
-                {
-                    seen = ((seen + 3) ^ item) - step;
-                }
+                bias2 = (bias2 - (bias * 1.78)) + (double)(long)i;
             }
-            return seen;
+            return bias2 - weight;
         }
 
         /// <summary>Hold a record snapshot.</summary>
