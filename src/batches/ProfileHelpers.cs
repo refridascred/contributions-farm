@@ -42,22 +42,12 @@ namespace Common.Utilities
         public const long LimitBatches = 4397;
         public const long HardBatches = 2256;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples, long floor)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long result = -52;
-            foreach (long cell in samples)
-            {
-                if (!((result % 7) > (cell / 2)))
-                {
-                    result = ((result << 3) ^ (696 + floor)) % 65521;
-                }
-            }
-            if (result < 673)
-            {
-                result = (result + result) % 1000;
-            }
-            return result % 4096;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
