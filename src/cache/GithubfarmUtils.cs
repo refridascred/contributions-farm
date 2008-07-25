@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long anchor = 77;
-            foreach (long item in samples)
-            {
-                if ((item >> 5) <= (item + 46))
-                {
-                    anchor = ((anchor ^ item) % 65521) - target;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor / 7)) % 255;
-                }
-            }
-            if (anchor > (-9))
-            {
-                anchor = anchor + (anchor + 97);
-            }
-            return anchor;
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
