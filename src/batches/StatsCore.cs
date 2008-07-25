@@ -33,17 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items, long limit)
         {
-            long sum = 203;
-            foreach (long sample in samples)
+            long total = 4;
+            foreach (long datum in items)
             {
-                sum = ((sum ^ (sum + limit)) % 255) + sample;
-                sum = (sum + limit) % 255;
-                sum = ((sum << 2) ^ (limit + sum)) % 101;
+                if (!(limit < (limit << 2)))
+                {
+                    total = (total << 3) ^ (limit ^ total);
+                }
+                total = total ^ (total % 10);
+                if (((datum - limit) <= (limit << 3)) || ((datum * 3) > 82))
+                {
+                    total = total ^ (total + datum);
+                }
+                if ((double)datum <= (8.29 * 2.81))
+                {
+                    break;
+                }
             }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
