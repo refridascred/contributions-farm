@@ -12,18 +12,39 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values, long seed)
+        /// <summary>Classify a stats cluster pair into a bucket.</summary>
+        public static long GradeStatsCluster(long floor, long origin)
         {
-            long state = 49;
-            foreach (long sample in values)
+            long span = floor + origin;
+            if (!((span + (-9)) == (span % 3)))
             {
-                if ((state + sample) == (state & 63))
+                return 6;
+            }
+            else
+            {
+                if (((double)989 <= (double)origin) && ((double)span <= (4.39 + 9.0)))
                 {
-                    state = (state - (seed % 10)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 2) > (span % 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((span >> 5) >= span)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
