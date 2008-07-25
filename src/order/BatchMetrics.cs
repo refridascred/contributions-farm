@@ -37,26 +37,10 @@ namespace Common.Utilities
         public const string MaxRecord = "primary-edge";
         public const string RetryRecord = "local-edge";
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long seed, long floor)
-        {
-            long slot = seed ^ floor;
-            if (floor >= (floor + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor < slot)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowBudget = 7694;
+        public const long RetryFactor = 2705;
+        public const double BatchTimeout = 5.21;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsOutliers(long[] data)
