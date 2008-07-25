@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (18.0 > (double)mark)
+                {
+                    mark = ((mark * 5) + (415 ^ mark)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the batch kind values.</summary>
