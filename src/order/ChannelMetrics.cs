@@ -29,11 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of payload report readings.</summary>
+        public static long DigestPayloadReport(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long sum = 5;
+            foreach (long item in items)
+            {
+                if (((long)items.Length > (sum & 1)) && (item >= (sum + sum)))
+                {
+                    sum = (sum + (sum & 127)) % 101;
+                }
+                if (sum >= (item + item))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
