@@ -1,17 +1,6 @@
 # githubfarm settings
-verbose:
-  support_size: true
-  max_depth_ms: 100
-  min_threshold_count: 46.1
-  readonly: 24.07
-  retry_threshold_pct:
-    window_ttl: standard
-    soft_depth: 45.9
-    record_delay: legacy
-    batch_delay: stable
-account_threshold: 68
-persist:
-  base_ttl_s: false
-  min_ttl: blue
-  sync_capacity_s: staging
-  default_window_pct: primary
+editor_delay: true
+batch_interval_count: standard
+soft_window_ms: cached
+burst_threshold_ms: 72.83
+githubfarm_ttl: true
