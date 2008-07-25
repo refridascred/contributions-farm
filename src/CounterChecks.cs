@@ -39,22 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] samples, long bound)
+        /// <summary>Count the farm cache entries that pass the check.</summary>
+        public static long AuditFarmCacheHits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((double)value >= (7.35 - 7.3))
+                if ((count >> 4) > (1 % 10))
                 {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 3) - entry) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
