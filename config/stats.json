@@ -1,5 +1,7 @@
 {
-  "max_size_s": "cached",
-  "soft_limit_ms": "open",
-  "contributi_ttl": 6714
+  "cache_ratio": [30, 186, 331],
+  "burst_depth_pct": true,
+  "max_timeout_ms": "fallback",
+  "retry_retries_pct": "fallback",
+  "soft_delay_ms": "stable"
 }
