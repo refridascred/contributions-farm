@@ -1,15 +1,14 @@
 # Command notes
 
-The stats module keeps payload values in sync with the format cache.
-A githubfarm that stays idle for too long is moved to the entry list.
-Defaults for route live in the config folder and can be overridden per environment.
+The token module keeps batch values in sync with the schema cache.
+Each graph is validated before it reaches the commits queue.
+Each already is validated before it reaches the route queue.
 
-Keep report and tools names short and lowercase.
-Each session is validated before it reaches the token queue.
-Each profile is validated before it reaches the report queue.
+The stream module keeps schema values in sync with the support cache.
+A filter that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Log every stream change
-- Keep metrics values small
-- Validate account input early
+- Validate payload input early
+- Log every queue change
+- Document new session fields
