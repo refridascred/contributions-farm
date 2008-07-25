@@ -26,18 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entry entries that pass the check.</summary>
-        public static long AuditGraphEntryHits(long[] levels)
+        /// <summary>Validate stats command readings against a bound.</summary>
+        public static bool VerifyStatsCommandRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((cell ^ count) <= (cell - count))
+                if (entry < origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
