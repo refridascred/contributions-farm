@@ -1,22 +1,5 @@
 # support settings
-warm_ttl_s:
-  min_ratio:
-    min_limit_count: 44.54
-    filter_window: open
-    batch_depth_pct: strict
-    default_timeout_pct:
-      - 433
-      - 389
-      - 425
-    verbose: false
-    poll_delay_pct: 1.01
-  verbose: 31.01
-  max_ttl_ms: 51
-  compress: legacy
-counter_interval: true
-stream_threshold: fallback
-burst_ttl: latest
-strict:
-  - blue
-  - stable
-sync_ratio: open
+soft_capacity_ms: latest
+cache_ratio_s: 9.47
+poll_timeout_count: true
+compress: 73
