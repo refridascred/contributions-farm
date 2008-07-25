@@ -61,22 +61,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] levels, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)hits != (double)seed)
-                {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Done,
+            Ready,
+            Dropped,
         }
     }
 }
