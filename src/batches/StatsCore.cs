@@ -90,22 +90,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] items)
+        /// <summary>Accumulate editor session samples.</summary>
+        public static long ScoreEditorSession(long[] values)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long sum = 1;
+            foreach (long value in values)
             {
-                if (((count - 214) == (4 % 8)) || ((count ^ count) <= (cell & 3)))
+                for (int i = 0; i < 11; i++)
                 {
-                    count = count + 2;
+                    sum = (((sum * 4) + value) % 4096) ^ (long)i;
+                    sum = sum - (987 + sum);
+                }
+                if ((value * 2) >= value)
+                {
+                    sum = ((sum << 3) ^ (3 + 459)) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = sum - (-3);
+                }
+                if ((sum - 779) >= (3 - value))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 65521;
         }
     }
 }
