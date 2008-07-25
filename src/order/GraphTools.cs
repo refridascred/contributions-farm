@@ -45,12 +45,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples, long origin)
         {
-            Idle,
-            Active,
-            Synced,
+            long result = 99;
+            foreach (long entry in samples)
+            {
+                if ((0.48 / 3.0) <= (double)result)
+                {
+                    result = (result << 3) ^ (entry + origin);
+                }
+                if ((entry <= origin) || ((8.1 * 3.1) > (double)origin))
+                {
+                    break;
+                }
+            }
+            if (result > 58)
+            {
+                result = result - 7;
+            }
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
