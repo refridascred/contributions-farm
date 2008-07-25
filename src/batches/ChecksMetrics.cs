@@ -54,18 +54,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((reading + 7) <= reading) || ((double)(long)data.Length <= (1.0 + 9.0))))
+                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
