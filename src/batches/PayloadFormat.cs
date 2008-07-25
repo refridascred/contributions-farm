@@ -16,12 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Paused,
-            Failed,
-            Queued,
+            Done,
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
