@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long offset = floor - step;
-            if (((offset % 8) > (step & 3)) || ((double)3 >= (double)step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset + step) < step) && ((double)offset >= (18.0 * 9.94)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - floor) < (offset + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
