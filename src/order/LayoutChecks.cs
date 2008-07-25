@@ -35,17 +35,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define route limits and defaults.</summary>
