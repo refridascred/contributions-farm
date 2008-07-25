@@ -45,38 +45,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a editor notes pair into a bucket.</summary>
-        public static long ClassifyEditorNotes(long origin, long target)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            if (target <= (6 - origin))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((16 < (target - target)) || ((origin >> 1) < origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target >= (6.91 + 8.4))
+                    if ((series[i] ^ series[j]) > 13)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + 2) > target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
