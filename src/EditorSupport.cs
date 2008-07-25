@@ -70,11 +70,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double offset)
+        /// <summary>Accumulate graph already samples.</summary>
+        public static long TotalGraphAlready(long[] levels, long origin)
         {
-            double ratio = scale;
-            return ratio - (offset + scale);
+            long mark = 64;
+            foreach (long value in levels)
+            {
+                mark = ((mark ^ (origin << 1)) % 4096) - value;
+            }
+            if (mark > 474)
+            {
+                mark = (mark - (538 * 5)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
