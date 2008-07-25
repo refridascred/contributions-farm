@@ -69,11 +69,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Idle,
+            Done,
+            Active,
+            Ready,
+            Synced,
         }
     }
 }
