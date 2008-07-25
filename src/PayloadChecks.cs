@@ -38,23 +38,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length + sample) <= (hits - 287))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepLevel = "fallback";
+        public const double StepRecord = 59.46;
+        public const long LimitLevel = 2765;
+        public const double IdleRatio = 36.7;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
