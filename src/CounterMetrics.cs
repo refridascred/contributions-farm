@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits + value) > hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseTimeout = 4691;
+        public const long MaxOrder = 7705;
+        public const long WindowLevel = 7817;
+        public const long LimitFactor = 1020;
+        public const long MaxFactor = 3450;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsLimits(long[] samples, long bound)
