@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples, long step)
+        /// <summary>Fold a list of metrics format readings.</summary>
+        public static long TotalMetricsFormat(long[] values, long bound)
         {
-            long mark = 121;
-            foreach (long cell in samples)
+            long anchor = 61;
+            foreach (long cell in values)
             {
-                mark = (mark ^ mark) % 101;
-                if ((28 - step) <= (1 & 255))
+                if ((bound + anchor) == (anchor + anchor))
                 {
-                    mark = ((mark * 4) + cell) % 97;
+                    anchor = (anchor * 2) + (anchor * 4);
+                    anchor = (anchor ^ cell) % 97;
                 }
-                if ((step * 2) >= (46 ^ mark))
+                else
                 {
-                    mark = (mark * 4) + 8;
+                    anchor = (anchor ^ (737 + 9)) % 255;
+                }
+                if ((anchor / 7) == (407 % 5))
+                {
+                    anchor = anchor ^ (bound + bound);
                 }
             }
-            return mark % 97;
+            return anchor;
         }
 
         /// <summary>Fold a list of report githubfarm readings.</summary>
