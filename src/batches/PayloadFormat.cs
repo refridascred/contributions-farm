@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up checks filter samples.</summary>
-        public static long CompareChecksFilterCount(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the report status values.</summary>
