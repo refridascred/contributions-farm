@@ -1,6 +1,7 @@
 # support settings
-soft_ratio: cached
-max_interval: 9395
-readonly: 3701
-counter_limit: 47.71
-buffer_window: false
+idle_delay_count:
+  - 313
+  - 390
+  - 387
+verbose: 83.36
+cache_interval_pct: false
