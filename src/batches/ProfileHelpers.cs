@@ -66,12 +66,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Done,
-            Pending,
-            Draft,
+            Retry,
+            Idle,
+            Queued,
         }
     }
 }
