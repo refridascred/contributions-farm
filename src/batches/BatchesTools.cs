@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const string DefaultEntry = "local";
         public const long LimitEntry = 2202;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
