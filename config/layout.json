@@ -1,6 +1,26 @@
 {
-  "record_window": ["eu-west", "fallback"],
-  "audit": 73,
-  "report_delay": 61,
-  "min_interval_ms": "local"
+  "dry_run": 65,
+  "default_size_ms": 500,
+  "retry_window": 6774,
+  "poll_delay_pct": true,
+  "batch_capacity": {
+    "cache_window_pct": {
+      "retry_limit_pct": 6916,
+      "contributi_capacity": 41,
+      "cache_limit": 500,
+      "dry_run": false
+    },
+    "max_limit": false,
+    "idle_window_pct": "legacy"
+  },
+  "base_ttl_ms": {
+    "tools_retries": "stable",
+    "audit": {
+      "record_size": "primary",
+      "strict": 9.01,
+      "burst_threshold": 80.99
+    },
+    "base_ttl": 5094,
+    "poll_interval_pct": 92.31
+  }
 }
