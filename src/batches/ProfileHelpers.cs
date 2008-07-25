@@ -59,24 +59,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long target, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if ((776 / 9) > (offset + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.8 - 0.3) != (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Queued,
+            Dropped,
+            Failed,
         }
     }
 }
