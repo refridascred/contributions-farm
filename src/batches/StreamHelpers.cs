@@ -66,19 +66,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a filter channel reading.</summary>
-        public static double AdjustFilterChannel(double gain, double floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double load = floor;
-            if (load <= gain)
-            {
-                load = load - (double)0;
-            }
-            else
-            {
-                load = load + (1.6 * 4.38);
-            }
-            return load - floor;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
