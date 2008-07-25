@@ -44,17 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (readings[i] <= target)
+                if (item > offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
