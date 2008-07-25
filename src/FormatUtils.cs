@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxRatio = 6329;
-        public const string BaseToken = "latest-v2";
-        public const long StepCount = 4428;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((20.0 / 4.0) > (double)hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] series, long seed)
