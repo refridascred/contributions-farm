@@ -58,32 +58,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metrics command readings.</summary>
-        public static long TallyMetricsCommand(long[] readings, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double scale, double span)
         {
-            long mark = 539;
-            foreach (long reading in readings)
+            double scale2 = (span + 9.95) + span;
+            if (scale2 < (double)4)
             {
-                mark = ((mark << 2) ^ (reading + reading)) % 4096;
-                mark = (mark ^ reading) % 255;
-                if ((483 / 9) != (reading + mark))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                else
-                {
-                    mark = mark - (mark % 10);
-                }
-                if (reading <= (reading * 3))
-                {
-                    break;
-                }
+                scale2 = (scale2 + (span + scale2)) - scale;
             }
-            if (mark > (-726))
+            else
             {
-                mark = (mark << 3) ^ limit;
+                scale2 = scale2 + (span * 12.0);
             }
-            return mark % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 - span;
         }
     }
 }
