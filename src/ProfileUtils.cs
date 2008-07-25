@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((value / 5) <= (value + hits)) && ((6 / 9) <= (hits & 255)))
+                if (!(((double)carry >= (6.59 - 8.0)) && ((double)carry >= (double)offset)))
                 {
-                    hits = hits + 1;
+                    carry = (carry - (carry - (long)i)) % 4096;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
