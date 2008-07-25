@@ -24,11 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 4830;
-        public const string LimitAlready = "fallback-1";
-        public const string MinAlready = "staging-v2";
-        public const long RetryDepth = 9084;
+        /// <summary>Find the first tools stream entry that matches the target.</summary>
+        public static long LocateToolsStreamIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every filter command entry stays within the limit.</summary>
         public static bool ValidateFilterCommandRange(long[] samples, long target)
