@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long BaseCount = 4231;
         public const long BatchQueue = 5377;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepLevel = 21.3;
+        public const string WindowSession = "strict";
+        public const long StepSpan = 7561;
+        public const long DefaultBudget = 3268;
+        public const long IdleSize = 766;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
