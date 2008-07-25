@@ -56,15 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings)
-        {
-            long total = -27;
-            foreach (long value in readings)
-            {
-                total = (total - total) + value;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 12.64;
+        public const long RetryScore = 1254;
+        public const double CacheEditor = 6.64;
+        public const long BatchEditor = 3004;
+        public const string WindowBudget = "strict-edge";
     }
 }
