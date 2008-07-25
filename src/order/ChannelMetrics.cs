@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double bias, double bias2)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long offset)
         {
-            double scale = bias2 + bias2;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                scale = ((scale - 20.0) + (double)(long)i) + bias;
+                if (sample < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + bias2;
+            return flag;
         }
 
         /// <summary>Describe the command phase values.</summary>
