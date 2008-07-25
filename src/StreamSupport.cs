@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream githubfarm sample.</summary>
-        public static long SeekStreamGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            if (mean > mean)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (floor * 9.08)) + gain;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 12.0) - (double)(long)i;
+            }
+            return mean - (mean * 20.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
