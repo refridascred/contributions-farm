@@ -37,11 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double rate = offset;
-            return rate + scale;
+            Dropped,
+            Locked,
+            Pending,
+            Closed,
+            Paused,
         }
     }
 }
