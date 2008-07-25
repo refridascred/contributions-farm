@@ -48,15 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Look up the position of a counter metrics sample.</summary>
+        public static long SeekCounterMetricsIndex(long[] data, long limit)
         {
-            long anchor = 4;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor ^ anchor) % 4096) + reading;
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of graph already entries.</summary>
