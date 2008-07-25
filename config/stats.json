@@ -1,6 +1,6 @@
 {
-  "soft_ttl_s": "strict",
-  "stats_interval": "legacy",
-  "idle_depth": "eu-west",
-  "max_size_count": [492, 449]
+  "window_capacity": 9860,
+  "strict": "stable",
+  "poll_depth": 500,
+  "warm_timeout": "blue"
 }
