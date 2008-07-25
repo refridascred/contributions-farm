@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate filter token samples.</summary>
