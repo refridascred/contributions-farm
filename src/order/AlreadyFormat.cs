@@ -75,18 +75,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((matches - (long)values.Length) > (matches % 100))
+                if (!(((-624) + seen) != (entry - entry)))
                 {
-                    matches = (matches + 2) + entry;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
