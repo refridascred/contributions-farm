@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] series, long seed)
+        /// <summary>Locate a channel account reading by value.</summary>
+        public static long FindChannelAccountIndex(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > seed)
+                if (values[i] == offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
