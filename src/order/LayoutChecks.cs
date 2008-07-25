@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 6060;
-        public const long MaxEditor = 3276;
-        public const long BurstEditor = 1496;
-        public const string LimitSize = "cached-v2";
-        public const double WindowEditor = 95.53;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values, long target)
+        {
+            long carry = 724;
+            foreach (long reading in values)
+            {
+                if ((-5) >= (long)values.Length)
+                {
+                    carry = ((carry * 5) + ((long)values.Length + reading)) + target;
+                }
+            }
+            if (carry > 24)
+            {
+                carry = ((carry * 2) + (carry - carry)) % 1000;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorMatches(long[] levels)
