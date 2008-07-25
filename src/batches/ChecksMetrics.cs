@@ -21,17 +21,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a record buffer reading by value.</summary>
-        public static long SeekRecordBufferIndex(long[] values, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -8;
+            foreach (long item in levels)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                if ((11.0 + 1.3) > (double)item)
                 {
-                    return (long)i;
+                    sum = sum ^ (item / 4);
+                }
+                else
+                {
+                    sum = sum ^ (sum - item);
+                }
+                if ((double)956 <= (double)sum)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many commits already samples are out of range.</summary>
