@@ -1,14 +1,10 @@
 {
-  "hard_capacity_ms": "primary",
-  "max_window_count": {
-    "verbose": true,
-    "filter_timeout": [488, 241, 361, 430],
-    "githubfarm_threshold": [115, 77, 214],
-    "cache_retries_s": 23.89,
-    "flush_depth_count": ["eu-west", "open"]
+  "enabled": "strict",
+  "min_timeout": {
+    "contributi_depth": 28.95,
+    "format_depth": 87.01,
+    "stats_delay": 91.92,
+    "tools_ratio": "stable"
   },
-  "metric_window": 54.35,
-  "audit": 65.38,
-  "editor_ratio": "standard",
-  "route_limit": "eu-west"
+  "persist": 34.56
 }
