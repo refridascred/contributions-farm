@@ -57,10 +57,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 408;
-        public const long SoftCount = 9;
-        public const double RetrySession = 8.86;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Synced,
+            Locked,
+            New,
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
