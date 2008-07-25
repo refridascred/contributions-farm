@@ -35,20 +35,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            if (!((target % 10) >= (target * 3)))
             {
-                if ((18.0 - 0.54) > (2.0 * 0.81))
-                {
-                    score = (score - (score % 24)) % 1000;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((double)target == (8.0 * 2.55))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target < (offset - 173))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target + 24) > (595 % 100)) && ((target << 3) <= 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
