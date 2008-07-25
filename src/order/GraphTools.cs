@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleScore = 3346;
-        public const long HardRatio = 7407;
-        public const double RetryStream = 74.62;
-        public const string WindowStream = "staging-v2";
-        public const string BaseStream = "primary";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 6297;
+        public const double BurstLevel = 15.02;
+        public const long CacheRatio = 7512;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
