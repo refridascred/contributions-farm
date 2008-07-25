@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] items)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (datum > (matches * 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
