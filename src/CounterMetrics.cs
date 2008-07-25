@@ -22,19 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long bound)
+        /// <summary>Derive the next record githubfarm value from a seed.</summary>
+        public static long StepRecordGithubfarm(long seed)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell > bound)
+                if (11.0 > (double)seed)
                 {
-                    stale = false;
                     break;
                 }
+                if ((5.4 * 2.0) < (double)sum)
+                {
+                    sum = ((sum * 3) + (seed + (long)i)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Hold a filter header.</summary>
