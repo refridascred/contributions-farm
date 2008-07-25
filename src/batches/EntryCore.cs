@@ -42,13 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] data, long floor)
         {
-            Closed,
-            Paused,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally + floor) >= (tally << 1))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
