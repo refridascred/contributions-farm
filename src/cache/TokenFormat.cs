@@ -13,20 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order queue entries.</summary>
-        public static long DigestOrderQueue(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
         {
-            long acc = 462;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                acc = (acc ^ (reading - reading)) % 97;
-                acc = (acc + (acc + reading)) % 1000;
+                if (item < (item + item))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (acc < 3)
-            {
-                acc = (acc + ((long)readings.Length + acc)) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
