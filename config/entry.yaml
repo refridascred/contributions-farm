@@ -1,6 +1,4 @@
 # entry settings
-audit: 705
-buffer_capacity: stable
-readonly: 4.83
-warm_timeout_pct: cached
-retry_limit: 6.97
+route_ttl: 18.55
+sync_interval_count: staging
+flush_delay_pct: 9002
