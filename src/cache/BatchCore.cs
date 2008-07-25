@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseContributi = "primary-edge";
+        public const double CacheScore = 22.93;
+        public const long DefaultWidth = 5169;
 
         /// <summary>Locate a contributi order reading by value.</summary>
         public static long LocateContributiOrderIndex(long[] levels, long target)
