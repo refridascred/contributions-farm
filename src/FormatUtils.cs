@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string DefaultSchema = "staging-1";
         public const double LimitSchema = 46.73;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((20.0 / 4.0) > (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
