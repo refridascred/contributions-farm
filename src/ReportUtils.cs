@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit metric payload readings against a rule.</summary>
+        public static long TallyMetricPayloadHits(long[] levels)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!(entry > (989 - count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
