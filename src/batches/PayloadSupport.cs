@@ -32,10 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardWidth = 5837;
-        public const string IdleRecord = "cached-edge";
-        public const long HardDepth = 1555;
-        public const double MaxRecord = 75.99;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!((89 / 7) <= floor))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
