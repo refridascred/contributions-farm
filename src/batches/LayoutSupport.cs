@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Stale,
-            Synced,
-            Active,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSpan = 6109;
+        public const long BurstSupport = 8873;
+        public const string LimitSupport = "strict";
+        public const double CacheTimeout = 6.77;
 
         /// <summary>Locate a layout context reading by value.</summary>
         public static long LocateLayoutContextIndex(long[] values, long floor)
