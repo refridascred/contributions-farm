@@ -29,22 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] readings, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item + count) <= (count - count))
-                {
-                    count = (count + 3) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Derive the next support contributi value from a seed.</summary>
