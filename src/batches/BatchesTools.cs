@@ -23,32 +23,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            long step = offset - bound;
-            if (bound > (bound & 31))
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                anchor = ((anchor << 3) ^ (limit % 8)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (step <= (bound * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 2) >= (bound % 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
