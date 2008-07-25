@@ -30,15 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double rate, double floor)
         {
-            long state = 589;
-            foreach (long value in items)
+            double drift = 6.6 / 7.0;
+            if (drift < floor)
             {
-                state = (((state * 3) + (state * 3)) + value) + bound;
+                drift = (drift - (1.7 + drift)) - rate;
             }
-            return state;
+            return drift + drift;
         }
 
         /// <summary>Hold a layout summary.</summary>
