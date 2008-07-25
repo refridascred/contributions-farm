@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the queue graph series from a seed.</summary>
-        public static long DeriveQueueGraph(long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + 7) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
