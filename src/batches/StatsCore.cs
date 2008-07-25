@@ -57,13 +57,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] items)
         {
-            Paused,
-            Failed,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((count - 214) == (4 % 8)) || ((count ^ count) <= (cell & 3)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
