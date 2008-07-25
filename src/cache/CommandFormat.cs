@@ -35,11 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double scale, double offset)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            double bias = (scale / 9.0) / 9.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias + 9.62) + (double)(long)i) + offset;
+            }
+            return bias + (bias + bias);
         }
 
         /// <summary>Look up the position of a session filter sample.</summary>
