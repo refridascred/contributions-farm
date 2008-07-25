@@ -1,13 +1,8 @@
 # githubfarm settings
-batch_capacity: legacy
-compress: 8582
-layout_depth:
-  sync_capacity_s: 500
-  editor_timeout: false
-  batch_ttl_s: 72.06
-  order_depth: 4
-  schema_size:
-    - 384
-    - 231
-    - 337
-    - 320
+cache_delay: 28
+default_retries_s: false
+warm_size_pct: 51.05
+verbose:
+  - 374
+  - 60
+retry_ttl_s: 36.5
