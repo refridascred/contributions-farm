@@ -34,10 +34,22 @@ namespace Common.Utilities
             return weight - (6.66 - floor);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheTimeout = 17.54;
-        public const long MaxScore = 9763;
-        public const long SoftBudget = 5261;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueBounds(long[] data, long limit)
