@@ -1,8 +1,5 @@
 {
-  "idle_limit_ms": "strict",
-  "base_size_ms": 1024,
-  "dry_run": 2772,
-  "counter_interval": "edge",
-  "route_ratio": 10,
-  "warm_depth": [190, 8, 100, 203]
+  "entry_capacity": 98,
+  "flush_timeout_s": true,
+  "default_window": 100
 }
