@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long floor2)
         {
-            double drift = rate;
-            if (drift > rate)
+            long gap = floor ^ floor2;
+            if (((floor2 >> 5) >= (94 + 830)) || ((double)gap >= (2.0 - 2.97)))
             {
-                drift = (drift - rate) + floor;
+                return 2;
             }
-            return drift - drift;
+            else
+            {
+                if ((floor2 + gap) > floor2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((9.42 - 1.19) < (double)floor) && (floor >= (gap << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
