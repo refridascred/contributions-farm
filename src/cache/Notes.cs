@@ -45,12 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long offset)
         {
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank counter metrics input into a small class.</summary>
