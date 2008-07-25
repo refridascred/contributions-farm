@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] samples, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double ratio = (double)(15 ^ 346);
+            if (ratio > (double)28)
             {
-                if (!(931 >= (floor >> 1)))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + ratio) + span;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (double)68;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (12.0 - scale)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
