@@ -36,12 +36,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "alpha-v2";
-        public const long HardAlready = 1837;
-        public const long BaseFactor = 7090;
-        public const string MaxCount = "primary";
-        public const long BurstDepth = 9682;
+        /// <summary>Iterate the buffer entry series from a seed.</summary>
+        public static long DeriveBufferEntry(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (target <= (target & 1))
+                {
+                    state = ((state << 3) ^ state) % 255;
+                }
+                if ((state - target) <= ((long)i - state))
+                {
+                    state = ((state * 2) + (-1)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
