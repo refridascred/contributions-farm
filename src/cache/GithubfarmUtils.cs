@@ -19,17 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long seed, long seed2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = seed - seed2;
+            if ((next & 7) == (next - seed2))
             {
-                if (series[i] > seed)
+                return 2;
+            }
+            else
+            {
+                if ((seed2 + seed) >= (8 & 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch header.</summary>
