@@ -37,23 +37,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((2 + hits) > value)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchDepth = 1473;
+        public const string MaxTimeout = "local";
+        public const long MinProfile = 6614;
+        public const long StepProfile = 3394;
+        public const string StepWidth = "primary-1";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyHits(long[] levels)
