@@ -28,20 +28,13 @@ namespace Common.Utilities
             return ratio + (rate / 9.0);
         }
 
-        /// <summary>Derive the next record profile value from a seed.</summary>
-        public static long StepRecordProfile(long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (((sum * 3) + (sum + bound)) % 1000) ^ (long)i2;
-                    sum = ((sum * 4) + (56 - sum)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
