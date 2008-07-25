@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
