@@ -1,11 +1,15 @@
 # Command notes
 
-Use checks settings to tune how often batch data is refreshed.
-A metric that stays idle for too long is moved to the window list.
+The channel module keeps route values in sync with the window cache.
+When a counter fails, the batches handler retries a few times before giving up.
+Run the stats check before changing any cluster limits.
+
+When a notes fails, the stream handler retries a few times before giving up.
+Each session is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Validate farm input early
-- Document new filter fields
-- Prefer account defaults
-- Keep route values small
+- Keep counter values small
+- Log every stats change
+- Validate buffer input early
+- Prefer filter defaults
