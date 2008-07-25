@@ -22,13 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items, long step)
         {
-            Failed,
-            Pending,
-            New,
-            Stale,
+            long score = 0;
+            foreach (long value in items)
+            {
+                if (!(68 > (score % 7)))
+                {
+                    score = (((score ^ (score / 8)) % 65521) ^ value) - step;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
