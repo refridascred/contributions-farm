@@ -13,22 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long carry = 616;
-            foreach (long reading in levels)
-            {
-                if ((double)carry <= (5.5 - 1.05))
-                {
-                    carry = (carry ^ (reading + carry)) % 101;
-                }
-            }
-            if (carry < 4)
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
