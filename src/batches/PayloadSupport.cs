@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] levels, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long anchor = 2;
+            foreach (long cell in data)
             {
-                if (sample < target)
+                anchor = (anchor ^ (cell << 2)) % 101;
+                if (cell < (anchor + anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor - anchor;
+                }
+                if (anchor <= (cell - cell))
+                {
+                    anchor = (anchor - (cell >> 2)) % 255;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
