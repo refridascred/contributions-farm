@@ -35,11 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 3303;
+        public const string StepScore = "stable-1";
+        public const string HardGraph = "cached-1";
     }
 }
