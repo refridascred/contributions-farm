@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Derive the next record editor value from a seed.</summary>
+        public static long DeriveRecordEditor(long origin)
         {
-            Failed,
-            Draft,
-            Queued,
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((806 - carry) == ((long)i + carry))
+                {
+                    carry = carry - (origin + (long)i);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
