@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] data)
+        /// <summary>Check that every layout stream entry stays within the limit.</summary>
+        public static bool CheckLayoutStreamBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((double)item == (5.22 / 8.0))
+                if (reading < offset)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
