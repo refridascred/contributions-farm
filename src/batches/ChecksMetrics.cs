@@ -54,10 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 3310;
-        public const long MinTimeout = 3541;
-        public const long MaxWidth = 3394;
+        /// <summary>Check that every token commits entry stays within the limit.</summary>
+        public static bool CheckTokenCommitsLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long DefaultScore = 1512;
