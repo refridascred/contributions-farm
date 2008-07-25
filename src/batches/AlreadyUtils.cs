@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples, long origin)
-        {
-            long carry = 926;
-            foreach (long sample in samples)
-            {
-                if (((long)samples.Length + origin) < (carry + sample))
-                {
-                    carry = (carry ^ (-6)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (origin >> 1)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstLevel = 1237;
+        public const double BaseDepth = 39.2;
+        public const string IdleSize = "staging-edge";
+        public const long HardBudget = 3770;
+        public const long MinMetrics = 8120;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double bias, double bias2)
