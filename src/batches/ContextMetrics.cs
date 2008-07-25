@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 1652;
-        public const double BurstScore = 9.02;
-        public const string BaseDepth = "strict";
+        /// <summary>Measure how many window already samples are out of range.</summary>
+        public static long AuditWindowAlreadyGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((tally << 2) > (942 - value)) || !(tally > (tally + 37)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many graph schema samples are out of range.</summary>
         public static long MeasureGraphSchemaMatches(long[] samples)
