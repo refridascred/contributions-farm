@@ -21,19 +21,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a record commits counter forward.</summary>
-        public static long IterateRecordCommits(long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((anchor / 5) <= (53 + (long)i)))
+                if ((18.0 - 0.54) > (2.0 * 0.81))
                 {
-                    anchor = (anchor << 3) ^ (52 - anchor);
+                    score = (score - (score % 24)) % 1000;
+                    continue;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
     }
 }
