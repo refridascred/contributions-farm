@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 7112;
-        public const string BaseDepth = "open-v2";
-        public const double StepFactor = 42.2;
+        /// <summary>Validate report batch readings against a bound.</summary>
+        public static bool ValidateReportBatchBounds(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long ScoreWindow(long[] levels)
