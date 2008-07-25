@@ -14,15 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
