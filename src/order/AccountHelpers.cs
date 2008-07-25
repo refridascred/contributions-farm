@@ -36,28 +36,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long target2)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long target, long offset)
         {
-            if ((target2 + target) < (target2 - target2))
+            if ((offset >> 3) < (target * 3))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((double)target2 <= (3.79 - 2.73))
+                if (((offset - offset) <= (target & 63)) || ((10.0 + 0.48) > (double)target))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (!((82 % 7) >= target))
+                    if (((3.67 * 18.0) != (double)target) || ((43 & 127) > (target ^ target)))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        return 0;
+                        if ((offset >> 5) >= (offset & 15))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
