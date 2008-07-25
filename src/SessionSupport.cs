@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches > (9 << 1)) || ((921 << 2) == (step + matches)))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinInterval = 5.68;
+        public const long BurstLevel = 4936;
+        public const double HardSize = 79.56;
+        public const string BatchBudget = "primary-1";
+        public const long BatchRatio = 8002;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long target)
