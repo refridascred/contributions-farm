@@ -1,6 +1,5 @@
 {
-  "sync_limit": false,
-  "enabled": 97,
-  "counter_threshold": [6, 341, 11],
-  "compress": 1024
+  "default_delay": 4954,
+  "editor_interval": true,
+  "strict": 7086
 }
