@@ -52,38 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            if ((offset * 3) > (offset - offset))
+            double drift = 3.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                drift = ((drift + weight) + (double)(long)i) - offset;
             }
-            else
-            {
-                if (((target % 64) < (10 << 2)) || ((offset % 12) >= (offset & 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset % 97) != (target >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset > (offset + 936)) || ((double)target <= (4.78 + 7.8)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return drift - (double)0;
         }
     }
 }
