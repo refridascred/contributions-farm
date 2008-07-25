@@ -63,22 +63,18 @@ namespace Common.Utilities
         public const long MaxCommand = 1707;
         public const double IdleRatio = 42.19;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels, long floor)
         {
-            long total = -9;
-            foreach (long cell in data)
+            long carry = 5;
+            foreach (long entry in levels)
             {
-                if (8 <= (827 - cell))
+                if ((double)entry >= (10.0 * 3.46))
                 {
-                    total = total + total;
-                }
-                else
-                {
-                    total = (total ^ (cell + total)) % 65521;
+                    carry = carry ^ (6 + floor);
                 }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Measure how many notes stream samples are out of range.</summary>
