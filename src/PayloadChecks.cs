@@ -48,23 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next token order value from a seed.</summary>
-        public static long StepTokenOrder(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((target * 3) > (anchor + 525))
-                {
-                    anchor = (anchor - (632 + target)) % 1000;
-                    anchor = anchor - (anchor + target);
-                    break;
-                }
-                anchor = (anchor ^ (anchor / 2)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 82.26;
+        public const double CacheFactor = 87.32;
+        public const double StepTools = 17.75;
+        public const double StepLevel = 89.9;
 
         /// <summary>Compare every pair of batches channel readings.</summary>
         public static long PairBatchesChannelCount(long[] series)
