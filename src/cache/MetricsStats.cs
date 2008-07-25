@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Retry,
-            Failed,
-            Stale,
-            Draft,
+            public double Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
