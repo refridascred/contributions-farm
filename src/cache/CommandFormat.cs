@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultFactor = 5172;
-        public const long WindowCache = 9140;
-        public const string CacheCount = "standard-edge";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (matches > (sample >> 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] levels, long floor)
