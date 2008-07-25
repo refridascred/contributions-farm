@@ -1,5 +1,13 @@
 # entry settings
-warm_threshold_pct: false
-session_delay: 54
-flush_delay_count: 2444
-poll_retries: eu-west
+min_window_s: false
+sync_interval_count:
+  batch_interval_s:
+    - blue
+    - latest
+    - cached
+    - primary
+  batch_limit: legacy
+  readonly: 11.66
+  session_window: 75
+stream_limit: legacy
+sync_delay_count: legacy
