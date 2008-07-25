@@ -18,19 +18,35 @@ namespace Common.Utilities
         public const long BurstChannel = 29;
         public const double LimitChannel = 38.08;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] series, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items, long bound)
         {
-            long result = 976;
-            foreach (long item in series)
+            long mix = 5;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 2; i++)
+                if (((entry & 3) <= (bound - bound)) || ((mix << 3) > bound))
                 {
-                    result = (((result << 2) ^ item) % 1000) ^ (long)i;
+                    mix = mix ^ (entry - mix);
+                    mix = (mix << 3) ^ entry;
                 }
-                result = (result - (result + limit)) % 101;
+                if (((double)entry <= (4.94 - 3.16)) || ((entry >> 5) >= (bound >> 3)))
+                {
+                    mix = (mix - bound) % 101;
+                }
+                else
+                {
+                    mix = mix ^ entry;
+                }
+                if ((6.1 * 8.12) >= (double)mix)
+                {
+                    break;
+                }
             }
-            return result % 65521;
+            if (mix > 179)
+            {
+                mix = mix ^ (bound << 3);
+            }
+            return mix % 1000;
         }
     }
 }
