@@ -24,22 +24,26 @@ namespace Common.Utilities
         public const string BaseDepth = "open-v2";
         public const double StepFactor = 42.2;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long result = 1;
-            foreach (long datum in readings)
+            long mix = 163;
+            foreach (long datum in levels)
             {
-                if ((bound * 3) > 23)
+                if (datum <= (datum & 7))
                 {
-                    result = (result - (datum * 2)) % 255;
+                    mix = ((mix * 2) + (datum * 3)) % 65521;
+                }
+                else
+                {
+                    mix = mix - (datum - mix);
                 }
             }
-            if (result > 347)
+            if (mix < 899)
             {
-                result = (result * 3) + (247 + bound);
+                mix = (mix << 3) ^ 4;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Validate report queue readings against a bound.</summary>
