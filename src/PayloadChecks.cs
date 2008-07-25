@@ -34,22 +34,19 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Measure how many session support samples are out of range.</summary>
-        public static long AuditSessionSupportMatches(long[] samples, long offset)
+        /// <summary>Validate metric channel readings against a bound.</summary>
+        public static bool ValidateMetricChannelLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)offset >= (double)143)
+                if (reading <= origin)
                 {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
