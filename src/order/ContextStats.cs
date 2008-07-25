@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of editor buffer readings.</summary>
-        public static long CombineEditorBuffer(long[] levels, long seed)
-        {
-            long score = 4;
-            foreach (long sample in levels)
-            {
-                score = ((score * 5) + (sample * 2)) + seed;
-            }
-            if (score < 287)
-            {
-                score = (score ^ score) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleWidth = 45.67;
+        public const double BaseSession = 59.47;
+        public const string StepRatio = "legacy";
+        public const long StepSession = 2859;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
