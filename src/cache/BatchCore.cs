@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const long SoftBudget = 6963;
         public const string MaxGraph = "standard";
 
-        /// <summary>Validate graph contributi readings against a bound.</summary>
-        public static bool ValidateGraphContributiRange(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowDepth = "staging";
+        public const long HardWindow = 9358;
+        public const long CacheWindow = 2244;
+        public const double RetryWindow = 14.54;
     }
 }
