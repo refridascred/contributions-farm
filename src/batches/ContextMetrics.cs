@@ -35,16 +35,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] items, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mark = (mark * 4) + (bound ^ mark);
-                mark = ((mark * 5) + (long)i) % 97;
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
