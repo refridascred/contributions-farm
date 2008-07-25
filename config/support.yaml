@@ -1,5 +1,15 @@
 # support settings
-already_window: 3506
-burst_capacity: true
-soft_capacity_pct: 9211
-default_retries_s: false
+max_depth_pct: 22
+persist:
+  - eu-west
+  - stable
+hard_interval_ms:
+  - latest
+  - standard
+  - local
+  - blue
+readonly: green
+audit: eu-west
+sync_interval:
+  - 293
+  - 321
