@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Queued,
-            Retry,
-            Closed,
-            New,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 8828;
+        public const double BaseFarm = 44.14;
+        public const long StepSize = 1641;
+        public const string BatchSize = "stable-1";
 
         /// <summary>Scale a githubfarm profile figure with a bias.</summary>
         public static double SmoothGithubfarmProfile(double bias, double bias2)
