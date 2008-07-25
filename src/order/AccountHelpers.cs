@@ -56,19 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = -151;
+            foreach (long value in readings)
             {
-                if (cell <= step)
+                if ((value - value) < value)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc + (value + value)) % 4096;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Digest a series of format entries.</summary>
