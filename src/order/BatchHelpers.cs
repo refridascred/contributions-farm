@@ -25,21 +25,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph schema samples.</summary>
-        public static long CompareGraphSchemaCount(long[] levels)
+        /// <summary>Rank batch account input into a small class.</summary>
+        public static long RankBatchAccount(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((2.2 + 2.32) >= (double)floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (68 > (step ^ floor))
                 {
-                    if ((levels[i] - levels[j]) < 4)
+                    return 1;
+                }
+                else
+                {
+                    if (step <= (floor / 9))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
