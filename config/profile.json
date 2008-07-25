@@ -1,7 +1,8 @@
 {
-  "graph_interval": "staging",
-  "readonly": 100,
-  "cache_window": [106, 388],
-  "min_capacity_ms": 58,
-  "notes_threshold": 42.56
+  "tools_retries": 93.16,
+  "editor_interval": 32,
+  "min_interval_s": [23, 412, 77],
+  "retry_limit_s": 1,
+  "burst_limit": "open",
+  "cache_capacity_ms": 5647
 }
