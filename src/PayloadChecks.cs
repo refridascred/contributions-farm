@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up tools channel samples.</summary>
-        public static long MatchToolsChannelCount(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Accumulate cache samples.</summary>
