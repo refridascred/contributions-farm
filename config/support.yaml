@@ -1,10 +1,5 @@
 # support settings
-enabled: 9893
-dry_run: 42.45
-cache_interval_s:
-  - fallback
-  - standard
-  - standard
-  - blue
-burst_retries_s: 60
-stream_ttl: cached
+max_window: latest
+soft_depth_ms: 84.8
+max_delay_count: 9629
+idle_ratio: 1257
