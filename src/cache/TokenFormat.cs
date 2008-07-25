@@ -15,11 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
+            long state = 120;
+            foreach (long datum in series)
+            {
+                state = (state ^ datum) % 65521;
+                state = (state ^ state) % 101;
+                if (((state / 3) >= 6) && ((state & 127) >= ((-84) - (-6))))
+                {
+                    state = (state - (datum - state)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Match up editor samples.</summary>
