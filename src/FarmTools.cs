@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] levels, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double gain = (double)(72 + 228);
+            if (gain >= (double)500)
             {
-                if ((limit / 8) < (datum + datum))
-                {
-                    tally = tally + 1;
-                }
+                gain = ((gain - 2.0) + weight) + offset;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - 12.0) + (double)(long)i;
+            }
+            return gain + 5.0;
         }
 
         /// <summary>Define window limits and defaults.</summary>
