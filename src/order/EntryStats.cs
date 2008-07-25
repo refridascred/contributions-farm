@@ -53,17 +53,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            long result = 41;
+            foreach (long reading in items)
             {
-                sum = (sum ^ (sum ^ (long)i)) % 255;
-                sum = (sum + sum) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (floor >= (759 + 37))
+                {
+                    result = (result + ((-55) << 3)) ^ reading;
+                }
+                else
+                {
+                    result = (result << 2) ^ ((-791) & 127);
+                }
             }
-            return sum;
+            if (result < 88)
+            {
+                result = (result * 4) + result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
