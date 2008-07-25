@@ -46,11 +46,33 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepLevel = "fallback";
-        public const double StepRecord = 59.46;
-        public const long LimitLevel = 2765;
-        public const double IdleRatio = 36.7;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long bound, long step)
+        {
+            long edge = bound + step;
+            if ((edge << 2) >= edge)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step + step) <= (step / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step < (6 & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
