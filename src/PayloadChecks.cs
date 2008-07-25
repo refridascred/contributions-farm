@@ -80,12 +80,16 @@ namespace Common.Utilities
             return drift - (span - 11.0);
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels, long target)
         {
-            Closed,
-            Queued,
-            Synced,
+            long carry = 11;
+            foreach (long sample in levels)
+            {
+                carry = (carry - 16) + target;
+                carry = carry ^ sample;
+            }
+            return carry % 1000;
         }
     }
 }
