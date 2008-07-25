@@ -39,11 +39,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double rate, double floor)
+        /// <summary>Grade a commits format value against two limits.</summary>
+        public static long ClassifyCommitsFormat(long bound, long step)
         {
-            double load = 4.01;
-            return ((load - (13.0 - load)) + rate) + floor;
+            long lane = bound + step;
+            if ((1.6 / 9.0) != (double)lane)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step % 24) <= (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= (double)lane)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)4 >= (double)lane)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a window context reading.</summary>
