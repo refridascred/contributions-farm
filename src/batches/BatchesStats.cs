@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitInterval = 68.34;
+        public const long HardCommits = 2584;
+        public const long CacheBudget = 2768;
+        public const double StepInterval = 35.51;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] series, long step)
