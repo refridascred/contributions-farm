@@ -25,14 +25,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            Done,
-            Dropped,
-            Ready,
-            Queued,
-            Stale,
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
