@@ -46,17 +46,31 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long seed2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((28 > (seed2 - seed2)) || (((-3) ^ seed2) != (seed2 * 5)))
             {
-                if (levels[i] > limit)
+                return 5;
+            }
+            else
+            {
+                if (((seed2 & 3) >= seed) && ((seed + seed) <= (942 ^ seed)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed2 == (3.5 / 2.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
