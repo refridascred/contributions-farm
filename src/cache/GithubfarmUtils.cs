@@ -32,21 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor farm readings.</summary>
-        public static long OverlapEditorFarmCount(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
