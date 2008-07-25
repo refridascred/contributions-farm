@@ -52,22 +52,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] items, long floor)
+        /// <summary>Validate payload order readings against a bound.</summary>
+        public static bool CheckPayloadOrderBounds(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((datum * 2) >= (338 ^ floor))
+                if (item <= bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
