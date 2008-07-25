@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of payload token readings.</summary>
-        public static long PairPayloadTokenCount(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 8;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total + (entry + total);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
