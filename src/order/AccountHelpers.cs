@@ -24,23 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] samples, long bound)
         {
-            double mean = (double)(7 + (-460));
-            if (mean > bias)
+            long carry = 399;
+            foreach (long cell in samples)
             {
-                mean = mean + (bias + mean);
+                if ((cell > (-1)) || ((bound * 2) > carry))
+                {
+                    carry = (carry ^ cell) % 65521;
+                }
             }
-            else
+            if (carry > 62)
             {
-                mean = mean + bias;
+                carry = (carry - (bound << 3)) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (rate + mean)) + (double)(long)i;
-            }
-            return mean - rate;
+            return carry;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
