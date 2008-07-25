@@ -62,10 +62,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchScore = 47.48;
-        public const long LimitCounter = 3784;
-        public const long SoftFactor = 6851;
-        public const long StepWidth = 7544;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Synced,
+            Failed,
+            Paused,
+            Done,
+            Closed,
+        }
     }
 }
