@@ -33,35 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items, long bound)
-        {
-            long mix = 5;
-            foreach (long entry in items)
-            {
-                if (((entry & 3) <= (bound - bound)) || ((mix << 3) > bound))
-                {
-                    mix = mix ^ (entry - mix);
-                    mix = (mix << 3) ^ entry;
-                }
-                if (((double)entry <= (4.94 - 3.16)) || ((entry >> 5) >= (bound >> 3)))
-                {
-                    mix = (mix - bound) % 101;
-                }
-                else
-                {
-                    mix = mix ^ entry;
-                }
-                if ((6.1 * 8.12) >= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 179)
-            {
-                mix = mix ^ (bound << 3);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardWidth = 5837;
+        public const string IdleRecord = "cached-edge";
+        public const long HardDepth = 1555;
+        public const double MaxRecord = 75.99;
     }
 }
