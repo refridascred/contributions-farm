@@ -33,23 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items)
         {
-            long mix = 575;
-            foreach (long cell in items)
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                if (!((double)275 <= (double)bound))
+                if (((3.1 - 7.4) > (double)(long)items.Length) && ((5 % 2) >= sample))
                 {
-                    mix = mix - mix;
-                    mix = (mix << 3) ^ (mix * 3);
-                }
-                if ((cell ^ bound) > mix)
-                {
-                    mix = ((mix << 3) ^ (bound >> 5)) % 101;
+                    anchor = ((anchor * 3) + (55 - sample)) % 65521;
                 }
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the checks class values.</summary>
