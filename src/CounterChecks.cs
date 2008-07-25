@@ -82,19 +82,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window profile value.</summary>
-        public static double SmoothWindowProfile(double weight, double bias)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data)
         {
-            double gain = 18.0 + bias;
-            if (gain > bias)
+            long score = 2;
+            foreach (long entry in data)
             {
-                gain = gain + (gain + bias);
+                if ((6.0 + 7.6) < (double)entry)
+                {
+                    score = score - entry;
+                }
+                if ((score >> 2) == (entry * 3))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + bias;
+            return score % 65521;
         }
     }
 }
