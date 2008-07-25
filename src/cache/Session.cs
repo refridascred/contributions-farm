@@ -14,18 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the notes farm entries that pass the check.</summary>
-        public static long AuditNotesFarmGaps(long[] series)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((-5) >= (count * 5))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
