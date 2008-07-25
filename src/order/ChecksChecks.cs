@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings, long target)
         {
-            Paused,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)target < (6.0 / 2.0))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
