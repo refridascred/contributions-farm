@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            New,
-            Locked,
-            Synced,
-            Ready,
+            long acc = 983;
+            foreach (long value in samples)
+            {
+                acc = (acc + (1 + 69)) % 255;
+                acc = (acc << 3) ^ acc;
+                acc = (acc * 5) + acc;
+                if (!((acc % 100) != (value >> 3)))
+                {
+                    break;
+                }
+            }
+            if (acc > 65)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
