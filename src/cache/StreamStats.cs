@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] values, long offset)
-        {
-            long result = 632;
-            foreach (long reading in values)
-            {
-                result = ((result ^ (offset + offset)) % 97) + reading;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitInterval = 2127;
+        public const long WindowSupport = 695;
+        public const string SoftRatio = "alpha-v2";
 
         /// <summary>Validate report batch readings against a bound.</summary>
         public static bool ValidateReportBatchBounds(long[] samples, long seed)
