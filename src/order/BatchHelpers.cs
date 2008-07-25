@@ -13,12 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values)
         {
-            Dropped,
-            Stale,
-            Queued,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!(hits <= (0 + hits)))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
