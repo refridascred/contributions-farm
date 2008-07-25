@@ -43,21 +43,18 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Match up channel layout samples.</summary>
-        public static long MatchChannelLayoutCount(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count << 2) != (count >> 1))
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
