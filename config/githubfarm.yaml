@@ -1,6 +1,5 @@
 # githubfarm settings
-sync_ratio_pct:
-  - cached
-  - eu-west
-payload_interval: strict
-idle_retries: staging
+burst_size: strict
+compress: latest
+sync_interval_count: 48
+hard_timeout: false
