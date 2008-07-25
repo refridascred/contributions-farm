@@ -64,11 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstRatio = 8856;
-        public const long LimitSpan = 8878;
-        public const long MaxDepth = 12;
-        public const long BatchFilter = 1728;
-        public const long RetryLevel = 471;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
