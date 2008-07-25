@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] series, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] readings)
         {
-            long carry = 118;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (carry < (carry + carry))
+                if (5.23 <= (double)sample)
                 {
-                    carry = (carry + (cell * 4)) - floor;
+                    tally = tally + 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a session snapshot.</summary>
