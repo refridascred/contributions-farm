@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long total = 9;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total + (cell + cell)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a buffer info.</summary>
