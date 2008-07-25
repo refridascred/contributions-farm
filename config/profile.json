@@ -1,17 +1,5 @@
 {
-  "idle_ttl_pct": {
-    "max_timeout_count": "local",
-    "base_interval": {
-      "dry_run": 1024,
-      "metric_capacity": 100,
-      "min_ttl_pct": 67.83,
-      "base_retries": "legacy"
-    },
-    "retry_threshold": 10.7,
-    "audit": false
-  },
-  "soft_ttl_ms": ["blue", "primary", "legacy"],
-  "hard_delay_pct": 382,
-  "metric_limit": [164, 75],
-  "batch_window_s": ["green", "legacy"]
+  "batch_size_ms": true,
+  "poll_size": "open",
+  "flush_window": 61.33
 }
