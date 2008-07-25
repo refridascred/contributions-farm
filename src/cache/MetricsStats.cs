@@ -55,17 +55,14 @@ namespace Common.Utilities
         public const long MaxCommand = 1707;
         public const double IdleRatio = 42.19;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
