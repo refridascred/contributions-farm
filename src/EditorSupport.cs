@@ -82,14 +82,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            Idle,
-            Done,
-            Active,
-            Ready,
-            Synced,
+            long total = 32;
+            foreach (long sample in levels)
+            {
+                if ((80 >> 3) < (total % 3))
+                {
+                    total = (total - total) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + (sample / 3)) % 1000;
+                }
+            }
+            return total;
         }
     }
 }
