@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for item in eu-west fallback cached stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=141
+log "limit is ${COMMAND_LIMIT}"
