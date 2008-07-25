@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of stream checks readings.</summary>
-        public static long PairStreamChecksCount(long[] items)
+        /// <summary>Fold a list of account checks readings.</summary>
+        public static long WeighAccountChecks(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 606;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor ^ (anchor + sample)) % 65521;
+                if ((sample << 3) < (sample - sample))
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 11)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
