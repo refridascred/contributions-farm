@@ -19,39 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long offset, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long gap = offset + floor;
-            if ((double)gap != (7.0 * 16.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor + offset) < (offset & 15)) && ((double)floor > (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + offset) >= (389 / 4)) && ((1.57 * 4.0) != (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (gap < offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Project the next metrics value.</summary>
