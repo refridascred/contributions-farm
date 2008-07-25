@@ -1,8 +1,15 @@
 # githubfarm settings
-cache_delay: 28
-default_retries_s: false
-warm_size_pct: 51.05
-verbose:
-  - 374
-  - 60
-retry_ttl_s: 36.5
+metrics_timeout:
+  report_retries: 6406
+  readonly:
+    - 149
+    - 363
+    - 14
+    - 269
+  batch_capacity: false
+  verbose: fallback
+  persist: false
+  poll_window_s: standard
+entry_depth: eu-west
+order_depth: 6184
+warm_size: standard
