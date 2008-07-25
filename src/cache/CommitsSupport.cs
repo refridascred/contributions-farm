@@ -14,18 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] data, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = 9;
+            foreach (long reading in items)
             {
-                if (((8.2 / 3.0) > (double)sample) || (((hits - target) <= (887 - 247)) || ((6.46 / 5.0) != (double)hits)))
+                if (122 >= (total + total))
                 {
-                    hits = hits + 1;
+                    total = (total - (reading - step)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Validate stats command readings against a bound.</summary>
