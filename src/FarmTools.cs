@@ -36,19 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchScore = 21.31;
+        public const long CacheTimeout = 2438;
+        public const long CacheCount = 4757;
+        public const string StepWidth = "legacy";
     }
 }
