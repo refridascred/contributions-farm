@@ -1,19 +1,19 @@
 {
-  "token_capacity": "fallback",
-  "support_depth": {
-    "min_depth_ms": "eu-west",
-    "contributi_ttl": 30.96,
-    "idle_size_pct": 93.22,
-    "poll_ttl_pct": {
-      "readonly": "green",
-      "audit": true,
-      "idle_depth_ms": "cached",
-      "default_delay": 67.78,
-      "retry_interval": "green",
-      "cache_ratio": "local"
-    }
+  "record_retries": {
+    "persist": 42,
+    "session_limit": {
+      "hard_ttl": 30,
+      "queue_timeout": 6954,
+      "persist": 66.31,
+      "dry_run": "primary",
+      "counter_limit": 250,
+      "stream_ttl": 93.68
+    },
+    "strict": true,
+    "buffer_ratio": "eu-west"
   },
-  "compress": 91.96,
-  "persist": [85, 341],
-  "support_window": ["stable", "staging", "green", "strict"]
+  "idle_capacity": 50,
+  "min_retries_ms": 7526,
+  "poll_interval": 2382,
+  "farm_ttl": 60
 }
