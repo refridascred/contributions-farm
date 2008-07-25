@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 8828;
-        public const double BaseFarm = 44.14;
-        public const long StepSize = 1641;
-        public const string BatchSize = "stable-1";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Paused,
+            Idle,
+            Done,
+            Active,
+            Stale,
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ProjectGraph(double ratio, double floor)
