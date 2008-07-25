@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] readings, long limit)
         {
-            double bias = scale;
-            if (bias > (19.0 * 5.0))
+            bool found = true;
+            foreach (long item in readings)
             {
-                bias = bias - (double)5;
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + 0.28;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + (double)450;
+            return found;
         }
 
         /// <summary>Describe the graph mode values.</summary>
