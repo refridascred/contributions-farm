@@ -28,19 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)target > (double)hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepCount = "latest-1";
+        public const long LimitSpan = 6471;
+        public const long SoftFarm = 9582;
 
         /// <summary>Check that every filter command entry stays within the limit.</summary>
         public static bool ValidateFilterCommandRange(long[] samples, long target)
