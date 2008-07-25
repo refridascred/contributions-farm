@@ -66,23 +66,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a report graph reading.</summary>
-        public static double ProjectReportGraph(double scale, double floor)
+        /// <summary>Validate payload metrics readings against a bound.</summary>
+        public static bool CheckPayloadMetricsLimits(long[] items, long floor)
         {
-            double bias = (double)(37 + 2);
-            if (bias < 5.8)
+            bool valid = true;
+            foreach (long value in items)
             {
-                bias = bias + (scale + scale);
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (bias - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (floor / 4.0);
+            return valid;
         }
     }
 }
