@@ -19,19 +19,23 @@ namespace Common.Utilities
         public const string BaseToken = "latest-v2";
         public const long StepCount = 4428;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] items, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long state = 505;
+            foreach (long sample in data)
             {
-                if (item != target)
+                long slot = state - (sample + 67);
+                if ((1.0 - 3.0) <= (double)step)
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 4) + (slot ^ 0)) % 97;
+                }
+                if (751 < (sample >> 3))
+                {
+                    state = (state + (5 % 2)) % 65521;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
