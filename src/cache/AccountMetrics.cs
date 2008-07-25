@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many record order samples are out of range.</summary>
-        public static long TallyRecordOrderMatches(long[] levels, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (matches < (cell << 3))
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Audit metric channel readings against a rule.</summary>
