@@ -59,18 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] items, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mix = 5;
+            foreach (long cell in series)
             {
-                if ((((value - (long)items.Length) < hits) || ((value + 95) < (hits * 4))) || (value > ((-7) << 1)))
+                mix = (((mix * 3) + bound) % 1000) - cell;
+                if ((double)752 >= (double)mix)
                 {
-                    hits = (hits + 3) - bound;
+                    break;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
