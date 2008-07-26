@@ -1,9 +1,17 @@
 # entry settings
-cache_timeout_s: true
-strict: 6471
-poll_depth: false
-order_window: green
-cache_capacity:
-  default_capacity_count: cached
-  burst_capacity: strict
-  counter_retries: green
+min_window_count: cached
+idle_capacity: 22.71
+dry_run:
+  - 147
+  - 114
+  - 381
+  - 433
+layout_interval:
+  warm_retries_ms: 11
+  readonly: latest
+  idle_size: true
+min_capacity: blue
+poll_size_count:
+  - green
+  - stable
+  - edge
