@@ -21,25 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] values)
         {
-            long cur = limit - target;
-            if ((cur * 4) <= (target - target))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit & 63) >= cur)
+                if (!(5 <= (entry + entry)))
                 {
-                    return 6;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
