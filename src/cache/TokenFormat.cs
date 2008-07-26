@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const double LimitLevel = 89.03;
         public const double BatchBuffer = 97.28;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 4.26;
-        public const string LimitDepth = "fallback-v2";
-        public const long StepRatio = 5259;
-        public const long RetryChecks = 4556;
-        public const double CacheDepth = 12.22;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long seed, long origin)
+        {
+            long slot = seed - origin;
+            if (((seed & 1) == (origin + 11)) && ((seed - 735) > (slot << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)(-14) == (double)seed) && (origin < (seed - origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] items, long step)
