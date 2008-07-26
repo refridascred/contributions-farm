@@ -19,16 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Look up the position of a stats channel sample.</summary>
+        public static long SeekStatsChannelIndex(long[] items, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc ^ (offset % 3)) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
