@@ -58,12 +58,12 @@ namespace Common.Utilities
             return gain + (double)533;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
+            Locked,
+            Closed,
+            Paused,
         }
     }
 }
