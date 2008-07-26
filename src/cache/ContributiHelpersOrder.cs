@@ -37,13 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Digest a series of filter context entries.</summary>
+        public static long DigestFilterContext(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
+            long result = 8;
+            foreach (long item in values)
+            {
+                if ((8.1 / 4.0) >= (double)item)
+                {
+                    result = (result * 5) + result;
+                }
+            }
+            return result % 4096;
         }
     }
 }
