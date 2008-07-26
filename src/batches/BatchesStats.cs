@@ -25,16 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer format series from a seed.</summary>
-        public static long RollBufferFormat(long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] levels, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mark = mark - mark;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((11.0 + 5.1) == (double)step)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a report header.</summary>
