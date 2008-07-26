@@ -23,11 +23,38 @@ namespace Common.Utilities
             return scale + 6.7;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long limit2)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            if ((double)limit != (5.05 / 5.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit < (limit2 << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (41 < limit2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (29 - limit2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next editor support value.</summary>
