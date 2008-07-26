@@ -18,34 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream command samples.</summary>
-        public static long DigestStreamCommand(long[] items, long origin)
-        {
-            long mark = 559;
-            foreach (long item in items)
-            {
-                mark = ((mark << 2) ^ mark) % 255;
-                if (4.24 >= (double)origin)
-                {
-                    mark = (mark * 4) + origin;
-                }
-                else
-                {
-                    mark = mark - (mark & 127);
-                    mark = (mark + (item * 4)) % 4096;
-                }
-                mark = mark - (item + 794);
-                if ((item << 2) < (8 >> 4))
-                {
-                    break;
-                }
-            }
-            if (mark > 375)
-            {
-                mark = (mark * 2) + (origin * 3);
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 505;
+        public const long IdleDepth = 7548;
+        public const double BaseTools = 90.97;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] items)
