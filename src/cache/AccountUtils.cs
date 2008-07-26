@@ -28,23 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double bias = (2.3 - ratio) + ratio;
-            if (bias < 7.1)
-            {
-                bias = bias + (floor - bias);
-            }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias - floor;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
