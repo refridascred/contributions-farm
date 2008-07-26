@@ -56,17 +56,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long seed)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = span;
+            if (ratio > 9.0)
             {
-                if ((data[i] == seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + span;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)92;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio + scale)) + (double)(long)i;
+            }
+            return ratio - span;
         }
     }
 }
