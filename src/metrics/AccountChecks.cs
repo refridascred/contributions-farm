@@ -28,18 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] series)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long score = 109;
+            foreach (long datum in values)
             {
-                if ((12.0 + 2.0) < (double)hits)
+                if ((datum - score) > target)
                 {
-                    hits = (hits + 2) + item;
+                    score = (score ^ datum) % 4096;
                 }
+                score = (score << 2) ^ (datum & 63);
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
