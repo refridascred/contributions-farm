@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const string DefaultContext = "standard-1";
         public const double RetryContext = 76.73;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (33 > (count - count))
-                {
-                    count = ((count + 1) + sample) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultBudget = 554;
+        public const string HardTimeout = "open";
+        public const string RetryDepth = "strict-edge";
+        public const long LimitCache = 9814;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long BucketRecord(long origin, long origin2)
