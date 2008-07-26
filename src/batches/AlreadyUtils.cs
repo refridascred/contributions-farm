@@ -27,12 +27,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 6783;
-        public const string BaseFactor = "fallback-v2";
-        public const long LimitSpan = 5478;
-        public const long SoftFactor = 111;
-        public const string IdleWidth = "fallback-edge";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long origin)
+        {
+            if ((seed + 764) >= 7)
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed > (8 - 816))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((458 + seed) > origin) || ((8 ^ 9) >= (seed << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed * 2) >= (origin * 2)) || (seed < (origin + 9)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] items, long seed)
