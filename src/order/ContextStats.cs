@@ -51,19 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 6113;
+        public const long WindowToken = 9304;
+        public const string HardScore = "legacy-edge";
+        public const long BaseRatio = 2670;
     }
 }
