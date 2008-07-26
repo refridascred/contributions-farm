@@ -36,16 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats commits series from a seed.</summary>
-        public static long DeriveStatsCommits(long bound)
+        /// <summary>Check that every format session entry stays within the limit.</summary>
+        public static bool CheckFormatSessionBounds(long[] series, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                score = ((score << 2) ^ (score + score)) % 1000;
-                score = ((score * 4) + (long)i) % 101;
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Hold a window stats.</summary>
