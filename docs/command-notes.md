@@ -1,15 +1,15 @@
 # Command notes
 
-The graph module keeps contributi values in sync with the schema cache.
-Each tools is validated before it reaches the githubfarm queue.
+Each githubfarm is validated before it reaches the cache queue.
+Use cluster settings to tune how often graph data is refreshed.
+Each format is validated before it reaches the queue queue.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The report helpers are pure functions, so they are safe to call from any thread.
-The already helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
+Each profile is validated before it reaches the session queue.
+Each context is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Keep checks values small
-- Log every report change
-- Validate token input early
-- Document new queue fields
+- Document new account fields
+- Prefer layout defaults
+- Validate batch input early
