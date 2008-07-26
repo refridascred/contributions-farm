@@ -70,26 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items, long seed)
+        /// <summary>Count the filter editor entries that pass the check.</summary>
+        public static long CountFilterEditorMatches(long[] readings, long target)
         {
-            long mix = 3;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((reading <= mix) && ((1.0 * 0.27) >= (double)(long)items.Length))
+                if ((double)325 == (double)target)
                 {
-                    mix = ((mix + (396 >> 2)) % 65521) - seed;
+                    seen = (seen + 2) ^ item;
                 }
                 else
                 {
-                    mix = (mix ^ ((-50) * 3)) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix << 3) ^ (mix + 0)) % 1000;
-            }
-            return mix % 97;
+            return seen;
         }
     }
 }
