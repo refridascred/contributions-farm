@@ -64,19 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] data, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < target)
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
