@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 3431;
-        public const double BatchCount = 74.26;
-        public const double SoftBudget = 84.69;
-        public const string CacheSession = "local-v2";
-        public const long HardSession = 7001;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseSpan = "local";
+        public const double StepBuffer = 79.36;
+        public const long WindowBuffer = 8955;
+        public const double LimitLevel = 89.03;
+        public const double BatchBuffer = 97.28;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] readings, long bound)
