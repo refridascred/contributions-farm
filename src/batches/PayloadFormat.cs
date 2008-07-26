@@ -28,14 +28,29 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Derive the next queue context value from a seed.</summary>
+        public static long DeriveQueueContext(long limit)
         {
-            Locked,
-            Dropped,
-            Retry,
-            Synced,
-            Done,
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((12.0 + 15.0) >= (double)limit)
+                {
+                    score = score ^ (limit + (long)i);
+                }
+                if (((8 + limit) == (score >> 1)) && ((891 + (long)i) > (score - 5)))
+                {
+                    score = ((score * 3) + (score & 15)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score + limit);
+                    score = ((score * 3) + (score >> 5)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
