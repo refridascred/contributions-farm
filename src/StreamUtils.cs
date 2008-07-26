@@ -68,12 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > seed)
+                if (data[i] > target)
                 {
                     return (long)i;
                 }
