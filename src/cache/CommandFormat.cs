@@ -20,22 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] levels)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (!((seed2 << 3) >= (seed / 8)))
             {
-                if ((matches * 4) != (cell - 722))
+                return 0;
+            }
+            else
+            {
+                if (seed >= (78 + 715))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
