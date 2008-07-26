@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] readings, long bound)
+        /// <summary>Measure how many editor layout samples are out of range.</summary>
+        public static long CountEditorLayoutHits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (bound < value)
+                if (!(((long)levels.Length % 7) == (value << 2)) || ((7.48 - 8.4) == (double)seed))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
