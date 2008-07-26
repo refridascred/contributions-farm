@@ -1,10 +1,6 @@
 {
-  "audit": "primary",
-  "persist": false,
-  "warm_size_pct": "edge",
-  "base_capacity": {
-    "burst_interval_s": "legacy",
-    "retry_retries": "standard",
-    "readonly": 68.55
-  }
+  "max_timeout_s": "open",
+  "batch_interval_s": 70,
+  "persist": "local",
+  "sync_depth_count": "green"
 }
