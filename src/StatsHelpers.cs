@@ -46,11 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardDepth = 2726;
-        public const long DefaultCommand = 5119;
-        public const double MinCommand = 0.79;
-        public const long HardCommand = 5559;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 366;
+        public const long IdleSize = 6605;
+        public const long MaxSize = 2552;
+        public const long CacheDepth = 8462;
+        public const string BaseProfile = "fallback-1";
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double ScaleEditor(double bias, double offset)
