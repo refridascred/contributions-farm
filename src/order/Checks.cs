@@ -41,12 +41,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 6340;
-        public const long StepWidth = 5508;
-        public const long BurstScore = 3307;
-        public const string CacheDepth = "alpha-1";
-        public const long BatchFarm = 581;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterHits(long[] data)
