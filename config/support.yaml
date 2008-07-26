@@ -1,4 +1,4 @@
 # support settings
-githubfarm_ttl: 1
-verbose: 1024
-notes_interval: 83.53
+retry_size_pct: 5377
+enabled: 93
+flush_size: latest
