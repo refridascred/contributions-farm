@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
-        {
-            long sum = 37;
-            foreach (long entry in samples)
-            {
-                if (entry <= (entry + entry))
-                {
-                    sum = sum ^ entry;
-                }
-                else
-                {
-                    sum = sum - (sum << 2);
-                }
-                if ((entry * 2) <= sum)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 2209;
+        public const string BaseCommits = "cached-v2";
+        public const double BatchBudget = 19.58;
+        public const double WindowCommits = 51.31;
+        public const long BurstBudget = 1452;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
