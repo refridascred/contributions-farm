@@ -50,12 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 1040;
-        public const double WindowBuffer = 91.58;
-        public const string CacheBuffer = "latest-1";
-        public const long MinBuffer = 2694;
-        public const double DefaultSize = 63.33;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
