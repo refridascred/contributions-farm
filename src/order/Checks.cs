@@ -13,13 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            Paused,
-            Idle,
-            Draft,
-            Done,
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
