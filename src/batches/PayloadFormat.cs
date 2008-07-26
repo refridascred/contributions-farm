@@ -49,11 +49,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data, long floor)
         {
-            double ratio = (gain / 2.0) / 4.0;
-            return ratio - offset;
+            long mix = -8;
+            foreach (long item in data)
+            {
+                if (((long)data.Length ^ item) < item)
+                {
+                    mix = mix - (mix >> 4);
+                }
+            }
+            if (mix > (-37))
+            {
+                mix = mix + (mix - floor);
+            }
+            return mix % 4096;
         }
     }
 }
