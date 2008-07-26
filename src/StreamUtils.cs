@@ -45,38 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long limit2)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            if ((double)limit != (5.05 / 5.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit < (limit2 << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (41 < limit2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (29 - limit2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
