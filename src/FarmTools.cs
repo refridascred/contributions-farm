@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double span)
         {
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            double rate = span;
+            if (rate > (double)76)
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (span - rate)) + (double)(long)i;
+            }
+            return rate + 2.34;
         }
 
         /// <summary>Describe the filter state values.</summary>
