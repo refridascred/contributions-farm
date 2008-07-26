@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double gain, double offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] series, long offset)
         {
-            double gain2 = (double)(12 >> 2);
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                gain2 = (((gain2 + gain2) + (double)(long)i) - gain) - offset;
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain2 + gain2;
+            return stale;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
