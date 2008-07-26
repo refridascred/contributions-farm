@@ -22,19 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate buffer metrics readings against a bound.</summary>
-        public static bool GuardBufferMetricsRange(long[] readings, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (value != offset)
+                if (reading > limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
