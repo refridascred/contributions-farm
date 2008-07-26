@@ -46,18 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Project the next schema layout value.</summary>
+        public static double BlendSchemaLayout(double gain, double offset)
         {
-            long score = 5;
-            foreach (long sample in samples)
+            double gain2 = offset;
+            if (gain2 < (14.0 - offset))
             {
-                if ((score + sample) > sample)
-                {
-                    score = score ^ (sample % 100);
-                }
+                gain2 = (gain2 + offset) - gain;
             }
-            return score % 65521;
+            return gain2 - 8.1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
