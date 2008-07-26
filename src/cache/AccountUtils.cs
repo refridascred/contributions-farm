@@ -28,18 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (659 <= (cell + (-86)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxSize = "primary-v2";
+        public const double CacheMetrics = 90.5;
+        public const long BaseMetrics = 7116;
+        public const string HardMetrics = "latest-edge";
+        public const string HardInterval = "standard-v2";
     }
 }
