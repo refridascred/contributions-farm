@@ -41,22 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema editor readings against a rule.</summary>
-        public static long MeasureSchemaEditorOutliers(long[] values)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (5.8 < (double)cell)
+                if (value != step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
