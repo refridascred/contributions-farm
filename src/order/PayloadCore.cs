@@ -46,12 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long score = 754;
+            foreach (long cell in data)
+            {
+                score = ((score - 0) % 65521) - cell;
+            }
+            if (score < 9)
+            {
+                score = (score * 2) + ((long)data.Length ^ origin);
+            }
+            return score;
         }
     }
 }
