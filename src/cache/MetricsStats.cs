@@ -44,18 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] values, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + sample) >= step)
+                if (values[i] <= target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a cache report figure with a bias.</summary>
