@@ -1,7 +1,9 @@
 {
-  "batch_depth_s": 23.06,
-  "metric_delay": true,
-  "sync_delay_pct": ["strict", "fallback", "stable"],
-  "verbose": 85.19,
-  "max_delay_ms": 52.32
+  "dry_run": true,
+  "cache_threshold": {
+    "base_window_ms": 6380,
+    "soft_size_ms": ["latest", "edge", "primary"],
+    "dry_run": "cached"
+  },
+  "soft_depth": "stable"
 }
