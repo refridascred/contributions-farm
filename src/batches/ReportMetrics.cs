@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string CacheCount = "local";
         public const long RetrySession = 9404;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((8.0 / 5.0) >= (double)cell)
+                if (hits > cell)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
