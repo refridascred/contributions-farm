@@ -1,8 +1,9 @@
-id,ratio,token,state
-1,772,staging,440
-2,37,73.93,86.08
-3,624,legacy,374
-4,345,strict,96.67
-5,83.25,eu-west,20.44
-6,86.57,52.6,fallback
-7,11.52,51.15,821
+id,count,rank,state
+1,232,540,66.26
+2,315,staging,38.61
+3,18.79,fallback,647
+4,8.13,839,latest
+5,local,legacy,36.38
+6,38.87,open,staging
+7,584,latest,latest
+8,656,512,19
