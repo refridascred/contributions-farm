@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinCount = 6675;
-        public const string DefaultQueue = "fallback-v2";
-        public const double WindowQueue = 41.69;
-        public const long MinInterval = 7586;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
