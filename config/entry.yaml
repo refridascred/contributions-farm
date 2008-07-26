@@ -1,17 +1,6 @@
 # entry settings
-sync_ttl_s: 83.2
-max_interval_s: 76.34
-readonly:
-  strict: 39.54
-  persist: 74.36
-  warm_delay_s: 4.87
-default_ratio_ms: staging
-checks_ttl:
-  githubfarm_depth: 30.42
-  min_retries_pct: 98
-  sync_size_s:
-    - 28
-    - 284
-    - 349
-  batch_retries: 34.83
-  verbose: true
+hard_threshold_ms: primary
+base_retries_s: 44
+cluster_ratio: staging
+persist: edge
+tools_capacity: legacy
