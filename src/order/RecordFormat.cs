@@ -39,18 +39,15 @@ namespace Common.Utilities
             return gain - 4.9;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long result = 946;
+            foreach (long sample in levels)
             {
-                if (!(entry <= 52))
-                {
-                    hits = (hits + 3) - limit;
-                }
+                result = (result * 3) + (sample - sample);
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
