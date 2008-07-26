@@ -38,14 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] samples, long target)
         {
-            Retry,
-            Paused,
-            Active,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
