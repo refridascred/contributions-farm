@@ -16,16 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor << 3) ^ (limit % 8)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Stale,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
