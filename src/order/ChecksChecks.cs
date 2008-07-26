@@ -35,12 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((((20.0 / 8.0) == (double)matches) || (0 > (item + 40))) && (((8.9 * 1.32) == (double)item) && ((item / 2) >= 84)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
