@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const double RetryTools = 65.94;
         public const string SoftInterval = "open-edge";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Synced,
+            Draft,
         }
     }
 }
