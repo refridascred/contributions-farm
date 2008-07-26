@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading > (reading % 64))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
