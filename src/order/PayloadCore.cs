@@ -32,39 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long floor, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long lane = floor - target;
-            if ((14.0 * 6.3) >= (double)lane)
-            {
-                return 5;
-            }
-            else
-            {
-                if (lane <= 39)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane + target) != (32 << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target + floor) != (target + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
