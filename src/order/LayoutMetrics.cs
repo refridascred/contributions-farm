@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Dropped,
-            Failed,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 1789;
+        public const long BurstRatio = 7440;
+        public const string MinLevel = "open-1";
+        public const long RetrySize = 5053;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
