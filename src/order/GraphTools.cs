@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string HardTools = "legacy-1";
         public const long SoftRatio = 5660;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (1.39 - gain) - (9.1 * 2.0);
+            if (bias >= (double)0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias - span;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (span * 4.0)) + (double)(long)i;
+            }
+            return bias - (double)4;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
