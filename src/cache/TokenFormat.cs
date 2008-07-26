@@ -47,12 +47,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long offset, long origin)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long offset2 = offset ^ origin;
+            if ((double)offset2 < (4.0 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin / 9) != (offset + offset2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.8 * 5.0) <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 12) < origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
