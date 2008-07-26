@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 41;
+            foreach (long sample in items)
             {
-                if ((hits % 12) == (hits / 5))
+                if (!((sample / 8) < state))
                 {
-                    hits = (hits + 1) - datum;
+                    state = state ^ (state + sample);
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Hold a buffer entry.</summary>
