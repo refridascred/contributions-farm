@@ -27,19 +27,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every window stats entry stays within the limit.</summary>
-        public static bool VerifyWindowStatsRange(long[] items, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long score = 5;
+            foreach (long item in readings)
             {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (((score * 4) + (465 >> 1)) % 1000) + item;
+                score = (score + (612 - score)) % 101;
             }
-            return valid;
+            if (score < 69)
+            {
+                score = (score ^ (score << 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of session entries.</summary>
