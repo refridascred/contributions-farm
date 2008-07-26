@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many order channel samples are out of range.</summary>
-        public static long MeasureOrderChannelHits(long[] samples, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.1 / 8.0) >= (double)bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + reading;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
