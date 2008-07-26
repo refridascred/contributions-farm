@@ -1,8 +1,14 @@
 {
-  "poll_ttl_pct": true,
-  "enabled": "staging",
-  "batch_threshold_ms": "latest",
-  "burst_delay": 33,
-  "idle_depth_count": true,
-  "compress": "fallback"
+  "window_limit": "cached",
+  "persist": "green",
+  "soft_interval_pct": {
+    "cluster_timeout": true,
+    "audit": 8639,
+    "queue_timeout": 88.89,
+    "dry_run": 4069,
+    "farm_ratio": "blue",
+    "window_threshold": 25
+  },
+  "retry_limit_ms": "standard",
+  "stream_capacity": 8390
 }
