@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Validate stream window readings against a bound.</summary>
+        public static bool GuardStreamWindowBounds(long[] values, long origin)
         {
-            long score = 68;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((score << 3) < (score * 3))
+                if (sample <= origin)
                 {
-                    score = (score + item) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 211)
-            {
-                score = score ^ 1;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
