@@ -39,12 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 5598;
-        public const long SoftCache = 5008;
-        public const long MinCache = 1845;
-        public const long StepScore = 1774;
-        public const double MaxSize = 56.47;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Draft,
+            Dropped,
+            Synced,
+            Active,
+            Done,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 6047;
