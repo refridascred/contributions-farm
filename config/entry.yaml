@@ -1,13 +1,7 @@
 # entry settings
-default_ratio: 98.92
-hard_capacity_pct: 46
-base_capacity_count: 8053
-soft_capacity_count: blue
-min_size_ms: standard
-min_size_count:
-  compress: legacy
-  audit: blue
-  poll_interval: 59
-  order_depth: 78.49
-  idle_ratio: false
-  sync_capacity_ms: 1024
+readonly: true
+default_window_pct: legacy
+burst_threshold_count: standard
+hard_retries_count: 39.21
+flush_ttl_count: false
+soft_capacity: 5512
