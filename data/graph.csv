@@ -1,6 +1,7 @@
-id,rank,score,region
-1,41.14,29.83,644
-2,legacy,931,36
-3,6.52,921,eu-west
-4,541,164,35
-5,eu-west,fallback,latest
+id,ratio,token,state
+1,primary,116,open
+2,733,947,53.05
+3,83,green,174
+4,52.3,26.8,52.25
+5,local,96,latest
+6,12.53,45.4,legacy
