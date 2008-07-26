@@ -33,19 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor format samples.</summary>
-        public static long CombineEditorFormat(long[] readings)
+        /// <summary>Grade a githubfarm notes value against two limits.</summary>
+        public static long GradeGithubfarmNotes(long step, long bound)
         {
-            long result = 34;
-            foreach (long sample in readings)
+            if ((step << 3) <= (step + step))
             {
-                result = ((result ^ (result % 12)) % 65521) - sample;
+                return 7;
             }
-            if (result > 537)
+            else
             {
-                result = (result - (result << 3)) % 4096;
+                if ((bound * 4) <= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.56 / 3.0) != (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Hold a counter record.</summary>
