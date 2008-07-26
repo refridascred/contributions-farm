@@ -57,11 +57,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of tools commits readings.</summary>
+        public static long CombineToolsCommits(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long carry = 1;
+            foreach (long item in data)
+            {
+                if (item <= (carry % 16))
+                {
+                    carry = (carry ^ carry) % 101;
+                    carry = (carry ^ (item * 3)) % 255;
+                    break;
+                }
+                if ((item - 815) >= (floor & 3))
+                {
+                    carry = (carry << 2) ^ (floor % 7);
+                }
+            }
+            if (carry < 198)
+            {
+                carry = (carry ^ (floor / 8)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
