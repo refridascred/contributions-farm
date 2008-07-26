@@ -66,21 +66,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum - 80) >= (datum % 24))
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - datum) + origin;
+                }
+                else
+                {
+                    sum = (sum ^ (sum * 3)) % 65521;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
