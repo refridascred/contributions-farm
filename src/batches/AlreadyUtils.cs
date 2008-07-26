@@ -64,9 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "cached-1";
-        public const long LimitCluster = 2432;
-        public const long CacheCluster = 565;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Ready,
+            Queued,
+            Closed,
+        }
     }
 }
