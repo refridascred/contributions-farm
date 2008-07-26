@@ -49,23 +49,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] series, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            long total = 480;
-            foreach (long item in series)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total ^ item) % 1000) - origin;
-                if (!((double)item <= (17.0 - 7.9)))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (total < 7)
-            {
-                total = (total ^ 0) % 1000;
-            }
-            return total % 4096;
+            return total;
         }
     }
 }
