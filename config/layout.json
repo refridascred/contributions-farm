@@ -1,7 +1,10 @@
 {
-  "enabled": ["cached", "standard"],
-  "flush_timeout_count": true,
-  "strict": "eu-west",
-  "idle_ttl": 2193,
-  "flush_capacity_s": 5280
+  "batches_interval": {
+    "poll_window": true,
+    "max_limit_count": "latest",
+    "warm_timeout": 3507,
+    "route_capacity": "fallback"
+  },
+  "batch_limit_ms": 55,
+  "account_ttl": [291, 67]
 }
