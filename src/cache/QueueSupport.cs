@@ -31,13 +31,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Measure how many batches editor samples are out of range.</summary>
+        public static long AuditBatchesEditorHits(long[] items)
         {
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((((value / 3) <= value) && ((count % 24) <= value)) || ((value & 3) > count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
