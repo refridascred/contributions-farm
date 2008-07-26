@@ -24,17 +24,20 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 944;
+            foreach (long sample in readings)
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
+                sum = ((sum * 5) + (sample - sum)) % 101;
+                sum = sum - (sample + sum);
+                if ((sample - sum) <= (sum << 3))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (sample * 5)) % 101;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
