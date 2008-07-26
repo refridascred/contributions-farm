@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] samples, long offset)
-        {
-            long total = 3;
-            foreach (long value in samples)
-            {
-                total = ((total ^ (504 + total)) - value) - offset;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 4578;
+        public const long RetrySize = 1720;
+        public const string MaxWidth = "legacy-edge";
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
