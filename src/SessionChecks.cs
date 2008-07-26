@@ -42,19 +42,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] readings, long origin)
         {
-            double mean = 7.61 + floor;
-            if (mean < (floor + ratio))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - (double)40;
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (5.02 + mean)) + (double)(long)i;
-            }
-            return mean - (double)4;
+            return -1;
         }
     }
 }
