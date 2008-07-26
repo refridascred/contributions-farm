@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next checks token value.</summary>
-        public static double AdjustChecksToken(double bias, double span)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            double weight = 15.0;
-            if (weight >= (bias + weight))
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                weight = (weight - bias) - span;
+                if (((anchor >> 4) <= anchor) && ((step + (long)i) > anchor))
+                {
+                    anchor = ((anchor << 2) ^ step) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + 252;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return weight - bias;
+            return anchor;
         }
 
         /// <summary>Describe the contributi level values.</summary>
