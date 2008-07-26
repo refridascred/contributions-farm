@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor + anchor) < origin)
+                if (data[i] <= seed)
                 {
-                    anchor = anchor ^ (origin % 97);
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = anchor ^ 510;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
