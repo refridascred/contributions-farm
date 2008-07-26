@@ -20,24 +20,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long bound, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            if (((7.0 + 0.2) >= (double)bound) || ((bound << 1) != (bound << 3)))
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor << 3) >= (bound ^ floor))
+                score = (score << 3) ^ 124;
+                score = (score + (score / 9)) % 65521;
+                if ((score & 7) >= (score + score))
                 {
-                    return 5;
+                    score = ((score * 3) + (long)i) % 255;
                 }
-                else
-                {
-                    return 1;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Scale a record checks figure with a bias.</summary>
