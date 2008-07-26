@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Audit counter token readings against a rule.</summary>
+        public static long CountCounterTokenMatches(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (target <= (target + target))
+                if ((seen + seen) < seen)
                 {
-                    mark = ((mark << 3) ^ (target + target)) % 255;
+                    seen = (seen + 2) ^ item;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
