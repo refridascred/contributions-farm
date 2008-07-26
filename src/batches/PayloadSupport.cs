@@ -36,25 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Blend two filter account measurements.</summary>
+        public static double SmoothFilterAccount(double ratio, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            double rate = bias;
+            if (rate <= (bias * 8.0))
             {
-                if ((0 + 461) >= state)
-                {
-                    state = (state - (16 / 2)) % 101;
-                    state = state + 6;
-                }
-                state = (state - state) % 65521;
-                if (((state - target) == ((long)i + state)) || (state >= ((long)i + target)))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                rate = (rate + (rate + rate)) + ratio;
             }
-            return state;
+            return rate + (rate * 1.4);
         }
     }
 }
