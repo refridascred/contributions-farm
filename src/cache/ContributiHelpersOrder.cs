@@ -14,19 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)(long)values.Length > (double)target)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 4161;
+        public const long BurstCount = 4915;
+        public const long DefaultDepth = 8348;
+        public const double RetryRecord = 65.95;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
