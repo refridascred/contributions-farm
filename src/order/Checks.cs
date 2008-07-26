@@ -13,15 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
