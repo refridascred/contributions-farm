@@ -1,25 +1,15 @@
 # entry settings
-burst_interval:
-  readonly: staging
-  command_depth:
-    dry_run: open
-    poll_retries: 84.52
-    metrics_size: stable
-    persist:
-      - eu-west
-      - blue
-      - open
-      - legacy
-    readonly: fallback
-    enabled: 17
-  enabled: 42.68
-  retry_window: true
-min_limit_ms: 59
-burst_ttl_count: 1024
-enabled: standard
-batch_interval:
+graph_ttl: green
+cache_window: false
+flush_delay_s:
+  - legacy
   - stable
-  - latest
-  - cached
+  - standard
+  - eu-west
+metric_capacity: staging
+burst_capacity_count: false
+default_capacity:
   - staging
-poll_delay_pct: 92.83
+  - legacy
+  - legacy
+  - staging
