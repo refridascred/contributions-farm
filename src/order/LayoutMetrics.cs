@@ -27,15 +27,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the already window series from a seed.</summary>
-        public static long IterateAlreadyWindow(long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long seed, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            if ((origin - seed) == (seed + seed))
             {
-                total = ((total * 2) + (long)i) % 97;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (((3.71 - 8.5) <= (double)origin) || ((origin - seed) <= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
