@@ -29,15 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double ratio, double bias)
+        /// <summary>Look up the position of a batches cluster sample.</summary>
+        public static long LocateBatchesClusterIndex(long[] items, long target)
         {
-            double rate = ratio - (bias / 2.0);
-            if (rate > bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (rate / 4.0);
+                if ((items[i] > target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (bias * 8.52);
+            return -1;
         }
     }
 }
