@@ -47,22 +47,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report context entries that pass the check.</summary>
-        public static long MeasureReportContextGaps(long[] items)
+        /// <summary>Roll a metric checks counter forward.</summary>
+        public static long IterateMetricChecks(long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading / 4) > 34)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + (anchor << 1)) % 4096;
+                anchor = anchor + (bound / 9);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
