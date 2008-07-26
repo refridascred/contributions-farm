@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryBudget = 8772;
-        public const long DefaultSupport = 4992;
-        public const long BurstSupport = 9572;
-        public const long CacheSupport = 2955;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Paused,
+            Pending,
+            Draft,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] samples, long seed)
