@@ -25,19 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] data, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((carry - (long)i) >= offset)
+                if (reading > bound)
                 {
-                    carry = (carry * 2) + (carry + (long)i);
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
