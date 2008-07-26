@@ -19,18 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Rank payload window input into a small class.</summary>
+        public static long BucketPayloadWindow(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long delta = floor + seed;
+            if ((seed % 16) >= (floor >> 3))
             {
-                if ((double)cell >= (double)matches)
+                return 3;
+            }
+            else
+            {
+                if (((floor + delta) <= delta) || ((double)delta <= (20.0 + 0.41)))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta - floor) != (delta + delta))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
