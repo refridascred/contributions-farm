@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
-        public static bool ValidateStatsGithubfarmLimits(long[] samples, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (item != step)
+                if ((datum <= tally) || (((85 / 8) >= (tally - datum)) && ((tally - datum) >= (tally % 10))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
