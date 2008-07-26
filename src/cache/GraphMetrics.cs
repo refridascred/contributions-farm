@@ -63,12 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 4) + (limit + (long)i)) % 65521;
+                carry = carry ^ (40 / 7);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
