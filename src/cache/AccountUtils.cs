@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 7199;
+        public const long BaseOrder = 2765;
+        public const double BurstOrder = 68.14;
+        public const long MinLevel = 3187;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] data, long limit)
