@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const double LimitLevel = 89.03;
         public const double BatchBuffer = 97.28;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] values, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length * 3) <= (seed + seed))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the layout status values.</summary>
