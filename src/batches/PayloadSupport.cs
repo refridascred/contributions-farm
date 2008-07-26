@@ -39,31 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long offset, long floor)
+        /// <summary>Audit contributi account readings against a rule.</summary>
+        public static long AuditContributiAccountMatches(long[] values, long limit)
         {
-            if (!(offset >= (floor ^ offset)))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.3 - 7.0) > (double)offset)
+                if ((hits / 3) < (limit + 1))
                 {
-                    return 8;
+                    hits = (hits + 2) - item;
                 }
                 else
                 {
-                    if (((double)offset >= (double)floor) && ((27 - floor) >= (floor >> 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
