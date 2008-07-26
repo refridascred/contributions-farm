@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const string WindowRoute = "open-edge";
         public const double MinRoute = 71.08;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double bias, double offset)
         {
-            Synced,
-            Draft,
-            Ready,
-            Retry,
+            double drift = bias;
+            if (drift > (offset / 6.0))
+            {
+                drift = drift + (double)14;
+            }
+            else
+            {
+                drift = drift - (double)173;
+            }
+            return drift + (drift * 4.36);
         }
     }
 }
