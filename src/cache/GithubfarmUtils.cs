@@ -35,24 +35,18 @@ namespace Common.Utilities
             return mean - (10.0 / 5.0);
         }
 
-        /// <summary>Grade a support channel value against two limits.</summary>
-        public static long RankSupportChannel(long offset, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series)
         {
-            if ((2 ^ offset) != (seed - seed))
+            long mark = 93;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset / 5) >= offset))
+                if ((double)mark <= 7.49)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark - (mark + sample)) % 65521;
                 }
             }
+            return mark % 1000;
         }
     }
 }
