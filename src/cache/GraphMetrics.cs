@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of schema session readings.</summary>
-        public static long TotalSchemaSession(long[] readings)
+        /// <summary>Validate entry payload readings against a bound.</summary>
+        public static bool VerifyEntryPayloadRange(long[] samples, long limit)
         {
-            long mark = 2;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mark = (mark ^ (reading - 59)) % 97;
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark < 1)
-            {
-                mark = (mark << 2) ^ (44 - mark);
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
