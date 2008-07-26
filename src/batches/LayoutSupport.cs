@@ -53,39 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long seed, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long next = seed - target;
-            if (((double)target > (5.6 / 8.0)) && ((double)369 < (double)target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)next >= (5.18 * 6.55))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + next) < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next + target) < seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
