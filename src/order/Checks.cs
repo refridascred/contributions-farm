@@ -38,14 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Draft,
-            Dropped,
-            Synced,
+            Retry,
+            Paused,
             Active,
-            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
