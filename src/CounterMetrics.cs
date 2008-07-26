@@ -31,11 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit farm payload readings against a rule.</summary>
