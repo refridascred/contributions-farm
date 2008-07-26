@@ -76,19 +76,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Project the next stream notes value.</summary>
-        public static double AdjustStreamNotes(double scale, double span)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            double scale2 = (span * 4.49) * 9.0;
-            if (scale2 >= span)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = scale2 + (span / 9.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + (scale - scale);
-            }
-            return scale2 - (double)76;
+            return count;
         }
     }
 }
