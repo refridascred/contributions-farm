@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string RetrySpan = "latest-edge";
         public const string LimitQueue = "latest-1";
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Idle,
-            Done,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepScore = 7725;
+        public const long MaxRatio = 865;
+        public const string MaxSpan = "fallback";
+        public const double WindowCommand = 8.05;
+        public const long BurstSize = 353;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
