@@ -30,21 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score << 3) ^ 124;
-                score = (score + (score / 9)) % 65521;
-                if ((score & 7) >= (score + score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 3) + (long)i) % 255;
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
