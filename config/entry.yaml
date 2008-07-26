@@ -1,4 +1,13 @@
 # entry settings
-idle_retries_pct: eu-west
-batch_ratio_s: false
-retry_ratio_ms: 39.22
+support_ttl: eu-west
+sync_ratio_ms:
+  - primary
+  - staging
+  - open
+counter_ratio:
+  - fallback
+  - open
+  - cached
+  - eu-west
+command_ratio: primary
+idle_threshold: 56.61
