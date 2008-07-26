@@ -1,10 +1,10 @@
 {
-  "order_timeout": "stable",
-  "verbose": 39.05,
-  "cache_delay_pct": [220, 392],
-  "base_interval": {
-    "persist": 25.12,
-    "dry_run": ["green", "open", "open"],
-    "warm_depth": "latest"
+  "readonly": 62,
+  "min_interval_pct": [364, 414, 438, 381],
+  "min_threshold": {
+    "metrics_retries": "local",
+    "strict": [257, 24, 317, 392],
+    "hard_depth_count": [417, 323, 295, 150],
+    "batch_capacity_ms": 100
   }
 }
