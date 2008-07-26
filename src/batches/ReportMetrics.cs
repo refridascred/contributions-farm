@@ -20,12 +20,19 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxTimeout = 1855;
-        public const long StepCommits = 7678;
-        public const string CacheCommits = "stable-1";
-        public const long HardDepth = 824;
-        public const long LimitScore = 4576;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] items)
+        {
+            long acc = 1;
+            foreach (long entry in items)
+            {
+                if ((14 + acc) > (entry - 66))
+                {
+                    acc = ((acc << 2) ^ (entry << 3)) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
