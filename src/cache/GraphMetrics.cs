@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Project the next githubfarm support value.</summary>
+        public static double SmoothGithubfarmSupport(double ratio, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            double bias = floor;
+            if (bias >= bias)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                bias = (bias - (double)144) + ratio;
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)17) + (double)(long)i;
+            }
+            return bias + (double)410;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
