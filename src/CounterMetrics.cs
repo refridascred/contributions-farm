@@ -29,31 +29,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a account commits value against two limits.</summary>
-        public static long GradeAccountCommits(long limit, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            if ((limit << 2) != (floor ^ limit))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((9.58 + 4.7) < (double)limit) && (limit <= floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor < (14.0 - 5.6))
+                    if ((series[i] ^ series[j]) != 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of layout batch readings.</summary>
