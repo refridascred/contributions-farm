@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series)
-        {
-            long sum = -561;
-            foreach (long sample in series)
-            {
-                if ((sum < (446 % 12)) || ((5.5 + 0.5) <= (double)sum))
-                {
-                    sum = (sum - (sample << 3)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sample / 4)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardRatio = "legacy-1";
+        public const long StepStream = 3702;
+        public const string MaxCount = "primary-v2";
+        public const double CacheRatio = 85.87;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatLimits(long[] data, long floor)
