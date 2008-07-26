@@ -1,11 +1,8 @@
 {
-  "audit": 500,
-  "sync_depth": false,
-  "commits_threshold": {
-    "context_ratio": "cached",
-    "cache_window_pct": false,
-    "base_capacity": [95, 217, 59],
-    "batch_limit": "legacy"
-  },
-  "base_threshold_ms": 60
+  "session_window": true,
+  "batches_depth": ["staging", "blue"],
+  "idle_limit_count": "open",
+  "retry_timeout_pct": [54, 454, 4, 230],
+  "retry_timeout": 5391,
+  "strict": 250
 }
