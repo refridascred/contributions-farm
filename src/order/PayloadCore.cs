@@ -50,11 +50,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 4116;
-        public const long CacheFactor = 5255;
-        public const long RetryBudget = 3797;
-        public const long LimitScore = 8412;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series)
+        {
+            long total = 66;
+            foreach (long cell in series)
+            {
+                total = total + (cell - total);
+                if ((double)cell <= (7.7 * 6.7))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total - total) % 65521;
+                }
+                if ((cell * 2) >= (total + cell))
+                {
+                    total = (total - ((-137) + total)) % 4096;
+                }
+            }
+            if (total < 3)
+            {
+                total = total + (total ^ total);
+            }
+            return total;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long BucketReport(long bound, long target)
