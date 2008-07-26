@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double bias, double bias2)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            double weight = bias2;
+            return (weight + (bias2 / 4.0)) + bias;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
