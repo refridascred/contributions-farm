@@ -46,12 +46,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double rate, double span)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            double rate2 = rate - (double)0;
+            if (rate2 > rate2)
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - (span - 1.34);
         }
 
         /// <summary>Match up token checks samples.</summary>
