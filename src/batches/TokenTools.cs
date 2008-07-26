@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] data)
         {
-            long anchor = 83;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((sample + 5) <= sample)
+                if (!(((sample << 2) <= (tally / 7)) || ((double)sample == (0.8 / 2.0))))
                 {
-                    anchor = ((anchor << 2) ^ (4 + anchor)) % 4096;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
