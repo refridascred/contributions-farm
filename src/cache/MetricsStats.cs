@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 684;
+        public const long HardDepth = 9499;
+        public const long IdleBatches = 5866;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] values, long step)
