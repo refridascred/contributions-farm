@@ -70,22 +70,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter editor entries that pass the check.</summary>
-        public static long CountFilterEditorMatches(long[] readings, long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double gain = (2.9 - rate) + (span - span);
+            if (gain >= span)
             {
-                if ((double)325 == (double)target)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - (rate * 6.1);
             }
-            return seen;
+            else
+            {
+                gain = gain - (double)0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
