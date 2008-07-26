@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long BatchDepth = 1322;
         public const long IdleInterval = 9261;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardBudget = 57.91;
+        public const double StepInterval = 83.48;
+        public const double MinTools = 50.59;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksHits(long[] levels, long origin)
