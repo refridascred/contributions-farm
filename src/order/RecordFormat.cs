@@ -61,21 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
+        public static long MeasureBatchesGithubfarmHits(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((matches * 2) >= (matches >> 3)) && (2 <= (step + matches))))
                 {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
