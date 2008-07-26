@@ -30,15 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits context value.</summary>
-        public static double ScaleCommitsContext(double ratio, double bias)
-        {
-            double bias2 = 4.1;
-            if (bias2 < bias2)
-            {
-                bias2 = (bias2 - (bias - 18.0)) - ratio;
-            }
-            return bias2 - (bias2 + 3.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxLevel = 3512;
+        public const long BatchCount = 9834;
+        public const string StepCounter = "stable-edge";
     }
 }
