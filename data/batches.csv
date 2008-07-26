@@ -1,9 +1,6 @@
-id,weight,region,rank
-1,stable,83.72,cached
-2,cached,edge,standard
-3,staging,27.75,516
-4,blue,open,72.93
-5,450,50.35,286
-6,765,legacy,713
-7,24.12,172,547
-8,staging,667,94.11
+id,weight,region,count
+1,eu-west,strict,106
+2,825,339,stable
+3,343,cached,blue
+4,384,20.97,edge
+5,stable,98.18,stable
