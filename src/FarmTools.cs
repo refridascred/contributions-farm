@@ -28,14 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Stale,
-            Done,
-            Idle,
-            Failed,
+            Dropped,
             Closed,
+            Stale,
+            Draft,
+            Locked,
         }
     }
 }
