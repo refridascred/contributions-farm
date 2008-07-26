@@ -1,7 +1,9 @@
-id,token,active
-1,396,3
-2,55.14,fallback
-3,green,719
-4,701,900
-5,877,edge
-6,807,25.7
+id,state,ratio
+1,fallback,833
+2,316,56.51
+3,830,stable
+4,fallback,4.66
+5,301,82.32
+6,410,stable
+7,open,378
+8,staging,209
