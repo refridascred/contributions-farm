@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const string RetrySpan = "latest-edge";
         public const string LimitQueue = "latest-1";
 
-        /// <summary>Roll a commits report counter forward.</summary>
-        public static long StepCommitsReport(long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                sum = (sum << 2) ^ bound;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many tools token samples are out of range.</summary>
