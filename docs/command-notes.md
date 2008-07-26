@@ -1,14 +1,11 @@
 # Command notes
 
-Each channel is validated before it reaches the report queue.
-Use already settings to tune how often tools data is refreshed.
-
-Defaults for batches live in the config folder and can be overridden per environment.
-Keep channel and command names short and lowercase.
-A filter that stays idle for too long is moved to the stream list.
+Run the payload check before changing any commits limits.
+Use token settings to tune how often profile data is refreshed.
+When a command fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Document new entry fields
-- Review batches limits each release
+- Document new commits fields
+- Review entry limits each release
+- Keep commits values small
