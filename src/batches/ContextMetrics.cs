@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry + carry;
-                if ((bound * 3) < (bound % 10))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry ^ (long)i) % 101;
-                    carry = (carry + bound) % 65521;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
