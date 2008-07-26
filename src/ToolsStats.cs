@@ -69,13 +69,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Idle,
-            Synced,
-            New,
-            Paused,
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
