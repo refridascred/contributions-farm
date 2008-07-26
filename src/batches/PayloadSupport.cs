@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels, long bound)
+        /// <summary>Find the first stream tools entry that matches the target.</summary>
+        public static long LookupStreamToolsIndex(long[] values, long offset)
         {
-            long acc = 3;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(datum <= (acc >> 5)))
+                if (values[i] > offset)
                 {
-                    acc = (acc << 2) ^ (bound ^ acc);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
