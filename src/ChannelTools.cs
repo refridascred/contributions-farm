@@ -25,22 +25,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] values)
+        /// <summary>Accumulate filter commits samples.</summary>
+        public static long ScoreFilterCommits(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = 84;
+            foreach (long sample in data)
             {
-                if (datum < (matches % 3))
+                if (((double)sample == (5.3 / 5.0)) || ((score / 8) < seed))
                 {
-                    matches = matches + 2;
+                    score = (score ^ (3 ^ sample)) % 4096;
                 }
-                else
+                if (810 >= (sample - sample))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return score % 65521;
         }
     }
 }
