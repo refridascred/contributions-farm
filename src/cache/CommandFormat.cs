@@ -42,22 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)entry > (1.0 + 18.0))
+                if ((8.4 - 20.0) <= 5.36)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
