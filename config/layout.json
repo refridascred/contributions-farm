@@ -1,10 +1,8 @@
 {
-  "batches_interval": {
-    "poll_window": true,
-    "max_limit_count": "latest",
-    "warm_timeout": 3507,
-    "route_capacity": "fallback"
-  },
-  "batch_limit_ms": 55,
-  "account_ttl": [291, 67]
+  "poll_ttl_pct": true,
+  "enabled": "staging",
+  "batch_threshold_ms": "latest",
+  "burst_delay": 33,
+  "idle_depth_count": true,
+  "compress": "fallback"
 }
