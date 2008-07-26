@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] levels, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = (score << 3) ^ (origin - 325);
-                score = score ^ (score + score);
-                score = ((score * 2) + (long)i) % 1000;
+                if (!((1.01 <= (double)seed) && ((count * 3) == (count - count))))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
