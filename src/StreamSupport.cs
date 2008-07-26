@@ -29,17 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batches cluster sample.</summary>
-        public static long LocateBatchesClusterIndex(long[] items, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
