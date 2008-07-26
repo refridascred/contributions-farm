@@ -20,22 +20,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit command already readings against a rule.</summary>
-        public static long CountCommandAlreadyHits(long[] readings)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double bias = floor;
+            if (bias < ratio)
             {
-                if ((reading << 3) > ((-982) / 8))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias + 4.3;
             }
-            return hits;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias + (bias - ratio);
         }
 
         /// <summary>Describe the context status values.</summary>
