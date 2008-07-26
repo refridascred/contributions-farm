@@ -1,8 +1,6 @@
 {
-  "stream_size": "stable",
-  "cache_interval_pct": 9234,
-  "burst_delay": true,
-  "compress": 59,
-  "queue_capacity": 100,
-  "readonly": true
+  "strict": 30.57,
+  "account_interval": 31.01,
+  "idle_window_pct": 30,
+  "account_capacity": 30
 }
