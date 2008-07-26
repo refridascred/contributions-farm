@@ -1,14 +1,11 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the context list.
-Each profile is validated before it reaches the payload queue.
-
-Run the batch check before changing any contributi limits.
-A record that stays idle for too long is moved to the buffer list.
-Run the tools check before changing any contributi limits.
+Use report settings to tune how often queue data is refreshed.
+Keep record and stream names short and lowercase.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer window defaults
-- Log every account change
-- Validate record input early
+- Validate queue input early
+- Review filter limits each release
+- Document new channel fields
