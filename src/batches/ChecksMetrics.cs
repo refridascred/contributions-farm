@@ -26,18 +26,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long CountPayloadEntryGaps(long[] levels, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((matches & 127) != (matches % 97)) || (6 > matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 3) ^ value) - step;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
