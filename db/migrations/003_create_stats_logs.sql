@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL
+    weight REAL,
+    ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
 
-INSERT INTO stats_logs (label, count, ratio) VALUES ('edge', 86, 98.42);
-INSERT INTO stats_logs (label, count, ratio) VALUES ('strict', 48, 11.23);
+INSERT INTO stats_logs (label, weight, ratio, state) VALUES ('cached', 40.1, 59.97, 'cached');
