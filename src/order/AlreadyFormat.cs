@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepInterval = "local-v2";
-        public const long SoftRatio = 9133;
-        public const long StepRoute = 7916;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] samples)
