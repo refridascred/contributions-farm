@@ -36,18 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinLevel = "stable";
+        public const double DefaultInterval = 57.69;
+        public const double HardStats = 14.7;
+        public const long WindowCount = 665;
+        public const long BaseLevel = 5805;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 1040;
