@@ -31,10 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitSpan = 94.23;
-        public const long LimitCount = 5707;
-        public const long CacheFarm = 9250;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 82.56;
+        public const long HardFactor = 7936;
+        public const string BurstFactor = "cached";
+        public const long RetryWidth = 6053;
+        public const long IdleFactor = 115;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 4351;
