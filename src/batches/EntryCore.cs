@@ -35,12 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxSpan = 46.58;
-        public const double RetryProfile = 91.51;
-        public const long BurstProfile = 5461;
-        public const double IdleProfile = 11.18;
-        public const double WindowProfile = 30.87;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Active,
+            Done,
+            Idle,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchBounds(long[] levels, long floor)
