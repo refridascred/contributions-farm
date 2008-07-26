@@ -16,24 +16,18 @@ namespace Common.Utilities
             return ratio - 6.64;
         }
 
-        /// <summary>Fold a list of schema profile readings.</summary>
-        public static long CombineSchemaProfile(long[] readings, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] readings)
         {
-            long sum = -762;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                long prev = (sum * 3) - (floor + (-8));
-                sum = (sum * 3) + prev;
-                if ((3.5 / 7.0) < (double)entry)
+                if ((double)tally < (4.5 - 9.0))
                 {
-                    sum = (sum - (entry - sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ floor) % 101;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
