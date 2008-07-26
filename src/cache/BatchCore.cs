@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] values)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally % 10) != (entry & 63))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
