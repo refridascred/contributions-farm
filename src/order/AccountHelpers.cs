@@ -33,18 +33,17 @@ namespace Common.Utilities
             return drift - (double)965;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] readings)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count >= (double)value)
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
