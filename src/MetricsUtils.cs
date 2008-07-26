@@ -45,23 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double scale, double span)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
         {
-            double ratio = span;
-            if (ratio > 9.0)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = ratio + span;
+                long slot = result;
+                slot = slot ^ slot;
+                result = result ^ (0 + slot);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - (double)92;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio + scale)) + (double)(long)i;
-            }
-            return ratio - span;
+            return result;
         }
     }
 }
