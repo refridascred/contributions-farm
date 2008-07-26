@@ -13,15 +13,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Combine account cache values into a single score.</summary>
+        public static long CombineAccountCache(long[] values, long seed)
         {
-            long total = 738;
-            foreach (long value in items)
+            long total = 14;
+            foreach (long value in values)
             {
-                if ((total - value) > (total + total))
+                total = ((total * 4) + (seed / 7)) % 101;
+                if ((value & 3) == (value ^ value))
                 {
-                    total = total + (total & 31);
+                    total = (total + (total / 4)) % 97;
                 }
             }
             return total;
