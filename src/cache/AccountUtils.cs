@@ -21,15 +21,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long offset)
+        /// <summary>Count the already editor entries that pass the check.</summary>
+        public static long CountAlreadyEditorMatches(long[] series, long bound)
         {
-            long mark = -212;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                mark = ((mark - (offset - mark)) % 4096) - datum;
+                if ((value + bound) <= (value + matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark % 4096;
+            return matches;
         }
     }
 }
