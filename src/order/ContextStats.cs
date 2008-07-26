@@ -53,22 +53,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] values, long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches * 3) <= floor)
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            New,
+            Closed,
         }
     }
 }
