@@ -61,10 +61,20 @@ namespace Common.Utilities
         public const double IdleProfile = 11.18;
         public const double WindowProfile = 30.87;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinSpan = 23.48;
-        public const long CacheTimeout = 5802;
-        public const string WindowLevel = "latest-edge";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many channel checks samples are out of range.</summary>
         public static long AuditChannelChecksHits(long[] values)
