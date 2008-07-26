@@ -22,12 +22,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryLevel = 38.98;
-        public const long WindowBudget = 9573;
-        public const long LimitCount = 6904;
-        public const string MaxSize = "strict-v2";
-        public const long LimitLevel = 523;
+        /// <summary>Rank metric command input into a small class.</summary>
+        public static long ClassifyMetricCommand(long limit, long step)
+        {
+            long slot = limit + step;
+            if ((slot / 3) < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((17.0 - 6.14) == (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((4.1 / 6.0) != (double)step) && ((slot - limit) >= slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)324 <= (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
