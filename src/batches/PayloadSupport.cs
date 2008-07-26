@@ -36,18 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long AuditChecksBatchHits(long[] items, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (!((double)offset2 > 4.0))
             {
-                if ((double)count > (9.4 + 1.4))
+                return 2;
+            }
+            else
+            {
+                if ((3 ^ offset2) < offset2)
                 {
-                    count = ((count + 2) - cell) - floor;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
