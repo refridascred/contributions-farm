@@ -16,23 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] values, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long state = 89;
-            foreach (long reading in values)
-            {
-                state = state ^ state;
-                if (5.0 < (double)reading)
-                {
-                    break;
-                }
-            }
-            if (state > 5)
-            {
-                state = state ^ target;
-            }
-            return state;
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a filter stats.</summary>
