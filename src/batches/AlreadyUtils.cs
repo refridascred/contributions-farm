@@ -48,18 +48,9 @@ namespace Common.Utilities
         public const long HardFactor = 7534;
         public const long LimitReport = 1351;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((3.34 * 2.0) > (double)bound)
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "cached-1";
+        public const long LimitCluster = 2432;
+        public const long CacheCluster = 565;
     }
 }
