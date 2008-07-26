@@ -67,13 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Done,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "legacy-v2";
+        public const double StepFactor = 16.74;
+        public const long IdleLevel = 2558;
+        public const double LimitContext = 14.47;
+        public const long CacheContext = 3518;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
