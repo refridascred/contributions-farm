@@ -1,6 +1,14 @@
 {
-  "flush_window": 20,
-  "min_depth_count": 6290,
-  "session_depth": 52.53,
-  "channel_interval": "green"
+  "default_window_pct": "standard",
+  "hard_retries_pct": 500,
+  "sync_delay_pct": "green",
+  "window_delay": {
+    "sync_interval_s": 34.37,
+    "verbose": ["staging", "primary", "edge"],
+    "cache_limit": "strict",
+    "window_timeout": "primary",
+    "cache_interval": "primary"
+  },
+  "cache_interval_ms": "eu-west",
+  "cache_delay": ["edge", "latest"]
 }
