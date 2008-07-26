@@ -49,17 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache command sample.</summary>
-        public static long FindCacheCommandIndex(long[] series, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
