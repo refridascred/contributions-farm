@@ -24,14 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Validate buffer metrics readings against a bound.</summary>
+        public static bool GuardBufferMetricsRange(long[] readings, long offset)
         {
-            Failed,
-            Idle,
-            Retry,
-            Closed,
-            Dropped,
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
