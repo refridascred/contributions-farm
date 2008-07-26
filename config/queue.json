@@ -1,6 +1,8 @@
 {
-  "profile_ratio": 5,
-  "compress": "stable",
-  "burst_retries": false,
-  "idle_delay": 24
+  "warm_threshold_s": ["open", "eu-west", "blue"],
+  "batch_delay": 38,
+  "warm_capacity": 77,
+  "base_timeout_count": "open",
+  "readonly": true,
+  "base_window_s": "local"
 }
