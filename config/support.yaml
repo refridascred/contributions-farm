@@ -1,4 +1,11 @@
 # support settings
-retry_size_pct: 5377
-enabled: 93
-flush_size: latest
+min_delay_count: stable
+route_ratio: 100
+farm_window:
+  burst_timeout: 1024
+  default_capacity_s: eu-west
+  default_depth_pct: false
+  support_delay: 0.46
+  retry_retries_pct: 81
+dry_run: false
+audit: false
