@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 8045;
-        public const long MinBuffer = 5096;
-        public const double DefaultRatio = 90.74;
-        public const long DefaultBuffer = 8451;
-        public const long SoftBuffer = 5471;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Paused,
+            Done,
+            Locked,
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double gain, double floor)
