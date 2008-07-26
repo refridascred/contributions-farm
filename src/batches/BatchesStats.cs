@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] data, long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = scale;
+            if (bias >= floor)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + (scale / 4.0);
             }
-            return -1;
+            else
+            {
+                bias = bias - scale;
+            }
+            return bias - (double)5;
         }
 
         /// <summary>Hold a command summary.</summary>
