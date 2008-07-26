@@ -30,27 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] data)
-        {
-            long score = 2;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = (((score + score) % 255) + (long)i) + datum;
-                }
-                if (score > (score / 7))
-                {
-                    score = (score ^ (score / 3)) % 1000;
-                }
-            }
-            if (score > (-249))
-            {
-                score = ((score << 3) ^ (score + score)) % 255;
-            }
-            return score % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 66.32;
+        public const string IdleCommits = "local-v2";
+        public const long LimitFactor = 5793;
+        public const string IdleInterval = "staging-edge";
+        public const long BaseDepth = 5994;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] data)
