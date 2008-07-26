@@ -53,38 +53,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long target, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if (target < (origin << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((21 ^ 34) == (target << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (36 >= (target * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4.96 * 7.91) == (double)target) && ((double)origin != (12.0 / 2.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            New,
+            Failed,
         }
     }
 }
