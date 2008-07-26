@@ -1,16 +1,16 @@
 {
-  "record_retries": "strict",
-  "entry_depth": 33.2,
-  "report_depth": {
-    "retry_timeout_s": [373, 249],
-    "max_retries_pct": "cached",
-    "retry_ratio": 2,
-    "channel_ratio": {
-      "strict": "edge",
-      "flush_capacity": 75,
-      "max_ttl": "cached"
+  "poll_limit_ms": false,
+  "warm_window_pct": "primary",
+  "batch_depth_count": {
+    "persist": "green",
+    "idle_depth_count": 42.64,
+    "poll_ratio_s": {
+      "route_capacity": "latest",
+      "persist": "blue",
+      "retry_ttl": true,
+      "retry_ttl_s": 46.89
     },
-    "flush_ttl_pct": [355, 222, 435],
-    "entry_interval": true
+    "cache_window_count": "primary",
+    "hard_size": 97
   }
 }
