@@ -42,23 +42,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = 248;
-            foreach (long sample in levels)
-            {
-                result = ((result ^ 2) % 65521) ^ sample;
-                if ((double)seed < (10.0 * 16.0))
-                {
-                    break;
-                }
-            }
-            if (result > 55)
-            {
-                result = result - result;
-            }
-            return result;
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
