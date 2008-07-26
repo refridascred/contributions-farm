@@ -19,26 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long seed)
         {
-            long carry = 975;
-            foreach (long sample in values)
+            if ((step >> 1) > (step & 63))
             {
-                if ((sample < (carry - carry)) && ((sample + sample) != (carry ^ carry)))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (1.44 * 9.0))
                 {
-                    carry = (carry * 3) + (0 % 8);
+                    return 0;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (439 - sample)) % 101;
+                    return 5;
                 }
             }
-            if (carry < 14)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
