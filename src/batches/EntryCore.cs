@@ -28,14 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] readings, long step)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Failed,
-            Draft,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
