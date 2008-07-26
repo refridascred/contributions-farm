@@ -15,12 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
         {
-            New,
-            Draft,
-            Queued,
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = (acc ^ (offset % 3)) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Match up editor samples.</summary>
