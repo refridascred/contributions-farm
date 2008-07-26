@@ -31,14 +31,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every counter profile entry stays within the limit.</summary>
+        public static bool ValidateCounterProfileRange(long[] levels, long offset)
         {
-            Failed,
-            Stale,
-            Locked,
-            Draft,
-            Closed,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
