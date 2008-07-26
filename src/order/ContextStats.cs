@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1 - 2) != (tally - item))
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
