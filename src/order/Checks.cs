@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Done,
-            Synced,
-            Closed,
-            Dropped,
+            New,
             Pending,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
