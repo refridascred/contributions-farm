@@ -50,14 +50,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long limit, long offset)
         {
-            Active,
-            Ready,
-            Stale,
-            Pending,
-            Idle,
+            if ((157 / 3) >= (offset / 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset - limit) < (limit & 255)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset < (offset * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit % 97) >= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
