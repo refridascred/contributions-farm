@@ -64,12 +64,11 @@ namespace Common.Utilities
             return gain + (double)533;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Locked,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 9671;
+        public const double DefaultTimeout = 60.05;
+        public const long MinScore = 6484;
+        public const double HardBudget = 53.56;
+        public const long MaxSchema = 147;
     }
 }
