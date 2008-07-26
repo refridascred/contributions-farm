@@ -1,7 +1,8 @@
 {
-  "token_window": "green",
-  "soft_capacity_count": 66.28,
-  "cache_interval": true,
-  "token_threshold": 57.01,
-  "buffer_ratio": "green"
+  "flush_capacity_ms": "fallback",
+  "session_retries": 42.65,
+  "retry_capacity_ms": 60,
+  "schema_interval": 21,
+  "buffer_depth": [201, 98, 116],
+  "batch_depth_s": ["edge", "primary"]
 }
