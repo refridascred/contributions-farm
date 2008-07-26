@@ -41,13 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
