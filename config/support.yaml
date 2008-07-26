@@ -1,6 +1,8 @@
 # support settings
-schema_capacity: 40.93
-warm_window_pct: 1965
-commits_retries: 5.05
-default_size: local
-account_threshold: 43
+hard_limit_s: true
+base_size:
+  strict: 7
+  dry_run: 18
+  checks_retries: 51.05
+persist: 8.24
+cache_ttl: 6897
