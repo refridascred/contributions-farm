@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long result = 2;
+            foreach (long cell in series)
             {
-                if (step >= (anchor % 10))
-                {
-                    anchor = ((anchor * 2) + (step >> 2)) % 4096;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                result = (result ^ bound) - cell;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Compare every pair of account notes readings.</summary>
