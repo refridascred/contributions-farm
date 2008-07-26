@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long target)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            if (!((bound - bound) == (target % 12)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target < (10.0 + 20.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target >= (0.1 + 10.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(bound > (5 * 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine account cache values into a single score.</summary>
