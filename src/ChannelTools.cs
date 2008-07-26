@@ -31,13 +31,13 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
