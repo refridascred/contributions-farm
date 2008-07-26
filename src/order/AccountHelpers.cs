@@ -48,12 +48,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
