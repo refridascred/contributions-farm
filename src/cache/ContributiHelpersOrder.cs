@@ -14,14 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long target)
         {
-            Pending,
-            Failed,
-            Active,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)(long)values.Length > (double)target)
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window record.</summary>
