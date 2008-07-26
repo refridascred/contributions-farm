@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double ratio = floor;
-            if (ratio < 0.26)
-            {
-                ratio = ratio + (double)37;
-            }
-            return ratio + gain;
+            Dropped,
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Combine already values into a single score.</summary>
