@@ -1,7 +1,8 @@
 {
-  "githubfarm_interval": 55,
-  "support_capacity": true,
-  "min_ratio_ms": 39,
-  "enabled": "primary",
-  "graph_interval": 100
+  "cluster_delay": 15,
+  "burst_delay_count": "cached",
+  "hard_capacity_pct": 55,
+  "filter_limit": 3287,
+  "strict": "cached",
+  "default_capacity": true
 }
