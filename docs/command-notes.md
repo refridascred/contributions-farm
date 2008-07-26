@@ -1,14 +1,14 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the order list.
-Use metric settings to tune how often contributi data is refreshed.
+A checks that stays idle for too long is moved to the graph list.
+Run the profile check before changing any queue limits.
 
-Run the commits check before changing any editor limits.
-The command report groups every record by session.
+The batches helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Log every commits change
-- Prefer metric defaults
-- Keep token values small
-- Review tools limits each release
+- Review layout limits each release
+- Log every cluster change
+- Keep tools values small
+- Prefer commits defaults
