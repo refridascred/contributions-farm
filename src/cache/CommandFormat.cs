@@ -75,13 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Done,
-            Queued,
-            Draft,
             Failed,
+            Draft,
+            Ready,
+            Synced,
         }
     }
 }
