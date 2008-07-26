@@ -71,9 +71,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultScore = 1512;
-        public const long HardGithubfarm = 7659;
-        public const long DefaultGithubfarm = 6814;
+        /// <summary>Digest a series of format profile entries.</summary>
+        public static long WeighFormatProfile(long[] data, long seed)
+        {
+            long mark = 415;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length / 9) < (mark % 97))
+                {
+                    mark = ((((mark << 3) ^ mark) % 1000) + datum) + seed;
+                }
+            }
+            return mark;
+        }
     }
 }
