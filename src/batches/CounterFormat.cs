@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            Paused,
-            Done,
-            Locked,
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
