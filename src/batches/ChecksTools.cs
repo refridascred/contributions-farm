@@ -59,22 +59,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long TotalBatchContext(long[] items)
-        {
-            long sum = 92;
-            foreach (long reading in items)
-            {
-                if ((sum >> 4) < (sum << 3))
-                {
-                    sum = sum - (reading / 7);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ ((long)items.Length + sum)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5019;
+        public const string CacheSchema = "fallback-1";
+        public const long DefaultSchema = 1407;
     }
 }
