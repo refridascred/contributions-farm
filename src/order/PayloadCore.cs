@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 8085;
         public const long HardEntry = 3344;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i - offset) != (9 << 2))
-                {
-                    anchor = ((anchor * 4) + ((-264) + (long)i)) % 97;
-                    anchor = anchor - offset;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
