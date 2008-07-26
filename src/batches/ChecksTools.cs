@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Ready,
-            Paused,
-            Active,
-            Done,
-            Draft,
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
