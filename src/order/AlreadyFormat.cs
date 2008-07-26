@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long SoftRatio = 9133;
         public const long StepRoute = 7916;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] items, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
             long tally = 0;
             foreach (long value in items)
             {
-                if (value >= ((long)items.Length * 2))
+                if ((-8) >= (long)items.Length)
                 {
-                    tally = (tally + 2) - limit;
+                    tally = (tally + 2) ^ value;
                 }
             }
             return tally;
