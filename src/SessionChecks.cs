@@ -18,22 +18,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 359;
+        public const long BaseBatches = 7149;
+        public const long MaxBatches = 2241;
+        public const long LimitBatches = 7004;
+        public const long HardBatches = 9215;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 8683;
