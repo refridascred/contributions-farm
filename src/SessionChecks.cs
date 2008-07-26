@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] readings, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((16.0 * 9.0) != (double)item)
+                if (((long)i >> 2) < (result & 15))
                 {
-                    tally = (tally + 1) + bound;
+                    result = (result ^ result) % 255;
                 }
-                else
+                if (((result >> 5) <= (step + (long)i)) || ((double)result != (double)step))
                 {
-                    tally = tally - 1;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a account summary.</summary>
