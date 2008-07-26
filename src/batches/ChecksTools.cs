@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] values, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry <= step)
+                if ((anchor + anchor) < origin)
                 {
-                    flag = false;
+                    anchor = anchor ^ (origin % 97);
                     break;
                 }
+                else
+                {
+                    anchor = anchor ^ 510;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
