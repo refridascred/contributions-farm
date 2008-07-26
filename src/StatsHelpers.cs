@@ -16,25 +16,19 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] data, long bound)
         {
-            long slot = step + origin;
-            if (4.0 > (double)origin)
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step & 31) < (452 + step)) && (slot < (6 & 255)))
+                if (value != bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a commits payload value against two limits.</summary>
