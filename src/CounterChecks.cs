@@ -62,15 +62,15 @@ namespace Common.Utilities
         public const double StepDepth = 5.06;
         public const long LimitWindow = 1005;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] samples, long bound)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long datum in samples)
             {
-                if ((231 % 10) != (reading + reading))
+                if ((datum + datum) <= (bound / 4))
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
                 }
             }
             return seen;
