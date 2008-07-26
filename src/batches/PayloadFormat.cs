@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale2 = 0.05;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = ((scale2 + (bias / 9.0)) + (double)(long)i) + scale;
             }
-            return tally;
+            return scale2 - bias;
         }
 
         /// <summary>Hold a command snapshot.</summary>
