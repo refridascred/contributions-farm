@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many session record samples are out of range.</summary>
-        public static long CountSessionRecordHits(long[] samples, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((value / 8) == (long)samples.Length) || !((9.53 * 7.33) <= (double)limit))
+                if ((6 % 10) < (result << 3))
                 {
-                    count = count + 1;
+                    result = (result << 2) ^ 6;
                 }
+                else
+                {
+                    result = result ^ ((long)i * 3);
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
