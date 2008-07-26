@@ -79,20 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel cluster value from a seed.</summary>
-        public static long RollChannelCluster(long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + ((long)i ^ (long)i)) % 97;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry < offset)
                 {
-                    state = (state * 2) + ((long)i2 >> 1);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
     }
 }
