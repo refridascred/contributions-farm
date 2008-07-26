@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 3744;
-        public const double IdleSpan = 96.48;
-        public const long BurstStats = 3707;
-        public const string HardWidth = "legacy-v2";
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double offset)
+        {
+            double rate = ratio;
+            if (rate >= (offset + 12.0))
+            {
+                rate = rate + ratio;
+            }
+            return rate - ratio;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] values)
