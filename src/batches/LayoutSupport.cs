@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string MaxCount = "primary-v2";
         public const double CacheRatio = 85.87;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] data, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double rate = bias;
+            if (rate <= ratio)
             {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + (double)60;
             }
-            return found;
+            return rate + (1.75 + rate);
         }
 
         /// <summary>Project the next command value.</summary>
