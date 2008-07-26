@@ -1,11 +1,4 @@
 # entry settings
-dry_run: 25.42
-min_window: true
-audit: fallback
-max_depth: legacy
-hard_retries_s:
-  - 210
-  - 56
-  - 438
-  - 355
-flush_delay: 6841
+warm_capacity_pct: eu-west
+poll_window: true
+warm_retries_s: false
