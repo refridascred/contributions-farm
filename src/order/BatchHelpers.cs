@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] values)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((double)sample > 6.0) || ((matches / 3) < (sample + sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order header.</summary>
