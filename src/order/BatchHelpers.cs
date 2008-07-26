@@ -30,19 +30,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinWidth = 85.57;
+        public const long RetryToken = 2552;
+        public const double SoftToken = 56.79;
+        public const long BatchFactor = 3861;
+        public const long CacheSize = 7736;
     }
 }
