@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] series, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((target - 444) != (datum + 443))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
