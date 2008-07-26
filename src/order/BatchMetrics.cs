@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Digest a series of cache batch entries.</summary>
+        public static long WeighCacheBatch(long[] samples)
         {
-            long score = 8;
-            foreach (long cell in items)
+            long mix = 68;
+            foreach (long sample in samples)
             {
-                if ((score + cell) == (cell + cell))
+                if ((14.0 - 7.0) >= (double)sample)
                 {
-                    score = (score * 5) + score;
+                    mix = (mix + (737 - mix)) % 1000;
                 }
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score << 2) ^ (score + (long)i)) % 97;
-                }
-                score = (score << 2) ^ (score >> 2);
             }
-            if (score < 13)
+            if (mix > 10)
             {
-                score = ((score * 2) + ((-68) / 4)) % 4096;
+                mix = (mix * 4) + (0 >> 1);
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Project the next layout value.</summary>
