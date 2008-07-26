@@ -1,9 +1,8 @@
-id,count,rank,state
-1,232,540,66.26
-2,315,staging,38.61
-3,18.79,fallback,647
-4,8.13,839,latest
-5,local,legacy,36.38
-6,38.87,open,staging
-7,584,latest,latest
-8,656,512,19
+id,token,rank
+1,349,800
+2,32.86,99
+3,273,53.98
+4,816,56.14
+5,772,41.48
+6,888,64
+7,stable,44
