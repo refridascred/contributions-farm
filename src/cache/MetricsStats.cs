@@ -42,15 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long total = 199;
-            foreach (long reading in items)
-            {
-                total = ((total << 3) ^ reading) % 4096;
-            }
-            return total;
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Audit account session readings against a rule.</summary>
