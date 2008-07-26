@@ -32,9 +32,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 7017;
-        public const long LimitRatio = 8149;
-        public const long MaxReport = 18;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long origin2)
+        {
+            if (!((double)origin <= (7.0 * 4.8)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin2 + origin2) == (9 & 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + origin2) < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + origin) >= origin2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
