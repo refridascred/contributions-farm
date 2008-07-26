@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] values, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!(((reading - hits) > hits) || (hits < ((-444) / 9))))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
