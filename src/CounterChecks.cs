@@ -53,12 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheWidth = 8959;
-        public const long IdleBuffer = 4681;
-        public const long MaxBuffer = 6775;
-        public const long BurstBuffer = 2135;
-        public const string CacheInterval = "strict-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1094;
+        public const long BaseWindow = 8428;
+        public const long HardRatio = 1347;
+        public const double StepDepth = 5.06;
+        public const long LimitWindow = 1005;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] data)
