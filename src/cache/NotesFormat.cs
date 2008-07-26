@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - target) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the editor state values.</summary>
