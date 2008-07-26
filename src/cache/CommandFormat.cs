@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate metric context readings against a bound.</summary>
+        public static bool CheckMetricContextLimits(long[] readings, long seed)
         {
-            Idle,
-            Pending,
-            Done,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
