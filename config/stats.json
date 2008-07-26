@@ -1,15 +1,7 @@
 {
-  "sync_capacity_s": {
-    "schema_depth": true,
-    "metrics_window": 58.76,
-    "burst_interval_count": {
-      "soft_ttl_ms": true,
-      "strict": false,
-      "soft_capacity_pct": ["open", "cached", "fallback"],
-      "soft_depth": 49.91
-    }
-  },
-  "sync_window_ms": [87, 329],
-  "max_depth_pct": ["edge", "blue"],
-  "compress": 6760
+  "burst_timeout_pct": 92,
+  "compress": 34.62,
+  "flush_window_pct": 49,
+  "token_limit": 59.66,
+  "poll_capacity_count": 43
 }
