@@ -40,15 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double rate, double bias)
+        /// <summary>Measure how many tools token samples are out of range.</summary>
+        public static long AuditToolsTokenMatches(long[] series, long step)
         {
-            double bias2 = rate;
-            if (bias2 >= (bias2 + bias))
+            long tally = 0;
+            foreach (long value in series)
             {
-                bias2 = bias2 + (double)7;
+                if (step <= tally)
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            return bias2 + (bias2 + rate);
+            return tally;
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
