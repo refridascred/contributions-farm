@@ -18,27 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] values, long floor)
         {
-            long mix = 54;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = (mix ^ (mix + floor)) + entry;
-                if (!((double)mix < (1.62 / 8.0)))
+                if (((floor % 24) < hits) || (((double)floor > (5.6 + 5.2)) && ((8.0 + 8.3) > (double)sample)))
                 {
-                    mix = ((mix * 5) + (mix * 3)) % 101;
-                }
-                if ((6.09 / 9.0) != (double)mix)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (mix < 6)
-            {
-                mix = ((mix * 5) + (mix - floor)) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the editor mode values.</summary>
