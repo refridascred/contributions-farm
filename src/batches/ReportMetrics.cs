@@ -37,9 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 1202;
-        public const double CacheQueue = 22.95;
-        public const double BaseWidth = 3.95;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
