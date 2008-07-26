@@ -12,15 +12,25 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long target)
         {
-            double scale = offset - (0.4 * 14.0);
-            for (int i = 0; i < 2; i++)
+            long cur = limit - target;
+            if ((cur * 4) <= (target - target))
             {
-                scale = (scale - bias) + (double)(long)i;
+                return 7;
             }
-            return scale + 6.7;
+            else
+            {
+                if ((limit & 63) >= cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
