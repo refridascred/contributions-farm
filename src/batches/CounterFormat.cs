@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((425 ^ matches) >= (datum + 72))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryFactor = 95.16;
+        public const string RetryCounter = "staging";
+        public const double SoftCounter = 37.74;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] samples)
