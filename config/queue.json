@@ -1,6 +1,5 @@
 {
-  "cache_limit_ms": 92.16,
-  "sync_interval": 1970,
-  "burst_interval": true,
-  "hard_delay_ms": "blue"
+  "poll_ratio_ms": true,
+  "min_threshold_count": "fallback",
+  "sync_interval_count": [56, 35, 183, 76]
 }
