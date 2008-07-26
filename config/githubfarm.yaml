@@ -1,10 +1,4 @@
 # githubfarm settings
-base_retries:
-  - 411
-  - 361
-hard_retries_ms: 79
-profile_retries:
-  - 331
-  - 154
-idle_depth: staging
-compress: open
+audit: 86
+max_capacity: 63
+poll_threshold_count: staging
