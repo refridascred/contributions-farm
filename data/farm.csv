@@ -1,6 +1,6 @@
-id,rank
-1,63.38
-2,875
-3,715
-4,49.47
-5,local
+id,region,rank,weight
+1,staging,757,legacy
+2,stable,80.61,584
+3,58.7,187,79.58
+4,36.73,343,staging
+5,standard,973,81.39
