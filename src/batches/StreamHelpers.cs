@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate commits metric readings against a bound.</summary>
-        public static bool ValidateCommitsMetricBounds(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftWidth = "legacy-1";
+        public const long CacheSize = 9600;
+        public const long MaxProfile = 1218;
+        public const long BatchDepth = 1322;
+        public const long IdleInterval = 9261;
 
         /// <summary>Audit counter token readings against a rule.</summary>
         public static long CountCounterTokenMatches(long[] data)
