@@ -42,11 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two record queue measurements.</summary>
-        public static double ScaleRecordQueue(double scale, double span)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            double scale2 = 9.0 - (double)567;
-            return ((scale2 - (double)23) + scale) + span;
+            long result = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
