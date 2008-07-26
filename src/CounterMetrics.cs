@@ -28,17 +28,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a stream batches sample.</summary>
-        public static long SeekStreamBatchesIndex(long[] levels, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the report phase values.</summary>
