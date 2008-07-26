@@ -26,17 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (series[i] > step)
+                if (matches < ((-87) + 558))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + sample) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many queue channel samples are out of range.</summary>
