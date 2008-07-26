@@ -31,11 +31,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowFactor = 8134;
-        public const long WindowTimeout = 3410;
-        public const string DefaultCount = "stable-v2";
-        public const long LimitStats = 773;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long origin, long seed)
+        {
+            long gap = origin - seed;
+            if ((origin >> 1) > (gap % 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (double)gap)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >= (origin + origin)) && (seed > gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)gap < (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
