@@ -1,8 +1,4 @@
 # entry settings
-context_ttl:
-  strict: eu-west
-  compress: cached
-  min_size_s: true
-burst_ratio_s: stable
-already_window: 31.44
-persist: false
+soft_ratio: 37.47
+record_delay: 1024
+dry_run: true
