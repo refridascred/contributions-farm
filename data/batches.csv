@@ -1,6 +1,6 @@
-id,level,weight
-1,219,182
-2,62,green
-3,latest,64.21
-4,560,primary
-5,77.19,5.82
+id,count
+1,64.97
+2,strict
+3,fallback
+4,strict
+5,primary
