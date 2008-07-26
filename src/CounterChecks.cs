@@ -17,31 +17,17 @@ namespace Common.Utilities
         public const long RetryChannel = 1926;
         public const double SoftChannel = 47.68;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long target, long origin)
+        /// <summary>Look up the position of a githubfarm profile sample.</summary>
+        public static long LocateGithubfarmProfileIndex(long[] values, long floor)
         {
-            if ((origin ^ target) > (target % 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 3) < target)
+                if (values[i] >= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
