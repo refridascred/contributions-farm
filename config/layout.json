@@ -1,14 +1,6 @@
 {
-  "default_window_pct": "standard",
-  "hard_retries_pct": 500,
-  "sync_delay_pct": "green",
-  "window_delay": {
-    "sync_interval_s": 34.37,
-    "verbose": ["staging", "primary", "edge"],
-    "cache_limit": "strict",
-    "window_timeout": "primary",
-    "cache_interval": "primary"
-  },
-  "cache_interval_ms": "eu-west",
-  "cache_delay": ["edge", "latest"]
+  "sync_delay": [332, 234, 315],
+  "readonly": "stable",
+  "soft_ratio": 6420,
+  "window_depth": true
 }
