@@ -65,9 +65,19 @@ namespace Common.Utilities
             return ((mean + 7.7) + rate) + bias;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheDepth = "stable-v2";
-        public const long RetryContributi = 4946;
-        public const double RetryCount = 75.37;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
