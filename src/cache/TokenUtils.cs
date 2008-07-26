@@ -26,17 +26,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] samples, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Locked,
+            Draft,
+            Closed,
         }
     }
 }
