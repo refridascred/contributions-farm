@@ -45,16 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc << 2) ^ (2 - acc)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseSpan = 21.87;
+        public const long CacheSpan = 1174;
+        public const long MaxCount = 8212;
+        public const long SoftInterval = 3403;
     }
 }
