@@ -52,33 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long bound)
-        {
-            long delta = target + bound;
-            if ((28 * 5) != (delta / 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.7 + 5.2) <= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ delta) <= 56)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 1040;
+        public const double WindowBuffer = 91.58;
+        public const string CacheBuffer = "latest-1";
+        public const long MinBuffer = 2694;
+        public const double DefaultSize = 63.33;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
