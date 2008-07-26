@@ -32,11 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] samples, long seed)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a buffer route value against two limits.</summary>
