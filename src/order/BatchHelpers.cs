@@ -23,21 +23,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Derive the next report checks value from a seed.</summary>
+        public static long StepReportChecks(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
