@@ -49,18 +49,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((sample % 10) > (4 - matches)) || (sample < (matches % 12)))
+                anchor = (anchor - anchor) % 1000;
+                if (14.0 >= (double)anchor)
                 {
-                    matches = matches + 3;
+                    anchor = (anchor - (origin + origin)) % 4096;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a context info.</summary>
