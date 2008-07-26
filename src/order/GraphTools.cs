@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchSpan = 83.99;
-        public const string HardTools = "legacy-1";
-        public const long SoftRatio = 5660;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double AdjustLayout(double gain, double span)
