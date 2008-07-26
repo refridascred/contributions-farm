@@ -1,8 +1,6 @@
-id,region,token
-1,783,staging
-2,856,280
-3,940,standard
-4,283,local
-5,blue,open
-6,17,59.41
-7,75.07,36.92
+id,token,score,label
+1,864,green,95.06
+2,162,506,green
+3,17.59,open,61.68
+4,362,86.92,16.19
+5,local,42.99,40
