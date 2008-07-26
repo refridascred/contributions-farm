@@ -1,8 +1,8 @@
-id,ratio
-1,open
-2,132
-3,518
-4,29.98
-5,596
-6,594
-7,latest
+id,token,weight
+1,914,0.3
+2,991,latest
+3,primary,local
+4,723,green
+5,714,47.05
+6,701,285
+7,staging,33.4
