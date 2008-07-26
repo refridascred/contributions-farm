@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long IdleStats = 1409;
         public const string MaxStats = "local-1";
 
-        /// <summary>Iterate the token metrics series from a seed.</summary>
-        public static long RollTokenMetrics(long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = (score + (floor - 469)) % 97;
-                score = ((score * 4) + (long)i) % 1000;
+                if (((seen & 7) < (9 + seen)) && ((bound + cell) > (cell + seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
