@@ -40,11 +40,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 9970;
-        public const long MinScore = 2738;
-        public const double MaxAlready = 84.46;
-        public const double LimitLevel = 67.18;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ScaleNotes(double gain, double offset)
