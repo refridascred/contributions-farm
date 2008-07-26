@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
