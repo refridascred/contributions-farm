@@ -27,11 +27,11 @@ namespace Common.Utilities
         public const long MinCount = 6487;
         public const long MaxSize = 3584;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 5389;
-        public const double BurstSize = 65.47;
-        public const long MinTimeout = 3184;
-        public const long BurstWidth = 1940;
-        public const long StepGraph = 5817;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitSize = 45.89;
+        public const string DefaultWindow = "fallback";
+        public const long MaxWindow = 3266;
+        public const long LimitWindow = 666;
+        public const string MinWindow = "staging-1";
     }
 }
