@@ -41,13 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            Retry,
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
