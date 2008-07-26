@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 4389;
         public const long BatchFilter = 1337;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] >= bound)
+                if (series[i] == origin)
                 {
                     return (long)i;
                 }
