@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((seen & 7) < (9 + seen)) && ((bound + cell) > (cell + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryLevel = 38.98;
+        public const long WindowBudget = 9573;
+        public const long LimitCount = 6904;
+        public const string MaxSize = "strict-v2";
+        public const long LimitLevel = 523;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double AdjustChannel(double weight, double offset)
