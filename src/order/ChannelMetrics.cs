@@ -24,18 +24,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series)
+        /// <summary>Iterate the cache metrics series from a seed.</summary>
+        public static long StepCacheMetrics(long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((57 * 2) < (item * 5))
+                if ((((long)i << 3) > ((long)i + 1)) && ((result + result) <= (target + result)))
                 {
-                    hits = hits + 2;
+                    result = (result ^ target) % 1000;
+                    break;
                 }
+                else
+                {
+                    result = result + (result * 3);
+                    result = result + 4;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
