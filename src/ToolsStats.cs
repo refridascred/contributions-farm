@@ -30,22 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] data, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((seen - 764) < limit) && ((datum << 1) <= limit))
+                if ((double)step < (7.8 / 5.0))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 3) ^ value;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
