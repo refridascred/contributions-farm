@@ -16,12 +16,23 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series)
         {
-            Locked,
-            Queued,
-            Active,
+            long mark = 168;
+            foreach (long item in series)
+            {
+                mark = mark ^ (mark / 5);
+                if ((2 < item) || ((3.1 * 3.99) == (double)item))
+                {
+                    mark = mark + (item - item);
+                }
+                if (((mark % 16) != (item ^ 27)) && ((5 >> 5) > (0 ^ mark)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
