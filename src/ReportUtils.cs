@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] series, long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long offset = floor - bound;
+            if ((492 % 12) == (offset - bound))
             {
-                if (item > offset)
+                return 4;
+            }
+            else
+            {
+                if (floor >= (offset - offset))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
