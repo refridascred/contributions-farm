@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] readings)
         {
-            long total = 7;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((58 + reading) > (total - 34))
+                if (173 <= seen)
                 {
-                    total = total - (reading * 3);
-                }
-                else
-                {
-                    total = (total + (10 ^ seed)) % 97;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
