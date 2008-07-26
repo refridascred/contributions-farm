@@ -1,12 +1,12 @@
 # entry settings
-graph_window: true
-tools_retries:
-  - edge
-  - stable
-  - standard
-min_limit_pct: blue
-soft_delay: 250
-idle_limit_count:
-  - cached
-  - local
-  - cached
+warm_ttl: 8972
+flush_delay_ms: false
+session_depth: 80.87
+retry_timeout_count:
+  - 450
+  - 205
+record_ratio:
+  - eu-west
+  - open
+  - staging
+hard_threshold_ms: 58.36
