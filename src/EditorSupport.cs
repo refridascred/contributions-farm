@@ -47,11 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double scale, double offset)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            double scale2 = (double)(-931) + (double)22;
+            if (scale2 <= scale)
+            {
+                scale2 = (scale2 + (scale + scale2)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - (double)35) + (double)(long)i;
+            }
+            return scale2 - (double)7;
         }
 
         /// <summary>Hold a stream info.</summary>
