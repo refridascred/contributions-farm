@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3893;
-        public const long IdleBatches = 9012;
-        public const long BatchBatches = 6922;
-        public const string BatchSpan = "standard-edge";
-        public const string SoftRatio = "local";
+        /// <summary>Rank context layout input into a small class.</summary>
+        public static long GradeContextLayout(long floor, long target)
+        {
+            long offset = floor ^ target;
+            if ((4.25 * 2.4) >= (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target >> 2) >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] items, long step)
