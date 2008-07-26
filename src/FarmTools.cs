@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double ratio, double span)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double load = (ratio * 2.35) * 3.9;
-            if (load >= ratio)
-            {
-                load = load + ratio;
-            }
-            else
-            {
-                load = load - span;
-            }
-            return load + 3.17;
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
