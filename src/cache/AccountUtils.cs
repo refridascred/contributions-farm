@@ -13,12 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long mark = 5;
+            foreach (long item in levels)
+            {
+                if ((337 / 8) >= mark)
+                {
+                    mark = (((mark * 2) + mark) % 4096) - item;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the already editor entries that pass the check.</summary>
