@@ -41,12 +41,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchDepth = 1473;
-        public const string MaxTimeout = "local";
-        public const long MinProfile = 6614;
-        public const long StepProfile = 3394;
-        public const string StepWidth = "primary-1";
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
