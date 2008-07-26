@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseInterval = "cached";
-        public const long BurstEntry = 470;
-        public const double RetryEntry = 4.55;
-        public const long IdleEntry = 467;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Locked,
+            Stale,
+            Queued,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
