@@ -48,18 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile batches entries.</summary>
-        public static long ScoreProfileBatches(long[] data)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long limit)
         {
-            long state = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state % 16) != (sample * 3))
+                if (readings[i] == limit)
                 {
-                    state = ((state * 4) + (state + 964)) % 1000;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
