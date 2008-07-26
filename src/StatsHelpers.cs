@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardRatio = 19.79;
-        public const double StepStream = 8.43;
-        public const long BatchStream = 9460;
+        /// <summary>Validate payload channel readings against a bound.</summary>
+        public static bool GuardPayloadChannelRange(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmBounds(long[] data, long limit)
