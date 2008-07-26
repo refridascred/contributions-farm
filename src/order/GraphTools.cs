@@ -45,12 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Retry,
-            Done,
-            Pending,
+            Closed,
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the metric class values.</summary>
