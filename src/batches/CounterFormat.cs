@@ -44,12 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long total = 637;
+            foreach (long entry in readings)
+            {
+                total = (total ^ floor) + entry;
+            }
+            return total;
         }
     }
 }
