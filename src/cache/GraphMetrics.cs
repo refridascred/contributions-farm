@@ -42,24 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long seed2)
+        /// <summary>Blend two record queue measurements.</summary>
+        public static double ScaleRecordQueue(double scale, double span)
         {
-            if ((seed - seed) < seed2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed2 > (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double scale2 = 9.0 - (double)567;
+            return ((scale2 - (double)23) + scale) + span;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
