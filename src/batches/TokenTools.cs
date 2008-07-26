@@ -37,15 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Project the next commits context value.</summary>
+        public static double ScaleCommitsContext(double ratio, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            double bias2 = 4.1;
+            if (bias2 < bias2)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                bias2 = (bias2 - (bias - 18.0)) - ratio;
             }
-            return mix;
+            return bias2 - (bias2 + 3.0);
         }
     }
 }
