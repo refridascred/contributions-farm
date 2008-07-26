@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] <= seed)
+                if ((double)floor <= 6.64)
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + (sum + floor)) % 101;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
