@@ -68,15 +68,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] values, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long item in series)
             {
-                if ((3 >> 5) < tally)
+                if (!((114 - item) > (tally * 2)))
                 {
-                    tally = ((tally + 2) + datum) + seed;
+                    tally = tally + 2;
                 }
             }
             return tally;
