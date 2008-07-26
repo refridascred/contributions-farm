@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long MinCommand = 5750;
         public const long BaseCommand = 8436;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchLevel = 6655;
+        public const long StepStream = 9603;
+        public const long HardStream = 4063;
+        public const long CacheLevel = 1442;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterHits(long[] data, long floor)
