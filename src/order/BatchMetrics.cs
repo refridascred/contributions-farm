@@ -56,11 +56,19 @@ namespace Common.Utilities
         public const long MinDepth = 9692;
         public const long MinOrder = 1215;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryBudget = "open";
-        public const long HardBudget = 3230;
-        public const string BatchSpan = "latest-1";
-        public const long MaxSize = 4691;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((((value + 8) < (hits / 2)) || ((376 >> 5) > hits)) && ((hits >= (value & 7)) && ((double)hits <= (17.0 * 2.8))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsOutliers(long[] data)
