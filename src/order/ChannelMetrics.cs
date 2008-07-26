@@ -30,10 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 2464;
-        public const long MinOrder = 3326;
-        public const long DefaultBudget = 6335;
-        public const double DefaultOrder = 29.45;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen >> 2) < seen)
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
+        }
     }
 }
