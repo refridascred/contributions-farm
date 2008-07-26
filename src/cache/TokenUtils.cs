@@ -42,12 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long origin)
         {
-            Locked,
-            Active,
-            Paused,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
