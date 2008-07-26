@@ -48,15 +48,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Active,
-            Failed,
-            Idle,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetrySize = 6786;
+        public const long StepRatio = 8649;
+        public const double WindowMetrics = 42.2;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] levels)
