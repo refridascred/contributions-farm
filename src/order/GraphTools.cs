@@ -45,19 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] data, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
