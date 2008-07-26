@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
