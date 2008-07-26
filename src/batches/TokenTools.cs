@@ -33,17 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] > bound)
+                if ((7 % 10) <= (value + value))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - target;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
