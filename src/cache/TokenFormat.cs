@@ -37,15 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] levels, long origin)
+        /// <summary>Audit graph notes readings against a rule.</summary>
+        public static long MeasureGraphNotesMatches(long[] levels, long target)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long value in levels)
             {
-                if (351 >= (85 + origin))
+                if ((matches + value) == (value << 1))
                 {
-                    matches = (matches + 3) - entry;
+                    matches = (matches + 2) - target;
                 }
             }
             return matches;
