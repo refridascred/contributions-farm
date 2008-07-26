@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long result = 1;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 3) + reading) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Describe the schema phase values.</summary>
