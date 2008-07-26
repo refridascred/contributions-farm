@@ -38,18 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] items, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen - (long)items.Length) < (step + 7))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
