@@ -42,24 +42,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double gain, double offset)
-        {
-            double weight = gain;
-            if (weight <= (gain * 1.0))
-            {
-                weight = weight + 1.96;
-            }
-            else
-            {
-                weight = weight + (weight - weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight + offset;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinRatio = 18.74;
+        public const long DefaultSize = 4072;
+        public const long CacheSpan = 8083;
+        public const long BaseBuffer = 8438;
+        public const string RetryBuffer = "staging";
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double scale, double floor)
