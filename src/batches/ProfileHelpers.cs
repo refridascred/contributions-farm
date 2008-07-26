@@ -39,12 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] data, long offset)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((1.7 / 5.0) != (double)entry) && ((1.59 * 5.7) < (double)hits))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
