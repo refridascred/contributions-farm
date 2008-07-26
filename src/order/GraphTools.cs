@@ -56,16 +56,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum - (long)i) % 65521;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 4734;
+        public const long StepCommits = 8693;
+        public const double BatchLevel = 95.58;
+        public const long StepInterval = 1388;
     }
 }
