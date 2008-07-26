@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open primary cached; do
+RECORD_LIMIT=494
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy edge eu-west; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=203
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
