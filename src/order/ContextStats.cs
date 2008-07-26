@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long MeasureWindowContextOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample & 3) < sample)
                 {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
