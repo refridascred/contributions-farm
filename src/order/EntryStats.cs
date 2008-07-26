@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] samples, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long origin)
         {
-            long score = -487;
+            long count = 0;
             foreach (long datum in samples)
             {
-                if (((938 % 97) > (datum / 2)) || ((double)datum <= (double)7))
+                if ((39 + datum) <= (origin % 2))
                 {
-                    break;
-                }
-                if ((long)samples.Length <= (score >> 1))
-                {
-                    score = (((score * 5) + score) % 65521) - seed;
+                    count = count + 1;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Roll a commits report counter forward.</summary>
