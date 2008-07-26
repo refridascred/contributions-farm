@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] items, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((offset >> 4) > reading)
+                if (((long)samples.Length & 255) == (limit & 127))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
