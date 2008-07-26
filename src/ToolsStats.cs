@@ -30,12 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Locate a route stream reading by value.</summary>
+        public static long SeekRouteStreamIndex(long[] samples, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
