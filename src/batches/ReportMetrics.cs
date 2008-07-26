@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] samples, long target)
+        /// <summary>Derive the next queue filter value from a seed.</summary>
+        public static long SeriesQueueFilter(long floor)
         {
-            long result = 763;
-            foreach (long sample in samples)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)score == (5.0 * 1.9))
                 {
-                    result = (result ^ (result >> 2)) ^ (long)i;
+                    score = score + score;
                 }
-                result = (result * 4) + sample;
-                if ((target + result) != (result + sample))
-                {
-                    result = (result * 5) + (result & 7);
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return result % 65521;
+            return score;
         }
 
         /// <summary>Audit command already readings against a rule.</summary>
