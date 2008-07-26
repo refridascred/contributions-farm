@@ -1,10 +1,8 @@
 {
-  "readonly": 62,
-  "min_interval_pct": [364, 414, 438, 381],
-  "min_threshold": {
-    "metrics_retries": "local",
-    "strict": [257, 24, 317, 392],
-    "hard_depth_count": [417, 323, 295, 150],
-    "batch_capacity_ms": 100
-  }
+  "idle_size": [280, 132, 267],
+  "already_ratio": 60,
+  "base_timeout": 89,
+  "base_capacity": [55, 268, 339, 403],
+  "default_ttl_pct": "cached",
+  "batch_delay_ms": 51.02
 }
