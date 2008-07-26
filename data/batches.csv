@@ -1,6 +1,9 @@
-id,weight,region,count
-1,eu-west,strict,106
-2,825,339,stable
-3,343,cached,blue
-4,384,20.97,edge
-5,stable,98.18,stable
+id,rank,owner
+1,55,933
+2,766,995
+3,blue,946
+4,561,85.71
+5,440,49
+6,380,686
+7,primary,63.55
+8,18.5,37.75
