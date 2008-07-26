@@ -22,18 +22,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long CountOrderCacheOutliers(long[] values, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if ((double)origin != (double)floor)
             {
-                if ((entry + entry) > (seed + 425))
+                return 8;
+            }
+            else
+            {
+                if ((double)9 >= (double)origin)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
