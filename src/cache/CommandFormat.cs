@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const string MaxRatio = "open-1";
         public const long LimitChannel = 6848;
 
-        /// <summary>Measure how many command graph samples are out of range.</summary>
-        public static long TallyCommandGraphGaps(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((double)datum >= 6.8)
+                if ((tally & 255) >= tally)
                 {
-                    count = count + 2;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
