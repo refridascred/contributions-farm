@@ -31,15 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double rate2 = rate;
-            if (rate2 >= (2.59 * 3.0))
-            {
-                rate2 = rate2 + (double)(-8);
-            }
-            return rate2 - (floor * 8.7);
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
