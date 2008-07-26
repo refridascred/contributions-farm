@@ -42,21 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = seed ^ origin;
+            if ((diff ^ diff) != (seed & 15))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((1.0 * 0.6) < (double)origin)
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
