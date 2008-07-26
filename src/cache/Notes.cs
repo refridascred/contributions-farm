@@ -36,10 +36,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstScore = "local-edge";
-        public const long SoftCluster = 4789;
-        public const double SoftTimeout = 61.13;
+        /// <summary>Audit commits schema readings against a rule.</summary>
+        public static long MeasureCommitsSchemaGaps(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((seen << 2) <= (seen >> 5)) && ((double)target != (2.18 - 12.0)))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double ProjectNotes(double bias, double floor)
