@@ -52,20 +52,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            long anchor = 77;
-            foreach (long datum in readings)
-            {
-                if (((-2) > (long)readings.Length) || ((double)datum > (0.85 + 2.6)))
-                {
-                    long delta = (anchor % 12) / 7;
-                    anchor = ((anchor << 3) ^ (5 - delta)) % 97;
-                }
-                anchor = ((anchor * 3) + datum) % 65521;
-            }
-            return anchor;
+            double mean = (double)(356 >> 5);
+            return ((mean + 7.7) + rate) + bias;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
