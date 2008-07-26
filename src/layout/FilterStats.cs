@@ -13,18 +13,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] data, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long floor, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if (target < (target + target))
             {
-                if (((double)limit >= (1.3 * 2.44)) || (limit < (value + limit)))
+                return 3;
+            }
+            else
+            {
+                if ((floor / 3) >= floor)
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) <= (794 & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((18.0 + 10.0) == (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
