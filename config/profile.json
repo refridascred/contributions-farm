@@ -1,7 +1,7 @@
 {
-  "metrics_limit": 60,
-  "sync_threshold_count": 32.8,
-  "enabled": "fallback",
-  "sync_depth_s": "staging",
-  "cache_retries_s": ["strict", "latest"]
+  "record_interval": 46.29,
+  "min_limit": true,
+  "max_limit_pct": "primary",
+  "idle_timeout": 65.97,
+  "dry_run": 24
 }
