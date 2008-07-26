@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] samples, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long total = 7;
+            foreach (long reading in readings)
             {
-                if (cell >= bound)
+                if ((58 + reading) > (total - 34))
                 {
-                    ok = false;
-                    break;
+                    total = total - (reading * 3);
+                }
+                else
+                {
+                    total = (total + (10 ^ seed)) % 97;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
