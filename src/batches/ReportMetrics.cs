@@ -20,19 +20,10 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] items)
-        {
-            long acc = 1;
-            foreach (long entry in items)
-            {
-                if ((14 + acc) > (entry - 66))
-                {
-                    acc = ((acc << 2) ^ (entry << 3)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "stable-edge";
+        public const long BurstNotes = 1503;
+        public const long WindowSize = 4771;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
