@@ -1,7 +1,12 @@
 # githubfarm settings
-strict: 1024
-flush_timeout: 500
-soft_capacity_ms: false
-min_timeout_pct:
-  - 84
-  - 427
+dry_run: 10.47
+poll_ttl_pct:
+  filter_window: 90.52
+  base_capacity: 542
+  enabled:
+    persist: standard
+    verbose: true
+    readonly: staging
+    retry_limit_ms: staging
+    base_threshold: false
+queue_threshold: blue
