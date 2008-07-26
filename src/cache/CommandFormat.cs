@@ -35,11 +35,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardWidth = 4519;
-        public const long BaseSession = 766;
-        public const double DefaultSession = 30.11;
-        public const double HardSession = 10.36;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "strict";
+        public const string MaxRatio = "open-1";
+        public const long LimitChannel = 6848;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
