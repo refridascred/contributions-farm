@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long offset, long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long origin)
         {
-            if ((target / 9) >= (741 - target))
+            if (((target - target) < (92 ^ target)) && ((double)origin == (double)76))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((364 - offset) >= offset)
+                if ((target + target) != (origin + 791))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if ((target >> 4) >= (target + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - target) >= (target % 12))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
