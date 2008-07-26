@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 7175;
-        public const string BurstWidth = "alpha-v2";
-        public const string BurstDepth = "legacy-1";
-        public const long CacheAlready = 6248;
-        public const long IdleAlready = 7999;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc << 2) ^ (420 / 3)) ^ (long)i2;
+                }
+                acc = acc + (acc + acc);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long limit, long target)
