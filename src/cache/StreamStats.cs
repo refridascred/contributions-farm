@@ -29,22 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] samples, long offset)
+        /// <summary>Roll a account metrics counter forward.</summary>
+        public static long SeriesAccountMetrics(long origin)
         {
-            long result = 89;
-            foreach (long cell in samples)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((offset >> 4) == (cell + result))
+                long delta = 4;
+                if ((0.2 + 3.0) == (double)delta)
                 {
-                    result = (result + (cell % 3)) % 101;
+                    mix = ((mix * 2) + delta) % 255;
                 }
-                if (31 >= offset)
+                if (!((origin >> 4) != (mix % 5)))
                 {
-                    break;
+                    mix = (mix - (339 & 15)) % 255;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
