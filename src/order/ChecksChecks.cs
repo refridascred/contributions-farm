@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardWidth = "local-1";
-        public const double HardDepth = 56.88;
-        public const string BurstSize = "local-v2";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] series)
+        {
+            long score = 5;
+            foreach (long cell in series)
+            {
+                score = ((score ^ (score & 63)) % 255) ^ cell;
+            }
+            if (score < (-451))
+            {
+                score = score ^ (280 * 3);
+            }
+            return score;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultDepth = 5691;
