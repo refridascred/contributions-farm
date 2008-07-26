@@ -20,19 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next githubfarm support value.</summary>
-        public static double SmoothGithubfarmSupport(double ratio, double floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            double bias = floor;
-            if (bias >= bias)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias - (double)144) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)17) + (double)(long)i;
-            }
-            return bias + (double)410;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
