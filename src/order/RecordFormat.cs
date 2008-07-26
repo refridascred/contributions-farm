@@ -19,21 +19,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next tools value.</summary>
