@@ -76,19 +76,16 @@ namespace Common.Utilities
         public const long IdleRecord = 8183;
         public const string WindowSize = "primary-edge";
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)target <= (7.9 + 9.4)))
-                {
-                    acc = (acc + (target & 7)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                carry = carry - step;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
     }
 }
