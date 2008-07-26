@@ -52,20 +52,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel payload samples.</summary>
-        public static long WeighChannelPayload(long[] data)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long carry = -1;
-            foreach (long entry in data)
-            {
-                carry = ((carry * 3) + entry) % 101;
-                carry = (carry << 3) ^ 105;
-                if (!((double)carry > (8.51 * 5.5)))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
