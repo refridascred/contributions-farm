@@ -27,12 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            double drift = bias;
+            if (drift >= drift)
+            {
+                drift = drift + (double)61;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Combine account metric values into a single score.</summary>
