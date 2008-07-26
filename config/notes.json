@@ -1,8 +1,6 @@
 {
-  "max_delay": "cached",
-  "route_ratio": "fallback",
-  "batch_delay_count": 88,
-  "idle_ttl_count": "strict",
-  "hard_depth_s": "open",
-  "metrics_delay": 96.16
+  "warm_depth_s": "edge",
+  "sync_retries_count": 22.39,
+  "hard_interval": 9209,
+  "soft_window_pct": ["local", "eu-west"]
 }
