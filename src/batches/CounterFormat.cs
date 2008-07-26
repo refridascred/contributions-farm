@@ -20,10 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 9461;
-        public const long DefaultTimeout = 527;
-        public const long BaseInterval = 3226;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long origin)
+        {
+            long span = offset - origin;
+            if (span > offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((span % 10) == (span + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportRange(long[] samples, long floor)
