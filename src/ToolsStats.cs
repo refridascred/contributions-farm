@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            long score = 83;
-            foreach (long sample in values)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)score == (3.0 + 0.2)) && ((double)sample >= (6.0 / 4.0)))
-                {
-                    score = ((score * 2) + (sample << 3)) % 4096;
-                }
-                if (sample > (sample - sample))
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
