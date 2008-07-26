@@ -30,20 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (((acc << 3) ^ (bound % 10)) % 255) - (long)i2;
-                }
-                acc = acc ^ (acc - acc);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
