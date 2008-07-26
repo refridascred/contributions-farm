@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long floor)
-        {
-            long prev = origin ^ floor;
-            if ((7 / 5) > (origin & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)prev <= (6.6 - 4.32))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((4 + prev) != (prev - prev)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)prev > (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSize = 5162;
+        public const string StepTimeout = "open-v2";
+        public const long DefaultEntry = 9806;
+        public const long DefaultFactor = 8085;
+        public const long HardEntry = 3344;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long offset)
