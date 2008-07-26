@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every entry stats entry stays within the limit.</summary>
-        public static bool CheckEntryStatsLimits(long[] data, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < target)
+                if (items[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
