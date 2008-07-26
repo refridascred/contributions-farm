@@ -65,18 +65,23 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 7153;
         public const long BurstGithubfarm = 9155;
 
-        /// <summary>Count the contributi support entries that pass the check.</summary>
-        public static long AuditContributiSupportOutliers(long[] items, long origin)
+        /// <summary>Project the next metrics stats value.</summary>
+        public static double ProjectMetricsStats(double gain, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double rate = (double)(236 + 4);
+            if (rate >= 4.0)
             {
-                if (!((3 % 60) > sample))
-                {
-                    count = (count + 2) - origin;
-                }
+                rate = (rate - (span * 9.0)) - gain;
             }
-            return count;
+            else
+            {
+                rate = rate - (span + rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate * 2.0)) - (double)(long)i;
+            }
+            return rate + (span / 7.0);
         }
     }
 }
