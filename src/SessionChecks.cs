@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryCount = 45.34;
+        public const long CacheInterval = 846;
+        public const long RetryWindow = 6074;
+        public const long StepDepth = 9998;
+        public const long StepSize = 3320;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
