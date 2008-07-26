@@ -1,7 +1,6 @@
 # githubfarm settings
-enabled: 46.0
-metric_ratio:
-  enabled: 82.24
-  verbose: 3.65
-  dry_run: 3
-context_interval: 30
+flush_interval: false
+soft_depth_ms: true
+notes_ratio: 500
+retry_interval_count: 5606
+strict: 67.83
