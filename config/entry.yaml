@@ -1,15 +1,13 @@
 # entry settings
-graph_ttl: green
-cache_window: false
-flush_delay_s:
-  - legacy
+readonly: blue
+default_limit_pct: standard
+audit:
+  - blue
+  - cached
+min_limit_ms: true
+warm_capacity:
+  - local
+  - local
+  - green
   - stable
-  - standard
-  - eu-west
-metric_capacity: staging
-burst_capacity_count: false
-default_capacity:
-  - staging
-  - legacy
-  - legacy
-  - staging
+soft_ratio: 35.29
