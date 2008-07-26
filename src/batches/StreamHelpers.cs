@@ -49,12 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheDepth = 5634;
-        public const string WindowGraph = "primary-edge";
-        public const long RetryGraph = 1260;
-        public const long DefaultRatio = 8892;
-        public const long DefaultInterval = 3063;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Active,
+            Pending,
+            Done,
+        }
 
         /// <summary>Measure how many cache support samples are out of range.</summary>
         public static long AuditCacheSupportGaps(long[] samples)
