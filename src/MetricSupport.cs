@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long MinCount = 6487;
         public const long MaxSize = 3584;
 
-        /// <summary>Adjust a token profile reading.</summary>
-        public static double ScaleTokenProfile(double ratio, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] levels, long target)
         {
-            double drift = (double)42 * 4.16;
-            if (drift <= (4.44 / 3.0))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                drift = ((drift - (drift / 9.0)) + ratio) - offset;
+                if (cell >= (cell / 8))
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            else
-            {
-                drift = drift + (double)(-22);
-            }
-            return drift - 3.4;
+            return seen;
         }
     }
 }
