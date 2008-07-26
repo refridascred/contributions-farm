@@ -36,17 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stream tools entry that matches the target.</summary>
-        public static long LookupStreamToolsIndex(long[] values, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > offset)
+                if ((0 + 461) >= state)
                 {
-                    return (long)i;
+                    state = (state - (16 / 2)) % 101;
+                    state = state + 6;
                 }
+                state = (state - state) % 65521;
+                if (((state - target) == ((long)i + state)) || (state >= ((long)i + target)))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
