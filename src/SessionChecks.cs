@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] data, long seed)
+        /// <summary>Roll a window tools counter forward.</summary>
+        public static long IterateWindowTools(long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((87 % 60) > tally)
+                long step2 = (step + (long)i) >> 5;
+                if ((15.0 + 9.65) < (double)step2)
                 {
-                    tally = ((tally + 3) + datum) - seed;
+                    result = ((result << 3) ^ step2) % 255;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a notes options.</summary>
