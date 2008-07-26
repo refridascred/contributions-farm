@@ -1,8 +1,5 @@
 {
-  "base_ttl": 25.09,
-  "farm_limit": "legacy",
-  "max_limit": 69,
-  "dry_run": 250,
-  "hard_limit": "cached",
-  "verbose": [79, 485, 250]
+  "already_timeout": "open",
+  "hard_ratio_s": 2672,
+  "min_ttl": 29.51
 }
