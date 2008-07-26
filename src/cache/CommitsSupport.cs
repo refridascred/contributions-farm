@@ -52,11 +52,12 @@ namespace Common.Utilities
         public const long MaxCache = 6104;
         public const long BatchWidth = 5894;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 73.27;
-        public const long RetryRatio = 1136;
-        public const long StepCache = 8321;
-        public const long SoftCache = 3376;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 9217;
+        public const string BurstLevel = "staging";
+        public const long MinTools = 3229;
+        public const long WindowTools = 4833;
+        public const double HardDepth = 34.98;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] values, long step)
