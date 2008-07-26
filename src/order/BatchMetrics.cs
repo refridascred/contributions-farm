@@ -48,13 +48,21 @@ namespace Common.Utilities
         public const long MinDepth = 9692;
         public const long MinOrder = 1215;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            Paused,
-            Ready,
-            Failed,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
