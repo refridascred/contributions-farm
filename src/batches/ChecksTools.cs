@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Classify a route cache pair into a bucket.</summary>
+        public static long GradeRouteCache(long step, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            if ((target ^ step) <= step)
             {
-                if ((double)floor <= 6.64)
-                {
-                    sum = ((sum * 4) + (sum + floor)) % 101;
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((double)target >= (7.1 * 4.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((15.0 + 4.5) <= (double)target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats githubfarm readings.</summary>
