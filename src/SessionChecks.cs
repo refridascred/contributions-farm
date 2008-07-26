@@ -27,13 +27,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Closed,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 2459;
+        public const double LimitCommand = 87.31;
+        public const long LimitSpan = 8868;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] readings, long origin)
