@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Synced,
-            Paused,
-            Draft,
             Ready,
-            Idle,
+            Paused,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
