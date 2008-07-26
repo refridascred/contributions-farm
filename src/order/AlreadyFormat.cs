@@ -48,32 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long floor)
+        /// <summary>Count the cluster farm entries that pass the check.</summary>
+        public static long CountClusterFarmGaps(long[] series, long seed)
         {
-            long step = seed - floor;
-            if (((2.2 / 8.0) >= (double)step) && ((9.27 / 5.0) < (double)step))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.5 - 19.0) > (double)step)
+                if (sample >= (8 & 255))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(step <= ((-45) + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 2) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a entry order value against two limits.</summary>
