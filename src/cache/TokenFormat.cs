@@ -33,16 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = 9;
-            foreach (long entry in items)
-            {
-                mark = (((mark * 4) + (47 << 2)) % 255) - entry;
-                mark = (mark ^ (mark ^ step)) % 4096;
-            }
-            return mark;
+            Idle,
+            Done,
+            Stale,
+            Draft,
+            Closed,
         }
     }
 }
