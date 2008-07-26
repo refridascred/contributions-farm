@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryCount = 45.34;
-        public const long CacheInterval = 846;
-        public const long RetryWindow = 6074;
-        public const long StepDepth = 9998;
-        public const long StepSize = 3320;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "strict-1";
+        public const double HardSpan = 65.91;
+        public const double MinCommits = 26.79;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
