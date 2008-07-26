@@ -24,14 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            Closed,
-            New,
-            Ready,
-            Dropped,
-            Done,
+            long acc = -1;
+            foreach (long datum in samples)
+            {
+                acc = ((acc - (-134)) % 1000) + datum;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
