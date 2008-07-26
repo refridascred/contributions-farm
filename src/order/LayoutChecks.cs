@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] data, long limit)
         {
             bool flag = true;
-            foreach (long value in readings)
+            foreach (long datum in data)
             {
-                if (value < floor)
+                if (datum >= limit)
                 {
                     flag = false;
                     break;
