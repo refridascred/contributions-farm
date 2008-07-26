@@ -30,21 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count filter already pairs that satisfy a relation.</summary>
-        public static long OverlapFilterAlreadyCount(long[] series)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Failed,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of report entries.</summary>
