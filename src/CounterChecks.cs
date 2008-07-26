@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ reading) < (reading >> 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 36.04;
+        public const long LimitCount = 8816;
+        public const string StepFilter = "standard-edge";
+        public const long SoftCount = 9744;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double RetryInterval = 78.06;
