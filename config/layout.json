@@ -1,6 +1,5 @@
 {
-  "window_ttl": "primary",
-  "max_delay": true,
-  "soft_size": 96.27,
-  "max_depth": 30
+  "commits_threshold": "green",
+  "editor_retries": 68.62,
+  "enabled": ["latest", "local", "stable", "legacy"]
 }
