@@ -20,10 +20,40 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 6212;
-        public const long IdleFilter = 2498;
-        public const long WindowTimeout = 1665;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long seed)
+        {
+            long edge = target ^ seed;
+            if ((seed + edge) < (target - target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target / 4) == (seed << 1)) || ((edge >> 5) > (-52)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.0 > (double)edge) && ((seed - edge) > (seed >> 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed <= (seed << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] levels, long step)
