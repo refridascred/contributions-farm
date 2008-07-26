@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftRatio = 2532;
-        public const long RetryGraph = 2758;
-        public const long MinGraph = 9282;
+        /// <summary>Project the next checks token value.</summary>
+        public static double AdjustChecksToken(double bias, double span)
+        {
+            double weight = 15.0;
+            if (weight >= (bias + weight))
+            {
+                weight = (weight - bias) - span;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelMatches(long[] values, long floor)
