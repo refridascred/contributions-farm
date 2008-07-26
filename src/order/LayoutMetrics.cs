@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const string MinLevel = "open-1";
         public const long RetrySize = 5053;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate entry report samples.</summary>
+        public static long TallyEntryReport(long[] series)
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            long acc = 177;
+            foreach (long datum in series)
+            {
+                if (((double)acc == (6.29 * 2.69)) && ((double)acc <= 3.32))
+                {
+                    acc = (acc - (datum % 5)) % 101;
+                }
+            }
+            if (acc < 339)
+            {
+                acc = (acc << 3) ^ (acc << 3);
+            }
+            return acc;
         }
     }
 }
