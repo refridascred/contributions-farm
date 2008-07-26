@@ -1,13 +1,14 @@
 {
-  "cache_depth": {
-    "soft_depth_ms": 369,
-    "strict": [379, 195],
-    "poll_depth_s": true,
-    "retry_threshold": "local",
-    "warm_ratio": 92.91,
-    "poll_size": 61.82
+  "flush_size_pct": true,
+  "min_retries_pct": false,
+  "schema_ttl": {
+    "compress": "latest",
+    "record_interval": 500,
+    "verbose": "stable",
+    "token_timeout": "staging",
+    "strict": true,
+    "already_size": "primary"
   },
-  "verbose": [239, 52, 24, 426],
-  "layout_ratio": 20.93,
-  "idle_depth_count": 7868
+  "sync_capacity_s": "legacy",
+  "base_ratio_count": 1024
 }
