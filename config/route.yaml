@@ -1,10 +1,8 @@
 # route settings
-dry_run:
-  - 296
-  - 150
-  - 39
-contributi_limit: staging
-cache_timeout_pct: 1024
-flush_threshold: edge
-githubfarm_ttl: 30
-poll_retries_count: 96.41
+min_threshold_s: false
+retry_retries: true
+record_window: 5259
+dry_run: 83.99
+base_threshold_ms:
+  - 133
+  - 457
