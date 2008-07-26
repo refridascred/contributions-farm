@@ -21,22 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stats buffer samples are out of range.</summary>
-        public static long TallyStatsBufferGaps(long[] readings)
+        /// <summary>Compare every pair of stats githubfarm readings.</summary>
+        public static long PairStatsGithubfarmCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!(sample >= (sample / 9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
