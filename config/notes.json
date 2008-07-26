@@ -1,6 +1,17 @@
 {
-  "retry_ratio_s": 30,
-  "sync_ttl": ["green", "local"],
-  "hard_limit_ms": "legacy",
-  "default_depth_ms": false
+  "entry_retries": {
+    "warm_depth_pct": [129, 229, 104],
+    "warm_interval_s": [375, 253, 202, 28],
+    "sync_threshold": 30.12,
+    "metric_ttl": ["latest", "open", "primary", "strict"],
+    "soft_timeout_ms": 95.71
+  },
+  "format_retries": {
+    "base_retries_s": "open",
+    "soft_timeout_count": "strict",
+    "hard_interval_count": true,
+    "hard_timeout_pct": [221, 495],
+    "compress": 8621
+  },
+  "base_delay": false
 }
