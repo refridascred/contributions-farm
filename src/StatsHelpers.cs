@@ -65,12 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 3430;
-        public const long StepDepth = 7100;
-        public const long StepQueue = 7748;
-        public const string StepScore = "alpha-1";
-        public const long StepWidth = 5214;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!!((tally - tally) > value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of farm schema entries.</summary>
         public static long CombineFarmSchema(long[] readings)
