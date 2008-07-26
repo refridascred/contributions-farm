@@ -33,13 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a batches reading.</summary>
