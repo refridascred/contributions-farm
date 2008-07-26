@@ -20,11 +20,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
