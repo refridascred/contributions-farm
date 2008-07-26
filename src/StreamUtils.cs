@@ -74,18 +74,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 62.09;
+        public const long CacheTimeout = 9730;
+        public const long RetryInterval = 359;
+        public const long IdleRecord = 8183;
+        public const string WindowSize = "primary-edge";
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long target)
