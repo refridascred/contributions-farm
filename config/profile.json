@@ -1,22 +1,18 @@
 {
-  "min_window_pct": "stable",
-  "default_limit": [86, 38, 212, 319],
-  "strict": true,
-  "batches_delay": {
-    "command_depth": {
-      "poll_interval_s": 66,
-      "sync_ttl": false,
-      "commits_window": "strict",
-      "tools_size": "stable"
+  "batch_limit": "standard",
+  "soft_size_count": "eu-west",
+  "warm_depth": "stable",
+  "report_timeout": {
+    "batches_window": {
+      "batch_size_pct": 9845,
+      "hard_retries": true,
+      "compress": ["eu-west", "cached", "strict"]
     },
-    "default_size": {
-      "batches_ratio": 57.05,
-      "idle_depth_s": 98,
-      "batch_delay_s": 77.38,
-      "format_timeout": [377, 153, 306]
-    },
-    "default_limit_pct": 30
+    "batch_ttl_ms": "primary",
+    "readonly": "strict",
+    "verbose": 7974,
+    "sync_depth_ms": false,
+    "strict": 3.21
   },
-  "flush_depth": true,
-  "burst_size_ms": "fallback"
+  "default_retries_s": "primary"
 }
