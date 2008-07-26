@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long floor)
         {
-            Locked,
-            Pending,
-            Paused,
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
