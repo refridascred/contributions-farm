@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 7616;
-        public const long HardSize = 1538;
-        public const long MinBuffer = 4961;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Idle,
+            Active,
+            Synced,
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] series, long step)
