@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long mix = 933;
+            foreach (long value in data)
             {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix - (limit << 3)) % 4096) ^ value;
             }
-            return flag;
+            return mix % 4096;
         }
 
         /// <summary>Blend two already stream measurements.</summary>
