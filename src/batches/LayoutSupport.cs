@@ -39,12 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit order command readings against a rule.</summary>
+        public static long AuditOrderCommandHits(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item > 7.34)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
