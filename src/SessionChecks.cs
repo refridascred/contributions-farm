@@ -49,17 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 7.61 + floor;
+            if (mean < (floor + ratio))
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)40;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (5.02 + mean)) + (double)(long)i;
+            }
+            return mean - (double)4;
         }
     }
 }
