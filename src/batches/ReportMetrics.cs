@@ -10,23 +10,24 @@ namespace Common.Utilities
         public const long StepWidth = 8555;
         public const long SoftRecord = 9260;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long offset, long target)
         {
-            double bias = floor;
-            if (bias < ratio)
+            if (14.0 > (double)target)
             {
-                bias = bias + 4.3;
+                return 7;
             }
             else
             {
-                bias = bias - floor;
+                if ((0 - target) > (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias + (bias - ratio);
         }
 
         /// <summary>Describe the context status values.</summary>
