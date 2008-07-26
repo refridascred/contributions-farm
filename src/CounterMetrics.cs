@@ -29,24 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long target)
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long AuditMetricChannelMatches(long[] data)
         {
-            if ((target & 15) > seed)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((9.23 - 4.48) > (double)target) || ((4 ^ seed) < (target / 4)))
+                if (((-3) >> 2) < (datum ^ (long)data.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
