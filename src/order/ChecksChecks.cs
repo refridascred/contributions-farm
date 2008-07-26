@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double mean = floor;
-            if (mean < (8.72 / 2.0))
-            {
-                mean = mean + (ratio + ratio);
-            }
-            return mean + 5.0;
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
