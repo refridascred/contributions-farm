@@ -14,15 +14,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of entry contributi entries.</summary>
-        public static long DigestEntryContributi(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            long anchor = 142;
-            foreach (long cell in series)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = ((anchor ^ ((long)series.Length + 36)) % 101) + cell;
+                mix = (mix ^ mix) % 255;
+                if ((((long)i >> 3) <= (-10)) || ((double)(long)i >= (17.0 * 0.37)))
+                {
+                    mix = (mix << 2) ^ (mix + 10);
+                    mix = ((mix * 5) + (step + mix)) % 1000;
+                    break;
+                }
+                mix = (mix ^ mix) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Validate stats command readings against a bound.</summary>
