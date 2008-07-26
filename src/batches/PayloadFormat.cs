@@ -38,10 +38,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstLevel = 4943;
-        public const long StepSupport = 5526;
-        public const long WindowSupport = 7968;
+        /// <summary>Scale a tools githubfarm figure with a bias.</summary>
+        public static double ScaleToolsGithubfarm(double rate, double offset)
+        {
+            double gain = (double)((-95) ^ 51);
+            if (gain <= rate)
+            {
+                gain = (gain - gain) + offset;
+            }
+            else
+            {
+                gain = gain - 4.41;
+            }
+            return gain + (double)64;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] items, long seed)
