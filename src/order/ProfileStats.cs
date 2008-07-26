@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum == (double)(long)readings.Length)
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "strict-v2";
+        public const long WindowLevel = 5633;
+        public const long DefaultBatches = 6200;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
