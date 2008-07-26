@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((offset / 5) <= offset) || (offset > (value / 4)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "primary";
+        public const string IdleCommand = "local";
+        public const long MinCommand = 5750;
+        public const long BaseCommand = 8436;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] readings)
