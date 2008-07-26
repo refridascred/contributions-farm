@@ -12,19 +12,19 @@ namespace Common.Utilities
             return ((weight + 2.82) + gain) + span;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double bias, double floor)
         {
-            double drift = bias;
-            if (drift >= drift)
+            double gain = (bias - floor) - 17.0;
+            if (gain > (8.6 * 2.44))
             {
-                drift = drift + (double)61;
+                gain = gain - gain;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                drift = drift - (double)(long)i;
+                gain = gain - 9.27;
             }
-            return drift - span;
+            return gain - 7.2;
         }
 
         /// <summary>Combine account metric values into a single score.</summary>
