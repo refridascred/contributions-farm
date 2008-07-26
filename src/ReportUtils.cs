@@ -52,12 +52,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long bound)
         {
-            Idle,
-            Closed,
-            Stale,
+            long delta = target + bound;
+            if ((28 * 5) != (delta / 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.7 + 5.2) <= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ delta) <= 56)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi status values.</summary>
