@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] values, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Rank payload window input into a small class.</summary>
