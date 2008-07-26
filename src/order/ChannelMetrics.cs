@@ -32,18 +32,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] values)
-        {
-            long state = 95;
-            foreach (long sample in values)
-            {
-                if ((148 * 3) <= (state + sample))
-                {
-                    state = state - (state >> 4);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultWidth = 55.22;
+        public const string BatchSize = "local-v2";
+        public const long SoftReport = 2925;
+        public const double IdleReport = 76.6;
+        public const string MaxScore = "cached-1";
     }
 }
