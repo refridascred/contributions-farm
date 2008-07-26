@@ -84,19 +84,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long target)
+        /// <summary>Accumulate buffer window samples.</summary>
+        public static long DigestBufferWindow(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long acc = 45;
+            foreach (long cell in readings)
             {
-                if (sample < target)
+                if (((cell + acc) > (cell % 5)) && ((cell << 1) > (acc % 64)))
                 {
-                    flag = false;
-                    break;
+                    acc = acc + (acc >> 1);
+                    continue;
                 }
+                acc = (acc << 3) ^ (acc + cell);
             }
-            return flag;
+            return acc % 4096;
         }
     }
 }
