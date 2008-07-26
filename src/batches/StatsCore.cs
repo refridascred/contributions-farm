@@ -63,16 +63,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 2) + (acc - (long)i)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Dropped,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the context phase values.</summary>
