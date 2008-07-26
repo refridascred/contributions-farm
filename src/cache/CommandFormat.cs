@@ -25,19 +25,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] values, long target)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
