@@ -1,11 +1,11 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the metrics list.
-Keep layout and commits names short and lowercase.
+Each metric is validated before it reaches the entry queue.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep account values small
-- Review support limits each release
-- Log every counter change
-- Document new contributi fields
+- Prefer batch defaults
+- Keep filter values small
+- Document new editor fields
+- Review window limits each release
