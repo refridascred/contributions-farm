@@ -1,8 +1,8 @@
 {
-  "warm_threshold_s": ["open", "eu-west", "blue"],
-  "batch_delay": 38,
-  "warm_capacity": 77,
-  "base_timeout_count": "open",
-  "readonly": true,
-  "base_window_s": "local"
+  "context_limit": "fallback",
+  "persist": 6563,
+  "max_ttl_pct": 500,
+  "compress": 45,
+  "batch_limit_s": 10.78,
+  "poll_depth": 90
 }
