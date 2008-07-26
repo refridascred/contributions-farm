@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate report batch readings against a bound.</summary>
