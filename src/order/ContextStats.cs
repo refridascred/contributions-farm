@@ -28,22 +28,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples, long origin)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long state = 83;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state * 4) <= (origin << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state - (origin / 7)) ^ reading;
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 2)
-            {
-                state = state - (origin % 7);
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
