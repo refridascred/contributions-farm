@@ -36,21 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 110;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = ((state * 5) + (1 + floor)) % 97;
+                if (((6.49 * 12.0) == (double)datum) && (floor <= (838 + datum)))
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ (floor - datum)) % 65521;
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
