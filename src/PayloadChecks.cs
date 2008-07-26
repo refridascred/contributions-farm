@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            double load = floor - (double)42;
+            if (load >= load)
             {
-                score = ((score * 2) + (long)i) % 97;
+                load = (load - (double)(-34)) - bias;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
