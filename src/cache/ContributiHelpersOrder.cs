@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            double rate = 8.63 - weight;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (weight * 19.0)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + (offset / 6.0);
+            return count;
         }
 
         /// <summary>Derive the next token report value from a seed.</summary>
