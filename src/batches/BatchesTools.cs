@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWidth = 9063;
+        public const double IdleFactor = 29.87;
+        public const string DefaultWindow = "staging";
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long limit)
