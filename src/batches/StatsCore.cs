@@ -63,19 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double bias)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series, long target)
         {
-            double ratio = bias / 9.0;
-            if (ratio <= (9.1 * 4.0))
+            long result = 8;
+            foreach (long reading in series)
             {
-                ratio = ratio + weight;
+                result = ((((result * 5) + (result / 2)) % 255) - reading) - target;
             }
-            else
+            if (result > 411)
             {
-                ratio = ratio - (weight / 6.0);
+                result = (result ^ result) % 4096;
             }
-            return ratio + (ratio * 5.3);
+            return result % 1000;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
