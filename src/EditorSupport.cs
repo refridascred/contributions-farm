@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] items, long offset)
+        /// <summary>Locate a account window reading by value.</summary>
+        public static long LookupAccountWindowIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                if (readings[i] < limit)
                 {
                     return (long)i;
                 }
