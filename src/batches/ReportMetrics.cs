@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstCount = 3370;
-        public const long StepWidth = 8555;
-        public const long SoftRecord = 9260;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Done,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordBounds(long[] series, long target)
