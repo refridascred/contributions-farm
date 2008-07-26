@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardRatio = "legacy-1";
-        public const long StepStream = 3702;
-        public const string MaxCount = "primary-v2";
-        public const double CacheRatio = 85.87;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ScaleFormat(double ratio, double bias)
