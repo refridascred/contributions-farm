@@ -27,10 +27,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 2459;
-        public const double LimitCommand = 87.31;
-        public const long LimitSpan = 8868;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series, long seed)
+        {
+            long anchor = 602;
+            foreach (long reading in series)
+            {
+                anchor = anchor + (reading - 45);
+            }
+            if (anchor < 36)
+            {
+                anchor = (anchor - (seed << 1)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] readings, long origin)
