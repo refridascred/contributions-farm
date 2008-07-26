@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics filter samples are out of range.</summary>
-        public static long TallyMetricsFilterHits(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (!((88 >> 4) == (count + (long)data.Length)) || ((1 - entry) > (entry + 54)))
+                if (value < target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a command summary.</summary>
