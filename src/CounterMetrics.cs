@@ -36,13 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Project the next report githubfarm value.</summary>
+        public static double AdjustReportGithubfarm(double bias, double offset)
         {
-            Idle,
-            Paused,
-            Ready,
-            New,
+            double gain = (double)(393 << 2);
+            return (gain + (bias / 8.0)) + offset;
         }
     }
 }
