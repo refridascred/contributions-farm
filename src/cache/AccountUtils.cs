@@ -33,18 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already editor entries that pass the check.</summary>
-        public static long CountAlreadyEditorMatches(long[] series, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + bound) <= (value + matches))
+                if (data[i] >= limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
