@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine batch tools values into a single score.</summary>
-        public static long CombineBatchTools(long[] readings, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long score = 79;
-            foreach (long value in readings)
+            long sum = 37;
+            foreach (long entry in samples)
             {
-                score = ((score ^ (score ^ value)) % 1000) - limit;
-                score = (score + value) % 65521;
+                if (entry <= (entry + entry))
+                {
+                    sum = sum ^ entry;
+                }
+                else
+                {
+                    sum = sum - (sum << 2);
+                }
+                if ((entry * 2) <= sum)
+                {
+                    break;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Accumulate graph window samples.</summary>
