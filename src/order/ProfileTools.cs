@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of entry stats entries.</summary>
-        public static long CombineEntryStats(long[] values, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] series, long step)
         {
-            long anchor = 6;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long sample in series)
             {
-                anchor = ((((anchor * 3) + (anchor + anchor)) % 97) - sample) + offset;
+                if (sample <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor % 65521;
+            return found;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
