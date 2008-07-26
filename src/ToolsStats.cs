@@ -68,13 +68,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] items, long offset)
         {
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
