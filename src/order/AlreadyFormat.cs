@@ -24,12 +24,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Done,
-            Dropped,
-            Locked,
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
