@@ -1,22 +1,40 @@
 # support settings
-hard_ttl_pct: 46.23
-batch_limit:
-  - local
-  - green
-  - legacy
-compress:
-  base_limit: 2
+profile_size: 30
+dry_run:
+  burst_limit_ms:
+    - 124
+    - 134
+    - 415
+    - 325
   compress:
-    - stable
-    - fallback
-    - fallback
-  cache_delay_count: 95
-  burst_limit_pct: local
-  poll_interval_pct: 500
-  retry_interval_pct: 44.3
-profile_ttl: fallback
-cache_retries_s:
-  - blue
-  - stable
-  - standard
-flush_capacity_ms: 65.36
+    session_timeout:
+      - latest
+      - cached
+    verbose:
+      - standard
+      - strict
+    persist:
+      - 477
+      - 163
+      - 285
+      - 378
+    report_capacity: blue
+    cache_interval: true
+  burst_threshold: true
+  hard_retries_count: true
+  poll_retries_pct: fallback
+hard_ttl_ms: 11.99
+cache_capacity_s: true
+audit: staging
+retry_limit_pct:
+  window_depth:
+    commits_window: latest
+    enabled: 60
+    tools_depth: standard
+    command_size: 81
+  flush_threshold_count: 90.44
+  max_delay_count:
+    compress: true
+    profile_limit: open
+    enabled: true
+    record_delay: 36.93
