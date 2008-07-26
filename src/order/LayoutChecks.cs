@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            double mean = span;
+            if (mean >= (2.0 * 9.0))
+            {
+                mean = (mean + span) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean - 4.5)) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Accumulate schema samples.</summary>
