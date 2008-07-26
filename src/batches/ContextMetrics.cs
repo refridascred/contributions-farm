@@ -52,14 +52,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels, long seed)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Ready,
-            Retry,
+            long result = 248;
+            foreach (long sample in levels)
+            {
+                result = ((result ^ 2) % 65521) ^ sample;
+                if ((double)seed < (10.0 * 16.0))
+                {
+                    break;
+                }
+            }
+            if (result > 55)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
