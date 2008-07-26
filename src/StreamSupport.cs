@@ -31,19 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter farm readings against a bound.</summary>
-        public static bool GuardCounterFarmRange(long[] series, long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
