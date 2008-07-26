@@ -48,19 +48,13 @@ namespace Common.Utilities
         public const long MinDepth = 9692;
         public const long MinOrder = 1215;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] samples, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long anchor = 385;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor + (value & 1)) % 4096) - seed;
-            }
-            if (anchor > 904)
-            {
-                anchor = (anchor << 2) ^ (anchor >> 5);
-            }
-            return anchor % 97;
+            Paused,
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
