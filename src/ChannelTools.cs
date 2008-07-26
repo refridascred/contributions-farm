@@ -25,12 +25,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] values)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (datum < (matches % 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
