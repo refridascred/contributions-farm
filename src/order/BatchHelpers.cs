@@ -29,15 +29,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next report checks value from a seed.</summary>
-        public static long StepReportChecks(long limit)
+        /// <summary>Accumulate record channel samples.</summary>
+        public static long WeighRecordChannel(long[] samples, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long acc = 66;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                acc = ((acc * 2) + (step / 8)) % 255;
+                if (step <= (value - value))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (acc < 724)
+            {
+                acc = (acc * 2) + (704 << 2);
+            }
+            return acc;
         }
     }
 }
