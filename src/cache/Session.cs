@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Done,
-            Idle,
-            Active,
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
