@@ -72,15 +72,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double scale, double floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            double weight = 9.5;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight + floor) + (double)(long)i) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight - weight;
+            return seen;
         }
     }
 }
