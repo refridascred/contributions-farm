@@ -40,14 +40,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultInterval = 87.08;
+        public const long HardLevel = 3746;
+        public const long SoftDepth = 5923;
+        public const long CacheToken = 4520;
+        public const long MinTimeout = 6337;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] values)
