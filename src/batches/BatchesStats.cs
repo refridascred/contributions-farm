@@ -26,22 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] samples, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches < ((-87) + 558))
-                {
-                    matches = ((matches + 3) + sample) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Measure how many queue channel samples are out of range.</summary>
