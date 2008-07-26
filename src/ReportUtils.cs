@@ -60,12 +60,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long origin)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            if ((origin + bound) == (bound & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound > (bound / 9)) && ((bound * 5) > (origin << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound + bound) == (bound + origin)) || ((75 + origin) <= bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
