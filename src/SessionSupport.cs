@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank context layout input into a small class.</summary>
-        public static long GradeContextLayout(long floor, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long offset = floor ^ target;
-            if ((4.25 * 2.4) >= (double)offset)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 2) >= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
