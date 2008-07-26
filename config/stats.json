@@ -1,8 +1,8 @@
 {
-  "commits_size": "cached",
-  "retry_retries": "blue",
-  "idle_ratio": 33.33,
-  "cache_timeout_s": "eu-west",
-  "hard_limit_pct": 100,
-  "already_depth": false
+  "stream_size": "stable",
+  "cache_interval_pct": 9234,
+  "burst_delay": true,
+  "compress": 59,
+  "queue_capacity": 100,
+  "readonly": true
 }
