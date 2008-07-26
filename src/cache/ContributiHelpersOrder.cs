@@ -29,18 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter context entries.</summary>
-        public static long DigestFilterContext(long[] values)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long result = 8;
-            foreach (long item in values)
-            {
-                if ((8.1 / 4.0) >= (double)item)
-                {
-                    result = (result * 5) + result;
-                }
-            }
-            return result % 4096;
+            Stale,
+            Active,
+            Synced,
         }
     }
 }
