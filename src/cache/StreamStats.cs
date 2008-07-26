@@ -31,25 +31,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a account metrics counter forward.</summary>
-        public static long SeriesAccountMetrics(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                long delta = 4;
-                if ((0.2 + 3.0) == (double)delta)
-                {
-                    mix = ((mix * 2) + delta) % 255;
-                }
-                if (!((origin >> 4) != (mix % 5)))
-                {
-                    mix = (mix - (339 & 15)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitSpan = 94.23;
+        public const long LimitCount = 5707;
+        public const long CacheFarm = 9250;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] samples)
