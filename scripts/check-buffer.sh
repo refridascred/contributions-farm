@@ -12,5 +12,5 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=134
+BUFFER_LIMIT=266
 log "limit is ${BUFFER_LIMIT}"
