@@ -80,19 +80,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate githubfarm cache readings against a bound.</summary>
-        public static bool ValidateGithubfarmCacheRange(long[] items, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the cache level values.</summary>
