@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series)
+        /// <summary>Iterate the commits account series from a seed.</summary>
+        public static long RollCommitsAccount(long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (((long)series.Length * 3) < 399)
-                {
-                    matches = (matches + 1) + reading;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
