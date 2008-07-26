@@ -24,13 +24,23 @@ namespace Common.Utilities
         public const long WindowLevel = 5633;
         public const long DefaultBatches = 6200;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double floor)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            double weight = (double)(62 + 8);
+            if (weight >= weight)
+            {
+                weight = (weight + weight) + ratio;
+            }
+            else
+            {
+                weight = weight + (floor * 18.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight + (floor - floor);
         }
 
         /// <summary>Describe the record status values.</summary>
