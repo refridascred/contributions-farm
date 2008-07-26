@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const double CacheFarm = 37.49;
         public const long SoftFarm = 6681;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Iterate the buffer farm series from a seed.</summary>
+        public static long SeriesBufferFarm(long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit < (long)i) && ((double)limit != (8.0 / 5.0)))
-                {
-                    acc = acc + (7 + 67);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                mark = mark + (long)i;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a farm summary.</summary>
