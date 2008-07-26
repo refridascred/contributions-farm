@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 4578;
-        public const long RetrySize = 1720;
-        public const string MaxWidth = "legacy-edge";
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
+        {
+            long state = 8;
+            foreach (long cell in levels)
+            {
+                state = (((state << 3) ^ 53) % 255) + cell;
+            }
+            if (state < 43)
+            {
+                state = (state - state) % 101;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long IterateChecks(long target)
