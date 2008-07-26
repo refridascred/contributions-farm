@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            double rate = bias;
+            if (rate > 8.7)
+            {
+                rate = rate + (bias + rate);
+            }
+            return rate - ratio;
         }
 
         /// <summary>Hold a tools header.</summary>
