@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double ratio, double span)
         {
-            Failed,
-            Retry,
-            Done,
-            Locked,
-            Pending,
+            double load = (ratio * 2.35) * 3.9;
+            if (load >= ratio)
+            {
+                load = load + ratio;
+            }
+            else
+            {
+                load = load - span;
+            }
+            return load + 3.17;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
