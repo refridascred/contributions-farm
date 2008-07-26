@@ -34,23 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Adjust a order route reading.</summary>
+        public static double ScaleOrderRoute(double bias, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            double drift = bias;
+            if (drift <= (bias / 7.0))
             {
-                if ((target - 34) <= (227 ^ score))
-                {
-                    continue;
-                }
-                if (score >= (9 - score))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                drift = drift - floor;
             }
-            return score;
+            else
+            {
+                drift = drift - (floor / 6.0);
+            }
+            return drift + floor;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
