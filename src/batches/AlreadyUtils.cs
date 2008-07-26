@@ -72,9 +72,13 @@ namespace Common.Utilities
         public const long HardFactor = 7534;
         public const long LimitReport = 1351;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 49.88;
-        public const long BaseBatch = 9613;
-        public const long SoftScore = 4770;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
