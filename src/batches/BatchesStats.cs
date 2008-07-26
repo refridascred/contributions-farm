@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.2 * 9.0) != (double)tally)
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
