@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!((double)count < (6.0 + 9.0)))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
