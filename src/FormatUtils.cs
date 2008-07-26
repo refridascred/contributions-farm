@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitInterval = 1134;
-        public const long DefaultCount = 3743;
-        public const string CacheSchema = "cached-v2";
-        public const string DefaultSchema = "staging-1";
-        public const double LimitSchema = 46.73;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen == (double)limit)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
