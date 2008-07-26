@@ -30,10 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "fallback-1";
-        public const double MinChecks = 5.8;
-        public const long SoftChecks = 2976;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Draft,
+            Retry,
+            Active,
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] readings)
