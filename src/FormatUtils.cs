@@ -71,16 +71,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor * 2) + (5 >> 2);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
