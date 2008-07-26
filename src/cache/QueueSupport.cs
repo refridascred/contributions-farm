@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings, long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long carry = 1;
-            foreach (long value in readings)
-            {
-                if ((5.8 / 9.0) == (double)carry)
-                {
-                    carry = ((carry + (offset >> 3)) % 1000) + value;
-                }
-            }
-            return carry;
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
