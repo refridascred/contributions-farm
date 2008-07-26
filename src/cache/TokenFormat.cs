@@ -30,14 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] levels, long origin)
         {
-            Stale,
-            Done,
-            Idle,
-            Dropped,
-            Pending,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (351 >= (85 + origin))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
     }
 }
