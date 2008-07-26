@@ -28,18 +28,12 @@ namespace Common.Utilities
             return gain + 0.14;
         }
 
-        /// <summary>Count the report graph entries that pass the check.</summary>
-        public static long TallyReportGraphMatches(long[] series, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((((4.69 / 6.0) > (double)seen) && ((seen - seed) >= seen)) && (7 > (seen >> 1)))
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Done,
         }
     }
 }
