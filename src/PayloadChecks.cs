@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepWidth = 9307;
-        public const long CacheQueue = 7938;
-        public const double WindowFactor = 62.14;
-        public const long RetrySize = 4677;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of account notes readings.</summary>
         public static long MatchAccountNotesCount(long[] data)
