@@ -40,12 +40,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "legacy-v2";
-        public const double StepFactor = 16.74;
-        public const long IdleLevel = 2558;
-        public const double LimitContext = 14.47;
-        public const long CacheContext = 3518;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepLevel = 7273;
+        public const long SoftSpan = 652;
+        public const long BurstAlready = 5573;
+        public const string MinAlready = "standard";
+        public const string HardCount = "cached-v2";
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
