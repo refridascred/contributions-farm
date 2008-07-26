@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long WindowLevel = 7629;
         public const long BatchLayout = 6233;
 
-        /// <summary>Scale a context format figure with a bias.</summary>
-        public static double ProjectContextFormat(double bias, double span)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double ratio = bias;
-            if (ratio >= (span + bias))
-            {
-                ratio = ratio + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (span / 5.0)) + (double)(long)i;
-            }
-            return ratio + (span * 9.3);
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
