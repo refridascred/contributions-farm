@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 1264;
-        public const double BurstBudget = 53.39;
-        public const long HardAlready = 3560;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Active,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double SmoothWindow(double weight, double offset)
