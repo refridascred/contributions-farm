@@ -1,12 +1,9 @@
 # githubfarm settings
-strict: false
-soft_delay_count: 5419
-base_ttl_count: 1106
-retry_depth_s: 81.64
-hard_capacity:
-  - 300
-  - 432
-  - 253
-max_timeout:
-  - stable
-  - stable
+default_ttl_ms: edge
+flush_depth_s: 61.49
+record_depth: 31
+strict:
+  - green
+  - eu-west
+max_threshold_s: primary
+batches_depth: blue
