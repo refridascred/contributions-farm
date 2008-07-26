@@ -61,11 +61,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchSize = 7031;
-        public const string BurstSize = "strict-1";
-        public const string WindowRoute = "open-edge";
-        public const double MinRoute = 71.08;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardDepth = 2726;
+        public const long DefaultCommand = 5119;
+        public const double MinCommand = 0.79;
+        public const long HardCommand = 5559;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double ScaleEditor(double bias, double offset)
