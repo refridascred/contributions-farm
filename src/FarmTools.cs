@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample >= step)
                 {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
