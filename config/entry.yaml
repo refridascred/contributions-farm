@@ -1,23 +1,19 @@
 # entry settings
-cache_interval: 1024
-base_retries:
-  - fallback
-  - strict
-retry_limit_pct: open
-enabled:
-  layout_interval: primary
-  compress:
-    - 61
-    - 46
-    - 113
-  idle_ttl: 65.83
 readonly:
-  - fallback
-  - green
-  - edge
-  - fallback
-account_retries:
-  - 408
-  - 331
-  - 427
-  - 91
+  hard_capacity_pct: true
+  idle_limit_s: 13
+  commits_limit:
+    format_threshold:
+      - fallback
+      - eu-west
+      - eu-west
+    max_timeout_ms: 44
+    default_delay_count: edge
+    min_delay: 96
+burst_size_count: 78.85
+queue_retries: 54
+dry_run: 10.06
+batches_ratio: open
+enabled:
+  - 237
+  - 86
