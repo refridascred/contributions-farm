@@ -34,18 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] levels, long step)
+        /// <summary>Measure how many contributi metric samples are out of range.</summary>
+        public static long MeasureContributiMetricMatches(long[] levels, long step)
         {
-            long tally = 0;
+            long hits = 0;
             foreach (long entry in levels)
             {
-                if ((((548 + entry) >= (entry + entry)) && ((entry - 62) > (entry - tally))) || ((1.0 - 7.15) > (double)step))
+                if ((double)step >= (double)(-72))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
