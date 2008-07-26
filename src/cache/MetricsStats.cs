@@ -44,11 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] values, long step)
         {
-            double mean = floor - (scale - floor);
-            return mean - scale;
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + sample) >= step)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a cache report figure with a bias.</summary>
