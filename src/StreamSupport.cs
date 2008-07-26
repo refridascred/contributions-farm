@@ -27,16 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next batches queue value from a seed.</summary>
-        public static long RollBatchesQueue(long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double bias)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            double ratio = (bias * 1.8) * 8.75;
+            if (ratio >= (ratio * 1.33))
             {
-                mark = (mark + (origin ^ (long)i)) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
+                ratio = (ratio + ratio) - scale;
             }
-            return mark;
+            return ratio + ratio;
         }
     }
 }
