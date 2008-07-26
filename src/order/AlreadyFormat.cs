@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const long MinCommand = 2613;
         public const string SoftTimeout = "local";
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long TotalFarmRoute(long[] levels, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long result = 36;
-            foreach (long item in levels)
-            {
-                if (!((double)floor != (1.0 * 1.5)))
-                {
-                    result = (((result * 3) + (result + result)) % 97) - item;
-                }
-                else
-                {
-                    result = (result ^ (result >> 4)) % 101;
-                }
-            }
-            return result % 1000;
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
