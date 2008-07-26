@@ -54,22 +54,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
-        public static long MeasureBatchesGithubfarmHits(long[] items, long step)
+        /// <summary>Look up the position of a stats command sample.</summary>
+        public static long FindStatsCommandIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((matches * 2) >= (matches >> 3)) && (2 <= (step + matches))))
+                if ((series[i] == target) && ((series[i] % 3) == 0))
                 {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
