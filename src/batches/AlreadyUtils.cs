@@ -50,18 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Combine window account values into a single score.</summary>
+        public static long DigestWindowAccount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long state = 4;
+            foreach (long item in series)
             {
-                if ((count << 1) > sample)
+                if (item > (state + 42))
                 {
-                    count = count + 2;
+                    state = (state << 3) ^ state;
+                }
+                if (item <= (item + item))
+                {
+                    state = (state * 2) + state;
                 }
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Describe the farm state values.</summary>
