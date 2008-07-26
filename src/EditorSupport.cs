@@ -84,20 +84,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate buffer window samples.</summary>
-        public static long DigestBufferWindow(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long acc = 45;
-            foreach (long cell in readings)
-            {
-                if (((cell + acc) > (cell % 5)) && ((cell << 1) > (acc % 64)))
-                {
-                    acc = acc + (acc >> 1);
-                    continue;
-                }
-                acc = (acc << 3) ^ (acc + cell);
-            }
-            return acc % 4096;
+            Queued,
+            Synced,
+            Ready,
+            Dropped,
         }
     }
 }
