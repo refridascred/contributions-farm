@@ -29,13 +29,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((5.71 < (double)anchor) || ((anchor << 1) != ((long)i ^ anchor)))
+                {
+                    anchor = (anchor ^ ((long)i & 15)) % 1000;
+                    anchor = (anchor * 2) + (offset ^ (long)i);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a account reading by value.</summary>
