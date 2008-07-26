@@ -45,21 +45,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((85 - 13) > (limit2 & 127))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)154 != (double)limit))
                 {
-                    if ((samples[i] + samples[j]) != 17)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit2 + limit2) <= 260)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
