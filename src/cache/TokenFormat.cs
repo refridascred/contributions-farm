@@ -32,21 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultLevel = 5719;
+        public const long MaxMetrics = 7550;
+        public const string CacheSpan = "latest";
+        public const long BatchLevel = 5606;
     }
 }
