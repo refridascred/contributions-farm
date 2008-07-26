@@ -26,19 +26,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] data, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
