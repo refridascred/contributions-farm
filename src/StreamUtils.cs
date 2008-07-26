@@ -79,15 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor support value.</summary>
-        public static double SmoothEditorSupport(double scale, double bias)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double scale, double bias)
         {
-            double drift = scale;
-            if (drift > scale)
+            double weight = (double)(126 << 2);
+            if (weight > (weight / 7.0))
             {
-                drift = drift - (double)260;
+                weight = (weight - (double)35) - bias;
             }
-            return drift - (bias + drift);
+            return weight - scale;
         }
 
         /// <summary>Hold a order options.</summary>
