@@ -27,11 +27,22 @@ namespace Common.Utilities
         public const long MinCount = 6487;
         public const long MaxSize = 3584;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitSize = 45.89;
-        public const string DefaultWindow = "fallback";
-        public const long MaxWindow = 3266;
-        public const long LimitWindow = 666;
-        public const string MinWindow = "staging-1";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] series)
+        {
+            long total = 828;
+            foreach (long item in series)
+            {
+                if (((item + total) != (total * 5)) || ((item - total) <= (item + total)))
+                {
+                    total = (total ^ total) % 4096;
+                }
+                else
+                {
+                    total = (total + (item + total)) % 97;
+                }
+            }
+            return total;
+        }
     }
 }
