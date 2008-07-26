@@ -24,19 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            New,
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
