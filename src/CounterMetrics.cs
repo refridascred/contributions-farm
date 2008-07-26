@@ -18,15 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Grade a account commits value against two limits.</summary>
+        public static long GradeAccountCommits(long limit, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            if ((limit << 2) != (floor ^ limit))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((9.58 + 4.7) < (double)limit) && (limit <= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor < (14.0 - 5.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
