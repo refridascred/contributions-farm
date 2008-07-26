@@ -1,13 +1,9 @@
 # entry settings
-support_ttl: eu-west
-sync_ratio_ms:
-  - primary
-  - staging
-  - open
-counter_ratio:
-  - fallback
-  - open
-  - cached
-  - eu-west
-command_ratio: primary
-idle_threshold: 56.61
+cache_timeout_s: true
+strict: 6471
+poll_depth: false
+order_window: green
+cache_capacity:
+  default_capacity_count: cached
+  burst_capacity: strict
+  counter_retries: green
