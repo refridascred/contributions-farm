@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
