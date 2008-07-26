@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=142
+CHANNEL_LIMIT=101
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in local eu-west stable green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+mode="${1:-latest}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
