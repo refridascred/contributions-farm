@@ -29,11 +29,18 @@ namespace Common.Utilities
             return gain + (1.54 / 4.0);
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - tally) < (entry + 35))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
