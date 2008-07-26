@@ -44,18 +44,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a counter metrics sample.</summary>
-        public static long SeekCounterMetricsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseTimeout = 4.06;
+        public const double LimitChecks = 13.75;
+        public const string IdleChecks = "alpha-edge";
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
         public static long CountEntrySchemaOutliers(long[] items, long floor)
