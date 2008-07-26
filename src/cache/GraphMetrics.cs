@@ -49,17 +49,17 @@ namespace Common.Utilities
             return ((scale2 - (double)23) + scale) + span;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] levels, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (limit + (long)i)) % 65521;
-                carry = carry ^ (40 / 7);
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
