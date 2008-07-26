@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long anchor = 83;
+            foreach (long sample in items)
+            {
+                if ((sample + 5) <= sample)
+                {
+                    anchor = ((anchor << 2) ^ (4 + anchor)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many entry profile samples are out of range.</summary>
