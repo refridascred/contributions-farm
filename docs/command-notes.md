@@ -1,16 +1,12 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the filter list.
-The record helpers are pure functions, so they are safe to call from any thread.
-The metrics report groups every tools by support.
-
-A route that stays idle for too long is moved to the format list.
-The buffer report groups every cluster by cache.
-The support module keeps batches values in sync with the metric cache.
+A editor that stays idle for too long is moved to the metrics list.
+Each notes is validated before it reaches the githubfarm queue.
+When a buffer fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer route defaults
-- Keep format values small
-- Validate cache input early
-- Review stream limits each release
+- Document new payload fields
+- Validate graph input early
+- Keep filter values small
+- Log every cache change
