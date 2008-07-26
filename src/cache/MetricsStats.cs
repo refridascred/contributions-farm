@@ -26,15 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = 512;
-            foreach (long sample in readings)
-            {
-                acc = ((acc - (acc * 3)) % 1000) + sample;
-            }
-            return acc;
+            Dropped,
+            Queued,
+            New,
         }
 
         /// <summary>Audit farm batches readings against a rule.</summary>
