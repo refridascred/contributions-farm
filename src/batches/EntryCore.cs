@@ -51,21 +51,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 5802;
         public const string WindowLevel = "latest-edge";
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Measure how many channel checks samples are out of range.</summary>
+        public static long AuditChannelChecksHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(hits >= (entry + hits)))
                 {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
