@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 2520;
-        public const string SoftMetrics = "open";
-        public const string MinWidth = "strict";
-        public const string CacheMetrics = "legacy-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryInterval = 78.06;
+        public const long MaxBudget = 3247;
+        public const long RetryChannel = 1926;
+        public const double SoftChannel = 47.68;
 
         /// <summary>Measure how many schema order samples are out of range.</summary>
         public static long CountSchemaOrderGaps(long[] samples, long step)
