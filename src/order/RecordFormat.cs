@@ -68,15 +68,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long result = 946;
-            foreach (long sample in levels)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result * 3) + (sample - sample);
+                if (mark < 436)
+                {
+                    mark = mark ^ (3 + (long)i);
+                    break;
+                }
+                mark = mark - ((long)i & 3);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
