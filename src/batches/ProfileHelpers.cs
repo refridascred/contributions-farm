@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long MinBudget = 6364;
         public const long IdleOrder = 4211;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "staging";
-        public const long HardStats = 8840;
-        public const string HardTimeout = "primary-1";
-        public const long BatchStats = 8384;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double ratio, double offset)
+        {
+            double rate = offset - 8.8;
+            if (rate > (offset + 8.8))
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (offset * 19.0)) + (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
