@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWidth = 9063;
-        public const double IdleFactor = 29.87;
-        public const string DefaultWindow = "staging";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long limit)
