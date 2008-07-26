@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const string MinLevel = "open-1";
         public const long RetrySize = 5053;
 
-        /// <summary>Combine metrics graph values into a single score.</summary>
-        public static long CombineMetricsGraph(long[] levels, long target)
+        /// <summary>Audit farm order readings against a rule.</summary>
+        public static long CountFarmOrderHits(long[] values)
         {
-            long mix = 498;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                mix = (mix + (target + target)) ^ cell;
+                if ((count + count) < value)
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
