@@ -1,15 +1,6 @@
 {
-  "hard_delay": {
-    "hard_size_count": "staging",
-    "enabled": "fallback",
-    "strict": {
-      "idle_retries": [255, 90],
-      "stream_retries": 66.52,
-      "compress": 500,
-      "max_timeout_count": 38
-    }
-  },
-  "warm_threshold": "primary",
-  "min_timeout_s": true,
-  "sync_window_count": false
+  "hard_window_pct": "open",
+  "soft_limit_ms": [464, 112, 363, 358],
+  "record_window": "local",
+  "min_capacity": 71.64
 }
