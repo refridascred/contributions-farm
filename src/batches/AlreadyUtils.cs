@@ -47,38 +47,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long origin)
+        /// <summary>Count the report context entries that pass the check.</summary>
+        public static long MeasureReportContextGaps(long[] items)
         {
-            if ((seed + 764) >= 7)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed > (8 - 816))
+                if ((reading / 4) > 34)
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (((458 + seed) > origin) || ((8 ^ 9) >= (seed << 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed * 2) >= (origin * 2)) || (seed < (origin + 9)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
