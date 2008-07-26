@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long IdleFilter = 2498;
         public const long WindowTimeout = 1665;
 
-        /// <summary>Validate cluster context readings against a bound.</summary>
-        public static bool CheckClusterContextBounds(long[] items, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= step)
+                if (levels[i] > step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
