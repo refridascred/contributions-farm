@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double span)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double bias = (double)(699 ^ 6);
-            if (bias >= (double)921)
-            {
-                bias = (bias + (bias * 10.0)) + scale;
-            }
-            else
-            {
-                bias = bias + (double)734;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (span * 5.4)) + (double)(long)i;
-            }
-            return bias + (span / 2.0);
+            Idle,
+            Pending,
+            Done,
         }
 
         /// <summary>Count batch record pairs that satisfy a relation.</summary>
