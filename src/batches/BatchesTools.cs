@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Count the contributi context entries that pass the check.</summary>
+        public static long CountContributiContextMatches(long[] data)
         {
-            long state = 8;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                state = (((state << 3) ^ 53) % 255) + cell;
+                if ((4 + reading) <= seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            if (state < 43)
-            {
-                state = (state - state) % 101;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
