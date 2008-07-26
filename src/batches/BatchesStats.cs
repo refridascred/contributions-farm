@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] readings, long step)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((step ^ count) != (reading + step))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
