@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const double BurstBudget = 53.39;
         public const long HardAlready = 3560;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long limit, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] series, long floor)
         {
-            if ((100 + 23) < (origin * 3))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (25 ^ 1))
+                if ((count + 16) == (588 - 9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    count = ((count + 1) ^ sample) - floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of token commits readings.</summary>
