@@ -62,19 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Digest a series of profile batches entries.</summary>
+        public static long ScoreProfileBatches(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long state = 4;
+            foreach (long sample in data)
             {
-                if (((long)i & 255) >= ((long)i + anchor))
+                if ((state % 16) != (sample * 3))
                 {
-                    anchor = (anchor ^ (anchor + (long)i)) % 65521;
+                    state = ((state * 4) + (state + 964)) % 1000;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
     }
 }
