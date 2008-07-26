@@ -23,13 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
+        public static bool ValidateStatsGithubfarmLimits(long[] samples, long step)
         {
-            Stale,
-            Locked,
-            Idle,
-            Draft,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
