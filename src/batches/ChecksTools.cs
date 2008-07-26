@@ -21,19 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] data, long bound)
+        /// <summary>Measure how many stats buffer samples are out of range.</summary>
+        public static long TallyStatsBufferGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (reading > bound)
+                if (!!(sample >= (sample / 9)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
