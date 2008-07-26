@@ -14,31 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((seed % 3) < (628 ^ origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 60) >= (793 % 5)) || ((double)seed < (14.0 / 2.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin >> 1) > (seed ^ 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
