@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=318
-log "limit is ${BUFFER_LIMIT}"
+for item in eu-west legacy primary; do
+    log "checking ${item}"
+done
 
-mode="${1:-stable}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-staging}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in blue edge eu-west strict; do
-    log "checking ${item}"
-done
