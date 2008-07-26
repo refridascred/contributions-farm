@@ -33,18 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long AuditToolsCacheOutliers(long[] levels, long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen - 77) >= (3 + 16))
-                {
-                    seen = ((seen + 2) ^ entry) + floor;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next batches value.</summary>
