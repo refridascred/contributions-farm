@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((datum + hits) > hits)
+                if ((floor / 5) > (16 + item))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
