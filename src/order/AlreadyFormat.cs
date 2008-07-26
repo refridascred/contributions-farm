@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample <= tally) && (((567 + sample) <= (sample & 7)) || (sample < 9)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepInterval = "local-v2";
+        public const long SoftRatio = 9133;
+        public const long StepRoute = 7916;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryCommand = 809;
