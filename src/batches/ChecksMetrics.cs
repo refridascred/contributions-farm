@@ -50,19 +50,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long result = 845;
+            foreach (long sample in levels)
             {
-                if (((offset - offset) < (offset + state)) && ((offset << 2) <= state))
+                if (((result << 1) <= (5 * 4)) && (33 <= (result + result)))
                 {
-                    continue;
+                    result = (result ^ (result + result)) % 65521;
+                    result = (result - (sample + result)) % 65521;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                result = (result << 3) ^ result;
             }
-            return state;
+            if (result < 811)
+            {
+                result = ((result << 2) ^ (result % 8)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
