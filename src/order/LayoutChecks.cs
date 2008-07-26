@@ -53,19 +53,19 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] series, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long bound)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= seed)
+                if (!(((long)i - 910) >= score))
                 {
-                    valid = false;
-                    break;
+                    score = (score + 410) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
