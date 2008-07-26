@@ -59,9 +59,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6165;
-        public const double IdleRatio = 38.54;
-        public const string BaseGithubfarm = "strict";
+        /// <summary>Accumulate batch context samples.</summary>
+        public static long TotalBatchContext(long[] items)
+        {
+            long sum = 92;
+            foreach (long reading in items)
+            {
+                if ((sum >> 4) < (sum << 3))
+                {
+                    sum = sum - (reading / 7);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((long)items.Length + sum)) % 65521;
+                }
+            }
+            return sum;
+        }
     }
 }
