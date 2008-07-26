@@ -1,14 +1,15 @@
 {
-  "payload_retries": 32,
-  "flush_ttl_ms": "legacy",
-  "soft_depth_s": "stable",
-  "farm_ratio": "latest",
-  "readonly": "fallback",
-  "checks_ttl": {
-    "flush_capacity_s": "local",
-    "idle_depth_pct": ["cached", "open"],
-    "retry_interval": "legacy",
-    "default_limit_ms": false,
-    "min_depth_s": 9962
-  }
+  "hard_delay": {
+    "hard_size_count": "staging",
+    "enabled": "fallback",
+    "strict": {
+      "idle_retries": [255, 90],
+      "stream_retries": 66.52,
+      "compress": 500,
+      "max_timeout_count": 38
+    }
+  },
+  "warm_threshold": "primary",
+  "min_timeout_s": true,
+  "sync_window_count": false
 }
