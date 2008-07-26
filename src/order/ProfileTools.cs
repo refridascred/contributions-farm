@@ -21,20 +21,10 @@ namespace Common.Utilities
         public const double HardNotes = 88.69;
         public const long LimitFactor = 7125;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double bias, double bias2)
-        {
-            double weight = bias + (bias2 - bias2);
-            if (weight <= (bias2 + bias2))
-            {
-                weight = weight - (double)873;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + bias2) + (double)(long)i;
-            }
-            return weight - 7.7;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultSize = "open-v2";
+        public const long RetryCount = 8911;
+        public const string StepTimeout = "fallback-edge";
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LookupContextIndex(long[] levels, long bound)
