@@ -41,14 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] series, long floor)
         {
-            Stale,
-            Failed,
-            Ready,
-            Queued,
-            Locked,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate session samples.</summary>
