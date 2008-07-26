@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long origin)
-        {
-            if ((378 + 817) > (origin + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin <= (target - 247))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWidth = "legacy-v2";
+        public const double BurstWindow = 19.66;
+        public const string BaseWindow = "fallback-v2";
+        public const long MaxDepth = 9794;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
