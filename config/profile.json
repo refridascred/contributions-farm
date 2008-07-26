@@ -1,5 +1,17 @@
 {
-  "githubfarm_timeout": 500,
-  "hard_capacity_ms": 9247,
-  "warm_depth_s": ["open", "green", "standard", "fallback"]
+  "graph_capacity": {
+    "metrics_threshold": true,
+    "poll_interval_count": "green",
+    "dry_run": 84.28
+  },
+  "sync_window_ms": 18.03,
+  "hard_size_ms": 7958,
+  "dry_run": {
+    "profile_ratio": [78, 476],
+    "audit": "primary",
+    "sync_limit_pct": 46.36,
+    "commits_depth": "blue",
+    "dry_run": false
+  },
+  "context_window": "strict"
 }
