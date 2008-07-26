@@ -1,11 +1,15 @@
 # Command notes
 
-When a payload fails, the graph handler retries a few times before giving up.
-Keep layout and profile names short and lowercase.
-Use cluster settings to tune how often command data is refreshed.
+Run the route check before changing any context limits.
+Each report is validated before it reaches the cache queue.
+The command module keeps graph values in sync with the queue cache.
+
+The batches helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the entry list.
+When a checks fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate tools input early
-- Document new farm fields
+- Log every record change
+- Validate format input early
+- Review filter limits each release
