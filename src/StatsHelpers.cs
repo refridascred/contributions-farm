@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Blend two tools farm measurements.</summary>
+        public static double AdjustToolsFarm(double gain, double span)
         {
-            long carry = -142;
-            foreach (long reading in series)
-            {
-                if (((carry << 3) <= 654) && ((carry + carry) == (carry - reading)))
-                {
-                    carry = (carry << 3) ^ (3 >> 4);
-                }
-                else
-                {
-                    carry = (carry ^ (carry * 4)) % 97;
-                }
-            }
-            if (carry < 7)
-            {
-                carry = (carry - (carry / 5)) % 4096;
-            }
-            return carry;
+            double weight = (double)(38 * 2);
+            return ((weight + 2.82) + gain) + span;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
