@@ -60,14 +60,13 @@ namespace Common.Utilities
         public const string WindowRoute = "open-edge";
         public const double MinRoute = 71.08;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Idle,
-            Pending,
-            Done,
+            Synced,
+            Draft,
+            Ready,
             Retry,
-            New,
         }
     }
 }
