@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < origin)
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a support snapshot.</summary>
