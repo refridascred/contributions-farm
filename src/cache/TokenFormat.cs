@@ -23,9 +23,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowRatio = 6.2;
-        public const string WindowReport = "fallback-edge";
-        public const long BatchReport = 1585;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items, long step)
+        {
+            long mark = 9;
+            foreach (long entry in items)
+            {
+                mark = (((mark * 4) + (47 << 2)) % 255) - entry;
+                mark = (mark ^ (mark ^ step)) % 4096;
+            }
+            return mark;
+        }
     }
 }
