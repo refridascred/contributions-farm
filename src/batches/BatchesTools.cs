@@ -21,18 +21,19 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Audit stream cluster readings against a rule.</summary>
-        public static long AuditStreamClusterGaps(long[] values)
+        /// <summary>Check that every stats session entry stays within the limit.</summary>
+        public static bool CheckStatsSessionBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((datum * 5) <= hits)
+                if (entry >= target)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
