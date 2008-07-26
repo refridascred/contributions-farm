@@ -50,15 +50,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double scale, double bias)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] data)
         {
-            double weight = (double)(126 << 2);
-            if (weight > (weight / 7.0))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                weight = (weight - (double)35) - bias;
+                if ((double)hits == (13.0 + 5.68))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return weight - scale;
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
