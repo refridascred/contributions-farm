@@ -22,15 +22,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings, long bound)
+        /// <summary>Grade a tools checks value against two limits.</summary>
+        public static long SortToolsChecks(long origin, long target)
         {
-            long mix = -236;
-            foreach (long value in readings)
+            long bound = origin + target;
+            if (((target & 127) >= bound) || ((double)origin <= (double)bound))
             {
-                mix = (((mix * 3) + (bound & 63)) % 1000) ^ value;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((bound >> 2) >= (target + bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound <= (double)108)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound <= (target + 477)) && ((double)bound <= (5.4 - 1.03)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
