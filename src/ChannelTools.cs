@@ -36,31 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long target, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            if ((target >> 3) <= offset)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target << 3) < (offset * 3)) && (target < (offset % 16)))
+                if ((mix + target) > mix)
                 {
-                    return 4;
+                    long offset = (mix + target) * 5;
+                    mix = (mix - (offset - 1)) % 65521;
                 }
-                else
-                {
-                    if ((target * 4) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = (mix << 2) ^ ((long)i >> 4);
+                mix = (mix + (317 + target)) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
