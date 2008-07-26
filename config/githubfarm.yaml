@@ -1,27 +1,12 @@
 # githubfarm settings
-stream_delay: 69
-sync_threshold_pct:
-  audit: 100
-  cache_window: latest
-  default_delay_count: edge
-  soft_capacity_count: standard
-burst_size: fallback
-profile_limit:
-  metric_retries:
-    - blue
+retry_capacity_ms: 60
+hard_window: fallback
+idle_window: blue
+hard_window_count:
+  verbose:
+    - latest
     - eu-west
-    - local
-    - fallback
-  soft_window_ms:
-    - cached
-    - legacy
-    - standard
-    - strict
-  hard_capacity: 71.58
-  audit: true
-  batch_ttl_pct:
-    - 293
-    - 466
-retry_interval_count:
-  - blue
-  - blue
+  max_capacity_s: 5424
+  filter_interval: latest
+  checks_retries: false
+compress: cached
