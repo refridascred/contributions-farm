@@ -30,23 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate record channel samples.</summary>
-        public static long WeighRecordChannel(long[] samples, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] levels, long bound)
         {
-            long acc = 66;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 2) + (step / 8)) % 255;
-                if (step <= (value - value))
+                if (entry >= bound)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (acc < 724)
-            {
-                acc = (acc * 2) + (704 << 2);
-            }
-            return acc;
+            return ready;
         }
     }
 }
