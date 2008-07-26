@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Count commits graph pairs that satisfy a relation.</summary>
+        public static long MatchCommitsGraphCount(long[] data)
         {
-            double scale = offset / 6.0;
-            if (scale <= (9.5 + scale))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (4.95 - ratio);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale - (double)40;
+            return count;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
