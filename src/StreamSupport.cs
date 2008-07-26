@@ -49,12 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Closed,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultInterval = 5805;
+        public const long MaxBuffer = 6087;
+        public const long SoftFactor = 6024;
     }
 }
