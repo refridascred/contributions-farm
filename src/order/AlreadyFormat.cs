@@ -36,18 +36,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the cluster farm entries that pass the check.</summary>
-        public static long CountClusterFarmGaps(long[] series, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= (8 & 255))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
