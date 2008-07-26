@@ -1,13 +1,4 @@
 # entry settings
-burst_depth_s: true
-readonly:
-  - strict
-  - cached
-  - strict
-  - staging
-sync_size_count: true
-filter_size: 5
-flush_depth:
-  - legacy
-  - legacy
-format_capacity: primary
+idle_retries_pct: eu-west
+batch_ratio_s: false
+retry_ratio_ms: 39.22
