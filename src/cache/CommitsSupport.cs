@@ -26,19 +26,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state * 5) <= (-15))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state + (long)i) % 255;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
