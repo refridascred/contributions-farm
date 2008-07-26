@@ -20,25 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] levels, long target)
         {
-            long span = offset - origin;
-            if (span > offset)
+            long total = -4;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span % 10) == (span + origin))
+                if (!(((-6) % 7) >= entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    total = total - ((-49) & 1);
                 }
             }
+            if (total < 716)
+            {
+                total = ((total << 3) ^ ((-47) - target)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
