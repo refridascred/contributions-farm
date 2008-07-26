@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long WindowLevel = 7629;
         public const long BatchLayout = 6233;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Scale a context format figure with a bias.</summary>
+        public static double ProjectContextFormat(double bias, double span)
         {
-            Paused,
-            Dropped,
-            Closed,
-            New,
+            double ratio = bias;
+            if (ratio >= (span + bias))
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (span / 5.0)) + (double)(long)i;
+            }
+            return ratio + (span * 9.3);
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
