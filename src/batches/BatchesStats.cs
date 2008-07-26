@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] levels, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((11.0 + 5.1) == (double)step)
+                if ((7.2 * 9.0) != (double)tally)
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a report header.</summary>
