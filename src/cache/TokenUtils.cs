@@ -25,19 +25,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every counter profile entry stays within the limit.</summary>
-        public static bool ValidateCounterProfileRange(long[] levels, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
