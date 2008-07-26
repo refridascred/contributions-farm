@@ -59,22 +59,10 @@ namespace Common.Utilities
             return drift + (bias * 3.9);
         }
 
-        /// <summary>Compare every pair of batches channel readings.</summary>
-        public static long PairBatchesChannelCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowInterval = 8771;
+        public const long MaxGithubfarm = 7153;
+        public const long BurstGithubfarm = 9155;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] series)
