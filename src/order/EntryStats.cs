@@ -19,14 +19,11 @@ namespace Common.Utilities
         public const double WindowCommand = 8.05;
         public const long BurstSize = 353;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Done,
-            Synced,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 2996;
+        public const string MaxEntry = "cached";
+        public const long WindowEntry = 5612;
+        public const double WindowLevel = 60.37;
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long limit, long floor)
