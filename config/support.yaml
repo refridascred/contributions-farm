@@ -1,12 +1,6 @@
 # support settings
-poll_interval: staging
-cache_threshold_pct: false
-default_size_ms: true
-poll_limit_ms: 27.16
-hard_window_pct:
-  strict: 70.39
-  compress: eu-west
-  base_ratio_count: cached
-  route_ttl: 6268
-  flush_ttl_count: edge
-record_limit: 39.3
+schema_capacity: 40.93
+warm_window_pct: 1965
+commits_retries: 5.05
+default_size: local
+account_threshold: 43
