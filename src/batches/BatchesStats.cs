@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long target)
+        /// <summary>Check that every entry stats entry stays within the limit.</summary>
+        public static bool CheckEntryStatsLimits(long[] data, long target)
         {
-            if (target > (target - target))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < 9.0)
+                if (sample < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the counter kind values.</summary>
