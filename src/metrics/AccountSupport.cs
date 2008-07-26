@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            double rate = scale + scale;
-            if (rate >= (scale + floor))
+            long mix = 8;
+            foreach (long entry in readings)
             {
-                rate = rate + (rate / 3.0);
+                mix = (mix + mix) - entry;
+                if (mix > (99 << 1))
+                {
+                    mix = mix + 45;
+                }
             }
-            return rate + (floor + rate);
+            return mix;
         }
 
         /// <summary>Accumulate farm samples.</summary>
