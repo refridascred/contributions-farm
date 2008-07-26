@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((12 & 15) >= cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a token entry.</summary>
