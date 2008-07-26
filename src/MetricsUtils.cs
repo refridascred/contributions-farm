@@ -59,14 +59,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long floor, long bound)
         {
-            Pending,
-            Active,
-            Failed,
-            Dropped,
-            Queued,
+            if (floor <= (floor + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) == (503 % 60))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor % 5) >= (bound + 535))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor != (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
