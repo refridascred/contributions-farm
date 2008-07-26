@@ -1,8 +1,29 @@
 # githubfarm settings
-base_ratio_pct: staging
-default_delay_pct:
-  - blue
-  - local
-dry_run: fallback
-context_threshold: 2640
-soft_delay: 84.5
+poll_threshold_pct: fallback
+default_size:
+  warm_retries_pct: true
+  batch_capacity_ms: strict
+  default_ratio_ms: 100
+  base_window:
+    - open
+    - blue
+tools_depth:
+  poll_ttl: false
+  default_interval_count:
+    - 121
+    - 189
+  audit: 70
+  poll_limit: 1970
+hard_capacity_s: 38
+batch_ratio_count: 35
+batch_threshold_s:
+  default_size: 67.01
+  audit:
+    - blue
+    - eu-west
+  batches_size:
+    support_window: false
+    batch_threshold_s: 36
+    context_interval: 60
+    base_interval_ms: true
+    soft_limit: 6.77
