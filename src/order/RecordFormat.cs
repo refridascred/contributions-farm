@@ -49,18 +49,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter batches entries that pass the check.</summary>
-        public static long AuditFilterBatchesHits(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((2 + entry) >= ((long)levels.Length - offset))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowScore = 5853;
+        public const double BurstWidth = 50.47;
+        public const long StepLayout = 1742;
+        public const long HardLayout = 4333;
+        public const long RetrySize = 7673;
     }
 }
