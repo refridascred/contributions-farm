@@ -19,16 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                mix = (mix + (floor % 100)) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
