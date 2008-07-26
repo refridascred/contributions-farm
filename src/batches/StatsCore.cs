@@ -54,11 +54,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long seed, long offset)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            if (seed <= (offset % 60))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed * 2) != (seed - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6 * 4) < (seed + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
