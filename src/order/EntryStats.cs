@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((39 + datum) <= (origin % 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 4938;
+        public const long HardSize = 3528;
+        public const string DefaultWidth = "primary-edge";
+        public const string RetrySpan = "latest-edge";
+        public const string LimitQueue = "latest-1";
 
         /// <summary>Roll a commits report counter forward.</summary>
         public static long StepCommitsReport(long bound)
