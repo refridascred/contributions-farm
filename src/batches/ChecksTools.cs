@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long WindowLevel = 7629;
         public const long BatchLayout = 6233;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((carry - (long)i) >= offset)
+                {
+                    carry = (carry * 2) + (carry + (long)i);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
