@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] values, long limit)
         {
-            long carry = 42;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((12.0 * 16.0) < (double)value)
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    carry = (((carry << 2) ^ (carry - carry)) % 97) - offset;
+                    return (long)i;
                 }
             }
-            if (carry > 337)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
