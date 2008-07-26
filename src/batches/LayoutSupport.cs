@@ -48,13 +48,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            long mark = 539;
+            foreach (long cell in series)
+            {
+                mark = mark + cell;
+                if ((cell + cell) <= ((long)series.Length - mark))
+                {
+                    mark = mark ^ (4 + cell);
+                }
+                mark = (mark + (mark >> 1)) % 97;
+            }
+            if (mark < 5)
+            {
+                mark = mark ^ ((-9) >> 5);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of support readings.</summary>
