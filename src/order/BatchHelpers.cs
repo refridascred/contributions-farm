@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double scale, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] data, long step)
         {
-            double drift = (double)(543 + 1);
-            return (drift + (scale - 4.24)) + offset;
+            long anchor = 96;
+            foreach (long datum in data)
+            {
+                anchor = (((anchor - anchor) % 97) ^ datum) - step;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
