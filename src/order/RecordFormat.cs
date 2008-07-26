@@ -44,10 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2153;
-        public const double HardSpan = 66.42;
-        public const long BaseNotes = 2681;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(entry <= 52))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] levels)
