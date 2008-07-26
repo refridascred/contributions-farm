@@ -1,11 +1,14 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the cache list.
-The channel module keeps schema values in sync with the cache cache.
-A notes that stays idle for too long is moved to the cache list.
+Each channel is validated before it reaches the report queue.
+Use already settings to tune how often tools data is refreshed.
+
+Defaults for batches live in the config folder and can be overridden per environment.
+Keep channel and command names short and lowercase.
+A filter that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Keep buffer values small
-- Log every editor change
-- Document new graph fields
+- Prefer batch defaults
+- Document new entry fields
+- Review batches limits each release
