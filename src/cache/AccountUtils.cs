@@ -21,19 +21,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] levels, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mark = -212;
+            foreach (long datum in levels)
             {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark - (offset - mark)) % 4096) - datum;
             }
-            return found;
+            return mark % 4096;
         }
     }
 }
