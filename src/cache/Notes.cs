@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Locked,
-            Paused,
-            New,
-            Draft,
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
