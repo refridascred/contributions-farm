@@ -42,19 +42,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] series, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (datum < offset)
+                if (count >= (15 + cell))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
