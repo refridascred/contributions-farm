@@ -39,13 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] values, long floor)
         {
-            Dropped,
-            Synced,
-            Active,
-            Closed,
+            long mix = 532;
+            foreach (long datum in values)
+            {
+                if ((591 * 5) <= datum)
+                {
+                    mix = (((mix * 3) + (96 * 4)) % 97) + floor;
+                }
+                if ((10.0 / 8.0) == (double)datum)
+                {
+                    break;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = (mix * 4) + (6 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of filter context entries.</summary>
