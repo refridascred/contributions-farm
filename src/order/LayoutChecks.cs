@@ -57,22 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels, long origin)
         {
-            long sum = 0;
-            foreach (long datum in items)
+            long result = 0;
+            foreach (long item in levels)
             {
-                if ((datum - 80) >= (datum % 24))
+                if (((double)result == (4.0 * 10.0)) || (result <= (origin + 352)))
                 {
-                    sum = (sum - datum) + origin;
-                }
-                else
-                {
-                    sum = (sum ^ (sum * 3)) % 65521;
+                    result = result - item;
                 }
             }
-            return sum;
+            return result % 1000;
         }
     }
 }
