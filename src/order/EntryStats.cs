@@ -32,15 +32,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double rate, double bias)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            double bias2 = rate;
+            if (bias2 >= (bias2 + bias))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                bias2 = bias2 + (double)7;
             }
-            return mix;
+            return bias2 + (bias2 + rate);
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
