@@ -35,19 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            long acc = 570;
-            foreach (long item in data)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc - (seed + item)) % 101;
+                result = ((result << 2) ^ offset) % 101;
+                result = (result + (887 - result)) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
-            if (acc > 545)
-            {
-                acc = ((acc << 2) ^ acc) % 1000;
-            }
-            return acc % 4096;
+            return result;
         }
     }
 }
