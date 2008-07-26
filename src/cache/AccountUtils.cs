@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long seed, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] readings, long bound)
         {
-            if (((seed + seed) < offset) || (offset >= (seed / 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= seed)
+                if (readings[i] > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (1.0 - 3.2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset - seed) > seed) && ((seed + seed) >= (offset * 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
