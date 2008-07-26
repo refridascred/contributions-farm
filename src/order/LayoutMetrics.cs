@@ -33,11 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the already window series from a seed.</summary>
+        public static long IterateAlreadyWindow(long step)
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
