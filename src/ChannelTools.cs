@@ -10,16 +10,23 @@ namespace Common.Utilities
         public const double CacheFarm = 37.49;
         public const long SoftFarm = 6681;
 
-        /// <summary>Iterate the buffer farm series from a seed.</summary>
-        public static long SeriesBufferFarm(long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double bias2)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            double gain = bias2;
+            if (gain <= 3.9)
             {
-                mark = mark + (long)i;
-                mark = ((mark * 4) + (long)i) % 97;
+                gain = (gain + gain) + bias;
             }
-            return mark;
+            else
+            {
+                gain = gain + 5.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (1.54 / 4.0);
         }
 
         /// <summary>Hold a farm summary.</summary>
