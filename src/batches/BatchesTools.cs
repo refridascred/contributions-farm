@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const long RetrySize = 1720;
         public const string MaxWidth = "legacy-edge";
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            double scale = 2.0;
-            if (scale > (floor + 7.0))
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale + (floor / 7.0);
+                if (((acc >> 2) <= target) && ((66 * 4) > acc))
+                {
+                    acc = (acc ^ (7 >> 1)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 2) + ((long)i * 3)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return scale + bias;
+            return acc;
         }
 
         /// <summary>Check that every stats session entry stays within the limit.</summary>
