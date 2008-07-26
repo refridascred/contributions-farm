@@ -24,16 +24,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix + (step - (long)i)) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Closed,
+            Retry,
+            Paused,
+            Draft,
+            New,
         }
     }
 }
