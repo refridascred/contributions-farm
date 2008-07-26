@@ -24,22 +24,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] series, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long sum = 2;
+            foreach (long datum in values)
             {
-                if ((double)step < (7.8 / 5.0))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum + (sum & 31)) % 4096) ^ datum;
             }
-            return tally;
+            if (sum < 449)
+            {
+                sum = (sum + (sum - sum)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
