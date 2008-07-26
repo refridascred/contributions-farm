@@ -46,19 +46,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] samples, long origin)
+        /// <summary>Iterate the tools batches series from a seed.</summary>
+        public static long RollToolsBatches(long offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading != origin)
+                if (((carry * 5) < (offset % 64)) || ((carry - carry) != (offset - (long)i)))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                if (carry < (carry - offset))
+                {
+                    carry = carry ^ (long)i;
+                }
+                if (!(offset > ((long)i + (long)i)))
+                {
+                    carry = (carry - (offset & 31)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Combine route values into a single score.</summary>
