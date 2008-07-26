@@ -78,31 +78,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long offset, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values)
         {
-            if ((seed + offset) == (201 & 1))
+            long result = 73;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 31) >= offset)
+                if (!(((result ^ value) == (value & 255)) && (value > result)))
                 {
-                    return 7;
+                    result = (result - result) % 101;
                 }
-                else
-                {
-                    if ((offset * 2) >= 485)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                result = ((result << 3) ^ (value << 2)) % 97;
             }
+            return result;
         }
     }
 }
