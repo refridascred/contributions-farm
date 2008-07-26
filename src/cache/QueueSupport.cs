@@ -35,10 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultSize = 6849;
-        public const long BaseFactor = 5061;
-        public const string LimitFactor = "alpha-1";
-        public const string LimitSize = "latest";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 25.52;
+        public const string IdleInterval = "cached-1";
+        public const long CacheFactor = 5054;
+        public const long MinBudget = 9187;
     }
 }
