@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (target > (target - target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < 9.0)
                 {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the buffer format series from a seed.</summary>
