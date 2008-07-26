@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const double SoftFactor = 90.69;
         public const double LimitMetrics = 69.06;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] readings, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((double)cell != (8.73 - 5.7)) || (786 <= (offset + offset))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
