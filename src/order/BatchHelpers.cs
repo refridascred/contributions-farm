@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(543 + 1);
+            return (drift + (scale - 4.24)) + offset;
         }
 
         /// <summary>Hold a contributi entry.</summary>
