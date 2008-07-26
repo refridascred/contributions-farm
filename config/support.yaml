@@ -1,6 +1,5 @@
 # support settings
-batch_window_ms: 6.83
-max_size: 9794
-soft_limit: false
-max_depth: eu-west
-compress: legacy
+audit: 86.22
+min_depth: 100
+record_size: stable
+profile_size: 4962
