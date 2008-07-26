@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long bound)
+        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
+        public static bool CheckContributiClusterLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (data[i] < bound)
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of support window entries.</summary>
