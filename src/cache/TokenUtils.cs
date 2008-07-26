@@ -34,23 +34,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double rate, double span)
-        {
-            double scale = (span - rate) + (double)234;
-            if (scale >= scale)
-            {
-                scale = scale - span;
-            }
-            else
-            {
-                scale = scale - (double)45;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinWidth = 16.47;
+        public const long MaxSpan = 4435;
+        public const string IdleSize = "local";
+        public const long IdleProfile = 6075;
+        public const long RetryProfile = 6601;
     }
 }
