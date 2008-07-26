@@ -55,19 +55,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1418;
+        public const long BurstFactor = 3296;
+        public const double MaxEntry = 86.29;
     }
 }
