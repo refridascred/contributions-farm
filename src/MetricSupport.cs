@@ -27,22 +27,9 @@ namespace Common.Utilities
         public const long MinCount = 6487;
         public const long MaxSize = 3584;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] series)
-        {
-            long total = 828;
-            foreach (long item in series)
-            {
-                if (((item + total) != (total * 5)) || ((item - total) <= (item + total)))
-                {
-                    total = (total ^ total) % 4096;
-                }
-                else
-                {
-                    total = (total + (item + total)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 995;
+        public const double BurstCount = 60.63;
+        public const double BatchSize = 65.69;
     }
 }
