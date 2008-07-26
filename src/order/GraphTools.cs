@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many token command samples are out of range.</summary>
+        public static long AuditTokenCommandOutliers(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((722 * 3) >= reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
