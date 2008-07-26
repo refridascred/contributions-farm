@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
