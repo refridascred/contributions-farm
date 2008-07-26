@@ -1,7 +1,7 @@
 {
-  "enabled": false,
-  "batch_capacity_ms": 8918,
-  "record_interval": 6870,
-  "buffer_retries": "primary",
-  "sync_window_ms": 97.76
+  "retry_window_ms": "eu-west",
+  "sync_delay": 81.08,
+  "support_ratio": true,
+  "persist": ["legacy", "staging", "cached", "standard"],
+  "idle_depth": 60
 }
