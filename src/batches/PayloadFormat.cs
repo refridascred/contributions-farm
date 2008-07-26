@@ -44,23 +44,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a metric cluster figure with a bias.</summary>
-        public static double ProjectMetricCluster(double weight, double span)
+        /// <summary>Fold a list of entry batch readings.</summary>
+        public static long TallyEntryBatch(long[] series)
         {
-            double scale = span;
-            if (scale > 9.3)
+            long acc = 877;
+            foreach (long item in series)
             {
-                scale = (scale + (double)845) + weight;
+                if ((11.0 - 11.0) < (double)acc)
+                {
+                    acc = (((acc << 2) ^ (1 * 2)) % 97) ^ item;
+                }
             }
-            else
+            if (acc > 365)
             {
-                scale = scale + 7.54;
+                acc = (acc << 3) ^ (acc * 5);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - scale;
+            return acc;
         }
     }
 }
