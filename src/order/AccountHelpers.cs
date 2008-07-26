@@ -68,21 +68,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report githubfarm readings.</summary>
-        public static long CompareReportGithubfarmCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 41;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry / 9) < (entry >> 2))
                 {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor + (bound + 68);
+                }
+                else
+                {
+                    anchor = (anchor ^ (10 % 5)) % 97;
+                }
+                if (((20.0 * 6.34) != (double)anchor) && (bound > (bound - bound)))
+                {
+                    anchor = (anchor + (entry + bound)) % 255;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
