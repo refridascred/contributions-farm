@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Roll a commits schema counter forward.</summary>
+        public static long StepCommitsSchema(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)target > (8.5 / 8.0)))
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 2) ^ state;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
