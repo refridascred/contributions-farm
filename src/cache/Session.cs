@@ -56,22 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (89 < matches)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double rate = bias * 7.13;
+            return rate + (weight / 8.0);
         }
 
         /// <summary>Project the next notes account value.</summary>
