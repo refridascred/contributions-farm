@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings)
+        /// <summary>Look up the position of a checks farm sample.</summary>
+        public static long FindChecksFarmIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value <= 6.0)
+                if (data[i] > target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next batches queue value from a seed.</summary>
