@@ -1,9 +1,6 @@
-id,state,score,count
-1,618,691,standard
-2,53,24,293
-3,47.52,local,primary
-4,943,750,stable
-5,324,516,63.25
-6,open,40.16,3.42
-7,4.4,498,2.69
-8,14.44,primary,stable
+id,owner,score
+1,latest,fallback
+2,693,64.31
+3,442,88
+4,373,staging
+5,green,200
