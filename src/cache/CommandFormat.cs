@@ -13,12 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            long total = -1;
+            foreach (long entry in data)
+            {
+                total = total - (total % 97);
+                if (((41 + limit) > (1 + entry)) || ((entry & 15) <= (544 / 9)))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
