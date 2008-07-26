@@ -27,18 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate graph window samples.</summary>
-        public static long TallyGraphWindow(long[] series)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mark = 40;
-            foreach (long sample in series)
-            {
-                if ((mark - sample) < (mark << 1))
-                {
-                    mark = (mark ^ (sample + mark)) % 101;
-                }
-            }
-            return mark;
+            Pending,
+            Failed,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
