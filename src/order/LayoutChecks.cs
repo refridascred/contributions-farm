@@ -47,19 +47,25 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] items, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long edge = target + offset;
+            if ((double)target < (double)edge)
             {
-                if (item != bound)
+                return 0;
+            }
+            else
+            {
+                if (((-955) <= (target + edge)) && ((edge * 5) < 840))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
