@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Synced,
-            New,
-            Active,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "primary";
+        public const string BaseOrder = "stable";
+        public const long IdleOrder = 711;
+        public const long BaseLevel = 5666;
+        public const long IdleRatio = 4531;
 
         /// <summary>Find the first notes stats entry that matches the target.</summary>
         public static long FindNotesStatsIndex(long[] samples, long offset)
