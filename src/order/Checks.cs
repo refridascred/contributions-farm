@@ -46,19 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] samples, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (datum != target)
+                if (reading != origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Combine route values into a single score.</summary>
