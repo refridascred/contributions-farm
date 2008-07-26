@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double BurstBudget = 53.39;
         public const long HardAlready = 3560;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] series, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((count + 16) == (588 - 9))
+                if (entry >= seed)
                 {
-                    count = ((count + 1) ^ sample) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Grade a counter route value against two limits.</summary>
