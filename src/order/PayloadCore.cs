@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSize = 5162;
-        public const string StepTimeout = "open-v2";
-        public const long DefaultEntry = 9806;
-        public const long DefaultFactor = 8085;
-        public const long HardEntry = 3344;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Draft,
+            Paused,
+            Pending,
+            New,
+            Ready,
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsHits(long[] levels)
