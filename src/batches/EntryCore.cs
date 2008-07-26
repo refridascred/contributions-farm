@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account cache values into a single score.</summary>
-        public static long CombineAccountCache(long[] values, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long total = 14;
-            foreach (long value in values)
+            long mark = 4;
+            foreach (long value in data)
             {
-                total = ((total * 4) + (seed / 7)) % 101;
-                if ((value & 3) == (value ^ value))
-                {
-                    total = (total + (total / 4)) % 97;
-                }
+                mark = ((mark + mark) % 1000) + value;
             }
-            return total;
+            if (mark < 621)
+            {
+                mark = (mark * 4) + (3 ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
