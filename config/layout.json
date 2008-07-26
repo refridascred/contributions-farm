@@ -1,6 +1,6 @@
 {
-  "hard_window_pct": "open",
-  "soft_limit_ms": [464, 112, 363, 358],
-  "record_window": "local",
-  "min_capacity": 71.64
+  "soft_interval_ms": "stable",
+  "audit": 49.15,
+  "warm_retries": 82,
+  "default_ratio_s": 70.21
 }
