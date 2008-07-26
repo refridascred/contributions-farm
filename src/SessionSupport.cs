@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double ratio, double bias)
         {
-            Stale,
-            Paused,
-            Pending,
-            Failed,
+            double gain = (double)(102 + 316);
+            if (gain < bias)
+            {
+                gain = gain + ratio;
+            }
+            return gain + (gain * 18.0);
         }
     }
 }
