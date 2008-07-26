@@ -34,17 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] data, long offset)
+        /// <summary>Count the support format entries that pass the check.</summary>
+        public static long CountSupportFormatGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                if ((3 - matches) > matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
