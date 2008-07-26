@@ -60,13 +60,23 @@ namespace Common.Utilities
             return weight + (floor - floor);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long origin)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Queued,
+            long result = 54;
+            foreach (long sample in values)
+            {
+                result = ((result << 3) ^ (result ^ sample)) % 1000;
+                if (!((origin % 3) < (origin + result)))
+                {
+                    result = result - (result ^ origin);
+                }
+            }
+            if (result < 6)
+            {
+                result = result + result;
+            }
+            return result;
         }
     }
 }
