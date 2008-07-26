@@ -13,16 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                acc = (acc - (floor / 8)) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((matches * 4) != (cell - 722))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up report samples.</summary>
