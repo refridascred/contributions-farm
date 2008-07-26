@@ -1,14 +1,9 @@
 {
-  "persist": 28,
-  "max_retries_pct": false,
-  "counter_delay": 9090,
-  "flush_ratio_count": 31.16,
-  "strict": true,
-  "flush_capacity_pct": {
-    "soft_delay_ms": 56.08,
-    "warm_interval_s": 85.71,
-    "cache_retries": [471, 97, 36, 433],
-    "base_threshold_count": ["local", "blue", "stable", "strict"],
-    "soft_interval_ms": 7711
-  }
+  "already_ttl": 50.33,
+  "strict": {
+    "burst_ratio": [94, 256, 398],
+    "min_depth": true,
+    "warm_timeout_s": 30
+  },
+  "warm_ratio_s": 1274
 }
