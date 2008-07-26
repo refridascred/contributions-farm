@@ -29,12 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] levels)
         {
-            Stale,
-            Active,
-            Synced,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample % 3) == (sample + sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
