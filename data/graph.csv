@@ -1,7 +1,6 @@
-id,active,weight,rank
-1,strict,215,789
-2,cached,796,blue
-3,304,369,659
-4,77.35,31,standard
-5,949,267,latest
-6,264,31.67,edge
+id,ratio,token,state,count
+1,strict,24.82,49.6,247
+2,latest,44.09,848,566
+3,strict,382,latest,45.05
+4,73.97,535,edge,legacy
+5,306,158,269,117
