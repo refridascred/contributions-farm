@@ -37,18 +37,12 @@ namespace Common.Utilities
         public const long StepProfile = 3394;
         public const string StepWidth = "primary-1";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] values, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((origin * 3) < (item << 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate stream entry readings against a bound.</summary>
