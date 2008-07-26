@@ -35,15 +35,26 @@ namespace Common.Utilities
             return bias + (double)410;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            long result = 347;
+            foreach (long cell in items)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((result + cell) < (result ^ cell))
+                {
+                    result = result + (cell + cell);
+                }
+                else
+                {
+                    result = ((result * 4) + (cell >> 4)) % 4096;
+                }
             }
-            return carry;
+            if (result > 707)
+            {
+                result = (result + 392) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the window mode values.</summary>
