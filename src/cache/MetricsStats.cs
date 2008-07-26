@@ -26,12 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardTimeout = "latest-1";
-        public const long LimitLevel = 780;
-        public const long LimitSize = 4442;
-        public const long CacheSpan = 8264;
-        public const long WindowContext = 1301;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Match up session format samples.</summary>
         public static long MatchSessionFormatCount(long[] values)
