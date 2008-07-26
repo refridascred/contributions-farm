@@ -29,19 +29,12 @@ namespace Common.Utilities
         public const string MaxSize = "strict-v2";
         public const long LimitLevel = 523;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double weight2 = weight;
-            if (weight2 <= offset)
-            {
-                weight2 = weight2 + (weight / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 - (weight2 * 9.8);
+            Closed,
+            Ready,
+            Locked,
         }
     }
 }
