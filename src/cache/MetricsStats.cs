@@ -44,21 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = floor - (scale - floor);
+            return mean - scale;
         }
 
         /// <summary>Scale a cache report figure with a bias.</summary>
