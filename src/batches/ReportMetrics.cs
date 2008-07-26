@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Iterate the queue entry series from a seed.</summary>
+        public static long RollQueueEntry(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = mark ^ (floor << 2);
+                if ((11.0 / 5.0) <= (double)floor)
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - (floor - floor)) % 101;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ ((long)i + (long)i)) % 4096;
+                    mark = (mark - ((long)i & 15)) % 4096;
+                }
+                mark = mark - (floor << 3);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit command already readings against a rule.</summary>
