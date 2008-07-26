@@ -47,19 +47,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series, long target)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long result = 8;
-            foreach (long reading in series)
-            {
-                result = ((((result * 5) + (result / 2)) % 255) - reading) - target;
-            }
-            if (result > 411)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result % 1000;
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
