@@ -32,19 +32,36 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate layout tools readings against a bound.</summary>
-        public static bool VerifyLayoutToolsBounds(long[] data, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long anchor = 7;
+            foreach (long sample in data)
             {
-                if (datum > step)
+                if (!((8.2 / 5.0) == (double)anchor))
                 {
-                    ready = false;
+                    anchor = (anchor + (sample ^ sample)) % 1000;
+                    anchor = (anchor - (anchor % 100)) % 65521;
+                }
+                if (anchor >= (anchor >> 2))
+                {
+                    anchor = (anchor + (anchor + 180)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (sample & 127)) % 4096;
+                }
+                if (anchor > (sample + sample))
+                {
+                    anchor = (anchor - (590 - anchor)) % 97;
+                }
+                if (9.3 < (double)anchor)
+                {
                     break;
                 }
             }
-            return ready;
+            return anchor;
         }
     }
 }
