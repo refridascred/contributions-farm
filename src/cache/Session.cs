@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
             public string Flag { get; set; } = "";
         }
 
