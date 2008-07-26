@@ -23,18 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = -671;
+            foreach (long item in readings)
             {
-                if (count > (count << 3))
+                if ((double)item <= (double)7)
                 {
-                    count = (count + 2) + value;
+                    state = ((state * 3) + item) % 101;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (item - state)) % 255;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Describe the profile level values.</summary>
