@@ -1,7 +1,6 @@
 {
-  "profile_size": 6,
-  "poll_threshold_count": "stable",
-  "default_depth_ms": true,
-  "default_capacity_s": "stable",
-  "queue_delay": "fallback"
+  "retry_ratio_s": 30,
+  "sync_ttl": ["green", "local"],
+  "hard_limit_ms": "legacy",
+  "default_depth_ms": false
 }
