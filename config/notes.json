@@ -1,6 +1,7 @@
 {
-  "warm_depth_s": "edge",
-  "sync_retries_count": 22.39,
-  "hard_interval": 9209,
-  "soft_window_pct": ["local", "eu-west"]
+  "enabled": ["edge", "standard", "fallback", "primary"],
+  "audit": false,
+  "retry_capacity_s": [393, 296],
+  "order_window": ["primary", "cached"],
+  "account_interval": "cached"
 }
