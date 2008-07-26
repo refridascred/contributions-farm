@@ -83,18 +83,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format profile entries.</summary>
-        public static long WeighFormatProfile(long[] data, long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            long mark = 415;
-            foreach (long datum in data)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)data.Length / 9) < (mark % 97))
+                long offset = acc + bound;
+                acc = ((acc * 3) + offset) % 255;
+                if ((4.1 / 4.0) == (double)bound)
                 {
-                    mark = ((((mark << 3) ^ mark) % 1000) + datum) + seed;
+                    acc = acc + (offset & 63);
+                    offset = (offset << 2) ^ (bound - (long)i);
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
     }
 }
