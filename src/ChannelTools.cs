@@ -36,13 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long target, long offset)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            if ((target >> 3) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target << 3) < (offset * 3)) && (target < (offset % 16)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 4) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
