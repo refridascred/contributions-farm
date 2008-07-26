@@ -25,19 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            double load = floor - (double)42;
-            if (load >= load)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)(-34)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - load;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
