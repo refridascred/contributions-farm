@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            double scale = offset / 6.0;
+            if (scale <= (9.5 + scale))
+            {
+                scale = scale - (4.95 - ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale - (double)40;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
