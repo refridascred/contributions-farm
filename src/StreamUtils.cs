@@ -41,13 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            New,
+            Locked,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
