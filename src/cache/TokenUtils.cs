@@ -42,19 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long origin)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
