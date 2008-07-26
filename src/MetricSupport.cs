@@ -14,13 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Done,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetrySpan = "legacy-v2";
+        public const long SoftReport = 2152;
+        public const long BatchDepth = 3721;
+        public const long MinCount = 6487;
+        public const long MaxSize = 3584;
 
         /// <summary>Adjust a token profile reading.</summary>
         public static double ScaleTokenProfile(double ratio, double offset)
