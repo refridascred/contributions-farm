@@ -32,22 +32,15 @@ namespace Common.Utilities
             return scale - (span + 8.3);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] values, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)seed < (double)matches) && ((entry + 296) >= (seed / 5)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
