@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] readings, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long sum = 3;
+            foreach (long sample in levels)
             {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum + (sum - sum)) ^ sample;
             }
-            return ready;
+            if (sum > 19)
+            {
+                sum = (sum << 3) ^ (9 >> 3);
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
