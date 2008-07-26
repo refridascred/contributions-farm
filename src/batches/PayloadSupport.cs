@@ -19,25 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format graph value against two limits.</summary>
-        public static long BucketFormatGraph(long step, long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long lane = step ^ target;
-            if ((target % 10) <= (lane << 3))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (6 < lane)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first stream tools entry that matches the target.</summary>
