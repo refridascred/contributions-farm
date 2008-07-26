@@ -1,14 +1,7 @@
 {
-  "flush_size_pct": true,
-  "min_retries_pct": false,
-  "schema_ttl": {
-    "compress": "latest",
-    "record_interval": 500,
-    "verbose": "stable",
-    "token_timeout": "staging",
-    "strict": true,
-    "already_size": "primary"
-  },
-  "sync_capacity_s": "legacy",
-  "base_ratio_count": 1024
+  "max_retries": 23,
+  "support_depth": true,
+  "compress": ["primary", "stable"],
+  "min_delay": 60,
+  "record_timeout": 65.15
 }
