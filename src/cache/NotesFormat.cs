@@ -17,19 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] items, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((double)(long)i < (20.0 + 8.82))
+                if (sample > offset)
                 {
-                    sum = sum + (sum / 6);
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Find the first notes stats entry that matches the target.</summary>
