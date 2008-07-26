@@ -41,19 +41,18 @@ namespace Common.Utilities
             return load + 9.5;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (tally <= (tally * 2))
                 {
-                    acc = (acc ^ seed) + (long)i2;
+                    tally = ((tally + 3) - cell) - limit;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
     }
 }
