@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepScore = 8358;
-        public const long BurstRatio = 9337;
-        public const long LimitCount = 4324;
-        public const long MinDepth = 591;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((0 ^ (long)readings.Length) > (count / 7))
+                {
+                    count = ((count + 1) + item) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
