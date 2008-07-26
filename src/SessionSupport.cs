@@ -34,10 +34,10 @@ namespace Common.Utilities
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
         {
-            Idle,
-            Draft,
-            Queued,
             Stale,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
