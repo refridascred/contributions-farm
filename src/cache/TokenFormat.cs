@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support layout readings against a rule.</summary>
-        public static long MeasureSupportLayoutGaps(long[] series, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((3.86 / 2.0) == (double)target)
+                if (datum <= bound)
                 {
-                    seen = (seen + 1) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
