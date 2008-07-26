@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Ready,
-            Closed,
-            Failed,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstCount = 3370;
+        public const long StepWidth = 8555;
+        public const long SoftRecord = 9260;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ProjectProfile(double ratio, double floor)
