@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
+            Paused,
+            Idle,
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Accumulate record channel samples.</summary>
