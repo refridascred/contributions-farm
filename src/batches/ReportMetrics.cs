@@ -40,18 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] items, long limit)
         {
-            long mix = 42;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mix + mix) < (value + 885)))
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
                 {
-                    mix = mix ^ value;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
