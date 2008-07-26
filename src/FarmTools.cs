@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const double RetryTools = 65.94;
         public const string SoftInterval = "open-edge";
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Closed,
-            Synced,
+            New,
+            Ready,
+            Stale,
             Draft,
         }
     }
