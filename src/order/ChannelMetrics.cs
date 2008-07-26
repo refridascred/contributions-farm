@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetrySize = 2817;
+        public const long RetryRatio = 8476;
+        public const long RetryTimeout = 4389;
+        public const long BatchFilter = 1337;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] values, long bound)
