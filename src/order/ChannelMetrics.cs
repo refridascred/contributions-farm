@@ -26,21 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record already samples.</summary>
-        public static long CompareRecordAlreadyCount(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((57 * 2) < (item * 5))
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
