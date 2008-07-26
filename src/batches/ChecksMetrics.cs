@@ -43,21 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm record pairs that satisfy a relation.</summary>
-        public static long CompareFarmRecordCount(long[] values)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 8)
+                    if ((items[i] - items[j]) > 12)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
