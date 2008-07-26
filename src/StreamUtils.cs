@@ -61,12 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] == floor)
+                if (samples[i] > seed)
                 {
                     return (long)i;
                 }
