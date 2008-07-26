@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseInterval = "cached";
+        public const long BurstEntry = 470;
+        public const double RetryEntry = 4.55;
+        public const long IdleEntry = 467;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long CombineCommand(long[] readings)
