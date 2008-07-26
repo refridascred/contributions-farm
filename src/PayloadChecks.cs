@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] samples, long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double drift = offset;
+            if (drift >= offset)
             {
-                if (((long)samples.Length & 255) == (limit & 127))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                drift = drift + (double)339;
             }
-            return hits;
+            else
+            {
+                drift = drift - (drift + 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (rate + offset)) + (double)(long)i;
+            }
+            return drift + (rate - drift);
         }
 
         /// <summary>Project the next farm value.</summary>
