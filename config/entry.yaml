@@ -1,14 +1,13 @@
 # entry settings
-verbose: 1024
-cache_limit_ms: 6206
-min_size_pct:
-  min_interval_s: edge
-  hard_window_pct:
-    burst_limit_s: fallback
-    warm_ratio_count: open
-    poll_depth: 58.51
-  checks_interval: 52
-  min_ratio: staging
-soft_depth_ms:
-  - stable
-  - cached
+default_ratio: 98.92
+hard_capacity_pct: 46
+base_capacity_count: 8053
+soft_capacity_count: blue
+min_size_ms: standard
+min_size_count:
+  compress: legacy
+  audit: blue
+  poll_interval: 59
+  order_depth: 78.49
+  idle_ratio: false
+  sync_capacity_ms: 1024
