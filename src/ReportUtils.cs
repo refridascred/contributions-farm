@@ -41,14 +41,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of contributi schema entries.</summary>
+        public static long TotalContributiSchema(long[] series, long origin)
         {
-            Pending,
-            New,
-            Paused,
-            Failed,
-            Idle,
+            long carry = 205;
+            foreach (long entry in series)
+            {
+                if (((double)origin > (double)122) || (origin <= (2 << 3)))
+                {
+                    carry = ((carry ^ (7 - 8)) % 255) ^ entry;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
