@@ -19,18 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many entry profile samples are out of range.</summary>
-        public static long TallyEntryProfileGaps(long[] levels, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + bound) <= bound)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
