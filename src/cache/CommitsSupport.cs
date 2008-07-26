@@ -57,11 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
