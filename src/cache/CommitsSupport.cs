@@ -46,11 +46,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftRatio = 19.02;
-        public const long MinSpan = 6817;
-        public const long MaxCache = 6104;
-        public const long BatchWidth = 5894;
+        /// <summary>Count the layout token entries that pass the check.</summary>
+        public static long CountLayoutTokenMatches(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item + item) < (item % 12))
+                {
+                    tally = (tally + 2) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 9217;
