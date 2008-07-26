@@ -36,17 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long bound)
+        /// <summary>Measure how many queue channel samples are out of range.</summary>
+        public static long CountQueueChannelOutliers(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
+                if ((double)offset >= 6.61)
                 {
-                    return (long)i;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
