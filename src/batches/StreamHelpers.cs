@@ -59,22 +59,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long result = 7;
-            foreach (long cell in values)
-            {
-                if ((double)cell == (20.0 / 2.0))
-                {
-                    result = (result * 2) + target;
-                }
-            }
-            if (result < 375)
-            {
-                result = (result * 2) + (target - 750);
-            }
-            return result % 97;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
