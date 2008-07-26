@@ -34,21 +34,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up session format samples.</summary>
-        public static long MatchSessionFormatCount(long[] values)
+        /// <summary>Audit farm batches readings against a rule.</summary>
+        public static long AuditFarmBatchesOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading >> 4) == (seen + seen))
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit account session readings against a rule.</summary>
