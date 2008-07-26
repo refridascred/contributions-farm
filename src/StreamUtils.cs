@@ -56,22 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] data)
+        /// <summary>Find the first report channel entry that matches the target.</summary>
+        public static long LookupReportChannelIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits == (13.0 + 5.68))
+                if (levels[i] == origin)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
