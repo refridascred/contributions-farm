@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long step)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a entry info.</summary>
