@@ -67,26 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mix = 236;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 3) < (step << 3))
-                {
-                    mix = mix ^ (mix >> 5);
-                }
-                if ((datum + datum) != (step ^ mix))
-                {
-                    mix = mix + (mix & 31);
-                }
-            }
-            if (mix > 4)
-            {
-                mix = (mix - (step % 2)) % 4096;
-            }
-            return mix;
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Adjust a order reading.</summary>
