@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] series, long limit)
         {
-            double load = floor + (double)1;
-            if (load > (floor - load))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                load = (load - (double)66) - gain;
+                if ((2.2 - 5.21) <= (double)limit)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
             }
-            else
-            {
-                load = load - 10.0;
-            }
-            return load - (double)6;
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
