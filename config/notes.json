@@ -1,5 +1,7 @@
 {
-  "enabled": 30,
-  "verbose": "latest",
-  "warm_delay_s": false
+  "profile_size": 6,
+  "poll_threshold_count": "stable",
+  "default_depth_ms": true,
+  "default_capacity_s": "stable",
+  "queue_delay": "fallback"
 }
