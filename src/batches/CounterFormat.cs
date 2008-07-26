@@ -13,15 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine batch editor values into a single score.</summary>
-        public static long ScoreBatchEditor(long[] items, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double gain, double floor)
         {
-            long acc = 2;
-            foreach (long cell in items)
+            double mean = gain;
+            if (mean < (6.41 / 2.0))
             {
-                acc = ((acc + (994 + cell)) % 97) + step;
+                mean = mean - (mean * 1.0);
             }
-            return acc % 65521;
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean + floor;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
