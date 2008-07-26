@@ -16,19 +16,19 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Validate support command readings against a bound.</summary>
+        public static bool CheckSupportCommandRange(long[] series, long step)
         {
-            long carry = 2;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                carry = carry + (carry >> 2);
-                if (cell > (carry / 4))
+                if (item != step)
                 {
-                    carry = (carry - (cell + cell)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
