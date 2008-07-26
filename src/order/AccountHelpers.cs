@@ -56,12 +56,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
