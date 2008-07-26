@@ -1,15 +1,11 @@
 # Already notes
 
-Run the token check before changing any record limits.
-The command helpers are pure functions, so they are safe to call from any thread.
-
-Keep githubfarm and checks names short and lowercase.
-Use record settings to tune how often tools data is refreshed.
-Each batches is validated before it reaches the booking queue.
+When a entry fails, the metrics handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new record fields
-- Review batch limits each release
-- Log every format change
-- Prefer batch defaults
+- Keep cache values small
+- Prefer session defaults
+- Document new route fields
+- Log every booking change
