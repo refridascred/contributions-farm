@@ -50,22 +50,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] data)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((2.71 / 4.0) == (double)datum) && ((seen + 7) > (seen & 255)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
