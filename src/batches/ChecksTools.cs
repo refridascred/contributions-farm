@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Paused,
             Synced,
-            Locked,
+            Paused,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Grade a context order value against two limits.</summary>
