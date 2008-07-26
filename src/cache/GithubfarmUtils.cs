@@ -21,19 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double bias)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings, long limit)
         {
-            double mean = bias;
-            if (mean <= (mean / 6.0))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mean = mean + (double)64;
+                if (33 > (count - count))
+                {
+                    count = ((count + 1) + sample) - limit;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (10.0 / 5.0);
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
