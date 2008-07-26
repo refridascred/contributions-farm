@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchInterval = 7501;
-        public const string HardLayout = "local-1";
-        public const double MaxBudget = 42.89;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Closed,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double scale, double span)
