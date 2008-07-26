@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 627;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell != (9.6 + 2.01))
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (cell * 5)) % 255;
                 }
             }
-            return seen;
+            if (result > 7)
+            {
+                result = result ^ ((long)series.Length + 8);
+            }
+            return result % 65521;
         }
 
         /// <summary>Project the next report value.</summary>
