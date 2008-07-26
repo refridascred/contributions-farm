@@ -39,32 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload counter pair into a bucket.</summary>
-        public static long BucketPayloadCounter(long step, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] values, long target)
         {
-            long diff = step + target;
-            if (((double)target >= (4.3 - 20.0)) && (target > (target - step)))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.46 - 11.0) < (double)step)
+                if (entry != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff - 34) <= (target - diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
