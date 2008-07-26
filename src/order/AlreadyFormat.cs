@@ -24,17 +24,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels, long origin)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long TotalFarmRoute(long[] levels, long floor)
         {
-            long anchor = -1;
-            foreach (long sample in levels)
+            long result = 36;
+            foreach (long item in levels)
             {
-                anchor = (anchor - origin) ^ sample;
-                anchor = (anchor << 2) ^ (6 & 7);
-                anchor = anchor - anchor;
+                if (!((double)floor != (1.0 * 1.5)))
+                {
+                    result = (((result * 3) + (result + result)) % 97) - item;
+                }
+                else
+                {
+                    result = (result ^ (result >> 4)) % 101;
+                }
             }
-            return anchor % 1000;
+            return result % 1000;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
