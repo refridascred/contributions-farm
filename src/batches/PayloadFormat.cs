@@ -20,18 +20,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!(value > (653 - value)) || ((double)value == (1.9 - 4.9)))
+                if (6.0 > (double)target)
                 {
-                    tally = (tally + 3) + target;
+                    matches = (matches + 1) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
