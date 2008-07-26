@@ -20,25 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result - (bound + 293);
-                if ((result + result) <= (2 >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    result = ((result << 2) ^ (long)i) % 65521;
-                    result = ((result << 3) ^ (bound << 1)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a payload header.</summary>
