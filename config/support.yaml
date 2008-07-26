@@ -1,8 +1,8 @@
 # support settings
-hard_limit_s: true
-base_size:
-  strict: 7
-  dry_run: 18
-  checks_retries: 51.05
-persist: 8.24
-cache_ttl: 6897
+audit: false
+record_threshold: edge
+command_size:
+  - 384
+  - 416
+  - 50
+channel_window: legacy
