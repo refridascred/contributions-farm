@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long sum = -690;
+            foreach (long value in samples)
             {
-                if (!(((sample << 2) <= (tally / 7)) || ((double)sample == (0.8 / 2.0))))
+                if (249 <= ((long)samples.Length ^ value))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = ((sum << 2) ^ (value % 16)) % 65521;
                 }
             }
-            return tally;
+            if (sum > 8)
+            {
+                sum = (sum ^ (sum - 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
