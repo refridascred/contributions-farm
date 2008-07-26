@@ -46,18 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm payload readings against a rule.</summary>
-        public static long TallyFarmPayloadGaps(long[] values)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry + entry) != (entry - 4))
+                if ((data[i] >= step) && ((data[i] % 2) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
