@@ -51,18 +51,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Audit profile support readings against a rule.</summary>
+        public static long CountProfileSupportOutliers(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((hits - entry) > hits)
+                if (((item & 255) < count) || !(item >= 71))
                 {
-                    hits = hits + 1;
+                    count = (count + 2) - step;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
