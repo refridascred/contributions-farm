@@ -36,22 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxCount = 8719;
+        public const long BaseWindow = 1014;
+        public const double DefaultFactor = 16.35;
+        public const string DefaultWindow = "primary";
+        public const long RetryWindow = 4113;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterHits(long[] items, long bound)
