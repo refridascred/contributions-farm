@@ -30,14 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Failed,
-            Queued,
-            Active,
-            Draft,
-            Done,
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
