@@ -14,16 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                total = ((total * 2) + (offset + offset)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((sample ^ matches) > (matches - 0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the command phase values.</summary>
