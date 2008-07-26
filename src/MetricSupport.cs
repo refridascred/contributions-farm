@@ -49,11 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Adjust a token profile reading.</summary>
+        public static double ScaleTokenProfile(double ratio, double offset)
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            double drift = (double)42 * 4.16;
+            if (drift <= (4.44 / 3.0))
+            {
+                drift = ((drift - (drift / 9.0)) + ratio) - offset;
+            }
+            else
+            {
+                drift = drift + (double)(-22);
+            }
+            return drift - 3.4;
         }
     }
 }
