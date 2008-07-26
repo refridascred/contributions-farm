@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long seed)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long carry = 3;
-            foreach (long sample in samples)
-            {
-                if ((seed / 4) >= (seed - carry))
-                {
-                    carry = (carry + seed) ^ sample;
-                }
-            }
-            return carry;
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
