@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long sum = 4;
-            foreach (long value in series)
-            {
-                sum = ((sum ^ (sum << 2)) % 4096) - floor;
-                if ((double)sum != (9.5 / 2.0))
-                {
-                    sum = sum + (value % 97);
-                }
-            }
-            if (sum > 3)
-            {
-                sum = (sum - 227) % 4096;
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
