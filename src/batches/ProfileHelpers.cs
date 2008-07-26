@@ -23,13 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] data, long limit)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!((double)sample < 3.6))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
