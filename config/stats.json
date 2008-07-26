@@ -1,6 +1,6 @@
 {
-  "max_capacity_s": 7082,
-  "soft_interval": "local",
-  "payload_window": 1921,
-  "strict": true
+  "readonly": 89.88,
+  "buffer_depth": 4,
+  "base_size_count": false,
+  "persist": "open"
 }
