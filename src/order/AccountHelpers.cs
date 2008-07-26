@@ -36,12 +36,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "alpha";
-        public const long CacheEditor = 5169;
-        public const long MaxEditor = 7249;
-        public const long WindowInterval = 5019;
-        public const long BaseEditor = 775;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
