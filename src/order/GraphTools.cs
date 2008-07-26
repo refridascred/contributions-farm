@@ -13,21 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor << 2) ^ 655) % 1000;
-                if (((double)anchor <= (7.81 * 17.0)) || ((double)origin == (4.5 * 7.0)))
+                if (!(20.0 <= (double)sample))
                 {
-                    anchor = anchor ^ origin;
-                    anchor = ((anchor << 2) ^ (49 << 1)) % 1000;
+                    matches = matches + 3;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit tools cache readings against a rule.</summary>
