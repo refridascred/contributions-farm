@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (sample > (hits - sample))
+                if (!!((double)item < (7.19 + 8.42)))
                 {
-                    hits = (hits + 3) - limit;
+                    count = (count + 2) + target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
