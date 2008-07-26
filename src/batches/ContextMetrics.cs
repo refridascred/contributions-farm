@@ -39,19 +39,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate filter layout samples.</summary>
-        public static long FoldFilterLayout(long[] levels, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] readings)
         {
-            long mix = 9;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mix = ((mix - (origin + origin)) % 101) - entry;
+                if (hits <= (hits << 1))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix < 9)
-            {
-                mix = (mix << 2) ^ (origin / 7);
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
