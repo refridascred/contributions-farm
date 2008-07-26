@@ -39,18 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
-        public static long TallyPayloadGithubfarmOutliers(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long score = 3;
+            foreach (long reading in readings)
             {
-                if ((((cell & 255) > (hits + cell)) || (cell <= 9)) && !((11.0 * 0.2) > (double)hits))
-                {
-                    hits = hits + 1;
-                }
+                score = score ^ reading;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
