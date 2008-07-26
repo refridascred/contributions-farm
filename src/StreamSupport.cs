@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double floor)
         {
-            Failed,
-            Stale,
-            Retry,
-            Queued,
+            double mean = floor;
+            if (mean < (bias - bias))
+            {
+                mean = mean - (double)15;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (17.0 / 3.0)) + (double)(long)i;
+            }
+            return mean - (floor + bias);
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
