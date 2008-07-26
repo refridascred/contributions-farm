@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Done,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryInterval = 57.14;
+        public const string DefaultCommits = "primary-edge";
+        public const string LimitInterval = "staging";
+        public const long MaxLevel = 8972;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordBounds(long[] series, long target)
