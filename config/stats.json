@@ -1,6 +1,13 @@
 {
-  "batch_ttl": "green",
-  "min_retries": 20.73,
-  "sync_threshold_count": ["standard", "standard", "standard"],
-  "buffer_interval": "blue"
+  "cache_depth": {
+    "soft_depth_ms": 369,
+    "strict": [379, 195],
+    "poll_depth_s": true,
+    "retry_threshold": "local",
+    "warm_ratio": 92.91,
+    "poll_size": 61.82
+  },
+  "verbose": [239, 52, 24, 426],
+  "layout_ratio": 20.93,
+  "idle_depth_count": 7868
 }
