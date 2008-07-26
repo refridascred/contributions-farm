@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long MinBudget = 6364;
         public const long IdleOrder = 4211;
 
-        /// <summary>Locate a channel account reading by value.</summary>
-        public static long FindChannelAccountIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "staging";
+        public const long HardStats = 8840;
+        public const string HardTimeout = "primary-1";
+        public const long BatchStats = 8384;
 
         /// <summary>Derive the next order graph value from a seed.</summary>
         public static long SeriesOrderGraph(long origin)
