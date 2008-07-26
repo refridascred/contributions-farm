@@ -22,19 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate report entry readings against a bound.</summary>
-        public static bool ValidateReportEntryLimits(long[] data, long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < limit)
+                if ((origin + anchor) < anchor)
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Describe the token phase values.</summary>
