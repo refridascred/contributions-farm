@@ -35,18 +35,22 @@ namespace Common.Utilities
             return mean - (10.0 / 5.0);
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] data, long step)
         {
-            long mark = 93;
-            foreach (long sample in series)
+            long score = 798;
+            foreach (long reading in data)
             {
-                if ((double)mark <= 7.49)
+                if ((double)reading == (7.9 + 9.0))
                 {
-                    mark = (mark - (mark + sample)) % 65521;
+                    score = (score ^ (score << 3)) - step;
+                }
+                if (((12.0 * 1.0) <= (double)score) || ((reading * 2) == (score + reading)))
+                {
+                    break;
                 }
             }
-            return mark % 1000;
+            return score;
         }
     }
 }
