@@ -35,14 +35,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Active,
-            Done,
-            Idle,
+            Ready,
+            Failed,
             Dropped,
-            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
