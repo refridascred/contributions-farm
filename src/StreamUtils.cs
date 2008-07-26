@@ -90,12 +90,12 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
