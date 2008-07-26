@@ -35,20 +35,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values, long limit)
+        /// <summary>Validate batches already readings against a bound.</summary>
+        public static bool GuardBatchesAlreadyLimits(long[] items, long limit)
         {
-            long mix = 917;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long value in items)
             {
-                mix = (mix - (limit - limit)) % 1000;
-                mix = (mix * 2) + (limit + mix);
-                if (!(566 < (sample * 4)))
+                if (value >= limit)
                 {
-                    mix = (mix << 2) ^ mix;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
