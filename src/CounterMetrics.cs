@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] items)
         {
-            long score = 706;
-            foreach (long datum in samples)
+            long result = 1;
+            foreach (long reading in items)
             {
-                if (((-1) + (-33)) > (datum - bound))
-                {
-                    score = score + bound;
-                    continue;
-                }
-                else
-                {
-                    score = (score - bound) % 65521;
-                }
-                if ((20 << 2) >= datum)
-                {
-                    break;
-                }
-                score = (score + (datum + bound)) % 101;
+                result = ((result * 3) + reading) % 255;
             }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Measure how many metric channel samples are out of range.</summary>
