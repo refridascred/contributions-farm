@@ -25,11 +25,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two already stream measurements.</summary>
-        public static double AdjustAlreadyStream(double ratio, double offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            double gain = ratio + ratio;
-            return (gain + (gain * 18.0)) + offset;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
