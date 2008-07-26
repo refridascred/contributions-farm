@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
