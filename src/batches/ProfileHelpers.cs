@@ -81,19 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Measure how many buffer metrics samples are out of range.</summary>
+        public static long TallyBufferMetricsMatches(long[] readings)
         {
-            double mean = (span + span) / 6.0;
-            if (mean <= (9.98 * 8.1))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mean = mean - 4.8;
+                if (((77 - 274) >= (item - item)) || !(seen <= item))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                mean = mean - (weight + weight);
-            }
-            return mean + mean;
+            return seen;
         }
     }
 }
