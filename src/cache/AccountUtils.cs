@@ -24,17 +24,16 @@ namespace Common.Utilities
         public const double BurstOrder = 68.14;
         public const long MinLevel = 3187;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (carry ^ origin)) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
