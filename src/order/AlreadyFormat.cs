@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long SoftRatio = 9133;
         public const long StepRoute = 7916;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = -8;
+            foreach (long reading in samples)
             {
-                if ((-8) >= (long)items.Length)
+                if (reading > result)
                 {
-                    tally = (tally + 2) ^ value;
+                    result = (result - (result ^ 9)) % 97;
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Describe the support phase values.</summary>
