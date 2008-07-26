@@ -25,21 +25,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 613;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = mark + (mark - limit);
+                if (!((1.8 * 0.1) > (double)mark))
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 3) ^ cell) % 1000;
                 }
+                mark = (mark - (cell - mark)) % 97;
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Check that every metrics metric entry stays within the limit.</summary>
