@@ -68,19 +68,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardTimeout = 1753;
+        public const long MinCommand = 2423;
+        public const long BurstCommand = 3107;
+        public const string SoftCommand = "standard-1";
+        public const long MaxBudget = 1718;
     }
 }
