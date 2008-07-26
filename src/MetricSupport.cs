@@ -55,22 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Look up the position of a cache command sample.</summary>
+        public static long FindCacheCommandIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((item - item) < (item >> 1)) || (tally < (item << 2)))
+                if (series[i] == bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
