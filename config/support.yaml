@@ -1,17 +1,13 @@
 # support settings
-order_size:
-  counter_limit:
-    - latest
-    - eu-west
-  verbose: local
-  commits_retries:
-    - 224
-    - 57
-  githubfarm_timeout: true
-cluster_limit:
-  - 487
-  - 435
-soft_timeout_count: blue
-sync_interval: false
-cache_depth_s: 2818
-counter_threshold: blue
+idle_depth: false
+burst_limit:
+  command_delay: legacy
+  retry_ttl_s: green
+  soft_window_count: local
+  window_timeout: 27.48
+  default_retries: fallback
+  batch_ttl: legacy
+burst_ratio:
+  - 2
+  - 424
+batch_retries: cached
