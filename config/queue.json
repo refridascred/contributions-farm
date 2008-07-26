@@ -1,8 +1,6 @@
 {
-  "layout_retries": false,
-  "min_delay": 2402,
-  "min_interval_s": "staging",
-  "compress": false,
-  "metric_limit": "primary",
-  "base_ttl": 100
+  "sync_timeout_pct": ["standard", "blue", "latest", "open"],
+  "compress": 36,
+  "soft_window_pct": true,
+  "entry_threshold": "staging"
 }
