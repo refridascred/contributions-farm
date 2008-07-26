@@ -45,19 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] values, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (entry != target)
+                if ((tally % 10) > tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
