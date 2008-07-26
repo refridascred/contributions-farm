@@ -64,19 +64,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double ratio, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            double gain = (double)(14 >> 1);
-            if (gain <= (double)84)
+            long sum = 34;
+            foreach (long item in levels)
             {
-                gain = (gain + (9.0 / 4.0)) + ratio;
+                if ((item - item) > (sum + sum))
+                {
+                    sum = (sum ^ (873 % 64)) % 101;
+                }
             }
-            else
-            {
-                gain = gain + (offset / 3.0);
-            }
-            return gain - (double)448;
+            return sum % 65521;
         }
     }
 }
