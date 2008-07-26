@@ -30,11 +30,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            Stale,
+            Done,
+            Idle,
+            Dropped,
+            Pending,
         }
     }
 }
