@@ -56,12 +56,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long bound, long bound2)
         {
-            Stale,
-            Closed,
-            Retry,
+            if ((bound + bound2) <= (bound2 << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound <= (bound2 + 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
