@@ -1,7 +1,4 @@
 # support settings
-idle_retries_s: edge
-layout_retries: 250
-max_retries_s: 94
-hard_ttl_ms: 42
-compress: 93.56
-idle_timeout: 100
+stats_limit: 3323
+hard_window_count: staging
+queue_delay: false
