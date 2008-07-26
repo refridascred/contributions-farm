@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            double drift = (double)6 - (double)2;
+            return ((drift + (7.6 + drift)) + ratio) + floor;
         }
 
         /// <summary>Adjust a token reading.</summary>
