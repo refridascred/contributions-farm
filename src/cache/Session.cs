@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels)
         {
-            Stale,
-            Failed,
-            New,
-            Queued,
+            long carry = 246;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (carry + (carry + (long)i)) % 65521;
+                }
+                if ((cell >= (6 >> 3)) || ((carry ^ cell) >= (carry - (-75))))
+                {
+                    carry = (carry - cell) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ cell) % 97;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
