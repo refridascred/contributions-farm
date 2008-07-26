@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable eu-west cached standard; do
+CHANNEL_LIMIT=428
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge cached fallback staging; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
