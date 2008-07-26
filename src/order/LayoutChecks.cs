@@ -39,9 +39,11 @@ namespace Common.Utilities
         public const string StepWidth = "primary-1";
 
         /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 65.11;
-        public const long HardBudget = 4897;
-        public const double CacheCount = 6.71;
+        public const long BaseReport = 3331;
+        public const string MinFactor = "strict";
+        public const double StepReport = 77.09;
+        public const string SoftRatio = "standard-edge";
+        public const long WindowReport = 7990;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderOutliers(long[] levels, long target)
