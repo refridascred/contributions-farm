@@ -24,15 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Match up schema samples.</summary>
