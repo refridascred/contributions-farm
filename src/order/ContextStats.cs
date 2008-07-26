@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long result = 735;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.0 / 9.0) != (double)item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result << 2) ^ (item + 1)) % 255;
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the record phase values.</summary>
