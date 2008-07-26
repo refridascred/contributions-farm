@@ -49,26 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] values, long limit)
         {
-            long state = 638;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (!((state & 63) <= (bound - 5)))
+                if (value <= limit)
                 {
-                    state = state - (bound + cell);
-                }
-                if ((state - 1) <= cell)
-                {
-                    state = (state * 5) + (36 << 3);
-                }
-                else
-                {
-                    state = (state - cell) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
