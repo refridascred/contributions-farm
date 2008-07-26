@@ -30,12 +30,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Derive the next queue context value from a seed.</summary>
