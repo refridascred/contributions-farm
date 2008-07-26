@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor >> 4) <= anchor) && ((step + (long)i) > anchor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ step) % 65521;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor * 3) + 252;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
