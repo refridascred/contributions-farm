@@ -20,14 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Paused,
-            Failed,
-            Done,
-            Ready,
-            Active,
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of tools entries.</summary>
