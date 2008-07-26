@@ -1,12 +1,8 @@
 # githubfarm settings
-dry_run: 10.47
-poll_ttl_pct:
-  filter_window: 90.52
-  base_capacity: 542
-  enabled:
-    persist: standard
-    verbose: true
-    readonly: staging
-    retry_limit_ms: staging
-    base_threshold: false
-queue_threshold: blue
+batch_ttl:
+  - 67
+  - 375
+  - 182
+  - 363
+base_size: 50.89
+farm_capacity: false
