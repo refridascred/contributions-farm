@@ -50,11 +50,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long total = -1;
+            foreach (long item in samples)
+            {
+                if ((total ^ item) > total)
+                {
+                    total = (total - (offset + item)) % 4096;
+                }
+                if ((offset * 5) >= offset)
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
