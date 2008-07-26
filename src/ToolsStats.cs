@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a filter buffer sample.</summary>
-        public static long LocateFilterBufferIndex(long[] values, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if (levels[i] > origin)
                 {
                     return (long)i;
                 }
